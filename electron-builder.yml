@@ -1,0 +1,26 @@
+appId: com.poketoken.desktop
+productName: PokeToken Desktop
+directories:
+  output: release
+files:
+  - out/**/*
+  - package.json
+  - THIRD_PARTY_NOTICES.md
+  - LICENSE
+  - build/tray.png
+asarUnpack:
+  - node_modules/better-sqlite3/**/*
+npmRebuild: true
+artifactName: PokeToken-Desktop-${version}-${os}-${arch}.${ext}
+win:
+  target: portable
+  signExecutable: false
+  icon: build/icon.ico
+mac:
+  target: dmg
+  category: public.app-category.entertainment
+  minimumSystemVersion: '14.0'
+  identity: null
+dmg:
+  sign: false
+publish: null
