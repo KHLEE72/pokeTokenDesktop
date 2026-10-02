@@ -47,7 +47,9 @@ try{
   await expect(petPage.locator('.pet-bubble')).toHaveAttribute('data-dialogue','held')
   await petPage.mouse.up()
   await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','idle')
-  writeFileSync('artifacts/portable-report.json',JSON.stringify({executable,checks:['portable launcher extracted and started','packaged preload, worker, SQLite and tray resources loaded','historical baseline excluded','new usage hatches through packaged IPC','runtime sprite download displayed','pet background is transparent (PNG alpha verified)','v0.2 immediate hold, character dialogue and click release work in the portable executable'],errors:[]},null,2))
+  await expect(petPage.locator('.pet-bubble')).toHaveAttribute('data-dialogue','petting')
+  await expect(petPage.locator('.pet-affection')).toBeVisible()
+  writeFileSync('artifacts/portable-report.json',JSON.stringify({executable,checks:['portable launcher extracted and started','packaged preload, worker, SQLite and tray resources loaded','historical baseline excluded','new usage hatches through packaged IPC','runtime sprite download displayed','pet background is transparent (PNG alpha verified)','immediate hold and petting reaction work in the portable executable'],errors:[]},null,2))
   console.log('Portable executable checks passed.')
 }finally{
   if(browser)await browser.close().catch(()=>{})

@@ -48,7 +48,7 @@ try {
   // Override cursor readings only inside this disposable test app. The user's
   // actual pointer is never moved and personal app data is never loaded.
   await application.evaluate(({ screen }, point) => { globalThis.petTestCursor = point; screen.getCursorScreenPoint = () => globalThis.petTestCursor }, origin)
-  // Exercise the real renderer's pointer capture and four-pixel drag threshold.
+  // Exercise renderer pointer capture and the native four-DIP drag threshold.
   await pet.mouse.move(80, 110); await pet.mouse.down()
   await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion', 'held')
   await pet.mouse.move(88, 110)
@@ -95,8 +95,11 @@ try {
   await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion', 'held')
   await pet.mouse.up()
   await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion', 'idle')
-  expect(await application.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=dashboard')).isVisible())).toBe(true)
-  checks.push('pressing without dragging holds immediately and clicking still opens the management window')
+  await expect(pet.locator('.pet-bubble')).toHaveAttribute('data-dialogue', 'petting')
+  await expect(pet.locator('.pet-affection')).toBeVisible()
+  expect(await application.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=dashboard')).isVisible())).toBe(false)
+  await pet.screenshot({path:'artifacts/pet-petted.png',omitBackground:true})
+  checks.push('a click shows petting animation and character dialogue without opening or focusing the dashboard')
   // Emit session events inside the disposable app instead of locking the user's
   // real computer. Observe actual native API calls without changing their behavior.
   await application.evaluate(({ BrowserWindow }) => {

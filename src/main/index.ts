@@ -56,7 +56,11 @@ else {
     sprites = new SpriteCache(join(app.getPath('userData'), 'sprites'))
     const preferences = { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
     dashboard = new BrowserWindow({ width: 1040, height: 800, minWidth: 850, minHeight: 680, show: false, backgroundColor: '#f6f7f2', autoHideMenuBar: true, title: 'PokeToken Desktop', webPreferences: preferences })
-    pet = new BrowserWindow({ width: 176, height: 208, show: false, frame: false, transparent: true, resizable: false, maximizable: false, minimizable: false, hasShadow: false, alwaysOnTop: true, skipTaskbar: true, focusable: false, webPreferences: { ...preferences, backgroundThrottling: false } })
+    pet = new BrowserWindow({ width: 176, height: 208, show: false, frame: false, transparent: true, resizable: false, maximizable: false, minimizable: false, hasShadow: false, alwaysOnTop: true, skipTaskbar: true, focusable: false, webPreferences: { ...preferences, backgroundThrottling: false, zoomFactor: 1 } })
+    // The dashboard and pet share a URL but must not share page zoom. OS DPI
+    // still scales the whole pet normally, keeping text proportional to the sprite.
+    pet.webContents.setZoomMode('disabled')
+    void pet.webContents.setVisualZoomLevelLimits(1, 1)
     pet.setAlwaysOnTop(true, 'floating')
     if (process.platform === 'darwin') { pet.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true }); app.dock?.hide() }
     controller = new PetController(pet, snapshot.settings, id => {
@@ -112,7 +116,7 @@ else {
     ipcMain.handle('sprite:get', (event, id) => { allowed(event); return sprites.get(id) })
     ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'settings'].includes(tab) ? tab : 'home') })
     ipcMain.on('pet:pointer', (event, active) => { allowed(event); if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
-    ipcMain.on('pet:drag', (event, action) => { allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel'].includes(action)) return; controller.drag(action); if (action === 'end') void request('settings', { displayId: controller.selectedDisplay }).catch(() => {}) })
+    ipcMain.on('pet:drag', (event, action) => { allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel', 'release'].includes(action)) return; if (controller.drag(action) === 'drop') void request('settings', { displayId: controller.selectedDisplay }).catch(() => {}) })
     ipcMain.on('pet:menu', event => { allowed(event); if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
       { label: '현재 펫 · 사용량', click: () => openDashboard() }, { label: '이동 일시정지 / 다시 걷기', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
       { label: '설정', click: () => openDashboard('settings') }, { label: '펫 숨기기', click: () => void request('settings', { visible: false }).catch(() => {}) }

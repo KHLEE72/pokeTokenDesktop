@@ -18,6 +18,8 @@ export class PetController {
   private velocityY = 0
   private dragOffset = { x: 0, y: 0 }
   private previousCursor = { x: 0, y: 0 }
+  private dragOrigin = { x: 0, y: 0 }
+  private dragged = false
   private nextAction = Date.now() + 2500
   private landingUntil = 0
   private lastTick = Date.now()
@@ -58,9 +60,9 @@ export class PetController {
     if (this.state === 'held') { this.ignoreMouse(false); return }
     // DOM pointerenter may not fire again after hide/show or unlocking. Use DIP
     // cursor coordinates as a fallback, also when the character walks underneath it.
-    const point = screen.getCursorScreenPoint(), bounds = this.window.getBounds()
+    const point = screen.getCursorScreenPoint(), bounds = this.window.getContentBounds()
     const size = this.settings.size
-    const left = bounds.x + (bounds.width - size) / 2
+    const left = bounds.x + 24 // .pet-character left: 24px
     const top = bounds.y + bounds.height - size - 6 // .pet-character bottom: 6px
     const overCharacter = point.x >= left && point.x < left + size && point.y >= top && point.y < top + size
     this.ignoreMouse(!overCharacter)
@@ -68,12 +70,26 @@ export class PetController {
   private display(): Display {
     return screen.getAllDisplays().find(d => String(d.id) === this.displayId) ?? screen.getPrimaryDisplay()
   }
+  private displayAt(point: { x: number; y: number }): Display {
+    // Point selection avoids a large speech window choosing a tall neighbour.
+    // Include taskbars when native bounds contain the work area; fall back to
+    // work areas if Chromium reports inconsistent forced-DPI display bounds.
+    const displays = screen.getAllDisplays()
+    return displays.reduce((nearest, display) => {
+      const distance = (d: Display): number => {
+        const w = d.workArea, b = d.bounds
+        const a = b && b.x <= w.x && b.y <= w.y && b.x+b.width >= w.x+w.width && b.y+b.height >= w.y+w.height ? b : w
+        return Math.hypot(Math.max(a.x-point.x,0,point.x-a.x-a.width),Math.max(a.y-point.y,0,point.y-a.y-a.height))
+      }
+      return distance(display) < distance(nearest) ? display : nearest
+    }, displays.find(d=>String(d.id)===this.displayId) ?? displays[0] ?? screen.getPrimaryDisplay())
+  }
   private dimensions(): { width: number; height: number } { return { width: this.settings.size + 48, height: this.settings.size + 80 } }
   private floor(): number { const area = this.display().workArea; return area.y + area.height - this.dimensions().height }
   private feet(): number { return this.y + this.dimensions().height - 6 }
   private centre(): number { return this.x + 24 + this.settings.size / 2 }
   private range(ledge: Ledge, centre = this.centre()): { left: number; right: number; display: Display } | null {
-    const display = screen.getDisplayMatching({ x: Math.round(centre), y: Math.round(ledge.y), width: 1, height: 1 })
+    const display = this.displayAt({ x: centre, y: ledge.y })
     const area = display.workArea, half = this.settings.size / 2
     if (ledge.y - this.dimensions().height + 6 < area.y || ledge.y > area.y + area.height - 6) return null
     const left = Math.max(ledge.x + half, area.x + 24 + half)
@@ -125,11 +141,16 @@ export class PetController {
       direction: this.direction, state: this.state, tilt: this.tilt, impact: this.impact, surfaceId: this.perch?.id ?? null
     } satisfies PetMotion)
   }
-  private position(): void { this.window.setPosition(Math.round(this.x), Math.round(this.y)); this.syncPointer() }
+  private position(): void {
+    // setPosition preserves the rounded native outer size. At fractional Windows
+    // DPI that size can grow with every move. Always set the CSS viewport in DIP.
+    this.window.setContentBounds({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() })
+    this.syncPointer()
+  }
   private ground(): void {
     if (this.window.isDestroyed()) return
     this.clampX(); this.y = this.floor()
-    this.window.setBounds({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() })
+    this.position()
   }
 
   apply(settings: Settings): void {
@@ -146,7 +167,7 @@ export class PetController {
     } else if (settings.size !== before.size) {
       if (this.state !== 'held') this.y -= settings.size - before.size
       this.clampX(); this.y = Math.min(this.y, this.floor())
-      this.window.setBounds({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() })
+      this.position()
       this.followPerch()
     }
     if (!settings.visible && before.visible) this.recover()
@@ -161,20 +182,29 @@ export class PetController {
     if (this.suspended || !this.settings.visible) { this.ignoreMouse(true); return }
     if (this.state !== 'held') this.ignoreMouse(!active)
   }
-  drag(action: string): void {
-    if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
+  drag(action: string): 'drop' | 'pet' | null {
+    if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return null
     const point = screen.getCursorScreenPoint()
+    if (this.state === 'held' && Math.hypot(point.x-this.dragOrigin.x,point.y-this.dragOrigin.y) > 4) this.dragged = true
+    if (action === 'move') return null
+    if (action === 'release' && this.state === 'held') {
+      if (this.dragged) return this.drag('end')
+      this.drag('cancel')
+      this.window.webContents.send('pet:petting')
+      return 'pet'
+    }
     if (action === 'start') {
-      const bounds = this.window.getBounds()
+      const bounds = this.window.getContentBounds()
       this.dragOffset = { x: point.x - bounds.x, y: point.y - bounds.y }
       this.previousCursor = point
+      this.dragOrigin = point; this.dragged = false
       this.x = bounds.x; this.y = bounds.y
       this.state = 'held'; this.tilt = 0; this.velocityY = 0; this.impact = 0
       this.lastTick = Date.now()
       this.ignoreMouse(false)
     } else if (action === 'cancel' && this.state === 'held') {
-      // A simple click still shows the held pose immediately, then opens the
-      // dashboard. If the click caught a falling pet, let it continue down.
+      // A simple click releases the held pose for a local petting reaction.
+      // If the click caught a falling pet, let it continue down.
       this.tilt = 0; this.velocityY = 0; this.lastTick = Date.now()
       if (this.perch) {
         this.state = 'idle'; this.followPerch()
@@ -187,7 +217,9 @@ export class PetController {
       // Include cursor movement since the last animation tick, then keep the release
       // height. Only the subsequent gravity ticks move the pet downwards.
       this.x = point.x - this.dragOffset.x; this.y = point.y - this.dragOffset.y
-      this.displayId = String(screen.getDisplayMatching({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() }).id)
+      // The cursor can be on a shorter monitor while the hanging pet's feet
+      // extend past its bottom. Drop onto the monitor the user is pointing at.
+      this.displayId = String(this.displayAt(point).id)
       this.clampX()
       this.y = clamp(this.y, this.display().workArea.y, this.floor())
       const distance = Math.max(0, this.floor() - this.y)
@@ -198,8 +230,9 @@ export class PetController {
       const nearby = this.landingLedge(this.feet() - 24, this.feet() + 24)
       if (nearby) this.land(nearby); else if (distance < 1) this.land()
       this.syncPointer()
-    } else return
+    } else return null
     this.motion()
+    return action === 'end' ? 'drop' : null
   }
   get selectedDisplay(): string | null { return this.displayId }
 
@@ -223,6 +256,7 @@ export class PetController {
     this.followPerch()
     if (this.state === 'held') {
       const point = screen.getCursorScreenPoint()
+      if (Math.hypot(point.x-this.dragOrigin.x,point.y-this.dragOrigin.y) > 4) this.dragged = true
       const targetTilt = clamp(-(point.x - this.previousCursor.x) * 0.65, -24, 24)
       this.tilt += (targetTilt - this.tilt) * Math.min(1, elapsed * 12)
       this.previousCursor = point

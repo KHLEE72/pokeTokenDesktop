@@ -3,6 +3,14 @@
 .pet-character .sprite-fallback small{display:block;transform:scaleX(var(--facing))}
 
 /* Desktop motion is drawn around the existing sprites; no extra image downloads. */
+.pet-motion.petted.state-idle > .sprite,
+.pet-motion.petted.state-walking > .sprite { animation: pet-pat .7s ease-out both; }
+.pet-affection { position: absolute; z-index: 4; inset: 0; pointer-events: none; transform: scaleX(var(--facing)); }
+.pet-affection i { position: absolute; top: 10%; left: 14%; font-style: normal; font-size: 16px; color: #df8397; animation: pet-heart .8s ease-out both; }
+.pet-affection i:nth-child(2) { left: 75%; top: 22%; font-size: 14px; color: #d1b456; animation-delay: .05s; }
+.pet-affection i:nth-child(3) { left: 55%; top: 5%; font-size: 12px; animation-delay: .1s; }
+@keyframes pet-pat { 25% { transform: translateY(-4px) rotate(-4deg) scale(1.03,.97); } 55% { transform: translateY(-2px) rotate(3deg); } 100% { transform: none; } }
+@keyframes pet-heart { from { opacity: 0; transform: translateY(6px) scale(.5); } 25% { opacity: 1; } to { opacity: 0; transform: translateY(-16px) scale(1.15); } }
 .pet-motion { position: relative; width: 100%; height: 100%; z-index: 2; }
 .pet-motion > .sprite { transform-origin: 50% 95%; animation: breathe 3s ease-in-out infinite; }
 .pet-motion.state-walking > .sprite { animation: walk .5s ease-in-out infinite; }

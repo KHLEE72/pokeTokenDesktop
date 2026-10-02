@@ -20,16 +20,82 @@ function setup() {
   vi.mocked(screen.getAllDisplays).mockReturnValue([screen.getPrimaryDisplay(),{id:2,workArea:{x:1920,y:-300,width:1280,height:1000}} as ReturnType<typeof screen.getPrimaryDisplay>])
   let bounds={x:0,y:0,width:176,height:208}
   const window={isDestroyed:()=>false,webContents:{send:vi.fn()},
-    setBounds:vi.fn((value:typeof bounds)=>{bounds={...value}}),getBounds:()=>({...bounds}),
-    setPosition:vi.fn((x:number,y:number)=>{bounds={...bounds,x,y}}),
+    setContentBounds:vi.fn((value:typeof bounds)=>{bounds={...value}}),getContentBounds:()=>({...bounds}),
     showInactive:vi.fn(),hide:vi.fn(),setIgnoreMouseEvents:vi.fn()
   }
   const settings=defaultSettings(),controller=new PetController(window as unknown as BrowserWindow,settings)
   controllers.push(controller)
-  return {window,settings,controller,get bounds(){return bounds},get motion(){return window.webContents.send.mock.calls.at(-1)?.[1] as PetMotion}}
+  return {window,settings,controller,get bounds(){return bounds},get motion(){return window.webContents.send.mock.calls.filter(([channel])=>channel==='pet:motion').at(-1)?.[1] as PetMotion}}
 }
 afterEach(()=>{for(const controller of controllers.splice(0))controller.destroy();vi.useRealTimers();vi.clearAllMocks()})
 describe('pet desktop behavior',()=>{
+  it('uses a native DIP threshold for petting and never treats a cancelled capture as a click',()=>{
+    const rig=setup();rig.controller.apply({...rig.settings,paused:true})
+    const cursor={x:rig.bounds.x+80,y:rig.bounds.y+110}
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue(cursor)
+    rig.controller.drag('start')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({...cursor,x:cursor.x+3})
+    expect(rig.controller.drag('release')).toBe('pet')
+    expect(rig.window.webContents.send).toHaveBeenCalledWith('pet:petting')
+    expect(rig.motion.state).toBe('idle')
+    rig.window.webContents.send.mockClear()
+    rig.controller.drag('start');rig.controller.drag('cancel')
+    expect(rig.window.webContents.send).not.toHaveBeenCalledWith('pet:petting')
+    expect(rig.controller.drag('release')).toBeNull()
+  })
+  it('remembers a drag that returns to its starting point rather than emitting petting',()=>{
+    const rig=setup();const cursor={x:rig.bounds.x+80,y:rig.bounds.y+110}
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue(cursor);rig.controller.drag('start')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({...cursor,x:cursor.x+10});rig.controller.drag('move')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue(cursor)
+    expect(rig.controller.drag('release')).toBe('drop')
+    expect(rig.window.webContents.send).not.toHaveBeenCalledWith('pet:petting')
+  })
+  it.each([1,1.25,1.5,2])('keeps the viewport and floor stable across unequal monitors at scale %s',scaleFactor=>{
+    const rig=setup()
+    const primary={id:1,scaleFactor,workArea:{x:0,y:0,width:Math.round(1920/scaleFactor),height:Math.round(1040/scaleFactor)}} as ReturnType<typeof screen.getPrimaryDisplay>
+    const side={id:2,scaleFactor:1.5,workArea:{x:-1706,y:-300,width:1706,height:900}} as ReturnType<typeof screen.getPrimaryDisplay>
+    vi.mocked(screen.getAllDisplays).mockReturnValue([primary,side])
+    rig.controller.apply({...rig.settings,paused:true,displayId:'1'})
+    for(const display of [side,primary,side,primary]) {
+      const area=display.workArea
+      for(let i=0;i<12;i++) {
+        vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110})
+        rig.controller.drag('start')
+        vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:area.x+400+i*3,y:area.y+area.height+200})
+        rig.controller.drag('release');vi.advanceTimersByTime(800)
+        expect(rig.controller.selectedDisplay).toBe(String(display.id))
+        expect(rig.bounds.width).toBe(176);expect(rig.bounds.height).toBe(208)
+        expect(rig.bounds.y+rig.bounds.height).toBe(area.y+area.height)
+        expect(rig.bounds.x).toBeGreaterThanOrEqual(area.x)
+        expect(rig.bounds.x+rig.bounds.width).toBeLessThanOrEqual(area.x+area.width)
+      }
+    }
+  })
+  it('selects the pointer monitor even when most of the speech viewport overlaps a taller neighbour',()=>{
+    const rig=setup()
+    const primary={id:1,scaleFactor:1.25,workArea:{x:0,y:0,width:1536,height:832}} as ReturnType<typeof screen.getPrimaryDisplay>
+    const side={id:2,scaleFactor:1.5,workArea:{x:1536,y:-720,width:1280,height:1440}} as ReturnType<typeof screen.getPrimaryDisplay>
+    vi.mocked(screen.getAllDisplays).mockReturnValue([primary,side])
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110});rig.controller.drag('start')
+    // Cursor and feet are on the primary; the bubble extends above it and
+    // overlaps the taller side screen. Whole-window matching would choose side.
+    vi.mocked(screen.getDisplayMatching).mockReturnValue(side)
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:1524,y:10});rig.controller.drag('release')
+    vi.advanceTimersByTime(1500)
+    expect(rig.controller.selectedDisplay).toBe('1');expect(rig.bounds.y+rig.bounds.height).toBe(832)
+  })
+  it('drops onto the shorter monitor when feet extend below it, including its taskbar',()=>{
+    const rig=setup()
+    const primary={id:1,scaleFactor:1.25,workArea:{x:0,y:0,width:1536,height:1000},bounds:{x:0,y:0,width:1536,height:1040}} as ReturnType<typeof screen.getPrimaryDisplay>
+    const side={id:2,scaleFactor:1.5,workArea:{x:1536,y:0,width:1280,height:680},bounds:{x:1536,y:0,width:1280,height:720}} as ReturnType<typeof screen.getPrimaryDisplay>
+    vi.mocked(screen.getAllDisplays).mockReturnValue([primary,side])
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110});rig.controller.drag('start')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:1538,y:700})
+    rig.controller.drag('release');vi.advanceTimersByTime(1000)
+    expect(rig.controller.selectedDisplay).toBe('2')
+    expect(rig.bounds.y+rig.bounds.height).toBe(680)
+  })
   const frame={id:'fixture',pid:88,x:250,y:500,width:700,height:350}
   function perch(rig:ReturnType<typeof setup>,feet=380):void {
     rig.controller.apply({...rig.settings,paused:true})
@@ -65,10 +131,10 @@ describe('pet desktop behavior',()=>{
     const rig=setup();perch(rig)
     vi.spyOn(Math,'random').mockReturnValue(0)
     rig.controller.apply({...rig.settings,paused:false})
-    rig.window.setPosition.mockClear()
+    rig.window.setContentBounds.mockClear()
     vi.advanceTimersByTime(65000)
-    expect(rig.window.setPosition.mock.calls.length).toBeGreaterThan(100)
-    for(const [x,y] of rig.window.setPosition.mock.calls) {
+    expect(rig.window.setContentBounds.mock.calls.length).toBeGreaterThan(100)
+    for(const [{x,y}] of rig.window.setContentBounds.mock.calls) {
       expect(x+24).toBeGreaterThanOrEqual(frame.x)
       expect(x+24+128).toBeLessThanOrEqual(frame.x+frame.width)
       expect(y+208-6).toBe(frame.y)

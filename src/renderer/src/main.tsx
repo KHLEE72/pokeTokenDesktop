@@ -34,25 +34,34 @@ function Pet(): React.JSX.Element | null {
   const snapshot = useSnapshot()
   const [motion, setMotion] = useState<PetMotion>({ direction: 1, state: 'idle', tilt: 0, impact: 0 })
   const { speech, greet } = usePetDialogue(snapshot, motion)
-  const down = useRef<{ x: number; y: number; dragging: boolean; pointerId: number; target: HTMLDivElement } | null>(null)
+  const [reaction, setReaction] = useState(0)
+  const down = useRef<{ pointerId: number; target: HTMLDivElement } | null>(null)
   useEffect(() => window.desktop.onMotion(setMotion), [])
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>
+    const unsubscribe = window.desktop.onPetting(() => {
+      setReaction(value => value + 1)
+      clearTimeout(timer); timer = setTimeout(() => setReaction(0), 850)
+    })
+    return () => { unsubscribe(); clearTimeout(timer) }
+  }, [])
   useEffect(() => {
     const reset = (): void => {
       const pressed = down.current
       down.current = null
+      setReaction(0)
       if (pressed?.target.hasPointerCapture(pressed.pointerId)) pressed.target.releasePointerCapture(pressed.pointerId)
     }
     const unsubscribeReset = window.desktop.onInteractionReset(reset)
     const move = (event: PointerEvent): void => {
       if (!down.current || event.pointerId !== down.current.pointerId) return
-      if (!down.current.dragging && Math.hypot(event.screenX - down.current.x, event.screenY - down.current.y) > 4) {
-        down.current.dragging = true
-      }
+      // Native DIP cursor coordinates distinguish a petting click from a drag.
+      // DOM screenX/screenY can change units when crossing different DPI screens.
+      window.desktop.drag('move')
     }
     const up = (event: PointerEvent): void => {
       if (!down.current || event.pointerId !== down.current.pointerId) return
-      window.desktop.drag(down.current.dragging ? 'end' : 'cancel')
-      if (!down.current.dragging) void window.desktop.openDashboard()
+      window.desktop.drag('release')
       down.current = null
       // Pointer capture ends after pointerup. Keep the character interactive until
       // its real pointerleave arrives as the window starts falling.
@@ -61,7 +70,7 @@ function Pet(): React.JSX.Element | null {
     window.addEventListener('pointermove', move); window.addEventListener('pointerup', up)
     const cancel = (): void => {
       if (!down.current) return
-      window.desktop.drag(down.current.dragging ? 'end' : 'cancel')
+      window.desktop.drag('cancel')
       down.current = null; window.desktop.pointer(false)
     }
     window.addEventListener('pointercancel', cancel)
@@ -84,15 +93,17 @@ function Pet(): React.JSX.Element | null {
       onPointerDown={event => {
         if (event.button !== 0) return
         event.currentTarget.setPointerCapture(event.pointerId)
-        down.current = { x: event.screenX, y: event.screenY, dragging: false, pointerId: event.pointerId, target: event.currentTarget }
+        setReaction(0)
+        down.current = { pointerId: event.pointerId, target: event.currentTarget }
         window.desktop.drag('start')
       }}
       onContextMenu={event => { event.preventDefault(); window.desktop.petMenu() }}>
       <span className="pet-shadow" aria-hidden="true"/>
-      <div className={`pet-motion state-${motion.state} ${speech?.event === 'growth' ? 'celebrating' : ''}`} style={{
+      <div className={`pet-motion state-${motion.state} ${speech?.event === 'growth' ? 'celebrating' : ''} ${reaction ? 'petted' : ''}`} style={{
         '--sway': `${motion.tilt * -motion.direction}deg`, '--land-wide': 1 + motion.impact * 0.22,
         '--land-flat': 1 - motion.impact * 0.26, '--land-hop': `${4 + motion.impact * 7}px`
       } as React.CSSProperties}><Sprite id={speciesId(snapshot.game)} /></div>
+      {reaction > 0 && <span key={reaction} className="pet-affection" aria-hidden="true"><i>♥</i><i>✦</i><i>♥</i></span>}
       {motion.state === 'landing' && <span className="pet-dust" aria-hidden="true"><i/><i/><i/><i/></span>}
     </div>
   </div>

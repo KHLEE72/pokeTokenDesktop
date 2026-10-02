@@ -35,6 +35,8 @@ export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { 
     if (motion.state === 'held' || motion.state === 'falling' || motion.state === 'landing') say(motion.state)
   }, [motion.state, say])
 
+  useEffect(() => window.desktop.onPetting(() => say('petting')), [say])
+
   useEffect(() => {
     if (!snapshot?.settings.visible) { director.current.clear(); setSpeech(null) }
   }, [snapshot?.settings.visible])

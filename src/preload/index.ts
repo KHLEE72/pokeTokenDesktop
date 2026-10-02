@@ -13,5 +13,6 @@ contextBridge.exposeInMainWorld('desktop', {
   getSprite: id => ipcRenderer.invoke('sprite:get', id), openDashboard: tab => ipcRenderer.invoke('dashboard:open', tab),
   onNavigate: callback => subscribe<string>('navigate', callback), onMotion: callback => subscribe<PetMotion>('pet:motion', callback),
   onInteractionReset: callback => subscribe<void>('pet:reset-interaction', callback),
+  onPetting: callback => subscribe<void>('pet:petting', callback),
   pointer: active => ipcRenderer.send('pet:pointer', active), drag: action => ipcRenderer.send('pet:drag', action), petMenu: () => ipcRenderer.send('pet:menu')
 } satisfies DesktopAPI)

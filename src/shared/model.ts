@@ -43,8 +43,9 @@ export interface DesktopAPI {
   onNavigate(callback: (tab: string) => void): () => void
   onMotion(callback: (motion: PetMotion) => void): () => void
   onInteractionReset(callback: () => void): () => void
+  onPetting(callback: () => void): () => void
   pointer(active: boolean): void
-  drag(action: 'start' | 'move' | 'end' | 'cancel'): void
+  drag(action: 'start' | 'move' | 'end' | 'cancel' | 'release'): void
   petMenu(): void
 }
 declare global { interface Window { desktop: DesktopAPI } }

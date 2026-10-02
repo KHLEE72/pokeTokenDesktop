@@ -4,7 +4,7 @@ import { POKEMON } from '../src/shared/model'
 
 describe('character dialogue', () => {
   it('gives the egg and every evolution distinct lines for each interaction', () => {
-    const events: DialogueEvent[] = ['idle', 'held', 'falling', 'landing', 'growth', 'usage']
+    const events: DialogueEvent[] = ['idle', 'held', 'falling', 'landing', 'growth', 'usage', 'petting']
     for (const event of events) {
       const lines = [0, ...POKEMON.map(p => p.id)].flatMap(id => DIALOGUES[id][event])
       expect(new Set(lines).size).toBe(lines.length)
@@ -35,5 +35,14 @@ describe('character dialogue', () => {
     now = 12000;expect(director.say(7, 'idle')).toBeNull()
     now = 60001;expect(director.say(7, 'usage')!.text).not.toBe(first)
     director.clear();expect(director.current).toBeNull()
+  })
+  it('responds to repeated petting with fresh lines while allowing the next grab to interrupt it',()=>{
+    const director=new DialogueDirector(()=>0,()=>0)
+    director.say(1,'held')
+    const first=director.say(1,'petting')!.text
+    expect(director.say(1,'petting')!.text).not.toBe(first)
+    expect(director.say(1,'usage')).toBeNull()
+    expect(director.say(1,'held')?.event).toBe('held')
+    expect(director.say(1,'falling')?.event).toBe('falling')
   })
 })
