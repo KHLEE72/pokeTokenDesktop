@@ -26,5 +26,6 @@ function png(size) {
 }
 mkdirSync('build', { recursive: true })
 writeFileSync('build/tray.png', png(24)); const icon = png(256); writeFileSync('build/icon.png', icon)
+writeFileSync('build/icon-mac.png', png(1024))
 const ico = Buffer.alloc(22); ico.writeUInt16LE(1,2); ico.writeUInt16LE(1,4); ico.writeUInt16LE(1,10); ico.writeUInt16LE(32,12); ico.writeUInt32LE(icon.length,14); ico.writeUInt32LE(22,18)
 writeFileSync('build/icon.ico', Buffer.concat([ico,icon]))

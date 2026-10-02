@@ -1,0 +1,92 @@
+name: Mac test build
+
+on:
+  workflow_dispatch:
+    inputs:
+      architecture:
+        description: Mac chip (arm64 for Apple Silicon; x64 for Intel)
+        type: choice
+        required: true
+        default: arm64
+        options:
+          - arm64
+          - x64
+          - both
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: macOS ${{ matrix.arch }}
+    runs-on: ${{ matrix.arch == 'arm64' && 'macos-14' || 'macos-15-intel' }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: ${{ fromJSON(inputs.architecture == 'both' && '["arm64","x64"]' || format('["{0}"]', inputs.architecture)) }}
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22.22.3'
+          architecture: ${{ matrix.arch }}
+          cache: npm
+      - name: Confirm native platform
+        env:
+          PET_BUILD_ARCH: ${{ matrix.arch }}
+        run: node -e "if (process.platform !== 'darwin' || process.arch !== process.env.PET_BUILD_ARCH) throw new Error('Wrong native build platform'); console.log(process.platform, process.arch)"
+      - name: Install dependencies for Electron
+        run: npm ci --no-audit --no-fund
+      - name: Run unit and integration tests
+        run: npm test
+      - name: Build DMG
+        id: package
+        run: npm run dist:mac:${{ matrix.arch }}
+      - name: Verify app signature and prepare delivery files
+        id: bundle
+        env:
+          PET_BUILD_ARCH: ${{ matrix.arch }}
+        run: |
+          if [ "$PET_BUILD_ARCH" = arm64 ]; then
+            pet_app_path="$PWD/release/mac-arm64/PokeToken Desktop.app"
+          else
+            pet_app_path="$PWD/release/mac/PokeToken Desktop.app"
+          fi
+          codesign --verify --deep --strict --verbose=2 "$pet_app_path"
+          shasum -a 256 release/*.dmg > release/SHA256SUMS.txt
+          cp docs/MAC_TESTING.md release/MAC_TESTING.md
+          printf '%s\n' "revision=$GITHUB_SHA" "architecture=$PET_BUILD_ARCH" > release/BUILD_INFO.txt
+          sw_vers >> release/BUILD_INFO.txt
+          printf 'POKETOKEN_EXE=%s/Contents/MacOS/PokeToken Desktop\n' "$pet_app_path" >> "$GITHUB_ENV"
+      - name: Launch packaged app and verify growth and desktop motion
+        run: |
+          npm run smoke
+          npm run smoke:pet
+      - name: Upload DMG and testing instructions
+        if: ${{ !cancelled() && steps.bundle.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: PokeToken-Desktop-mac-${{ matrix.arch }}
+          path: |
+            release/*.dmg
+            release/SHA256SUMS.txt
+            release/MAC_TESTING.md
+            release/BUILD_INFO.txt
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
+      - name: Upload test evidence
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: mac-test-evidence-${{ matrix.arch }}
+          path: artifacts/
+          if-no-files-found: ignore
+          retention-days: 14

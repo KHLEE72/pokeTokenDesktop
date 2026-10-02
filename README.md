@@ -89,7 +89,9 @@ npm run dist:mac:arm64
 
 결과는 `release/`에 저장됩니다. SQLite 네이티브 모듈은 설치·패키징 시 Electron과 대상 아키텍처에 맞춰 재빌드합니다. 소스 빌드가 필요한 경우 Windows에는 Visual Studio C++ 빌드 도구, Mac에는 Xcode Command Line Tools가 필요합니다.
 
-개인용 빌드는 서명·공증과 자동 업데이트를 사용하지 않습니다. Mac은 해당 OS에서 패키징하고 실제 실행을 확인해야 합니다. 빌드 성공만으로 클릭 통과·Spaces·모니터·절전 복귀가 검증되지는 않습니다. 상세한 실기 확인 항목은 [검증 기록](docs/VALIDATION.md)을 참고하세요.
+개인용 빌드는 개발자 인증서 서명·공증과 자동 업데이트를 사용하지 않습니다. Mac 앱에는 테스트용 ad-hoc 서명을 적용합니다. Mac은 해당 OS에서 패키징하고 실제 실행을 확인해야 합니다. 빌드 성공만으로 클릭 통과·Spaces·모니터·절전 복귀가 검증되지는 않습니다. 상세한 실기 확인 항목은 [검증 기록](docs/VALIDATION.md)을 참고하세요.
+
+Mac이 없는 개발 환경에서는 저장소 **Actions → Mac test build → Run workflow**에서 `arm64`(M 시리즈) 또는 `x64`(Intel)를 선택합니다. 각 아키텍처의 Mac 러너에서 의존성 설치·테스트·DMG 패키징·패키지 앱 실행을 수행합니다. 결과 파일과 안내문은 실행 결과의 Artifacts에 저장됩니다. [친구에게 전달할 Mac 테스트 안내](docs/MAC_TESTING.md)를 참고하세요.
 
 ## 참고 소스
 

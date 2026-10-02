@@ -18,9 +18,13 @@ win:
   icon: build/icon.ico
 mac:
   target: dmg
+  icon: build/icon-mac.png
   category: public.app-category.entertainment
   minimumSystemVersion: '14.0'
-  identity: null
+  # Local test signature; no Apple Developer certificate or notarization.
+  identity: '-'
+  hardenedRuntime: false
+  notarize: false
 dmg:
   sign: false
 publish: null
