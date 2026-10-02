@@ -1,6 +1,6 @@
 # 검증 기록
 
-검증일: 2026-10-02 (v0.2.0). 실행 환경: Windows 10 x64, Node.js 22.22.3, Electron 44.5.1. 기존 실제 로그·개발 서버 검증은 2026-10-01에 수행했습니다.
+검증일: 2026-10-02 (v0.2.0). 실행 환경: Windows 10 x64 및 macOS 14.8.9 Apple Silicon GitHub Actions 러너, Node.js 22.22.3, Electron 44.5.1. 기존 실제 로그·개발 서버 검증은 2026-10-01에 Windows에서 수행했습니다.
 
 ## 완료된 검증
 
@@ -24,13 +24,30 @@
 
 자동 검증 결과와 화면은 검증을 실행한 컴퓨터의 `artifacts/smoke-report.json`, `artifacts/live-report.json`, `artifacts/portable-report.json` 및 PNG 파일에 생성됩니다. 이 폴더는 Git에서 제외됩니다. 실제 로그 검증은 별도 임시 데이터 폴더를 사용했고 대화 내용과 인증 정보는 출력하지 않았습니다.
 
+## Apple Silicon Mac 패키지
+
+[Mac 빌드 실행 기록](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/36956275457): 소스 커밋 `6b9db6fe0bdf687c363add21dc2f8b6fa59646ba`, 네이티브 `darwin arm64`, macOS 14.8.9 (23J631). Windows에서 교차 빌드한 파일이 아니라 Mac 러너에서 의존성을 설치하고 패키징한 결과입니다.
+
+| 항목 | 결과 |
+| --- | --- |
+| 단위·통합 테스트 | 6개 파일, 36개 테스트 통과 |
+| TypeScript 검사·운영 빌드·DMG 생성 | 통과 |
+| 패키지 서명 구조 | ad-hoc 서명에 대한 `codesign --verify --deep --strict` 통과; Apple 개발자 인증·공증은 미실시 |
+| 패키지 앱 실제 실행 | `npm run smoke` 9개 검사 통과: 기존 사용량 기준선, 부화, 도감, 설정, 펫 창, 재시작·종료 중 사용량 등 |
+| 패키지 앱 잡기·낙하·착지 | `npm run smoke:pet` 5개 검사 통과: 9종 대사, 즉시 잡기·흔들림, 연속 낙하 좌표, 착지 변형·반동·먼지, 클릭으로 관리 화면 열기 |
+| Mac 화면 확인 | 관리 화면·잡기·착지 캡처에서 이미지와 한국어 대사 표시 확인 |
+
+테스트는 패키지 내부의 실제 실행 파일과 SQLite 네이티브 모듈을 사용했습니다. 사용량은 임시 고정 로그이고, 상호작용은 아래 설명한 Playwright 방식입니다. 친구의 물리 Mac에서 실제 로그·마우스·Spaces·Gatekeeper를 확인한 결과는 아직 아닙니다. 설치와 실기 확인 순서는 [Mac 테스트 안내](MAC_TESTING.md)를 참고하세요.
+
+DMG와 해시·빌드 정보는 실행 기록의 `PokeToken-Desktop-mac-arm64` 아티팩트에, 테스트 보고서와 화면은 `mac-test-evidence-arm64`에 보관합니다. 아티팩트 보관 기간은 14일이며 비공개 저장소 접근 권한이 필요합니다. 내려받은 결과는 로컬 `release/`와 `artifacts/mac-arm64-36956275457/`에 보관하며 Git에 포함하지 않습니다.
+
 ## 자동화 범위
 
 `npm test`는 실제 SQLite 트랜잭션과 고정 사용량 기록을 검증합니다. 모니터 제거·절전·드래그 좌표·클릭 통과 API 호출은 모의 OS 이벤트로 검증합니다.
 
 `npm run smoke`는 Electron 앱을 실제 실행해 화면과 IPC, 재시작 후 사용량을 확인합니다. `npm run smoke -- --live`는 현재 컴퓨터의 실제 로그로 별도의 읽기 검증을 수행합니다.
 
-`npm run smoke:pet`는 임시 로그로 부화한 펫과 9종의 화면을 검증합니다. Playwright 포인터 이벤트로 잡기·놓기·클릭을 수행하고, 실제 Electron 창 좌표를 연속 측정해 낙하를 확인합니다. 테스트 앱 안에서만 커서 좌표를 대체하며 OS의 실제 커서는 이동시키지 않습니다. 결과는 `artifacts/pet-motion-report.json`, 화면은 `artifacts/pet-held.png`, `artifacts/pet-falling.png`, `artifacts/pet-landing.png`에 생성됩니다. `POKETOKEN_EXE`를 지정하면 Windows 패키지 앱에도 같은 검증을 수행합니다.
+`npm run smoke:pet`는 임시 로그로 부화한 펫과 9종의 화면을 검증합니다. Playwright 포인터 이벤트로 잡기·놓기·클릭을 수행하고, 실제 Electron 창 좌표를 연속 측정해 낙하를 확인합니다. 테스트 앱 안에서만 커서 좌표를 대체하며 OS의 실제 커서는 이동시키지 않습니다. 결과는 `artifacts/pet-motion-report.json`, 화면은 `artifacts/pet-held.png`, `artifacts/pet-falling.png`, `artifacts/pet-landing.png`에 생성됩니다. `POKETOKEN_EXE`를 지정하면 Windows·Mac 패키지 앱에도 같은 검증을 수행합니다.
 
 `npm run smoke:portable`은 Windows portable 실행 파일을 실제 실행해 패키지에 들어간 리소스와 네이티브 모듈, 부화, 이미지 표시를 검증하고 펫 캡처의 배경 알파값도 확인합니다. 테스트는 고유 디버깅 포트와 임시 데이터 폴더를 사용하며 해당 테스트 프로세스만 종료합니다.
 
@@ -39,7 +56,8 @@
 - Windows에서 다른 앱 위의 실제 마우스 클릭 통과·드래그와 키보드 포커스를 확인합니다. 자동 테스트에서는 창의 비활성 표시·포커스 불가 속성과 마우스 전달 API 호출을 확인했습니다.
 - 실제 듀얼 모니터 연결/분리, 125%·150%·200% 화면 배율, 잠금·절전 복귀를 확인합니다. 현재 결과는 좌표·이벤트 로직의 자동 테스트이며 물리 모니터 시험을 대신하지 않습니다.
 - 자동 시작은 로그인 등록을 변경하므로 자동 테스트에서 켜지 않았습니다. 실행 파일을 유지할 위치에 놓고 설정을 켠 뒤 다음 로그인에서 확인합니다.
-- macOS 14 이상 Apple Silicon·Intel에서 `npm ci`, `npm test`, `npm run build`, `npm run smoke`, 해당 아키텍처의 `dist:mac:*`를 실행합니다.
+- Intel Mac은 아직 빌드·실행하지 않았습니다. 네이티브 Intel 러너에서 `Mac test build` 워크플로의 `x64` 옵션으로 같은 검증을 수행해야 합니다.
 - Mac에서 투명 창, 메뉴바 아이콘, Spaces·전체 화면, 드래그·클릭 통과, 듀얼 모니터·절전 복귀를 확인합니다.
+- 전달받은 DMG를 설치한 Mac에서 첫 실행 경고 처리와 실제 Claude Code·Codex 사용 후 성장·재시작을 확인합니다.
 
-**Mac용 빌드 설정은 포함되어 있지만, 이 Windows 환경에서는 DMG 빌드와 Mac 실기 실행을 검증하지 않았습니다.**
+**Apple Silicon용 DMG 빌드와 Mac 러너에서의 패키지 앱 실행 검증을 완료했습니다. 물리 Mac 실기 확인과 Intel 검증은 아직 남아 있습니다.**
