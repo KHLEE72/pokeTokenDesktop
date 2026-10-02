@@ -36,6 +36,15 @@ try {
   const bounds=()=>application.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=pet')).getBounds())
   const cursor=point=>application.evaluate(({screen},point)=>{globalThis.petTestCursor=point;screen.getCursorScreenPoint=()=>globalThis.petTestCursor},point)
   const drop=async()=>{
+    // Closing/focusing a macOS window may briefly animate its WindowServer
+    // bounds. Start a stationary-edge collision check only after native samples
+    // agree; a moving edge can legitimately move above a falling pet.
+    let key='',stable=0
+    await expect.poll(async()=>{
+      const owner=(await frames())[0],next=JSON.stringify(owner)
+      stable=owner && next===key ? stable+1 : 0;key=next
+      return stable
+    },{timeout:10000,intervals:[150]}).toBeGreaterThanOrEqual(3)
     const current=await bounds();frame=(await frames())[0]
     await cursor({x:current.x+80,y:current.y+110})
     await pet.mouse.move(80,110);await pet.mouse.down();await pet.mouse.move(88,110)
@@ -46,7 +55,11 @@ try {
     await cursor({x:left+80,y:top+110})
     await expect.poll(async()=>(await bounds()).y).toBe(Math.round(top))
     await pet.mouse.up()
-    await expect(pet.locator('.pet-character')).toHaveAttribute('data-surface',frame.id)
+    try {await expect(pet.locator('.pet-character')).toHaveAttribute('data-surface',frame.id)}
+    catch(error) {
+      console.log({expectedOwner:frame,currentFrames:await frames(),petBounds:await bounds(),fixtureBounds:await fixture.evaluate(()=>globalThis.fixtureWindow.getBounds())})
+      throw error
+    }
     await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion','idle')
     // macOS may still animate a restored or newly focused NSWindow. Compare
     // against the current native sample and wait for both windows to settle.

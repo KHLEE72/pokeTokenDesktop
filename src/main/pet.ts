@@ -253,6 +253,12 @@ export class PetController {
     this.lastTick = now
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
     this.syncPointer()
+    if (this.state === 'idle' || this.state === 'landing') {
+      // WM_DPICHANGED can adjust a window after crossing monitors. Repair an
+      // unexpected native resize/move even if autonomous walking is paused.
+      const bounds = this.window.getContentBounds(), size = this.dimensions()
+      if (Math.abs(bounds.width-size.width)>1 || Math.abs(bounds.height-size.height)>1 || Math.abs(bounds.x-Math.round(this.x))>1 || Math.abs(bounds.y-Math.round(this.y))>1) this.position()
+    }
     this.followPerch()
     if (this.state === 'held') {
       const point = screen.getCursorScreenPoint()

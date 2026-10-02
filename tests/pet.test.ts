@@ -96,6 +96,16 @@ describe('pet desktop behavior',()=>{
     expect(rig.controller.selectedDisplay).toBe('2')
     expect(rig.bounds.y+rig.bounds.height).toBe(680)
   })
+  it('repairs a delayed native DPI resize and floor offset while autonomous movement is paused',()=>{
+    const rig=setup();rig.controller.apply({...rig.settings,paused:true})
+    const expected={...rig.bounds}
+    // Simulate an OS resize after the app already placed the window.
+    rig.window.setContentBounds({...expected,width:expected.width+44,height:expected.height+52,y:expected.y+12})
+    vi.advanceTimersByTime(33)
+    expect(rig.bounds).toEqual(expected)
+    expect(rig.bounds.y+rig.bounds.height).toBe(1040)
+    expect(rig.motion.state).toBe('idle')
+  })
   const frame={id:'fixture',pid:88,x:250,y:500,width:700,height:350}
   function perch(rig:ReturnType<typeof setup>,feet=380):void {
     rig.controller.apply({...rig.settings,paused:true})
