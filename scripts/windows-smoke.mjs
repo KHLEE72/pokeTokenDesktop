@@ -48,7 +48,13 @@ try {
     await pet.mouse.up()
     await expect(pet.locator('.pet-character')).toHaveAttribute('data-surface',frame.id)
     await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion','idle')
-    expect(Math.abs((await bounds()).y+(await bounds()).height-6-frame.y)).toBeLessThanOrEqual(1)
+    // macOS may still animate a restored or newly focused NSWindow. Compare
+    // against the current native sample and wait for both windows to settle.
+    await expect.poll(async()=>{
+      const owner=(await frames()).find(value=>value.id===frame.id),petBounds=await bounds()
+      return owner ? Math.abs(petBounds.y+petBounds.height-6-owner.y) : Infinity
+    },{timeout:10000}).toBeLessThanOrEqual(1)
+    frame=(await frames()).find(value=>value.id===frame.id)
   }
   await drop();checks.push('dragged pet falls onto an external window title edge and stays there while paused')
   const before=await bounds(),oldFrame=frame
