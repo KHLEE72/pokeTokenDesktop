@@ -42,6 +42,7 @@ export interface DesktopAPI {
   openDashboard(tab?: string): Promise<void>
   onNavigate(callback: (tab: string) => void): () => void
   onMotion(callback: (motion: PetMotion) => void): () => void
+  onInteractionReset(callback: () => void): () => void
   pointer(active: boolean): void
   drag(action: 'start' | 'move' | 'end' | 'cancel'): void
   petMenu(): void

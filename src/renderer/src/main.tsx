@@ -34,9 +34,15 @@ function Pet(): React.JSX.Element | null {
   const snapshot = useSnapshot()
   const [motion, setMotion] = useState<PetMotion>({ direction: 1, state: 'idle', tilt: 0, impact: 0 })
   const { speech, greet } = usePetDialogue(snapshot, motion)
-  const down = useRef<{ x: number; y: number; dragging: boolean; pointerId: number } | null>(null)
+  const down = useRef<{ x: number; y: number; dragging: boolean; pointerId: number; target: HTMLDivElement } | null>(null)
   useEffect(() => window.desktop.onMotion(setMotion), [])
   useEffect(() => {
+    const reset = (): void => {
+      const pressed = down.current
+      down.current = null
+      if (pressed?.target.hasPointerCapture(pressed.pointerId)) pressed.target.releasePointerCapture(pressed.pointerId)
+    }
+    const unsubscribeReset = window.desktop.onInteractionReset(reset)
     const move = (event: PointerEvent): void => {
       if (!down.current || event.pointerId !== down.current.pointerId) return
       if (!down.current.dragging && Math.hypot(event.screenX - down.current.x, event.screenY - down.current.y) > 4) {
@@ -61,6 +67,7 @@ function Pet(): React.JSX.Element | null {
     window.addEventListener('pointercancel', cancel)
     window.addEventListener('lostpointercapture', cancel)
     return () => {
+      unsubscribeReset(); reset()
       window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up)
       window.removeEventListener('pointercancel', cancel); window.removeEventListener('lostpointercapture', cancel)
     }
@@ -77,7 +84,7 @@ function Pet(): React.JSX.Element | null {
       onPointerDown={event => {
         if (event.button !== 0) return
         event.currentTarget.setPointerCapture(event.pointerId)
-        down.current = { x: event.screenX, y: event.screenY, dragging: false, pointerId: event.pointerId }
+        down.current = { x: event.screenX, y: event.screenY, dragging: false, pointerId: event.pointerId, target: event.currentTarget }
         window.desktop.drag('start')
       }}
       onContextMenu={event => { event.preventDefault(); window.desktop.petMenu() }}>

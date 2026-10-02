@@ -16,6 +16,7 @@ vi.mock('electron',async()=>{
 const controllers: PetController[] = []
 function setup() {
   vi.useFakeTimers()
+  vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:0,y:0})
   vi.mocked(screen.getAllDisplays).mockReturnValue([screen.getPrimaryDisplay(),{id:2,workArea:{x:1920,y:-300,width:1280,height:1000}} as ReturnType<typeof screen.getPrimaryDisplay>])
   let bounds={x:0,y:0,width:176,height:208}
   const window={isDestroyed:()=>false,webContents:{send:vi.fn()},
@@ -29,6 +30,69 @@ function setup() {
 }
 afterEach(()=>{for(const controller of controllers.splice(0))controller.destroy();vi.useRealTimers();vi.clearAllMocks()})
 describe('pet desktop behavior',()=>{
+  it('detects a stationary cursor on the character without renderer enter/leave events, including while paused',()=>{
+    const rig=setup()
+    for (const size of [96,128,192] as const) {
+      rig.controller.apply({...rig.settings,size,paused:true})
+      vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+24+size/2,y:rig.bounds.y+rig.bounds.height-6-size/2})
+      vi.advanceTimersByTime(33)
+      expect(rig.window.setIgnoreMouseEvents).toHaveBeenLastCalledWith(false,{forward:true})
+      // Speech and the transparent margin must still pass clicks through.
+      vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+20})
+      vi.advanceTimersByTime(33)
+      expect(rig.window.setIgnoreMouseEvents).toHaveBeenLastCalledWith(true,{forward:true})
+      vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+10,y:rig.bounds.y+rig.bounds.height-20})
+      vi.advanceTimersByTime(33)
+      expect(rig.window.setIgnoreMouseEvents).toHaveBeenLastCalledWith(true,{forward:true})
+    }
+  })
+  it('restores grabbing after unlock even if the cursor has not left the character',()=>{
+    const rig=setup()
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110})
+    rig.controller.pointer(true)
+    powerMonitor.emit('lock-screen')
+    expect(rig.window.hide).toHaveBeenCalled()
+    rig.controller.pointer(true)
+    expect(rig.window.setIgnoreMouseEvents).toHaveBeenLastCalledWith(true,{forward:true})
+    powerMonitor.emit('unlock-screen')
+    expect(rig.window.showInactive).toHaveBeenCalled()
+    expect(rig.window.setIgnoreMouseEvents).toHaveBeenLastCalledWith(false,{forward:true})
+    rig.controller.drag('start');expect(rig.motion.state).toBe('held')
+  })
+  it('cancels a held pointer on lock and clears renderer capture before the next grab',()=>{
+    const rig=setup()
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110})
+    rig.controller.drag('start');expect(rig.motion.state).toBe('held')
+    powerMonitor.emit('lock-screen')
+    expect(rig.motion.state).toBe('idle')
+    expect(rig.window.webContents.send).toHaveBeenCalledWith('pet:reset-interaction')
+    rig.controller.drag('start');expect(rig.motion.state).toBe('idle')
+    powerMonitor.emit('unlock-screen')
+    rig.controller.drag('start');expect(rig.motion.state).toBe('held')
+  })
+  it.each([
+    ['lock-screen','suspend','resume','unlock-screen'],
+    ['suspend','lock-screen','unlock-screen','resume']
+  ])('stays hidden until both lock and sleep end (%s, %s, %s, %s)',(first,second,partial,final)=>{
+    const rig=setup()
+    powerMonitor.emit(first);powerMonitor.emit(second)
+    rig.window.showInactive.mockClear()
+    powerMonitor.emit(partial)
+    expect(rig.window.showInactive).not.toHaveBeenCalled()
+    powerMonitor.emit(final)
+    expect(rig.window.showInactive).toHaveBeenCalled()
+  })
+  it('keeps a hidden pet click-through when late pointer messages or unlock arrive',()=>{
+    const rig=setup()
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110})
+    rig.controller.apply({...rig.settings,visible:false})
+    rig.window.showInactive.mockClear()
+    rig.controller.pointer(true)
+    expect(rig.window.setIgnoreMouseEvents).toHaveBeenLastCalledWith(true,{forward:true})
+    powerMonitor.emit('lock-screen');powerMonitor.emit('unlock-screen')
+    expect(rig.window.showInactive).not.toHaveBeenCalled()
+    expect(rig.window.setIgnoreMouseEvents).toHaveBeenLastCalledWith(true,{forward:true})
+  })
   it('uses DIP work-area bounds, forwards background mouse movement and never focuses itself',()=>{
     const rig=setup()
     expect(rig.bounds.y+rig.bounds.height).toBe(1040)

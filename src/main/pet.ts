@@ -20,7 +20,9 @@ export class PetController {
   private nextAction = Date.now() + 2500
   private landingUntil = 0
   private lastTick = Date.now()
-  private suspended = false
+  private asleep = false
+  private locked = false
+  private ignoringMouse: boolean | null = null
   private timer: NodeJS.Timeout
 
   constructor(private window: BrowserWindow, settings: Settings) {
@@ -28,17 +30,36 @@ export class PetController {
     this.displayId = settings.displayId
     this.x = this.display().workArea.x + this.display().workArea.width * 0.72
     this.ground()
-    this.window.setIgnoreMouseEvents(true, { forward: true })
+    this.ignoreMouse(true)
     this.timer = setInterval(() => this.tick(), 33)
     screen.on('display-added', this.recover)
     screen.on('display-removed', this.recover)
     screen.on('display-metrics-changed', this.recover)
     powerMonitor.on('suspend', this.sleep)
     powerMonitor.on('resume', this.wake)
-    powerMonitor.on('lock-screen', this.sleep)
-    powerMonitor.on('unlock-screen', this.wake)
+    powerMonitor.on('lock-screen', this.lock)
+    powerMonitor.on('unlock-screen', this.unlock)
   }
 
+  private get suspended(): boolean { return this.asleep || this.locked }
+  private ignoreMouse(ignore: boolean, force = false): void {
+    if (this.window.isDestroyed() || (!force && this.ignoringMouse === ignore)) return
+    this.window.setIgnoreMouseEvents(ignore, { forward: true })
+    this.ignoringMouse = ignore
+  }
+  private syncPointer(): void {
+    if (this.window.isDestroyed()) return
+    if (this.suspended || !this.settings.visible) { this.ignoreMouse(true); return }
+    if (this.state === 'held') { this.ignoreMouse(false); return }
+    // DOM pointerenter may not fire again after hide/show or unlocking. Use DIP
+    // cursor coordinates as a fallback, also when the character walks underneath it.
+    const point = screen.getCursorScreenPoint(), bounds = this.window.getBounds()
+    const size = this.settings.size
+    const left = bounds.x + (bounds.width - size) / 2
+    const top = bounds.y + bounds.height - size - 6 // .pet-character bottom: 6px
+    const overCharacter = point.x >= left && point.x < left + size && point.y >= top && point.y < top + size
+    this.ignoreMouse(!overCharacter)
+  }
   private display(): Display {
     return screen.getAllDisplays().find(d => String(d.id) === this.displayId) ?? screen.getPrimaryDisplay()
   }
@@ -53,7 +74,7 @@ export class PetController {
       direction: this.direction, state: this.state, tilt: this.tilt, impact: this.impact
     } satisfies PetMotion)
   }
-  private position(): void { this.window.setPosition(Math.round(this.x), Math.round(this.y)) }
+  private position(): void { this.window.setPosition(Math.round(this.x), Math.round(this.y)); this.syncPointer() }
   private ground(): void {
     if (this.window.isDestroyed()) return
     this.clampX(); this.y = this.floor()
@@ -80,11 +101,13 @@ export class PetController {
     if (settings.paused && this.state === 'walking') { this.state = 'idle'; this.motion() }
     if (settings.paused !== before.paused) this.nextAction = Date.now() + 2500
     if (settings.visible && !this.suspended) this.window.showInactive(); else this.window.hide()
+    this.syncPointer()
     this.motion()
   }
 
   pointer(active: boolean): void {
-    if (this.state !== 'held') this.window.setIgnoreMouseEvents(!active, { forward: true })
+    if (this.suspended || !this.settings.visible) { this.ignoreMouse(true); return }
+    if (this.state !== 'held') this.ignoreMouse(!active)
   }
   drag(action: string): void {
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
@@ -96,14 +119,14 @@ export class PetController {
       this.x = bounds.x; this.y = bounds.y
       this.state = 'held'; this.tilt = 0; this.velocityY = 0; this.impact = 0
       this.lastTick = Date.now()
-      this.window.setIgnoreMouseEvents(false)
+      this.ignoreMouse(false)
     } else if (action === 'cancel' && this.state === 'held') {
       // A simple click still shows the held pose immediately, then opens the
       // dashboard. If the click caught a falling pet, let it continue down.
       this.tilt = 0; this.velocityY = 0; this.lastTick = Date.now()
       this.state = this.y < this.floor() - 1 ? 'falling' : 'idle'
       if (this.state === 'idle') { this.y = this.floor(); this.nextAction = Date.now() + 2500; this.position() }
-      this.window.setIgnoreMouseEvents(true, { forward: true })
+      this.syncPointer()
     } else if (action === 'end' && this.state === 'held') {
       // Include cursor movement since the last animation tick, then keep the release
       // height. Only the subsequent gravity ticks move the pet downwards.
@@ -117,7 +140,7 @@ export class PetController {
       this.position()
       this.state = 'falling'
       if (distance < 1) this.land()
-      this.window.setIgnoreMouseEvents(true, { forward: true })
+      this.syncPointer()
     } else return
     this.motion()
   }
@@ -133,6 +156,7 @@ export class PetController {
     const now = Date.now(), elapsed = clamp((now - this.lastTick) / 1000, 0, 0.05)
     this.lastTick = now
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
+    this.syncPointer()
     if (this.state === 'held') {
       const point = screen.getCursorScreenPoint()
       const targetTilt = clamp(-(point.x - this.previousCursor.x) * 0.65, -24, 24)
@@ -168,18 +192,29 @@ export class PetController {
     this.position()
   }
   private recover = (): void => {
+    if (this.window.isDestroyed()) return
     this.state = 'idle'; this.tilt = 0; this.velocityY = 0; this.impact = 0
     this.lastTick = Date.now(); this.nextAction = Date.now() + 2500
     this.ground()
-    this.window.setIgnoreMouseEvents(true, { forward: true })
+    this.window.webContents.send('pet:reset-interaction')
+    // Re-arm native forwarding rather than reapplying an already-enabled flag.
+    this.ignoreMouse(false, true)
+    this.syncPointer()
     this.motion()
   }
-  private sleep = (): void => { this.suspended = true; this.window.hide() }
-  private wake = (): void => { this.suspended = false; this.recover(); this.apply(this.settings) }
+  private hideForSession(): void { this.recover(); this.window.hide() }
+  private restoreSession(): void {
+    if (this.suspended) return
+    this.recover(); this.apply(this.settings)
+  }
+  private sleep = (): void => { this.asleep = true; this.hideForSession() }
+  private wake = (): void => { this.asleep = false; this.restoreSession() }
+  private lock = (): void => { this.locked = true; this.hideForSession() }
+  private unlock = (): void => { this.locked = false; this.restoreSession() }
   destroy(): void {
     clearInterval(this.timer)
     screen.removeListener('display-added', this.recover); screen.removeListener('display-removed', this.recover); screen.removeListener('display-metrics-changed', this.recover)
     powerMonitor.removeListener('suspend', this.sleep); powerMonitor.removeListener('resume', this.wake)
-    powerMonitor.removeListener('lock-screen', this.sleep); powerMonitor.removeListener('unlock-screen', this.wake)
+    powerMonitor.removeListener('lock-screen', this.lock); powerMonitor.removeListener('unlock-screen', this.unlock)
   }
 }
