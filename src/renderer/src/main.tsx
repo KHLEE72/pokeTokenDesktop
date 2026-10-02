@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import { version } from '../../../package.json'
 import { Snapshot, Settings, POKEMON, DisplayChoice, PetMotion } from '../../shared/model'
 import { speciesId, threshold } from '../../shared/game'
+import { usePetDialogue } from './pet-dialogue'
 import './style.css'
 
 const format = (v: number): string => new Intl.NumberFormat('ko-KR', { notation: 'compact', maximumFractionDigits: 1 }).format(v)
@@ -30,46 +32,61 @@ function Sprite({ id, className = '' }: { id: number | null; className?: string 
 }
 function Pet(): React.JSX.Element | null {
   const snapshot = useSnapshot()
-  const [motion, setMotion] = useState<PetMotion>({ direction: 1, moving: false, dragging: false })
-  const [bubble, setBubble] = useState(false)
-  const [celebrating, setCelebrating] = useState(false)
-  const previousNotice = useRef<string | null>(null)
-  const down = useRef<{ x: number; y: number; dragging: boolean } | null>(null)
+  const [motion, setMotion] = useState<PetMotion>({ direction: 1, state: 'idle', tilt: 0, impact: 0 })
+  const { speech, greet } = usePetDialogue(snapshot, motion)
+  const down = useRef<{ x: number; y: number; dragging: boolean; pointerId: number } | null>(null)
   useEffect(() => window.desktop.onMotion(setMotion), [])
   useEffect(() => {
-    if (!snapshot?.notice || snapshot.notice === previousNotice.current) return
-    previousNotice.current = snapshot.notice; setCelebrating(true)
-    const timer = setTimeout(() => setCelebrating(false), 5000)
-    return () => clearTimeout(timer)
-  }, [snapshot?.notice])
-  useEffect(() => {
     const move = (event: PointerEvent): void => {
-      if (!down.current) return
+      if (!down.current || event.pointerId !== down.current.pointerId) return
       if (!down.current.dragging && Math.hypot(event.screenX - down.current.x, event.screenY - down.current.y) > 4) {
-        down.current.dragging = true; window.desktop.drag('start')
+        down.current.dragging = true
       }
     }
-    const up = (): void => {
-      if (!down.current) return
-      if (down.current.dragging) window.desktop.drag('end'); else void window.desktop.openDashboard()
+    const up = (event: PointerEvent): void => {
+      if (!down.current || event.pointerId !== down.current.pointerId) return
+      window.desktop.drag(down.current.dragging ? 'end' : 'cancel')
+      if (!down.current.dragging) void window.desktop.openDashboard()
       down.current = null
+      // Pointer capture ends after pointerup. Keep the character interactive until
+      // its real pointerleave arrives as the window starts falling.
+      window.desktop.pointer(true)
     }
     window.addEventListener('pointermove', move); window.addEventListener('pointerup', up)
-    const cancel = (): void => { if (down.current?.dragging) window.desktop.drag('end'); down.current = null }
+    const cancel = (): void => {
+      if (!down.current) return
+      window.desktop.drag(down.current.dragging ? 'end' : 'cancel')
+      down.current = null; window.desktop.pointer(false)
+    }
     window.addEventListener('pointercancel', cancel)
-    return () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', cancel) }
+    window.addEventListener('lostpointercapture', cancel)
+    return () => {
+      window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up)
+      window.removeEventListener('pointercancel', cancel); window.removeEventListener('lostpointercapture', cancel)
+    }
   }, [])
   if (!snapshot) return null
-  const today = snapshot.usage.claude.today + snapshot.usage.codex.today
   return <div className="pet-surface" style={{ '--pet-size': `${snapshot.settings.size}px` } as React.CSSProperties}>
-    {(bubble || celebrating) && <div className="pet-bubble">{celebrating ? snapshot.notice : `오늘 ${format(today)} 토큰`}</div>}
-    <div className={`pet-character ${motion.moving ? 'walking' : ''} ${motion.dragging ? 'held' : ''} ${celebrating ? 'celebrating' : ''}`}
+    {speech && <div key={`${speech.text}-${speech.until}`} className="pet-bubble" data-dialogue={speech.event} aria-live="polite">
+      <span>{speech.text}</span>{speech.summary && <small>{speech.summary}</small>}
+    </div>}
+    <div className={`pet-character ${motion.state === 'held' ? 'held' : ''}`} data-motion={motion.state}
       style={{ transform: `scaleX(${-motion.direction})`, '--facing': -motion.direction } as React.CSSProperties}
-      onPointerEnter={() => { window.desktop.pointer(true); setBubble(true) }}
-      onPointerLeave={() => { if (!down.current) window.desktop.pointer(false); setBubble(false) }}
-      onPointerDown={event => { if (event.button !== 0) return; event.currentTarget.setPointerCapture(event.pointerId); down.current = { x: event.screenX, y: event.screenY, dragging: false }; setBubble(false) }}
+      onPointerEnter={() => { window.desktop.pointer(true); greet() }}
+      onPointerLeave={() => { if (!down.current) window.desktop.pointer(false) }}
+      onPointerDown={event => {
+        if (event.button !== 0) return
+        event.currentTarget.setPointerCapture(event.pointerId)
+        down.current = { x: event.screenX, y: event.screenY, dragging: false, pointerId: event.pointerId }
+        window.desktop.drag('start')
+      }}
       onContextMenu={event => { event.preventDefault(); window.desktop.petMenu() }}>
-      <Sprite id={speciesId(snapshot.game)} />
+      <span className="pet-shadow" aria-hidden="true"/>
+      <div className={`pet-motion state-${motion.state} ${speech?.event === 'growth' ? 'celebrating' : ''}`} style={{
+        '--sway': `${motion.tilt * -motion.direction}deg`, '--land-wide': 1 + motion.impact * 0.22,
+        '--land-flat': 1 - motion.impact * 0.26, '--land-hop': `${4 + motion.impact * 7}px`
+      } as React.CSSProperties}><Sprite id={speciesId(snapshot.game)} /></div>
+      {motion.state === 'landing' && <span className="pet-dust" aria-hidden="true"><i/><i/><i/><i/></span>}
     </div>
   </div>
 }
@@ -97,7 +114,7 @@ function App(): React.JSX.Element {
     <aside className="sidebar">
       <div className="brand"><span className="brand-mark">✦</span><div>PokeToken<span>DESKTOP COMPANION</span></div></div>
       <nav aria-label="주 메뉴">{[['home', '◉', '현재 펫 · 사용량'], ['dex', '▦', '나의 도감'], ['settings', '⚙', '설정']].map(([key, icon, text]) => <button key={key} className={tab === key ? 'nav-active' : ''} onClick={() => setTab(key)}><span>{icon}</span>{text}</button>)}</nav>
-      <div className="sidebar-bottom"><span className={`status-dot ${connected ? 'online' : ''}`}/>{snapshot.scanning ? '사용량 확인 중' : connected ? '로그 연결됨' : '로그 연결 대기'}<p>평소처럼 코딩하세요.<br/>작은 친구가 함께 자랍니다.</p><small>v0.1.0 · 내 컴퓨터에 저장</small></div>
+      <div className="sidebar-bottom"><span className={`status-dot ${connected ? 'online' : ''}`}/>{snapshot.scanning ? '사용량 확인 중' : connected ? '로그 연결됨' : '로그 연결 대기'}<p>평소처럼 코딩하세요.<br/>작은 친구가 함께 자랍니다.</p><small>v{version} · 내 컴퓨터에 저장</small></div>
     </aside>
     <main className="workspace">
       <header className="topbar"><span className="eyebrow">YOUR LITTLE CODING COMPANION</span><span className="date">{new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}</span></header>

@@ -101,7 +101,7 @@ else {
     ipcMain.handle('sprite:get', (event, id) => { allowed(event); return sprites.get(id) })
     ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'settings'].includes(tab) ? tab : 'home') })
     ipcMain.on('pet:pointer', (event, active) => { allowed(event); if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
-    ipcMain.on('pet:drag', (event, action) => { allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end'].includes(action)) return; controller.drag(action); if (action === 'end') void request('settings', { displayId: controller.selectedDisplay }).catch(() => {}) })
+    ipcMain.on('pet:drag', (event, action) => { allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel'].includes(action)) return; controller.drag(action); if (action === 'end') void request('settings', { displayId: controller.selectedDisplay }).catch(() => {}) })
     ipcMain.on('pet:menu', event => { allowed(event); if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
       { label: '현재 펫 · 사용량', click: () => openDashboard() }, { label: '이동 일시정지 / 다시 걷기', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
       { label: '설정', click: () => openDashboard('settings') }, { label: '펫 숨기기', click: () => void request('settings', { visible: false }).catch(() => {}) }

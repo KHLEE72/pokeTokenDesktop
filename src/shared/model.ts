@@ -29,7 +29,8 @@ export interface Snapshot {
   roots: RootStatus[]; scanning: boolean; lastScan: string | null; notice: string | null
 }
 export interface DisplayChoice { id: string; label: string }
-export interface PetMotion { direction: 1 | -1; moving: boolean; dragging: boolean }
+export type PetMotionState = 'idle' | 'walking' | 'held' | 'falling' | 'landing'
+export interface PetMotion { direction: 1 | -1; state: PetMotionState; tilt: number; impact: number }
 export interface DesktopAPI {
   getSnapshot(): Promise<Snapshot>
   onSnapshot(callback: (value: Snapshot) => void): () => void
@@ -42,7 +43,7 @@ export interface DesktopAPI {
   onNavigate(callback: (tab: string) => void): () => void
   onMotion(callback: (motion: PetMotion) => void): () => void
   pointer(active: boolean): void
-  drag(action: 'start' | 'move' | 'end'): void
+  drag(action: 'start' | 'move' | 'end' | 'cancel'): void
   petMenu(): void
 }
 declare global { interface Window { desktop: DesktopAPI } }

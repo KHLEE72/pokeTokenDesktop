@@ -9,7 +9,8 @@ if(process.platform!=='win32')throw new Error('Run the portable executable check
 const server=createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve))
 const port=server.address().port;await new Promise(resolve=>server.close(resolve))
 const directory=mkdtempSync(join(tmpdir(),'poketoken-portable-')),logs=join(directory,'logs');mkdirSync(logs)
-const executable=resolve('release/PokeToken-Desktop-0.1.0-win-x64.exe')
+const version=JSON.parse(readFileSync('package.json','utf8')).version
+const executable=resolve(`release/PokeToken-Desktop-${version}-win-x64.exe`)
 const env={...process.env,POKETOKEN_DATA_DIR:join(directory,'data'),POKETOKEN_TEST_MODE:'1'};delete env.ELECTRON_RUN_AS_NODE
 const child=spawn(executable,[`--remote-debugging-port=${port}`],{env,windowsHide:true,stdio:'ignore'})
 let browser,applicationPid
@@ -41,7 +42,12 @@ try{
   for(let offset=8;offset<png.length;){const length=png.readUInt32BE(offset);if(png.toString('ascii',offset+4,offset+8)==='IDAT')chunks.push(png.subarray(offset+8,offset+8+length));offset+=length+12}
   // The first pixel has zero preceding/filter pixels; its fourth byte is its alpha.
   expect(inflateSync(Buffer.concat(chunks))[4]).toBe(0)
-  writeFileSync('artifacts/portable-report.json',JSON.stringify({executable,checks:['portable launcher extracted and started','packaged preload, worker, SQLite and tray resources loaded','historical baseline excluded','new usage hatches through packaged IPC','runtime sprite download displayed','pet background is transparent (PNG alpha verified)'],errors:[]},null,2))
+  await petPage.mouse.move(80,110);await petPage.mouse.down()
+  await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','held')
+  await expect(petPage.locator('.pet-bubble')).toHaveAttribute('data-dialogue','held')
+  await petPage.mouse.up()
+  await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','idle')
+  writeFileSync('artifacts/portable-report.json',JSON.stringify({executable,checks:['portable launcher extracted and started','packaged preload, worker, SQLite and tray resources loaded','historical baseline excluded','new usage hatches through packaged IPC','runtime sprite download displayed','pet background is transparent (PNG alpha verified)','v0.2 immediate hold, character dialogue and click release work in the portable executable'],errors:[]},null,2))
   console.log('Portable executable checks passed.')
 }finally{
   if(browser)await browser.close().catch(()=>{})

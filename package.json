@@ -1,6 +1,6 @@
 {
   "name": "poketoken-desktop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "AI coding tokens, a little desktop companion.",
   "main": "out/main/index.js",
@@ -18,7 +18,8 @@
     "smoke:dev": "node scripts/dev-smoke.mjs",
     "dist:win": "npm run build && electron-builder --win portable --x64 --publish never",
     "dist:mac:arm64": "npm run build && electron-builder --mac dmg --arm64 --publish never",
-    "dist:mac:x64": "npm run build && electron-builder --mac dmg --x64 --publish never"
+    "dist:mac:x64": "npm run build && electron-builder --mac dmg --x64 --publish never",
+    "smoke:pet": "node scripts/pet-smoke.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

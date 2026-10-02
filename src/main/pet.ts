@@ -1,20 +1,33 @@
 import { BrowserWindow, screen, Display, powerMonitor } from 'electron'
-import { Settings, PetMotion } from '../shared/model'
+import { Settings, PetMotion, PetMotionState } from '../shared/model'
+
+const GRAVITY = 2200 // DIP / second²; independent of screen scale and timer frequency.
+const TERMINAL_SPEED = 1200
+const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(value, Math.max(min, max)))
+
 export class PetController {
   private settings: Settings
+  private displayId: string | null
   private x = 0
+  private y = 0
   private direction: 1 | -1 = 1
-  private moving = false
-  private dragging = false
+  private state: PetMotionState = 'idle'
+  private tilt = 0
+  private impact = 0
+  private velocityY = 0
   private dragOffset = { x: 0, y: 0 }
-  private nextAction = 0
+  private previousCursor = { x: 0, y: 0 }
+  private nextAction = Date.now() + 2500
+  private landingUntil = 0
+  private lastTick = Date.now()
   private suspended = false
   private timer: NodeJS.Timeout
+
   constructor(private window: BrowserWindow, settings: Settings) {
-    this.settings = settings
-    const display = this.display()
-    this.x = display.workArea.x + display.workArea.width * 0.72
-    this.place()
+    this.settings = { ...settings }
+    this.displayId = settings.displayId
+    this.x = this.display().workArea.x + this.display().workArea.width * 0.72
+    this.ground()
     this.window.setIgnoreMouseEvents(true, { forward: true })
     this.timer = setInterval(() => this.tick(), 33)
     screen.on('display-added', this.recover)
@@ -25,66 +38,144 @@ export class PetController {
     powerMonitor.on('lock-screen', this.sleep)
     powerMonitor.on('unlock-screen', this.wake)
   }
-  private display(): Display { return screen.getAllDisplays().find(d => String(d.id) === this.settings.displayId) ?? screen.getPrimaryDisplay() }
-  private motion(): void { if (!this.window.isDestroyed()) this.window.webContents.send('pet:motion', { direction: this.direction, moving: this.moving, dragging: this.dragging } satisfies PetMotion) }
-  private place(): void {
-    if (this.window.isDestroyed()) return
-    const area = this.display().workArea, size = this.settings.size
-    const width = size + 48, height = size + 80
-    this.x = Math.max(area.x, Math.min(this.x, area.x + area.width - width))
-    this.window.setBounds({ x: Math.round(this.x), y: area.y + area.height - height, width, height })
+
+  private display(): Display {
+    return screen.getAllDisplays().find(d => String(d.id) === this.displayId) ?? screen.getPrimaryDisplay()
   }
+  private dimensions(): { width: number; height: number } { return { width: this.settings.size + 48, height: this.settings.size + 80 } }
+  private floor(): number { const area = this.display().workArea; return area.y + area.height - this.dimensions().height }
+  private clampX(): void {
+    const area = this.display().workArea
+    this.x = clamp(this.x, area.x, area.x + area.width - this.dimensions().width)
+  }
+  private motion(): void {
+    if (!this.window.isDestroyed()) this.window.webContents.send('pet:motion', {
+      direction: this.direction, state: this.state, tilt: this.tilt, impact: this.impact
+    } satisfies PetMotion)
+  }
+  private position(): void { this.window.setPosition(Math.round(this.x), Math.round(this.y)) }
+  private ground(): void {
+    if (this.window.isDestroyed()) return
+    this.clampX(); this.y = this.floor()
+    this.window.setBounds({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() })
+  }
+
   apply(settings: Settings): void {
-    const changedDisplay = this.settings.displayId !== settings.displayId
-    this.settings = settings
-    if (changedDisplay) this.x = this.display().workArea.x + this.display().workArea.width * 0.72
-    this.nextAction = 0
+    const before = this.settings
+    const changedDisplay = settings.displayId !== before.displayId
+    // A drop selects a display immediately. A later snapshot confirming that selection
+    // must not teleport the falling pet back to the floor.
+    const relocate = changedDisplay && settings.displayId !== this.displayId
+    if (changedDisplay) this.displayId = settings.displayId
+    this.settings = { ...settings }
+    if (relocate) {
+      this.x = this.display().workArea.x + this.display().workArea.width * 0.72
+      this.recover()
+    } else if (settings.size !== before.size) {
+      if (this.state !== 'held') this.y -= settings.size - before.size
+      this.clampX(); this.y = Math.min(this.y, this.floor())
+      this.window.setBounds({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() })
+    }
+    if (!settings.visible && before.visible) this.recover()
+    if (settings.paused && this.state === 'walking') { this.state = 'idle'; this.motion() }
+    if (settings.paused !== before.paused) this.nextAction = Date.now() + 2500
     if (settings.visible && !this.suspended) this.window.showInactive(); else this.window.hide()
-    if (!this.dragging) this.place()
     this.motion()
   }
+
   pointer(active: boolean): void {
-    if (!this.dragging) this.window.setIgnoreMouseEvents(!active, { forward: true })
+    if (this.state !== 'held') this.window.setIgnoreMouseEvents(!active, { forward: true })
   }
   drag(action: string): void {
+    if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
     const point = screen.getCursorScreenPoint()
     if (action === 'start') {
       const bounds = this.window.getBounds()
       this.dragOffset = { x: point.x - bounds.x, y: point.y - bounds.y }
-      this.dragging = true; this.moving = false
+      this.previousCursor = point
+      this.x = bounds.x; this.y = bounds.y
+      this.state = 'held'; this.tilt = 0; this.velocityY = 0; this.impact = 0
+      this.lastTick = Date.now()
       this.window.setIgnoreMouseEvents(false)
-    } else if (action === 'end') {
-      this.dragging = false
-      const bounds = this.window.getBounds(), display = screen.getDisplayMatching(bounds)
-      this.settings.displayId = String(display.id)
-      this.x = bounds.x; this.place(); this.nextAction = Date.now() + 2500
+    } else if (action === 'cancel' && this.state === 'held') {
+      // A simple click still shows the held pose immediately, then opens the
+      // dashboard. If the click caught a falling pet, let it continue down.
+      this.tilt = 0; this.velocityY = 0; this.lastTick = Date.now()
+      this.state = this.y < this.floor() - 1 ? 'falling' : 'idle'
+      if (this.state === 'idle') { this.y = this.floor(); this.nextAction = Date.now() + 2500; this.position() }
       this.window.setIgnoreMouseEvents(true, { forward: true })
-    }
+    } else if (action === 'end' && this.state === 'held') {
+      // Include cursor movement since the last animation tick, then keep the release
+      // height. Only the subsequent gravity ticks move the pet downwards.
+      this.x = point.x - this.dragOffset.x; this.y = point.y - this.dragOffset.y
+      this.displayId = String(screen.getDisplayMatching({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() }).id)
+      this.clampX()
+      this.y = clamp(this.y, this.display().workArea.y, this.floor())
+      const distance = Math.max(0, this.floor() - this.y)
+      this.impact = Math.min(1, distance / 450)
+      this.velocityY = 0; this.tilt = 0; this.lastTick = Date.now()
+      this.position()
+      this.state = 'falling'
+      if (distance < 1) this.land()
+      this.window.setIgnoreMouseEvents(true, { forward: true })
+    } else return
     this.motion()
   }
-  get selectedDisplay(): string | null { return this.settings.displayId }
+  get selectedDisplay(): string | null { return this.displayId }
+
+  private land(): void {
+    this.y = this.floor(); this.velocityY = 0; this.tilt = 0
+    this.state = 'landing'
+    this.landingUntil = Date.now() + 620
+    this.position(); this.motion()
+  }
   private tick(): void {
+    const now = Date.now(), elapsed = clamp((now - this.lastTick) / 1000, 0, 0.05)
+    this.lastTick = now
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
-    if (this.dragging) {
+    if (this.state === 'held') {
       const point = screen.getCursorScreenPoint()
-      this.window.setPosition(Math.round(point.x - this.dragOffset.x), Math.round(point.y - this.dragOffset.y))
+      const targetTilt = clamp(-(point.x - this.previousCursor.x) * 0.65, -24, 24)
+      this.tilt += (targetTilt - this.tilt) * Math.min(1, elapsed * 12)
+      this.previousCursor = point
+      this.x = point.x - this.dragOffset.x; this.y = point.y - this.dragOffset.y
+      this.position(); this.motion()
       return
     }
-    if (this.settings.paused) { if (this.moving) { this.moving = false; this.motion() }; return }
-    if (Date.now() > this.nextAction) {
-      this.moving = !this.moving
-      this.nextAction = Date.now() + (this.moving ? 4000 + Math.random() * 5000 : 3000 + Math.random() * 5000)
+    // Pausing autonomous walking still permits a released pet to finish its fall.
+    if (this.state === 'falling') {
+      this.velocityY = Math.min(TERMINAL_SPEED, this.velocityY + GRAVITY * elapsed)
+      this.y += this.velocityY * elapsed
+      if (this.y >= this.floor()) this.land(); else this.position()
+      return
+    }
+    if (this.state === 'landing') {
+      if (now >= this.landingUntil) { this.state = 'idle'; this.nextAction = now + 2500; this.motion() }
+      return
+    }
+    if (this.settings.paused) return
+    if (now > this.nextAction) {
+      this.state = this.state === 'walking' ? 'idle' : 'walking'
+      this.nextAction = now + (this.state === 'walking' ? 4000 + Math.random() * 5000 : 3000 + Math.random() * 5000)
       this.motion()
     }
-    if (!this.moving) return
-    const area = this.display().workArea, width = this.settings.size + 48
-    this.x += this.direction * 0.9
-    if (this.x <= area.x || this.x >= area.x + area.width - width) { this.direction = this.direction === 1 ? -1 : 1; this.motion() }
-    this.place()
+    if (this.state !== 'walking') return
+    const area = this.display().workArea, width = this.dimensions().width
+    this.x += this.direction * 27 * elapsed
+    if (this.x <= area.x || this.x >= area.x + area.width - width) {
+      this.direction = this.direction === 1 ? -1 : 1; this.clampX(); this.motion()
+    }
+    this.position()
   }
-  private recover = (): void => { this.dragging = false; this.place(); this.motion() }
+  private recover = (): void => {
+    this.state = 'idle'; this.tilt = 0; this.velocityY = 0; this.impact = 0
+    this.lastTick = Date.now(); this.nextAction = Date.now() + 2500
+    this.ground()
+    this.window.setIgnoreMouseEvents(true, { forward: true })
+    this.motion()
+  }
   private sleep = (): void => { this.suspended = true; this.window.hide() }
-  private wake = (): void => { this.suspended = false; this.apply(this.settings); this.recover() }
+  private wake = (): void => { this.suspended = false; this.recover(); this.apply(this.settings) }
   destroy(): void {
     clearInterval(this.timer)
     screen.removeListener('display-added', this.recover); screen.removeListener('display-removed', this.recover); screen.removeListener('display-metrics-changed', this.recover)
