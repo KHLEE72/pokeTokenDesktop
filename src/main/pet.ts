@@ -1,5 +1,6 @@
 import { BrowserWindow, screen, Display, powerMonitor } from 'electron'
 import { Settings, PetMotion, PetMotionState } from '../shared/model'
+import { Ledge, WindowFrame, windowLedges } from './surfaces'
 
 const GRAVITY = 2200 // DIP / second²; independent of screen scale and timer frequency.
 const TERMINAL_SPEED = 1200
@@ -24,8 +25,12 @@ export class PetController {
   private locked = false
   private ignoringMouse: boolean | null = null
   private timer: NodeJS.Timeout
+  private ledges: Ledge[] = []
+  private frames: WindowFrame[] = []
+  private perch: { id: string; offset: number } | null = null
+  private fallOrigin = 0
 
-  constructor(private window: BrowserWindow, settings: Settings) {
+  constructor(private window: BrowserWindow, settings: Settings, private onDisplayChanged: (id: string) => void = () => {}) {
     this.settings = { ...settings }
     this.displayId = settings.displayId
     this.x = this.display().workArea.x + this.display().workArea.width * 0.72
@@ -65,13 +70,59 @@ export class PetController {
   }
   private dimensions(): { width: number; height: number } { return { width: this.settings.size + 48, height: this.settings.size + 80 } }
   private floor(): number { const area = this.display().workArea; return area.y + area.height - this.dimensions().height }
+  private feet(): number { return this.y + this.dimensions().height - 6 }
+  private centre(): number { return this.x + 24 + this.settings.size / 2 }
+  private range(ledge: Ledge, centre = this.centre()): { left: number; right: number; display: Display } | null {
+    const display = screen.getDisplayMatching({ x: Math.round(centre), y: Math.round(ledge.y), width: 1, height: 1 })
+    const area = display.workArea, half = this.settings.size / 2
+    if (ledge.y - this.dimensions().height + 6 < area.y || ledge.y > area.y + area.height - 6) return null
+    const left = Math.max(ledge.x + half, area.x + 24 + half)
+    const right = Math.min(ledge.x + ledge.width - half, area.x + area.width - 24 - half)
+    return right >= left ? { left, right, display } : null
+  }
+  private landingLedge(from: number, to: number): Ledge | undefined {
+    const centre = this.centre()
+    return this.ledges.filter(ledge => {
+      const range = this.range(ledge)
+      return range && centre >= range.left && centre <= range.right && ledge.y >= from && ledge.y <= to
+    }).sort((a,b) => a.y - b.y)[0]
+  }
+  private selectDisplay(id: string): void {
+    if (id !== this.displayId) { this.displayId = id; this.onDisplayChanged(id) }
+  }
+  private beginFall(): void {
+    this.perch = null; this.state = 'falling'; this.velocityY = 0; this.tilt = 0
+    this.fallOrigin = this.feet(); this.lastTick = Date.now(); this.motion()
+  }
+  private followPerch(): void {
+    if (!this.perch || this.state === 'held') return
+    const frame = this.frames.find(frame => frame.id === this.perch!.id)
+    if (!frame) { this.beginFall(); return }
+    const desired = frame.x + this.perch.offset
+    const candidates = this.ledges.filter(ledge => ledge.id === frame.id)
+    let ledge = candidates.find(ledge => { const range = this.range(ledge, desired); return range && desired >= range.left && desired <= range.right })
+    // Resizing an exposed window may push the old offset past its edge. Occlusion
+    // instead drops the pet; do not teleport it to another exposed fragment.
+    if (!ledge) ledge = candidates.find(ledge => ledge.x === frame.x && ledge.width === frame.width && this.range(ledge, desired))
+    if (!ledge) { this.beginFall(); return }
+    const range = this.range(ledge, desired)!
+    const centre = clamp(desired, range.left, range.right)
+    this.x = centre - 24 - this.settings.size / 2
+    this.y = ledge.y - this.dimensions().height + 6
+    this.perch.offset = centre - frame.x
+    this.selectDisplay(String(range.display.id)); this.position()
+  }
+  updateSurfaces(frames: WindowFrame[]): void {
+    this.frames = frames; this.ledges = windowLedges(frames)
+    if (!this.suspended && this.settings.visible) this.followPerch()
+  }
   private clampX(): void {
     const area = this.display().workArea
     this.x = clamp(this.x, area.x, area.x + area.width - this.dimensions().width)
   }
   private motion(): void {
     if (!this.window.isDestroyed()) this.window.webContents.send('pet:motion', {
-      direction: this.direction, state: this.state, tilt: this.tilt, impact: this.impact
+      direction: this.direction, state: this.state, tilt: this.tilt, impact: this.impact, surfaceId: this.perch?.id ?? null
     } satisfies PetMotion)
   }
   private position(): void { this.window.setPosition(Math.round(this.x), Math.round(this.y)); this.syncPointer() }
@@ -96,6 +147,7 @@ export class PetController {
       if (this.state !== 'held') this.y -= settings.size - before.size
       this.clampX(); this.y = Math.min(this.y, this.floor())
       this.window.setBounds({ x: Math.round(this.x), y: Math.round(this.y), ...this.dimensions() })
+      this.followPerch()
     }
     if (!settings.visible && before.visible) this.recover()
     if (settings.paused && this.state === 'walking') { this.state = 'idle'; this.motion() }
@@ -124,8 +176,12 @@ export class PetController {
       // A simple click still shows the held pose immediately, then opens the
       // dashboard. If the click caught a falling pet, let it continue down.
       this.tilt = 0; this.velocityY = 0; this.lastTick = Date.now()
-      this.state = this.y < this.floor() - 1 ? 'falling' : 'idle'
-      if (this.state === 'idle') { this.y = this.floor(); this.nextAction = Date.now() + 2500; this.position() }
+      if (this.perch) {
+        this.state = 'idle'; this.followPerch()
+      } else {
+        this.state = this.y < this.floor() - 1 ? 'falling' : 'idle'
+        if (this.state === 'idle') { this.y = this.floor(); this.nextAction = Date.now() + 2500; this.position() }
+      }
       this.syncPointer()
     } else if (action === 'end' && this.state === 'held') {
       // Include cursor movement since the last animation tick, then keep the release
@@ -138,16 +194,23 @@ export class PetController {
       this.impact = Math.min(1, distance / 450)
       this.velocityY = 0; this.tilt = 0; this.lastTick = Date.now()
       this.position()
-      this.state = 'falling'
-      if (distance < 1) this.land()
+      this.beginFall()
+      const nearby = this.landingLedge(this.feet() - 24, this.feet() + 24)
+      if (nearby) this.land(nearby); else if (distance < 1) this.land()
       this.syncPointer()
     } else return
     this.motion()
   }
   get selectedDisplay(): string | null { return this.displayId }
 
-  private land(): void {
-    this.y = this.floor(); this.velocityY = 0; this.tilt = 0
+  private land(ledge?: Ledge): void {
+    if (ledge) {
+      this.perch = { id: ledge.id, offset: this.centre() - ledge.frameX }
+      this.y = ledge.y - this.dimensions().height + 6
+      this.selectDisplay(String(this.range(ledge)!.display.id))
+    } else { this.perch = null; this.y = this.floor() }
+    this.impact = clamp((this.feet() - this.fallOrigin) / 450, 0, 1)
+    this.velocityY = 0; this.tilt = 0
     this.state = 'landing'
     this.landingUntil = Date.now() + 620
     this.position(); this.motion()
@@ -157,6 +220,7 @@ export class PetController {
     this.lastTick = now
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
     this.syncPointer()
+    this.followPerch()
     if (this.state === 'held') {
       const point = screen.getCursorScreenPoint()
       const targetTilt = clamp(-(point.x - this.previousCursor.x) * 0.65, -24, 24)
@@ -168,9 +232,11 @@ export class PetController {
     }
     // Pausing autonomous walking still permits a released pet to finish its fall.
     if (this.state === 'falling') {
+      const beforeFeet = this.feet()
       this.velocityY = Math.min(TERMINAL_SPEED, this.velocityY + GRAVITY * elapsed)
       this.y += this.velocityY * elapsed
-      if (this.y >= this.floor()) this.land(); else this.position()
+      const ledge = this.landingLedge(beforeFeet - 0.5, this.feet())
+      if (ledge) this.land(ledge); else if (this.y >= this.floor()) this.land(); else this.position()
       return
     }
     if (this.state === 'landing') {
@@ -185,15 +251,21 @@ export class PetController {
     }
     if (this.state !== 'walking') return
     const area = this.display().workArea, width = this.dimensions().width
+    const ledge = this.perch && this.ledges.find(ledge => ledge.id === this.perch!.id && this.range(ledge) && this.centre() >= this.range(ledge)!.left && this.centre() <= this.range(ledge)!.right)
+    const range = ledge ? this.range(ledge)! : null
+    const left = range ? range.left - 24 - this.settings.size / 2 : area.x
+    const right = range ? range.right - 24 - this.settings.size / 2 : area.x + area.width - width
     this.x += this.direction * 27 * elapsed
-    if (this.x <= area.x || this.x >= area.x + area.width - width) {
-      this.direction = this.direction === 1 ? -1 : 1; this.clampX(); this.motion()
+    if (this.x <= left || this.x >= right) {
+      this.direction = this.direction === 1 ? -1 : 1; this.x = clamp(this.x, left, right); this.motion()
     }
+    if (this.perch && ledge) this.perch.offset = this.centre() - ledge.frameX
     this.position()
   }
   private recover = (): void => {
     if (this.window.isDestroyed()) return
     this.state = 'idle'; this.tilt = 0; this.velocityY = 0; this.impact = 0
+    this.perch = null
     this.lastTick = Date.now(); this.nextAction = Date.now() + 2500
     this.ground()
     this.window.webContents.send('pet:reset-interaction')

@@ -77,7 +77,7 @@ function Pet(): React.JSX.Element | null {
     {speech && <div key={`${speech.text}-${speech.until}`} className="pet-bubble" data-dialogue={speech.event} aria-live="polite">
       <span>{speech.text}</span>{speech.summary && <small>{speech.summary}</small>}
     </div>}
-    <div className={`pet-character ${motion.state === 'held' ? 'held' : ''}`} data-motion={motion.state}
+    <div className={`pet-character ${motion.state === 'held' ? 'held' : ''}`} data-motion={motion.state} data-surface={motion.surfaceId ?? undefined}
       style={{ transform: `scaleX(${-motion.direction})`, '--facing': -motion.direction } as React.CSSProperties}
       onPointerEnter={() => { window.desktop.pointer(true); greet() }}
       onPointerLeave={() => { if (!down.current) window.desktop.pointer(false) }}

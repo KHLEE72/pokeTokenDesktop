@@ -5,11 +5,12 @@ import { Worker } from 'node:worker_threads'
 import { defaultSettings, newGame, Settings, Snapshot } from '../shared/model'
 import { SpriteCache } from './sprites'
 import { PetController } from './pet'
+import { WindowTracker } from './window-tracker'
 
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
 const acquired = app.requestSingleInstanceLock()
-let dashboard: BrowserWindow, pet: BrowserWindow, controller: PetController, tray: Tray, worker: Worker, sprites: SpriteCache
+let dashboard: BrowserWindow, pet: BrowserWindow, controller: PetController, tray: Tray, worker: Worker, sprites: SpriteCache, windowTracker: WindowTracker
 let quitting = false, nextId = 1
 let snapshot: Snapshot = { game: newGame(), settings: defaultSettings(), usage: { claude: { today: 0, all: 0 }, codex: { today: 0, all: 0 } }, roots: [], scanning: true, lastScan: null, notice: null }
 const pending = new Map<number, { resolve: () => void; reject: (e: Error) => void; timer: NodeJS.Timeout }>()
@@ -58,7 +59,17 @@ else {
     pet = new BrowserWindow({ width: 176, height: 208, show: false, frame: false, transparent: true, resizable: false, maximizable: false, minimizable: false, hasShadow: false, alwaysOnTop: true, skipTaskbar: true, focusable: false, webPreferences: { ...preferences, backgroundThrottling: false } })
     pet.setAlwaysOnTop(true, 'floating')
     if (process.platform === 'darwin') { pet.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true }); app.dock?.hide() }
-    controller = new PetController(pet, snapshot.settings)
+    controller = new PetController(pet, snapshot.settings, id => {
+      if (!quitting && worker && snapshot.settings.displayId !== id) void request('settings', { displayId: id }).catch(() => {})
+    })
+    // Generic interaction smoke tests remain deterministic; the window-specific
+    // smoke test explicitly enables the real native scanner in its isolated app.
+    if (process.env.POKETOKEN_TEST_MODE !== '1' || process.env.POKETOKEN_WINDOW_TEST === '1') windowTracker = new WindowTracker(frames => {
+      const fixturePid = process.env.POKETOKEN_TEST_MODE === '1' ? Number(process.env.POKETOKEN_WINDOW_TEST_PID) : 0
+      const selected = fixturePid ? frames.filter(frame => frame.pid === fixturePid) : frames
+      if (process.env.POKETOKEN_TEST_MODE === '1' && process.env.POKETOKEN_WINDOW_TEST === '1') Object.assign(globalThis, { petTestFrames: selected, petTestRawPids: frames.map(frame => frame.pid) })
+      controller.updateSurfaces(selected)
+    })
     const trayIcon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAFUlEQVR4nGNgGAWjYBSMglEwCkbBAAAGGAAB7e3H/QAAAABJRU5ErkJggg==')
     // Icon generated from our own egg drawing; no Pokémon art is bundled.
     const icon = nativeImage.createFromPath(join(__dirname, '../../build/tray.png'))
@@ -108,7 +119,7 @@ else {
     ]).popup({ window: pet }) })
     void request('refresh').catch(() => {})
     const scanTimer = setInterval(() => { if (!snapshot.scanning) void request('scan').catch(() => {}) }, 10_000)
-    app.on('before-quit', () => { quitting = true; clearInterval(scanTimer); controller.destroy(); tray.destroy(); void worker.terminate(); for (const p of pending.values()) clearTimeout(p.timer) })
+    app.on('before-quit', () => { quitting = true; clearInterval(scanTimer); windowTracker?.destroy(); controller.destroy(); tray.destroy(); void worker.terminate(); for (const p of pending.values()) clearTimeout(p.timer) })
   })
   app.on('window-all-closed', () => { /* tray companion keeps running */ })
   app.on('activate', () => { if (dashboard) openDashboard() })

@@ -30,7 +30,7 @@ export interface Snapshot {
 }
 export interface DisplayChoice { id: string; label: string }
 export type PetMotionState = 'idle' | 'walking' | 'held' | 'falling' | 'landing'
-export interface PetMotion { direction: 1 | -1; state: PetMotionState; tilt: number; impact: number }
+export interface PetMotion { direction: 1 | -1; state: PetMotionState; tilt: number; impact: number; surfaceId?: string | null }
 export interface DesktopAPI {
   getSnapshot(): Promise<Snapshot>
   onSnapshot(callback: (value: Snapshot) => void): () => void

@@ -13,10 +13,16 @@ asarUnpack:
 npmRebuild: true
 artifactName: PokeToken-Desktop-${version}-${os}-${arch}.${ext}
 win:
+  extraResources:
+    - from: native/window-surfaces.ps1
+      to: native/window-surfaces.ps1
   target: portable
   signExecutable: false
   icon: build/icon.ico
 mac:
+  extraResources:
+    - from: build/native/window-surfaces
+      to: native/window-surfaces
   target: dmg
   icon: build/icon-mac.png
   category: public.app-category.entertainment

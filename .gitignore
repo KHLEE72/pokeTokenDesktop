@@ -1,6 +1,7 @@
 # Dependencies and generated bundles (build/ contains required app icons).
 /node_modules/
 /out/
+/build/native/
 /release/
 /artifacts/
 /coverage/

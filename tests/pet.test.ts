@@ -30,6 +30,75 @@ function setup() {
 }
 afterEach(()=>{for(const controller of controllers.splice(0))controller.destroy();vi.useRealTimers();vi.clearAllMocks()})
 describe('pet desktop behavior',()=>{
+  const frame={id:'fixture',pid:88,x:250,y:500,width:700,height:350}
+  function perch(rig:ReturnType<typeof setup>,feet=380):void {
+    rig.controller.apply({...rig.settings,paused:true})
+    rig.controller.updateSurfaces([frame])
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+20,y:rig.bounds.y+20})
+    rig.controller.drag('start')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:420,y:feet-rig.bounds.height+6+20})
+    vi.advanceTimersByTime(33);rig.controller.drag('end');vi.advanceTimersByTime(1400)
+    expect(rig.motion.surfaceId).toBe('fixture')
+    expect(rig.bounds.y+rig.bounds.height-6).toBe(500)
+  }
+  it('lands on a real ledge before the desktop floor and forgives a drop just below the edge',()=>{
+    const rig=setup();perch(rig,520)
+    expect(rig.motion.state).toBe('idle')
+    rig.controller.apply({...rig.settings,paused:true,displayId:'1'})
+    expect(rig.bounds.y+rig.bounds.height-6).toBe(500)
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+20,y:rig.bounds.y+20})
+    rig.controller.drag('start');rig.controller.drag('cancel')
+    expect(rig.motion.state).toBe('idle');expect(rig.motion.surfaceId).toBe('fixture')
+  })
+  it('follows a moved/resized window while paused and preserves attachment when size changes',()=>{
+    const rig=setup();perch(rig)
+    rig.controller.updateSurfaces([{...frame,x:600,y:420,width:200}])
+    expect(rig.bounds.y+rig.bounds.height-6).toBe(420)
+    expect(rig.bounds.x+24+128).toBeLessThanOrEqual(800)
+    rig.controller.apply({...rig.settings,paused:true,size:192})
+    expect(rig.motion.surfaceId).toBe('fixture')
+    expect(rig.bounds.y+rig.bounds.height-6).toBe(420)
+    expect(rig.bounds.x+24).toBeGreaterThanOrEqual(600)
+    expect(rig.bounds.x+24+192).toBeLessThanOrEqual(800)
+  })
+  it('walks and turns within the supported title edge',()=>{
+    const rig=setup();perch(rig)
+    vi.spyOn(Math,'random').mockReturnValue(0)
+    rig.controller.apply({...rig.settings,paused:false})
+    rig.window.setPosition.mockClear()
+    vi.advanceTimersByTime(65000)
+    expect(rig.window.setPosition.mock.calls.length).toBeGreaterThan(100)
+    for(const [x,y] of rig.window.setPosition.mock.calls) {
+      expect(x+24).toBeGreaterThanOrEqual(frame.x)
+      expect(x+24+128).toBeLessThanOrEqual(frame.x+frame.width)
+      expect(y+208-6).toBe(frame.y)
+    }
+    expect(rig.window.webContents.send.mock.calls.some(([,motion])=>motion?.direction===-1)).toBe(true)
+    vi.mocked(Math.random).mockRestore()
+  })
+  it('drops when the supporting window is hidden, too narrow or covered',()=>{
+    const rig=setup();perch(rig)
+    rig.controller.updateSurfaces([{id:'cover',pid:89,x:350,y:300,width:300,height:500},frame])
+    expect(rig.motion.state).toBe('falling');expect(rig.motion.surfaceId).toBeNull()
+    vi.advanceTimersByTime(2200);expect(rig.bounds.y+rig.bounds.height).toBe(1040)
+    perch(rig);rig.controller.updateSurfaces([{...frame,width:100}])
+    expect(rig.motion.state).toBe('falling')
+    vi.advanceTimersByTime(2200)
+    perch(rig);rig.controller.updateSurfaces([])
+    expect(rig.motion.state).toBe('falling')
+    vi.advanceTimersByTime(2200);expect(rig.bounds.y+rig.bounds.height).toBe(1040)
+  })
+  it('follows the owner to another monitor and releases attachment on session recovery',()=>{
+    const rig=setup();perch(rig)
+    rig.controller.updateSurfaces([{...frame,x:2300,y:200}])
+    expect(rig.controller.selectedDisplay).toBe('2')
+    expect(rig.bounds.y+rig.bounds.height-6).toBe(200)
+    expect(rig.bounds.x).toBeGreaterThanOrEqual(1920)
+    rig.controller.apply({...rig.settings,paused:true,displayId:'2'})
+    expect(rig.bounds.y+rig.bounds.height-6).toBe(200)
+    powerMonitor.emit('lock-screen');powerMonitor.emit('unlock-screen')
+    expect(rig.motion.surfaceId).toBeNull();expect(rig.bounds.y+rig.bounds.height).toBe(700)
+  })
   it('detects a stationary cursor on the character without renderer enter/leave events, including while paused',()=>{
     const rig=setup()
     for (const size of [96,128,192] as const) {
