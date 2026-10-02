@@ -18,7 +18,9 @@ while parent > 0 && kill(parent, 0) == 0 {
     autoreleasepool {
         let windows = CGWindowListCopyWindowInfo([.optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID) as? [[String: Any]] ?? []
         let frames: [Frame] = windows.prefix(256).compactMap { window in
-            guard let owner = window[kCGWindowOwnerPID as String] as? Int32, owner != parent,
+            // The floating pet is above layer zero. Keep our own layer-zero
+            // management window, as well as other apps with custom title bars.
+            guard let owner = window[kCGWindowOwnerPID as String] as? Int32,
                   let layer = window[kCGWindowLayer as String] as? Int, layer == 0,
                   let alpha = window[kCGWindowAlpha as String] as? Double, alpha > 0,
                   let number = window[kCGWindowNumber as String] as? UInt32,

@@ -70,10 +70,10 @@ else {
     // smoke test explicitly enables the real native scanner in its isolated app.
     if (process.env.POKETOKEN_TEST_MODE !== '1' || process.env.POKETOKEN_WINDOW_TEST === '1') windowTracker = new WindowTracker(frames => {
       const fixturePid = process.env.POKETOKEN_TEST_MODE === '1' ? Number(process.env.POKETOKEN_WINDOW_TEST_PID) : 0
-      const selected = fixturePid ? frames.filter(frame => frame.pid === fixturePid) : frames
+      const selected = fixturePid ? frames.filter(frame => frame.pid === fixturePid || frame.pid === process.pid) : frames
       if (process.env.POKETOKEN_TEST_MODE === '1' && process.env.POKETOKEN_WINDOW_TEST === '1') Object.assign(globalThis, { petTestFrames: selected, petTestRawPids: frames.map(frame => frame.pid) })
       controller.updateSurfaces(selected)
-    })
+    }, pet)
     const trayIcon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAFUlEQVR4nGNgGAWjYBSMglEwCkbBAAAGGAAB7e3H/QAAAABJRU5ErkJggg==')
     // Icon generated from our own egg drawing; no Pokémon art is bundled.
     const icon = nativeImage.createFromPath(join(__dirname, '../../build/tray.png'))

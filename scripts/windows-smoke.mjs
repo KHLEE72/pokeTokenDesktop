@@ -6,15 +6,17 @@ import { tmpdir } from 'node:os'
 const directory=mkdtempSync(join(tmpdir(),'poketoken-windows-'))
 mkdirSync('artifacts',{recursive:true})
 const baseEnv={...process.env};delete baseEnv.ELECTRON_RUN_AS_NODE
+const scale=process.env.POKETOKEN_TEST_SCALE||'native'
+const scaleArgs=scale==='native'?[]:[`--force-device-scale-factor=${scale}`]
 const checks=[],errors=[]
 let fixture,application
 try {
-  fixture=await electronApp.launch({executablePath:electron,args:['scripts/window-fixture.cjs'],env:{...baseEnv,POKETOKEN_FIXTURE_DATA_DIR:join(directory,'fixture')},timeout:60000})
+  fixture=await electronApp.launch({executablePath:electron,args:['scripts/window-fixture.cjs',...scaleArgs],env:{...baseEnv,POKETOKEN_FIXTURE_DATA_DIR:join(directory,'fixture')},timeout:60000})
   await fixture.firstWindow()
   // Playwright's Windows launcher can have a different PID from Electron's
   // browser process, which owns the native window.
   const pid=await fixture.evaluate(()=>process.pid)
-  application=await electronApp.launch({executablePath:process.env.POKETOKEN_EXE||electron,args:process.env.POKETOKEN_EXE?[]:['.'],env:{...baseEnv,POKETOKEN_DATA_DIR:join(directory,'pet'),POKETOKEN_TEST_MODE:'1',POKETOKEN_WINDOW_TEST:'1',POKETOKEN_WINDOW_TEST_PID:String(pid)},timeout:60000})
+  application=await electronApp.launch({executablePath:process.env.POKETOKEN_EXE||electron,args:[...(process.env.POKETOKEN_EXE?[]:['.']),'--hidden',...scaleArgs],env:{...baseEnv,POKETOKEN_DATA_DIR:join(directory,'pet'),POKETOKEN_TEST_MODE:'1',POKETOKEN_WINDOW_TEST:'1',POKETOKEN_WINDOW_TEST_PID:String(pid)},timeout:60000})
   await application.firstWindow()
   application.process().stderr?.on('data',data=>{const value=String(data);if(value.includes('Window tracking helper:'))console.log(value)})
   await expect.poll(()=>application.windows().some(w=>w.url().includes('view=pet'))).toBe(true)
@@ -33,7 +35,7 @@ try {
   let frame=(await frames())[0]
   expect(frame.pid).toBe(pid);expect(Object.keys(frame).sort()).toEqual(['height','id','pid','width','x','y'])
   checks.push('real native helper detects only the external fixture geometry without titles or screen capture')
-  const bounds=()=>application.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=pet')).getBounds())
+  const bounds=()=>application.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=pet')).getContentBounds())
   const cursor=point=>application.evaluate(({screen},point)=>{globalThis.petTestCursor=point;screen.getCursorScreenPoint=()=>globalThis.petTestCursor},point)
   const drop=async()=>{
     // Closing/focusing a macOS window may briefly animate its WindowServer
@@ -57,7 +59,7 @@ try {
     await pet.mouse.up()
     try {await expect(pet.locator('.pet-character')).toHaveAttribute('data-surface',frame.id)}
     catch(error) {
-      console.log({expectedOwner:frame,currentFrames:await frames(),petBounds:await bounds(),fixtureBounds:await fixture.evaluate(()=>globalThis.fixtureWindow.getBounds())})
+      console.log({expectedOwner:frame,currentFrames:await frames(),petBounds:await bounds(),fixtureBounds:fixture?await fixture.evaluate(()=>globalThis.fixtureWindow.getBounds()):null})
       throw error
     }
     await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion','idle')
@@ -108,12 +110,39 @@ try {
   await fixture.evaluate(()=>{globalThis.fixtureWindow.restore();globalThis.fixtureWindow.show();globalThis.fixtureWindow.focus()})
   await expect.poll(async()=>(await frames()).length,{timeout:10000}).toBe(1)
   await drop()
+  await fixture.evaluate(({BrowserWindow,screen})=>{
+    globalThis.fixtureWindow.hide()
+    const area=screen.getPrimaryDisplay().workArea
+    const custom=new BrowserWindow({frame:false,resizable:true,width:500,height:240,x:area.x+200,y:Math.round(area.y+area.height*.55),show:false,backgroundColor:'#eff5e8',webPreferences:{sandbox:true}})
+    globalThis.fixtureCustom=custom
+    void custom.loadURL('data:text/html,<body style="background:%23eff5e8">Custom title bar test</body>').then(()=>{custom.show();custom.focus()})
+  })
+  await expect.poll(async()=>(await frames()).length,{timeout:10000}).toBe(1)
+  await expect.poll(async()=>(await frames())[0]?.id,{timeout:10000}).not.toBe(frame.id)
+  await drop()
+  checks.push('a resizable custom-title-bar window supports the pet without WS_CAPTION')
   await fixture.close();fixture=null
   await expect.poll(async()=>(await frames()).length,{timeout:10000}).toBe(0)
   await expect.poll(async()=>{const b=await bounds();return b.y+b.height},{timeout:10000}).toBe(area.y+area.height)
   checks.push('closing the real owner window drops the pet without stale attachment')
+  // A window belonging to the pet app must be supported too. The native pet
+  // window must remain excluded, or it would land on its own rectangle.
+  const appPid=await application.evaluate(()=>process.pid)
+  await application.evaluate(({BrowserWindow,screen})=>{
+    const dashboard=BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=dashboard'))
+    const area=screen.getPrimaryDisplay().workArea
+    dashboard.setBounds({x:area.x+100,y:Math.round(area.y+area.height*.35),width:900,height:680})
+    dashboard.show();dashboard.focus()
+  })
+  await expect.poll(async()=>(await frames()).length,{timeout:10000}).toBe(1)
+  expect((await frames())[0].pid).toBe(appPid)
+  await drop()
+  await application.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=dashboard')).hide())
+  await expect.poll(async()=>(await frames()).length).toBe(0)
+  await expect.poll(async()=>{const b=await bounds();return b.y+b.height},{timeout:10000}).toBe(area.y+area.height)
+  checks.push('the app management window supports the pet while its floating character window remains excluded')
   expect(errors).toEqual([])
-  writeFileSync('artifacts/window-motion-report.json',JSON.stringify({checks,errors,fixtureFrame:frame,executablePath:process.env.POKETOKEN_EXE||electron},null,2))
+  writeFileSync(`artifacts/window-motion-report${scale==='native'?'':`-${scale}`}.json`,JSON.stringify({scale,checks,errors,fixtureFrame:frame,executablePath:process.env.POKETOKEN_EXE||electron},null,2))
   console.log(JSON.stringify({checks,errors},null,2))
 } finally {
   if(application)await application.close()

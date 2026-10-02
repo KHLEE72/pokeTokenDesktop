@@ -1,4 +1,4 @@
-import { app, screen } from 'electron'
+import { app, screen, BrowserWindow } from 'electron'
 import { spawn, ChildProcess } from 'node:child_process'
 import { join } from 'node:path'
 import { existsSync } from 'node:fs'
@@ -12,7 +12,7 @@ export class WindowTracker {
   private lastRead = 0
   private stopped = false
   private failures = 0
-  constructor(private update: (frames: WindowFrame[]) => void) {
+  constructor(private update: (frames: WindowFrame[]) => void, private pet: BrowserWindow) {
     this.start()
     this.watchdog = setInterval(() => { if (this.lastRead && Date.now() - this.lastRead > 1500) { this.lastRead = 0; this.update([]) } }, 500)
   }
@@ -21,8 +21,10 @@ export class WindowTracker {
     let executable: string, args: string[]
     if (process.platform === 'win32') {
       const script = app.isPackaged ? join(process.resourcesPath, 'native/window-surfaces.ps1') : join(app.getAppPath(), 'native/window-surfaces.ps1')
+      const handle = this.pet.getNativeWindowHandle()
+      const id = handle.length === 8 ? handle.readBigUInt64LE() : BigInt(handle.readUInt32LE())
       executable = join(process.env.SystemRoot || 'C:\\Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe')
-      args = ['-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script,'-AppProcessId',String(process.pid)]
+      args = ['-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script,'-AppProcessId',String(process.pid),'-ExcludedWindowHandle',String(id)]
     } else if (process.platform === 'darwin') {
       executable = app.isPackaged ? join(process.resourcesPath, 'native/window-surfaces') : join(app.getAppPath(), 'build/native/window-surfaces')
       args = [String(process.pid)]
@@ -34,7 +36,9 @@ export class WindowTracker {
     const lines = createInterface({ input: child.stdout! })
     lines.on('line', line => {
       if (this.stopped || this.child !== child) return
-      const frames = decodeWindowFrames(line, process.pid, rect => process.platform === 'win32' ? screen.screenToDipRect(null, rect) : rect)
+      // Native filters exclude the pet alone, preserving our management window
+      // in the original front-to-back order for correct occlusion.
+      const frames = decodeWindowFrames(line, 0, rect => process.platform === 'win32' ? screen.screenToDipRect(null, rect) : rect)
       if (frames) { this.lastRead = Date.now(); this.failures = 0; this.update(frames) }
     })
     const ended = (): void => {

@@ -18,4 +18,8 @@ describe('native window geometry',()=>{
     expect(decodeWindowFrames('{}',99)).toBeNull()
     expect(decodeWindowFrames('[]',99)).toEqual([])
   })
+  it('keeps app-owned management windows when native filtering has already excluded the floating pet',()=>{
+    const own={...back,id:'management',pid:99}
+    expect(decodeWindowFrames(JSON.stringify([own,back]),0)).toEqual([own,back])
+  })
 })

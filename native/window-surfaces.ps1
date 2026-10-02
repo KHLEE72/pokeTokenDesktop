@@ -1,4 +1,4 @@
-param([int]$AppProcessId, [int]$IntervalMs = 120, [switch]$Once)
+param([int]$AppProcessId, [long]$ExcludedWindowHandle = 0, [int]$IntervalMs = 120, [switch]$Once)
 $ErrorActionPreference = 'Stop'
 Add-Type -TypeDefinition @'
 using System;
@@ -19,7 +19,7 @@ public static class PetWindowScanner {
     [DllImport("user32.dll")] static extern IntPtr SetThreadDpiAwarenessContext(IntPtr context);
     [DllImport("dwmapi.dll", EntryPoint="DwmGetWindowAttribute")] static extern int FrameBounds(IntPtr window, int attribute, out Rect rect, int size);
     [DllImport("dwmapi.dll", EntryPoint="DwmGetWindowAttribute")] static extern int Cloaked(IntPtr window, int attribute, out int value, int size);
-    public static void Run(int parentPid, int interval, bool once) {
+    public static void Run(int parentPid, long excludedHandle, int interval, bool once) {
         SetThreadDpiAwarenessContext(new IntPtr(-4));
         Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.BelowNormal;
         while (true) {
@@ -27,12 +27,17 @@ public static class PetWindowScanner {
             var rows = new List<string>();
             EnumWindows((window, _) => {
                 if (rows.Count >= 256) return false;
+                if (window.ToInt64() == excludedHandle) return true;
                 if (!IsWindowVisible(window) || IsIconic(window)) return true;
-                // Normal, framed top-level desktop windows; exclude pets, menus and tooltips.
+                // Custom title bars (e.g. KakaoTalk) may omit WS_CAPTION. Accept
+                // resizable/app windows too; tooltips, menus and no-activate
+                // overlays are not supporting surfaces. Exclude only the pet
+                // handle, so our own normal management window is also usable.
                 int style = GetWindowLong(window, -16);
-                if ((style & 0x00C00000) != 0x00C00000 || (style & 0x40000000) != 0) return true;
+                int extended = GetWindowLong(window, -20);
+                bool appWindow = (style & 0x00C00000) == 0x00C00000 || (style & 0x00040000) != 0 || (extended & 0x00040000) != 0;
+                if (!appWindow || (style & 0x40000000) != 0 || (extended & 0x08000080) != 0) return true;
                 uint pid; GetWindowThreadProcessId(window, out pid);
-                if (pid == parentPid) return true;
                 int cloaked; if (Cloaked(window, 14, out cloaked, 4) == 0 && cloaked != 0) return true;
                 Rect rect;
                 if (FrameBounds(window, 9, out rect, Marshal.SizeOf(typeof(Rect))) != 0 && !GetWindowRect(window, out rect)) return true;
@@ -50,4 +55,4 @@ public static class PetWindowScanner {
     }
 }
 '@
-[PetWindowScanner]::Run($AppProcessId, $IntervalMs, $Once.IsPresent)
+[PetWindowScanner]::Run($AppProcessId, $ExcludedWindowHandle, $IntervalMs, $Once.IsPresent)
