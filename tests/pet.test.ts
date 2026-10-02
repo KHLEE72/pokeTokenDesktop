@@ -51,6 +51,16 @@ describe('pet desktop behavior',()=>{
     expect(rig.controller.drag('release')).toBe('drop')
     expect(rig.window.webContents.send).not.toHaveBeenCalledWith('pet:petting')
   })
+  it('finishes a cancelled drag on its new monitor instead of retaining the old floor',()=>{
+    const rig=setup()
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110});rig.controller.drag('start')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:2400,y:400})
+    expect(rig.controller.drag('cancel')).toBe('drop')
+    vi.advanceTimersByTime(1600)
+    expect(rig.controller.selectedDisplay).toBe('2')
+    expect(rig.bounds.y+rig.bounds.height).toBe(700)
+    expect(rig.window.webContents.send).not.toHaveBeenCalledWith('pet:petting')
+  })
   it.each([1,1.25,1.5,2])('keeps the viewport and floor stable across unequal monitors at scale %s',scaleFactor=>{
     const rig=setup()
     const primary={id:1,scaleFactor,workArea:{x:0,y:0,width:Math.round(1920/scaleFactor),height:Math.round(1040/scaleFactor)}} as ReturnType<typeof screen.getPrimaryDisplay>

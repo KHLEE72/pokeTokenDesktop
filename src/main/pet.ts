@@ -203,6 +203,9 @@ export class PetController {
       this.lastTick = Date.now()
       this.ignoreMouse(false)
     } else if (action === 'cancel' && this.state === 'held') {
+      // Losing renderer capture after a real drag must finish that drop and
+      // persist its monitor; only an unmoved press restores its previous perch.
+      if (this.dragged) return this.drag('end')
       // A simple click releases the held pose for a local petting reaction.
       // If the click caught a falling pet, let it continue down.
       this.tilt = 0; this.velocityY = 0; this.lastTick = Date.now()
