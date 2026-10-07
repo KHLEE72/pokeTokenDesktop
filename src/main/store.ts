@@ -1,6 +1,6 @@
 import Database from 'better-sqlite3'
-import { GameState, Settings, Snapshot, UsageRecord, defaultSettings, newGame, totalTokens } from '../shared/model'
-import { advanceGame, changePace } from '../shared/game'
+import { GameAction, GameState, Settings, Snapshot, UsageRecord, defaultSettings, newGame, totalTokens } from '../shared/model'
+import { advanceGame, changePace, gameAction, LegacyGame, migrateGame } from '../shared/game'
 import { ParsedFile } from './parsers'
 import { scanRoots } from './paths'
 
@@ -20,7 +20,12 @@ export class Store {
       CREATE TABLE IF NOT EXISTS files (path TEXT PRIMARY KEY, provider TEXT NOT NULL, mtime REAL NOT NULL, size INTEGER NOT NULL, data TEXT NOT NULL);
       PRAGMA user_version = 1;
     `)
-    if (!this.get('game')) this.set('game', newGame())
+    // Keep the original v1 game untouched as a recovery copy. Migration runs
+    // once; the usage ledger/high-water marks are shared without recrediting.
+    if (!this.get('game-v2')) this.db.transaction(() => {
+      const legacy = this.get<LegacyGame>('game')
+      this.set('game-v2', legacy ? migrateGame(legacy,new Date().toISOString()) : newGame())
+    })()
     if (!this.get('settings')) this.set('settings', defaultSettings())
   }
   get<T>(key: string): T | null {
@@ -28,7 +33,13 @@ export class Store {
     return row ? JSON.parse(row.value) as T : null
   }
   set(key: string, value: unknown): void { this.db.prepare('INSERT OR REPLACE INTO meta VALUES (?, ?)').run(key, JSON.stringify(value)) }
-  get game(): GameState { return this.get<GameState>('game')! }
+  get game(): GameState { return this.get<GameState>('game-v2')! }
+  act(action: GameAction): void {
+    this.db.transaction(() => {
+      const game = this.game, notice = gameAction(game,action,this.settings.pace,new Date().toISOString())
+      this.set('game-v2',game); this.set('notice',notice)
+    })()
+  }
   get settings(): Settings { return this.get<Settings>('settings')! }
   updateSettings(patch: Partial<Settings>): void {
     this.db.transaction(() => {
@@ -42,7 +53,7 @@ export class Store {
         }
       }
       this.set('settings', { ...settings, ...patch })
-      this.set('game', game)
+      this.set('game-v2', game)
     })()
   }
   root(key: string): { linkedAt: string; ready: number } {
@@ -74,7 +85,7 @@ export class Store {
         put.run({ ...record, credited: total })
       }
       const notice = advanceGame(game, earned, settings.pace, new Date().toISOString(), random)
-      this.set('game', game)
+      this.set('game-v2', game)
       if (notice) this.set('notice', notice)
       return notice
     })()

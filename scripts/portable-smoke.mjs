@@ -32,7 +32,7 @@ try{
   appendFileSync(file,line('after',500_000))
   await page.evaluate(()=>window.desktop.refresh())
   const state=await page.evaluate(()=>window.desktop.getSnapshot())
-  expect(state.game.phase).toBe(1);expect(state.game.tokensEarned).toBe(500_000)
+  expect(state.game.pets.find(p=>p.id===state.game.activeId).phase).toBe(1);expect(state.game.tokensEarned).toBe(500_000)
   await expect(page.locator('.habitat-sprite img')).toBeVisible({timeout:30_000})
   await page.screenshot({path:'artifacts/portable-home.png'})
   const petPage=browser.contexts()[0].pages().find(page=>page.url().includes('view=pet'))

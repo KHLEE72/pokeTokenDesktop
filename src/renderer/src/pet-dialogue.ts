@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { DialogueDirector, DialogueEvent, Speech } from '../../shared/dialogue'
-import { speciesId } from '../../shared/game'
+import { activePet, speciesId } from '../../shared/game'
 import { GameState, PetMotion, Snapshot } from '../../shared/model'
 
 export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { speech: Speech | null; greet: () => void } {
@@ -23,10 +23,12 @@ export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { 
   useEffect(() => {
     if (!snapshot?.lastScan) return
     const game = snapshot.game, before = previousGame.current
-    const changedSpecies = before && speciesId(before) !== speciesId(game)
+    const changedSpecies = before && (speciesId(before) !== speciesId(game) || activePet(before).shiny !== activePet(game).shiny)
+    const evolved = before && game.activeId === before.activeId && activePet(game).phase > activePet(before).phase
     if (changedSpecies) { director.current.clear(); setSpeech(null) }
     if (!before) say(snapshot.notice ? 'growth' : 'idle', snapshot.notice)
-    else if (changedSpecies || game.captures.length > before.captures.length) say('growth', snapshot.notice)
+    else if (evolved || game.captures.length > before.captures.length) say('growth', snapshot.notice)
+    else if (changedSpecies) say('idle')
     else if (game.tokensEarned > before.tokensEarned) say('usage')
     previousGame.current = game
   }, [snapshot, say])

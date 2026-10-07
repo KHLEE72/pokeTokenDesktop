@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Store } from '../src/main/store'
 import { UsageRecord } from '../src/shared/model'
+import { activePet } from '../src/shared/game'
 import { removeTestDirectory } from './temp'
 const stores: Store[] = [], dirs: string[] = []
 const make = (): { path: string; store: Store } => {
@@ -20,7 +21,7 @@ describe('atomic usage ledger', () => {
     expect(store.game.tokensEarned).toBe(0)
     const updated = record('old',150), added = record('new',500_000)
     store.sync([updated,added],new Set(),linked([updated,added]))
-    expect(store.game.tokensEarned).toBe(500_050); expect(store.game.phase).toBe(1)
+    expect(store.game.tokensEarned).toBe(500_050); expect(activePet(store.game).phase).toBe(1)
     store.close()
     const reopened = new Store(path); stores.push(reopened)
     reopened.sync([updated,added],new Set(),linked([updated,added]))
@@ -49,8 +50,30 @@ describe('atomic usage ledger', () => {
     expect(store.game.tokensEarned).toBe(500_000)
   })
   it('keeps progress on a pace change and persists settings', () => {
-    const {store}=make(), game=store.game; game.xp=250_000; store.set('game',game)
+    const {store}=make(), game=store.game; activePet(game).xp=250_000; store.set('game-v2',game)
     store.updateSettings({pace:'slow',size:192})
-    expect(store.game.xp).toBe(5_000_000); expect(store.settings.size).toBe(192)
+    expect(activePet(store.game).xp).toBe(5_000_000); expect(store.settings.size).toBe(192)
+  })
+  it('migrates once, retains the old game and ledger, and persists selections and candies',()=>{
+    const {path,store}=make(),r=record('counted',150_600_000)
+    store.sync([r],new Set(),linked([r]),()=>.5)
+    const legacy={phase:3,family:0,xp:200_000,tokensEarned:150_600_000,owned:[1,2,3],captures:[]}
+    store.set('game',legacy);store.db.prepare("DELETE FROM meta WHERE key='game-v2'").run();store.close()
+    const updated=new Store(path);stores.push(updated)
+    expect(updated.get('game')).toEqual(legacy);expect(updated.game.candyTokens).toBe(200_000)
+    updated.sync([r],new Set(),linked([r]),()=>.5)
+    expect(updated.game.candyTokens).toBe(200_000);expect(updated.game.tokensEarned).toBe(150_600_000)
+    updated.act({type:'egg',eggType:'fire'});const id=updated.game.activeId;updated.close()
+    const restarted=new Store(path);stores.push(restarted)
+    expect(restarted.game.activeId).toBe(id);expect(restarted.game.candyTokens).toBe(200_000)
+  })
+  it('rolls back invalid candy actions and never credits a restarted bank twice',()=>{
+    const {path,store}=make(),r=record('final',150_600_001)
+    store.sync([r],new Set(),linked([r]),()=>.5)
+    const before=store.game
+    expect(()=>store.act({type:'candy',count:1})).toThrow();expect(store.game).toEqual(before)
+    store.close();const restarted=new Store(path);stores.push(restarted)
+    restarted.sync([r],new Set(),linked([r]),()=>.5)
+    expect(restarted.game.candyTokens).toBe(100_001)
   })
 })

@@ -24,9 +24,10 @@ try {
   writeFileSync(file, JSON.stringify({type:'assistant',timestamp:new Date(Date.now()+1000).toISOString(),requestId:'pet-smoke',message:{id:'hatch',usage:{input_tokens:500_000}}})+'\n')
   await pet.evaluate(() => window.desktop.refresh())
   const snapshot = await pet.evaluate(() => window.desktop.getSnapshot())
-  expect(snapshot.game.phase).toBe(1)
+  expect(snapshot.game.pets.find(p=>p.id===snapshot.game.activeId).phase).toBe(1)
   const sendSpecies = async id => {
-    const value = { ...snapshot, game: { ...snapshot.game, family: Math.floor((id - 1) / 3), phase: (id - 1) % 3 + 1, owned: [id], tokensEarned: snapshot.game.tokensEarned + id }, notice: '진화 1회' }
+    const phase=(id-1)%3+1
+    const value = { ...snapshot, game: { ...snapshot.game, pets:[{...snapshot.game.pets.find(p=>p.id===snapshot.game.activeId),family:Math.floor((id-1)/3),phase,shiny:false}],displayPhase:phase,owned:[id],tokensEarned:snapshot.game.tokensEarned+id }, notice:'진화 1회' }
     await application.evaluate(({ BrowserWindow }, value) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=pet')).webContents.send('snapshot', value), value)
   }
   const names = ['이상해씨','이상해풀','이상해꽃','파이리','리자드','리자몽','꼬부기','어니부기','거북왕']
@@ -39,7 +40,7 @@ try {
   checks.push('all nine evolutions render their character dialogue')
   // Restore the real hatched pet before testing settings snapshots during a fall.
   await pet.evaluate(() => window.desktop.refresh())
-  const realName = names[snapshot.game.family * 3]
+  const realName = names[snapshot.game.pets.find(p=>p.id===snapshot.game.activeId).family * 3]
   await expect(pet.locator('.pet-character img')).toHaveAttribute('alt', realName)
   const getBounds = () => application.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=pet')).getBounds())
   const bounds = await getBounds()

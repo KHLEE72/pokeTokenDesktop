@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld('desktop', {
   onSnapshot: (callback: (value: Snapshot) => void) => subscribe('snapshot', callback),
   updateSettings: patch => ipcRenderer.invoke('settings:update', patch), refresh: () => ipcRenderer.invoke('usage:refresh'),
   chooseFolder: provider => ipcRenderer.invoke('folder:choose', provider), getDisplays: () => ipcRenderer.invoke('display:list'),
-  getSprite: id => ipcRenderer.invoke('sprite:get', id), openDashboard: tab => ipcRenderer.invoke('dashboard:open', tab),
+  getSprite: (id,shiny) => ipcRenderer.invoke('sprite:get', id,shiny), gameAction: action => ipcRenderer.invoke('game:action',action), openDashboard: tab => ipcRenderer.invoke('dashboard:open', tab),
   onNavigate: callback => subscribe<string>('navigate', callback), onMotion: callback => subscribe<PetMotion>('pet:motion', callback),
   onInteractionReset: callback => subscribe<void>('pet:reset-interaction', callback),
   onPetting: callback => subscribe<void>('pet:petting', callback),

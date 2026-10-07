@@ -1,6 +1,6 @@
 {
   "name": "poketoken-desktop",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "private": true,
   "description": "AI coding tokens, a little desktop companion.",
   "main": "out/main/index.js",
@@ -23,7 +23,8 @@
     "smoke:pet": "node scripts/pet-smoke.mjs",
     "smoke:windows": "node scripts/windows-smoke.mjs",
     "smoke:dpi": "node scripts/dpi-smoke.mjs",
-    "smoke:health": "node scripts/health-smoke.mjs"
+    "smoke:health": "node scripts/health-smoke.mjs",
+    "smoke:collection": "node scripts/collection-smoke.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

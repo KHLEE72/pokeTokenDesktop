@@ -1,3 +1,4 @@
+import { EGG_TYPES, POKEMON } from './model'
 export type DialogueEvent = 'idle' | 'held' | 'falling' | 'landing' | 'growth' | 'usage' | 'petting'
 type Lines = Record<DialogueEvent, readonly string[]>
 
@@ -95,6 +96,20 @@ export const DIALOGUES: Record<number, Lines> = {
   }
 }
 
+// Example-roster lines are original local text, with names/type personalities.
+const moods: Record<string,string> = {normal:'느긋하게',fire:'따뜻하게',water:'물결처럼',electric:'찌릿찌릿',grass:'싱그럽게',ice:'시원하게',fighting:'씩씩하게',poison:'조심스럽게',ground:'단단하게',flying:'가볍게',psychic:'차분하게',bug:'부지런하게',rock:'듬직하게',ghost:'살며시',dragon:'당당하게',dark:'조용하게',steel:'튼튼하게',fairy:'반짝반짝'}
+for (const p of POKEMON) if (!DIALOGUES[p.id]) {
+  const tone=moods[p.types[0]],type=EGG_TYPES.find(t=>t.id===p.types[0])!.name
+  DIALOGUES[p.id]={
+    idle:[`${p.name}, ${tone} 쉬는 중!`,`${p.name}도 네 곁을 지킬게.`,`${type}의 힘으로, ${p.name} 출발!`],
+    held:[`${p.name}도 살살 들어줘!`,`${p.name}, 화면이 잘 보인다!`,`${p.name}까지 함께 옮겨주네.`],
+    falling:[`${p.name}, 아래로 내려간다!`,`${p.name}도 발부터 준비!`,`${p.name}, 착지할 곳을 찾았어!`],
+    landing:[`${p.name}, 안전하게 도착!`,`${p.name}도 잠깐 숨 돌릴게.`,`${p.name}, 다시 함께 걷자!`],
+    growth:[`${p.name}, 한 걸음 더 성장했어!`,`${p.name}도 네 노력을 기억해.`,`${p.name}, ${tone} 더 강해질게!`],
+    usage:[`${p.name}, 오늘도 잘 받았어!`,`${p.name}와 차곡차곡 모아보자.`,`${p.name}도 네 코딩을 응원해!`],
+    petting:[`${p.name}도 쓰다듬으니 좋아!`,`${p.name}, ${tone} 반겨줄게!`,`${p.name}에게 다정한 손길이네.`]
+  }
+}
 export function pickDialogue(id: number | null, event: DialogueEvent, previous?: string, random = Math.random): string {
   const lines = (DIALOGUES[id ?? 0] ?? DIALOGUES[0])[event]
   const fresh = lines.filter(line => line !== previous)

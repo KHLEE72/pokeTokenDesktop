@@ -4,22 +4,28 @@ export interface Tokens { input: number; output: number; cacheRead: number; cach
 export interface UsageRecord extends Tokens { id: string; provider: Provider; timestamp: string }
 export const totalTokens = (v: Tokens): number => v.input + v.output + v.cacheRead + v.cacheWrite
 export const emptyTokens = (): Tokens => ({ input: 0, output: 0, cacheRead: 0, cacheWrite: 0 })
-export const POKEMON = [
-  { id: 1, name: '이상해씨', family: 0 }, { id: 2, name: '이상해풀', family: 0 }, { id: 3, name: '이상해꽃', family: 0 },
-  { id: 4, name: '파이리', family: 1 }, { id: 5, name: '리자드', family: 1 }, { id: 6, name: '리자몽', family: 1 },
-  { id: 7, name: '꼬부기', family: 2 }, { id: 8, name: '어니부기', family: 2 }, { id: 9, name: '거북왕', family: 2 }
-] as const
-export interface Capture { family: number; completedAt: string }
-export interface GameState {
-  phase: number; family: number | null; xp: number; tokensEarned: number
-  owned: number[]; captures: Capture[]
+import { EggType } from './catalog'
+export { POKEMON, EGG_TYPES, FAMILIES } from './catalog'
+export type { EggType } from './catalog'
+export interface Capture { family: number; completedAt: string; petId: string; shiny: boolean }
+export interface Companion {
+  id: string; family: number | null; phase: number; xp: number; shiny: boolean
+  eggType: EggType | null; obtainedAt: string | null
 }
+export interface GameState {
+  version: 2; tokensEarned: number; candyTokens: number; nextId: number
+  pets: Companion[]; activeId: string; displayPhase: number
+  owned: number[]; ownedShiny: number[]; captures: Capture[]
+}
+export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number }
 export interface Settings {
   pace: Pace; size: 96 | 128 | 192; displayId: string | null; visible: boolean
   paused: boolean; autoStart: boolean; roots: Record<Provider, string[]>
 }
 export const defaultSettings = (): Settings => ({ pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, roots: { claude: [], codex: [] } })
-export const newGame = (): GameState => ({ phase: 0, family: null, xp: 0, tokensEarned: 0, owned: [], captures: [] })
+export const newGame = (): GameState => ({ version: 2, tokensEarned: 0, candyTokens: 0, nextId: 2,
+  pets: [{ id: 'pet:1', phase: 0, family: null, xp: 0, shiny: false, eggType: 'grass', obtainedAt: null }],
+  activeId: 'pet:1', displayPhase: 0, owned: [], ownedShiny: [], captures: [] })
 export interface RootStatus {
   provider: Provider; path: string; state: 'connected' | 'missing' | 'error'
   files: number; skipped: number; error?: string
@@ -38,7 +44,8 @@ export interface DesktopAPI {
   refresh(): Promise<void>
   chooseFolder(provider: Provider): Promise<string | null>
   getDisplays(): Promise<DisplayChoice[]>
-  getSprite(id: number): Promise<string | null>
+  getSprite(id: number, shiny?: boolean): Promise<string | null>
+  gameAction(action: GameAction): Promise<void>
   openDashboard(tab?: string): Promise<void>
   onNavigate(callback: (tab: string) => void): () => void
   onMotion(callback: (motion: PetMotion) => void): () => void

@@ -2,7 +2,7 @@ import { app, BrowserWindow, ipcMain, dialog, Menu, Tray, nativeImage, screen } 
 import { join } from 'node:path'
 import { mkdirSync } from 'node:fs'
 import { Worker } from 'node:worker_threads'
-import { defaultSettings, newGame, Settings, Snapshot } from '../shared/model'
+import { defaultSettings, EGG_TYPES, GameAction, newGame, Settings, Snapshot } from '../shared/model'
 import { SpriteCache } from './sprites'
 import { PetController } from './pet'
 import { WindowTracker } from './window-tracker'
@@ -14,10 +14,10 @@ let dashboard: BrowserWindow, pet: BrowserWindow, controller: PetController, tra
 let quitting = false, nextId = 1
 let snapshot: Snapshot = { game: newGame(), settings: defaultSettings(), usage: { claude: { today: 0, all: 0 }, codex: { today: 0, all: 0 } }, roots: [], scanning: true, lastScan: null, notice: null }
 const pending = new Map<number, { resolve: () => void; reject: (e: Error) => void; timer: NodeJS.Timeout }>()
-const request = (op: string, patch?: Partial<Settings>): Promise<void> => new Promise((resolve, reject) => {
+const request = (op: string, patch?: Partial<Settings>, action?: GameAction): Promise<void> => new Promise((resolve, reject) => {
   const id = nextId++
   const timer = setTimeout(() => { pending.delete(id); reject(new Error('처리 시간이 길어지고 있습니다. 잠시 후 다시 확인해주세요.')) }, 120_000)
-  pending.set(id, { resolve, reject, timer }); worker.postMessage({ id, op, patch })
+  pending.set(id, { resolve, reject, timer }); worker.postMessage({ id, op, patch, action })
 })
 function load(window: BrowserWindow, view: string): void {
   if (process.env.ELECTRON_RENDERER_URL) void window.loadURL(`${process.env.ELECTRON_RENDERER_URL}?view=${view}`)
@@ -112,7 +112,17 @@ else {
     ipcMain.handle('usage:refresh', async event => { allowed(event); await request('refresh') })
     ipcMain.handle('folder:choose', async (event, provider) => { allowed(event); if (!['claude', 'codex'].includes(provider)) return null; const result = await dialog.showOpenDialog(dashboard, { title: '로그 폴더 선택', properties: ['openDirectory'] }); return result.canceled ? null : result.filePaths[0] })
     ipcMain.handle('display:list', event => { allowed(event); return screen.getAllDisplays().map((d, i) => ({ id: String(d.id), label: `${d.label || `화면 ${i + 1}`} · ${d.size.width} × ${d.size.height}${d.id === screen.getPrimaryDisplay().id ? ' (기본)' : ''}` })) })
-    ipcMain.handle('sprite:get', (event, id) => { allowed(event); return sprites.get(id) })
+    ipcMain.handle('sprite:get', (event, id, shiny) => { allowed(event); return sprites.get(id,shiny === true) })
+    ipcMain.handle('game:action', async (event, value) => {
+      allowed(event)
+      if (event.sender.id !== dashboard.webContents.id || !value || typeof value !== 'object') throw new Error('잘못된 요청')
+      let action: GameAction
+      if (value.type === 'egg' && EGG_TYPES.some(t=>t.id===value.eggType)) action={type:'egg',eggType:value.eggType}
+      else if (value.type === 'select' && typeof value.petId==='string' && value.petId.length<80 && Number.isInteger(value.phase) && value.phase>=0 && value.phase<=3) action={type:'select',petId:value.petId,phase:value.phase}
+      else if (value.type === 'candy' && Number.isSafeInteger(value.count) && value.count>0 && value.count<=1e9) action={type:'candy',count:value.count}
+      else throw new Error('잘못된 요청')
+      await request('game',undefined,action)
+    })
     ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'settings'].includes(tab) ? tab : 'home') })
     ipcMain.on('pet:pointer', (event, active) => { allowed(event); if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
     ipcMain.on('pet:drag', (event, action) => { allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel', 'release'].includes(action)) return; if (controller.drag(action) === 'drop') void request('settings', { displayId: controller.selectedDisplay }).catch(() => {}) })
