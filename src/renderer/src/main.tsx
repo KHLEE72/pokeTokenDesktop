@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { version } from '../../../package.json'
-import { Snapshot, Settings, POKEMON, DisplayChoice, PetMotion, EGG_TYPES, FAMILIES, EggType, GameAction, GameState } from '../../shared/model'
+import { Snapshot, Settings, POKEMON, DisplayChoice, PetMotion, PetInputTrace, EGG_TYPES, FAMILIES, EggType, GameAction, GameState } from '../../shared/model'
 import { activePet, candyCount, CANDY_XP, dexChoices, discoveredSpecies, eggFamilies, finalPhase, isGrowing, speciesId, threshold } from '../../shared/game'
 import { usePetDialogue } from './pet-dialogue'
 import './style.css'
@@ -37,6 +37,25 @@ function Pet(): React.JSX.Element | null {
   const { speech, greet } = usePetDialogue(snapshot, motion)
   const [reaction, setReaction] = useState(0)
   const down = useRef<{ pointerId: number; target: HTMLDivElement } | null>(null)
+  const motionRef = useRef(motion); motionRef.current=motion
+  const trace = (value: PetInputTrace): void => window.desktop.tracePetInput({...value,pressed:Boolean(down.current),motion:motionRef.current.state})
+  const captureError = (error: unknown): PetInputTrace['error'] => error instanceof DOMException && ['NotFoundError','InvalidStateError'].includes(error.name) ? error.name as PetInputTrace['error'] : 'Other'
+  useEffect(()=>{
+    const eventTrace=(event:Event):void=>{
+      const e=event as PointerEvent,character=e.target instanceof Element?e.target.closest('.pet-character'):null
+      const pressed=down.current
+      trace({event:event.type as PetInputTrace['event'],pointerId:e.pointerId,button:e.button,buttons:e.buttons,x:e.clientX,y:e.clientY,
+        onCharacter:Boolean(character),trusted:event.isTrusted,captured:pressed?.target.hasPointerCapture(pressed.pointerId)??false})
+    }
+    const events=['pointerdown','pointerup','pointercancel','gotpointercapture','lostpointercapture','mousedown','mouseup','click','contextmenu','dragstart']
+    for(const name of events)window.addEventListener(name,eventTrace,true)
+    const beat=(event:'ready'|'heartbeat'):void=>trace({event,width:innerWidth,height:innerHeight,dpr:devicePixelRatio,visible:document.visibilityState==='visible',focused:document.hasFocus(),captured:down.current?.target.hasPointerCapture(down.current.pointerId)??false})
+    const error=(event:ErrorEvent):void=>trace({event:'runtime.error',line:event.lineno,column:event.colno})
+    const rejection=():void=>trace({event:'runtime.rejection'})
+    window.addEventListener('error',error);window.addEventListener('unhandledrejection',rejection)
+    beat('ready');const timer=setInterval(()=>beat('heartbeat'),5000)
+    return()=>{clearInterval(timer);for(const name of events)window.removeEventListener(name,eventTrace,true);window.removeEventListener('error',error);window.removeEventListener('unhandledrejection',rejection)}
+  },[])
   useEffect(() => window.desktop.onMotion(setMotion), [])
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
@@ -48,20 +67,24 @@ function Pet(): React.JSX.Element | null {
   }, [])
   useEffect(() => {
     const reset = (): void => {
+      trace({event:'reset'})
       const pressed = down.current
       down.current = null
       setReaction(0)
-      if (pressed?.target.hasPointerCapture(pressed.pointerId)) pressed.target.releasePointerCapture(pressed.pointerId)
+      try { if (pressed?.target.hasPointerCapture(pressed.pointerId)) pressed.target.releasePointerCapture(pressed.pointerId) }
+      catch(error) { trace({event:'capture.release-failed',error:captureError(error)}) }
     }
     const unsubscribeReset = window.desktop.onInteractionReset(reset)
     const move = (event: PointerEvent): void => {
       if (!down.current || event.pointerId !== down.current.pointerId) return
+      if(event.pointerType==='mouse' && !(event.buttons&1)) { up(event); return }
       // Native DIP cursor coordinates distinguish a petting click from a drag.
       // DOM screenX/screenY can change units when crossing different DPI screens.
       window.desktop.drag('move')
     }
     const up = (event: PointerEvent): void => {
       if (!down.current || event.pointerId !== down.current.pointerId) return
+      trace({event:'handler.up',pointerId:event.pointerId,buttons:event.buttons})
       window.desktop.drag('release')
       down.current = null
       // Pointer capture ends after pointerup. Keep the character interactive until
@@ -69,8 +92,9 @@ function Pet(): React.JSX.Element | null {
       window.desktop.pointer(true)
     }
     window.addEventListener('pointermove', move); window.addEventListener('pointerup', up)
-    const cancel = (): void => {
-      if (!down.current) return
+    const cancel = (event:PointerEvent): void => {
+      if (!down.current || event.pointerId!==down.current.pointerId) return
+      trace({event:'handler.cancel',pointerId:event.pointerId,buttons:event.buttons})
       window.desktop.drag('cancel')
       down.current = null; window.desktop.pointer(false)
     }
@@ -93,9 +117,15 @@ function Pet(): React.JSX.Element | null {
       onPointerLeave={() => { if (!down.current) window.desktop.pointer(false) }}
       onPointerDown={event => {
         if (event.button !== 0) return
-        event.currentTarget.setPointerCapture(event.pointerId)
+        trace({event:'handler.down',pointerId:event.pointerId,buttons:event.buttons})
+        if(down.current) { trace({event:'stale.press',pointerId:down.current.pointerId}); window.desktop.drag('cancel'); down.current=null }
         setReaction(0)
         down.current = { pointerId: event.pointerId, target: event.currentTarget }
+        // An invalid Chromium pointer ID must not abort the press before IPC.
+        // The window follows the native cursor; window-level up/move still
+        // finishes the press if native pointer capture cannot be established.
+        try { event.currentTarget.setPointerCapture(event.pointerId) }
+        catch(error) { trace({event:'capture.failed',pointerId:event.pointerId,error:captureError(error)}) }
         window.desktop.drag('start')
       }}
       onContextMenu={event => { event.preventDefault(); window.desktop.petMenu() }}>

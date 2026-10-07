@@ -37,6 +37,14 @@ export interface Snapshot {
 export interface DisplayChoice { id: string; label: string }
 export type PetMotionState = 'idle' | 'walking' | 'held' | 'falling' | 'landing'
 export interface PetMotion { direction: 1 | -1; state: PetMotionState; tilt: number; impact: number; surfaceId?: string | null }
+export const PET_TRACE_EVENTS = ['ready','heartbeat','pointerdown','pointerup','pointercancel','gotpointercapture','lostpointercapture','mousedown','mouseup','click','contextmenu','handler.down','handler.up','handler.cancel','capture.failed','capture.release-failed','reset','runtime.error','runtime.rejection','dragstart','stale.press'] as const
+export interface PetInputTrace {
+  event: typeof PET_TRACE_EVENTS[number]
+  pointerId?: number; button?: number; buttons?: number; x?: number; y?: number
+  width?: number; height?: number; dpr?: number; line?: number; column?: number
+  onCharacter?: boolean; captured?: boolean; pressed?: boolean; trusted?: boolean; visible?: boolean; focused?: boolean
+  motion?: PetMotionState; error?: 'NotFoundError' | 'InvalidStateError' | 'Other'
+}
 export interface DesktopAPI {
   getSnapshot(): Promise<Snapshot>
   onSnapshot(callback: (value: Snapshot) => void): () => void
@@ -54,5 +62,6 @@ export interface DesktopAPI {
   pointer(active: boolean): void
   drag(action: 'start' | 'move' | 'end' | 'cancel' | 'release'): void
   petMenu(): void
+  tracePetInput(trace: PetInputTrace): void
 }
 declare global { interface Window { desktop: DesktopAPI } }

@@ -35,8 +35,12 @@ export class PetController {
   private frames: WindowFrame[] = []
   private perch: { id: string; offset: number } | null = null
   private fallOrigin = 0
+  private inputCalls = 0
+  private topCalls = 0
+  private lastHealth = 0
+  private reportedMotion: PetMotionState | null = null
 
-  constructor(private window: BrowserWindow, settings: Settings, private onDisplayChanged: (id: string) => void = () => {}) {
+  constructor(private window: BrowserWindow, settings: Settings, private onDisplayChanged: (id: string) => void = () => {}, private diagnose: (event: string, data: unknown) => void = () => {}) {
     this.settings = { ...settings }
     this.displayId = settings.displayId
     // Floating windows are deliberately moved behind the taskbar by Electron
@@ -56,11 +60,25 @@ export class PetController {
   }
 
   private get suspended(): boolean { return this.asleep || this.locked }
+  get inputState(): object {
+    if (this.window.isDestroyed()) return { destroyed:true }
+    const bounds=this.window.getContentBounds(), point=screen.getCursorScreenPoint()
+    const cursor={x:point.x-bounds.x,y:point.y-bounds.y},size=this.settings.size
+    return { motion:this.state, ignoringMouse:this.ignoringMouse, inputCalls:this.inputCalls, topCalls:this.topCalls,
+      visible:this.settings.visible, nativeVisible:this.window.isVisible(), paused:this.settings.paused, asleep:this.asleep, locked:this.locked,
+      topmost:this.window.isAlwaysOnTop?.()??false, focused:this.window.isFocused?.()??false,
+      width:bounds.width,height:bounds.height,size,scaleFactor:this.display().scaleFactor??1,cursor,
+      overCharacter:cursor.x>=24&&cursor.x<24+size&&cursor.y>=bounds.height-size-6&&cursor.y<bounds.height-6,
+      inputAgeMs:Date.now()-this.lastInputRefresh,topAgeMs:Date.now()-this.lastTopRefresh,dragged:this.dragged }
+  }
   private ignoreMouse(ignore: boolean, force = false): void {
     const now = Date.now()
     if (this.window.isDestroyed() || (!force && this.ignoringMouse === ignore && now >= this.lastInputRefresh && now - this.lastInputRefresh < INPUT_REFRESH_MS)) return
     this.window.setIgnoreMouseEvents(ignore, { forward: true })
+    const changed=this.ignoringMouse!==ignore
     this.ignoringMouse = ignore; this.lastInputRefresh = now
+    this.inputCalls++
+    if (changed || force) this.diagnose('controller.input-mode',this.inputState)
   }
   private keepOnTop(force = false): void {
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible || !this.window.isVisible()) return
@@ -69,6 +87,7 @@ export class PetController {
     this.window.setAlwaysOnTop(true, 'pop-up-menu')
     this.window.moveTop() // SWP_NOACTIVATE on Windows; never focus the pet.
     this.lastTopRefresh = now
+    this.topCalls++
   }
   private syncPointer(): void {
     if (this.window.isDestroyed()) return
@@ -153,6 +172,7 @@ export class PetController {
     this.x = clamp(this.x, area.x, area.x + area.width - this.dimensions().width)
   }
   private motion(): void {
+    if (this.reportedMotion!==this.state) { this.reportedMotion=this.state; this.diagnose('controller.motion',this.inputState) }
     if (!this.window.isDestroyed()) this.window.webContents.send('pet:motion', {
       direction: this.direction, state: this.state, tilt: this.tilt, impact: this.impact, surfaceId: this.perch?.id ?? null
     } satisfies PetMotion)
@@ -273,6 +293,7 @@ export class PetController {
   private tick(): void {
     const now = Date.now(), elapsed = clamp((now - this.lastTick) / 1000, 0, 0.05)
     this.lastTick = now
+    if (now<this.lastHealth || now-this.lastHealth>=5000) { this.lastHealth=now; this.diagnose('controller.heartbeat',this.inputState) }
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
     this.syncPointer()
     this.keepOnTop()
@@ -336,16 +357,17 @@ export class PetController {
     this.ignoreMouse(false, true)
     this.syncPointer()
     this.motion()
+    this.diagnose('controller.recover',this.inputState)
   }
   private hideForSession(): void { this.recover(); this.window.hide() }
   private restoreSession(): void {
     if (this.suspended) return
     this.recover(); this.apply(this.settings)
   }
-  private sleep = (): void => { this.asleep = true; this.hideForSession() }
-  private wake = (): void => { this.asleep = false; this.restoreSession() }
-  private lock = (): void => { this.locked = true; this.hideForSession() }
-  private unlock = (): void => { this.locked = false; this.restoreSession() }
+  private sleep = (): void => { this.asleep = true; this.hideForSession(); this.diagnose('power.suspend',this.inputState) }
+  private wake = (): void => { this.asleep = false; this.restoreSession(); this.diagnose('power.resume',this.inputState) }
+  private lock = (): void => { this.locked = true; this.hideForSession(); this.diagnose('power.lock',this.inputState) }
+  private unlock = (): void => { this.locked = false; this.restoreSession(); this.diagnose('power.unlock',this.inputState) }
   destroy(): void {
     clearInterval(this.timer)
     screen.removeListener('display-added', this.recover); screen.removeListener('display-removed', this.recover); screen.removeListener('display-metrics-changed', this.recover)

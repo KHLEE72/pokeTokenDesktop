@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, dialog, Menu, Tray, nativeImage, screen } from 'electron'
+import { app, BrowserWindow, ipcMain, dialog, Menu, Tray, nativeImage, screen, shell } from 'electron'
 import { join } from 'node:path'
 import { mkdirSync } from 'node:fs'
 import { Worker } from 'node:worker_threads'
@@ -6,12 +6,14 @@ import { defaultSettings, EGG_TYPES, GameAction, newGame, Settings, Snapshot } f
 import { SpriteCache } from './sprites'
 import { PetController } from './pet'
 import { WindowTracker } from './window-tracker'
+import { InputDiagnostics, sanitizePetTrace } from './input-diagnostics'
 
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
 const acquired = app.requestSingleInstanceLock()
 let dashboard: BrowserWindow, pet: BrowserWindow, controller: PetController, tray: Tray, worker: Worker, sprites: SpriteCache, windowTracker: WindowTracker
 let quitting = false, nextId = 1
+let diagnostics: InputDiagnostics
 let snapshot: Snapshot = { game: newGame(), settings: defaultSettings(), usage: { claude: { today: 0, all: 0 }, codex: { today: 0, all: 0 } }, roots: [], scanning: true, lastScan: null, notice: null }
 const pending = new Map<number, { resolve: () => void; reject: (e: Error) => void; timer: NodeJS.Timeout }>()
 const request = (op: string, patch?: Partial<Settings>, action?: GameAction): Promise<void> => new Promise((resolve, reject) => {
@@ -31,7 +33,10 @@ function trayMenu(): void {
     { label: '현재 펫 · 사용량', click: () => openDashboard() },
     { label: snapshot.settings.visible ? '펫 숨기기' : '펫 보이기', click: () => void request('settings', { visible: !snapshot.settings.visible }).catch(() => {}) },
     { label: snapshot.settings.paused ? '다시 걷기' : '이동 일시정지', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
-    { label: '설정', click: () => openDashboard('settings') }, { type: 'separator' }, { label: '종료', click: () => app.quit() }
+    { label: '설정', click: () => openDashboard('settings') },
+    { label: '입력 문제 시점 기록', click: () => diagnostics.record('user.mark',controller.inputState) },
+    { label: '입력 진단 로그 폴더', click: () => { diagnostics.record('diagnostic.folder-opened',controller.inputState); void diagnostics.flush().then(()=>shell.openPath(join(app.getPath('userData'),'diagnostics'))) } },
+    { type: 'separator' }, { label: '종료', click: () => app.quit() }
   ]))
 }
 function validatePatch(value: unknown): Partial<Settings> {
@@ -53,6 +58,8 @@ else {
   app.on('second-instance', () => { if (dashboard) openDashboard() })
   void app.whenReady().then(() => {
     mkdirSync(app.getPath('userData'), { recursive: true })
+    diagnostics = new InputDiagnostics(join(app.getPath('userData'),'diagnostics'))
+    diagnostics.record('session.start',{version:app.getVersion(),platform:process.platform,arch:process.arch,electron:process.versions.electron,chrome:process.versions.chrome})
     sprites = new SpriteCache(join(app.getPath('userData'), 'sprites'))
     const preferences = { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
     dashboard = new BrowserWindow({ width: 1040, height: 800, minWidth: 850, minHeight: 680, show: false, backgroundColor: '#f6f7f2', autoHideMenuBar: true, title: 'PokeToken Desktop', webPreferences: preferences })
@@ -64,7 +71,7 @@ else {
     if (process.platform === 'darwin') { pet.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true }); app.dock?.hide() }
     controller = new PetController(pet, snapshot.settings, id => {
       if (!quitting && worker && snapshot.settings.displayId !== id) void request('settings', { displayId: id }).catch(() => {})
-    })
+    },(event,data)=>diagnostics.record(event,data))
     // Generic interaction smoke tests remain deterministic; the window-specific
     // smoke test explicitly enables the real native scanner in its isolated app.
     if (process.env.POKETOKEN_TEST_MODE !== '1' || process.env.POKETOKEN_WINDOW_TEST === '1') windowTracker = new WindowTracker(frames => {
@@ -72,7 +79,18 @@ else {
       const selected = fixturePid ? frames.filter(frame => frame.pid === fixturePid || frame.pid === process.pid) : frames
       if (process.env.POKETOKEN_TEST_MODE === '1' && process.env.POKETOKEN_WINDOW_TEST === '1') Object.assign(globalThis, { petTestFrames: selected, petTestRawPids: frames.map(frame => frame.pid) })
       controller.updateSurfaces(selected)
-    }, pet)
+    }, pet, data=>diagnostics.record('windows.input',{...data,units:'physicalPx',state:controller.inputState}))
+    pet.webContents.on('before-mouse-event',(_event,input)=>{
+      if (!['mouseDown','mouseUp','contextMenu'].includes(input.type)) return
+      diagnostics.record('electron.mouse',{type:input.type,button:input.button,x:input.x,y:input.y,state:controller.inputState})
+    })
+    pet.webContents.on('input-event',(_event,input)=>{
+      if (['mouseDown','mouseUp','pointerDown','pointerUp','pointerCancel','touchStart','touchEnd','touchCancel'].includes(input.type)) diagnostics.record('electron.input',{type:input.type})
+    })
+    pet.webContents.on('render-process-gone',(_event,details)=>diagnostics.record('renderer.gone',{reason:details.reason,exitCode:details.exitCode}))
+    pet.webContents.on('unresponsive',()=>diagnostics.record('renderer.unresponsive',controller.inputState))
+    pet.webContents.on('responsive',()=>diagnostics.record('renderer.responsive',controller.inputState))
+    pet.webContents.on('did-finish-load',()=>diagnostics.record('renderer.did-finish-load',controller.inputState))
     const trayIcon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAFUlEQVR4nGNgGAWjYBSMglEwCkbBAAAGGAAB7e3H/QAAAABJRU5ErkJggg==')
     // Icon generated from our own egg drawing; no Pokémon art is bundled.
     const icon = nativeImage.createFromPath(join(__dirname, '../../build/tray.png'))
@@ -125,14 +143,33 @@ else {
     })
     ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'settings'].includes(tab) ? tab : 'home') })
     ipcMain.on('pet:pointer', (event, active) => { allowed(event); if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
-    ipcMain.on('pet:drag', (event, action) => { allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel', 'release'].includes(action)) return; if (controller.drag(action) === 'drop') void request('settings', { displayId: controller.selectedDisplay }).catch(() => {}) })
+    let traceWindow=0,traceCount=0
+    ipcMain.on('pet:input-trace',(event,value)=>{
+      if (event.sender.id!==pet.webContents.id) return
+      const now=Date.now();if(now-traceWindow>=1000||now<traceWindow){traceWindow=now;traceCount=0}
+      if(++traceCount>200)return
+      const trace=sanitizePetTrace(value)
+      if(trace)diagnostics.record(`renderer.${trace.event}`,{...trace,state:controller.inputState})
+    })
+    ipcMain.on('pet:drag', (event, action) => {
+      allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel', 'release'].includes(action)) return
+      const before=action==='move'?null:controller.inputState,result=controller.drag(action)
+      if(action!=='move')diagnostics.record('ipc.drag',{action,result,before,after:controller.inputState})
+      if(result==='drop')void request('settings', { displayId: controller.selectedDisplay }).catch(() => {})
+    })
     ipcMain.on('pet:menu', event => { allowed(event); if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
       { label: '현재 펫 · 사용량', click: () => openDashboard() }, { label: '이동 일시정지 / 다시 걷기', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
       { label: '설정', click: () => openDashboard('settings') }, { label: '펫 숨기기', click: () => void request('settings', { visible: false }).catch(() => {}) }
     ]).popup({ window: pet }) })
     void request('refresh').catch(() => {})
     const scanTimer = setInterval(() => { if (!snapshot.scanning) void request('scan').catch(() => {}) }, 10_000)
-    app.on('before-quit', () => { quitting = true; clearInterval(scanTimer); windowTracker?.destroy(); controller.destroy(); tray.destroy(); void worker.terminate(); for (const p of pending.values()) clearTimeout(p.timer) })
+    app.on('before-quit', event => {
+      if(quitting)return
+      event.preventDefault();quitting=true
+      diagnostics.record('session.end',controller.inputState)
+      clearInterval(scanTimer); windowTracker?.destroy(); controller.destroy(); tray.destroy(); void worker.terminate(); for (const p of pending.values()) clearTimeout(p.timer)
+      void Promise.race([diagnostics.close(),new Promise(resolve=>setTimeout(resolve,1500))]).finally(()=>app.quit())
+    })
   })
   app.on('window-all-closed', () => { /* tray companion keeps running */ })
   app.on('activate', () => { if (dashboard) openDashboard() })

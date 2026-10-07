@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import { existsSync } from 'node:fs'
 import { createInterface } from 'node:readline'
 import { decodeWindowFrames, WindowFrame } from './surfaces'
+import { sanitizeNativePetInput } from './input-diagnostics'
 
 export class WindowTracker {
   private child: ChildProcess | null = null
@@ -12,7 +13,7 @@ export class WindowTracker {
   private lastRead = 0
   private stopped = false
   private failures = 0
-  constructor(private update: (frames: WindowFrame[]) => void, private pet: BrowserWindow) {
+  constructor(private update: (frames: WindowFrame[]) => void, private pet: BrowserWindow, private input?: (data: Record<string,number|boolean>) => void) {
     this.start()
     this.watchdog = setInterval(() => { if (this.lastRead && Date.now() - this.lastRead > 1500) { this.lastRead = 0; this.update([]) } }, 500)
   }
@@ -25,6 +26,7 @@ export class WindowTracker {
       const id = handle.length === 8 ? handle.readBigUInt64LE() : BigInt(handle.readUInt32LE())
       executable = join(process.env.SystemRoot || 'C:\\Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe')
       args = ['-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script,'-AppProcessId',String(process.pid),'-ExcludedWindowHandle',String(id)]
+      if(this.input)args.push('-InputDiagnostics')
     } else if (process.platform === 'darwin') {
       executable = app.isPackaged ? join(process.resourcesPath, 'native/window-surfaces') : join(app.getAppPath(), 'build/native/window-surfaces')
       args = [String(process.pid)]
@@ -36,6 +38,10 @@ export class WindowTracker {
     const lines = createInterface({ input: child.stdout! })
     lines.on('line', line => {
       if (this.stopped || this.child !== child) return
+      if(line.startsWith('{"petInput":') && line.length<2048) {
+        try { const input=sanitizeNativePetInput(JSON.parse(line).petInput);if(input)this.input?.(input) } catch { /* Ignore an incomplete probe line. */ }
+        return
+      }
       // Native filters exclude the pet alone, preserving our management window
       // in the original front-to-back order for correct occlusion.
       const frames = decodeWindowFrames(line, 0, rect => process.platform === 'win32' ? screen.screenToDipRect(null, rect) : rect)
