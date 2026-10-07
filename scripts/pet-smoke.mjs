@@ -27,6 +27,11 @@ try {
   expect(snapshot.game.pets.find(p=>p.id===snapshot.game.activeId).phase).toBe(1)
   const sendSpecies = async id => {
     const phase=(id-1)%3+1
+    // Each visual sample represents growth from an egg, not a manual switch
+    // between completed families (which deliberately uses greeting dialogue).
+    const egg={...snapshot,game:{...snapshot.game,pets:[{...snapshot.game.pets.find(p=>p.id===snapshot.game.activeId),family:null,phase:0,xp:0,shiny:false}],displayPhase:0}}
+    await application.evaluate(({BrowserWindow},value)=>BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=pet')).webContents.send('snapshot',value),egg)
+    await expect(pet.locator('.pet-character .egg')).toBeVisible()
     const value = { ...snapshot, game: { ...snapshot.game, pets:[{...snapshot.game.pets.find(p=>p.id===snapshot.game.activeId),family:Math.floor((id-1)/3),phase,shiny:false}],displayPhase:phase,owned:[id],tokensEarned:snapshot.game.tokensEarned+id }, notice:'진화 1회' }
     await application.evaluate(({ BrowserWindow }, value) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=pet')).webContents.send('snapshot', value), value)
   }
