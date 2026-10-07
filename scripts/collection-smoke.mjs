@@ -54,7 +54,7 @@ try{
   checks.push('new eggs create distinct individuals; invalid candy spending is atomic; selection, candy remainder and all growth survive restart')
   await application.close();application=null
   const fixture=structuredClone(saved),id=`pet:${fixture.nextId++}`
-  fixture.pets.push({id,family:13,phase:1,xp:123,shiny:true,eggType:'ghost',obtainedAt:new Date().toISOString()})
+  fixture.pets.push({id,family:13,phase:1,xp:49_999_999,shiny:true,eggType:'ghost',obtainedAt:new Date().toISOString()})
   if(!fixture.ownedShiny.includes(92))fixture.ownedShiny.push(92)
   const json=join(directory,'shiny.json');writeFileSync(json,JSON.stringify(fixture))
   const seeded=spawnSync(electron,['scripts/collection-fixture.cjs',join(data,'poketoken.sqlite'),json],{env:{...env,ELECTRON_RUN_AS_NODE:'1'},stdio:'inherit',windowsHide:true})
@@ -68,6 +68,12 @@ try{
   await page.screenshot({path:'artifacts/collection-shiny-dex.png'})
   await pet.screenshot({path:'artifacts/collection-shiny-pet.png',omitBackground:true})
   await dex(false);await expect(page.getByRole('button',{name:'고오스 선택',exact:true})).toBeDisabled()
+  await dex(true);await page.getByRole('button',{name:'사탕 먹이기',exact:true}).click()
+  await expect(pet.locator('.pet-character img')).toHaveAttribute('alt','고우스트')
+  await expect(pet.locator('.pet-bubble')).toHaveAttribute('data-dialogue','growth')
+  snapshot=await state();expect(selected(snapshot).phase).toBe(2);expect(selected(snapshot).xp).toBe(99_999)
+  expect(selected(snapshot).shiny).toBe(true);expect(snapshot.game.ownedShiny).toContain(93)
+  checks.push('candy-triggered evolution preserves shiny color, carries experience and emits the growth reaction')
   await home();await page.screenshot({path:'artifacts/collection-home.png',fullPage:true})
   checks.push('shiny unlocks are independent; shiny dex selection changes the real desktop sprite; normal and shiny caches stay separate')
   expect(errors).toEqual([])
