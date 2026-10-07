@@ -4,6 +4,8 @@ import { Ledge, WindowFrame, windowLedges } from './surfaces'
 
 const GRAVITY = 2200 // DIP / second²; independent of screen scale and timer frequency.
 const TERMINAL_SPEED = 1200
+const INPUT_REFRESH_MS = 750
+const TOP_REFRESH_MS = 1000
 const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(value, Math.max(min, max)))
 
 export class PetController {
@@ -26,6 +28,8 @@ export class PetController {
   private asleep = false
   private locked = false
   private ignoringMouse: boolean | null = null
+  private lastInputRefresh = 0
+  private lastTopRefresh = 0
   private timer: NodeJS.Timeout
   private ledges: Ledge[] = []
   private frames: WindowFrame[] = []
@@ -35,6 +39,9 @@ export class PetController {
   constructor(private window: BrowserWindow, settings: Settings, private onDisplayChanged: (id: string) => void = () => {}) {
     this.settings = { ...settings }
     this.displayId = settings.displayId
+    // Floating windows are deliberately moved behind the taskbar by Electron
+    // on Windows. Use the overlay level and restore ordering without activation.
+    this.window.setAlwaysOnTop(true, 'pop-up-menu')
     this.x = this.display().workArea.x + this.display().workArea.width * 0.72
     this.ground()
     this.ignoreMouse(true)
@@ -50,9 +57,18 @@ export class PetController {
 
   private get suspended(): boolean { return this.asleep || this.locked }
   private ignoreMouse(ignore: boolean, force = false): void {
-    if (this.window.isDestroyed() || (!force && this.ignoringMouse === ignore)) return
+    const now = Date.now()
+    if (this.window.isDestroyed() || (!force && this.ignoringMouse === ignore && now >= this.lastInputRefresh && now - this.lastInputRefresh < INPUT_REFRESH_MS)) return
     this.window.setIgnoreMouseEvents(ignore, { forward: true })
-    this.ignoringMouse = ignore
+    this.ignoringMouse = ignore; this.lastInputRefresh = now
+  }
+  private keepOnTop(force = false): void {
+    if (this.window.isDestroyed() || this.suspended || !this.settings.visible || !this.window.isVisible()) return
+    const now = Date.now()
+    if (!force && now >= this.lastTopRefresh && now - this.lastTopRefresh < TOP_REFRESH_MS) return
+    this.window.setAlwaysOnTop(true, 'pop-up-menu')
+    this.window.moveTop() // SWP_NOACTIVATE on Windows; never focus the pet.
+    this.lastTopRefresh = now
   }
   private syncPointer(): void {
     if (this.window.isDestroyed()) return
@@ -173,7 +189,10 @@ export class PetController {
     if (!settings.visible && before.visible) this.recover()
     if (settings.paused && this.state === 'walking') { this.state = 'idle'; this.motion() }
     if (settings.paused !== before.paused) this.nextAction = Date.now() + 2500
-    if (settings.visible && !this.suspended) this.window.showInactive(); else this.window.hide()
+    if (settings.visible && !this.suspended) {
+      if (!this.window.isVisible()) this.window.showInactive()
+      this.keepOnTop(true)
+    } else this.window.hide()
     this.syncPointer()
     this.motion()
   }
@@ -256,6 +275,7 @@ export class PetController {
     this.lastTick = now
     if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
     this.syncPointer()
+    this.keepOnTop()
     if (this.state === 'idle' || this.state === 'landing') {
       // WM_DPICHANGED can adjust a window after crossing monitors. Repair an
       // unexpected native resize/move even if autonomous walking is paused.

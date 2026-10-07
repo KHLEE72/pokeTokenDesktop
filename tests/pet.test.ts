@@ -19,16 +19,68 @@ function setup() {
   vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:0,y:0})
   vi.mocked(screen.getAllDisplays).mockReturnValue([screen.getPrimaryDisplay(),{id:2,workArea:{x:1920,y:-300,width:1280,height:1000}} as ReturnType<typeof screen.getPrimaryDisplay>])
   let bounds={x:0,y:0,width:176,height:208}
+  let visible=false, nativeIgnore=true, topmost=true
   const window={isDestroyed:()=>false,webContents:{send:vi.fn()},
     setContentBounds:vi.fn((value:typeof bounds)=>{bounds={...value}}),getContentBounds:()=>({...bounds}),
-    showInactive:vi.fn(),hide:vi.fn(),setIgnoreMouseEvents:vi.fn()
+    isVisible:()=>visible,showInactive:vi.fn(()=>{visible=true}),hide:vi.fn(()=>{visible=false}),
+    setIgnoreMouseEvents:vi.fn((ignore:boolean)=>{nativeIgnore=ignore}),
+    setAlwaysOnTop:vi.fn((value:boolean)=>{topmost=value}),isAlwaysOnTop:()=>topmost,moveTop:vi.fn()
   }
   const settings=defaultSettings(),controller=new PetController(window as unknown as BrowserWindow,settings)
   controllers.push(controller)
-  return {window,settings,controller,get bounds(){return bounds},get motion(){return window.webContents.send.mock.calls.filter(([channel])=>channel==='pet:motion').at(-1)?.[1] as PetMotion}}
+  return {window,settings,controller,get bounds(){return bounds},get ignored(){return nativeIgnore},get topmost(){return topmost},get motion(){return window.webContents.send.mock.calls.filter(([channel])=>channel==='pet:motion').at(-1)?.[1] as PetMotion}}
 }
 afterEach(()=>{for(const controller of controllers.splice(0))controller.destroy();vi.useRealTimers();vi.clearAllMocks()})
 describe('pet desktop behavior',()=>{
+  it('repairs native click-through drift without cursor movement or a lock/unlock event',()=>{
+    const rig=setup();rig.controller.apply({...rig.settings,paused:true})
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110})
+    vi.advanceTimersByTime(33);expect(rig.ignored).toBe(false)
+    // Change only native state; the controller still remembers "interactive".
+    rig.window.setIgnoreMouseEvents(true)
+    vi.advanceTimersByTime(800);expect(rig.ignored).toBe(false)
+    expect(rig.motion.state).toBe('idle')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+5,y:rig.bounds.y+20})
+    vi.advanceTimersByTime(33);expect(rig.ignored).toBe(true)
+    rig.window.setIgnoreMouseEvents(false)
+    vi.advanceTimersByTime(800);expect(rig.ignored).toBe(true)
+  })
+  it('repairs topmost ordering while paused without showing a hidden or locked pet',()=>{
+    const rig=setup();rig.controller.apply({...rig.settings,paused:true})
+    const before={...rig.bounds}
+    rig.window.setAlwaysOnTop(false);rig.window.moveTop.mockClear()
+    vi.advanceTimersByTime(1100)
+    expect(rig.topmost).toBe(true);expect(rig.window.moveTop).toHaveBeenCalled()
+    expect(rig.window.setAlwaysOnTop).toHaveBeenLastCalledWith(true,'pop-up-menu')
+    expect(rig.bounds).toEqual(before)
+    rig.controller.apply({...rig.settings,paused:true,visible:false})
+    rig.window.moveTop.mockClear();vi.advanceTimersByTime(5000)
+    expect(rig.window.moveTop).not.toHaveBeenCalled()
+    rig.controller.apply({...rig.settings,paused:true})
+    powerMonitor.emit('lock-screen')
+    rig.window.moveTop.mockClear();vi.advanceTimersByTime(5000)
+    expect(rig.window.moveTop).not.toHaveBeenCalled()
+  })
+  it('refreshes native input during a sustained grab without cancelling it',()=>{
+    const rig=setup();rig.controller.apply({...rig.settings,paused:true})
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110})
+    rig.controller.drag('start')
+    rig.window.setIgnoreMouseEvents(true)
+    vi.advanceTimersByTime(5000)
+    expect(rig.ignored).toBe(false);expect(rig.motion.state).toBe('held')
+    expect(rig.window.webContents.send).not.toHaveBeenCalledWith('pet:reset-interaction')
+    expect(rig.controller.drag('release')).toBe('pet')
+  })
+  it.each([6,-6])('repairs input/order after a %s-hour clock jump without losing a perch',hours=>{
+    const rig=setup();perch(rig)
+    const before={...rig.bounds}
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:before.x+80,y:before.y+110})
+    vi.advanceTimersByTime(33);expect(rig.ignored).toBe(false)
+    rig.window.setIgnoreMouseEvents(true);rig.window.setAlwaysOnTop(false)
+    vi.setSystemTime(Date.now()+hours*60*60*1000);vi.advanceTimersByTime(33)
+    expect(rig.ignored).toBe(false);expect(rig.topmost).toBe(true)
+    expect(rig.bounds).toEqual(before);expect(rig.motion.surfaceId).toBe('fixture')
+  })
   it('uses a native DIP threshold for petting and never treats a cancelled capture as a click',()=>{
     const rig=setup();rig.controller.apply({...rig.settings,paused:true})
     const cursor={x:rig.bounds.x+80,y:rig.bounds.y+110}

@@ -61,7 +61,6 @@ else {
     // still scales the whole pet normally, keeping text proportional to the sprite.
     pet.webContents.setZoomMode('disabled')
     void pet.webContents.setVisualZoomLevelLimits(1, 1)
-    pet.setAlwaysOnTop(true, 'floating')
     if (process.platform === 'darwin') { pet.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true }); app.dock?.hide() }
     controller = new PetController(pet, snapshot.settings, id => {
       if (!quitting && worker && snapshot.settings.displayId !== id) void request('settings', { displayId: id }).catch(() => {})
