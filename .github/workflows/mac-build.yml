@@ -73,6 +73,7 @@ jobs:
           npm run smoke:dpi
           npm run smoke:health
           npm run smoke:collection
+          npm run smoke:dashboard
           npm run smoke:input
       - name: Upload DMG and testing instructions
         if: ${{ !cancelled() && steps.bundle.outcome == 'success' }}

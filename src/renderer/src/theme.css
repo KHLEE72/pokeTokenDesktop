@@ -1,0 +1,223 @@
+/* Local, unmodified Galmuri fonts; the OFL ships in public/licenses. */
+@font-face { font-family: 'Galmuri'; src: url('./assets/fonts/Galmuri11.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Galmuri'; src: url('./assets/fonts/Galmuri11-Bold.woff2') format('woff2'); font-weight: 600 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Galmuri Small'; src: url('./assets/fonts/Galmuri9.woff2') format('woff2'); font-weight: 400 900; font-style: normal; font-display: swap; }
+
+body:not(.pet-body) { background: #f4f0e3; }
+.app-shell {
+  --ink: #2b4050;
+  --muted: #617783;
+  --paper: #fffbee;
+  --red: #d65350;
+  --gold: #f4cb65;
+  --blue: #76bed9;
+  --line: #c5d0ca;
+  font-family: 'Galmuri', 'Malgun Gothic', sans-serif;
+  color: var(--ink);
+  background-color: #f4f0e3;
+  background-image: radial-gradient(#c9c8b9 1px, transparent 1px);
+  background-size: 12px 12px;
+  font-size: 12px;
+}
+.app-shell h1, .app-shell h2, .app-shell h3 { letter-spacing: 0; font-weight: 700; }
+.app-shell h1 { font-size: 24px; line-height: 1.35; }
+.app-shell h1 > span { color: #dcaa3d; font-size: 20px; }
+.app-shell p { color: var(--muted); line-height: 1.5; }
+.app-shell button, .app-shell input, .app-shell select { font-family: inherit; }
+.app-shell button:focus-visible, .app-shell input:focus-visible, .app-shell select:focus-visible, .app-shell summary:focus-visible { outline: 3px solid #349cbd; outline-offset: 3px; }
+.pixel-icon { display: inline-block; flex-shrink: 0; width: 24px; height: 24px; object-fit: contain; image-rendering: pixelated; vertical-align: middle; }
+
+/* The left rail takes its colors and controls from a red handheld Pokédex. */
+.app-shell .sidebar { background: var(--red); border-right: 4px solid var(--ink); padding: 24px 16px; box-shadow: inset -4px 0 #a93e44; }
+.app-shell .sidebar::before { content: ''; display: block; height: 6px; margin: -24px -16px 21px; background: #ec8376; border-bottom: 2px solid var(--ink); }
+.app-shell .brand { color: #fff9e7; padding: 0 3px; gap: 7px; font-size: 18px; font-weight: 700; text-shadow: 2px 2px #9b3841; }
+.app-shell .brand-mark { width: 38px; height: 38px; border-radius: 0; background: transparent; }
+.app-shell .brand-mark .pixel-icon { width: 48px; height: 48px; }
+.app-shell .brand div > span { font-family: 'Galmuri Small', sans-serif; font-size: 10px; letter-spacing: 0; color: #f8d8bb; margin-top: 6px; text-shadow: none; white-space: nowrap; }
+.app-shell .sidebar nav { margin-top: 32px; gap: 12px; }
+.app-shell .sidebar nav button { position: relative; gap: 6px; padding: 11px 8px; border: 2px solid transparent; border-radius: 3px; color: #fff9e7; font-size: 12px; font-weight: 400; }
+.app-shell .sidebar nav button:hover { background: #b94446; }
+.app-shell .sidebar nav button.nav-active { background: #fff2bd; color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px #9b3841; }
+.app-shell .sidebar nav .pixel-icon { width: 24px; height: 24px; }
+.app-shell .sidebar-bottom { padding: 13px 10px; border: 2px solid #8e3540; border-radius: 3px; background: #b94446; color: #fff3d7; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .sidebar-bottom p { color: #ffe0c3; font-size: 10px; margin: 14px 0; }
+.app-shell .sidebar-bottom small { color: #f6ccba; font-size: 10px; line-height: 1.5; }
+.app-shell .status-dot { border-radius: 0; background: #abbab8; box-shadow: 1px 1px #283e5050; }
+.app-shell .status-dot.online { background: #a8df83; }
+.app-shell .status-dot.warning { background: var(--gold); }
+.app-shell .topbar { border-bottom: 2px solid var(--line); }
+.app-shell .eyebrow, .app-shell .small-label { font-family: 'Galmuri Small', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 1px; color: var(--muted); }
+.app-shell .eyebrow { display: flex; align-items: center; gap: 9px; }
+.console-light { display: inline-block; width: 10px; height: 10px; border: 2px solid var(--ink); background: #81c9de; box-shadow: 2px 2px #d3b970; }
+.app-shell .date { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: var(--ink); background: #fff2bd; border: 1px solid #c5aa68; padding: 5px 7px; }
+.app-shell .page-heading p { margin-top: 7px; font-size: 12px; }
+
+/* Flat ink borders, small hard shadows, and readable game menu controls. */
+.app-shell :is(.companion-card,.stat-card,.collection-panel,.activity-strip,.egg-drawer,.dex-toolbar,.dex-card,.history,.settings-card,.dex-pagination-bottom) { background: var(--paper); border: 2px solid var(--ink); border-radius: 4px; box-shadow: 3px 3px #b0b7a466; }
+.app-shell .button { min-height: 34px; padding: 8px 12px; border: 2px solid var(--ink); border-radius: 3px; font-size: 12px; font-weight: 400; box-shadow: 0 3px #283e5033; }
+.app-shell .primary { background: var(--red); color: #fffbee; box-shadow: inset 0 2px #ed8678, 0 3px #283e5040; }
+.app-shell .primary:hover:not(:disabled) { background: #b94548; }
+.app-shell .subtle { background: #f7ebc6; color: var(--ink); }
+.app-shell .subtle:hover:not(:disabled) { background: #f1d99a; }
+.app-shell .icon-button { background: var(--gold); color: var(--ink); }
+.app-shell .text-button { color: #a64448; font-size: 10px; font-family: 'Galmuri Small', sans-serif; }
+.app-shell select, .app-shell .candy-actions input { background: #fffef7; color: var(--ink); border: 2px solid #70818a; border-radius: 3px; font-size: 12px; }
+.app-shell .segmented { background: #d8e5df; border: 2px solid var(--ink); border-radius: 4px; padding: 3px; }
+.app-shell .segmented button { border-radius: 2px; font-size: 12px; color: #59717b; }
+.app-shell .segmented .selected { background: var(--gold); color: var(--ink); box-shadow: 1px 1px #9ca68d; font-weight: 400; }
+
+/* A little tiled route, with a blue EXP meter below the companion. */
+.app-shell .card-top { padding-top: 13px; }
+.app-shell .companion-card { display: flex; flex-direction: column; }
+.app-shell .pill { color: var(--ink); background: #e7edb9; border: 1px solid #89997b; border-radius: 2px; padding: 5px 8px; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .card-top .small-label { font-size: 10px; letter-spacing: 0; }
+.app-shell .habitat { background: #cfebed; border: 2px solid #637f85; border-radius: 2px; margin-top: 10px; }
+.app-shell .hill { bottom: 19px; background: #a5c982; border-radius: 0; transform: none; clip-path: polygon(0 40%,12% 40%,12% 28%,24% 28%,24% 16%,40% 16%,40% 8%,64% 8%,64% 16%,80% 16%,80% 32%,92% 32%,92% 52%,100% 52%,100% 100%,0 100%); }
+.app-shell .hill-two { background: #c2dca0; }
+.app-shell .ground { height: 24px; border-top: 4px solid #557d53; background-color: #9eb96e; background-image: linear-gradient(90deg,#779754 2px,transparent 2px), linear-gradient(#86a65e 2px,transparent 2px); background-size: 12px 12px; }
+.app-shell .cloud { height: 10px; width: 36px; background: #fffdf0; border-radius: 0; box-shadow: 0 3px #aacbd0; }
+.app-shell .cloud::before { width: 18px; height: 8px; left: 8px; bottom: 8px; border-radius: 0; background: #fffdf0; }
+.app-shell .sun { width: 18px; height: 18px; background: var(--gold); border-radius: 0; box-shadow: 4px 0 #e5b94b, -4px 0 #e5b94b, 0 4px #e5b94b, 0 -4px #e5b94b; }
+.app-shell .grass { bottom: 14px; }
+.app-shell .grass .pixel-icon { width: 22px; height: 22px; }
+.app-shell .companion-description { padding: 10px; }
+.app-shell .companion-description h2 { font-size: 24px; line-height: 1.3; }
+.app-shell .companion-description p { font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .growth > div:first-child { align-items: center; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .growth strong { display: flex; align-items: center; gap: 6px; font-weight: 400; }
+.app-shell .growth > div > span { color: #367c99; }
+.exp-label { padding: 2px 4px; background: #d7edf2; border: 1px solid #4c849b; color: #367c99; line-height: 1; font-size: 10px; }
+.app-shell .progress-track { height: 11px; border: 2px solid var(--ink); border-radius: 2px; background: #dae2d9; }
+.app-shell .progress-track > div { border-radius: 0; background: #65b9d4; box-shadow: inset 0 2px #b5e5ec; }
+.app-shell .growth p { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: var(--muted); line-height: 1.4; }
+.app-shell .companion-actions { margin-top: auto; padding-top: 12px; padding-bottom: 14px; }
+.app-shell .right-column { gap: 12px; }
+.app-shell .today-card { background: #e2eddd; }
+.app-shell .right-column .stat-card { padding: 15px 17px; }
+.app-shell .today-card h2 { font-size: 36px; line-height: 1.1; margin-top: 8px; }
+.app-shell .today-card h2 small { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #5c746d; }
+.app-shell .today-card > p { font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .provider-breakdown { border-color: #a8bcb1; margin-top: 10px; padding-top: 10px; gap: 8px; }
+.app-shell .provider-breakdown span, .app-shell .provider-breakdown strong { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #486570; }
+.app-shell .provider-dot { border-radius: 0; }
+
+/* The blue candy sprite is bundled, so the item pocket also works offline. */
+.app-shell .candy-box { background: #e8edf8; }
+.app-shell .candy-box h3 { display: flex; align-items: center; gap: 4px; color: #395d86; font-size: 12px; font-weight: 400; }
+.app-shell .candy-box h3 .pixel-icon { width: 64px; height: 64px; }
+.candy-quantity { color: #fffbee; background: #527cb0; padding: 2px 4px; margin: 0 2px; border: 1px solid #2b4050; }
+.app-shell .candy-box p { font-family: 'Galmuri Small', sans-serif; font-size: 10px; line-height: 1.4; margin-top: 4px; color: #5b7187; }
+.app-shell .right-column .candy-box { padding: 12px 17px; gap: 10px; }
+.app-shell .right-column .candy-box h3 { font-size: 12px; }
+.app-shell .candy-actions label { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #50667b; }
+.app-shell .candy-actions input { padding: 6px; }
+.app-shell .activity-strip { padding: 13px 10px; background: #fff2c9; }
+.app-shell .activity-strip > div { gap: 8px; }
+.app-shell .activity-strip .pixel-icon { width: 24px; height: 24px; }
+.app-shell .activity-strip div div > span { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #65767a; }
+.app-shell .activity-strip strong { font-size: 12px; font-weight: 400; }
+.app-shell .collection-shortcut { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #a64448; }
+.app-shell .collection-shortcut > span:first-child { gap: 8px; }
+.app-shell .collection-shortcut .pixel-icon { width: 20px; height: 20px; }
+.app-shell .collection-shortcut strong { color: var(--ink); }
+.app-shell .egg-drawer > summary { display: block; border-radius: 2px; padding: 11px 17px; }
+.egg-drawer-heading { display: flex; align-items: center; gap: 12px; }
+.egg-preview { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #c5d0ca; }
+.egg-preview-item { display: inline-flex; align-items: center; gap: 6px; padding: 3px 7px; border: 1px solid #8ba4a7; border-radius: 2px; background: #e5eeed; color: #395766; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.egg-preview-item > span:first-child { width: 16px; height: 22px; display: flex; align-items: center; }
+.egg-preview-item .egg { width: 16px; height: 22px; }
+.egg-preview-item strong { font-weight: 400; color: #306988; }
+.egg-preview-item small { font-size: 10px; color: #617783; padding-left: 5px; border-left: 1px solid #adc0bf; }
+.egg-preview-item.incubating { border-color: #b0974d; background: #fae7ab; }
+.egg-preview-item.incubating small { color: #775f28; border-color: #c9b472; }
+.app-shell .egg-preview-empty { margin-top: 6px; padding-left: 44px; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .egg-drawer > summary:hover { background: #f7eabf; }
+.app-shell .egg-drawer > summary h3 { font-size: 12px; }
+.app-shell .egg-drawer > summary p, .app-shell .egg-drawer-toggle { font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .egg-drawer > .collection-panel { border: 0; border-top: 2px solid var(--ink); border-radius: 0; box-shadow: none; background: #f5f3df; }
+.app-shell .egg-choice { border: 2px solid #99a9a2; border-radius: 3px; background: var(--paper); box-shadow: 2px 2px #bbc3ae; }
+.app-shell .egg-choice.stored { border-color: #70979c; background: #e5f0eb; }
+.app-shell .egg-choice.selected { border-color: var(--ink); background: #fae7ab; }
+.app-shell .egg-choice > .egg-choice-status { align-self: flex-start; padding: 3px 5px; border: 1px solid #b5c1b8; border-radius: 2px; color: #73877e; background: #f4f4e7; font-size: 10px; }
+.app-shell .egg-choice.stored > .egg-choice-status { border-color: #70979c; background: #cfe3dd; color: #436a6b; }
+.app-shell .egg-choice.selected > .egg-choice-status { border-color: #b0974d; background: #f7d878; color: #775f28; }
+.egg-growth { width: 100%; margin-top: 5px; }
+.egg-growth > span { display: flex; justify-content: space-between; gap: 4px; font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #617783; }
+.egg-growth strong { color: #306988; }
+.egg-progress-track { height: 8px; margin-top: 5px; background: #d7e3dc; border: 1px solid #70818a; }
+.egg-progress-track > div { height: 100%; background: #65b9d4; box-shadow: inset 0 1px #b5e5ec; }
+.app-shell .egg-choice .egg-not-started { margin-top: 5px; padding-block: 5px; color: #8c9b8f; }
+.app-shell .egg-choice .egg-choice-action { margin-top: auto; width: 100%; padding-top: 9px; color: #426777; }
+.app-shell .egg-choice strong { font-size: 12px; font-weight: 400; }
+.app-shell .egg-choice small, .app-shell .egg-choice > span, .app-shell .home-footer { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #617783; }
+.app-shell .home-footer small { font-size: 10px; }
+
+/* Pokédex entries and their controls share the same cartridge menu language. */
+.app-shell .dex-toolbar { background: #e1ebea; }
+.app-shell .dex-search { height: 38px; border: 2px solid #70818a; border-radius: 3px; background: #fffef7; }
+.app-shell .dex-search:focus-within { outline-color: #349cbd; }
+.app-shell .dex-search input { font-size: 12px; }
+.app-shell .dex-search input::placeholder { color: #849399; }
+.app-shell .dex-search svg { stroke: #597481; }
+.app-shell .dex-search button { border-radius: 2px; color: var(--ink); background: #dbe6dd; }
+.app-shell .dex-filter { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #486570; }
+.app-shell .dex-filter select { font-family: 'Galmuri', sans-serif; font-size: 12px; }
+.app-shell .dex-filter-summary p { font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .dex-filter-summary strong { color: #395766; font-weight: 400; }
+.app-shell .dex-pagination { border-top-color: #afbfba; }
+.app-shell .dex-pagination button { border: 1px solid #82908c; border-radius: 2px; background: #fff8dd; color: var(--ink); font-size: 12px; }
+.app-shell .dex-pagination button:hover:not(:disabled) { background: #f6dda0; }
+.app-shell .dex-pagination button.current { border-color: var(--ink); background: var(--red); color: #fffbee; font-weight: 400; box-shadow: inset 0 2px #ed8678; }
+.app-shell .dex-pagination select { font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .dex-card { background: #fffdf3; }
+.app-shell .dex-number { font-family: 'Galmuri Small', sans-serif; font-size: 10px; color: #59717d; letter-spacing: 0; padding-bottom: 8px; border-bottom: 1px solid #d5dfd5; }
+.app-shell .dex-card h3 { font-size: 12px; font-weight: 400; }
+.app-shell .dex-card .sprite { margin-top: 10px; }
+.app-shell .dex-card.locked { background: #f0f1e9; border-color: #8e9f9e; }
+.app-shell .dex-card.locked h3 { color: #798b8e; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .dex-card .locked-placeholder { position: relative; margin-top: 10px; font-size: 36px; color: #91a6a5; }
+.app-shell .dex-card .locked-placeholder::before { content: ''; position: absolute; width: 88px; height: 88px; background: url('./assets/poke-ball.png') center / contain no-repeat; image-rendering: pixelated; opacity: .12; }
+.app-shell .type-badges > span { font-family: 'Galmuri Small', sans-serif; font-size: 10px; border: 1px solid #2b405050; border-radius: 2px; text-shadow: 1px 1px #283e5070; }
+.app-shell .dex-badge { border: 1px solid #8aa798; border-radius: 2px; background: #e0efd9; color: #4b6d61; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .dex-card.locked .dex-badge { border-color: #bdc7bd; background: #e3e8df; color: #7e8e85; }
+.app-shell .dex-selected { outline: 0; border-color: var(--red); background: #fff1c5; box-shadow: 3px 3px #d6535033; }
+.app-shell .dex-card.dex-selected .button:disabled { opacity: 1; background: #486777; color: #fffbee; box-shadow: inset 0 2px #73949e, 0 3px #283e5020; }
+.app-shell .dex-card.locked .button { opacity: 1; background: #e1e4d9; border-color: #9baaa3; color: #7b8d87; box-shadow: inset 0 2px #f0f3e9; }
+.app-shell .dex-card .dex-card-actions select { background: #fffef7; border: 1px solid #70818a; border-radius: 2px; color: var(--ink); font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .dex-empty { background: var(--paper); border: 2px dashed #99aaa2; border-radius: 4px; }
+.app-shell .history > div { border-color: #c9d6cb; font-size: 12px; }
+.app-shell .history small, .app-shell .history > p { font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+
+/* Settings are a game options screen, with the same inputs and menu borders. */
+.app-shell .settings-card h3, .app-shell .history h3, .app-shell .panel-heading h3 { font-size: 12px; }
+.app-shell .setting-row { border-color: #c9d6cb; }
+.app-shell .setting-row strong { font-weight: 400; font-size: 12px; }
+.app-shell .setting-row p, .app-shell .section-help, .app-shell .privacy-note, .app-shell .root-row small { font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .toggle { height: 24px; width: 42px; border: 2px solid var(--ink); border-radius: 2px; background: #bcc9c2; padding: 2px; }
+.app-shell .toggle span { width: 16px; height: 16px; border-radius: 0; background: #fffbee; border: 1px solid #667f86; }
+.app-shell .toggle.on { background: #80b591; }
+.app-shell .toggle.on span { transform: translateX(18px); }
+.app-shell .provider-title strong { font-weight: 400; }
+.app-shell .root-row { background: #e7ede4; border: 1px solid #b8c6bc; border-radius: 2px; }
+.app-shell .root-row code { color: #486570; }
+.app-shell .privacy-note { border-color: #c9d6cb; color: #657b83; }
+.app-shell .error-banner { border: 2px solid #b44c4f; border-radius: 3px; background: #ffe4cd; color: #8d3843; font-size: 12px; }
+
+.pet-bubble { font-family: 'Galmuri Small', 'Malgun Gothic', sans-serif; font-size: 10px; color: #2b4050; background: #fffbee; border: 2px solid #2b4050; border-radius: 3px; box-shadow: 2px 2px #2b405033; }
+.pet-bubble small { color: #5f7987; font-size: 10px; }
+.pet-bubble::after { bottom: -7px; width: 10px; height: 7px; background: #2b4050; border: 0; transform: none; clip-path: polygon(0 0,100% 0,50% 100%); }
+.app-shell .sprite-fallback, .pet-body .sprite-fallback { border: 2px solid #70818a; border-radius: 3px; background: #fffbee; color: #4b6d61; font-family: 'Galmuri Small', 'Malgun Gothic', sans-serif; }
+
+@media (max-width: 950px) {
+  .app-shell .right-column .stat-card { padding: 13px 14px; }
+  .app-shell .right-column .candy-box { padding: 10px 14px; }
+  .app-shell .page-heading .segmented button { font-size: 12px; padding-inline: 8px; }
+  .app-shell .activity-strip > div { gap: 5px; }
+  .app-shell .activity-strip .pixel-icon { width: 20px; height: 20px; }
+  .app-shell .dex-page-controls, .app-shell .dex-page-numbers { gap: 4px; }
+  .app-shell .dex-pagination button { min-width: 28px; padding-inline: 7px; }
+}
+@media (max-height: 720px) {
+  .app-shell .topbar { height: 44px; margin-bottom: 12px; }
+  .app-shell .page-heading { margin-bottom: 14px; }
+}

@@ -1,0 +1,216 @@
+import { _electron as electronApp, expect } from '@playwright/test'
+import electron from 'electron'
+import { spawnSync } from 'node:child_process'
+import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { tmpdir } from 'node:os'
+
+const directory = mkdtempSync(join(tmpdir(), 'poketoken-dashboard-'))
+const data = join(directory, 'data')
+const env = { ...process.env, POKETOKEN_DATA_DIR: data, POKETOKEN_TEST_MODE: '1' }
+delete env.ELECTRON_RUN_AS_NODE
+mkdirSync('artifacts', { recursive: true })
+const errors = [], checks = []
+let application, page
+
+async function start() {
+  application = await electronApp.launch({ executablePath: process.env.POKETOKEN_EXE || electron, args: process.env.POKETOKEN_EXE ? [] : ['.'], env, timeout: 60000 })
+  await application.firstWindow()
+  await expect.poll(() => application.windows().some(p => p.url().includes('view=dashboard'))).toBe(true)
+  page = application.windows().find(p => p.url().includes('view=dashboard'))
+  page.on('pageerror', error => errors.push(error.message))
+  await expect.poll(async () => Boolean((await page.evaluate(() => window.desktop.getSnapshot())).lastScan)).toBe(true)
+  await page.evaluate(async () => { await document.fonts.ready })
+}
+const cardIds = () => page.locator('.dex-card').evaluateAll(cards => cards.map(card => Number(card.dataset.species)))
+async function expectIds(ids) { await expect.poll(cardIds).toEqual(ids) }
+async function reset() { await page.getByRole('button', { name: '필터 초기화', exact: true }).click() }
+async function resize(width, height) {
+  const expectedWidth = await application.evaluate(({ BrowserWindow }, size) => {
+    const window = BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=dashboard'))
+    window.setSize(...size)
+    return window.getContentBounds().width
+  }, [width, height])
+  await expect.poll(() => page.evaluate(() => innerWidth)).toBe(expectedWidth)
+}
+async function summaryFits() {
+  await page.evaluate(() => window.scrollTo(0, 0))
+  const layout = await page.evaluate(() => {
+    const summary = document.querySelector('.activity-strip').getBoundingClientRect()
+    return { top: summary.top, bottom: summary.bottom, height: innerHeight, overflow: document.documentElement.scrollWidth > innerWidth }
+  })
+  expect(layout.top).toBeGreaterThanOrEqual(0)
+  expect(layout.bottom).toBeLessThanOrEqual(layout.height)
+  expect(layout.overflow).toBe(false)
+  return layout
+}
+
+try {
+  await start()
+  await page.evaluate(() => window.desktop.updateSettings({ roots: { claude: [], codex: [] }, paused: true, visible: false }))
+  const fixture = (await page.evaluate(() => window.desktop.getSnapshot())).game
+  const now = new Date().toISOString()
+  fixture.pets = [
+    { id: 'pet:1', family: 0, phase: 1, xp: 12500000, shiny: false, eggType: 'grass', obtainedAt: now },
+    { id: 'pet:2', family: 1, phase: 3, xp: 0, shiny: false, eggType: 'fire', obtainedAt: now },
+    { id: 'pet:3', family: 13, phase: 1, xp: 5000000, shiny: true, eggType: 'ghost', obtainedAt: now },
+    { id: 'pet:4', family: 0, phase: 3, xp: 0, shiny: false, eggType: 'grass', obtainedAt: now },
+    { id: 'pet:5', family: null, phase: 0, xp: 250000, shiny: false, eggType: 'fire', obtainedAt: null },
+    { id: 'pet:6', family: null, phase: 0, xp: 375000, shiny: false, eggType: 'grass', obtainedAt: null },
+    { id: 'pet:7', family: null, phase: 0, xp: 100000, shiny: false, eggType: null, obtainedAt: null },
+    { id: 'pet:8', family: null, phase: 0, xp: 0, shiny: false, eggType: 'water', obtainedAt: null }
+  ]
+  Object.assign(fixture, {
+    activeId: 'pet:1', displayPhase: 1, nextId: 9, owned: [1, 2, 3, 4, 5, 6], ownedShiny: [92],
+    candyTokens: 400000, tokensEarned: 163000000,
+    captures: [{ family: 1, petId: 'pet:2', shiny: false, completedAt: now }, { family: 0, petId: 'pet:4', shiny: false, completedAt: now }]
+  })
+  await application.close(); application = null
+  const json = join(directory, 'fixture.json')
+  writeFileSync(json, JSON.stringify(fixture))
+  const seeded = spawnSync(electron, ['scripts/collection-fixture.cjs', join(data, 'poketoken.sqlite'), json], { env: { ...env, ELECTRON_RUN_AS_NODE: '1' }, stdio: 'inherit', windowsHide: true })
+  expect(seeded.status).toBe(0)
+  await start()
+  await expect(page.locator('.egg-drawer')).not.toHaveAttribute('open')
+  await expect(page.locator('.egg-drawer-heading')).toContainText('보관 중인 알 4개 · 부화 중 0개')
+  await expect(page.locator('.egg-preview [data-egg-id="pet:5"]')).toHaveText('불꽃 알50.0%보관 중')
+  await expect(page.locator('.egg-preview [data-egg-id="pet:6"]')).toHaveText('풀 알75.0%보관 중')
+  await expect(page.locator('.egg-preview [data-egg-id="pet:7"]')).toHaveText('기존 알20.0%보관 중')
+  await expect(page.locator('.egg-preview [data-egg-id="pet:8"]')).toHaveText('물 알0.0%보관 중')
+  await expect.poll(() => page.locator('.candy-box img[data-item="rare-candy"]').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true)
+  expect(await page.evaluate(() => document.fonts.check('12px Galmuri') && document.fonts.check('10px "Galmuri Small"'))).toBe(true)
+  const normalLayout = await summaryFits()
+  await page.screenshot({ path: 'artifacts/dashboard-home.png' })
+  await resize(850, 680)
+  await page.screenshot({ path: 'artifacts/dashboard-home-compact.png' })
+  const compactLayout = await summaryFits()
+  await page.locator('.egg-drawer > summary').click()
+  await expect(page.getByRole('button', { name: /알 선택$/ })).toHaveCount(18)
+  await expect(page.getByRole('progressbar', { name: '불꽃 알 부화 진행률' })).toHaveAttribute('aria-valuenow','50')
+  await expect(page.getByRole('progressbar', { name: '풀 알 부화 진행률' })).toHaveAttribute('aria-valuenow','75')
+  await expect(page.getByRole('progressbar', { name: '물 알 부화 진행률' })).toHaveAttribute('aria-valuenow','0')
+  await expect(page.getByRole('progressbar', { name: '기존 알 부화 진행률' })).toHaveAttribute('aria-valuenow','20')
+  await expect(page.locator('[data-egg-type="electric"] .egg-choice-status')).toHaveText('새 알')
+  await expect(page.locator('[data-egg-type="electric"] .egg-progress-track')).toHaveCount(0)
+  await page.screenshot({path:'artifacts/dashboard-egg-storage.png',fullPage:true})
+  await page.getByRole('button', { name: '불꽃 알 선택', exact: true }).click()
+  const switched = await page.evaluate(() => window.desktop.getSnapshot())
+  expect(switched.game.activeId).toBe('pet:5')
+  expect(switched.game.pets.find(p => p.id === 'pet:1').xp).toBe(12500000)
+  await expect(page.getByRole('button', { name: '사탕 먹이기', exact: true })).toBeDisabled()
+  await expect(page.locator('.egg-drawer-heading')).toContainText('보관 중인 알 3개 · 부화 중 1개')
+  await expect(page.locator('.egg-preview [data-egg-id="pet:5"]')).toHaveText('불꽃 알50.0%부화 중')
+  const eggLayout = await summaryFits()
+  await page.getByRole('button',{name:'기존 알 이어 키우기',exact:true}).click()
+  await expect(page.locator('.egg-preview [data-egg-id="pet:7"]')).toHaveText('기존 알20.0%부화 중')
+  await page.evaluate(() => window.desktop.gameAction({ type: 'select', petId: 'pet:2', phase: 3 }))
+  await expect(page.locator('.companion-description h2')).toHaveText('리자몽')
+  const completedLayout = await summaryFits()
+  await page.evaluate(() => window.desktop.gameAction({ type: 'select', petId: 'pet:1', phase: 1 }))
+  checks.push('usage summary fits the default and minimum window; the egg drawer exposes all 18 types and preserves growth when switching')
+  checks.push('collapsed egg storage identifies every stored type and progress, including zero XP and legacy eggs; cards distinguish saved, incubating and new eggs')
+
+  await page.getByRole('button', { name: '나의 도감', exact: false }).first().click()
+  await expect(page.locator('.candy-box')).toHaveCount(0)
+  await expect(page.getByRole('button',{name:'사탕 먹이기',exact:true})).toHaveCount(0)
+  const search = page.getByRole('searchbox', { name: '포켓몬 이름 또는 도감 번호 검색' })
+  const type = page.getByRole('combobox', { name: '도감 타입 필터' })
+  const status = page.getByRole('combobox', { name: '도감 상태 필터' })
+  const topPager = page.getByRole('navigation', { name: '도감 위쪽 페이지 이동' })
+  const bottomPager = page.getByRole('navigation', { name: '도감 아래쪽 페이지 이동' })
+  const pageSelect = topPager.getByRole('combobox', { name: '이동할 도감 페이지' })
+  await expectIds([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  await expect(topPager.getByRole('button', { name: '이전 페이지', exact: true })).toBeDisabled()
+  await topPager.getByRole('button', { name: '다음 페이지', exact: true }).click()
+  await expect(pageSelect).toHaveValue('2')
+  await expect(page.locator('.dex-card')).toHaveCount(9)
+  await bottomPager.getByRole('button', { name: '이전 페이지', exact: true }).click()
+  await expect(pageSelect).toHaveValue('1')
+  await expect.poll(() => page.locator('.dex-toolbar').evaluate(el => Math.abs(el.getBoundingClientRect().top - 16))).toBeLessThanOrEqual(1)
+  const allIds = []
+  for (let n = 1; n <= 6; n++) {
+    await pageSelect.selectOption(String(n))
+    await expect(pageSelect).toHaveValue(String(n))
+    await expect(bottomPager.getByRole('combobox', { name: '이동할 도감 페이지' })).toHaveValue(String(n))
+    await expect(page.locator('.dex-card')).toHaveCount(n === 6 ? 7 : 9)
+    allIds.push(...await cardIds())
+  }
+  expect(allIds).toHaveLength(52)
+  expect(new Set(allIds).size).toBe(52)
+  await expect(topPager.getByRole('button', { name: '다음 페이지', exact: true })).toBeDisabled()
+  await expect(page.getByRole('status')).toContainText('46–52종')
+  await page.screenshot({ path: 'artifacts/dashboard-dex-last-page.png', fullPage: true })
+  checks.push('nine cards per page; every species appears once across six pages; last-page remainder, direct jump, both pagers, boundaries and scroll position work')
+  await search.fill(' 이상 해 '); await expectIds([1, 2, 3])
+  await expect(pageSelect).toHaveValue('1')
+  await search.fill(' No. 004 '); await expectIds([4])
+  await search.fill('#006'); await expectIds([6])
+  await page.getByRole('button', { name: '검색어 지우기', exact: true }).click()
+  await expect(page.locator('.dex-card')).toHaveCount(9)
+  await pageSelect.selectOption('6')
+  await type.selectOption('electric'); await expectIds([172, 25, 26])
+  await expect(pageSelect).toHaveValue('1')
+  await type.selectOption('flying')
+  expect(await cardIds()).toContain(6)
+  await type.selectOption('fire'); await expectIds([4, 5, 6])
+  await status.selectOption('discovered'); await search.fill('리자'); await expectIds([5, 6])
+  await search.fill('없는 포켓몬')
+  await expect(page.getByRole('heading', { name: '조건에 맞는 친구가 없어요' })).toBeVisible()
+  await expect(page.locator('.dex-pagination')).toHaveCount(0)
+  await page.getByRole('button', { name: '전체 도감 보기', exact: true }).click()
+  await expect(page.locator('.dex-card')).toHaveCount(9)
+  await expect(search).toHaveValue(''); await expect(type).toHaveValue('all'); await expect(status).toHaveValue('all')
+  checks.push('name and padded number search, secondary types, combined filters, clearing and empty-state reset work')
+
+  await pageSelect.selectOption('6')
+  await page.getByRole('button', { name: '✦ 이로치 도감', exact: true }).click()
+  await expect(pageSelect).toHaveValue('1')
+  await expect(page.locator('.dex-card')).toHaveCount(9)
+  await page.getByRole('button', { name: '일반 도감', exact: true }).click()
+  await pageSelect.selectOption('6')
+  await status.selectOption('discovered'); await expectIds([1, 2, 3, 4, 5, 6])
+  await expect(pageSelect).toHaveValue('1')
+  await status.selectOption('undiscovered'); await expect(page.locator('.dex-card')).toHaveCount(9)
+  await expect(page.getByRole('status')).toContainText('전체 46종')
+  await pageSelect.selectOption('6')
+  await expect(page.locator('.dex-card')).toHaveCount(1)
+  await status.selectOption('growing'); await expectIds([1])
+  await expect(pageSelect).toHaveValue('1')
+  await expect(page.locator('.dex-badge')).toContainText('25.0%')
+  await status.selectOption('complete'); await expectIds([1, 2, 3, 4, 5, 6])
+  await expect(page.locator('.dex-card[data-species="1"] .dex-badge')).toContainText('진화 완료')
+  await status.selectOption('active'); await expectIds([1])
+  await expect(page.getByRole('combobox', { name: '이상해씨 개체 선택' })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: '이상해씨 선택', exact: true })).toHaveText('함께하는 중')
+  await status.selectOption('discovered')
+  await page.getByRole('button', { name: '✦ 이로치 도감', exact: true }).click(); await expectIds([92])
+  await type.selectOption('poison'); await expectIds([92])
+  await page.screenshot({ path: 'artifacts/dashboard-dex-shiny.png' })
+  await page.getByRole('button', { name: '일반 도감', exact: true }).click(); await expectIds([1, 2, 3])
+  await status.selectOption('active'); await expectIds([1])
+  checks.push('status filters use the selected variant; duplicate individuals show the matching growth state and the active pet remains accurate')
+
+  await reset()
+  const buttonsBelowStatus = await page.locator('.dex-card').evaluateAll(cards => cards.every(card => {
+    const badge = card.querySelector('.dex-badge').getBoundingClientRect()
+    const button = card.querySelector('.button').getBoundingClientRect()
+    return button.top >= badge.bottom && button.left >= card.getBoundingClientRect().left && button.right <= card.getBoundingClientRect().right
+  }))
+  expect(buttonsBelowStatus).toBe(true)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false)
+  await page.screenshot({ path: 'artifacts/dashboard-dex-compact.png' })
+  await resize(1040, 800)
+  await page.screenshot({ path: 'artifacts/dashboard-dex.png', fullPage: true })
+  await status.selectOption('growing')
+  await page.screenshot({ path: 'artifacts/dashboard-dex-filtered.png' })
+  checks.push('all collection buttons sit below their status and fit inside cards at the minimum window width')
+  await page.getByRole('button', { name: '설정', exact: false }).first().click()
+  await expect(page.getByRole('heading', { name: '함께하는 방식' })).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false)
+  await page.screenshot({ path: 'artifacts/dashboard-settings.png', fullPage: true })
+  checks.push('local pixel fonts and the candy sprite load; themed home, dex and settings render without horizontal overflow')
+  expect(errors).toEqual([])
+  const report = { checks, errors, normalLayout, compactLayout, eggLayout, completedLayout }
+  writeFileSync('artifacts/dashboard-report.json', JSON.stringify(report, null, 2))
+  console.log(JSON.stringify(report, null, 2))
+} finally { if (application) await application.close() }

@@ -1,6 +1,6 @@
 {
   "name": "poketoken-desktop",
-  "version": "0.4.1",
+  "version": "0.4.5",
   "private": true,
   "description": "AI coding tokens, a little desktop companion.",
   "main": "out/main/index.js",
@@ -25,6 +25,7 @@
     "smoke:dpi": "node scripts/dpi-smoke.mjs",
     "smoke:health": "node scripts/health-smoke.mjs",
     "smoke:collection": "node scripts/collection-smoke.mjs",
+    "smoke:dashboard": "node scripts/dashboard-smoke.mjs",
     "smoke:input": "node scripts/input-smoke.mjs"
   },
   "dependencies": {

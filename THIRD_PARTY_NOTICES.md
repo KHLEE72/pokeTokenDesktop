@@ -13,7 +13,11 @@ The original MIT license follows below.
 
 ## Pokémon sprites
 
-Sprites are downloaded at runtime from https://github.com/PokeAPI/sprites and cached locally. They are not bundled with this project. Pokémon names and artwork belong to their respective rights holders. This is an unofficial personal fan project and is not affiliated with Nintendo, Game Freak, or The Pokémon Company.
+Creature sprites are downloaded at runtime from https://github.com/PokeAPI/sprites and cached locally. The UI bundles the unmodified `rare-candy.png` and `poke-ball.png` item sprites from that repository at revision `d72f64eb74912747cb5c5579061ced4842ba0a98`. Pokémon names and artwork belong to their respective rights holders. This is an unofficial personal fan project and is not affiliated with Nintendo, Game Freak, or The Pokémon Company.
+
+## Galmuri pixel fonts
+
+The UI bundles unmodified Galmuri11, Galmuri11 Bold, and Galmuri9 web fonts from https://github.com/quiple/galmuri at revision `71e1cacf1437a11220307120e63e30bc275312d4`, by Lee Minseo (quiple). They are licensed under the SIL Open Font License 1.1. The full upstream copyright notice and license are included in `src/renderer/public/licenses/Galmuri-OFL.txt` and distributed in `out/renderer/licenses/Galmuri-OFL.txt`.
 
 ## Runtime dependencies
 
