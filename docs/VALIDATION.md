@@ -13,10 +13,15 @@
 | Windows 실제 portable EXE | 12항목 통과. 자체 추출·preload·SQLite·글꼴/아이콘·알 전환·사용량/성장·투명 펫과 입력·도감 검색/페이지 검증 |
 | Windows 도감·사탕 | 6항목 통과. 개체/알의 진행률 보관, 사탕·이로치·선택 변경·재시작 검증 |
 | Windows 세션 복구 | 기존 6항목 통과. 입력 실패 주입 후 새 창으로 복구, 수동 트레이 복구·포커스·숨김·성장/설정 보존·종료 확인. 실제 Windows 잠금은 모의 이벤트와 구분 |
+| Windows 입력 진단 | 7항목 통과. 입력 단계 기록·캡처 예외·해제 누락·복귀·민감 필드 차단·종료 기록 확인 |
+| Apple Silicon Mac 패키지 | macOS 14.8.9에서 106개 테스트, DMG 생성·서명 확인 통과. 패키지 UI 8항목·성장 9항목·펫 8항목·창 위 동작 9항목·회복 5항목·도감/사탕 6항목·입력 7항목·세션 4항목 및 네이티브 DPI 6조건/72회 이동 통과 |
 
-Windows 패키지 소스는 `cb6e3ee98f338d0f79171ba317b6e77e4fcd28ea`입니다. `952b501a9d492885ae0e0e244bdfafa44c6132d4`는 접힌 알 요약에 맞춘 실행 검사만 수정하며 앱 코드는 같습니다. 검증 화면과 보고서는 로컬 `artifacts/dashboard-*.png`, `artifacts/dashboard-report.json`에 보관하고 Git에는 포함하지 않습니다.
+Windows 패키지 소스는 `cb6e3ee98f338d0f79171ba317b6e77e4fcd28ea`, Mac은 `5c9b7d2d1d9fe0c757cf612cd003223b7c39859d`입니다. 두 커밋의 앱 코드는 같고 이후 변경은 접힌 알 요약에 맞춘 실행 검사, 첫 입력 전 실제 창 표시/클릭 통과 해제를 기다리는 준비 조건과 검증 문서입니다. 입력 검사 종료 시 진단 로그를 테스트 자료에 남깁니다. 검증 화면과 보고서는 로컬 `artifacts/dashboard-*.png`, `artifacts/dashboard-report.json`, `artifacts/mac-arm64-37722028314`에 보관하고 Git에는 포함하지 않습니다.
+
+[Mac CI 37722028314](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37722028314)는 실제 macOS 러너에서 패키지 앱을 실행한 결과이며 사용자 Mac 실기에서의 장시간 검증과 구분합니다. 다운로드 ZIP의 GitHub 아티팩트 해시, DMG 해시·arm64 아키텍처·소스 커밋을 확인했습니다.
 
 - Windows portable SHA-256: `3e8ca037e8f05024184c9f7f0458081fc03accbfef6d11e99bf7a3a2404b161a`
+- Mac arm64 DMG SHA-256: `bad32eca9462bad9ca6dcc937cbd5313a300ab85fd05a74fa70090ec8ee8038d`
 
 ## v0.4.6 Windows 잠금 복귀 입력 창 재생성 (2026-10-08)
 
