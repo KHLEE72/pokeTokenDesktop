@@ -83,6 +83,8 @@ try{
   await dashboard.evaluate(()=>window.desktop.updateSettings({visible:true}));expect((await identity()).visible).toBe(true)
   await click()
   checks.push('a hidden pet stays hidden across repair and can be shown and interacted with afterwards')
+  // The window is already ready, but its 250ms log batch may still be pending.
+  await expect.poll(()=>rows().filter(row=>row.event==='pet.rebuild-complete').length).toBe(windowsRepair?3:0)
   const completed=rows().filter(row=>row.event==='pet.rebuild-complete').length
   await manual();await application.close();application=null
   expect(rows().filter(row=>row.event==='pet.rebuild-complete').length).toBe(completed)
