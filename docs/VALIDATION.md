@@ -13,13 +13,14 @@
 | 기존 펫 동작 | 부화·진화 대사, 잡기·낙하·착지·클릭 대사·복귀 8항목 통과. Windows 복귀 후 새 화면을 다시 선택해 검사 |
 | Windows 패키지 | 세션 복구 6항목·펫 8항목·입력 진단 7항목, 36 DPI/크기/모니터 조건의 432회 이동, 도감/사탕 6항목·픽셀 UI 7항목 통과. 실제 portable EXE 7항목 통과 |
 | Apple Silicon Mac 패키지 | macOS 14.8.9 CI에서 105개 테스트, DMG 생성·서명 확인·성장·펫·창 위 동작·DPI·회복·도감·UI·입력 진단 및 세션 상태 보존 4항목 통과 |
+| 실제 Windows 잠금·해제 | 사용자가 0.4.6으로 직접 잠금·해제 후 클릭·잡기 정상 동작을 확인. 11:49:34 복귀 → 11:49:35 새 창/세대 2 준비 → 누름·핸들러·잡기 시작 3회, 놓기 2회·쓰다듬기 1회가 로그로 연결됨. 포커스 획득·캡처 오류·복구 실패 없음 |
 
 패키지 소스는 `564a49207c149ea2bc4c9cd91d89c71f80d1f136`입니다. 이후 커밋은 테스트의 비동기 로그 대기와 검증 문서를 수정하며 앱 코드는 동일합니다. [Mac CI 37718951586](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37718951586)의 실행은 사용자 Mac에서의 실기 검증과 구분합니다.
 
 - Windows portable SHA-256: `17a665aa9833f3dab435202b3ff24d5d47d975a22712ea7fa1a95cf63ccdff78`
 - Mac arm64 DMG SHA-256: `6f7a716efcb15df43fea183316e5390c70bfa9fb8effab2e64dff6dc199f418b`
 
-자동 검사의 잠금·절전은 `powerMonitor` 이벤트를 모의로 발생시킨 것입니다. 주입한 입력 실패와 네이티브 창 교체는 실제 BrowserWindow에서 검사하지만 실제 Windows 보안 데스크톱 전환을 재현한 것으로 취급하지 않습니다. 실기에서는 새 실행 파일로 잠금·해제 후 `pet.rebuild-complete`, 새 창 ID/세대, `electron.mouse(mouseDown)` → `renderer.handler.down` → `ipc.drag(start)`의 연결을 별도로 확인해야 합니다. [Electron 창 생성·표시 문서](https://www.electronjs.org/docs/latest/api/browser-window), [잠금·복귀 이벤트 문서](https://www.electronjs.org/docs/latest/api/power-monitor)
+자동 검사의 잠금·절전은 `powerMonitor` 이벤트를 모의로 발생시킨 것입니다. 주입한 입력 실패와 네이티브 창 교체는 실제 BrowserWindow에서 검사하지만 실제 Windows 보안 데스크톱 전환을 재현한 것으로 취급하지 않습니다. 별도로 사용자가 실제 Windows 잠금·해제를 수행해 정상 동작을 확인했고, `pet.rebuild-complete`와 새 창 ID/세대, `electron.mouse(mouseDown)` → `renderer.handler.down` → `ipc.drag(start)` 및 놓기·쓰다듬기의 연결을 실제 로그에서 확인했습니다. 원본과 요약은 로컬 `artifacts/real-session-0.4.6-2026-10-08T02-50-30-868Z`에 보관하며 커밋하지 않습니다. 한 차례의 실제 잠금 복귀 검증과 장시간 실사용 검증은 구분합니다. [Electron 창 생성·표시 문서](https://www.electronjs.org/docs/latest/api/browser-window), [잠금·복귀 이벤트 문서](https://www.electronjs.org/docs/latest/api/power-monitor)
 
 ## v0.4.1 클릭·잡기 입력 진단 (2026-10-07)
 
