@@ -1,0 +1,57 @@
+# PokeToken Desktop 작업 안내
+
+Claude Code·Codex의 로컬 토큰 기록으로 포켓몬을 키우는 Windows/macOS 데스크톱 펫이다.
+Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md](README.md), 기존 검증과 알려진 한계는 [docs/VALIDATION.md](docs/VALIDATION.md)를 참고한다.
+
+## 작업 방식
+
+- 개인 프로젝트다. 작은 변경은 기존 코드 스타일에 맞춰 바로 진행하고, 불필요한 절차나 큰 구조 변경을 추가하지 않는다.
+- 설명과 사용자에게 보여주는 문구는 한국어를 기본으로 한다.
+- 요청한 기능에 집중한다. 새로운 의존성이나 추상화는 실제로 필요할 때만 추가한다.
+- 작업 중 반복해서 도움이 될 프로젝트 지식이나 주의점을 확인하면 이 문서를 짧게 보완한다.
+
+## 코드 위치
+
+- `src/main/`: 앱·트레이·창 관리, 펫 이동과 입력, 로그 파싱·스캔, SQLite 저장, 이미지 캐시. 스캔과 저장은 worker에서 처리한다.
+- `src/preload/`: 화면에 노출하는 IPC API. 화면에서 Node.js를 직접 사용하지 않는다.
+- `src/renderer/`: React 관리 화면, 펫 화면과 포인터 이벤트, 스타일.
+- `src/shared/`: 데이터 모델, 성장·사탕·도감 규칙, 포켓몬 목록과 대사.
+- `native/`: Windows PowerShell/Win32 및 macOS Swift 창 감지 보조 프로그램.
+- `tests/`, `scripts/`: 단위·통합 테스트와 Electron 실행 검사, 빌드 도구.
+
+## 실행과 검증
+
+Node.js 22.12 이상과 npm을 사용하며, 의존성 설치는 `npm ci`로 한다.
+
+| 명령 | 용도 |
+| --- | --- |
+| `npm run dev` | 개발 실행 |
+| `npm run typecheck` | TypeScript 검사 |
+| `npm test` | Electron의 Node 런타임으로 테스트 실행 |
+| `npm run build` | 타입 검사·네이티브 준비·앱 빌드 |
+| `npm run smoke` | 빌드된 앱의 성장·저장·화면·재시작 검사 |
+| `npm run dist:win` | `release/`에 Windows x64 portable EXE 생성 |
+
+- 코드 변경은 타입 검사와 관련 테스트로 확인한다. 버그 수정은 재현 조건을 검증하는 테스트가 유용하면 추가한다.
+- 앱 실행에 영향을 주면 빌드 후 실행 검사도 한다. 펫·창·배율·입력 변경은 `package.json`의 관련 `smoke:*` 명령을 선택한다.
+- 문서만 변경하면 내용·링크·명령 확인으로 충분하다. 결과를 보고할 때 실제로 확인한 범위를 적는다.
+- 네이티브 모듈 설치가 실패하면 Electron 호환성과 빌드 도구를 확인한다. Windows에는 C++ 빌드 도구와 Windows SDK, macOS에는 Xcode Command Line Tools가 필요할 수 있다.
+- 릴리스 빌드 전에는 현재 브랜치와 `package.json`의 버전을 확인한다. EXE 생성 후 `npm run smoke:portable`로 실제 실행 파일도 확인한다.
+
+### Windows SDK가 없는 환경에서의 빌드
+
+`better-sqlite3 13.0.3`에는 Windows x64 Node-API 바이너리가 포함되어 있다. v0.4.8에서 아래 방법으로 설치·패키징 후 Electron 테스트와 실제 portable EXE 실행을 확인했다.
+
+- 설치가 자동 재빌드에서 실패하면 `npm ci --ignore-scripts` 후 `node node_modules/electron/install.js`로 Electron을 설치할 수 있다.
+- `npm test`와 `npm run build`가 통과하면 `npm exec electron-builder -- --win portable --x64 --publish never --config.npmRebuild=false`로 이번 빌드의 재빌드만 건너뛴다.
+- 패키지 버전·플랫폼 변경 시에는 동봉 바이너리 호환성을 다시 확인한다. 이 우회를 전역 npm 설정이나 기본 빌드 설정에 넣지 않는다.
+
+## 유지할 동작
+
+- 기존 성장·도감·설정과 SQLite 저장 데이터를 보존한다. 저장 형식을 바꾸면 기존 데이터에서의 이동도 함께 처리한다.
+- 분기 진화는 개체가 실제로 거친 경로와 선택한 목표를 보존한다. 도감에 등록하는 형태와 완료 기록도 실제 진화 결과를 따른다.
+- 최초 연결의 과거 로그는 사용량에만 반영한다. 재시작·로그 이동·세션 보관으로 토큰이나 경험치를 중복 지급하지 않으며, Codex 추론 토큰은 출력에 포함되어 있으므로 다시 더하지 않는다.
+- 펫의 클릭 통과·드래그·낙하·창 착지·절전 복귀와 작업 중인 앱의 키보드 포커스를 유지한다. OS 창 동작은 빌드 성공만으로 검증됐다고 판단하지 않는다.
+- 원본 도구 로그는 읽기만 한다. 대화 본문·인증 정보·키보드 입력·다른 창 제목을 저장하거나 전송하지 않고, 대사는 로컬에서 선택한다.
+- 테스트 실행은 임시 `POKETOKEN_DATA_DIR`와 `POKETOKEN_TEST_MODE=1`을 사용해 실제 성장 데이터와 기본 로그 폴더에서 분리한다.
+- 생성물·실행 파일·개인 로그·DB는 Git에 넣지 않는다. 예외인 테스트 fixture와 필요한 `build/` 아이콘은 기존 `.gitignore`를 따른다.
