@@ -11,6 +11,13 @@
 | 단위·통합 | 8개 파일, 105개 테스트 통과. 새 창 교체·중복 알림·잠금/절전 중첩·재잠금·설정 변경·실패 재시도·종료 취소 6개 추가 |
 | 세션 실행 검사 | Windows 6항목 통과. 기존 창의 입력 실패 주입 후 새 HWND로 클릭/잡기 복구, 실제 트레이 복구 콜백, 성장/설정/관리 화면 보존, 포커스 유지·숨김·종료 확인 |
 | 기존 펫 동작 | 부화·진화 대사, 잡기·낙하·착지·클릭 대사·복귀 8항목 통과. Windows 복귀 후 새 화면을 다시 선택해 검사 |
+| Windows 패키지 | 세션 복구 6항목·펫 8항목·입력 진단 7항목, 36 DPI/크기/모니터 조건의 432회 이동, 도감/사탕 6항목·픽셀 UI 7항목 통과. 실제 portable EXE 7항목 통과 |
+| Apple Silicon Mac 패키지 | macOS 14.8.9 CI에서 105개 테스트, DMG 생성·서명 확인·성장·펫·창 위 동작·DPI·회복·도감·UI·입력 진단 및 세션 상태 보존 4항목 통과 |
+
+패키지 소스는 `564a49207c149ea2bc4c9cd91d89c71f80d1f136`입니다. 이후 커밋은 테스트의 비동기 로그 대기와 검증 문서를 수정하며 앱 코드는 동일합니다. [Mac CI 37718951586](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37718951586)의 실행은 사용자 Mac에서의 실기 검증과 구분합니다.
+
+- Windows portable SHA-256: `17a665aa9833f3dab435202b3ff24d5d47d975a22712ea7fa1a95cf63ccdff78`
+- Mac arm64 DMG SHA-256: `6f7a716efcb15df43fea183316e5390c70bfa9fb8effab2e64dff6dc199f418b`
 
 자동 검사의 잠금·절전은 `powerMonitor` 이벤트를 모의로 발생시킨 것입니다. 주입한 입력 실패와 네이티브 창 교체는 실제 BrowserWindow에서 검사하지만 실제 Windows 보안 데스크톱 전환을 재현한 것으로 취급하지 않습니다. 실기에서는 새 실행 파일로 잠금·해제 후 `pet.rebuild-complete`, 새 창 ID/세대, `electron.mouse(mouseDown)` → `renderer.handler.down` → `ipc.drag(start)`의 연결을 별도로 확인해야 합니다. [Electron 창 생성·표시 문서](https://www.electronjs.org/docs/latest/api/browser-window), [잠금·복귀 이벤트 문서](https://www.electronjs.org/docs/latest/api/power-monitor)
 
