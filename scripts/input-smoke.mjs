@@ -23,6 +23,11 @@ try {
     const bounds=BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=pet')).getContentBounds()
     screen.getCursorScreenPoint=()=>({x:bounds.x+80,y:bounds.y+110})
   })
+  // The initial scan can finish before the non-activating pet window is shown
+  // or the controller's next cursor sample has cleared click-through on macOS.
+  // Wait for those real readiness conditions before sending the first press.
+  await expect.poll(()=>application.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=pet')).isVisible())).toBe(true)
+  await expect.poll(()=>rows().findLast(row=>row.event==='controller.input-mode')?.data.ignoringMouse===false,{timeout:10000}).toBe(true)
   await pet.mouse.move(80,110);await pet.mouse.down()
   await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion','held')
   // A different pointer's capture loss must not cancel this active press.
@@ -69,4 +74,8 @@ try {
   mkdirSync('artifacts',{recursive:true})
   writeFileSync('artifacts/input-report.json',JSON.stringify({checks,errors,logPath,events:rows().length,executablePath:process.env.POKETOKEN_EXE||electron},null,2))
   console.log(JSON.stringify({checks,errors,events:rows().length},null,2))
-}finally{if(application)await application.close()}
+}finally{
+  if(application)await application.close()
+  mkdirSync('artifacts',{recursive:true})
+  writeFileSync('artifacts/input-diagnostics.jsonl',rows().map(row=>JSON.stringify(row)).join('\n')+'\n')
+}
