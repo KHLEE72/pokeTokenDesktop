@@ -177,6 +177,7 @@ else {
       if (value.type === 'egg' && EGG_TYPES.some(t=>t.id===value.eggType)) action={type:'egg',eggType:value.eggType}
       else if (value.type === 'select' && typeof value.petId==='string' && value.petId.length<80 && Number.isInteger(value.phase) && value.phase>=0 && value.phase<=3) action={type:'select',petId:value.petId,phase:value.phase}
       else if (value.type === 'candy' && Number.isSafeInteger(value.count) && value.count>0 && value.count<=1e9) action={type:'candy',count:value.count}
+      else if (value.type === 'target' && (value.speciesId===null || Number.isInteger(value.speciesId))) action={type:'target',speciesId:value.speciesId}
       else throw new Error('잘못된 요청')
       await request('game',undefined,action)
     })

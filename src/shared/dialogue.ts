@@ -1,4 +1,5 @@
 import { EGG_TYPES, POKEMON } from './model'
+import { EEVEE_DIALOGUES } from './eevee-dialogue'
 export type DialogueEvent = 'idle' | 'held' | 'falling' | 'landing' | 'growth' | 'usage' | 'petting'
 type Lines = Record<DialogueEvent, readonly string[]>
 
@@ -98,6 +99,7 @@ export const DIALOGUES: Record<number, Lines> = {
 
 // Example-roster lines are original local text, with names/type personalities.
 const moods: Record<string,string> = {normal:'느긋하게',fire:'따뜻하게',water:'물결처럼',electric:'찌릿찌릿',grass:'싱그럽게',ice:'시원하게',fighting:'씩씩하게',poison:'조심스럽게',ground:'단단하게',flying:'가볍게',psychic:'차분하게',bug:'부지런하게',rock:'듬직하게',ghost:'살며시',dragon:'당당하게',dark:'조용하게',steel:'튼튼하게',fairy:'반짝반짝'}
+Object.assign(DIALOGUES,EEVEE_DIALOGUES)
 for (const p of POKEMON) if (!DIALOGUES[p.id]) {
   const tone=moods[p.types[0]],type=EGG_TYPES.find(t=>t.id===p.types[0])!.name
   DIALOGUES[p.id]={

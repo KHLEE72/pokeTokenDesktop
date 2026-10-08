@@ -295,6 +295,11 @@ export const FAMILIES = [
       35,
       36
     ]
+  },
+  {
+    "family": 18,
+    "eggTypes": ["normal"],
+    "species": [133, 134, 135, 136, 196, 197, 470, 471, 700]
   }
 ] as const
 export const POKEMON = [
@@ -790,5 +795,25 @@ export const POKEMON = [
     "types": [
       "fairy"
     ]
-  }
+  },
+  { "id": 133, "name": "이브이", "family": 18, "phase": 1, "types": ["normal"] },
+  { "id": 134, "name": "샤미드", "family": 18, "phase": 2, "types": ["water"] },
+  { "id": 135, "name": "쥬피썬더", "family": 18, "phase": 2, "types": ["electric"] },
+  { "id": 136, "name": "부스터", "family": 18, "phase": 2, "types": ["fire"] },
+  { "id": 196, "name": "에브이", "family": 18, "phase": 2, "types": ["psychic"] },
+  { "id": 197, "name": "블래키", "family": 18, "phase": 2, "types": ["dark"] },
+  { "id": 470, "name": "리피아", "family": 18, "phase": 2, "types": ["grass"] },
+  { "id": 471, "name": "글레이시아", "family": 18, "phase": 2, "types": ["ice"] },
+  { "id": 700, "name": "님피아", "family": 18, "phase": 2, "types": ["fairy"] }
 ] as const
+
+// Family species lists are rosters. Actual growth follows this graph, so the
+// eight Eevee leaves are alternatives rather than eight sequential stages.
+const evolutionGraph: Record<number, readonly number[]> = Object.fromEntries(POKEMON.map(p=>[p.id,[]]))
+for (const family of FAMILIES) {
+  if (family.family === 18) continue
+  const species: readonly number[] = family.species
+  for (let i=0;i<species.length-1;i++) evolutionGraph[species[i]]=[species[i+1]]
+}
+evolutionGraph[133]=[134,135,136,196,197,470,471,700]
+export const EVOLUTIONS: Readonly<Record<number, readonly number[]>> = evolutionGraph

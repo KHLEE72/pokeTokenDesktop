@@ -1,6 +1,6 @@
 import Database from 'better-sqlite3'
 import { GameAction, GameState, Settings, Snapshot, UsageRecord, defaultSettings, newGame, totalTokens } from '../shared/model'
-import { advanceGame, changePace, gameAction, LegacyGame, migrateGame } from '../shared/game'
+import { advanceGame, changePace, gameAction, LegacyGame, migrateGame, upgradeGrowthPaths } from '../shared/game'
 import { ParsedFile } from './parsers'
 import { scanRoots } from './paths'
 
@@ -25,6 +25,11 @@ export class Store {
     if (!this.get('game-v2')) this.db.transaction(() => {
       const legacy = this.get<LegacyGame>('game')
       this.set('game-v2', legacy ? migrateGame(legacy,new Date().toISOString()) : newGame())
+    })()
+    const game=this.game
+    if (game.pets.some(p=>!p.path || p.evolutionTarget===undefined) || game.captures.some(c=>!c.speciesId)) this.db.transaction(()=>{
+      if (!this.get('game-before-branches')) this.set('game-before-branches',game)
+      upgradeGrowthPaths(game);this.set('game-v2',game)
     })()
     const settings = this.get<Settings>('settings')
     if (!settings) this.set('settings', defaultSettings())

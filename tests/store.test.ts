@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Store } from '../src/main/store'
 import { UsageRecord } from '../src/shared/model'
-import { activePet } from '../src/shared/game'
+import { activePet, advanceGame, gameAction, speciesId } from '../src/shared/game'
 import { removeTestDirectory } from './temp'
 const stores: Store[] = [], dirs: string[] = []
 const make = (): { path: string; store: Store } => {
@@ -67,6 +67,47 @@ describe('atomic usage ledger', () => {
     const reopened=new Store(path);stores.push(reopened)
     expect(reopened.settings).toEqual({...legacy,theme:'dark'})
     expect(reopened.game).toEqual(game)
+  })
+  it('keeps an original growth backup and upgrades existing paths and capture identities exactly once',()=>{
+    const {path,store}=make(),game=store.game
+    advanceGame(game,150_600_001,'fast',new Date().toISOString(),()=>.5)
+    delete activePet(game).path;delete activePet(game).evolutionTarget;delete game.captures[0].speciesId
+    store.set('game-v2',game);store.close()
+    const reopened=new Store(path);stores.push(reopened)
+    expect(reopened.get('game-before-branches')).toEqual(game)
+    expect(activePet(reopened.game).path).toEqual([1,2,3]);expect(reopened.game.captures[0].speciesId).toBe(3)
+    expect(reopened.game.candyTokens).toBe(100_001);expect(reopened.game.tokensEarned).toBe(150_600_001)
+    reopened.updateSettings({theme:'dark'});reopened.close()
+    const twice=new Store(path);stores.push(twice)
+    expect(twice.get('game-before-branches')).toEqual(game);expect(twice.settings.theme).toBe('dark')
+  })
+  it('persists a waiting Eevee and its chosen branch without double credit after rescan or restart',()=>{
+    const {path,store}=make(),game=store.game,now=new Date().toISOString()
+    gameAction(game,{type:'egg',eggType:'normal'},'fast',now);advanceGame(game,500_000,'fast',now,()=>.999)
+    store.set('game-v2',game)
+    const r=record('branch',50_150_001);store.sync([r],new Set(),linked([r]))
+    expect(activePet(store.game).xp).toBe(50_000_000);expect(store.game.candyTokens).toBe(150_001)
+    store.close();const reopened=new Store(path);stores.push(reopened)
+    reopened.sync([r],new Set(),linked([r]));expect(reopened.game.candyTokens).toBe(150_001)
+    reopened.act({type:'target',speciesId:197});expect(speciesId(reopened.game)).toBe(197)
+    const completed=reopened.game
+    expect(completed.captures[0].speciesId).toBe(197)
+    expect(()=>reopened.act({type:'target',speciesId:700})).toThrow();expect(reopened.game).toEqual(completed)
+    reopened.close();const twice=new Store(path);stores.push(twice)
+    twice.sync([r],new Set(),linked([r]));expect(twice.game).toEqual(completed)
+  })
+  it('remembers an unfinished evolution goal and credits offline evolution once',()=>{
+    const {path,store}=make(),game=store.game,now=new Date().toISOString()
+    gameAction(game,{type:'egg',eggType:'normal'},'fast',now);advanceGame(game,500_000,'fast',now,()=>.999)
+    store.set('game-v2',game);store.act({type:'target',speciesId:700});store.close()
+    const reopened=new Store(path);stores.push(reopened)
+    expect(activePet(reopened.game).evolutionTarget).toBe(700)
+    const r=record('offline-branch',50_100_001)
+    reopened.sync([r],new Set(),linked([r]));expect(speciesId(reopened.game)).toBe(700)
+    expect(reopened.game.candyTokens).toBe(100_001)
+    const completed=reopened.game;reopened.close()
+    const twice=new Store(path);stores.push(twice)
+    twice.sync([r],new Set(),linked([r]));expect(twice.game).toEqual(completed)
   })
   it('migrates once, retains the old game and ledger, and persists selections and candies',()=>{
     const {path,store}=make(),r=record('counted',150_600_000)

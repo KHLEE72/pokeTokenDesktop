@@ -76,8 +76,9 @@ describe('growth, candy and collection',()=>{
     advanceGame(game,500_000,'fast',now,normal)
     const pet=activePet(game),family=FAMILIES[pet.family!]
     expect(eggFamilies(type)).toContain(pet.family)
+    if (pet.family===18) gameAction(game,{type:'target',speciesId:134},'fast',now)
     advanceGame(game,150_000_000,'fast',now,normal)
-    expect(speciesId(game)).toBe(family.species.at(-1));expect(pet.phase).toBe(family.species.length)
+    expect(speciesId(game)).toBe(pet.family===18 ? 134 : family.species.at(-1));expect(pet.phase).toBe(pet.family===18 ? 2 : family.species.length)
     expect(game.captures).toHaveLength(1)
   })
   it('preserves all saved growth percentages on pace changes and keeps the candy bank unchanged',()=>{
@@ -95,8 +96,8 @@ describe('growth, candy and collection',()=>{
     expect(activePet(egg).eggType).toBeNull();expect(activePet(egg).xp).toBe(250_000)
   })
   it('has a unique example catalog with an evolution chain for every egg type',()=>{
-    expect(POKEMON).toHaveLength(52);expect(FAMILIES).toHaveLength(18)
-    expect(new Set(POKEMON.map(p=>p.id)).size).toBe(52)
+    expect(POKEMON).toHaveLength(61);expect(FAMILIES).toHaveLength(19)
+    expect(new Set(POKEMON.map(p=>p.id)).size).toBe(61)
     for(const type of EGG_TYPES)expect(eggFamilies(type.id).length).toBeGreaterThan(0)
   })
   it('does not grow from invalid or negative usage',()=>{

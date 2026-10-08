@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { version } from '../../../package.json'
 import { Snapshot, Settings, POKEMON, DisplayChoice, PetMotion, PetInputTrace, EGG_TYPES, FAMILIES, EggType, GameAction, GameState, Companion } from '../../shared/model'
-import { activePet, candyCount, CANDY_XP, dexChoices, discoveredSpecies, eggFamilies, finalPhase, isGrowing, speciesId, threshold } from '../../shared/game'
+import { activePet, candyCount, CANDY_XP, capturedSpecies, dexChoices, discoveredSpecies, eggFamilies, evolutionOptions, finalPhase, isGrowing, speciesId, threshold, waitingForEvolution } from '../../shared/game'
 import { usePetDialogue } from './pet-dialogue'
 import { PixelIcon, PixelIconKind } from './pixel-icons'
 import './style.css'
@@ -189,7 +189,7 @@ function EggStorage({game,pace,busy,act}:{game:GameState;pace:Settings['pace'];b
   </summary><EggSelection game={game} pace={pace} busy={busy} act={act}/></details>
 }
 function CandyBox({game,pace,busy,act,compact=false}:{game:GameState;pace:Settings['pace'];busy:boolean;act:(action:GameAction)=>void;compact?:boolean}):React.JSX.Element {
-  const [amount,setAmount]=useState(1), count=candyCount(game),pet=activePet(game),canFeed=isGrowing(game)&&pet.phase>0
+  const [amount,setAmount]=useState(1), count=candyCount(game),pet=activePet(game),canFeed=isGrowing(game)&&pet.phase>0&&!waitingForEvolution(pet,pace)
   const next=canFeed ? Math.ceil((threshold(pet.phase,pace)-pet.xp)/CANDY_XP) : 0
   return <section className="collection-panel candy-box"><div><h3><PixelIcon kind="candy"/><span>경험치사탕 <span className="candy-quantity" data-testid="candy-count">{count.toLocaleString('ko-KR')}</span>개</span></h3><p>1개 = 10만 XP · 다음 사탕까지 {(CANDY_XP-game.candyTokens%CANDY_XP).toLocaleString('ko-KR')} 토큰</p>
     {(!compact || !canFeed) && <p>{pet.phase===0 ? '알은 토큰으로만 부화해요.' : canFeed ? '토큰으로 자동 성장하며 사탕으로도 키울 수 있어요.' : compact ? '새 토큰은 사탕으로 쌓여요.' : '완성한 모습이에요. 새 토큰은 사탕으로 쌓입니다.'}</p>}</div>
@@ -206,7 +206,7 @@ function DexCard({game,pace,p,shiny,status,busy,act}:{game:GameState;pace:Settin
     {pet ? <Sprite id={p.id} shiny={shiny}/> : <div className="locked-placeholder">?</div>}<h3>{pet ? p.name : '아직 만나지 못했어요'}</h3>
     <div className="type-badges">{p.types.map(type=><span key={type} style={{background:EGG_TYPES.find(t=>t.id===type)?.color}}>{EGG_TYPES.find(t=>t.id===type)?.name}</span>)}</div>
     <div className="dex-card-actions">
-      <span className="dex-badge">{pet ? growing ? `자동 성장 · ${(pet.xp/threshold(pet.phase,pace)*100).toFixed(1)}%` : '진화 완료 · 사탕 적립' : '미발견'}</span>
+      <span className="dex-badge">{pet ? growing ? waitingForEvolution(pet,pace) ? '진화 대기 · 목표 선택' : `자동 성장 · ${(pet.xp/threshold(pet.phase,pace)*100).toFixed(1)}%` : '진화 완료 · 사탕 적립' : '미발견'}</span>
       {choices.length>1 && <select aria-label={`${p.name} 개체 선택`} value={pet.id} onChange={e=>setChosen(e.target.value)}>{choices.map((c,i)=><option key={c.id} value={c.id}>{i+1}번째 친구 · {growingAppearance(c,p.phase) ? `${(c.xp/threshold(c.phase,pace)*100).toFixed(1)}% 성장` : '이 모습의 진화 완료'}</option>)}</select>}
       <button className="button primary" aria-label={`${shiny?'이로치 ':''}${p.name} 선택`} disabled={busy || !pet || active} onClick={()=>act({type:'select',petId:pet.id,phase:p.phase})}>{active ? '함께하는 중' : pet ? '함께하기' : '부화해서 만나기'}</button>
     </div>
@@ -249,6 +249,7 @@ function App(): React.JSX.Element {
   if (!snapshot) return <main className="loading"><Egg/><p>작은 친구를 깨우는 중…</p></main>
   const { game, settings } = snapshot
   const pet=activePet(game), growing=isGrowing(game), discovered=discoveredSpecies(game)
+  const waiting=waitingForEvolution(pet,settings.pace)&&growing,branches=growing ? evolutionOptions(pet) : []
   const id = speciesId(game), name = id ? `${pet.shiny ? '✦ 이로치 ' : ''}${POKEMON.find(p => p.id === id)!.name}` : `${EGG_TYPES.find(t=>t.id===pet.eggType)?.name ?? '기존'} 알`
   const goal = growing ? threshold(pet.phase, settings.pace) : 0, progress = goal ? Math.min(100, pet.xp / goal * 100) : 100
   const today = snapshot.usage.claude.today + snapshot.usage.codex.today
@@ -286,10 +287,10 @@ function App(): React.JSX.Element {
       {tab === 'home' && <section className="home-page" aria-label="현재 펫과 사용량">
         <div className="page-heading"><div><h1>오늘도, 함께 성장해요<span>✦</span></h1><p>코딩에 쓴 토큰이 작은 친구의 경험치가 됩니다.</p></div><button className="button subtle" disabled={busy || snapshot.scanning} onClick={() => void run(() => window.desktop.refresh())}>{snapshot.scanning ? '확인 중…' : '↻ 새로고침'}</button></div>
         <div className="home-grid">
-          <section className="companion-card"><div className="card-top"><span className="pill">{pet.phase === 0 ? '부화를 기다리는 중' : growing ? `성장 단계 ${pet.phase} / ${finalPhase(pet)}` : '경험치사탕을 모으는 중'}</span><button className="companion-dex-link" title={`나의 도감 ${discovered.length} / ${POKEMON.length}종 · 이로치 ${game.ownedShiny.length}종`} onClick={()=>setTab('dex')}><PixelIcon kind="dex"/>도감 {discovered.length}/{POKEMON.length} →</button></div>
+          <section className="companion-card"><div className="card-top"><span className="pill">{pet.phase === 0 ? '부화를 기다리는 중' : waiting ? '진화 목표를 기다리는 중' : growing ? `성장 단계 ${pet.phase} / ${finalPhase(pet)}` : '경험치사탕을 모으는 중'}</span><button className="companion-dex-link" title={`나의 도감 ${discovered.length} / ${POKEMON.length}종 · 이로치 ${game.ownedShiny.length}종`} onClick={()=>setTab('dex')}><PixelIcon kind="dex"/>도감 {discovered.length}/{POKEMON.length} →</button></div>
             <div className="habitat"><div className="cloud cloud-one"/><div className="cloud cloud-two"/><div className="sun"/><div className="hill hill-one"/><div className="hill hill-two"/><div className="ground"/><div className="habitat-sprite"><Sprite id={id} shiny={pet.shiny} eggType={pet.eggType}/></div><span className="grass grass-one"><PixelIcon kind="grass"/></span><span className="grass grass-two"><PixelIcon kind="grass"/></span></div>
             <div className="companion-description"><h2>{name}</h2><p>{pet.phase === 0 ? '어떤 친구가 태어날까요?' : growing ? '당신의 코딩 시간을 차곡차곡 기억하고 있어요.' : '이 모습으로 함께하며 다음 친구를 위한 사탕을 모아요.'}</p></div>
-            <div className="growth"><div><strong><span className="exp-label">EXP</span>{growing ? `${labels[pet.phase]}까지` : '이 모습의 진화 완료'}</strong><span>{progress.toFixed(1)}%</span></div><div className="progress-track"><div style={{ width: `${progress}%` }}/></div><p>{growing ? <><span>{format(pet.xp)} / {format(goal)} XP</span><span>{format(Math.max(0, goal - pet.xp))} XP 남음</span></> : <span>알 또는 성장 중인 포켓몬을 고르면 자동 성장을 이어갑니다.</span>}</p></div>
+            <div className="growth"><div><strong><span className="exp-label">EXP</span>{branches.length>1 ? <select className={`evolution-target ${waiting ? 'awaiting-target' : ''}`} aria-label="진화 목표" value={pet.evolutionTarget ?? ''} disabled={busy} onChange={e=>act({type:'target',speciesId:e.target.value ? Number(e.target.value) : null})}><option value="">진화 목표 선택</option>{branches.map(id=><option key={id} value={id}>{POKEMON.find(p=>p.id===id)!.name}{(pet.shiny ? game.ownedShiny : game.owned).includes(id) ? ' · 도감 등록' : ''}</option>)}</select> : growing ? `${labels[pet.phase]}까지` : '이 모습의 진화 완료'}</strong><span>{progress.toFixed(1)}%</span></div><div className="progress-track" role="progressbar" aria-label="현재 펫 성장 진행률" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Number(progress.toFixed(1))}><div style={{ width: `${progress}%` }}/></div><p>{waiting ? <span>목표를 고르면 진화해요 · 새 토큰은 사탕으로</span> : growing ? <><span>{format(pet.xp)} / {format(goal)} XP</span><span>{format(Math.max(0, goal - pet.xp))} XP 남음</span></> : <span>알 또는 성장 중인 포켓몬을 고르면 자동 성장을 이어갑니다.</span>}</p></div>
             <div className="companion-actions"><button className="button primary" disabled={busy} onClick={() => update({ visible: !settings.visible })}>{settings.visible ? '데스크톱 펫 숨기기' : '데스크톱 펫 보이기'}</button><button className="button icon-button" title={settings.paused ? '다시 걷기' : '이동 일시정지'} aria-label={settings.paused ? '다시 걷기' : '이동 일시정지'} onClick={() => update({ paused: !settings.paused })}>{settings.paused ? '▷' : 'Ⅱ'}</button></div>
           </section>
           <div className="right-column"><section className="stat-card today-card"><span className="small-label">TODAY'S TOKENS</span><h2>{format(today)}<small>토큰</small></h2><p>오늘의 코딩이 남긴 발자국</p><div className="provider-breakdown"><span><i className="provider-dot claude"/>Claude Code <strong>{format(snapshot.usage.claude.today)}</strong></span><span><i className="provider-dot codex"/>Codex <strong>{format(snapshot.usage.codex.today)}</strong></span></div></section>
@@ -301,7 +302,7 @@ function App(): React.JSX.Element {
         <footer className="home-footer"><span title={snapshot.notice ?? undefined}>{snapshot.notice ? `✦ ${snapshot.notice}` : '새로 쓰는 토큰으로 성장합니다. 기존 기록은 사용량에만 표시됩니다.'}</span><small>{snapshot.lastScan ? `${new Date(snapshot.lastScan).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' })} 확인` : '첫 기록을 확인하는 중'}</small></footer>
       </section>}
       {tab === 'dex' && <>
-        <div className="page-heading"><div><h1>나의 작은 도감</h1><p>18개 진화 계열 · {discovered.length} / {POKEMON.length}종 발견 · 이로치 {game.ownedShiny.length}종</p></div><div className="segmented"><button className={!shinyDex ? 'selected' : ''} aria-pressed={!shinyDex} onClick={()=>{setShinyDex(false);setDexPage(1)}}>일반 도감</button><button className={shinyDex ? 'selected' : ''} aria-pressed={shinyDex} onClick={()=>{setShinyDex(true);setDexPage(1)}}>✦ 이로치 도감</button></div></div>
+        <div className="page-heading"><div><h1>나의 작은 도감</h1><p>{FAMILIES.length}개 진화 계열 · {discovered.length} / {POKEMON.length}종 발견 · 이로치 {game.ownedShiny.length}종</p></div><div className="segmented"><button className={!shinyDex ? 'selected' : ''} aria-pressed={!shinyDex} onClick={()=>{setShinyDex(false);setDexPage(1)}}>일반 도감</button><button className={shinyDex ? 'selected' : ''} aria-pressed={shinyDex} onClick={()=>{setShinyDex(true);setDexPage(1)}}>✦ 이로치 도감</button></div></div>
         <section ref={dexToolbar} className="dex-toolbar" aria-label="도감 검색 및 필터">
           <div className="dex-filter-controls">
             <div className="dex-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" aria-label="포켓몬 이름 또는 도감 번호 검색" placeholder="이름 또는 도감 번호 검색" value={dexSearch} onChange={e=>{setDexSearch(e.target.value);setDexPage(1)}}/>{dexSearch && <button aria-label="검색어 지우기" onClick={()=>{setDexSearch('');setDexPage(1)}}>×</button>}</div>
@@ -312,7 +313,7 @@ function App(): React.JSX.Element {
           {filteredPokemon.length>0 && <DexPagination page={currentDexPage} pages={dexPages} position="top" onChange={changeDexPage}/>}
         </section>
         {filteredPokemon.length ? <><div className="dex-grid">{pagePokemon.map(p=><DexCard key={`${p.id}:${shinyDex}:${dexStatus}`} game={game} pace={settings.pace} p={p} shiny={shinyDex} status={dexStatus} busy={busy} act={act}/>)}</div><DexPagination page={currentDexPage} pages={dexPages} position="bottom" onChange={changeDexPage}/></> : <div className="dex-empty"><span aria-hidden="true">⌕</span><h3>조건에 맞는 친구가 없어요</h3><p>검색어를 바꾸거나 타입·상태 필터를 풀어보세요.</p><button className="button subtle" onClick={resetDexFilters}>전체 도감 보기</button></div>}
-        <section className="history"><h3>최종 진화 기록</h3>{game.captures.length ? game.captures.slice(-20).reverse().map(c => <div key={c.petId}><span>{c.shiny ? '✦ 이로치 ' : ''}{POKEMON.find(p=>p.id===FAMILIES[c.family].species.at(-1))!.name}</span><small>{new Date(c.completedAt).toLocaleString('ko-KR')}</small></div>) : <p>첫 친구가 최종 진화하면 여기에 기록됩니다.</p>}</section>
+        <section className="history"><h3>최종 진화 기록</h3>{game.captures.length ? game.captures.slice(-20).reverse().map(c => <div key={c.petId}><span>{c.shiny ? '✦ 이로치 ' : ''}{POKEMON.find(p=>p.id===capturedSpecies(game,c))!.name}</span><small>{new Date(c.completedAt).toLocaleString('ko-KR')}</small></div>) : <p>첫 친구가 최종 진화하면 여기에 기록됩니다.</p>}</section>
       </>}
       {tab === 'settings' && <>
         <div className="page-heading"><div><h1>함께하는 방식</h1><p>성장 속도와 데스크톱 펫을 내 취향에 맞춰보세요.</p></div></div>

@@ -5,26 +5,28 @@ export interface UsageRecord extends Tokens { id: string; provider: Provider; ti
 export const totalTokens = (v: Tokens): number => v.input + v.output + v.cacheRead + v.cacheWrite
 export const emptyTokens = (): Tokens => ({ input: 0, output: 0, cacheRead: 0, cacheWrite: 0 })
 import { EggType } from './catalog'
-export { POKEMON, EGG_TYPES, FAMILIES } from './catalog'
+export { POKEMON, EGG_TYPES, FAMILIES, EVOLUTIONS } from './catalog'
 export type { EggType } from './catalog'
-export interface Capture { family: number; completedAt: string; petId: string; shiny: boolean }
+export interface Capture { family: number; completedAt: string; petId: string; shiny: boolean; speciesId?: number }
 export interface Companion {
   id: string; family: number | null; phase: number; xp: number; shiny: boolean
   eggType: EggType | null; obtainedAt: string | null
+  // Optional on older v2 saves; backfilled once without recrediting usage.
+  path?: number[]; evolutionTarget?: number | null
 }
 export interface GameState {
   version: 2; tokensEarned: number; candyTokens: number; nextId: number
   pets: Companion[]; activeId: string; displayPhase: number
   owned: number[]; ownedShiny: number[]; captures: Capture[]
 }
-export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number }
+export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null }
 export interface Settings {
   pace: Pace; size: 96 | 128 | 192; displayId: string | null; visible: boolean
   paused: boolean; autoStart: boolean; theme: 'light' | 'dark'; roots: Record<Provider, string[]>
 }
 export const defaultSettings = (): Settings => ({ pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, theme: 'light', roots: { claude: [], codex: [] } })
 export const newGame = (): GameState => ({ version: 2, tokensEarned: 0, candyTokens: 0, nextId: 2,
-  pets: [{ id: 'pet:1', phase: 0, family: null, xp: 0, shiny: false, eggType: 'grass', obtainedAt: null }],
+  pets: [{ id: 'pet:1', phase: 0, family: null, xp: 0, shiny: false, eggType: 'grass', obtainedAt: null, path: [], evolutionTarget: null }],
   activeId: 'pet:1', displayPhase: 0, owned: [], ownedShiny: [], captures: [] })
 export interface RootStatus {
   provider: Provider; path: string; state: 'connected' | 'missing' | 'error'

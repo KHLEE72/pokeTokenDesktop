@@ -82,7 +82,7 @@ try{
   await expect(page.locator('.dex-card')).toHaveCount(9)
   const pager=page.getByRole('navigation',{name:'도감 위쪽 페이지 이동'})
   await expect(pager.getByRole('button',{name:'이전 페이지',exact:true})).toBeDisabled()
-  await pager.getByRole('combobox',{name:'이동할 도감 페이지'}).selectOption('6')
+  await pager.getByRole('combobox',{name:'이동할 도감 페이지'}).selectOption('7')
   await expect(page.locator('.dex-card')).toHaveCount(7)
   await expect(pager.getByRole('button',{name:'다음 페이지',exact:true})).toBeDisabled()
   await page.getByRole('searchbox',{name:'포켓몬 이름 또는 도감 번호 검색'}).fill('No. 025')

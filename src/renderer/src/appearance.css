@@ -21,6 +21,8 @@
 .app-shell .home-page .companion-description p { margin-top: 3px; }
 .app-shell .home-page .growth { flex-shrink: 0; padding: 0 16px; }
 .app-shell .home-page .growth > div:first-child { margin-bottom: 6px; }
+.app-shell .home-page .growth .evolution-target { height: 25px; width: 156px; padding: 1px 4px; font-family: 'Galmuri Small', sans-serif; font-size: 10px; }
+.app-shell .home-page .growth .awaiting-target { border-color: var(--red); }
 .app-shell .home-page .growth p { margin-top: 5px; }
 .app-shell .home-page .companion-actions { flex-shrink: 0; padding: 10px 16px 12px; }
 .app-shell .home-page .right-column { min-height: 0; grid-template-rows: minmax(148px, 1fr) minmax(152px, 1fr); gap: 10px; }

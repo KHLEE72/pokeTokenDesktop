@@ -73,6 +73,7 @@ jobs:
           npm run smoke:dpi
           npm run smoke:health
           npm run smoke:collection
+          npm run smoke:evolution
           npm run smoke:dashboard
           npm run smoke:input
           npm run smoke:session
