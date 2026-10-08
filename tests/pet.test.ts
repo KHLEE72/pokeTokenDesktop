@@ -14,19 +14,19 @@ vi.mock('electron',async()=>{
   }
 })
 const controllers: PetController[] = []
-function setup() {
+function setup(replaceWindow?: (previous: BrowserWindow) => Promise<BrowserWindow>) {
   vi.useFakeTimers()
   vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:0,y:0})
   vi.mocked(screen.getAllDisplays).mockReturnValue([screen.getPrimaryDisplay(),{id:2,workArea:{x:1920,y:-300,width:1280,height:1000}} as ReturnType<typeof screen.getPrimaryDisplay>])
   let bounds={x:0,y:0,width:176,height:208}
-  let visible=false, nativeIgnore=true, topmost=true
-  const window={isDestroyed:()=>false,webContents:{send:vi.fn()},
+  let visible=false, nativeIgnore=true, topmost=true,destroyed=false
+  const window={id:1,isDestroyed:()=>destroyed,destroy:vi.fn(()=>{destroyed=true}),webContents:{send:vi.fn()},
     setContentBounds:vi.fn((value:typeof bounds)=>{bounds={...value}}),getContentBounds:()=>({...bounds}),
     isVisible:()=>visible,showInactive:vi.fn(()=>{visible=true}),hide:vi.fn(()=>{visible=false}),
     setIgnoreMouseEvents:vi.fn((ignore:boolean)=>{nativeIgnore=ignore}),
     setAlwaysOnTop:vi.fn((value:boolean)=>{topmost=value}),isAlwaysOnTop:()=>topmost,moveTop:vi.fn()
   }
-  const settings=defaultSettings(),controller=new PetController(window as unknown as BrowserWindow,settings)
+  const settings=defaultSettings(),controller=new PetController(window as unknown as BrowserWindow,settings,()=>{},()=>{},replaceWindow)
   controllers.push(controller)
   return {window,settings,controller,get bounds(){return bounds},get ignored(){return nativeIgnore},get topmost(){return topmost},get motion(){return window.webContents.send.mock.calls.filter(([channel])=>channel==='pet:motion').at(-1)?.[1] as PetMotion}}
 }
@@ -407,5 +407,78 @@ describe('pet desktop behavior',()=>{
     screen.emit('display-removed')
     expect(rig.bounds.x).toBeLessThan(1920);expect(rig.bounds.y+rig.bounds.height).toBe(1040)
     rig.controller.destroy()
+  })
+})
+
+function replacement(id=2) {
+  let bounds={x:0,y:0,width:176,height:208},visible=false,destroyed=false
+  const window={id,isDestroyed:()=>destroyed,destroy:vi.fn(()=>{destroyed=true}),webContents:{send:vi.fn()},
+    setContentBounds:vi.fn((value:typeof bounds)=>{bounds={...value}}),getContentBounds:()=>({...bounds}),
+    isVisible:()=>visible,showInactive:vi.fn(()=>{visible=true}),hide:vi.fn(()=>{visible=false}),
+    setIgnoreMouseEvents:vi.fn(),setAlwaysOnTop:vi.fn(),isAlwaysOnTop:()=>true,isFocused:()=>false,moveTop:vi.fn()}
+  return {window,get bounds(){return bounds}}
+}
+describe('pet native window replacement',()=>{
+  it('coalesces duplicate unlocks and applies the native settings to a fresh window',async()=>{
+    const next=replacement(),replace=vi.fn(async(previous:BrowserWindow)=>{previous.destroy();return next.window as unknown as BrowserWindow})
+    const rig=setup(replace);rig.controller.apply({...rig.settings,paused:true})
+    powerMonitor.emit('lock-screen');powerMonitor.emit('lock-screen')
+    powerMonitor.emit('unlock-screen');powerMonitor.emit('unlock-screen')
+    rig.controller.apply({...rig.settings,paused:true})
+    expect(rig.window.isVisible()).toBe(false)
+    await vi.advanceTimersByTimeAsync(349);expect(replace).not.toHaveBeenCalled()
+    await vi.advanceTimersByTimeAsync(1);expect(replace).toHaveBeenCalledTimes(1)
+    expect(next.window.isVisible()).toBe(true);expect(rig.window.isDestroyed()).toBe(true)
+    expect(rig.controller.inputState).toMatchObject({windowId:2,generation:2,repairing:false,paused:true})
+    expect(next.bounds.y+next.bounds.height).toBe(1040)
+    powerMonitor.emit('unlock-screen');await vi.advanceTimersByTimeAsync(1000)
+    expect(replace).toHaveBeenCalledTimes(1)
+  })
+  it('waits for both resume and unlock and keeps a user-hidden pet hidden',async()=>{
+    const next=replacement(),replace=vi.fn(async()=>next.window as unknown as BrowserWindow),rig=setup(replace)
+    rig.controller.apply({...rig.settings,visible:false,paused:true})
+    powerMonitor.emit('lock-screen');powerMonitor.emit('suspend');powerMonitor.emit('resume')
+    await vi.advanceTimersByTimeAsync(1000);expect(replace).not.toHaveBeenCalled()
+    powerMonitor.emit('unlock-screen');await vi.advanceTimersByTimeAsync(350)
+    expect(replace).toHaveBeenCalledTimes(1);expect(next.window.showInactive).not.toHaveBeenCalled()
+    rig.controller.apply({...rig.settings,visible:true,paused:true});expect(next.window.isVisible()).toBe(true)
+  })
+  it('discards a native window that was being prepared across another lock',async()=>{
+    let finish!:(window:BrowserWindow)=>void
+    const first=replacement(2),second=replacement(3)
+    const replace=vi.fn().mockImplementationOnce(()=>new Promise<BrowserWindow>(resolve=>{finish=resolve})).mockResolvedValue(second.window)
+    const rig=setup(replace);rig.controller.apply(rig.settings)
+    powerMonitor.emit('lock-screen');powerMonitor.emit('unlock-screen');await vi.advanceTimersByTimeAsync(350)
+    powerMonitor.emit('lock-screen');finish(first.window as unknown as BrowserWindow);await vi.advanceTimersByTimeAsync(0)
+    expect(first.window.showInactive).not.toHaveBeenCalled();expect(rig.controller.inputState).toMatchObject({locked:true,repairing:true})
+    powerMonitor.emit('unlock-screen');await vi.advanceTimersByTimeAsync(350)
+    expect(replace).toHaveBeenCalledTimes(2);expect(second.window.isVisible()).toBe(true)
+  })
+  it('uses settings changed during loading instead of the previous size and display',async()=>{
+    let finish!:(window:BrowserWindow)=>void
+    const next=replacement(),rig=setup(()=>new Promise(resolve=>{finish=resolve}))
+    rig.controller.apply(rig.settings);rig.controller.repairInput();await vi.advanceTimersByTimeAsync(350)
+    rig.controller.apply({...rig.settings,size:192,displayId:'2',visible:false})
+    finish(next.window as unknown as BrowserWindow);await vi.advanceTimersByTimeAsync(0)
+    expect(next.bounds.width).toBe(240);expect(next.bounds.height).toBe(272)
+    expect(next.bounds.y+next.bounds.height).toBe(700);expect(next.window.isVisible()).toBe(false)
+    expect(rig.controller.selectedDisplay).toBe('2')
+  })
+  it('retries a failed load but does not leave an unbounded replacement loop',async()=>{
+    const replace=vi.fn().mockRejectedValue(new Error('load failed')),rig=setup(replace)
+    rig.controller.repairInput();await vi.advanceTimersByTimeAsync(5000)
+    expect(replace).toHaveBeenCalledTimes(3);expect(rig.window.isVisible()).toBe(false)
+    const next=replacement();replace.mockResolvedValue(next.window)
+    rig.controller.repairInput();await vi.advanceTimersByTimeAsync(350)
+    expect(next.window.isVisible()).toBe(true)
+  })
+  it('cancels replacement timers and closes a pending candidate on shutdown',async()=>{
+    const next=replacement(),replace=vi.fn(async()=>next.window as unknown as BrowserWindow),rig=setup(replace)
+    rig.controller.repairInput();rig.controller.destroy();await vi.advanceTimersByTimeAsync(500)
+    expect(replace).not.toHaveBeenCalled()
+    let finish!:(window:BrowserWindow)=>void
+    const pending=setup(()=>new Promise(resolve=>{finish=resolve}));pending.controller.repairInput();await vi.advanceTimersByTimeAsync(350)
+    pending.controller.destroy();finish(next.window as unknown as BrowserWindow);await vi.advanceTimersByTimeAsync(0)
+    expect(next.window.destroy).toHaveBeenCalled();expect(next.window.showInactive).not.toHaveBeenCalled()
   })
 })

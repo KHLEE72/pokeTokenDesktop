@@ -39,8 +39,15 @@ export class PetController {
   private topCalls = 0
   private lastHealth = 0
   private reportedMotion: PetMotionState | null = null
+  private disposed = false
+  private sessionDirty = false
+  private replacing = false
+  private sessionEpoch = 0
+  private generation = 1
+  private replacementTimer: NodeJS.Timeout | null = null
+  private replacementFailures = 0
 
-  constructor(private window: BrowserWindow, settings: Settings, private onDisplayChanged: (id: string) => void = () => {}, private diagnose: (event: string, data: unknown) => void = () => {}) {
+  constructor(private window: BrowserWindow, settings: Settings, private onDisplayChanged: (id: string) => void = () => {}, private diagnose: (event: string, data: unknown) => void = () => {}, private replaceWindow?: (previous: BrowserWindow) => Promise<BrowserWindow>) {
     this.settings = { ...settings }
     this.displayId = settings.displayId
     // Floating windows are deliberately moved behind the taskbar by Electron
@@ -60,11 +67,12 @@ export class PetController {
   }
 
   private get suspended(): boolean { return this.asleep || this.locked }
+  private get repairing(): boolean { return Boolean(this.replaceWindow && (this.sessionDirty || this.replacing)) }
   get inputState(): object {
     if (this.window.isDestroyed()) return { destroyed:true }
     const bounds=this.window.getContentBounds(), point=screen.getCursorScreenPoint()
     const cursor={x:point.x-bounds.x,y:point.y-bounds.y},size=this.settings.size
-    return { motion:this.state, ignoringMouse:this.ignoringMouse, inputCalls:this.inputCalls, topCalls:this.topCalls,
+    return { windowId:this.window.id,generation:this.generation,repairing:this.repairing,motion:this.state, ignoringMouse:this.ignoringMouse, inputCalls:this.inputCalls, topCalls:this.topCalls,
       visible:this.settings.visible, nativeVisible:this.window.isVisible(), paused:this.settings.paused, asleep:this.asleep, locked:this.locked,
       topmost:this.window.isAlwaysOnTop?.()??false, focused:this.window.isFocused?.()??false,
       width:bounds.width,height:bounds.height,size,scaleFactor:this.display().scaleFactor??1,cursor,
@@ -81,7 +89,7 @@ export class PetController {
     if (changed || force) this.diagnose('controller.input-mode',this.inputState)
   }
   private keepOnTop(force = false): void {
-    if (this.window.isDestroyed() || this.suspended || !this.settings.visible || !this.window.isVisible()) return
+    if (this.window.isDestroyed() || this.suspended || this.repairing || !this.settings.visible || !this.window.isVisible()) return
     const now = Date.now()
     if (!force && now >= this.lastTopRefresh && now - this.lastTopRefresh < TOP_REFRESH_MS) return
     this.window.setAlwaysOnTop(true, 'pop-up-menu')
@@ -91,7 +99,7 @@ export class PetController {
   }
   private syncPointer(): void {
     if (this.window.isDestroyed()) return
-    if (this.suspended || !this.settings.visible) { this.ignoreMouse(true); return }
+    if (this.suspended || this.repairing || !this.settings.visible) { this.ignoreMouse(true); return }
     if (this.state === 'held') { this.ignoreMouse(false); return }
     // DOM pointerenter may not fire again after hide/show or unlocking. Use DIP
     // cursor coordinates as a fallback, also when the character walks underneath it.
@@ -165,7 +173,7 @@ export class PetController {
   }
   updateSurfaces(frames: WindowFrame[]): void {
     this.frames = frames; this.ledges = windowLedges(frames)
-    if (!this.suspended && this.settings.visible) this.followPerch()
+    if (!this.suspended && !this.repairing && this.settings.visible) this.followPerch()
   }
   private clampX(): void {
     const area = this.display().workArea
@@ -190,6 +198,7 @@ export class PetController {
   }
 
   apply(settings: Settings): void {
+    if(this.disposed || this.window.isDestroyed())return
     const before = this.settings
     const changedDisplay = settings.displayId !== before.displayId
     // A drop selects a display immediately. A later snapshot confirming that selection
@@ -209,7 +218,7 @@ export class PetController {
     if (!settings.visible && before.visible) this.recover()
     if (settings.paused && this.state === 'walking') { this.state = 'idle'; this.motion() }
     if (settings.paused !== before.paused) this.nextAction = Date.now() + 2500
-    if (settings.visible && !this.suspended) {
+    if (settings.visible && !this.suspended && !this.repairing) {
       if (!this.window.isVisible()) this.window.showInactive()
       this.keepOnTop(true)
     } else this.window.hide()
@@ -218,11 +227,11 @@ export class PetController {
   }
 
   pointer(active: boolean): void {
-    if (this.suspended || !this.settings.visible) { this.ignoreMouse(true); return }
+    if (this.suspended || this.repairing || !this.settings.visible) { this.ignoreMouse(true); return }
     if (this.state !== 'held') this.ignoreMouse(!active)
   }
   drag(action: string): 'drop' | 'pet' | null {
-    if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return null
+    if (this.disposed || this.window.isDestroyed() || this.suspended || this.repairing || !this.settings.visible) return null
     const point = screen.getCursorScreenPoint()
     if (this.state === 'held' && Math.hypot(point.x-this.dragOrigin.x,point.y-this.dragOrigin.y) > 4) this.dragged = true
     if (action === 'move') return null
@@ -294,7 +303,7 @@ export class PetController {
     const now = Date.now(), elapsed = clamp((now - this.lastTick) / 1000, 0, 0.05)
     this.lastTick = now
     if (now<this.lastHealth || now-this.lastHealth>=5000) { this.lastHealth=now; this.diagnose('controller.heartbeat',this.inputState) }
-    if (this.window.isDestroyed() || this.suspended || !this.settings.visible) return
+    if (this.disposed || this.window.isDestroyed() || this.suspended || this.repairing || !this.settings.visible) return
     this.syncPointer()
     this.keepOnTop()
     if (this.state === 'idle' || this.state === 'landing') {
@@ -359,16 +368,60 @@ export class PetController {
     this.motion()
     this.diagnose('controller.recover',this.inputState)
   }
-  private hideForSession(): void { this.recover(); this.window.hide() }
+  private hideForSession(): void {
+    this.sessionEpoch++
+    if(this.replaceWindow)this.sessionDirty=true
+    if(this.replacementTimer){clearTimeout(this.replacementTimer);this.replacementTimer=null}
+    this.recover(); this.window.hide()
+  }
+  repairInput(): void {
+    if(this.disposed)return
+    this.diagnose('pet.repair-requested',this.inputState)
+    if(this.replaceWindow){this.sessionDirty=true;this.sessionEpoch++;this.replacementFailures=0;this.window.hide()}
+    this.restoreSession()
+  }
   private restoreSession(): void {
-    if (this.suspended) return
+    if (this.disposed || this.suspended) return
+    if(this.replaceWindow && this.sessionDirty){
+      if(this.replacing)return
+      if(this.replacementTimer)clearTimeout(this.replacementTimer)
+      // Native unlock/resume notifications can be duplicated or overlap. Wait
+      // for the desktop to settle and replace one pet window for the group.
+      this.replacementTimer=setTimeout(()=>{this.replacementTimer=null;void this.replaceAfterSession()},350)
+      return
+    }
     this.recover(); this.apply(this.settings)
   }
-  private sleep = (): void => { this.asleep = true; this.hideForSession(); this.diagnose('power.suspend',this.inputState) }
-  private wake = (): void => { this.asleep = false; this.restoreSession(); this.diagnose('power.resume',this.inputState) }
-  private lock = (): void => { this.locked = true; this.hideForSession(); this.diagnose('power.lock',this.inputState) }
-  private unlock = (): void => { this.locked = false; this.restoreSession(); this.diagnose('power.unlock',this.inputState) }
+  private async replaceAfterSession(): Promise<void> {
+    if(this.disposed || this.suspended || this.replacing || !this.replaceWindow || !this.sessionDirty)return
+    this.replacing=true
+    const epoch=this.sessionEpoch
+    this.diagnose('pet.rebuild-start',this.inputState)
+    try{
+      const window=await this.replaceWindow(this.window)
+      if(this.disposed){if(!window.isDestroyed())window.destroy();return}
+      this.window=window;this.generation++;this.ignoringMouse=null;this.lastInputRefresh=0;this.lastTopRefresh=0;this.reportedMotion=null
+      this.replacing=false;this.replacementFailures=0
+      // A lock during page loading also invalidates that new native window.
+      this.sessionDirty=epoch!==this.sessionEpoch
+      this.recover();this.apply(this.settings)
+      this.diagnose('pet.rebuild-complete',this.inputState)
+      if(this.sessionDirty)this.restoreSession()
+    }catch{
+      this.replacing=false
+      if(this.disposed)return
+      this.sessionDirty=true
+      this.diagnose('pet.rebuild-failed',{attempt:++this.replacementFailures,state:this.inputState})
+      if(this.replacementFailures<3&&!this.suspended)this.replacementTimer=setTimeout(()=>{this.replacementTimer=null;void this.replaceAfterSession()},1000)
+    }
+  }
+  private sleep = (): void => { if(this.asleep)return;this.asleep = true; this.hideForSession(); this.diagnose('power.suspend',this.inputState) }
+  private wake = (): void => { if(!this.asleep&&this.replaceWindow&&!this.sessionDirty)return;this.asleep = false; this.restoreSession(); this.diagnose('power.resume',this.inputState) }
+  private lock = (): void => { if(this.locked)return;this.locked = true; this.hideForSession(); this.diagnose('power.lock',this.inputState) }
+  private unlock = (): void => { if(!this.locked&&this.replaceWindow&&!this.sessionDirty)return;this.locked = false; this.restoreSession(); this.diagnose('power.unlock',this.inputState) }
   destroy(): void {
+    this.disposed=true
+    if(this.replacementTimer){clearTimeout(this.replacementTimer);this.replacementTimer=null}
     clearInterval(this.timer)
     screen.removeListener('display-added', this.recover); screen.removeListener('display-removed', this.recover); screen.removeListener('display-metrics-changed', this.recover)
     powerMonitor.removeListener('suspend', this.sleep); powerMonitor.removeListener('resume', this.wake)

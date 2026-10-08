@@ -1,5 +1,6 @@
 import { _electron as electronApp, expect } from '@playwright/test'
 import electron from 'electron'
+import { currentPet } from './current-pet.mjs'
 import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
@@ -14,7 +15,7 @@ try {
   application = await electronApp.launch({ executablePath: process.env.POKETOKEN_EXE || electron, args: process.env.POKETOKEN_EXE ? [] : ['.'], cwd: process.cwd(), env, timeout: 60_000 })
   await application.firstWindow()
   await expect.poll(() => application.windows().some(w => w.url().includes('view=pet'))).toBe(true)
-  const pet = application.windows().find(w => w.url().includes('view=pet'))
+  let pet = application.windows().find(w => w.url().includes('view=pet'))
   pet.on('pageerror', e => errors.push(e.message))
   await expect.poll(() => pet.evaluate(async () => Boolean((await window.desktop.getSnapshot()).lastScan))).toBe(true)
   await pet.evaluate(() => window.desktop.updateSettings({ paused: true, size: 128 }))
@@ -108,11 +109,13 @@ try {
   checks.push('a click shows petting animation and character dialogue without opening or focusing the dashboard')
   // Emit session events inside the disposable app instead of locking the user's
   // real computer. Observe actual native API calls without changing their behavior.
-  await application.evaluate(({ BrowserWindow }) => {
+  const observeInput=()=>application.evaluate(({ BrowserWindow }) => {
     const window = BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=pet'))
     const setIgnore = window.setIgnoreMouseEvents.bind(window)
+    globalThis.petTestIgnored=undefined
     window.setIgnoreMouseEvents = (ignore, options) => { globalThis.petTestIgnored = ignore; setIgnore(ignore, options) }
   })
+  await observeInput()
   const power = event => application.evaluate(({ powerMonitor }, event) => { powerMonitor.emit(event) }, event)
   const visible = () => application.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=pet')).isVisible())
   const ignored = () => application.evaluate(() => globalThis.petTestIgnored)
@@ -120,7 +123,7 @@ try {
   let current = await getBounds()
   await placeCursor({ x: current.x + 80, y: current.y + 110 })
   await power('lock-screen');expect(await visible()).toBe(false)
-  await power('unlock-screen');expect(await visible()).toBe(true)
+  await power('unlock-screen');pet=await currentPet(application,pet);pet.on('pageerror',e=>errors.push(e.message));await observeInput();expect(await visible()).toBe(true)
   // No renderer mouse movement/enter is sent between locking and this assertion.
   await expect.poll(ignored).toBe(false)
   await placeCursor({ x: current.x + 10, y: current.y + current.height - 20 })
@@ -130,7 +133,7 @@ try {
   checks.push('unlock restores native mouse input without pointerenter; transparent margins remain click-through')
   await power('lock-screen');await power('suspend');await power('resume')
   expect(await visible()).toBe(false)
-  await power('unlock-screen');expect(await visible()).toBe(true)
+  await power('unlock-screen');pet=await currentPet(application,pet);pet.on('pageerror',e=>errors.push(e.message));await observeInput();expect(await visible()).toBe(true)
   await expect.poll(ignored).toBe(false)
   checks.push('resume while locked keeps the pet hidden until unlock')
   await application.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=dashboard')).close())
@@ -140,7 +143,7 @@ try {
   await power('lock-screen')
   await expect(pet.locator('.pet-character')).toHaveAttribute('data-motion','idle')
   await expect.poll(() => pet.locator('.pet-character').evaluate(e => e.hasPointerCapture(1))).toBe(false)
-  await power('unlock-screen');await pet.mouse.up()
+  await power('unlock-screen');pet=await currentPet(application,pet);pet.on('pageerror',e=>errors.push(e.message));await pet.mouse.up()
   expect(await application.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('view=dashboard')).isVisible())).toBe(false)
   current = await getBounds()
   await placeCursor({ x: current.x + 80, y: current.y + 110 })

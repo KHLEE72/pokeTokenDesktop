@@ -1,5 +1,6 @@
 import { _electron as electronApp, expect } from '@playwright/test'
 import electron from 'electron'
+import { currentPet } from './current-pet.mjs'
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
@@ -13,7 +14,8 @@ try {
   application=await electronApp.launch({executablePath:process.env.POKETOKEN_EXE||electron,args:[...(process.env.POKETOKEN_EXE?[]:['.']),'--hidden'],env,timeout:60000})
   await application.firstWindow()
   await expect.poll(()=>application.windows().some(w=>w.url().includes('view=pet'))).toBe(true)
-  const pet=application.windows().find(w=>w.url().includes('view=pet')),dashboard=application.windows().find(w=>w.url().includes('view=dashboard'))
+  let pet=application.windows().find(w=>w.url().includes('view=pet'))
+  const dashboard=application.windows().find(w=>w.url().includes('view=dashboard'))
   pet.on('pageerror',error=>errors.push(error.message))
   await expect.poll(()=>pet.evaluate(async()=>Boolean((await window.desktop.getSnapshot()).lastScan))).toBe(true)
   await pet.evaluate(()=>window.desktop.updateSettings({paused:true,size:128}))
@@ -47,9 +49,10 @@ try {
   checks.push('a missed mouse release is completed when a later pointer move reports the left button is up')
   await pet.evaluate(()=>{Element.prototype.setPointerCapture=globalThis.originalCapture})
   await application.evaluate(({powerMonitor})=>{powerMonitor.emit('lock-screen');powerMonitor.emit('unlock-screen')})
+  pet=await currentPet(application,pet);pet.on('pageerror',error=>errors.push(error.message))
   await expect.poll(()=>rows().some(row=>row.event==='renderer.reset')).toBe(true)
   await expect.poll(()=>rows().some(row=>row.event==='power.unlock')).toBe(true)
-  await expect.poll(()=>rows().some(row=>row.event==='renderer.heartbeat')).toBe(true,{timeout:10000})
+  await expect.poll(()=>rows().some(row=>row.event==='renderer.heartbeat'&&(process.platform!=='win32'||row.data.state.generation===2)),{timeout:10000}).toBe(true)
   checks.push('renderer/main heartbeats and lock/unlock reset are persisted')
   const privateText='this-must-never-reach-the-input-log'
   await dashboard.evaluate(value=>window.desktop.tracePetInput({event:'handler.down',x:123456,prompt:value}),privateText)

@@ -11,7 +11,9 @@ import { InputDiagnostics, sanitizePetTrace } from './input-diagnostics'
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
 const acquired = app.requestSingleInstanceLock()
-let dashboard: BrowserWindow, pet: BrowserWindow, controller: PetController, tray: Tray, worker: Worker, sprites: SpriteCache, windowTracker: WindowTracker
+let dashboard: BrowserWindow, pet: BrowserWindow, controller: PetController, tray: Tray, worker: Worker, sprites: SpriteCache
+let windowTracker: WindowTracker | undefined
+let preferences: Electron.WebPreferences
 let quitting = false, nextId = 1
 let diagnostics: InputDiagnostics
 let snapshot: Snapshot = { game: newGame(), settings: defaultSettings(), usage: { claude: { today: 0, all: 0 }, codex: { today: 0, all: 0 } }, roots: [], scanning: true, lastScan: null, notice: null }
@@ -21,9 +23,66 @@ const request = (op: string, patch?: Partial<Settings>, action?: GameAction): Pr
   const timer = setTimeout(() => { pending.delete(id); reject(new Error('처리 시간이 길어지고 있습니다. 잠시 후 다시 확인해주세요.')) }, 120_000)
   pending.set(id, { resolve, reject, timer }); worker.postMessage({ id, op, patch, action })
 })
-function load(window: BrowserWindow, view: string): void {
-  if (process.env.ELECTRON_RENDERER_URL) void window.loadURL(`${process.env.ELECTRON_RENDERER_URL}?view=${view}`)
-  else void window.loadFile(join(__dirname, '../renderer/index.html'), { query: { view } })
+function load(window: BrowserWindow, view: string): Promise<void> {
+  if (process.env.ELECTRON_RENDERER_URL) return window.loadURL(`${process.env.ELECTRON_RENDERER_URL}?view=${view}`)
+  return window.loadFile(join(__dirname, '../renderer/index.html'), { query: { view } })
+}
+function createPetWindow(): BrowserWindow {
+  const size=snapshot.settings.size
+  const window=new BrowserWindow({ width:size+48,height:size+80,show:false,frame:false,transparent:true,resizable:false,maximizable:false,minimizable:false,hasShadow:false,alwaysOnTop:true,skipTaskbar:true,focusable:false,webPreferences:{...preferences,backgroundThrottling:false,zoomFactor:1} })
+  window.webContents.setZoomMode('disabled')
+  void window.webContents.setVisualZoomLevelLimits(1,1)
+  if(process.platform==='darwin')window.setVisibleOnAllWorkspaces(true,{visibleOnFullScreen:true})
+  window.webContents.setWindowOpenHandler(()=>({action:'deny'}))
+  window.webContents.on('will-navigate',event=>event.preventDefault())
+  window.webContents.on('before-mouse-event',(_event,input)=>{
+    if(window!==pet || !['mouseDown','mouseUp','contextMenu'].includes(input.type))return
+    diagnostics.record('electron.mouse',{windowId:window.id,type:input.type,button:input.button,x:input.x,y:input.y,state:controller.inputState})
+  })
+  window.webContents.on('input-event',(_event,input)=>{
+    if(window===pet && ['mouseDown','mouseUp','pointerDown','pointerUp','pointerCancel','touchStart','touchEnd','touchCancel'].includes(input.type))diagnostics.record('electron.input',{windowId:window.id,type:input.type})
+  })
+  const state=():object=>({windowId:window.id,current:window===pet,state:controller?.inputState})
+  window.webContents.on('render-process-gone',(_event,details)=>diagnostics.record('renderer.gone',{...state(),reason:details.reason,exitCode:details.exitCode}))
+  window.webContents.on('unresponsive',()=>diagnostics.record('renderer.unresponsive',state()))
+  window.webContents.on('responsive',()=>diagnostics.record('renderer.responsive',state()))
+  window.webContents.on('did-finish-load',()=>diagnostics.record('renderer.did-finish-load',state()))
+  return window
+}
+function startWindowTracker(window: BrowserWindow): void {
+  windowTracker?.destroy();windowTracker=undefined
+  if(process.env.POKETOKEN_TEST_MODE==='1' && process.env.POKETOKEN_WINDOW_TEST!=='1')return
+  windowTracker=new WindowTracker(frames=>{
+    const fixturePid=process.env.POKETOKEN_TEST_MODE==='1'?Number(process.env.POKETOKEN_WINDOW_TEST_PID):0
+    const selected=fixturePid?frames.filter(frame=>frame.pid===fixturePid || frame.pid===process.pid):frames
+    if(process.env.POKETOKEN_TEST_MODE==='1' && process.env.POKETOKEN_WINDOW_TEST==='1')Object.assign(globalThis,{petTestFrames:selected,petTestRawPids:frames.map(frame=>frame.pid)})
+    controller.updateSurfaces(selected)
+  },window,data=>diagnostics.record('windows.input',{...data,windowId:window.id,units:'physicalPx',state:controller.inputState}))
+}
+async function replacePetWindow(previous: BrowserWindow): Promise<BrowserWindow> {
+  if(quitting)throw new Error('Application is closing')
+  const candidate=createPetWindow()
+  pet=candidate // New preload requests are authorized before its page loads.
+  diagnostics.record('pet.window-created',{previousId:previous.id,windowId:candidate.id,previousHandle:previous.getNativeWindowHandle().toString('hex'),handle:candidate.getNativeWindowHandle().toString('hex')})
+  let timeout:NodeJS.Timeout|undefined
+  let onReady:()=>void=()=>{}
+  try{
+    const paint=new Promise<void>(resolve=>{onReady=resolve;candidate.once('ready-to-show',onReady)})
+    const deadline=new Promise<never>((_resolve,reject)=>{timeout=setTimeout(()=>reject(new Error('Pet page did not become ready')),10000)})
+    await Promise.race([Promise.all([load(candidate,'pet'),paint]),deadline])
+    if(quitting || candidate.isDestroyed())throw new Error('Application is closing')
+    candidate.webContents.send('snapshot',snapshot)
+    startWindowTracker(candidate) // The native observer must follow the new HWND.
+    if(!previous.isDestroyed())previous.destroy()
+    return candidate
+  }catch(error){
+    if(pet===candidate)pet=previous
+    if(!candidate.isDestroyed())candidate.destroy()
+    throw error
+  }finally{
+    if(timeout)clearTimeout(timeout)
+    candidate.removeListener('ready-to-show',onReady)
+  }
 }
 function openDashboard(tab = 'home'): void {
   dashboard.show(); dashboard.focus(); dashboard.webContents.send('navigate', tab)
@@ -34,6 +93,7 @@ function trayMenu(): void {
     { label: snapshot.settings.visible ? '펫 숨기기' : '펫 보이기', click: () => void request('settings', { visible: !snapshot.settings.visible }).catch(() => {}) },
     { label: snapshot.settings.paused ? '다시 걷기' : '이동 일시정지', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
     { label: '설정', click: () => openDashboard('settings') },
+    { label: '펫 입력 복구', click: () => controller.repairInput() },
     { label: '입력 문제 시점 기록', click: () => diagnostics.record('user.mark',controller.inputState) },
     { label: '입력 진단 로그 폴더', click: () => { diagnostics.record('diagnostic.folder-opened',controller.inputState); void diagnostics.flush().then(()=>shell.openPath(join(app.getPath('userData'),'diagnostics'))) } },
     { type: 'separator' }, { label: '종료', click: () => app.quit() }
@@ -61,36 +121,16 @@ else {
     diagnostics = new InputDiagnostics(join(app.getPath('userData'),'diagnostics'))
     diagnostics.record('session.start',{version:app.getVersion(),platform:process.platform,arch:process.arch,electron:process.versions.electron,chrome:process.versions.chrome})
     sprites = new SpriteCache(join(app.getPath('userData'), 'sprites'))
-    const preferences = { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
+    preferences = { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
     dashboard = new BrowserWindow({ width: 1040, height: 800, minWidth: 850, minHeight: 680, show: false, backgroundColor: '#f6f7f2', autoHideMenuBar: true, title: 'PokeToken Desktop', webPreferences: preferences })
-    pet = new BrowserWindow({ width: 176, height: 208, show: false, frame: false, transparent: true, resizable: false, maximizable: false, minimizable: false, hasShadow: false, alwaysOnTop: true, skipTaskbar: true, focusable: false, webPreferences: { ...preferences, backgroundThrottling: false, zoomFactor: 1 } })
-    // The dashboard and pet share a URL but must not share page zoom. OS DPI
-    // still scales the whole pet normally, keeping text proportional to the sprite.
-    pet.webContents.setZoomMode('disabled')
-    void pet.webContents.setVisualZoomLevelLimits(1, 1)
-    if (process.platform === 'darwin') { pet.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true }); app.dock?.hide() }
+    pet = createPetWindow()
+    if(process.platform==='darwin')app.dock?.hide()
     controller = new PetController(pet, snapshot.settings, id => {
       if (!quitting && worker && snapshot.settings.displayId !== id) void request('settings', { displayId: id }).catch(() => {})
-    },(event,data)=>diagnostics.record(event,data))
+    },(event,data)=>diagnostics.record(event,data),process.platform==='win32'?replacePetWindow:undefined)
     // Generic interaction smoke tests remain deterministic; the window-specific
     // smoke test explicitly enables the real native scanner in its isolated app.
-    if (process.env.POKETOKEN_TEST_MODE !== '1' || process.env.POKETOKEN_WINDOW_TEST === '1') windowTracker = new WindowTracker(frames => {
-      const fixturePid = process.env.POKETOKEN_TEST_MODE === '1' ? Number(process.env.POKETOKEN_WINDOW_TEST_PID) : 0
-      const selected = fixturePid ? frames.filter(frame => frame.pid === fixturePid || frame.pid === process.pid) : frames
-      if (process.env.POKETOKEN_TEST_MODE === '1' && process.env.POKETOKEN_WINDOW_TEST === '1') Object.assign(globalThis, { petTestFrames: selected, petTestRawPids: frames.map(frame => frame.pid) })
-      controller.updateSurfaces(selected)
-    }, pet, data=>diagnostics.record('windows.input',{...data,units:'physicalPx',state:controller.inputState}))
-    pet.webContents.on('before-mouse-event',(_event,input)=>{
-      if (!['mouseDown','mouseUp','contextMenu'].includes(input.type)) return
-      diagnostics.record('electron.mouse',{type:input.type,button:input.button,x:input.x,y:input.y,state:controller.inputState})
-    })
-    pet.webContents.on('input-event',(_event,input)=>{
-      if (['mouseDown','mouseUp','pointerDown','pointerUp','pointerCancel','touchStart','touchEnd','touchCancel'].includes(input.type)) diagnostics.record('electron.input',{type:input.type})
-    })
-    pet.webContents.on('render-process-gone',(_event,details)=>diagnostics.record('renderer.gone',{reason:details.reason,exitCode:details.exitCode}))
-    pet.webContents.on('unresponsive',()=>diagnostics.record('renderer.unresponsive',controller.inputState))
-    pet.webContents.on('responsive',()=>diagnostics.record('renderer.responsive',controller.inputState))
-    pet.webContents.on('did-finish-load',()=>diagnostics.record('renderer.did-finish-load',controller.inputState))
+    startWindowTracker(pet)
     const trayIcon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAFUlEQVR4nGNgGAWjYBSMglEwCkbBAAAGGAAB7e3H/QAAAABJRU5ErkJggg==')
     // Icon generated from our own egg drawing; no Pokémon art is bundled.
     const icon = nativeImage.createFromPath(join(__dirname, '../../build/tray.png'))
@@ -99,13 +139,11 @@ else {
     tray = new Tray(menuIcon)
     tray.setToolTip('PokeToken Desktop'); tray.on('click', () => openDashboard()); trayMenu()
     dashboard.on('close', event => { if (!quitting) { event.preventDefault(); dashboard.hide() } })
-    for (const window of [dashboard, pet]) {
-      window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }))
-      window.webContents.on('will-navigate', event => event.preventDefault())
-    }
+    dashboard.webContents.setWindowOpenHandler(() => ({ action: 'deny' }))
+    dashboard.webContents.on('will-navigate', event => event.preventDefault())
     dashboard.once('ready-to-show', () => { if (!process.argv.includes('--hidden') && !app.getLoginItemSettings().wasOpenedAtLogin) dashboard.show() })
     pet.webContents.on('did-finish-load', () => controller.apply(snapshot.settings))
-    load(dashboard, 'dashboard'); load(pet, 'pet')
+    void load(dashboard, 'dashboard'); void load(pet, 'pet')
     worker = new Worker(join(__dirname, 'worker.js'), { workerData: { path: join(app.getPath('userData'), 'poketoken.sqlite') } })
     worker.on('message', message => {
       if (message.type === 'snapshot') {
@@ -142,22 +180,22 @@ else {
       await request('game',undefined,action)
     })
     ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'settings'].includes(tab) ? tab : 'home') })
-    ipcMain.on('pet:pointer', (event, active) => { allowed(event); if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
+    ipcMain.on('pet:pointer', (event, active) => { if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
     let traceWindow=0,traceCount=0
     ipcMain.on('pet:input-trace',(event,value)=>{
       if (event.sender.id!==pet.webContents.id) return
       const now=Date.now();if(now-traceWindow>=1000||now<traceWindow){traceWindow=now;traceCount=0}
       if(++traceCount>200)return
       const trace=sanitizePetTrace(value)
-      if(trace)diagnostics.record(`renderer.${trace.event}`,{...trace,state:controller.inputState})
+      if(trace)diagnostics.record(`renderer.${trace.event}`,{...trace,windowId:event.sender.id,state:controller.inputState})
     })
     ipcMain.on('pet:drag', (event, action) => {
-      allowed(event); if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel', 'release'].includes(action)) return
+      if (event.sender.id !== pet.webContents.id || !['start', 'move', 'end', 'cancel', 'release'].includes(action)) return
       const before=action==='move'?null:controller.inputState,result=controller.drag(action)
       if(action!=='move')diagnostics.record('ipc.drag',{action,result,before,after:controller.inputState})
       if(result==='drop')void request('settings', { displayId: controller.selectedDisplay }).catch(() => {})
     })
-    ipcMain.on('pet:menu', event => { allowed(event); if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
+    ipcMain.on('pet:menu', event => { if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
       { label: '현재 펫 · 사용량', click: () => openDashboard() }, { label: '이동 일시정지 / 다시 걷기', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
       { label: '설정', click: () => openDashboard('settings') }, { label: '펫 숨기기', click: () => void request('settings', { visible: false }).catch(() => {}) }
     ]).popup({ window: pet }) })
