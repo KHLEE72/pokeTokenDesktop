@@ -1,22 +1,22 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { DialogueDirector, DialogueEvent, Speech } from '../../shared/dialogue'
-import { activePet, speciesId } from '../../shared/game'
+import { activePet, speciesId, waitingForEvolution } from '../../shared/game'
 import { GameState, PetMotion, Snapshot } from '../../shared/model'
 
 export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { speech: Speech | null; greet: () => void } {
   const director = useRef(new DialogueDirector())
   const [speech, setSpeech] = useState<Speech | null>(null)
-  const current = useRef({ id: null as number | null, visible: false, ready: false, state: motion.state })
+  const current = useRef({ id: null as number | null, visible: false, ready: false, waiting: false, state: motion.state })
   const previousGame = useRef<GameState | null>(null)
   const nextIdle = useRef(Date.now() + 35_000 + Math.random() * 30_000)
   current.current = {
     id: snapshot ? speciesId(snapshot.game) : null,
     visible: snapshot?.settings.visible ?? false,
-    ready: Boolean(snapshot?.lastScan), state: motion.state
+    ready: Boolean(snapshot?.lastScan), waiting: snapshot ? waitingForEvolution(activePet(snapshot.game),snapshot.settings.pace) : false, state: motion.state
   }
   const say = useCallback((event: DialogueEvent, summary: string | null = null): void => {
     if (!current.current.visible || !current.current.ready) return
-    const next = director.current.say(current.current.id, event, summary)
+    const next = director.current.say(current.current.id, event, summary && current.current.waiting ? '진화 목표 선택 대기' : summary)
     if (next) { setSpeech(next); nextIdle.current = Date.now() + 35_000 + Math.random() * 30_000 }
   }, [])
 

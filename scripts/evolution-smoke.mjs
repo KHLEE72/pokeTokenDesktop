@@ -74,7 +74,16 @@ try{
   await application.close();application=null;await start()
   expect((await state()).game).toEqual(snapshot.game)
   await page.evaluate(()=>window.desktop.refresh());expect((await state()).game).toEqual(snapshot.game)
+  await expect(pet.locator('.pet-bubble small')).toHaveText('진화 목표 선택 대기')
+  for(const size of [96,128]) {
+    await pet.evaluate(size=>window.desktop.updateSettings({size}),size)
+    await expect.poll(()=>pet.locator('.pet-character').evaluate(el=>el.getBoundingClientRect().width)).toBe(size)
+    await pet.evaluate(async()=>{await document.fonts.ready})
+    const speech=await pet.evaluate(()=>({text:document.querySelector('.pet-bubble small').getBoundingClientRect().bottom,character:document.querySelector('.pet-character').getBoundingClientRect().top}))
+    expect(speech.text).toBeLessThanOrEqual(speech.character)
+  }
   checks.push('real log usage stops Eevee at 100% without a goal, banks overflow and subsequent usage once, disables candy, and preserves the waiting state on restart/rescan')
+  checks.push('the waiting summary stays compact and above the character at 96px and 128px instead of overlapping the pet')
   await target().selectOption('700')
   await expect(page.locator('.companion-description h2')).toHaveText('✦ 이로치 님피아')
   await expect(pet.locator('.pet-character img')).toHaveAttribute('alt','님피아',{timeout:30000})
