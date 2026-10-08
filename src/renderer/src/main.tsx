@@ -7,6 +7,7 @@ import { usePetDialogue } from './pet-dialogue'
 import { PixelIcon, PixelIconKind } from './pixel-icons'
 import './style.css'
 import './theme.css'
+import './appearance.css'
 
 const format = (v: number): string => new Intl.NumberFormat('ko-KR', { notation: 'compact', maximumFractionDigits: 1 }).format(v)
 const names = { claude: 'Claude Code', codex: 'Codex' }
@@ -184,7 +185,7 @@ function EggStorage({game,pace,busy,act}:{game:GameState;pace:Settings['pace'];b
   const current=eggs.find(egg=>egg.id===game.activeId),stored=eggs.filter(egg=>egg.id!==game.activeId)
   return <details className="egg-drawer"><summary>
     <div className="egg-drawer-heading"><span className="egg-drawer-icon" aria-hidden="true"><Egg type={current ? current.eggType : stored[0]?.eggType}/></span><div><h3>알 보관함</h3><p>보관 중인 알 {stored.length}개 · 부화 중 {current ? 1 : 0}개</p></div><span className="egg-drawer-toggle">알 선택하기 <span aria-hidden="true">⌄</span></span></div>
-    {eggs.length>0 ? <div className="egg-preview" aria-label="알 보관 현황">{eggs.map(egg=><span key={egg.id} className={`egg-preview-item ${egg.id===game.activeId ? 'incubating' : ''}`} data-egg-id={egg.id}><span aria-hidden="true"><Egg type={egg.eggType}/></span><span>{eggName(egg)}</span><strong>{eggProgress(egg,pace).toFixed(1)}%</strong><small>{egg.id===game.activeId ? '부화 중' : '보관 중'}</small></span>)}</div> : <p className="egg-preview-empty">보관 중인 알이 없어요. 새 알을 선택해보세요.</p>}
+    {eggs.length>0 ? <div className="egg-preview" aria-label="알 보관 현황">{eggs.slice(0,3).map(egg=><span key={egg.id} className={`egg-preview-item ${egg.id===game.activeId ? 'incubating' : ''}`} data-egg-id={egg.id} title={egg.id===game.activeId ? '부화 중' : '보관 중'}><span aria-hidden="true"><Egg type={egg.eggType}/></span><span>{eggName(egg)}</span><strong>{eggProgress(egg,pace).toFixed(1)}%</strong></span>)}{eggs.length>3 && <span className="egg-preview-more">+{eggs.length-3}개 더 보기</span>}</div> : <p className="egg-preview-empty">보관 중인 알이 없어요. 새 알을 선택해보세요.</p>}
   </summary><EggSelection game={game} pace={pace} busy={busy} act={act}/></details>
 }
 function CandyBox({game,pace,busy,act,compact=false}:{game:GameState;pace:Settings['pace'];busy:boolean;act:(action:GameAction)=>void;compact?:boolean}):React.JSX.Element {
@@ -238,6 +239,7 @@ function App(): React.JSX.Element {
   const resetDexFilters=():void=>{setDexSearch('');setDexType('all');setDexStatus('all');setDexPage(1)}
   useEffect(() => window.desktop.onNavigate(setTab), [])
   useEffect(() => { if (tab === 'settings') void window.desktop.getDisplays().then(setDisplays) }, [tab])
+  useEffect(() => { document.documentElement.dataset.theme = snapshot?.settings.theme ?? 'light' }, [snapshot?.settings.theme])
   const run = async (action: () => Promise<unknown>): Promise<void> => {
     setError(null); setBusy(true)
     try { await action() } catch (e) { setError(e instanceof Error ? e.message.replace(/^Error invoking remote method '[^']+': Error: /, '') : '작업을 완료하지 못했습니다.') } finally { setBusy(false) }
@@ -272,19 +274,19 @@ function App(): React.JSX.Element {
     setDexPage(Math.max(1,Math.min(page,dexPages)))
     requestAnimationFrame(()=>dexToolbar.current?.scrollIntoView({block:'start'}))
   }
-  return <div className="app-shell">
+  return <div className="app-shell" data-theme={settings.theme}>
     <aside className="sidebar">
       <div className="brand"><span className="brand-mark"><PixelIcon kind="ball"/></span><div>PokeToken<span>DESKTOP ADVENTURE</span></div></div>
       <nav aria-label="주 메뉴">{[['home', 'ball', '현재 펫 · 사용량'], ['dex', 'dex', '나의 도감'], ['settings', 'settings', '설정']].map(([key, icon, text]) => <button key={key} className={tab === key ? 'nav-active' : ''} onClick={() => setTab(key)}><PixelIcon kind={icon as PixelIconKind}/>{text}</button>)}</nav>
       <div className="sidebar-bottom"><span className={`status-dot ${connected ? 'online' : ''}`}/>{snapshot.scanning ? '사용량 확인 중' : connected ? '로그 연결됨' : '로그 연결 대기'}<p>평소처럼 코딩하세요.<br/>작은 친구가 함께 자랍니다.</p><small>v{version} · 내 컴퓨터에 저장</small></div>
     </aside>
-    <main className="workspace">
-      <header className="topbar"><span className="eyebrow"><span className="console-light" aria-hidden="true"/>POKETOKEN / TRAINER'S LOG</span><span className="date">{new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}</span></header>
+    <main className={`workspace ${tab==='home' ? 'workspace-home' : ''}`}>
+      <header className="topbar"><span className="eyebrow"><span className="console-light" aria-hidden="true"/>POKETOKEN / TRAINER'S LOG</span><div className="topbar-actions"><button className="theme-button" disabled={busy} aria-label={settings.theme==='dark' ? '라이트 모드로 변경' : '보라시티 다크 모드로 변경'} title={settings.theme==='dark' ? '라이트 모드' : '보라시티 다크 모드'} onClick={()=>update({theme:settings.theme==='dark' ? 'light' : 'dark'})}><PixelIcon kind={settings.theme==='dark' ? 'sun' : 'moon'}/><span>{settings.theme==='dark' ? '라이트' : '다크'}</span></button><span className="date">{new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}</span></div></header>
       {error && <div className="error-banner" role="alert">{error}<button onClick={() => setError(null)}>닫기</button></div>}
-      {tab === 'home' && <>
+      {tab === 'home' && <section className="home-page" aria-label="현재 펫과 사용량">
         <div className="page-heading"><div><h1>오늘도, 함께 성장해요<span>✦</span></h1><p>코딩에 쓴 토큰이 작은 친구의 경험치가 됩니다.</p></div><button className="button subtle" disabled={busy || snapshot.scanning} onClick={() => void run(() => window.desktop.refresh())}>{snapshot.scanning ? '확인 중…' : '↻ 새로고침'}</button></div>
         <div className="home-grid">
-          <section className="companion-card"><div className="card-top"><span className="pill">{pet.phase === 0 ? '부화를 기다리는 중' : growing ? `성장 단계 ${pet.phase} / ${finalPhase(pet)}` : '경험치사탕을 모으는 중'}</span><span className="small-label">MY COMPANION</span></div>
+          <section className="companion-card"><div className="card-top"><span className="pill">{pet.phase === 0 ? '부화를 기다리는 중' : growing ? `성장 단계 ${pet.phase} / ${finalPhase(pet)}` : '경험치사탕을 모으는 중'}</span><button className="companion-dex-link" title={`나의 도감 ${discovered.length} / ${POKEMON.length}종 · 이로치 ${game.ownedShiny.length}종`} onClick={()=>setTab('dex')}><PixelIcon kind="dex"/>도감 {discovered.length}/{POKEMON.length} →</button></div>
             <div className="habitat"><div className="cloud cloud-one"/><div className="cloud cloud-two"/><div className="sun"/><div className="hill hill-one"/><div className="hill hill-two"/><div className="ground"/><div className="habitat-sprite"><Sprite id={id} shiny={pet.shiny} eggType={pet.eggType}/></div><span className="grass grass-one"><PixelIcon kind="grass"/></span><span className="grass grass-two"><PixelIcon kind="grass"/></span></div>
             <div className="companion-description"><h2>{name}</h2><p>{pet.phase === 0 ? '어떤 친구가 태어날까요?' : growing ? '당신의 코딩 시간을 차곡차곡 기억하고 있어요.' : '이 모습으로 함께하며 다음 친구를 위한 사탕을 모아요.'}</p></div>
             <div className="growth"><div><strong><span className="exp-label">EXP</span>{growing ? `${labels[pet.phase]}까지` : '이 모습의 진화 완료'}</strong><span>{progress.toFixed(1)}%</span></div><div className="progress-track"><div style={{ width: `${progress}%` }}/></div><p>{growing ? <><span>{format(pet.xp)} / {format(goal)} XP</span><span>{format(Math.max(0, goal - pet.xp))} XP 남음</span></> : <span>알 또는 성장 중인 포켓몬을 고르면 자동 성장을 이어갑니다.</span>}</p></div>
@@ -295,10 +297,9 @@ function App(): React.JSX.Element {
           </div>
         </div>
         <section className="activity-strip"><div><PixelIcon kind="token"/><div><span>전체 로컬 사용량</span><strong>{format(all)} 토큰</strong></div></div><div><PixelIcon kind="xp"/><div><span>연결 후 얻은 경험치</span><strong>{format(game.tokensEarned)} XP</strong></div></div><div><PixelIcon kind="trophy"/><div><span>성장을 마친 친구</span><strong>{game.captures.length} 마리</strong></div></div></section>
-        <button className="collection-shortcut" onClick={()=>setTab('dex')}><span><PixelIcon kind="dex"/>나의 도감 <strong>{discovered.length} / {POKEMON.length}종</strong><small>이로치 {game.ownedShiny.length}종</small></span><span>둘러보기 →</span></button>
         <EggStorage game={game} pace={settings.pace} busy={busy} act={act}/>
-        <footer className="home-footer"><span>{snapshot.notice ? `✦ ${snapshot.notice}` : '새로 쓰는 토큰으로 성장합니다. 기존 기록은 사용량에만 표시됩니다.'}</span><small>{snapshot.lastScan ? `${new Date(snapshot.lastScan).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' })} 확인` : '첫 기록을 확인하는 중'}</small></footer>
-      </>}
+        <footer className="home-footer"><span title={snapshot.notice ?? undefined}>{snapshot.notice ? `✦ ${snapshot.notice}` : '새로 쓰는 토큰으로 성장합니다. 기존 기록은 사용량에만 표시됩니다.'}</span><small>{snapshot.lastScan ? `${new Date(snapshot.lastScan).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' })} 확인` : '첫 기록을 확인하는 중'}</small></footer>
+      </section>}
       {tab === 'dex' && <>
         <div className="page-heading"><div><h1>나의 작은 도감</h1><p>18개 진화 계열 · {discovered.length} / {POKEMON.length}종 발견 · 이로치 {game.ownedShiny.length}종</p></div><div className="segmented"><button className={!shinyDex ? 'selected' : ''} aria-pressed={!shinyDex} onClick={()=>{setShinyDex(false);setDexPage(1)}}>일반 도감</button><button className={shinyDex ? 'selected' : ''} aria-pressed={shinyDex} onClick={()=>{setShinyDex(true);setDexPage(1)}}>✦ 이로치 도감</button></div></div>
         <section ref={dexToolbar} className="dex-toolbar" aria-label="도감 검색 및 필터">
@@ -316,6 +317,7 @@ function App(): React.JSX.Element {
       {tab === 'settings' && <>
         <div className="page-heading"><div><h1>함께하는 방식</h1><p>성장 속도와 데스크톱 펫을 내 취향에 맞춰보세요.</p></div></div>
         <section className="settings-card"><h3>성장과 모습</h3><div className="setting-row"><div><strong>성장 속도</strong><p>변경해도 지금까지의 단계 진행률은 유지됩니다.</p></div><div className="segmented">{[['fast', '빠름'], ['normal', '기본'], ['slow', '느림']].map(([key, text]) => <button key={key} disabled={busy} className={settings.pace === key ? 'selected' : ''} onClick={() => update({ pace: key as Settings['pace'] })}>{text}</button>)}</div></div>
+          <div className="setting-row"><div><strong>화면 테마</strong><p>보라시티의 밤처럼 차분한 보라색 다크 모드</p></div><div className="segmented" role="group" aria-label="화면 테마">{([['light','라이트'],['dark','보라시티 다크']] as const).map(([theme,text])=><button key={theme} disabled={busy} aria-pressed={settings.theme===theme} className={settings.theme===theme ? 'selected' : ''} onClick={()=>update({theme})}>{text}</button>)}</div></div>
           <div className="setting-row"><div><strong>캐릭터 크기</strong><p>화면 위에 보이는 친구의 크기</p></div><div className="segmented">{([96, 128, 192] as const).map(size => <button key={size} disabled={busy} className={settings.size === size ? 'selected' : ''} onClick={() => update({ size })}>{size}px</button>)}</div></div>
           <div className="setting-row"><div><strong>함께할 화면</strong><p>모니터가 분리되면 기본 화면으로 돌아옵니다.</p></div><select aria-label="함께할 화면" value={displays.some(d => d.id === settings.displayId) ? settings.displayId! : ''} onChange={e => update({ displayId: e.target.value || null })}><option value="">기본 화면</option>{displays.map(d => <option key={d.id} value={d.id}>{d.label}</option>)}</select></div>
           <div className="setting-row"><div><strong>컴퓨터를 켜면 함께 시작</strong><p>로그인할 때 앱을 자동으로 실행합니다.</p></div><button disabled={busy} role="switch" aria-checked={settings.autoStart} aria-label="자동 시작" className={`toggle ${settings.autoStart ? 'on' : ''}`} onClick={() => update({ autoStart: !settings.autoStart })}><span/></button></div>

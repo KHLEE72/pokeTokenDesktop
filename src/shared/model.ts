@@ -20,9 +20,9 @@ export interface GameState {
 export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number }
 export interface Settings {
   pace: Pace; size: 96 | 128 | 192; displayId: string | null; visible: boolean
-  paused: boolean; autoStart: boolean; roots: Record<Provider, string[]>
+  paused: boolean; autoStart: boolean; theme: 'light' | 'dark'; roots: Record<Provider, string[]>
 }
-export const defaultSettings = (): Settings => ({ pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, roots: { claude: [], codex: [] } })
+export const defaultSettings = (): Settings => ({ pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, theme: 'light', roots: { claude: [], codex: [] } })
 export const newGame = (): GameState => ({ version: 2, tokensEarned: 0, candyTokens: 0, nextId: 2,
   pets: [{ id: 'pet:1', phase: 0, family: null, xp: 0, shiny: false, eggType: 'grass', obtainedAt: null }],
   activeId: 'pet:1', displayPhase: 0, owned: [], ownedShiny: [], captures: [] })

@@ -104,6 +104,7 @@ function validatePatch(value: unknown): Partial<Settings> {
   const p = value as Record<string, unknown>, result: Partial<Settings> = {}
   for (const key of ['visible', 'paused', 'autoStart'] as const) if (key in p) { if (typeof p[key] !== 'boolean') throw new Error('잘못된 설정'); result[key] = p[key] }
   if ('pace' in p) { if (!['fast', 'normal', 'slow'].includes(String(p.pace))) throw new Error('잘못된 속도'); result.pace = p.pace as Settings['pace'] }
+  if ('theme' in p) { if (p.theme !== 'light' && p.theme !== 'dark') throw new Error('잘못된 화면 테마'); result.theme = p.theme }
   if ('size' in p) { if (![96, 128, 192].includes(p.size as number)) throw new Error('잘못된 크기'); result.size = p.size as Settings['size'] }
   if ('displayId' in p) { if (p.displayId !== null && !screen.getAllDisplays().some(d => String(d.id) === p.displayId)) throw new Error('연결되지 않은 화면'); result.displayId = p.displayId as string | null }
   if ('roots' in p) {

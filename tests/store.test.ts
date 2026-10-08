@@ -54,6 +54,20 @@ describe('atomic usage ledger', () => {
     store.updateSettings({pace:'slow',size:192})
     expect(activePet(store.game).xp).toBe(5_000_000); expect(store.settings.size).toBe(192)
   })
+  it('adds the light theme to older settings without changing roots or growth, and persists dark mode', () => {
+    const {path,store}=make(), settings=store.settings, game=store.game
+    activePet(game).xp=250_000;store.set('game-v2',game)
+    const {theme:_,...legacy}=settings
+    legacy.roots={claude:['C:/logs/claude'],codex:['C:/logs/codex']};legacy.size=192
+    store.set('settings',legacy);store.close()
+    const migrated=new Store(path);stores.push(migrated)
+    expect(migrated.settings).toEqual({...legacy,theme:'light'})
+    expect(migrated.game).toEqual(game)
+    migrated.updateSettings({theme:'dark'});migrated.close()
+    const reopened=new Store(path);stores.push(reopened)
+    expect(reopened.settings).toEqual({...legacy,theme:'dark'})
+    expect(reopened.game).toEqual(game)
+  })
   it('migrates once, retains the old game and ledger, and persists selections and candies',()=>{
     const {path,store}=make(),r=record('counted',150_600_000)
     store.sync([r],new Set(),linked([r]),()=>.5)

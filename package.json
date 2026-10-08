@@ -1,6 +1,6 @@
 {
   "name": "poketoken-desktop",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "private": true,
   "description": "AI coding tokens, a little desktop companion.",
   "main": "out/main/index.js",

@@ -26,7 +26,9 @@ export class Store {
       const legacy = this.get<LegacyGame>('game')
       this.set('game-v2', legacy ? migrateGame(legacy,new Date().toISOString()) : newGame())
     })()
-    if (!this.get('settings')) this.set('settings', defaultSettings())
+    const settings = this.get<Settings>('settings')
+    if (!settings) this.set('settings', defaultSettings())
+    else if (!settings.theme) this.set('settings', { ...settings, theme: 'light' })
   }
   get<T>(key: string): T | null {
     const row = this.db.prepare('SELECT value FROM meta WHERE key = ?').get(key) as { value: string } | undefined
