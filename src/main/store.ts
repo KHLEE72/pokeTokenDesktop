@@ -3,6 +3,8 @@ import { GameAction, GameState, Settings, Snapshot, UsageRecord, defaultSettings
 import { advanceGame, changePace, gameAction, LegacyGame, migrateGame, upgradeGrowthPaths } from '../shared/game'
 import { ParsedFile } from './parsers'
 import { scanRoots } from './paths'
+import { ballUnlocked, isBall, isTheme, RewardState, themeUnlocked, unlockRewards } from '../shared/rewards'
+import { activePet } from '../shared/game'
 
 export interface CachedFile { path: string; provider: string; mtime: number; size: number; data: ParsedFile }
 export class Store {
@@ -34,6 +36,7 @@ export class Store {
     const settings = this.get<Settings>('settings')
     if (!settings) this.set('settings', defaultSettings())
     else if (!settings.theme) this.set('settings', { ...settings, theme: 'light' })
+    this.db.transaction(() => { this.reconcileRewards(this.game) })()
   }
   get<T>(key: string): T | null {
     const row = this.db.prepare('SELECT value FROM meta WHERE key = ?').get(key) as { value: string } | undefined
@@ -41,9 +44,23 @@ export class Store {
   }
   set(key: string, value: unknown): void { this.db.prepare('INSERT OR REPLACE INTO meta VALUES (?, ?)').run(key, JSON.stringify(value)) }
   get game(): GameState { return this.get<GameState>('game-v2')! }
+  get rewards(): RewardState { return this.get<RewardState>('achievements-v1') ?? { unlocked: {} } }
+  private reconcileRewards(game: GameState): void {
+    const rewards = this.rewards
+    unlockRewards(game, rewards, new Date().toISOString())
+    this.set('achievements-v1', rewards)
+  }
   act(action: GameAction): void {
     this.db.transaction(() => {
-      const game = this.game, notice = gameAction(game,action,this.settings.pace,new Date().toISOString())
+      const game = this.game
+      this.reconcileRewards(game)
+      if (action.type === 'ball') {
+        const pet = game.pets.find(p => p.id === action.petId)
+        if (!pet || pet.phase === 0 || !isBall(action.ball) || !ballUnlocked(this.rewards, action.ball)) throw new Error('선택할 수 없는 볼입니다. 업적에서 획득 조건을 확인해주세요.')
+      }
+      const notice = gameAction(game,action,this.settings.pace,new Date().toISOString())
+      this.reconcileRewards(game)
+      if (activePet(game).phase === 0 && this.settings.inBall) this.set('settings', { ...this.settings, inBall: false })
       this.set('game-v2',game); this.set('notice',notice)
     })()
   }
@@ -51,6 +68,10 @@ export class Store {
   updateSettings(patch: Partial<Settings>): void {
     this.db.transaction(() => {
       const settings = this.settings, game = this.game
+      this.reconcileRewards(game)
+      if (patch.theme !== undefined && (!isTheme(patch.theme) || !themeUnlocked(this.rewards, patch.theme))) throw new Error('아직 얻지 못한 테마예요. 업적에서 획득 조건을 확인해주세요.')
+      if (patch.inBall !== undefined && typeof patch.inBall !== 'boolean') throw new Error('잘못된 볼 상태입니다.')
+      if (patch.inBall && activePet(game).phase === 0) throw new Error('알이 부화하면 볼에 넣을 수 있어요.')
       if (patch.pace && patch.pace !== settings.pace) changePace(game, settings.pace, patch.pace)
       if (patch.roots) {
         const before = new Set(scanRoots(settings).map(r => r.key))
@@ -92,6 +113,7 @@ export class Store {
         put.run({ ...record, credited: total })
       }
       const notice = advanceGame(game, earned, settings.pace, new Date().toISOString(), random)
+      this.reconcileRewards(game)
       this.set('game-v2', game)
       if (notice) this.set('notice', notice)
       return notice
@@ -105,7 +127,7 @@ export class Store {
       SUM(CASE WHEN timestamp >= ? AND timestamp < ? THEN input+output+cacheRead+cacheWrite ELSE 0 END) AS today
       FROM usage GROUP BY provider`).all(start.toISOString(), end.toISOString()) as { provider: 'claude' | 'codex'; total: number; today: number }[]
     for (const row of rows) usage[row.provider] = { all: row.total ?? 0, today: row.today ?? 0 }
-    return { game: this.game, settings: this.settings, usage, roots: [], scanning: false, lastScan: this.get<string>('lastScan'), notice: this.get<string>('notice') }
+    return { game: this.game, settings: this.settings, rewards: this.rewards, usage, roots: [], scanning: false, lastScan: this.get<string>('lastScan'), notice: this.get<string>('notice') }
   }
   close(): void { this.db.close() }
 }

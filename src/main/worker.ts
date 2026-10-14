@@ -26,8 +26,8 @@ parentPort!.on('message', (message: { id: number; op: string; patch?: Partial<Se
     } catch (error) {
       scanning = false
       publish()
-      if (message.op !== 'game') parentPort!.postMessage({ type: 'error', message: '사용량을 읽는 중 오류가 발생했습니다. 잠시 후 다시 시도합니다.' })
-      parentPort!.postMessage({ type: 'reply', id: message.id, error: message.op === 'game' && error instanceof Error ? error.message : '사용량 처리 실패' })
+      if (!['game','settings'].includes(message.op)) parentPort!.postMessage({ type: 'error', message: '사용량을 읽는 중 오류가 발생했습니다. 잠시 후 다시 시도합니다.' })
+      parentPort!.postMessage({ type: 'reply', id: message.id, error: ['game','settings'].includes(message.op) && error instanceof Error ? error.message : '사용량 처리 실패' })
     }
   })
 })

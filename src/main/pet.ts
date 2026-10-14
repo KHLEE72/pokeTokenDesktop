@@ -71,9 +71,9 @@ export class PetController {
   get inputState(): object {
     if (this.window.isDestroyed()) return { destroyed:true }
     const bounds=this.window.getContentBounds(), point=screen.getCursorScreenPoint()
-    const cursor={x:point.x-bounds.x,y:point.y-bounds.y},size=this.settings.size
+    const cursor={x:point.x-bounds.x,y:point.y-bounds.y},size=this.characterSize()
     return { windowId:this.window.id,generation:this.generation,repairing:this.repairing,motion:this.state, ignoringMouse:this.ignoringMouse, inputCalls:this.inputCalls, topCalls:this.topCalls,
-      visible:this.settings.visible, nativeVisible:this.window.isVisible(), paused:this.settings.paused, asleep:this.asleep, locked:this.locked,
+      visible:this.settings.visible, nativeVisible:this.window.isVisible(), paused:this.settings.paused, inBall:Boolean(this.settings.inBall), asleep:this.asleep, locked:this.locked,
       topmost:this.window.isAlwaysOnTop?.()??false, focused:this.window.isFocused?.()??false,
       width:bounds.width,height:bounds.height,size,scaleFactor:this.display().scaleFactor??1,cursor,
       overCharacter:cursor.x>=24&&cursor.x<24+size&&cursor.y>=bounds.height-size-6&&cursor.y<bounds.height-6,
@@ -104,7 +104,7 @@ export class PetController {
     // DOM pointerenter may not fire again after hide/show or unlocking. Use DIP
     // cursor coordinates as a fallback, also when the character walks underneath it.
     const point = screen.getCursorScreenPoint(), bounds = this.window.getContentBounds()
-    const size = this.settings.size
+    const size = this.characterSize()
     const left = bounds.x + 24 // .pet-character left: 24px
     const top = bounds.y + bounds.height - size - 6 // .pet-character bottom: 6px
     const overCharacter = point.x >= left && point.x < left + size && point.y >= top && point.y < top + size
@@ -127,13 +127,14 @@ export class PetController {
       return distance(display) < distance(nearest) ? display : nearest
     }, displays.find(d=>String(d.id)===this.displayId) ?? displays[0] ?? screen.getPrimaryDisplay())
   }
-  private dimensions(): { width: number; height: number } { return { width: this.settings.size + 48, height: this.settings.size + 80 } }
+  private characterSize(settings = this.settings): number { return settings.inBall ? 40 : settings.size }
+  private dimensions(): { width: number; height: number } { const size = this.characterSize(); return { width: size + 48, height: size + 80 } }
   private floor(): number { const area = this.display().workArea; return area.y + area.height - this.dimensions().height }
   private feet(): number { return this.y + this.dimensions().height - 6 }
-  private centre(): number { return this.x + 24 + this.settings.size / 2 }
+  private centre(): number { return this.x + 24 + this.characterSize() / 2 }
   private range(ledge: Ledge, centre = this.centre()): { left: number; right: number; display: Display } | null {
     const display = this.displayAt({ x: centre, y: ledge.y })
-    const area = display.workArea, half = this.settings.size / 2
+    const area = display.workArea, half = this.characterSize() / 2
     if (ledge.y - this.dimensions().height + 6 < area.y || ledge.y > area.y + area.height - 6) return null
     const left = Math.max(ledge.x + half, area.x + 24 + half)
     const right = Math.min(ledge.x + ledge.width - half, area.x + area.width - 24 - half)
@@ -166,7 +167,7 @@ export class PetController {
     if (!ledge) { this.beginFall(); return }
     const range = this.range(ledge, desired)!
     const centre = clamp(desired, range.left, range.right)
-    this.x = centre - 24 - this.settings.size / 2
+    this.x = centre - 24 - this.characterSize() / 2
     this.y = ledge.y - this.dimensions().height + 6
     this.perch.offset = centre - frame.x
     this.selectDisplay(String(range.display.id)); this.position()
@@ -209,13 +210,20 @@ export class PetController {
     if (relocate) {
       this.x = this.display().workArea.x + this.display().workArea.width * 0.72
       this.recover()
-    } else if (settings.size !== before.size) {
-      if (this.state !== 'held') this.y -= settings.size - before.size
+    } else if (this.characterSize(settings) !== this.characterSize(before)) {
+      if (this.state !== 'held') this.y -= this.characterSize(settings) - this.characterSize(before)
+      this.x += (this.characterSize(before) - this.characterSize(settings)) / 2
       this.clampX(); this.y = Math.min(this.y, this.floor())
       this.position()
       this.followPerch()
     }
     if (!settings.visible && before.visible) this.recover()
+    if (Boolean(settings.inBall) !== Boolean(before.inBall)) {
+      this.window.webContents.send('pet:reset-interaction')
+      if (this.state === 'held') this.beginFall()
+      else if (this.state === 'walking') this.state = 'idle'
+      this.nextAction = Date.now() + 2500
+    }
     if (settings.paused && this.state === 'walking') { this.state = 'idle'; this.motion() }
     if (settings.paused !== before.paused) this.nextAction = Date.now() + 2500
     if (settings.visible && !this.suspended && !this.repairing) {
@@ -336,7 +344,7 @@ export class PetController {
       if (now >= this.landingUntil) { this.state = 'idle'; this.nextAction = now + 2500; this.motion() }
       return
     }
-    if (this.settings.paused) return
+    if (this.settings.paused || this.settings.inBall) return
     if (now > this.nextAction) {
       this.state = this.state === 'walking' ? 'idle' : 'walking'
       this.nextAction = now + (this.state === 'walking' ? 4000 + Math.random() * 5000 : 3000 + Math.random() * 5000)
@@ -346,8 +354,8 @@ export class PetController {
     const area = this.display().workArea, width = this.dimensions().width
     const ledge = this.perch && this.ledges.find(ledge => ledge.id === this.perch!.id && this.range(ledge) && this.centre() >= this.range(ledge)!.left && this.centre() <= this.range(ledge)!.right)
     const range = ledge ? this.range(ledge)! : null
-    const left = range ? range.left - 24 - this.settings.size / 2 : area.x
-    const right = range ? range.right - 24 - this.settings.size / 2 : area.x + area.width - width
+    const left = range ? range.left - 24 - this.characterSize() / 2 : area.x
+    const right = range ? range.right - 24 - this.characterSize() / 2 : area.x + area.width - width
     this.x += this.direction * 27 * elapsed
     if (this.x <= left || this.x >= right) {
       this.direction = this.direction === 1 ? -1 : 1; this.x = clamp(this.x, left, right); this.motion()

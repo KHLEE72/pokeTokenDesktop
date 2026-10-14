@@ -1,5 +1,6 @@
 export type Provider = 'claude' | 'codex'
 export type Pace = 'fast' | 'normal' | 'slow'
+import type { BallId, RewardState, ThemeId } from './rewards'
 export interface Tokens { input: number; output: number; cacheRead: number; cacheWrite: number }
 export interface UsageRecord extends Tokens { id: string; provider: Provider; timestamp: string }
 export const totalTokens = (v: Tokens): number => v.input + v.output + v.cacheRead + v.cacheWrite
@@ -13,18 +14,19 @@ export interface Companion {
   eggType: EggType | null; obtainedAt: string | null
   // Optional on older v2 saves; backfilled once without recrediting usage.
   path?: number[]; evolutionTarget?: number | null
+  ball?: BallId
 }
 export interface GameState {
   version: 2; tokensEarned: number; candyTokens: number; nextId: number
   pets: Companion[]; activeId: string; displayPhase: number
   owned: number[]; ownedShiny: number[]; captures: Capture[]
 }
-export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null }
+export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null } | { type: 'ball'; petId: string; ball: BallId }
 export interface Settings {
   pace: Pace; size: 96 | 128 | 192; displayId: string | null; visible: boolean
-  paused: boolean; autoStart: boolean; theme: 'light' | 'dark'; roots: Record<Provider, string[]>
+  paused: boolean; autoStart: boolean; theme: ThemeId; inBall?: boolean; roots: Record<Provider, string[]>
 }
-export const defaultSettings = (): Settings => ({ pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, theme: 'light', roots: { claude: [], codex: [] } })
+export const defaultSettings = (): Settings => ({ pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, theme: 'light', inBall: false, roots: { claude: [], codex: [] } })
 export const newGame = (): GameState => ({ version: 2, tokensEarned: 0, candyTokens: 0, nextId: 2,
   pets: [{ id: 'pet:1', phase: 0, family: null, xp: 0, shiny: false, eggType: 'grass', obtainedAt: null, path: [], evolutionTarget: null }],
   activeId: 'pet:1', displayPhase: 0, owned: [], ownedShiny: [], captures: [] })
@@ -35,6 +37,7 @@ export interface RootStatus {
 export interface Snapshot {
   game: GameState; settings: Settings; usage: Record<Provider, { today: number; all: number }>
   roots: RootStatus[]; scanning: boolean; lastScan: string | null; notice: string | null
+  rewards: RewardState
 }
 export interface DisplayChoice { id: string; label: string }
 export type PetMotionState = 'idle' | 'walking' | 'held' | 'falling' | 'landing'

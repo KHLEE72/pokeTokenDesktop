@@ -259,10 +259,10 @@ try {
   await expect(page.getByRole('heading', { name: '함께하는 방식' })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false)
   await page.screenshot({ path: 'artifacts/dashboard-settings.png', fullPage: true })
-  await page.getByRole('group',{name:'화면 테마'}).getByRole('button',{name:'라이트',exact:true}).click()
+  await page.getByRole('button',{name:'몬스터볼 라이트 테마',exact:true}).click()
   await expect(page.locator('.app-shell')).toHaveAttribute('data-theme','light')
   await page.screenshot({path:'artifacts/dashboard-settings-light.png',fullPage:true})
-  await page.getByRole('group',{name:'화면 테마'}).getByRole('button',{name:'보라시티 다크',exact:true}).click()
+  await page.getByRole('button',{name:'보라시티 다크 테마',exact:true}).click()
   checks.push('local pixel fonts and the candy sprite load; themed home, dex and settings render without horizontal overflow')
   expect(errors).toEqual([])
   const report = { checks, errors, normalLayout, compactLayout, eggLayout, completedLayout }

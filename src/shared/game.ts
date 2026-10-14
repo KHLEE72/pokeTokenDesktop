@@ -1,5 +1,6 @@
 // Growth balance adapted from PokeTokenBar (MIT), pinned revision in THIRD_PARTY_NOTICES.md.
 import { Capture, Companion, EggType, EVOLUTIONS, FAMILIES, GameAction, GameState, newGame, Pace, POKEMON } from './model'
+import { ballInfo, isBall } from './rewards'
 export const multipliers: Record<Pace, number> = { fast: 0.1, normal: 1, slow: 2 }
 export const CANDY_XP = 100_000
 export const SHINY_CHANCE = 1 / 64
@@ -86,6 +87,12 @@ export function changePace(game: GameState, before: Pace, after: Pace): void {
   }
 }
 export function gameAction(game: GameState, action: GameAction, pace: Pace, now: string): string {
+  if (action.type === 'ball') {
+    const pet = game.pets.find(p => p.id === action.petId)
+    if (!pet || pet.phase === 0 || !isBall(action.ball)) throw new Error('선택할 수 없는 볼입니다.')
+    pet.ball = action.ball
+    return `${ballInfo(action.ball).name}을 골랐어요.`
+  }
   if (action.type === 'egg') {
     if (!eggFamilies(action.eggType).length) throw new Error('선택할 수 없는 알입니다.')
     let pet = game.pets.find(p => p.phase === 0 && p.eggType === action.eggType)

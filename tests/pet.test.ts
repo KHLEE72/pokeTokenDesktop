@@ -32,6 +32,20 @@ function setup(replaceWindow?: (previous: BrowserWindow) => Promise<BrowserWindo
 }
 afterEach(()=>{for(const controller of controllers.splice(0))controller.destroy();vi.useRealTimers();vi.clearAllMocks()})
 describe('pet desktop behavior',()=>{
+  it('rests in a small draggable ball, keeps input bounds aligned and restores size without changing pause',()=>{
+    const rig=setup(); rig.controller.apply({...rig.settings,inBall:true})
+    expect(rig.bounds.width).toBe(88); expect(rig.bounds.height).toBe(120)
+    const before={...rig.bounds}
+    vi.advanceTimersByTime(15000)
+    expect(rig.bounds).toEqual(before); expect(rig.motion.state).toBe('idle')
+    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+44,y:rig.bounds.y+94})
+    vi.advanceTimersByTime(33); expect(rig.ignored).toBe(false)
+    rig.controller.drag('start');expect(rig.motion.state).toBe('held')
+    expect(rig.controller.drag('release')).toBe('pet')
+    rig.controller.apply({...rig.settings,inBall:false,paused:true})
+    expect(rig.bounds.width).toBe(176); expect(rig.bounds.height).toBe(208)
+    const summoned={...rig.bounds};vi.advanceTimersByTime(15000);expect(rig.bounds).toEqual(summoned)
+  })
   it('repairs native click-through drift without cursor movement or a lock/unlock event',()=>{
     const rig=setup();rig.controller.apply({...rig.settings,paused:true})
     vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+80,y:rig.bounds.y+110})

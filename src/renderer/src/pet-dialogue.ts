@@ -11,7 +11,7 @@ export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { 
   const nextIdle = useRef(Date.now() + 35_000 + Math.random() * 30_000)
   current.current = {
     id: snapshot ? speciesId(snapshot.game) : null,
-    visible: snapshot?.settings.visible ?? false,
+    visible: Boolean(snapshot?.settings.visible && !snapshot.settings.inBall),
     ready: Boolean(snapshot?.lastScan), waiting: snapshot ? waitingForEvolution(activePet(snapshot.game),snapshot.settings.pace) : false, state: motion.state
   }
   const say = useCallback((event: DialogueEvent, summary: string | null = null): void => {
@@ -40,8 +40,8 @@ export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { 
   useEffect(() => window.desktop.onPetting(() => say('petting')), [say])
 
   useEffect(() => {
-    if (!snapshot?.settings.visible) { director.current.clear(); setSpeech(null) }
-  }, [snapshot?.settings.visible])
+    if (!snapshot?.settings.visible || snapshot.settings.inBall) { director.current.clear(); setSpeech(null) }
+  }, [snapshot?.settings.visible, snapshot?.settings.inBall])
 
   useEffect(() => {
     const timer = setInterval(() => {

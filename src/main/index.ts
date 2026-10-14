@@ -7,6 +7,8 @@ import { SpriteCache } from './sprites'
 import { PetController } from './pet'
 import { WindowTracker } from './window-tracker'
 import { InputDiagnostics, sanitizePetTrace } from './input-diagnostics'
+import { isBall, isTheme } from '../shared/rewards'
+import { activePet } from '../shared/game'
 
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
@@ -16,7 +18,7 @@ let windowTracker: WindowTracker | undefined
 let preferences: Electron.WebPreferences
 let quitting = false, nextId = 1
 let diagnostics: InputDiagnostics
-let snapshot: Snapshot = { game: newGame(), settings: defaultSettings(), usage: { claude: { today: 0, all: 0 }, codex: { today: 0, all: 0 } }, roots: [], scanning: true, lastScan: null, notice: null }
+let snapshot: Snapshot = { game: newGame(), settings: defaultSettings(), rewards: { unlocked: {} }, usage: { claude: { today: 0, all: 0 }, codex: { today: 0, all: 0 } }, roots: [], scanning: true, lastScan: null, notice: null }
 const pending = new Map<number, { resolve: () => void; reject: (e: Error) => void; timer: NodeJS.Timeout }>()
 const request = (op: string, patch?: Partial<Settings>, action?: GameAction): Promise<void> => new Promise((resolve, reject) => {
   const id = nextId++
@@ -90,9 +92,11 @@ function openDashboard(tab = 'home'): void {
 function trayMenu(): void {
   tray.setContextMenu(Menu.buildFromTemplate([
     { label: '현재 펫 · 사용량', click: () => openDashboard() },
+    { label: snapshot.settings.inBall ? '볼에서 꺼내기' : '볼에 넣기', enabled: activePet(snapshot.game).phase > 0, click: () => void request('settings', { inBall: !snapshot.settings.inBall, visible: true }).catch(() => {}) },
     { label: snapshot.settings.visible ? '펫 숨기기' : '펫 보이기', click: () => void request('settings', { visible: !snapshot.settings.visible }).catch(() => {}) },
     { label: snapshot.settings.paused ? '다시 걷기' : '이동 일시정지', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
     { label: '설정', click: () => openDashboard('settings') },
+    { label: '업적 · 볼 컬렉션', click: () => openDashboard('achievements') },
     { label: '펫 입력 복구', click: () => controller.repairInput() },
     { label: '입력 문제 시점 기록', click: () => diagnostics.record('user.mark',controller.inputState) },
     { label: '입력 진단 로그 폴더', click: () => { diagnostics.record('diagnostic.folder-opened',controller.inputState); void diagnostics.flush().then(()=>shell.openPath(join(app.getPath('userData'),'diagnostics'))) } },
@@ -102,9 +106,9 @@ function trayMenu(): void {
 function validatePatch(value: unknown): Partial<Settings> {
   if (!value || typeof value !== 'object') throw new Error('잘못된 설정')
   const p = value as Record<string, unknown>, result: Partial<Settings> = {}
-  for (const key of ['visible', 'paused', 'autoStart'] as const) if (key in p) { if (typeof p[key] !== 'boolean') throw new Error('잘못된 설정'); result[key] = p[key] }
+  for (const key of ['visible', 'paused', 'autoStart', 'inBall'] as const) if (key in p) { if (typeof p[key] !== 'boolean') throw new Error('잘못된 설정'); result[key] = p[key] }
   if ('pace' in p) { if (!['fast', 'normal', 'slow'].includes(String(p.pace))) throw new Error('잘못된 속도'); result.pace = p.pace as Settings['pace'] }
-  if ('theme' in p) { if (p.theme !== 'light' && p.theme !== 'dark') throw new Error('잘못된 화면 테마'); result.theme = p.theme }
+  if ('theme' in p) { if (!isTheme(p.theme)) throw new Error('잘못된 화면 테마'); result.theme = p.theme }
   if ('size' in p) { if (![96, 128, 192].includes(p.size as number)) throw new Error('잘못된 크기'); result.size = p.size as Settings['size'] }
   if ('displayId' in p) { if (p.displayId !== null && !screen.getAllDisplays().some(d => String(d.id) === p.displayId)) throw new Error('연결되지 않은 화면'); result.displayId = p.displayId as string | null }
   if ('roots' in p) {
@@ -178,10 +182,11 @@ else {
       else if (value.type === 'select' && typeof value.petId==='string' && value.petId.length<80 && Number.isInteger(value.phase) && value.phase>=0 && value.phase<=3) action={type:'select',petId:value.petId,phase:value.phase}
       else if (value.type === 'candy' && Number.isSafeInteger(value.count) && value.count>0 && value.count<=1e9) action={type:'candy',count:value.count}
       else if (value.type === 'target' && (value.speciesId===null || Number.isInteger(value.speciesId))) action={type:'target',speciesId:value.speciesId}
+      else if (value.type === 'ball' && typeof value.petId === 'string' && value.petId.length < 80 && isBall(value.ball)) action={type:'ball',petId:value.petId,ball:value.ball}
       else throw new Error('잘못된 요청')
       await request('game',undefined,action)
     })
-    ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'settings'].includes(tab) ? tab : 'home') })
+    ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'achievements', 'settings'].includes(tab) ? tab : 'home') })
     ipcMain.on('pet:pointer', (event, active) => { if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
     let traceWindow=0,traceCount=0
     ipcMain.on('pet:input-trace',(event,value)=>{
@@ -196,8 +201,10 @@ else {
       const before=action==='move'?null:controller.inputState,result=controller.drag(action)
       if(action!=='move')diagnostics.record('ipc.drag',{action,result,before,after:controller.inputState})
       if(result==='drop')void request('settings', { displayId: controller.selectedDisplay }).catch(() => {})
+      if(result==='pet' && snapshot.settings.inBall)void request('settings', { inBall: false }).catch(() => {})
     })
     ipcMain.on('pet:menu', event => { if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
+      { label: snapshot.settings.inBall ? '볼에서 꺼내기' : '볼에 넣기', enabled: activePet(snapshot.game).phase > 0, click: () => void request('settings', { inBall: !snapshot.settings.inBall }).catch(() => {}) },
       { label: '현재 펫 · 사용량', click: () => openDashboard() }, { label: '이동 일시정지 / 다시 걷기', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
       { label: '설정', click: () => openDashboard('settings') }, { label: '펫 숨기기', click: () => void request('settings', { visible: false }).catch(() => {}) }
     ]).popup({ window: pet }) })
