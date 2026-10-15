@@ -1,4 +1,4 @@
-import {_electron as electronApp,expect} from '@playwright/test'
+import {_electron as electronApp,expect} from './test-electron.mjs'
 import electron from 'electron'
 import {spawnSync} from 'node:child_process'
 import {appendFileSync,mkdirSync,mkdtempSync,writeFileSync} from 'node:fs'
@@ -95,7 +95,9 @@ try{
   await dex(true,'블래키');await expect(page.getByRole('button',{name:'이로치 블래키 선택',exact:true})).toBeDisabled()
   await dex(false,'님피아');await expect(page.getByRole('button',{name:'님피아 선택',exact:true})).toBeDisabled()
   await dex(true,'님피아');await expect(page.getByRole('button',{name:'이로치 님피아 선택',exact:true})).toHaveText('함께하는 중')
-  await expect(page.locator('.history')).toContainText('✦ 이로치 님피아')
+  await page.getByRole('tab',{name:/최종 진화 기록/}).click()
+  await expect(page.locator('.evolution-history')).toContainText('✦ 이로치 님피아')
+  await page.getByRole('tab',{name:'포켓몬 도감',exact:true}).click()
   await page.screenshot({path:'artifacts/eevee-shiny-dex.png'})
   await dex(true,'이브이');await page.getByRole('button',{name:'이로치 이브이 선택',exact:true}).click();await home()
   await expect(target()).toHaveCount(0);await expect(page.getByRole('button',{name:'사탕 먹이기',exact:true})).toBeDisabled()
@@ -119,7 +121,8 @@ try{
   expect(sprites.every(s=>s?.startsWith('data:image/gif;base64,'))).toBe(true)
   checks.push('all nine normal and shiny GIF sprites download and cache through the packaged sprite API')
   await page.locator('.egg-drawer > summary').click()
-  await expect(page.locator('.egg-choice[data-egg-type="normal"]')).toContainText('이브이')
+  await expect(page.locator('.egg-choice[data-egg-type="normal"]')).toContainText('노말타입 알')
+  await expect(page.locator('.egg-choice[data-egg-type="normal"]')).not.toContainText('이브이')
   expect(errors).toEqual([])
   writeFileSync('artifacts/evolution-report.json',JSON.stringify({checks,errors,executablePath:process.env.POKETOKEN_EXE||electron},null,2));console.log(JSON.stringify({checks,errors},null,2))
 }finally{if(application)await application.close()}

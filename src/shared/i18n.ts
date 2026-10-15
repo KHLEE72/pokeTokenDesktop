@@ -26,7 +26,7 @@ export function translator(language: Language): (key: string | TemplateStringsAr
 }
 export function eggName(type: EggType | null, language: Language): string {
   const t = translator(language)
-  return type ? t`${typeName(type, language)} 알` : t('기존 알')
+  return type ? t`${typeName(type, language)}타입 알` : t('기존 알')
 }
 
 // Older saves contain Korean notices. Translate the fixed message grammar at

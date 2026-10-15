@@ -1,4 +1,4 @@
-import { _electron as electronApp, expect } from '@playwright/test'
+import { _electron as electronApp, expect } from './test-electron.mjs'
 import electron from 'electron'
 import { mkdirSync, mkdtempSync, writeFileSync, appendFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'

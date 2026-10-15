@@ -1,4 +1,4 @@
-import { _electron as electronApp, expect } from '@playwright/test'
+import { _electron as electronApp, expect } from './test-electron.mjs'
 import electron from 'electron'
 import { spawnSync } from 'node:child_process'
 import { appendFileSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
@@ -110,7 +110,7 @@ try {
   await expect.poll(async () => (await snapshot()).game.pets.find(p => p.id === activeId).ball).toBe('luxury')
   expect((await snapshot()).settings.theme).toBe('luxury')
   await pet.screenshot({ path: 'artifacts/rewards-luxury-ball.png', omitBackground: true })
-  await nav('현재 펫'); await page.locator('.egg-drawer > summary').click(); await page.getByRole('button', { name: '불꽃 알 선택', exact: true }).click()
+  await nav('현재 펫'); await page.locator('.egg-drawer > summary').click(); await page.getByRole('button', { name: '불꽃타입 알 선택', exact: true }).click()
   expect((await snapshot()).settings.inBall).toBe(false)
   expect((await snapshot()).game.pets.find(p => p.id === activeId).ball).toBe('luxury')
   checks.push('all available theme palettes are distinct, the minimum-size home fits, inactive individuals can equip balls, and egg selection leaves ball mode safely')

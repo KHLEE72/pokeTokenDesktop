@@ -10,6 +10,7 @@ import { InputDiagnostics, sanitizePetTrace } from './input-diagnostics'
 import { isBall, isTheme } from '../shared/rewards'
 import { activePet } from '../shared/game'
 import { isLanguage, translator } from '../shared/i18n'
+import { isDexSort } from '../shared/dex'
 
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
@@ -122,6 +123,7 @@ function validatePatch(value: unknown): Partial<Settings> {
   for (const key of ['visible', 'paused', 'autoStart', 'inBall'] as const) if (key in p) { if (typeof p[key] !== 'boolean') throw new Error('잘못된 설정'); result[key] = p[key] }
   if ('pace' in p) { if (!['fast', 'normal', 'slow'].includes(String(p.pace))) throw new Error('잘못된 속도'); result.pace = p.pace as Settings['pace'] }
   if ('language' in p) { if (!isLanguage(p.language)) throw new Error('잘못된 언어 설정입니다.'); result.language=p.language }
+  if ('dexSort' in p) { if (!isDexSort(p.dexSort)) throw new Error('잘못된 도감 정렬입니다.'); result.dexSort=p.dexSort }
   if ('theme' in p) { if (!isTheme(p.theme)) throw new Error('잘못된 화면 테마'); result.theme = p.theme }
   if ('size' in p) { if (![96, 128, 192].includes(p.size as number)) throw new Error('잘못된 크기'); result.size = p.size as Settings['size'] }
   if ('displayId' in p) { if (p.displayId !== null && !screen.getAllDisplays().some(d => String(d.id) === p.displayId)) throw new Error('연결되지 않은 화면'); result.displayId = p.displayId as string | null }

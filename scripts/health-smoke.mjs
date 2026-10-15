@@ -1,4 +1,4 @@
-import { _electron as electronApp, expect } from '@playwright/test'
+import { _electron as electronApp, expect } from './test-electron.mjs'
 import electron from 'electron'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'

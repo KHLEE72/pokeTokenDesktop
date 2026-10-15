@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { version } from '../../../package.json';
 import { Snapshot, Settings, POKEMON, DisplayChoice, PetMotion, PetInputTrace, EGG_TYPES, FAMILIES, EggType, GameAction, GameState, Companion } from '../../shared/model';
-import { activePet, candyCount, CANDY_XP, capturedSpecies, dexChoices, discoveredSpecies, eggFamilies, evolutionOptions, finalPhase, isGrowing, speciesId, threshold, waitingForEvolution } from '../../shared/game';
+import { activePet, candyCount, CANDY_XP, dexChoices, discoveredSpecies, evolutionOptions, finalPhase, isGrowing, speciesId, threshold, waitingForEvolution } from '../../shared/game';
 import { usePetDialogue } from './pet-dialogue';
 import { PixelIcon, PixelIconKind } from './pixel-icons';
 import { ACHIEVEMENTS, BallId, ballInfo, ballUnlocked, themeInfo } from '../../shared/rewards';
@@ -13,6 +13,9 @@ import './theme.css';
 import './appearance.css';
 import './rewards.css';
 import './i18n.css';
+import './dex.css';
+import { DexSort, sortDex } from '../../shared/dex';
+import { EvolutionHistory } from './evolution-history';
 import { LANGUAGES, Language, ballName, eggName as localizedEggName, localeFor, localizeMessage, pokemonMatches, pokemonName, themeName, typeName } from '../../shared/i18n';
 import { LanguageContext, SnapshotContext, useI18n, useSnapshot } from './i18n';
 
@@ -36,7 +39,7 @@ function useLiveSnapshot(): Snapshot | null {
 }
 function Egg({ type = 'grass' }: {type?: EggType | null;}): React.JSX.Element {const { language, t } = useI18n();
   const kind = EGG_TYPES.find((t) => t.id === type);
-  return <svg className="egg" viewBox="0 0 32 40" shapeRendering="crispEdges" aria-label={kind ? t`${typeName(kind.id, language)} 알` : t("기존 포켓몬 알")}><path fill="#283e5025" d="M8 38h16v2H8Z" /><path fill="#283e50" d="M14 2h4v2h4v4h2v4h2v4h2v14h-2v4h-2v2H8v-2H6v-4H4V16h2v-4h2V8h2V4h4Z" /><path fill="#fff6dc" d="M14 4h4v2h4v4h2v6h2v14h-2v4H8v-4H6V16h2v-6h2V6h4Z" /><path fill="#e9dcad" d="M22 16h2v14h-2v2H10v-2h10v-2h2Z" /><path fill={kind?.color ?? '#76b77d'} d="M12 8h4v4h-4Zm7 10h4v6h-4ZM8 24h6v4H8Z" /><path fill="#fff" d="M10 14h2v6h-2Zm2-2h2v2h-2Z" /></svg>;
+  return <svg className="egg" viewBox="0 0 32 40" shapeRendering="crispEdges" aria-label={kind ? localizedEggName(kind.id, language) : t("기존 포켓몬 알")}><path fill="#283e5025" d="M8 38h16v2H8Z" /><path fill="#283e50" d="M14 2h4v2h4v4h2v4h2v4h2v14h-2v4h-2v2H8v-2H6v-4H4V16h2v-4h2V8h2V4h4Z" /><path fill="#fff6dc" d="M14 4h4v2h4v4h2v6h2v14h-2v4H8v-4H6V16h2v-6h2V6h4Z" /><path fill="#e9dcad" d="M22 16h2v14h-2v2H10v-2h10v-2h2Z" /><path fill={kind?.color ?? '#76b77d'} d="M12 8h4v4h-4Zm7 10h4v6h-4ZM8 24h6v4H8Z" /><path fill="#fff" d="M10 14h2v6h-2Zm2-2h2v2h-2Z" /></svg>;
 }
 function Sprite({ id, shiny = false, eggType = 'grass', className = '' }: {id: number | null;shiny?: boolean;eggType?: EggType | null;className?: string;}): React.JSX.Element {const { language, t } = useI18n();
   const [url, setUrl] = useState<string | null>(null);
@@ -177,11 +180,10 @@ function Pet(): React.JSX.Element | null {const { language, t } = useI18n();
 function EggSelection({ game, pace, busy, act }: {game: GameState;pace: Settings['pace'];busy: boolean;act: (action: GameAction) => void;}): React.JSX.Element {const { language, t } = useI18n();
   const legacy = game.pets.find((p) => p.phase === 0 && p.eggType === null);
   const eggs = game.pets.filter((p) => p.phase === 0);
-  const choices: {key: string;eggType: EggType | null;egg: Companion | undefined;name: string;names: string;}[] = EGG_TYPES.map((type) => ({
-    key: type.id, eggType: type.id, egg: eggs.find((egg) => egg.eggType === type.id), name: t`${typeName(type.id, language)} 알`,
-    names: eggFamilies(type.id).map((f) => pokemonName(FAMILIES[f].species[0], language)).join(' · ')
+  const choices: {key: string;eggType: EggType | null;egg: Companion | undefined;name: string;}[] = EGG_TYPES.map((type) => ({
+    key: type.id, eggType: type.id, egg: eggs.find((egg) => egg.eggType === type.id), name: localizedEggName(type.id, language)
   }));
-  if (legacy) choices.push({ key: 'legacy', eggType: null, egg: legacy, name: t("기존 알"), names: t("이전에 키우던 알") });
+  if (legacy) choices.push({ key: 'legacy', eggType: null, egg: legacy, name: t("기존 알") });
   choices.sort((a, b) => {
     return Number(b.egg?.id === game.activeId) - Number(a.egg?.id === game.activeId) || Number(Boolean(b.egg)) - Number(Boolean(a.egg)) || (b.egg?.xp ?? 0) - (a.egg?.xp ?? 0);
   });
@@ -190,7 +192,7 @@ function EggSelection({ game, pace, busy, act }: {game: GameState;pace: Settings
         const { egg } = choice,active = egg?.id === game.activeId;
         return <button key={choice.key} className={`egg-choice ${egg ? 'stored' : ''} ${active ? 'selected' : ''}`} data-egg-type={choice.key} aria-label={choice.eggType === null ? t("기존 알 이어 키우기") : t`${choice.name} 선택`} disabled={busy || active} onClick={() => act(choice.eggType === null ? { type: 'select', petId: egg!.id, phase: 0 } : { type: 'egg', eggType: choice.eggType })}>
         <span className="egg-choice-status">{active ? t("부화 중") : egg ? t("보관 중") : t("새 알")}</span>
-        <Egg type={choice.eggType} /><strong>{choice.name}</strong><small>{choice.names}</small>
+        <Egg type={choice.eggType} /><strong>{choice.name}</strong>
         {egg ? <EggGrowth egg={egg} pace={pace} /> : <span className="egg-not-started">{t("새로 키울 수 있는 알")}</span>}
         <span className="egg-choice-action">{active ? t("함께하는 중") : egg ? t("이어 키우기") : t("새 알 선택")}</span>
       </button>;
@@ -265,11 +267,19 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   }, [snapshot?.rewards]);
   useEffect(() => {if (!newRewards.length) return;const timer = setTimeout(() => setNewRewards([]), 6500);return () => clearTimeout(timer);}, [newRewards]);
   const [shinyDex, setShinyDex] = useState(false);
+  const [dexView, setDexView] = useState<'collection' | 'history'>('collection');
   const [dexSearch, setDexSearch] = useState('');
   const [dexType, setDexType] = useState<EggType | 'all'>('all');
   const [dexStatus, setDexStatus] = useState<DexStatus>('all');
   const [dexPage, setDexPage] = useState(1);
   const dexToolbar = useRef<HTMLElement>(null);
+  useEffect(() => setDexPage(1), [language, snapshot?.settings.dexSort]);
+  const dexViewKeys = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    const index = event.key === 'Home' ? 0 : event.key === 'End' ? 1 : ['ArrowLeft', 'ArrowRight'].includes(event.key) ? (dexView === 'collection' ? 1 : 0) : -1;
+    if (index < 0) return;
+    event.preventDefault();setDexView(index === 0 ? 'collection' : 'history');
+    event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]')[index]?.focus();
+  };
   const resetDexFilters = (): void => {setDexSearch('');setDexType('all');setDexStatus('all');setDexPage(1);};
   useEffect(() => window.desktop.onNavigate(setTab), []);
   useEffect(() => {if (tab === 'settings') void window.desktop.getDisplays().then(setDisplays);}, [tab, language]);
@@ -290,7 +300,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   const all = snapshot.usage.claude.all + snapshot.usage.codex.all;
   const connected = snapshot.roots.filter((r) => r.state === 'connected').length;
   const query = normalizeSearch(dexSearch),numberQuery = query.replace(/^(?:no\.?|#)/, '');
-  const filteredPokemon = tab === 'dex' ? POKEMON.filter((p) => {
+  const filteredPokemon = tab === 'dex' ? sortDex(POKEMON.filter((p) => {
     if (query && !pokemonMatches(p.id, query) && !(/^\d+$/.test(numberQuery) && p.id === Number(numberQuery))) return false;
     if (dexType !== 'all' && !p.types.some((type) => type === dexType)) return false;
     if (dexStatus === 'all') return true;
@@ -301,7 +311,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
     if (dexStatus === 'complete') return choices.some((c) => !growingAppearance(c, p.phase));
     if (dexStatus === 'active') return choices.some((c) => c.id === game.activeId && game.displayPhase === p.phase);
     return true;
-  }) : [];
+  }), settings.dexSort, game, shinyDex, language) : [];
   const hasDexFilters = Boolean(dexSearch || dexType !== 'all' || dexStatus !== 'all');
   const dexPages = Math.max(1, Math.ceil(filteredPokemon.length / DEX_PAGE_SIZE)),currentDexPage = Math.min(dexPage, dexPages);
   const dexStart = (currentDexPage - 1) * DEX_PAGE_SIZE,pagePokemon = filteredPokemon.slice(dexStart, dexStart + DEX_PAGE_SIZE);
@@ -336,18 +346,21 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
         <footer className="home-footer"><span title={localizeMessage(snapshot.notice, language) || undefined}>{snapshot.notice ? `✦ ${localizeMessage(snapshot.notice, language)}` : t("새로 쓰는 토큰으로 성장합니다. 기존 기록은 사용량에만 표시됩니다.")}</span><small>{snapshot.lastScan ? t`${new Date(snapshot.lastScan).toLocaleTimeString(localeFor(language), { hour: '2-digit', minute: '2-digit' })} 확인` : t("첫 기록을 확인하는 중")}</small></footer>
       </section>}
       {tab === 'dex' && <>
-        <div className="page-heading"><div><h1>{t("나의 작은 도감")}</h1><p>{t`${FAMILIES.length}개 진화 계열 · ${discovered.length} / ${POKEMON.length}종 발견 · 이로치 ${game.ownedShiny.length}종`}</p></div><div className="segmented"><button className={!shinyDex ? 'selected' : ''} aria-pressed={!shinyDex} onClick={() => {setShinyDex(false);setDexPage(1);}}>{t("일반 도감")}</button><button className={shinyDex ? 'selected' : ''} aria-pressed={shinyDex} onClick={() => {setShinyDex(true);setDexPage(1);}}>{t("✦ 이로치 도감")}</button></div></div>
+        <div className="page-heading"><div><h1>{t("나의 작은 도감")}</h1><p>{t`${FAMILIES.length}개 진화 계열 · ${discovered.length} / ${POKEMON.length}종 발견 · 이로치 ${game.ownedShiny.length}종`}</p></div>{dexView === 'collection' && <div className="segmented"><button className={!shinyDex ? 'selected' : ''} aria-pressed={!shinyDex} onClick={() => {setShinyDex(false);setDexPage(1);}}>{t("일반 도감")}</button><button className={shinyDex ? 'selected' : ''} aria-pressed={shinyDex} onClick={() => {setShinyDex(true);setDexPage(1);}}>{t("✦ 이로치 도감")}</button></div>}</div>
+        <div className="dex-views" role="tablist" onKeyDown={dexViewKeys} aria-label={t("도감 보기")}><button id="dex-collection-tab" className={`button ${dexView === 'collection' ? 'primary' : 'subtle'}`} role="tab" tabIndex={dexView === 'collection' ? 0 : -1} aria-selected={dexView === 'collection'} aria-controls="dex-collection" onClick={() => setDexView('collection')}>{t("포켓몬 도감")}</button><button id="dex-history-tab" className={`button ${dexView === 'history' ? 'primary' : 'subtle'}`} role="tab" tabIndex={dexView === 'history' ? 0 : -1} aria-selected={dexView === 'history'} aria-controls="dex-history" onClick={() => setDexView('history')}>{t("최종 진화 기록")}<span>{game.captures.length}</span></button></div>
+        {dexView === 'collection' ? <div role="tabpanel" id="dex-collection" aria-labelledby="dex-collection-tab">
         <section ref={dexToolbar} className="dex-toolbar" aria-label={t("도감 검색 및 필터")}>
           <div className="dex-filter-controls">
             <div className="dex-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><input type="search" aria-label={t("포켓몬 이름 또는 도감 번호 검색")} placeholder={t("이름 또는 도감 번호 검색")} value={dexSearch} onChange={(e) => {setDexSearch(e.target.value);setDexPage(1);}} />{dexSearch && <button aria-label={t("검색어 지우기")} onClick={() => {setDexSearch('');setDexPage(1);}}>×</button>}</div>
             <label className="dex-filter">{t("타입")}<select aria-label={t("도감 타입 필터")} value={dexType} onChange={(e) => {setDexType(e.target.value as EggType | 'all');setDexPage(1);}}><option value="all">{t("모든 타입")}</option>{EGG_TYPES.map((type) => <option key={type.id} value={type.id}>{typeName(type.id, language)}</option>)}</select></label>
             <label className="dex-filter">{t("상태")}<select aria-label={t("도감 상태 필터")} value={dexStatus} onChange={(e) => {setDexStatus(e.target.value as DexStatus);setDexPage(1);}}>{dexStatuses.map((status) => <option key={status.value} value={status.value}>{t(status.label)}</option>)}</select></label>
+            <label className="dex-filter">{t("정렬")}<select aria-label={t("도감 정렬")} value={settings.dexSort} disabled={busy} onChange={(e) => {setDexPage(1);update({ dexSort: e.target.value as DexSort });}}><option value="number">{t("번호순")}</option><option value="name">{t("이름순")}</option><option value="acquired">{t("획득순 · 최근 먼저")}</option></select></label>
           </div>
           <div className="dex-filter-summary"><p role="status" aria-live="polite"><strong>{t`전체 ${filteredPokemon.length}종`}</strong>{filteredPokemon.length > 0 && t` 중 ${dexStart + 1}–${dexStart + pagePokemon.length}종`} · {shinyDex ? t("이로치") : t("일반")}{t(" 도감")}</p><button className="text-button" disabled={!hasDexFilters} onClick={resetDexFilters}>{t("필터 초기화")}</button></div>
           {filteredPokemon.length > 0 && <DexPagination page={currentDexPage} pages={dexPages} position="top" onChange={changeDexPage} />}
         </section>
         {filteredPokemon.length ? <><div className="dex-grid">{pagePokemon.map((p) => <DexCard key={`${p.id}:${shinyDex}:${dexStatus}`} snapshot={snapshot} game={game} pace={settings.pace} p={p} shiny={shinyDex} status={dexStatus} busy={busy} act={act} />)}</div><DexPagination page={currentDexPage} pages={dexPages} position="bottom" onChange={changeDexPage} /></> : <div className="dex-empty"><span aria-hidden="true">⌕</span><h3>{t("조건에 맞는 친구가 없어요")}</h3><p>{t("검색어를 바꾸거나 타입·상태 필터를 풀어보세요.")}</p><button className="button subtle" onClick={resetDexFilters}>{t("전체 도감 보기")}</button></div>}
-        <section className="history"><h3>{t("최종 진화 기록")}</h3>{game.captures.length ? game.captures.slice(-20).reverse().map((c) => <div key={c.petId}><span>{c.shiny ? t("✦ 이로치 ") : ''}{pokemonName(capturedSpecies(game, c), language)}</span><small>{new Date(c.completedAt).toLocaleString(localeFor(language))}</small></div>) : <p>{t("첫 친구가 최종 진화하면 여기에 기록됩니다.")}</p>}</section>
+        </div> : <EvolutionHistory game={game} />}
       </>}
       {tab === 'achievements' && <Achievements snapshot={snapshot} busy={busy} update={update} navigate={setTab} />}
       {tab === 'settings' && <>
@@ -379,7 +392,7 @@ document.body.classList.toggle('pet-body', view === 'pet');
 document.documentElement.classList.toggle('pet-html', view === 'pet');
 function LocalizedRoot(): React.JSX.Element {
   const snapshot = useLiveSnapshot();
-  const language = snapshot?.settings.language ?? 'ko';
+  const language = snapshot?.settings.language ?? 'en';
   useEffect(() => {document.documentElement.lang = language;}, [language]);
   return <SnapshotContext.Provider value={snapshot}><LanguageContext.Provider value={language}>{view === 'pet' ? <Pet /> : <App />}</LanguageContext.Provider></SnapshotContext.Provider>;
 }

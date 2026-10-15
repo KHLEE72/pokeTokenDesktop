@@ -17,6 +17,7 @@ try{
   pid=(await session.send('SystemInfo.getProcessInfo')).processInfo.find(p=>p.type==='browser').id
   await expect.poll(()=>browser.contexts()[0].pages().some(p=>p.url().includes('view=dashboard'))).toBe(true)
   const page=browser.contexts()[0].pages().find(p=>p.url().includes('view=dashboard'))
+  await page.evaluate(()=>window.desktop.updateSettings({language:'ko'}))
   await expect(page.getByRole('heading',{name:'오늘도, 함께 성장해요'})).toBeVisible({timeout:30_000})
   const errors=[];page.on('pageerror',error=>errors.push(error.message))
   await page.getByRole('button',{name:'설정',exact:false}).first().click()

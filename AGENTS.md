@@ -6,7 +6,7 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 ## 작업 방식
 
 - 개인 프로젝트다. 작은 변경은 기존 코드 스타일에 맞춰 바로 진행하고, 불필요한 절차나 큰 구조 변경을 추가하지 않는다.
-- 설명과 사용자에게 보여주는 문구는 한국어를 기본으로 한다.
+- 작업 설명은 한국어로 한다. 앱의 첫 실행 언어는 영어이며, 사용자가 고른 한국어·영어·일본어는 재실행 후에도 유지한다.
 - 요청한 기능에 집중한다. 새로운 의존성이나 추상화는 실제로 필요할 때만 추가한다.
 - 작업 중 반복해서 도움이 될 프로젝트 지식이나 주의점을 확인하면 이 문서를 짧게 보완한다.
 
@@ -18,6 +18,7 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `src/shared/`: 데이터 모델, 성장·사탕·도감 규칙, 포켓몬 목록과 대사.
 - `src/shared/rewards.ts`: 업적 조건·볼·테마 목록. 볼 아이콘과 업적·테마 UI는 `src/renderer/src/balls.tsx`, `rewards-ui.tsx`, `rewards.css`에 있다.
 - `src/shared/i18n.ts`, `messages.json`: 한국어·영어·일본어 문구와 저장된 알림 표시. 포켓몬·타입·볼의 공식 명칭은 ID로 `localized-catalog.json`에서 조회한다. 언어 변경은 게임·사용량 기록을 수정하지 않는다. 화면 변경은 `smoke:i18n`으로 세 언어의 최소 창 크기·검색·저장도 확인한다.
+- `src/shared/dex.ts`: 도감 번호·공식 이름·최초 등록 순서 정렬. `owned`·`ownedShiny`의 기존 등록 순서를 보존한다. 한국어 선택자를 쓰는 실행 검사는 `scripts/test-electron.mjs`에서 언어를 명시하고, 기본 언어 검사는 원래 Playwright 런처를 사용한다.
 - `native/`: Windows PowerShell/Win32 및 macOS Swift 창 감지 보조 프로그램.
 - `tests/`, `scripts/`: 단위·통합 테스트와 Electron 실행 검사, 빌드 도구.
 

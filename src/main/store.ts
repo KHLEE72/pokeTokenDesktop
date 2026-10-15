@@ -1,5 +1,6 @@
 import Database from 'better-sqlite3'
 import { isLanguage } from '../shared/i18n'
+import { isDexSort } from '../shared/dex'
 import { GameAction, GameState, Settings, Snapshot, UsageRecord, defaultSettings, newGame, totalTokens } from '../shared/model'
 import { advanceGame, changePace, gameAction, LegacyGame, migrateGame, upgradeGrowthPaths } from '../shared/game'
 import { ParsedFile } from './parsers'
@@ -36,7 +37,7 @@ export class Store {
     })()
     const settings = this.get<Settings>('settings')
     if (!settings) this.set('settings', defaultSettings())
-    else if (!settings.theme || !isLanguage(settings.language)) this.set('settings', { ...settings, theme: settings.theme || 'light', language: isLanguage(settings.language) ? settings.language : 'ko' })
+    else if (!settings.theme || !isLanguage(settings.language) || !isDexSort(settings.dexSort)) this.set('settings', { ...settings, theme: settings.theme || 'light', language: isLanguage(settings.language) ? settings.language : 'en', dexSort: isDexSort(settings.dexSort) ? settings.dexSort : 'number' })
     this.db.transaction(() => { this.reconcileRewards(this.game) })()
   }
   get<T>(key: string): T | null {
@@ -70,6 +71,7 @@ export class Store {
     this.db.transaction(() => {
       const settings = this.settings, game = this.game
       if (patch.language !== undefined && !isLanguage(patch.language)) throw new Error('잘못된 언어 설정입니다.')
+      if (patch.dexSort !== undefined && !isDexSort(patch.dexSort)) throw new Error('잘못된 도감 정렬입니다.')
       this.reconcileRewards(game)
       if (patch.theme !== undefined && (!isTheme(patch.theme) || !themeUnlocked(this.rewards, patch.theme))) throw new Error('아직 얻지 못한 테마예요. 업적에서 획득 조건을 확인해주세요.')
       if (patch.inBall !== undefined && typeof patch.inBall !== 'boolean') throw new Error('잘못된 볼 상태입니다.')

@@ -1,4 +1,4 @@
-import {_electron as electronApp,expect} from '@playwright/test'
+import {_electron as electronApp,expect} from './test-electron.mjs'
 import electron from 'electron'
 import {spawnSync} from 'node:child_process'
 import {mkdirSync,mkdtempSync,writeFileSync,appendFileSync,existsSync,readFileSync} from 'node:fs'
@@ -23,23 +23,23 @@ try{
   expect((await state()).game.tokensEarned).toBe(0)
   await tokens(250_000);const grass=selected(await state()).id
   await openEggs()
-  await expect(page.locator('.egg-preview')).toContainText('풀 알50.0%')
-  await expect(page.locator('.egg-preview-item').filter({hasText:'풀 알'})).toHaveAttribute('title','부화 중')
+  await expect(page.locator('.egg-preview')).toContainText('풀타입 알50.0%')
+  await expect(page.locator('.egg-preview-item').filter({hasText:'풀타입 알'})).toHaveAttribute('title','부화 중')
   await expect(page.getByRole('button',{name:/알 선택$/})).toHaveCount(18)
-  await page.getByRole('button',{name:'불꽃 알 선택',exact:true}).click()
+  await page.getByRole('button',{name:'불꽃타입 알 선택',exact:true}).click()
   expect((await state()).game.pets.find(p=>p.id===grass).xp).toBe(250_000)
-  await expect(page.locator('.egg-preview')).toContainText('풀 알50.0%')
-  await expect(page.locator('.egg-preview-item').filter({hasText:'풀 알'})).toHaveAttribute('title','보관 중')
+  await expect(page.locator('.egg-preview')).toContainText('풀타입 알50.0%')
+  await expect(page.locator('.egg-preview-item').filter({hasText:'풀타입 알'})).toHaveAttribute('title','보관 중')
   await expect(page.locator('[data-egg-type="grass"] .egg-growth')).toContainText('50.0%')
   await expect(page.locator('[data-egg-type="fire"] .egg-growth')).toContainText('0.0%')
   await expect(page.getByRole('button',{name:'사탕 먹이기',exact:true})).toBeDisabled()
   await tokens(500_000);const fire=selected(await state())
-  await expect(page.locator('.egg-preview')).not.toContainText('불꽃 알')
+  await expect(page.locator('.egg-preview')).not.toContainText('불꽃타입 알')
   await tokens(150_300_001);let snapshot=await state()
   expect(selected(snapshot).phase).toBe(3);expect(snapshot.game.candyTokens).toBe(300_001)
   expect(snapshot.game.activeId).toBe(fire.id)
   checks.push('18 typed eggs render; saved egg progress survives switching; eggs reject candies; final evolution holds the pet and banks overflow')
-  await page.getByRole('button',{name:'풀 알 선택',exact:true}).click();await tokens(250_010)
+  await page.getByRole('button',{name:'풀타입 알 선택',exact:true}).click();await tokens(250_010)
   const growing=selected(await state())
   await page.getByRole('button',{name:'사탕 먹이기',exact:true}).click()
   await expect.poll(async()=>selected(await state()).xp).toBe(100_010)
@@ -56,7 +56,7 @@ try{
   await home()
   await expect(page.getByRole('button',{name:'사탕 먹이기',exact:true})).toBeDisabled()
   checks.push('an earlier appearance of a completed individual stays complete and earns candy instead of restarting evolution')
-  await home();await page.getByRole('button',{name:'불꽃 알 선택',exact:true}).click();await tokens(500_000)
+  await home();await page.getByRole('button',{name:'불꽃타입 알 선택',exact:true}).click();await tokens(500_000)
   snapshot=await state();expect(snapshot.game.activeId).not.toBe(fire.id)
   const saved=structuredClone(snapshot.game)
   let rejected=false;try{await page.evaluate(()=>window.desktop.gameAction({type:'candy',count:999999}))}catch{rejected=true}

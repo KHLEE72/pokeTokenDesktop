@@ -41,7 +41,7 @@
   },
   "{0} / {1} 페이지": {
     "en": "Page {0} / {1}",
-    "ja": "{0} / {1}ページ"
+    "ja": "{0} / {1} ページ"
   },
   "{0} XP 남음": {
     "en": "{0} XP to go",
@@ -1094,5 +1094,57 @@
   "DESKTOP ADVENTURE": {
     "en": "DESKTOP ADVENTURE",
     "ja": "デスクトップの冒険"
+  },
+  "{0}타입 알": {
+    "en": "{0}-type Egg",
+    "ja": "{0}タイプのタマゴ"
+  },
+  "도감 보기": {
+    "en": "Pokédex views",
+    "ja": "図鑑の表示"
+  },
+  "포켓몬 도감": {
+    "en": "Pokédex",
+    "ja": "ポケモン図鑑"
+  },
+  "정렬": {
+    "en": "Sort",
+    "ja": "並び順"
+  },
+  "도감 정렬": {
+    "en": "Pokédex sort order",
+    "ja": "図鑑の並び順"
+  },
+  "번호순": {
+    "en": "Number",
+    "ja": "図鑑番号順"
+  },
+  "이름순": {
+    "en": "Name",
+    "ja": "名前順"
+  },
+  "획득순 · 최근 먼저": {
+    "en": "Recently acquired",
+    "ja": "入手順・新しい順"
+  },
+  "성장을 마친 친구들을 최근 순서로 모았어요.": {
+    "en": "Your fully evolved companions, newest first.",
+    "ja": "最終進化した仲間を新しい順に表示します。"
+  },
+  "총 {0}마리": {
+    "en": "{0} companions",
+    "ja": "合計{0}匹"
+  },
+  "진화 기록 페이지 이동": {
+    "en": "Evolution history pages",
+    "ja": "進化記録のページ"
+  },
+  "이전 기록": {
+    "en": "Previous records",
+    "ja": "前の記録"
+  },
+  "다음 기록": {
+    "en": "Next records",
+    "ja": "次の記録"
   }
 }

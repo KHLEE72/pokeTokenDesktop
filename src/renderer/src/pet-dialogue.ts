@@ -7,13 +7,13 @@ import { Language, localizeMessage } from '../../shared/i18n'
 export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { speech: Speech | null; greet: () => void } {
   const director = useRef(new DialogueDirector())
   const [speech, setSpeech] = useState<Speech | null>(null)
-  const current = useRef({ id: null as number | null, visible: false, ready: false, waiting: false, state: motion.state, language: 'ko' as Language })
-  const previousLanguage = useRef<Language>('ko')
+  const current = useRef({ id: null as number | null, visible: false, ready: false, waiting: false, state: motion.state, language: 'en' as Language })
+  const previousLanguage = useRef<Language>('en')
   const previousGame = useRef<GameState | null>(null)
   const nextIdle = useRef(Date.now() + 35_000 + Math.random() * 30_000)
   current.current = {
     id: snapshot ? speciesId(snapshot.game) : null,
-    language: snapshot?.settings.language ?? 'ko',
+    language: snapshot?.settings.language ?? 'en',
     visible: Boolean(snapshot?.settings.visible && !snapshot.settings.inBall),
     ready: Boolean(snapshot?.lastScan), waiting: snapshot ? waitingForEvolution(activePet(snapshot.game),snapshot.settings.pace) : false, state: motion.state
   }

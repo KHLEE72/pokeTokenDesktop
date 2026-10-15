@@ -2,6 +2,7 @@ export type Provider = 'claude' | 'codex'
 export type Pace = 'fast' | 'normal' | 'slow'
 import type { BallId, RewardState, ThemeId } from './rewards'
 import type { Language } from './i18n'
+import type { DexSort } from './dex'
 export interface Tokens { input: number; output: number; cacheRead: number; cacheWrite: number }
 export interface UsageRecord extends Tokens { id: string; provider: Provider; timestamp: string }
 export const totalTokens = (v: Tokens): number => v.input + v.output + v.cacheRead + v.cacheWrite
@@ -25,10 +26,11 @@ export interface GameState {
 export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null } | { type: 'ball'; petId: string; ball: BallId }
 export interface Settings {
   language: Language
+  dexSort: DexSort
   pace: Pace; size: 96 | 128 | 192; displayId: string | null; visible: boolean
   paused: boolean; autoStart: boolean; theme: ThemeId; inBall?: boolean; roots: Record<Provider, string[]>
 }
-export const defaultSettings = (): Settings => ({ language: 'ko', pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, theme: 'light', inBall: false, roots: { claude: [], codex: [] } })
+export const defaultSettings = (): Settings => ({ language: 'en', dexSort: 'number', pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, theme: 'light', inBall: false, roots: { claude: [], codex: [] } })
 export const newGame = (): GameState => ({ version: 2, tokensEarned: 0, candyTokens: 0, nextId: 2,
   pets: [{ id: 'pet:1', phase: 0, family: null, xp: 0, shiny: false, eggType: 'grass', obtainedAt: null, path: [], evolutionTarget: null }],
   activeId: 'pet:1', displayPhase: 0, owned: [], ownedShiny: [], captures: [] })
