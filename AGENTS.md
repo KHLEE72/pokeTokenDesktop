@@ -41,6 +41,8 @@ Node.js 22.12 이상과 npm을 사용하며, 의존성 설치는 `npm ci`로 한
 - 문서만 변경하면 내용·링크·명령 확인으로 충분하다. 결과를 보고할 때 실제로 확인한 범위를 적는다.
 - 네이티브 모듈 설치가 실패하면 Electron 호환성과 빌드 도구를 확인한다. Windows에는 C++ 빌드 도구와 Windows SDK, macOS에는 Xcode Command Line Tools가 필요할 수 있다.
 - 릴리스 빌드 전에는 현재 브랜치와 `package.json`의 버전을 확인한다. EXE 생성 후 `npm run smoke:portable`로 실제 실행 파일도 확인한다.
+- 패키징은 대상 OS·아키텍처의 SQLite prebuild만 남기고 C/C++ 소스·빌드 도구를 제외한다. 개발용 `node_modules`는 수정하지 않는다. `scripts/verify-package.cjs`가 실제 패키지의 바이너리·필수 파일·라이선스를 검사하므로 의존성이나 패키지 필터 변경 시 함께 확인한다.
+- `electron-builder.yml`의 OS별 `files`에는 전체 허용 목록을 유지한다. 제외 규칙만 별도 FileSet에 넣으면 전체 체크아웃이 복사될 수 있다. 패키지에는 `out/`·실행 의존성·트레이 아이콘·필수 메타데이터/라이선스만 허용한다.
 - Portable 검사에서 `petting` 대신 `landing`이 나오면 테스트 중 실제 커서 이동이 드래그로 판정됐는지 `ipc.drag`의 전후 좌표와 결과를 먼저 확인한다. 입력 누락과 구분해 검증 결과를 기록한다.
 - Mac 워크플로의 `release_tag`에 기존 릴리스 초안 태그를 지정하면 검증 후 DMG와 빌드 정보를 초안에 직접 첨부한다. 태그와 빌드 커밋이 같아야 하며 Actions 아티팩트 용량 제한을 사용하지 않는다. 최종 게시 전에 모든 파일과 해시를 확인한다.
 

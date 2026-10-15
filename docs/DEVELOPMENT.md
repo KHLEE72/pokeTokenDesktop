@@ -54,6 +54,8 @@ npm run dist:mac:arm64
 
 결과는 `release/`에 생성됩니다. SQLite 네이티브 모듈은 Electron과 대상 아키텍처에 맞춰 재빌드합니다. 소스 빌드가 필요한 경우 Windows에는 Visual Studio C++ 빌드 도구와 Windows SDK, Mac에는 Xcode Command Line Tools가 필요합니다.
 
+배포 패키지에는 대상 OS·아키텍처에 맞는 SQLite prebuild 하나와 실행용 JavaScript·라이선스를 넣습니다. 다른 OS용 바이너리와 SQLite·node-addon-api의 C/C++ 소스·헤더·빌드 도구는 제외하며, 개발용 `node_modules`는 그대로 유지합니다. Electron 언어 리소스는 영어·한국어·일본어와 Mac 공통 `Base` 리소스만 포함합니다. `afterPack`의 `scripts/verify-package.cjs` 검사가 필수 파일·라이선스 누락이나 잘못된 바이너리를 발견하면 빌드를 중단합니다.
+
 개인용 빌드는 배포 인증서·공증·자동 업데이트를 사용하지 않습니다. Mac에는 테스트용 ad-hoc 서명을 적용하며, 빌드 성공과 실제 OS에서의 실행 검증을 구분합니다. Mac이 없다면 **Actions → Mac test build → Run workflow**에서 아키텍처를 선택해 Mac 러너에서 빌드·검사할 수 있습니다. 배포 파일에 맞는 실행 안내는 [Mac 안내](MAC_TESTING.md)를 참고하세요.
 
 ## 주요 코드

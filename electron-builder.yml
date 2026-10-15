@@ -2,17 +2,31 @@ appId: com.poketoken.desktop
 productName: PokeToken Desktop
 directories:
   output: release
-files:
-  - out/**/*
-  - package.json
-  - THIRD_PARTY_NOTICES.md
-  - LICENSE
-  - build/tray.png
 asarUnpack:
   - node_modules/better-sqlite3/**/*
+# Keep the UI's three languages and macOS's language-neutral resources.
+electronLanguages:
+  - en-US
+  - ko
+  - ja
+  - Base
+afterPack: scripts/verify-package.cjs
 npmRebuild: true
 artifactName: PokeToken-Desktop-${version}-${os}-${arch}.${ext}
 win:
+  # Each platform needs a complete allowlist. A separate exclude-only FileSet
+  # would otherwise default to copying the whole checkout.
+  files:
+    - out/**/*
+    - package.json
+    - THIRD_PARTY_NOTICES.md
+    - LICENSE
+    - build/tray.png
+    - '!node_modules/better-sqlite3/{deps,src}/**/*'
+    - '!node_modules/better-sqlite3/binding.gyp'
+    - '!node_modules/node-addon-api/**/*.{h,c,gyp,gypi}'
+    - '!node_modules/node-addon-api/tools/**/*'
+    - '!node_modules/better-sqlite3/prebuilds/!(win32-${arch}).node'
   extraResources:
     - from: native/window-surfaces.ps1
       to: native/window-surfaces.ps1
@@ -20,6 +34,17 @@ win:
   signExecutable: false
   icon: build/icon.ico
 mac:
+  files:
+    - out/**/*
+    - package.json
+    - THIRD_PARTY_NOTICES.md
+    - LICENSE
+    - build/tray.png
+    - '!node_modules/better-sqlite3/{deps,src}/**/*'
+    - '!node_modules/better-sqlite3/binding.gyp'
+    - '!node_modules/node-addon-api/**/*.{h,c,gyp,gypi}'
+    - '!node_modules/node-addon-api/tools/**/*'
+    - '!node_modules/better-sqlite3/prebuilds/!(darwin-${arch}).node'
   extraResources:
     - from: build/native/window-surfaces
       to: native/window-surfaces
