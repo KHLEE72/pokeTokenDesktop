@@ -12,12 +12,19 @@ on:
           - arm64
           - x64
           - both
+      release_tag:
+        description: Optional existing draft release tag; upload verified DMGs directly instead of Actions artifacts
+        type: string
+        required: false
+        default: ''
 
 permissions:
   contents: read
 
 jobs:
   build:
+    permissions:
+      contents: write
     name: macOS ${{ matrix.arch }}
     runs-on: ${{ matrix.arch == 'arm64' && 'macos-14' || 'macos-15-intel' }}
     timeout-minutes: 20
@@ -42,6 +49,13 @@ jobs:
         env:
           PET_BUILD_ARCH: ${{ matrix.arch }}
         run: node -e "if (process.platform !== 'darwin' || process.arch !== process.env.PET_BUILD_ARCH) throw new Error('Wrong native build platform'); console.log(process.platform, process.arch)"
+      - name: Validate draft release destination
+        if: ${{ inputs.release_tag != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: node scripts/publish-mac-release.mjs check
       - name: Install dependencies for Electron
         run: npm ci --no-audit --no-fund
       - name: Run unit and integration tests
@@ -78,8 +92,16 @@ jobs:
           npm run smoke:dashboard
           npm run smoke:input
           npm run smoke:session
+      - name: Upload verified DMG to draft release
+        if: ${{ success() && inputs.release_tag != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          PET_BUILD_ARCH: ${{ matrix.arch }}
+        run: node scripts/publish-mac-release.mjs upload
       - name: Upload DMG and testing instructions
-        if: ${{ !cancelled() && steps.bundle.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.bundle.outcome == 'success' && inputs.release_tag == '' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: PokeToken-Desktop-mac-${{ matrix.arch }}
@@ -92,7 +114,7 @@ jobs:
           retention-days: 14
           compression-level: 0
       - name: Upload test evidence
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && inputs.release_tag == '' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: mac-test-evidence-${{ matrix.arch }}
