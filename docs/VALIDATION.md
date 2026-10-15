@@ -17,7 +17,7 @@
 
 실행 자료는 로컬 `artifacts/i18n-smoke-native.json`, `artifacts/i18n-smoke-1.5.json`, `artifacts/i18n-*.png`, `artifacts/rewards-report*.json`, `artifacts/dashboard-report.json`, `artifacts/evolution-report.json`, `artifacts/portable-report.json`에 보관합니다. 기존 관리 화면 테스트의 알 선택 검사는 비동기 저장 완료를 기다리도록 보완했습니다. 강제 배율 검사와 실제 모니터 배율 변경은 구분합니다. 실제 사용자 저장 데이터는 테스트에 사용하지 않았습니다.
 
-Windows 파일은 `release/PokeToken-Desktop-0.4.12-win-x64.exe`이며 SHA-256은 `743e5d1557346038feb4ee3f3314e50c8e9a6dcefda9902df5b434d37696cd9e`입니다. 빌드 정보는 `release/build-info-0.4.12.json`에 보관합니다. macOS 0.4.12 패키징·실행 검사는 수행하지 않았으며 기존 GitHub 릴리스는 변경하지 않았습니다.
+Windows 파일은 `release/PokeToken-Desktop-0.4.12-win-x64.exe`이며 SHA-256은 `743e5d1557346038feb4ee3f3314e50c8e9a6dcefda9902df5b434d37696cd9e`입니다. 빌드 정보는 `release/build-info-0.4.12.json`에 보관합니다. [v0.4.12 Windows 릴리스](https://github.com/KHLEE72/pokeTokenShimeji/releases/tag/v0.4.12)에 EXE·해시·빌드 정보를 게시하고 업로드 파일 3개의 크기와 SHA-256이 로컬 파일과 일치함을 확인했습니다. 태그는 빌드 소스 `e8e4a7ebdca989ef37aa1c0a9f078c133c977659`를 가리킵니다. macOS 0.4.12 패키징·실행 검사는 수행하지 않았으며 기존 v0.4.9 릴리스는 유지합니다.
 
 ## v0.4.11 볼 윤곽·디테일 개선 (2026-10-15)
 
