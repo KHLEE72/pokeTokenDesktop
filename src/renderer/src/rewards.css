@@ -1,4 +1,4 @@
-.ball-icon { display: inline-block; width: 32px; height: 32px; flex-shrink: 0; vertical-align: middle; image-rendering: pixelated; }
+.ball-icon { display: inline-block; width: 32px; height: 32px; flex-shrink: 0; vertical-align: middle; image-rendering: auto; }
 .app-shell { --soft: #f7ebc6; --deep: #fffef7; --on-accent: #fffbee; --reward-edge: var(--ink); --reward-shadow: #283e5033; }
 .app-shell[data-palette='dark'] { --soft: #443356; --deep: #211a30; --on-accent: #fff3ff; --reward-edge: #ae8dcc; --reward-shadow: #0b081b66; }
 .ball-picker { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; }
