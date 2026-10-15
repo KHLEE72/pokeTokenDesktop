@@ -31,6 +31,17 @@ function setup(replaceWindow?: (previous: BrowserWindow) => Promise<BrowserWindo
   return {window,settings,controller,get bounds(){return bounds},get ignored(){return nativeIgnore},get topmost(){return topmost},get motion(){return window.webContents.send.mock.calls.filter(([channel])=>channel==='pet:motion').at(-1)?.[1] as PetMotion}}
 }
 afterEach(()=>{for(const controller of controllers.splice(0))controller.destroy();vi.useRealTimers();vi.clearAllMocks()})
+const frame={id:'fixture',pid:88,x:250,y:500,width:700,height:350}
+function perch(rig:ReturnType<typeof setup>,feet=380):void {
+  rig.controller.apply({...rig.settings,paused:true})
+  rig.controller.updateSurfaces([frame])
+  vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+20,y:rig.bounds.y+20})
+  rig.controller.drag('start')
+  vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:420,y:feet-rig.bounds.height+6+20})
+  vi.advanceTimersByTime(33);rig.controller.drag('end');vi.advanceTimersByTime(1400)
+  expect(rig.motion.surfaceId).toBe('fixture')
+  expect(rig.bounds.y+rig.bounds.height-6).toBe(500)
+}
 describe('pet desktop behavior',()=>{
   it('rests in a small draggable ball, keeps input bounds aligned and restores size without changing pause',()=>{
     const rig=setup(); rig.controller.apply({...rig.settings,inBall:true})
@@ -182,17 +193,6 @@ describe('pet desktop behavior',()=>{
     expect(rig.bounds.y+rig.bounds.height).toBe(1040)
     expect(rig.motion.state).toBe('idle')
   })
-  const frame={id:'fixture',pid:88,x:250,y:500,width:700,height:350}
-  function perch(rig:ReturnType<typeof setup>,feet=380):void {
-    rig.controller.apply({...rig.settings,paused:true})
-    rig.controller.updateSurfaces([frame])
-    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:rig.bounds.x+20,y:rig.bounds.y+20})
-    rig.controller.drag('start')
-    vi.mocked(screen.getCursorScreenPoint).mockReturnValue({x:420,y:feet-rig.bounds.height+6+20})
-    vi.advanceTimersByTime(33);rig.controller.drag('end');vi.advanceTimersByTime(1400)
-    expect(rig.motion.surfaceId).toBe('fixture')
-    expect(rig.bounds.y+rig.bounds.height-6).toBe(500)
-  }
   it('lands on a real ledge before the desktop floor and forgives a drop just below the edge',()=>{
     const rig=setup();perch(rig,520)
     expect(rig.motion.state).toBe('idle')
@@ -433,6 +433,81 @@ function replacement(id=2) {
   return {window,get bounds(){return bounds}}
 }
 describe('pet native window replacement',()=>{
+  const sample=(rig:ReturnType<typeof setup>,leftDown:boolean,patch:Record<string,number|boolean>={},windowId=1)=>{
+    const {width,height}=rig.bounds
+    rig.controller.observeNativeInput(windowId,{overWindow:true,leftDown,hitPet:true,captured:false,captureOnPet:false,clickThrough:false,enabled:true,visible:true,
+      x:width/2,y:height-6-(height-80)/2,width,height,dpi:96,...patch})
+  }
+  const missed=(rig:ReturnType<typeof setup>,patch:Record<string,number|boolean>={},windowId=1)=>{
+    sample(rig,false,patch,windowId);sample(rig,true,patch,windowId)
+    vi.advanceTimersByTime(80);sample(rig,false,patch,windowId);vi.advanceTimersByTime(300)
+  }
+  it('recovers the observed 0.4.9 lost-down sequence without a Windows lock event',async()=>{
+    const next=replacement(),replace=vi.fn(async(previous:BrowserWindow)=>{previous.destroy();return next.window as unknown as BrowserWindow})
+    const rig=setup(replace);rig.controller.apply({...rig.settings,paused:true,size:96})
+    // Relative timing and pet-local coordinates from the 2026-10-15 report,
+    // excluding session IDs, absolute desktop positions and personal data.
+    sample(rig,false,{x:94,y:141});vi.advanceTimersByTime(295)
+    sample(rig,true,{x:92,y:139});vi.advanceTimersByTime(144)
+    sample(rig,true,{overWindow:false,hitPet:false,clickThrough:true,x:617,y:-8});vi.advanceTimersByTime(304)
+    sample(rig,false,{overWindow:false,hitPet:false,clickThrough:true,x:732,y:-43});vi.advanceTimersByTime(577)
+    expect(replace).not.toHaveBeenCalled();expect(rig.controller.inputState).toMatchObject({deliveryMisses:1,locked:false})
+    sample(rig,false,{x:71,y:120});vi.advanceTimersByTime(145)
+    sample(rig,true,{x:51,y:126});vi.advanceTimersByTime(288)
+    sample(rig,false,{x:139,y:26});await vi.advanceTimersByTimeAsync(650)
+    expect(replace).toHaveBeenCalledTimes(1)
+    expect(rig.controller.inputState).toMatchObject({windowId:2,generation:2,repairing:false,locked:false,autoRepairs:1})
+    rig.controller.drag('start');expect(next.window.webContents.send).toHaveBeenLastCalledWith('pet:motion',expect.objectContaining({state:'held'}))
+  })
+  it('lets delayed renderer acknowledgements cancel the miss and never interrupts a sustained valid hold',async()=>{
+    const next=replacement(),replace=vi.fn(async()=>next.window as unknown as BrowserWindow),rig=setup(replace)
+    rig.controller.apply({...rig.settings,paused:true})
+    for(let attempt=0;attempt<3;attempt++){
+      vi.advanceTimersByTime(600);sample(rig,false);sample(rig,true);vi.advanceTimersByTime(100);sample(rig,false)
+      vi.advanceTimersByTime(200);rig.controller.drag('start');vi.advanceTimersByTime(5000)
+      expect(rig.motion.state).toBe('held');rig.controller.drag('cancel')
+    }
+    await vi.advanceTimersByTimeAsync(1000)
+    expect(replace).not.toHaveBeenCalled();expect(rig.controller.inputState).toMatchObject({deliveryMisses:0,autoRepairs:0})
+  })
+  it('requires an observed release over the character and excludes margins, other windows, captures and stale HWNDs',async()=>{
+    const replace=vi.fn(),rig=setup(replace);rig.controller.apply({...rig.settings,paused:true})
+    // Dragging into the pet already held is not a press that began on it.
+    sample(rig,true);sample(rig,false);vi.advanceTimersByTime(1000)
+    const ignored:Record<string,number|boolean>[]=[{x:4},{y:4},{hitPet:false},{clickThrough:true},{captured:true},{enabled:false},{visible:false}]
+    for(const patch of ignored)for(let n=0;n<2;n++)missed(rig,patch)
+    missed(rig,{},99);missed(rig,{},99)
+    await vi.advanceTimersByTimeAsync(1000);expect(replace).not.toHaveBeenCalled()
+    expect(rig.controller.inputState).toMatchObject({deliveryMisses:0})
+  })
+  it('interprets physical samples at 150% DPI and keeps a compact ball on its existing window ledge',async()=>{
+    const next=replacement(),replace=vi.fn(async()=>next.window as unknown as BrowserWindow),rig=setup(replace)
+    perch(rig);rig.controller.apply({...rig.settings,paused:true,inBall:true})
+    const before={...rig.bounds},patch={x:44*1.5,y:94*1.5,width:88*1.5,height:120*1.5,dpi:144}
+    missed(rig,patch);missed(rig,patch);await vi.advanceTimersByTimeAsync(350)
+    expect(replace).toHaveBeenCalledTimes(1);expect(next.bounds).toEqual(before)
+    expect(rig.controller.inputState).toMatchObject({inBall:true,paused:true,size:40})
+    expect(next.window.webContents.send.mock.calls.filter(([channel])=>channel==='pet:motion').at(-1)?.[1]).toMatchObject({surfaceId:frame.id})
+  })
+  it('waits until physical release before replacing and bounds repeat auto-repairs with a cooldown',async()=>{
+    const second=replacement(2),third=replacement(3),replace=vi.fn().mockResolvedValueOnce(second.window).mockResolvedValueOnce(third.window),rig=setup(replace)
+    rig.controller.apply({...rig.settings,paused:true})
+    missed(rig);sample(rig,true);vi.advanceTimersByTime(2000);expect(replace).not.toHaveBeenCalled()
+    sample(rig,false);await vi.advanceTimersByTimeAsync(650);expect(replace).toHaveBeenCalledTimes(1)
+    missed(rig,{},2);missed(rig,{},2);await vi.advanceTimersByTimeAsync(1000);expect(replace).toHaveBeenCalledTimes(1)
+    await vi.advanceTimersByTimeAsync(30000);missed(rig,{},2);missed(rig,{},2);await vi.advanceTimersByTimeAsync(350)
+    expect(replace).toHaveBeenCalledTimes(2)
+  })
+  it('discards pending evidence on size changes, hiding, session changes and shutdown',async()=>{
+    const replace=vi.fn(async()=>replacement().window as unknown as BrowserWindow),rig=setup(replace)
+    rig.controller.apply({...rig.settings,paused:true})
+    missed(rig);sample(rig,true);sample(rig,false)
+    rig.controller.apply({...rig.settings,paused:true,inBall:true});await vi.advanceTimersByTimeAsync(1000);expect(replace).not.toHaveBeenCalled()
+    missed(rig);sample(rig,true);sample(rig,false)
+    rig.controller.apply({...rig.settings,paused:true,visible:false});await vi.advanceTimersByTimeAsync(1000);expect(replace).not.toHaveBeenCalled()
+    rig.controller.apply({...rig.settings,paused:true});missed(rig);sample(rig,true);sample(rig,false)
+    rig.controller.destroy();await vi.advanceTimersByTimeAsync(1000);expect(replace).not.toHaveBeenCalled()
+  })
   it('coalesces duplicate unlocks and applies the native settings to a fresh window',async()=>{
     const next=replacement(),replace=vi.fn(async(previous:BrowserWindow)=>{previous.destroy();return next.window as unknown as BrowserWindow})
     const rig=setup(replace);rig.controller.apply({...rig.settings,paused:true})

@@ -46,6 +46,16 @@ export class PetController {
   private generation = 1
   private replacementTimer: NodeJS.Timeout | null = null
   private replacementFailures = 0
+  private nativeLeft: boolean | null = null
+  private nativeArmed = false
+  private nativePress: { at: number; released: boolean } | null = null
+  private deliveryTimer: NodeJS.Timeout | null = null
+  private lastPressAcknowledged = -Infinity
+  private deliveryMisses = 0
+  private lastDeliveryMiss = 0
+  private lastAutoRepair = -Infinity
+  private autoRepairs = 0
+  private preservePlacement = false
 
   constructor(private window: BrowserWindow, settings: Settings, private onDisplayChanged: (id: string) => void = () => {}, private diagnose: (event: string, data: unknown) => void = () => {}, private replaceWindow?: (previous: BrowserWindow) => Promise<BrowserWindow>) {
     this.settings = { ...settings }
@@ -77,7 +87,58 @@ export class PetController {
       topmost:this.window.isAlwaysOnTop?.()??false, focused:this.window.isFocused?.()??false,
       width:bounds.width,height:bounds.height,size,scaleFactor:this.display().scaleFactor??1,cursor,
       overCharacter:cursor.x>=24&&cursor.x<24+size&&cursor.y>=bounds.height-size-6&&cursor.y<bounds.height-6,
-      inputAgeMs:Date.now()-this.lastInputRefresh,topAgeMs:Date.now()-this.lastTopRefresh,dragged:this.dragged }
+      inputAgeMs:Date.now()-this.lastInputRefresh,topAgeMs:Date.now()-this.lastTopRefresh,dragged:this.dragged,
+      deliveryMisses:this.deliveryMisses,pendingNativePress:Boolean(this.nativePress),autoRepairs:this.autoRepairs }
+  }
+  private resetDelivery(): void {
+    if(this.deliveryTimer)clearTimeout(this.deliveryTimer)
+    this.deliveryTimer=null;this.nativePress=null;this.nativeLeft=null;this.nativeArmed=false;this.deliveryMisses=0
+  }
+  // The helper observes only this pet's mouse activity. A complete native press
+  // with no accepted renderer drag-start is evidence of the lost-down failure;
+  // merely hovering, an orphan DOM mouse-up, or another app's drag is not.
+  observeNativeInput(windowId: number, data: Record<string,number|boolean>): void {
+    if(this.disposed || !this.replaceWindow || this.window.isDestroyed() || windowId!==this.window.id)return
+    if(this.suspended || this.repairing || !this.settings.visible || !this.window.isVisible()){this.resetDelivery();return}
+    const left=data.leftDown===true,previous=this.nativeLeft
+    this.nativeLeft=left
+    const bounds=this.dimensions(),size=this.characterSize()
+    // Helper coordinates are physical pixels; use the sampled window extent
+    // instead of assuming 100% DPI or using a different monitor's scale factor.
+    const width=Number(data.width),height=Number(data.height)
+    const x=Number(data.x)*bounds.width/width,y=Number(data.y)*bounds.height/height
+    const over=width>0 && height>0 && data.overWindow===true && data.hitPet===true && data.visible===true && data.enabled===true && data.clickThrough===false && data.captured===false &&
+      x>=24 && x<24+size && y>=bounds.height-size-6 && y<bounds.height-6
+    if(!left){
+      this.nativeArmed=over
+      if(previous===true && this.nativePress && !this.nativePress.released){
+        this.nativePress.released=true
+        // Native sampling and renderer IPC arrive independently. Give a delayed
+        // valid drag-start time to acknowledge the press before judging it.
+        this.deliveryTimer=setTimeout(()=>this.checkDelivery(),300)
+      }
+    }else if(previous===false){
+      const age=Date.now()-this.lastPressAcknowledged
+      if(this.nativeArmed && over && this.state!=='held' && !this.nativePress && (age<0 || age>500))this.nativePress={at:Date.now(),released:false}
+      this.nativeArmed=false
+    }
+  }
+  private checkDelivery(): void {
+    const press=this.nativePress
+    if(press && this.nativeLeft===true){this.deliveryTimer=setTimeout(()=>this.checkDelivery(),100);return}
+    this.deliveryTimer=null;this.nativePress=null
+    if(!press || this.disposed || this.suspended || this.repairing || !this.settings.visible || this.window.isDestroyed() || !this.window.isVisible() || this.state==='held')return
+    const now=Date.now()
+    this.deliveryMisses=now>=this.lastDeliveryMiss && now-this.lastDeliveryMiss<=15000?this.deliveryMisses+1:1
+    this.lastDeliveryMiss=now
+    this.diagnose('input.delivery-missed',{durationMs:now-press.at,state:this.inputState})
+    // Two confirmed attempts avoid rebuilding for one late/missed sample. A
+    // cooldown bounds recovery if an OS-level fault survives window replacement.
+    if(this.deliveryMisses>=2 && (now<this.lastAutoRepair || now-this.lastAutoRepair>=30000)){
+      this.lastAutoRepair=now;this.autoRepairs++
+      this.diagnose('input.auto-repair',this.inputState)
+      this.repairInput('delivery')
+    }
   }
   private ignoreMouse(ignore: boolean, force = false): void {
     const now = Date.now()
@@ -201,6 +262,7 @@ export class PetController {
   apply(settings: Settings): void {
     if(this.disposed || this.window.isDestroyed())return
     const before = this.settings
+    if(this.characterSize(settings)!==this.characterSize(before) || settings.visible!==before.visible)this.resetDelivery()
     const changedDisplay = settings.displayId !== before.displayId
     // A drop selects a display immediately. A later snapshot confirming that selection
     // must not teleport the falling pet back to the floor.
@@ -250,6 +312,7 @@ export class PetController {
       return 'pet'
     }
     if (action === 'start') {
+      this.lastPressAcknowledged=Date.now();this.resetDelivery()
       const bounds = this.window.getContentBounds()
       this.dragOffset = { x: point.x - bounds.x, y: point.y - bounds.y }
       this.previousCursor = point
@@ -363,12 +426,16 @@ export class PetController {
     if (this.perch && ledge) this.perch.offset = this.centre() - ledge.frameX
     this.position()
   }
-  private recover = (): void => {
+  private recover = (): void => this.resetInteraction(false)
+  private resetInteraction(preservePlacement: boolean): void {
     if (this.window.isDestroyed()) return
+    this.resetDelivery()
     this.state = 'idle'; this.tilt = 0; this.velocityY = 0; this.impact = 0
-    this.perch = null
     this.lastTick = Date.now(); this.nextAction = Date.now() + 2500
-    this.ground()
+    if(preservePlacement){
+      this.position();this.followPerch()
+      if(!this.perch && this.y<this.floor())this.beginFall()
+    }else{this.perch = null;this.ground()}
     this.window.webContents.send('pet:reset-interaction')
     // Re-arm native forwarding rather than reapplying an already-enabled flag.
     this.ignoreMouse(false, true)
@@ -377,14 +444,17 @@ export class PetController {
     this.diagnose('controller.recover',this.inputState)
   }
   private hideForSession(): void {
+    this.preservePlacement=false
     this.sessionEpoch++
     if(this.replaceWindow)this.sessionDirty=true
     if(this.replacementTimer){clearTimeout(this.replacementTimer);this.replacementTimer=null}
     this.recover(); this.window.hide()
   }
-  repairInput(): void {
+  repairInput(reason: 'manual' | 'delivery' = 'manual'): void {
     if(this.disposed)return
-    this.diagnose('pet.repair-requested',this.inputState)
+    this.preservePlacement=reason==='delivery'
+    this.resetDelivery()
+    this.diagnose('pet.repair-requested',{reason,state:this.inputState})
     if(this.replaceWindow){this.sessionDirty=true;this.sessionEpoch++;this.replacementFailures=0;this.window.hide()}
     this.restoreSession()
   }
@@ -412,7 +482,7 @@ export class PetController {
       this.replacing=false;this.replacementFailures=0
       // A lock during page loading also invalidates that new native window.
       this.sessionDirty=epoch!==this.sessionEpoch
-      this.recover();this.apply(this.settings)
+      this.resetInteraction(this.preservePlacement);this.preservePlacement=false;this.apply(this.settings)
       this.diagnose('pet.rebuild-complete',this.inputState)
       if(this.sessionDirty)this.restoreSession()
     }catch{
@@ -429,6 +499,7 @@ export class PetController {
   private unlock = (): void => { if(!this.locked&&this.replaceWindow&&!this.sessionDirty)return;this.locked = false; this.restoreSession(); this.diagnose('power.unlock',this.inputState) }
   destroy(): void {
     this.disposed=true
+    this.resetDelivery()
     if(this.replacementTimer){clearTimeout(this.replacementTimer);this.replacementTimer=null}
     clearInterval(this.timer)
     screen.removeListener('display-added', this.recover); screen.removeListener('display-removed', this.recover); screen.removeListener('display-metrics-changed', this.recover)

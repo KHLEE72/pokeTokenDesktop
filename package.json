@@ -1,6 +1,6 @@
 {
   "name": "poketoken-desktop",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "private": true,
   "description": "AI coding tokens, a little desktop companion.",
   "main": "out/main/index.js",
@@ -29,7 +29,8 @@
     "smoke:input": "node scripts/input-smoke.mjs",
     "smoke:session": "node scripts/session-smoke.mjs",
     "smoke:evolution": "node scripts/evolution-smoke.mjs",
-    "smoke:rewards": "node scripts/rewards-smoke.mjs"
+    "smoke:rewards": "node scripts/rewards-smoke.mjs",
+    "smoke:delivery": "node scripts/delivery-smoke.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

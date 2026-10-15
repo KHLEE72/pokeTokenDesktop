@@ -44,6 +44,11 @@ function createPetWindow(): BrowserWindow {
   window.webContents.on('input-event',(_event,input)=>{
     if(window===pet && ['mouseDown','mouseUp','pointerDown','pointerUp','pointerCancel','touchStart','touchEnd','touchCancel'].includes(input.type))diagnostics.record('electron.input',{windowId:window.id,type:input.type})
   })
+  if(process.platform==='win32')for(const [message,type] of [[0x21,'mouse-activate'],[0x201,'left-down'],[0x202,'left-up'],[0x203,'left-double-click'],[0x215,'capture-changed'],[0x1f,'cancel-mode']] as const){
+    // Record only a fixed message label from our own HWND, never raw message
+    // buffers or another application's window handle/content.
+    window.hookWindowMessage(message,()=>{if(window===pet)diagnostics.record('windows.message',{windowId:window.id,type})})
+  }
   const state=():object=>({windowId:window.id,current:window===pet,state:controller?.inputState})
   window.webContents.on('render-process-gone',(_event,details)=>diagnostics.record('renderer.gone',{...state(),reason:details.reason,exitCode:details.exitCode}))
   window.webContents.on('unresponsive',()=>diagnostics.record('renderer.unresponsive',state()))
@@ -53,13 +58,19 @@ function createPetWindow(): BrowserWindow {
 }
 function startWindowTracker(window: BrowserWindow): void {
   windowTracker?.destroy();windowTracker=undefined
+  const observeInput=(data:Record<string,number|boolean>):void=>{
+    if(window!==pet || window.isDestroyed())return
+    diagnostics.record('windows.input',{...data,windowId:window.id,units:'physicalPx',state:controller.inputState})
+    controller.observeNativeInput(window.id,data)
+  }
+  if(process.env.POKETOKEN_TEST_MODE==='1')Object.assign(globalThis,{petTestNativeInput:observeInput})
   if(process.env.POKETOKEN_TEST_MODE==='1' && process.env.POKETOKEN_WINDOW_TEST!=='1')return
   windowTracker=new WindowTracker(frames=>{
     const fixturePid=process.env.POKETOKEN_TEST_MODE==='1'?Number(process.env.POKETOKEN_WINDOW_TEST_PID):0
     const selected=fixturePid?frames.filter(frame=>frame.pid===fixturePid || frame.pid===process.pid):frames
     if(process.env.POKETOKEN_TEST_MODE==='1' && process.env.POKETOKEN_WINDOW_TEST==='1')Object.assign(globalThis,{petTestFrames:selected,petTestRawPids:frames.map(frame=>frame.pid)})
     controller.updateSurfaces(selected)
-  },window,data=>diagnostics.record('windows.input',{...data,windowId:window.id,units:'physicalPx',state:controller.inputState}))
+  },window,observeInput)
 }
 async function replacePetWindow(previous: BrowserWindow): Promise<BrowserWindow> {
   if(quitting)throw new Error('Application is closing')
