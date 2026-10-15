@@ -1,0 +1,12 @@
+.ball-icon { object-fit: contain; image-rendering: auto; }
+html[lang='ja'] body, html[lang='ja'] .app-shell :is(h1,h2,h3,p,small,span,strong,button,input,select,label) {
+  font-family: 'Yu Gothic UI', 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
+}
+html[lang='en'] .app-shell .sidebar { width: 190px; }
+html[lang='en'] .app-shell .sidebar nav button { font-size: 11px; padding-inline: 10px; }
+html[lang='en'] .app-shell .sidebar-bottom { font-size: 10px; }
+html[lang='en'] .app-shell .page-heading h1 { font-size: 22px; }
+html[lang='en'] .app-shell .home-page .companion-actions .button { font-size: 9px; }
+html[lang='en'] .app-shell .topbar .theme-button { max-width: 180px; }
+html[lang='en'] .app-shell .ball-collection strong { font-size: 10px; }
+.language-settings select { min-width: 140px; }

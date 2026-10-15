@@ -93,7 +93,7 @@ try {
   checks.push('restart restores rewards without repeated toasts; earlier final evolution, shiny and ghost records backfill rewards without changing the save')
   await nav('설정')
   const palettes = []
-  for (const [theme, name] of [['light','몬스터볼 라이트'],['dark','보라시티 다크'],['great','슈퍼볼'],['ultra','하이퍼볼'],['premier','프레미어볼'],['luxury','럭셔리볼'],['dusk','다크볼']]) {
+  for (const [theme, name] of [['light','몬스터볼 라이트'],['dark','보라시티 다크'],['great','슈퍼볼'],['ultra','하이퍼볼'],['premier','프리미어볼'],['luxury','럭셔리볼'],['dusk','다크볼']]) {
     await page.getByRole('button', { name: `${name} 테마`, exact: true }).click()
     await expect(page.locator('.app-shell')).toHaveAttribute('data-theme', theme)
     palettes.push(await page.locator('.app-shell').evaluate(el => getComputedStyle(el).backgroundColor))

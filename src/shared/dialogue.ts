@@ -1,5 +1,7 @@
 import { EGG_TYPES, POKEMON } from './model'
 import { EEVEE_DIALOGUES } from './eevee-dialogue'
+import { Language } from './i18n'
+import { localizedDialogue } from './localized-dialogue'
 export type DialogueEvent = 'idle' | 'held' | 'falling' | 'landing' | 'growth' | 'usage' | 'petting'
 type Lines = Record<DialogueEvent, readonly string[]>
 
@@ -112,8 +114,8 @@ for (const p of POKEMON) if (!DIALOGUES[p.id]) {
     petting:[`${p.name}도 쓰다듬으니 좋아!`,`${p.name}, ${tone} 반겨줄게!`,`${p.name}에게 다정한 손길이네.`]
   }
 }
-export function pickDialogue(id: number | null, event: DialogueEvent, previous?: string, random = Math.random): string {
-  const lines = (DIALOGUES[id ?? 0] ?? DIALOGUES[0])[event]
+export function pickDialogue(id: number | null, event: DialogueEvent, previous?: string, random = Math.random, language: Language = 'ko'): string {
+  const lines = language === 'ko' ? (DIALOGUES[id ?? 0] ?? DIALOGUES[0])[event] : localizedDialogue(id, event, language)
   const fresh = lines.filter(line => line !== previous)
   const choices = fresh.length ? fresh : lines
   return choices[Math.max(0, Math.min(choices.length - 1, Math.floor(random() * choices.length)))]
@@ -130,11 +132,11 @@ export class DialogueDirector {
   constructor(private random = Math.random, private now = Date.now) {}
   get current(): Speech | null { return this.active && this.active.until > this.now() ? this.active : null }
   clear(): void { this.active = null }
-  say(id: number | null, event: DialogueEvent, summary: string | null = null): Speech | null {
+  say(id: number | null, event: DialogueEvent, summary: string | null = null, language: Language = 'ko'): Speech | null {
     const now = this.now(), active = this.current
     if (active && priorities[active.event] > priorities[event]) return null
     if (now - (this.lastTimes.get(event) ?? -Infinity) < cooldowns[event]) return null
-    const key = `${id ?? 0}:${event}`, text = pickDialogue(id, event, this.lastLines.get(key), this.random)
+    const key = `${language}:${id ?? 0}:${event}`, text = pickDialogue(id, event, this.lastLines.get(key), this.random, language)
     this.lastLines.set(key, text); this.lastTimes.set(event, now)
     this.active = { text, event, summary, until: now + (event === 'growth' ? 6500 : event === 'falling' ? 3000 : 5000) }
     return this.active

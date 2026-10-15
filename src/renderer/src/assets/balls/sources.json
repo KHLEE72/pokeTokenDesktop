@@ -1,0 +1,54 @@
+{
+  "game": "Pokémon Scarlet and Violet",
+  "sources": {
+    "poke": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Pok%C3%A9_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/0/00/Bag_Pok%C3%A9_Ball_SV_Sprite.png",
+      "sha256": "201cd6146030cc3cdf689291ac77c76f6627e9b07c771fa9156dcecce3a3f2db",
+      "width": 160,
+      "height": 160
+    },
+    "great": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Great_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/5/54/Bag_Great_Ball_SV_Sprite.png",
+      "sha256": "dd3c83c4def66d5b52d94fef6395318b5aecee7e8ec0a9920e9eae1ef1739eaa",
+      "width": 160,
+      "height": 160
+    },
+    "ultra": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Ultra_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/5/55/Bag_Ultra_Ball_SV_Sprite.png",
+      "sha256": "547d4ca4dc3652d902676eb2094d4b76155feeb0b94519a729fb141643d8f2a2",
+      "width": 160,
+      "height": 160
+    },
+    "premier": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Premier_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/d/da/Bag_Premier_Ball_SV_Sprite.png",
+      "sha256": "964349b707a7199585bf84c4ffd3a85e673669705e29723ffec75d5f0bd4b40c",
+      "width": 160,
+      "height": 160
+    },
+    "luxury": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Luxury_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/5/59/Bag_Luxury_Ball_SV_Sprite.png",
+      "sha256": "c2dbd3c715ace01cc66ff5d95b1e28e3cfaf4f5e41beea3fccddf0ac8a6289e6",
+      "width": 160,
+      "height": 160
+    },
+    "dusk": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Dusk_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/b/b1/Bag_Dusk_Ball_SV_Sprite.png",
+      "sha256": "437f21c8075e3cf59fe646b73589f1b6411a892ba89f81edccdbdd1f74f9e3a9",
+      "width": 160,
+      "height": 160
+    },
+    "master": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Master_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/a/a6/Bag_Master_Ball_SV_Sprite.png",
+      "sha256": "2abe559ebe41ba400232250c30e1ad9fb58c3bb909eb74c29c6951d9a34634a6",
+      "width": 160,
+      "height": 160
+    }
+  }
+}

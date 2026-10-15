@@ -17,6 +17,7 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `src/renderer/`: React 관리 화면, 펫 화면과 포인터 이벤트, 스타일.
 - `src/shared/`: 데이터 모델, 성장·사탕·도감 규칙, 포켓몬 목록과 대사.
 - `src/shared/rewards.ts`: 업적 조건·볼·테마 목록. 볼 아이콘과 업적·테마 UI는 `src/renderer/src/balls.tsx`, `rewards-ui.tsx`, `rewards.css`에 있다.
+- `src/shared/i18n.ts`, `messages.json`: 한국어·영어·일본어 문구와 저장된 알림 표시. 포켓몬·타입·볼의 공식 명칭은 ID로 `localized-catalog.json`에서 조회한다. 언어 변경은 게임·사용량 기록을 수정하지 않는다. 화면 변경은 `smoke:i18n`으로 세 언어의 최소 창 크기·검색·저장도 확인한다.
 - `native/`: Windows PowerShell/Win32 및 macOS Swift 창 감지 보조 프로그램.
 - `tests/`, `scripts/`: 단위·통합 테스트와 Electron 실행 검사, 빌드 도구.
 
@@ -56,7 +57,7 @@ Node.js 22.12 이상과 npm을 사용하며, 의존성 설치는 `npm ci`로 한
 - 분기 진화는 개체가 실제로 거친 경로와 선택한 목표를 보존한다. 도감에 등록하는 형태와 완료 기록도 실제 진화 결과를 따른다.
 - 업적은 `achievements-v1` 메타에 영구 보관하고 기존 성장·도감 기록으로도 해금한다. 토큰 업적은 최초 연결의 과거 사용량 대신 `game.tokensEarned`로 판정한다. 개체의 `ball`, 설정의 `theme`·`inBall`은 각각 독립적이다.
 - 작은 볼은 40px이며 펫 창의 크기·클릭 영역·낙하·창 착지도 이 크기를 따른다. 볼·테마 변경은 `smoke:rewards`로 확인한다.
-- 볼 그림은 곡선 SVG로 표시하고 `image-rendering: auto`를 유지한다. 그라디언트·클립 ID는 `useId`로 개별 생성해 관리 화면의 여러 볼과 충돌하지 않게 한다. 포켓몬 스프라이트의 픽셀 렌더링은 별도다.
+- 볼 그림은 `src/renderer/src/assets/balls/`에 동봉한 게임 원본 160px PNG를 사용한다. 돌출된 장식과 버튼을 자르지 않고 `object-fit: contain`, `image-rendering: auto`를 유지한다. 출처·해시는 같은 폴더의 `sources.json`에 기록한다. 포켓몬 스프라이트의 픽셀 렌더링은 별도다.
 - 최초 연결의 과거 로그는 사용량에만 반영한다. 재시작·로그 이동·세션 보관으로 토큰이나 경험치를 중복 지급하지 않으며, Codex 추론 토큰은 출력에 포함되어 있으므로 다시 더하지 않는다.
 - 펫의 클릭 통과·드래그·낙하·창 착지·절전 복귀와 작업 중인 앱의 키보드 포커스를 유지한다. OS 창 동작은 빌드 성공만으로 검증됐다고 판단하지 않는다.
 - 원본 도구 로그는 읽기만 한다. 대화 본문·인증 정보·키보드 입력·다른 창 제목을 저장하거나 전송하지 않고, 대사는 로컬에서 선택한다.

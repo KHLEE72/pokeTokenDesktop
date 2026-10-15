@@ -9,6 +9,7 @@ import { WindowTracker } from './window-tracker'
 import { InputDiagnostics, sanitizePetTrace } from './input-diagnostics'
 import { isBall, isTheme } from '../shared/rewards'
 import { activePet } from '../shared/game'
+import { isLanguage, translator } from '../shared/i18n'
 
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
@@ -101,17 +102,18 @@ function openDashboard(tab = 'home'): void {
   dashboard.show(); dashboard.focus(); dashboard.webContents.send('navigate', tab)
 }
 function trayMenu(): void {
+  const t = translator(snapshot.settings.language)
   tray.setContextMenu(Menu.buildFromTemplate([
-    { label: '현재 펫 · 사용량', click: () => openDashboard() },
-    { label: snapshot.settings.inBall ? '볼에서 꺼내기' : '볼에 넣기', enabled: activePet(snapshot.game).phase > 0, click: () => void request('settings', { inBall: !snapshot.settings.inBall, visible: true }).catch(() => {}) },
-    { label: snapshot.settings.visible ? '펫 숨기기' : '펫 보이기', click: () => void request('settings', { visible: !snapshot.settings.visible }).catch(() => {}) },
-    { label: snapshot.settings.paused ? '다시 걷기' : '이동 일시정지', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
-    { label: '설정', click: () => openDashboard('settings') },
-    { label: '업적 · 볼 컬렉션', click: () => openDashboard('achievements') },
-    { label: '펫 입력 복구', click: () => controller.repairInput() },
-    { label: '입력 문제 시점 기록', click: () => diagnostics.record('user.mark',controller.inputState) },
-    { label: '입력 진단 로그 폴더', click: () => { diagnostics.record('diagnostic.folder-opened',controller.inputState); void diagnostics.flush().then(()=>shell.openPath(join(app.getPath('userData'),'diagnostics'))) } },
-    { type: 'separator' }, { label: '종료', click: () => app.quit() }
+    { label: t('현재 펫 · 사용량'), click: () => openDashboard() },
+    { label: snapshot.settings.inBall ? t('볼에서 꺼내기') : t('볼에 넣기'), enabled: activePet(snapshot.game).phase > 0, click: () => void request('settings', { inBall: !snapshot.settings.inBall, visible: true }).catch(() => {}) },
+    { label: snapshot.settings.visible ? t('펫 숨기기') : t('펫 보이기'), click: () => void request('settings', { visible: !snapshot.settings.visible }).catch(() => {}) },
+    { label: snapshot.settings.paused ? t('다시 걷기') : t('이동 일시정지'), click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
+    { label: t('설정'), click: () => openDashboard('settings') },
+    { label: t('업적 · 볼 컬렉션'), click: () => openDashboard('achievements') },
+    { label: t('펫 입력 복구'), click: () => controller.repairInput() },
+    { label: t('입력 문제 시점 기록'), click: () => diagnostics.record('user.mark',controller.inputState) },
+    { label: t('입력 진단 로그 폴더'), click: () => { diagnostics.record('diagnostic.folder-opened',controller.inputState); void diagnostics.flush().then(()=>shell.openPath(join(app.getPath('userData'),'diagnostics'))) } },
+    { type: 'separator' }, { label: t('종료'), click: () => app.quit() }
   ]))
 }
 function validatePatch(value: unknown): Partial<Settings> {
@@ -119,6 +121,7 @@ function validatePatch(value: unknown): Partial<Settings> {
   const p = value as Record<string, unknown>, result: Partial<Settings> = {}
   for (const key of ['visible', 'paused', 'autoStart', 'inBall'] as const) if (key in p) { if (typeof p[key] !== 'boolean') throw new Error('잘못된 설정'); result[key] = p[key] }
   if ('pace' in p) { if (!['fast', 'normal', 'slow'].includes(String(p.pace))) throw new Error('잘못된 속도'); result.pace = p.pace as Settings['pace'] }
+  if ('language' in p) { if (!isLanguage(p.language)) throw new Error('잘못된 언어 설정입니다.'); result.language=p.language }
   if ('theme' in p) { if (!isTheme(p.theme)) throw new Error('잘못된 화면 테마'); result.theme = p.theme }
   if ('size' in p) { if (![96, 128, 192].includes(p.size as number)) throw new Error('잘못된 크기'); result.size = p.size as Settings['size'] }
   if ('displayId' in p) { if (p.displayId !== null && !screen.getAllDisplays().some(d => String(d.id) === p.displayId)) throw new Error('연결되지 않은 화면'); result.displayId = p.displayId as string | null }
@@ -148,7 +151,7 @@ else {
     // smoke test explicitly enables the real native scanner in its isolated app.
     startWindowTracker(pet)
     const trayIcon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAFUlEQVR4nGNgGAWjYBSMglEwCkbBAAAGGAAB7e3H/QAAAABJRU5ErkJggg==')
-    // Icon generated from our own egg drawing; no Pokémon art is bundled.
+    // Tray icon generated from our own egg drawing.
     const icon = nativeImage.createFromPath(join(__dirname, '../../build/tray.png'))
     const menuIcon = (icon.isEmpty() ? trayIcon : icon).resize({ width: process.platform === 'darwin' ? 18 : 24, height: process.platform === 'darwin' ? 18 : 24 })
     if (process.platform === 'darwin') menuIcon.setTemplateImage(true)
@@ -182,8 +185,8 @@ else {
       await request('settings', patch)
     })
     ipcMain.handle('usage:refresh', async event => { allowed(event); await request('refresh') })
-    ipcMain.handle('folder:choose', async (event, provider) => { allowed(event); if (!['claude', 'codex'].includes(provider)) return null; const result = await dialog.showOpenDialog(dashboard, { title: '로그 폴더 선택', properties: ['openDirectory'] }); return result.canceled ? null : result.filePaths[0] })
-    ipcMain.handle('display:list', event => { allowed(event); return screen.getAllDisplays().map((d, i) => ({ id: String(d.id), label: `${d.label || `화면 ${i + 1}`} · ${d.size.width} × ${d.size.height}${d.id === screen.getPrimaryDisplay().id ? ' (기본)' : ''}` })) })
+    ipcMain.handle('folder:choose', async (event, provider) => { allowed(event); if (!['claude', 'codex'].includes(provider)) return null; const result = await dialog.showOpenDialog(dashboard, { title: translator(snapshot.settings.language)('로그 폴더 선택'), properties: ['openDirectory'] }); return result.canceled ? null : result.filePaths[0] })
+    ipcMain.handle('display:list', event => { allowed(event); const t = translator(snapshot.settings.language); return screen.getAllDisplays().map((d, i) => ({ id: String(d.id), label: `${d.label || t`화면 ${i + 1}`} · ${d.size.width} × ${d.size.height}${d.id === screen.getPrimaryDisplay().id ? t(' (기본)') : ''}` })) })
     ipcMain.handle('sprite:get', (event, id, shiny) => { allowed(event); return sprites.get(id,shiny === true) })
     ipcMain.handle('game:action', async (event, value) => {
       allowed(event)
@@ -214,10 +217,10 @@ else {
       if(result==='drop')void request('settings', { displayId: controller.selectedDisplay }).catch(() => {})
       if(result==='pet' && snapshot.settings.inBall)void request('settings', { inBall: false }).catch(() => {})
     })
-    ipcMain.on('pet:menu', event => { if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
-      { label: snapshot.settings.inBall ? '볼에서 꺼내기' : '볼에 넣기', enabled: activePet(snapshot.game).phase > 0, click: () => void request('settings', { inBall: !snapshot.settings.inBall }).catch(() => {}) },
-      { label: '현재 펫 · 사용량', click: () => openDashboard() }, { label: '이동 일시정지 / 다시 걷기', click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
-      { label: '설정', click: () => openDashboard('settings') }, { label: '펫 숨기기', click: () => void request('settings', { visible: false }).catch(() => {}) }
+    ipcMain.on('pet:menu', event => { const t = translator(snapshot.settings.language); if (event.sender.id === pet.webContents.id) Menu.buildFromTemplate([
+      { label: snapshot.settings.inBall ? t('볼에서 꺼내기') : t('볼에 넣기'), enabled: activePet(snapshot.game).phase > 0, click: () => void request('settings', { inBall: !snapshot.settings.inBall }).catch(() => {}) },
+      { label: t('현재 펫 · 사용량'), click: () => openDashboard() }, { label: t('이동 일시정지 / 다시 걷기'), click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
+      { label: t('설정'), click: () => openDashboard('settings') }, { label: t('펫 숨기기'), click: () => void request('settings', { visible: false }).catch(() => {}) }
     ]).popup({ window: pet }) })
     void request('refresh').catch(() => {})
     const scanTimer = setInterval(() => { if (!snapshot.scanning) void request('scan').catch(() => {}) }, 10_000)

@@ -1,0 +1,454 @@
+{
+  "source": {
+    "repository": "https://github.com/PokeAPI/pokeapi",
+    "revision": "81d20919845b6a445969b9265aab5cec6b04cece",
+    "files": [
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon_species_names.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/type_names.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/types.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/items.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/item_names.csv"
+    ],
+    "languages": {
+      "ko": "3",
+      "en": "9",
+      "ja": "1"
+    }
+  },
+  "species": {
+    "1": {
+      "ko": "이상해씨",
+      "en": "Bulbasaur",
+      "ja": "フシギダネ"
+    },
+    "2": {
+      "ko": "이상해풀",
+      "en": "Ivysaur",
+      "ja": "フシギソウ"
+    },
+    "3": {
+      "ko": "이상해꽃",
+      "en": "Venusaur",
+      "ja": "フシギバナ"
+    },
+    "4": {
+      "ko": "파이리",
+      "en": "Charmander",
+      "ja": "ヒトカゲ"
+    },
+    "5": {
+      "ko": "리자드",
+      "en": "Charmeleon",
+      "ja": "リザード"
+    },
+    "6": {
+      "ko": "리자몽",
+      "en": "Charizard",
+      "ja": "リザードン"
+    },
+    "7": {
+      "ko": "꼬부기",
+      "en": "Squirtle",
+      "ja": "ゼニガメ"
+    },
+    "8": {
+      "ko": "어니부기",
+      "en": "Wartortle",
+      "ja": "カメール"
+    },
+    "9": {
+      "ko": "거북왕",
+      "en": "Blastoise",
+      "ja": "カメックス"
+    },
+    "10": {
+      "ko": "캐터피",
+      "en": "Caterpie",
+      "ja": "キャタピー"
+    },
+    "11": {
+      "ko": "단데기",
+      "en": "Metapod",
+      "ja": "トランセル"
+    },
+    "12": {
+      "ko": "버터플",
+      "en": "Butterfree",
+      "ja": "バタフリー"
+    },
+    "16": {
+      "ko": "구구",
+      "en": "Pidgey",
+      "ja": "ポッポ"
+    },
+    "17": {
+      "ko": "피죤",
+      "en": "Pidgeotto",
+      "ja": "ピジョン"
+    },
+    "18": {
+      "ko": "피죤투",
+      "en": "Pidgeot",
+      "ja": "ピジョット"
+    },
+    "19": {
+      "ko": "꼬렛",
+      "en": "Rattata",
+      "ja": "コラッタ"
+    },
+    "20": {
+      "ko": "레트라",
+      "en": "Raticate",
+      "ja": "ラッタ"
+    },
+    "25": {
+      "ko": "피카츄",
+      "en": "Pikachu",
+      "ja": "ピカチュウ"
+    },
+    "26": {
+      "ko": "라이츄",
+      "en": "Raichu",
+      "ja": "ライチュウ"
+    },
+    "27": {
+      "ko": "모래두지",
+      "en": "Sandshrew",
+      "ja": "サンド"
+    },
+    "28": {
+      "ko": "고지",
+      "en": "Sandslash",
+      "ja": "サンドパン"
+    },
+    "29": {
+      "ko": "니드런♀",
+      "en": "Nidoran♀",
+      "ja": "ニドラン♀"
+    },
+    "30": {
+      "ko": "니드리나",
+      "en": "Nidorina",
+      "ja": "ニドリーナ"
+    },
+    "31": {
+      "ko": "니드퀸",
+      "en": "Nidoqueen",
+      "ja": "ニドクイン"
+    },
+    "35": {
+      "ko": "삐삐",
+      "en": "Clefairy",
+      "ja": "ピッピ"
+    },
+    "36": {
+      "ko": "픽시",
+      "en": "Clefable",
+      "ja": "ピクシー"
+    },
+    "63": {
+      "ko": "캐이시",
+      "en": "Abra",
+      "ja": "ケーシィ"
+    },
+    "64": {
+      "ko": "윤겔라",
+      "en": "Kadabra",
+      "ja": "ユンゲラー"
+    },
+    "65": {
+      "ko": "후딘",
+      "en": "Alakazam",
+      "ja": "フーディン"
+    },
+    "66": {
+      "ko": "알통몬",
+      "en": "Machop",
+      "ja": "ワンリキー"
+    },
+    "67": {
+      "ko": "근육몬",
+      "en": "Machoke",
+      "ja": "ゴーリキー"
+    },
+    "68": {
+      "ko": "괴력몬",
+      "en": "Machamp",
+      "ja": "カイリキー"
+    },
+    "74": {
+      "ko": "꼬마돌",
+      "en": "Geodude",
+      "ja": "イシツブテ"
+    },
+    "75": {
+      "ko": "데구리",
+      "en": "Graveler",
+      "ja": "ゴローン"
+    },
+    "76": {
+      "ko": "딱구리",
+      "en": "Golem",
+      "ja": "ゴローニャ"
+    },
+    "92": {
+      "ko": "고오스",
+      "en": "Gastly",
+      "ja": "ゴース"
+    },
+    "93": {
+      "ko": "고우스트",
+      "en": "Haunter",
+      "ja": "ゴースト"
+    },
+    "94": {
+      "ko": "팬텀",
+      "en": "Gengar",
+      "ja": "ゲンガー"
+    },
+    "133": {
+      "ko": "이브이",
+      "en": "Eevee",
+      "ja": "イーブイ"
+    },
+    "134": {
+      "ko": "샤미드",
+      "en": "Vaporeon",
+      "ja": "シャワーズ"
+    },
+    "135": {
+      "ko": "쥬피썬더",
+      "en": "Jolteon",
+      "ja": "サンダース"
+    },
+    "136": {
+      "ko": "부스터",
+      "en": "Flareon",
+      "ja": "ブースター"
+    },
+    "147": {
+      "ko": "미뇽",
+      "en": "Dratini",
+      "ja": "ミニリュウ"
+    },
+    "148": {
+      "ko": "신뇽",
+      "en": "Dragonair",
+      "ja": "ハクリュー"
+    },
+    "149": {
+      "ko": "망나뇽",
+      "en": "Dragonite",
+      "ja": "カイリュー"
+    },
+    "172": {
+      "ko": "피츄",
+      "en": "Pichu",
+      "ja": "ピチュー"
+    },
+    "173": {
+      "ko": "삐",
+      "en": "Cleffa",
+      "ja": "ピィ"
+    },
+    "196": {
+      "ko": "에브이",
+      "en": "Espeon",
+      "ja": "エーフィ"
+    },
+    "197": {
+      "ko": "블래키",
+      "en": "Umbreon",
+      "ja": "ブラッキー"
+    },
+    "304": {
+      "ko": "가보리",
+      "en": "Aron",
+      "ja": "ココドラ"
+    },
+    "305": {
+      "ko": "갱도라",
+      "en": "Lairon",
+      "ja": "コドラ"
+    },
+    "306": {
+      "ko": "보스로라",
+      "en": "Aggron",
+      "ja": "ボスゴドラ"
+    },
+    "363": {
+      "ko": "대굴레오",
+      "en": "Spheal",
+      "ja": "タマザラシ"
+    },
+    "364": {
+      "ko": "씨레오",
+      "en": "Sealeo",
+      "ja": "トドグラー"
+    },
+    "365": {
+      "ko": "씨카이저",
+      "en": "Walrein",
+      "ja": "トドゼルガ"
+    },
+    "470": {
+      "ko": "리피아",
+      "en": "Leafeon",
+      "ja": "リーフィア"
+    },
+    "471": {
+      "ko": "글레이시아",
+      "en": "Glaceon",
+      "ja": "グレイシア"
+    },
+    "633": {
+      "ko": "모노두",
+      "en": "Deino",
+      "ja": "モノズ"
+    },
+    "634": {
+      "ko": "디헤드",
+      "en": "Zweilous",
+      "ja": "ジヘッド"
+    },
+    "635": {
+      "ko": "삼삼드래",
+      "en": "Hydreigon",
+      "ja": "サザンドラ"
+    },
+    "700": {
+      "ko": "님피아",
+      "en": "Sylveon",
+      "ja": "ニンフィア"
+    }
+  },
+  "types": {
+    "grass": {
+      "ko": "풀",
+      "en": "Grass",
+      "ja": "くさ"
+    },
+    "poison": {
+      "ko": "독",
+      "en": "Poison",
+      "ja": "どく"
+    },
+    "fire": {
+      "ko": "불꽃",
+      "en": "Fire",
+      "ja": "ほのお"
+    },
+    "flying": {
+      "ko": "비행",
+      "en": "Flying",
+      "ja": "ひこう"
+    },
+    "water": {
+      "ko": "물",
+      "en": "Water",
+      "ja": "みず"
+    },
+    "normal": {
+      "ko": "노말",
+      "en": "Normal",
+      "ja": "ノーマル"
+    },
+    "electric": {
+      "ko": "전기",
+      "en": "Electric",
+      "ja": "でんき"
+    },
+    "ice": {
+      "ko": "얼음",
+      "en": "Ice",
+      "ja": "こおり"
+    },
+    "fighting": {
+      "ko": "격투",
+      "en": "Fighting",
+      "ja": "かくとう"
+    },
+    "ground": {
+      "ko": "땅",
+      "en": "Ground",
+      "ja": "じめん"
+    },
+    "psychic": {
+      "ko": "에스퍼",
+      "en": "Psychic",
+      "ja": "エスパー"
+    },
+    "bug": {
+      "ko": "벌레",
+      "en": "Bug",
+      "ja": "むし"
+    },
+    "rock": {
+      "ko": "바위",
+      "en": "Rock",
+      "ja": "いわ"
+    },
+    "ghost": {
+      "ko": "고스트",
+      "en": "Ghost",
+      "ja": "ゴースト"
+    },
+    "dragon": {
+      "ko": "드래곤",
+      "en": "Dragon",
+      "ja": "ドラゴン"
+    },
+    "dark": {
+      "ko": "악",
+      "en": "Dark",
+      "ja": "あく"
+    },
+    "steel": {
+      "ko": "강철",
+      "en": "Steel",
+      "ja": "はがね"
+    },
+    "fairy": {
+      "ko": "페어리",
+      "en": "Fairy",
+      "ja": "フェアリー"
+    }
+  },
+  "balls": {
+    "poke": {
+      "ko": "몬스터볼",
+      "en": "Poké Ball",
+      "ja": "モンスターボール"
+    },
+    "great": {
+      "ko": "슈퍼볼",
+      "en": "Great Ball",
+      "ja": "スーパーボール"
+    },
+    "ultra": {
+      "ko": "하이퍼볼",
+      "en": "Ultra Ball",
+      "ja": "ハイパーボール"
+    },
+    "premier": {
+      "ko": "프리미어볼",
+      "en": "Premier Ball",
+      "ja": "プレミアボール"
+    },
+    "luxury": {
+      "ko": "럭셔리볼",
+      "en": "Luxury Ball",
+      "ja": "ゴージャスボール"
+    },
+    "dusk": {
+      "ko": "다크볼",
+      "en": "Dusk Ball",
+      "ja": "ダークボール"
+    },
+    "master": {
+      "ko": "마스터볼",
+      "en": "Master Ball",
+      "ja": "マスターボール"
+    }
+  }
+}

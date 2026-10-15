@@ -7,7 +7,7 @@ export const BALLS: { id: BallId; name: string; top: string; accent: string; eff
   { id: 'poke', name: '몬스터볼', top: '#e35d54', accent: '#ffffff', effect: '#ef766d' },
   { id: 'great', name: '슈퍼볼', top: '#4487d3', accent: '#e35d54', effect: '#77b7fb' },
   { id: 'ultra', name: '하이퍼볼', top: '#343746', accent: '#f4cc5a', effect: '#f4cc5a' },
-  { id: 'premier', name: '프레미어볼', top: '#fffaf1', accent: '#e35d54', effect: '#f29a99' },
+  { id: 'premier', name: '프리미어볼', top: '#fffaf1', accent: '#e35d54', effect: '#f29a99' },
   { id: 'luxury', name: '럭셔리볼', top: '#292934', accent: '#dfb966', effect: '#ebcc84' },
   { id: 'dusk', name: '다크볼', top: '#478060', accent: '#e89349', effect: '#82c9a0' },
   { id: 'master', name: '마스터볼', top: '#9061c3', accent: '#e996c8', effect: '#d1a2f2' }
@@ -19,7 +19,7 @@ export const THEMES: { id: ThemeId; name: string; ball: BallId | null; colors: [
   { id: 'dark', name: '보라시티 다크', ball: null, colors: ['#2b223d', '#9670c4', '#ac91e5'], dark: true },
   { id: 'great', name: '슈퍼볼', ball: 'great', colors: ['#eef5ff', '#3575b8', '#d95752'], dark: false },
   { id: 'ultra', name: '하이퍼볼', ball: 'ultra', colors: ['#252b34', '#e5bc49', '#f0ce72'], dark: true },
-  { id: 'premier', name: '프레미어볼', ball: 'premier', colors: ['#ffffff', '#c8474f', '#e78a8f'], dark: false },
+  { id: 'premier', name: '프리미어볼', ball: 'premier', colors: ['#ffffff', '#c8474f', '#e78a8f'], dark: false },
   { id: 'luxury', name: '럭셔리볼', ball: 'luxury', colors: ['#26232a', '#d3ac63', '#e16e65'], dark: true },
   { id: 'dusk', name: '다크볼', ball: 'dusk', colors: ['#20352c', '#81ba92', '#eca369'], dark: true },
   { id: 'master', name: '마스터볼', ball: 'master', colors: ['#332344', '#d3a0ee', '#eca3cf'], dark: true }

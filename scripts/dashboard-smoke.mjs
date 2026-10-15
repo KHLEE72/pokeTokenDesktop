@@ -103,6 +103,7 @@ try {
   await expect(page.locator('[data-egg-type="electric"] .egg-progress-track')).toHaveCount(0)
   await page.screenshot({path:'artifacts/dashboard-egg-storage.png',fullPage:true})
   await page.getByRole('button', { name: '불꽃 알 선택', exact: true }).click()
+  await expect.poll(async () => (await page.evaluate(() => window.desktop.getSnapshot())).game.activeId).toBe('pet:5')
   const switched = await page.evaluate(() => window.desktop.getSnapshot())
   expect(switched.game.activeId).toBe('pet:5')
   expect(switched.game.pets.find(p => p.id === 'pet:1').xp).toBe(12500000)

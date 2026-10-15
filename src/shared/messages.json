@@ -1,0 +1,1098 @@
+{
+  " · 도감 등록": {
+    "en": " · registered",
+    "ja": " · 登録済み"
+  },
+  " · 미획득": {
+    "en": " · locked",
+    "ja": " · 未獲得"
+  },
+  " · 불완전한 기록 {0}개 건너뜀": {
+    "en": " · skipped {0} incomplete entries",
+    "ja": " · 不完全な記録{0}件をスキップ"
+  },
+  " 도감": {
+    "en": " Pokédex",
+    "ja": "図鑑"
+  },
+  " 중 {0}–{1}종": {
+    "en": " · showing {0}–{1}",
+    "ja": " · {0}〜{1}種を表示"
+  },
+  " 획득 조건 보기": {
+    "en": " · view requirements",
+    "ja": " · 獲得条件を見る"
+  },
+  "+ 폴더 추가": {
+    "en": "+ Add folder",
+    "ja": "+ フォルダーを追加"
+  },
+  "+{0}개 더 보기": {
+    "en": "+{0} more",
+    "ja": "ほか{0}個を見る"
+  },
+  "1개 = 10만 XP · 다음 사탕까지 {0} 토큰": {
+    "en": "1 = 100,000 XP · {0} tokens to next candy",
+    "ja": "1個 = 10万XP · 次のアメまで{0}トークン"
+  },
+  "v{0} · 내 컴퓨터에 저장": {
+    "en": "v{0} · Stored locally",
+    "ja": "v{0} · この端末に保存"
+  },
+  "{0} / {1} 페이지": {
+    "en": "Page {0} / {1}",
+    "ja": "{0} / {1}ページ"
+  },
+  "{0} XP 남음": {
+    "en": "{0} XP to go",
+    "ja": "あと{0}XP"
+  },
+  "{0} {1}번째 친구의 볼 선택": {
+    "en": "Choose a ball for {0} #{1}",
+    "ja": "{0}（{1}匹目）のボールを選択"
+  },
+  "{0} 개체 선택": {
+    "en": "Choose a {0}",
+    "ja": "{0}の個体を選択"
+  },
+  "{0} 마리": {
+    "en": "{0} Pokémon",
+    "ja": "{0}匹"
+  },
+  "{0} 부화 진행률": {
+    "en": "{0} hatch progress",
+    "ja": "{0}の孵化進捗"
+  },
+  "{0} 선택": {
+    "en": "Choose {0}",
+    "ja": "{0}を選択"
+  },
+  "{0} 알": {
+    "en": "{0} Egg",
+    "ja": "{0}のタマゴ"
+  },
+  "{0} 연결 제거": {
+    "en": "Disconnect {0}",
+    "ja": "{0}の接続を解除"
+  },
+  "{0} 진행률": {
+    "en": "{0} progress",
+    "ja": "{0}の進捗"
+  },
+  "{0} 테마{1}": {
+    "en": "{0} theme{1}",
+    "ja": "{0}テーマ{1}"
+  },
+  "{0} 토큰": {
+    "en": "{0} tokens",
+    "ja": "{0}トークン"
+  },
+  "{0} 확인": {
+    "en": "Checked {0}",
+    "ja": "{0}に確認"
+  },
+  "{0} 획득!": {
+    "en": "Unlocked {0}!",
+    "ja": "{0}を獲得！"
+  },
+  "{0}% 성장": {
+    "en": "{0}% grown",
+    "ja": "成長{0}%"
+  },
+  "{0}{1} 선택": {
+    "en": "Choose {0}{1}",
+    "ja": "{0}{1}を選択"
+  },
+  "{0}개 로그 연결됨{1}": {
+    "en": "{0} log files connected{1}",
+    "ja": "ログ{0}件に接続{1}"
+  },
+  "{0}개 진화 계열 · {1} / {2}종 발견 · 이로치 {3}종": {
+    "en": "{0} evolution families · {1}/{2} discovered · {3} Shiny",
+    "ja": "{0}進化系統 · {1}/{2}種発見 · 色違い{3}種"
+  },
+  "{0}까지": {
+    "en": "Until {0}",
+    "ja": "{0}まで"
+  },
+  "{0}번째 친구 · {1}": {
+    "en": "Companion #{0} · {1}",
+    "ja": "{0}匹目 · {1}"
+  },
+  "{0}페이지": {
+    "en": "Page {0}",
+    "ja": "{0}ページ"
+  },
+  "← 이전": {
+    "en": "← Previous",
+    "ja": "← 前へ"
+  },
+  "↻ 새로고침": {
+    "en": "↻ Refresh",
+    "ja": "↻ 更新"
+  },
+  "⌂ 기록은 내 컴퓨터에서 처리합니다. 대화 내용과 인증 정보는 저장하거나 전송하지 않습니다.": {
+    "en": "⌂ Logs are processed locally. Conversation content and credentials are never stored or sent.",
+    "ja": "⌂ 記録はこの端末で処理します。会話の内容や認証情報は保存・送信しません。"
+  },
+  "✓ 달성 완료": {
+    "en": "✓ Completed",
+    "ja": "✓ 達成済み"
+  },
+  "✓ 사용 중": {
+    "en": "✓ Active",
+    "ja": "✓ 使用中"
+  },
+  "✦ 이로치": {
+    "en": "✦ Shiny",
+    "ja": "✦ 色違い"
+  },
+  "✦ 이로치 ": {
+    "en": "✦ Shiny ",
+    "ja": "✦ 色違い "
+  },
+  "✦ 이로치 도감": {
+    "en": "✦ Shiny Pokédex",
+    "ja": "✦ 色違い図鑑"
+  },
+  "개": {
+    "en": "",
+    "ja": "個"
+  },
+  "개체 볼 + 화면 테마": {
+    "en": "Companion ball + app theme",
+    "ja": "個体のボール＋画面テーマ"
+  },
+  "검색어 지우기": {
+    "en": "Clear search",
+    "ja": "検索をクリア"
+  },
+  "검색어를 바꾸거나 타입·상태 필터를 풀어보세요.": {
+    "en": "Try another name or reset the type and status filters.",
+    "ja": "検索語を変えるか、タイプ・状態の絞り込みを解除してください。"
+  },
+  "경험치사탕 ": {
+    "en": "Exp. Candy ",
+    "ja": "けいけんアメ "
+  },
+  "경험치사탕을 모으는 중": {
+    "en": "Collecting Exp. Candy",
+    "ja": "けいけんアメを集めています"
+  },
+  "기본": {
+    "en": "Normal",
+    "ja": "標準"
+  },
+  "기본 제공": {
+    "en": "Included",
+    "ja": "最初から使用可能"
+  },
+  "기본 폴더를 자동으로 찾습니다. 다른 위치나 WSL에 있는 기록은 폴더를 추가하세요.": {
+    "en": "Default folders are detected automatically. Add folders for other locations or WSL logs.",
+    "ja": "標準フォルダーを自動検出します。別の場所やWSLの記録はフォルダーを追加してください。"
+  },
+  "기본 화면": {
+    "en": "Primary display",
+    "ja": "メイン画面"
+  },
+  "기존 알": {
+    "en": "Legacy Egg",
+    "ja": "引き継いだタマゴ"
+  },
+  "기존 알 이어 키우기": {
+    "en": "Continue legacy egg",
+    "ja": "引き継いだタマゴを育てる"
+  },
+  "기존 포켓몬 알": {
+    "en": "Legacy Pokémon Egg",
+    "ja": "引き継いだポケモンのタマゴ"
+  },
+  "나의 도감": {
+    "en": "My Pokédex",
+    "ja": "マイ図鑑"
+  },
+  "나의 도감 {0} / {1}종 · 이로치 {2}종": {
+    "en": "My Pokédex {0}/{1} · {2} Shiny",
+    "ja": "マイ図鑑{0}/{1}種 · 色違い{2}種"
+  },
+  "나의 볼 컬렉션": {
+    "en": "My ball collection",
+    "ja": "ボールコレクション"
+  },
+  "나의 작은 도감": {
+    "en": "My little Pokédex",
+    "ja": "小さなポケモン図鑑"
+  },
+  "느림": {
+    "en": "Slow",
+    "ja": "ゆっくり"
+  },
+  "다시 걷기": {
+    "en": "Resume walking",
+    "ja": "歩くのを再開"
+  },
+  "다음 →": {
+    "en": "Next →",
+    "ja": "次へ →"
+  },
+  "다음 진화까지": {
+    "en": "To next evolution",
+    "ja": "次の進化まで"
+  },
+  "다음 페이지": {
+    "en": "Next page",
+    "ja": "次のページ"
+  },
+  "닫기": {
+    "en": "Close",
+    "ja": "閉じる"
+  },
+  "달성 완료": {
+    "en": "Completed",
+    "ja": "達成済み"
+  },
+  "달성하면 자동으로 열려요": {
+    "en": "Unlocks automatically on completion",
+    "ja": "達成すると自動で解放"
+  },
+  "데스크톱 펫 보이기": {
+    "en": "Show desktop pet",
+    "ja": "デスクトップペットを表示"
+  },
+  "데스크톱 펫 숨기기": {
+    "en": "Hide desktop pet",
+    "ja": "デスクトップペットを隠す"
+  },
+  "도감 ": {
+    "en": "Dex ",
+    "ja": "図鑑 "
+  },
+  "도감 {0} 페이지 이동": {
+    "en": "Pokédex {0} pagination",
+    "ja": "図鑑の{0}のページ切り替え"
+  },
+  "도감 검색 및 필터": {
+    "en": "Pokédex search and filters",
+    "ja": "図鑑の検索と絞り込み"
+  },
+  "도감 상태 필터": {
+    "en": "Pokédex status filter",
+    "ja": "図鑑の状態フィルター"
+  },
+  "도감 타입 필터": {
+    "en": "Pokédex type filter",
+    "ja": "図鑑のタイプフィルター"
+  },
+  "도전 중": {
+    "en": "In progress",
+    "ja": "挑戦中"
+  },
+  "라이트 모드로 변경": {
+    "en": "Switch to light mode",
+    "ja": "ライトモードに切り替え"
+  },
+  "로그 연결 대기": {
+    "en": "Waiting for logs",
+    "ja": "ログ接続待ち"
+  },
+  "로그 연결됨": {
+    "en": "Logs connected",
+    "ja": "ログ接続済み"
+  },
+  "로그인할 때 앱을 자동으로 실행합니다.": {
+    "en": "Launch the app when you sign in.",
+    "ja": "ログイン時にアプリを自動起動します。"
+  },
+  "먹일 개수 ": {
+    "en": "Amount ",
+    "ja": "与える数 "
+  },
+  "먹일 사탕 개수": {
+    "en": "Candy amount",
+    "ja": "与えるアメの数"
+  },
+  "메뉴, 대사와 포켓몬 이름에 바로 적용됩니다.": {
+    "en": "Applies immediately to menus, dialogue and Pokémon names.",
+    "ja": "メニュー・セリフ・ポケモン名にすぐ反映されます。"
+  },
+  "모니터가 분리되면 기본 화면으로 돌아옵니다.": {
+    "en": "Returns to the primary display if this monitor is disconnected.",
+    "ja": "モニターが外れたらメイン画面に戻ります。"
+  },
+  "모든 타입": {
+    "en": "All types",
+    "ja": "すべてのタイプ"
+  },
+  "목표를 고르면 진화해요 · 새 토큰은 사탕으로": {
+    "en": "Choose an evolution · New tokens become candy",
+    "ja": "進化先を選ぶと進化 · 新しいトークンはアメに"
+  },
+  "미발견": {
+    "en": "Undiscovered",
+    "ja": "未発見"
+  },
+  "변경해도 지금까지의 단계 진행률은 유지됩니다.": {
+    "en": "Changing speed preserves your current stage progress.",
+    "ja": "変更しても現在の段階の進捗は維持されます。"
+  },
+  "보관 중": {
+    "en": "Stored",
+    "ja": "保管中"
+  },
+  "보관 중인 알 {0}개 · 부화 중 {1}개": {
+    "en": "{0} stored · {1} incubating",
+    "ja": "保管中{0}個 · 孵化待ち{1}個"
+  },
+  "보관 중인 알이 없어요. 새 알을 선택해보세요.": {
+    "en": "No stored eggs. Choose a new one.",
+    "ja": "保管中のタマゴはありません。新しいタマゴを選びましょう。"
+  },
+  "보라시티 다크 모드로 변경": {
+    "en": "Switch to Lavender Town dark mode",
+    "ja": "シオンタウンのダークモードに切り替え"
+  },
+  "볼 {0} / {1}": {
+    "en": "Balls {0} / {1}",
+    "ja": "ボール{0} / {1}"
+  },
+  "볼 골라주기": {
+    "en": "Choose a ball",
+    "ja": "ボールを選ぶ"
+  },
+  "볼과 화면 테마를 사용할 수 있어요.": {
+    "en": "A new ball and app theme are available.",
+    "ja": "ボールと画面テーマが使えるようになりました。"
+  },
+  "볼에 넣기": {
+    "en": "Return to ball",
+    "ja": "ボールに戻す"
+  },
+  "볼에서 꺼내기": {
+    "en": "Send out",
+    "ja": "ボールから出す"
+  },
+  "부화 중": {
+    "en": "Incubating",
+    "ja": "孵化待ち"
+  },
+  "부화 진행률 ": {
+    "en": "Hatching ",
+    "ja": "孵化の進捗 "
+  },
+  "부화를 기다리는 중": {
+    "en": "Waiting to hatch",
+    "ja": "孵化を待っています"
+  },
+  "부화해서 만나기": {
+    "en": "Hatch to meet",
+    "ja": "孵化させて出会う"
+  },
+  "빠름": {
+    "en": "Fast",
+    "ja": "はやい"
+  },
+  "사용량 확인 중": {
+    "en": "Checking usage",
+    "ja": "使用量を確認中"
+  },
+  "사용할 수 있어요": {
+    "en": "Available",
+    "ja": "使用できます"
+  },
+  "사탕 먹이기": {
+    "en": "Give candy",
+    "ja": "アメをあげる"
+  },
+  "상태": {
+    "en": "Status",
+    "ja": "状態"
+  },
+  "새 알": {
+    "en": "New egg",
+    "ja": "新しいタマゴ"
+  },
+  "새 알 선택": {
+    "en": "Choose new egg",
+    "ja": "新しいタマゴを選択"
+  },
+  "새 토큰은 사탕으로 쌓여요.": {
+    "en": "New tokens become candy.",
+    "ja": "新しいトークンはアメになります。"
+  },
+  "새 폴더의 기존 기록은 경험치에 소급 적용되지 않습니다.": {
+    "en": "Existing logs in newly connected folders do not grant XP.",
+    "ja": "新しく接続したフォルダーの過去の記録は経験値になりません。"
+  },
+  "새로 쓰는 토큰으로 성장합니다. 기존 기록은 사용량에만 표시됩니다.": {
+    "en": "New tokens help your companion grow. Past logs only appear in usage totals.",
+    "ja": "新しく使ったトークンで成長します。過去の記録は使用量のみに表示されます。"
+  },
+  "새로 키울 수 있는 알": {
+    "en": "Start a new egg",
+    "ja": "新しく育てられるタマゴ"
+  },
+  "설정": {
+    "en": "Settings",
+    "ja": "設定"
+  },
+  "성장 단계 {0} / {1}": {
+    "en": "Growth stage {0} / {1}",
+    "ja": "成長段階{0} / {1}"
+  },
+  "성장 속도": {
+    "en": "Growth speed",
+    "ja": "成長速度"
+  },
+  "성장 속도와 데스크톱 펫을 내 취향에 맞춰보세요.": {
+    "en": "Make growth speed and your desktop companion your own.",
+    "ja": "成長速度やデスクトップペットを好みに合わせましょう。"
+  },
+  "성장과 모습": {
+    "en": "Growth and appearance",
+    "ja": "成長と見た目"
+  },
+  "성장을 마친 친구": {
+    "en": "Fully evolved companions",
+    "ja": "最終進化した仲間"
+  },
+  "아래쪽": {
+    "en": "bottom",
+    "ja": "下部"
+  },
+  "아직 만나지 못했어요": {
+    "en": "Not met yet",
+    "ja": "まだ出会っていません"
+  },
+  "아직 미획득": {
+    "en": "Not yet unlocked",
+    "ja": "未獲得"
+  },
+  "알 또는 성장 중인 포켓몬을 고르면 자동 성장을 이어갑니다.": {
+    "en": "Choose an egg or a growing Pokémon to resume automatic growth.",
+    "ja": "タマゴか成長中のポケモンを選ぶと自動で成長します。"
+  },
+  "알 보관 현황": {
+    "en": "Stored egg overview",
+    "ja": "タマゴの保管状況"
+  },
+  "알 보관함": {
+    "en": "Egg storage",
+    "ja": "タマゴボックス"
+  },
+  "알 선택하기": {
+    "en": "Choose an egg",
+    "ja": "タマゴを選ぶ"
+  },
+  "알 선택하기 ": {
+    "en": "Choose an egg ",
+    "ja": "タマゴを選ぶ "
+  },
+  "알은 토큰으로만 부화해요.": {
+    "en": "Eggs hatch using tokens only.",
+    "ja": "タマゴはトークンでのみ孵化します。"
+  },
+  "알이나 포켓몬을 바꿔도 부화 진행률은 그대로 보관됩니다. 새 알을 선택하면 0%부터 키워요.": {
+    "en": "Hatching progress is saved when you switch eggs or Pokémon. A new egg starts at 0%.",
+    "ja": "タマゴやポケモンを変えても孵化の進捗は保存されます。新しいタマゴは0%から育ちます。"
+  },
+  "어떤 친구가 태어날까요?": {
+    "en": "Who will hatch next?",
+    "ja": "どんな仲間が生まれるかな？"
+  },
+  "언어": {
+    "en": "Language",
+    "ja": "言語"
+  },
+  "업적 {0} / {1} 달성 · 볼과 화면 테마가 함께 열려요.": {
+    "en": "{0}/{1} achievements · Unlock balls and app themes.",
+    "ja": "実績{0}/{1}達成 · ボールと画面テーマが解放されます。"
+  },
+  "업적 · 볼 컬렉션": {
+    "en": "Achievements · Balls",
+    "ja": "実績・ボールコレクション"
+  },
+  "업적 보기": {
+    "en": "View achievements",
+    "ja": "実績を見る"
+  },
+  "업적과 볼 컬렉션": {
+    "en": "Achievements and ball collection",
+    "ja": "実績とボールコレクション"
+  },
+  "연결 후 얻은 경험치": {
+    "en": "XP earned since connecting",
+    "ja": "接続後に獲得した経験値"
+  },
+  "연결할 로그 폴더를 추가해주세요.": {
+    "en": "Add a log folder to connect.",
+    "ja": "接続するログフォルダーを追加してください。"
+  },
+  "오늘도, 함께 성장해요": {
+    "en": "Growing together, every day",
+    "ja": "今日も一緒に成長しよう"
+  },
+  "오늘의 코딩이 남긴 발자국": {
+    "en": "A little progress from today's coding",
+    "ja": "今日のコーディングが残した足跡"
+  },
+  "완성한 모습이에요. 새 토큰은 사탕으로 쌓입니다.": {
+    "en": "Fully evolved. New tokens become candy.",
+    "ja": "進化が完了しています。新しいトークンはアメになります。"
+  },
+  "위쪽": {
+    "en": "top",
+    "ja": "上部"
+  },
+  "이 모습의 진화 완료": {
+    "en": "Evolution complete",
+    "ja": "この姿の進化は完了"
+  },
+  "이동 일시정지": {
+    "en": "Pause walking",
+    "ja": "歩くのを一時停止"
+  },
+  "이동할 도감 페이지": {
+    "en": "Go to Pokédex page",
+    "ja": "移動先の図鑑ページ"
+  },
+  "이로치": {
+    "en": "Shiny",
+    "ja": "色違い"
+  },
+  "이로치 ": {
+    "en": "Shiny ",
+    "ja": "色違い "
+  },
+  "이름 또는 도감 번호 검색": {
+    "en": "Search name or Pokédex number",
+    "ja": "名前か図鑑番号で検索"
+  },
+  "이어 키우기": {
+    "en": "Continue growing",
+    "ja": "続きから育てる"
+  },
+  "이전 페이지": {
+    "en": "Previous page",
+    "ja": "前のページ"
+  },
+  "이전에 키우던 알": {
+    "en": "An egg you started earlier",
+    "ja": "以前から育てていたタマゴ"
+  },
+  "일반": {
+    "en": "Normal",
+    "ja": "通常"
+  },
+  "일반 도감": {
+    "en": "Normal Pokédex",
+    "ja": "通常図鑑"
+  },
+  "자동 성장 · {0}%": {
+    "en": "Auto growth · {0}%",
+    "ja": "自動成長 · {0}%"
+  },
+  "자동 시작": {
+    "en": "Launch at login",
+    "ja": "自動起動"
+  },
+  "작업을 완료하지 못했습니다.": {
+    "en": "Could not complete the action.",
+    "ja": "操作を完了できませんでした。"
+  },
+  "작은 발자국, 새로운 볼": {
+    "en": "Little steps, new balls",
+    "ja": "小さな足跡、新しいボール"
+  },
+  "작은 친구가 함께 자랍니다.": {
+    "en": "Your little companion grows with you.",
+    "ja": "小さな仲間も一緒に育ちます。"
+  },
+  "작은 친구를 깨우는 중…": {
+    "en": "Waking your little companion…",
+    "ja": "小さな仲間を起こしています…"
+  },
+  "잠김 · {0}": {
+    "en": "Locked · {0}",
+    "ja": "未解放 · {0}"
+  },
+  "전체 {0}종": {
+    "en": "{0} species",
+    "ja": "全{0}種"
+  },
+  "전체 도감 보기": {
+    "en": "View all Pokémon",
+    "ja": "図鑑をすべて見る"
+  },
+  "전체 로컬 사용량": {
+    "en": "All local usage",
+    "ja": "ローカル使用量の合計"
+  },
+  "조건에 맞는 친구가 없어요": {
+    "en": "No matching companions",
+    "ja": "条件に合う仲間はいません"
+  },
+  "조건을 달성하면 자동으로 해금돼요. 이미 키운 친구와 도감 기록도 인정합니다. 볼은 개체별로, 화면 테마는 설정에서 자유롭게 골라주세요.": {
+    "en": "Rewards unlock automatically. Existing companions and Pokédex entries count too. Choose a ball for each companion and an app theme in Settings.",
+    "ja": "条件を満たすと自動で解放されます。以前に育てた仲間や図鑑の記録も対象です。ボールは個体ごとに、画面テーマは設定で選べます。"
+  },
+  "주 메뉴": {
+    "en": "Main navigation",
+    "ja": "メインメニュー"
+  },
+  "진화 대기 · 목표 선택": {
+    "en": "Ready · Choose evolution",
+    "ja": "進化待ち · 進化先を選択"
+  },
+  "진화 목표": {
+    "en": "Evolution target",
+    "ja": "進化先"
+  },
+  "진화 목표 선택": {
+    "en": "Choose evolution",
+    "ja": "進化先を選択"
+  },
+  "진화 목표를 기다리는 중": {
+    "en": "Waiting for an evolution choice",
+    "ja": "進化先の選択待ち"
+  },
+  "진화 완료 · 사탕 적립": {
+    "en": "Evolved · Earning candy",
+    "ja": "進化完了 · アメを貯蓄"
+  },
+  "첫 기록을 확인하는 중": {
+    "en": "Checking your first logs",
+    "ja": "最初の記録を確認中"
+  },
+  "첫 친구가 최종 진화하면 여기에 기록됩니다.": {
+    "en": "Your first fully evolved companion will appear here.",
+    "ja": "最初の仲間が最終進化すると、ここに記録されます。"
+  },
+  "최종 진화 기록": {
+    "en": "Evolution history",
+    "ja": "最終進化の記録"
+  },
+  "캐릭터 크기": {
+    "en": "Character size",
+    "ja": "キャラクターの大きさ"
+  },
+  "컴퓨터를 켜면 함께 시작": {
+    "en": "Start with your computer",
+    "ja": "パソコンと一緒に起動"
+  },
+  "코딩에 쓴 토큰이 작은 친구의 경험치가 됩니다.": {
+    "en": "Coding tokens become XP for your little companion.",
+    "ja": "コーディングのトークンが仲間の経験値になります。"
+  },
+  "클릭해서 볼에서 꺼내기 · 드래그해서 옮기기": {
+    "en": "Click to send out · Drag to move",
+    "ja": "クリックでボールから出す · ドラッグで移動"
+  },
+  "타입": {
+    "en": "Type",
+    "ja": "タイプ"
+  },
+  "테마 사용 중": {
+    "en": "Theme active",
+    "ja": "使用中のテーマ"
+  },
+  "테마 적용": {
+    "en": "Apply theme",
+    "ja": "テーマを適用"
+  },
+  "토큰": {
+    "en": "tokens",
+    "ja": "トークン"
+  },
+  "토큰 사용 기록 연결": {
+    "en": "Connect usage logs",
+    "ja": "トークン使用記録の接続"
+  },
+  "토큰으로 자동 성장하며 사탕으로도 키울 수 있어요.": {
+    "en": "Tokens grow your companion automatically. Candy helps too.",
+    "ja": "トークンで自動成長します。アメも使えます。"
+  },
+  "평소처럼 코딩하세요.": {
+    "en": "Keep coding as usual.",
+    "ja": "いつも通りにコーディング。"
+  },
+  "포켓몬 이름 또는 도감 번호 검색": {
+    "en": "Search Pokémon name or Pokédex number",
+    "ja": "ポケモン名か図鑑番号で検索"
+  },
+  "포켓몬의 볼과 화면 테마는 따로 고를 수 있어요. 기본 두 테마는 언제든 사용할 수 있습니다.": {
+    "en": "Choose companion balls and app themes independently. Both default themes are always available.",
+    "ja": "ポケモンのボールと画面テーマは別々に選べます。標準の2つのテーマはいつでも使えます。"
+  },
+  "폴더가 아직 없습니다. 기록이 생기면 자동으로 연결됩니다.": {
+    "en": "Folder not found yet. It connects automatically when logs appear.",
+    "ja": "フォルダーがまだありません。記録ができると自動接続します。"
+  },
+  "표시 언어": {
+    "en": "Display language",
+    "ja": "表示言語"
+  },
+  "필터 초기화": {
+    "en": "Reset filters",
+    "ja": "絞り込みをリセット"
+  },
+  "함께하기": {
+    "en": "Choose companion",
+    "ja": "一緒に過ごす"
+  },
+  "함께하는 방식": {
+    "en": "Make yourself at home",
+    "ja": "一緒に過ごすための設定"
+  },
+  "함께하는 중": {
+    "en": "Current companion",
+    "ja": "一緒に過ごしています"
+  },
+  "함께할 화면": {
+    "en": "Companion display",
+    "ja": "一緒に過ごす画面"
+  },
+  "현재 친구의 볼 선택": {
+    "en": "Choose current companion's ball",
+    "ja": "現在の仲間のボールを選択"
+  },
+  "현재 펫 · 사용량": {
+    "en": "Companion · Usage",
+    "ja": "ペット・使用量"
+  },
+  "현재 펫 성장 진행률": {
+    "en": "Current companion growth progress",
+    "ja": "現在のペットの成長進捗"
+  },
+  "현재 펫과 사용량": {
+    "en": "Current companion and usage",
+    "ja": "現在のペットと使用量"
+  },
+  "화면 위에 보이는 친구의 크기": {
+    "en": "Your companion's size on screen",
+    "ja": "画面上の仲間の大きさ"
+  },
+  "화면 테마": {
+    "en": "App theme",
+    "ja": "画面テーマ"
+  },
+  "화면 테마 선택": {
+    "en": "Choose app theme",
+    "ja": "画面テーマを選択"
+  },
+  "확인 중…": {
+    "en": "Checking…",
+    "ja": "確認中…"
+  },
+  "획득 알림 닫기": {
+    "en": "Dismiss reward notification",
+    "ja": "獲得通知を閉じる"
+  },
+  "획득 완료": {
+    "en": "Unlocked",
+    "ja": "獲得済み"
+  },
+  "모든 상태": {
+    "en": "All statuses",
+    "ja": "すべての状態"
+  },
+  "발견": {
+    "en": "Discovered",
+    "ja": "発見済み"
+  },
+  "성장 중": {
+    "en": "Growing",
+    "ja": "成長中"
+  },
+  "진화 완료": {
+    "en": "Fully evolved",
+    "ja": "進化完了"
+  },
+  "부화": {
+    "en": "hatching",
+    "ja": "孵化"
+  },
+  "첫 번째 진화": {
+    "en": "first evolution",
+    "ja": "最初の進化"
+  },
+  "최종 진화": {
+    "en": "final evolution",
+    "ja": "最終進化"
+  },
+  "성장 완료": {
+    "en": "growth complete",
+    "ja": "成長完了"
+  },
+  "코딩의 첫 발자국": {
+    "en": "First coding footsteps",
+    "ja": "コーディングの第一歩"
+  },
+  "연결 후 새로 사용한 토큰 100만 개를 모으세요.": {
+    "en": "Use 1 million new tokens after connecting.",
+    "ja": "接続後に新しく100万トークンを使いましょう。"
+  },
+  "차곡차곡 쌓인 시간": {
+    "en": "Time well spent",
+    "ja": "積み重ねた時間"
+  },
+  "연결 후 새로 사용한 토큰 5,000만 개를 모으세요.": {
+    "en": "Use 50 million new tokens after connecting.",
+    "ja": "接続後に新しく5,000万トークンを使いましょう。"
+  },
+  "첫 최종 진화": {
+    "en": "First final evolution",
+    "ja": "初めての最終進化"
+  },
+  "포켓몬 한 마리를 최종 진화시키세요.": {
+    "en": "Raise one Pokémon to its final evolution.",
+    "ja": "ポケモンを1匹、最終進化させましょう。"
+  },
+  "반짝이는 만남": {
+    "en": "A sparkling encounter",
+    "ja": "きらめく出会い"
+  },
+  "이로치 포켓몬을 한 종류 이상 발견하세요.": {
+    "en": "Discover at least one Shiny Pokémon species.",
+    "ja": "色違いのポケモンを1種類以上発見しましょう。"
+  },
+  "밤의 친구들": {
+    "en": "Friends of the night",
+    "ja": "夜の仲間たち"
+  },
+  "고스트 타입 포켓몬 세 종류를 도감에 등록하세요.": {
+    "en": "Register three Ghost-type species in your Pokédex.",
+    "ja": "ゴーストタイプを3種類、図鑑に登録しましょう。"
+  },
+  "우리의 작은 도감": {
+    "en": "Our little Pokédex",
+    "ja": "私たちの小さな図鑑"
+  },
+  "앱의 모든 포켓몬을 일반 또는 이로치 도감에 등록하세요.": {
+    "en": "Register every Pokémon in the app's Normal or Shiny Pokédex.",
+    "ja": "アプリの全ポケモンを通常か色違いの図鑑に登録しましょう。"
+  },
+  "마리": {
+    "en": "Pokémon",
+    "ja": "匹"
+  },
+  "종": {
+    "en": "species",
+    "ja": "種"
+  },
+  "펫 숨기기": {
+    "en": "Hide pet",
+    "ja": "ペットを隠す"
+  },
+  "펫 보이기": {
+    "en": "Show pet",
+    "ja": "ペットを表示"
+  },
+  "펫 입력 복구": {
+    "en": "Restore pet input",
+    "ja": "ペットの入力を復旧"
+  },
+  "입력 문제 시점 기록": {
+    "en": "Mark input issue",
+    "ja": "入力問題の発生時点を記録"
+  },
+  "입력 진단 로그 폴더": {
+    "en": "Input diagnostics folder",
+    "ja": "入力診断ログのフォルダー"
+  },
+  "종료": {
+    "en": "Quit",
+    "ja": "終了"
+  },
+  "이동 일시정지 / 다시 걷기": {
+    "en": "Pause / resume walking",
+    "ja": "歩くのを一時停止／再開"
+  },
+  "로그 폴더 선택": {
+    "en": "Choose log folder",
+    "ja": "ログフォルダーを選択"
+  },
+  "화면 {0}": {
+    "en": "Display {0}",
+    "ja": "画面{0}"
+  },
+  " (기본)": {
+    "en": " (primary)",
+    "ja": "（メイン）"
+  },
+  "잘못된 언어 설정입니다.": {
+    "en": "Invalid language setting.",
+    "ja": "言語設定が正しくありません。"
+  },
+  "잘못된 설정": {
+    "en": "Invalid settings",
+    "ja": "設定が正しくありません"
+  },
+  "잘못된 속도": {
+    "en": "Invalid speed",
+    "ja": "速度が正しくありません"
+  },
+  "잘못된 화면 테마": {
+    "en": "Invalid app theme",
+    "ja": "画面テーマが正しくありません"
+  },
+  "잘못된 크기": {
+    "en": "Invalid size",
+    "ja": "大きさが正しくありません"
+  },
+  "연결되지 않은 화면": {
+    "en": "Display not connected",
+    "ja": "画面が接続されていません"
+  },
+  "잘못된 로그 폴더": {
+    "en": "Invalid log folder",
+    "ja": "ログフォルダーが正しくありません"
+  },
+  "허용되지 않은 요청": {
+    "en": "Request not allowed",
+    "ja": "許可されていない操作です"
+  },
+  "잘못된 요청": {
+    "en": "Invalid request",
+    "ja": "操作が正しくありません"
+  },
+  "처리 시간이 길어지고 있습니다. 잠시 후 다시 확인해주세요.": {
+    "en": "This is taking longer than usual. Please try again shortly.",
+    "ja": "処理に時間がかかっています。しばらくしてから再度お試しください。"
+  },
+  "선택할 수 없는 볼입니다. 업적에서 획득 조건을 확인해주세요.": {
+    "en": "This ball is unavailable. Check its achievement requirements.",
+    "ja": "このボールは選べません。実績で獲得条件を確認してください。"
+  },
+  "아직 얻지 못한 테마예요. 업적에서 획득 조건을 확인해주세요.": {
+    "en": "This theme is locked. Check its achievement requirements.",
+    "ja": "未獲得のテーマです。実績で獲得条件を確認してください。"
+  },
+  "잘못된 볼 상태입니다.": {
+    "en": "Invalid ball state.",
+    "ja": "ボールの状態が正しくありません。"
+  },
+  "알이 부화하면 볼에 넣을 수 있어요.": {
+    "en": "You can use a ball after the egg hatches.",
+    "ja": "タマゴが孵化したらボールに入れられます。"
+  },
+  "선택할 수 없는 볼입니다.": {
+    "en": "This ball is unavailable.",
+    "ja": "このボールは選べません。"
+  },
+  "선택할 수 없는 알입니다.": {
+    "en": "This egg is unavailable.",
+    "ja": "このタマゴは選べません。"
+  },
+  "아직 만날 수 없는 포켓몬입니다.": {
+    "en": "This Pokémon is not available yet.",
+    "ja": "まだ出会っていないポケモンです。"
+  },
+  "선택할 수 없는 진화 목표입니다.": {
+    "en": "This evolution target is unavailable.",
+    "ja": "この進化先は選べません。"
+  },
+  "알에는 사탕을 사용할 수 없어요.": {
+    "en": "Candy cannot be used on eggs.",
+    "ja": "タマゴにアメは使えません。"
+  },
+  "이 모습의 성장은 이미 완료됐어요.": {
+    "en": "This form has finished growing.",
+    "ja": "この姿の成長は完了しています。"
+  },
+  "진화 목표를 먼저 골라주세요.": {
+    "en": "Choose an evolution target first.",
+    "ja": "先に進化先を選んでください。"
+  },
+  "사용할 사탕이 부족해요.": {
+    "en": "Not enough candy.",
+    "ja": "アメが足りません。"
+  },
+  "사용량을 읽는 중 오류가 발생했습니다. 잠시 후 다시 시도합니다.": {
+    "en": "Could not read usage logs. Retrying shortly.",
+    "ja": "使用量の読み取りに失敗しました。しばらくして再試行します。"
+  },
+  "사용량 처리 실패": {
+    "en": "Could not process usage",
+    "ja": "使用量の処理に失敗しました"
+  },
+  "폴더를 읽을 수 없습니다. 접근 권한과 연결 상태를 확인해주세요.": {
+    "en": "Cannot read this folder. Check permissions and connectivity.",
+    "ja": "フォルダーを読み取れません。アクセス権と接続を確認してください。"
+  },
+  "일부 로그를 읽지 못했습니다. 다음 스캔에서 다시 시도합니다.": {
+    "en": "Some logs could not be read. Retrying on the next scan.",
+    "ja": "一部のログを読み取れませんでした。次のスキャンで再試行します。"
+  },
+  "일부 하위 폴더를 읽지 못했습니다.": {
+    "en": "Some subfolders could not be read.",
+    "ja": "一部のサブフォルダーを読み取れませんでした。"
+  },
+  "진화 준비 완료 · 목표를 골라주세요. 새 토큰은 사탕으로 쌓입니다.": {
+    "en": "Ready to evolve · Choose a target. New tokens become candy.",
+    "ja": "進化の準備ができました · 進化先を選んでください。新しいトークンはアメになります。"
+  },
+  "진화 준비 완료": {
+    "en": "Ready to evolve",
+    "ja": "進化の準備完了"
+  },
+  "목표를 골라주세요. 새 토큰은 사탕으로 쌓입니다.": {
+    "en": "Choose a target. New tokens become candy.",
+    "ja": "進化先を選んでください。新しいトークンはアメになります。"
+  },
+  "알을 선택했어요. 이전 친구의 성장 상태는 보관됩니다.": {
+    "en": "Egg selected. Your previous companion's progress is saved.",
+    "ja": "タマゴを選びました。前の仲間の成長状態は保存されます。"
+  },
+  "이전에 키우던 상태에서 성장을 이어갑니다.": {
+    "en": "Continuing from your companion's saved progress.",
+    "ja": "以前に保存した状態から成長を続けます。"
+  },
+  "완성한 모습으로 함께해요. 새 토큰은 사탕으로 모입니다.": {
+    "en": "Keeping this completed form. New tokens become candy.",
+    "ja": "進化が完了した姿で一緒に過ごします。新しいトークンはアメになります。"
+  },
+  "진화 목표를 아직 정하지 않았어요.": {
+    "en": "No evolution target selected yet.",
+    "ja": "進化先はまだ選んでいません。"
+  },
+  "진화 목표 선택 대기": {
+    "en": "Waiting for an evolution choice",
+    "ja": "進化先の選択待ち"
+  },
+  "{0}를 목표로 키워요.": {
+    "en": "Growing toward {0}.",
+    "ja": "{0}への進化を目指します。"
+  },
+  "{0}을 골랐어요.": {
+    "en": "Selected {0}.",
+    "ja": "{0}を選びました。"
+  },
+  "사탕 {0} XP 사용": {
+    "en": "Used {0} candy XP",
+    "ja": "アメで{0}XP使用"
+  },
+  "이로치 부화 {0}회": {
+    "en": "Shiny hatches: {0}",
+    "ja": "色違いが{0}回孵化"
+  },
+  "부화 {0}회": {
+    "en": "Eggs hatched: {0}",
+    "ja": "{0}回孵化"
+  },
+  "진화 {0}회": {
+    "en": "Evolutions: {0}",
+    "ja": "{0}回進化"
+  },
+  "TODAY'S TOKENS": {
+    "en": "TODAY'S TOKENS",
+    "ja": "今日のトークン"
+  },
+  "POKETOKEN / TRAINER'S LOG": {
+    "en": "POKETOKEN / TRAINER'S LOG",
+    "ja": "POKETOKEN / トレーナーの記録"
+  },
+  "DESKTOP ADVENTURE": {
+    "en": "DESKTOP ADVENTURE",
+    "ja": "デスクトップの冒険"
+  }
+}
