@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { EGG_TYPES, EVOLUTIONS, FAMILIES, POKEMON, POKEMON_BY_ID } from '../src/shared/catalog'
+import { EGG_TYPES, EVOLUTIONS, FAMILIES, GROWTH_FORMS, HATCH_FAMILIES, POKEMON, POKEMON_BY_ID } from '../src/shared/catalog'
 import { activePet, advanceGame, chooseHatchFamily, eggFamilies, gameAction, growthPath, hatchFamilyWeight, isGrowing, speciesId, threshold } from '../src/shared/game'
 import { newGame } from '../src/shared/model'
 import source from '../src/shared/catalog-data.json'
@@ -42,23 +42,24 @@ describe('complete default-form National Pokédex',()=>{
       }
     }
     for(const family of FAMILIES){expect(family.eggTypes.length).toBeGreaterThan(0);walk(family.species[0],[])}
-    expect(reached.size).toBe(1025)
+    expect(reached.size).toBe(1025+GROWTH_FORMS.length)
   })
-  it('does not turn ordinary forms into regional-only evolutions and can hatch those species independently',()=>{
+  it('keeps old independent regional saves while new eggs hatch from the correct regional roots',()=>{
     expect(source.source.independentSpecies).toEqual([862,863,864,865,866,867,902,903,904,980])
     for(const id of source.source.independentSpecies){
       const p=POKEMON_BY_ID.get(id)!,game=newGame()
-      gameAction(game,{type:'egg',eggType:FAMILIES[p.family].eggTypes[0]},'fast',now)
-      advanceGame(game,500_123,'fast',now,hatchRandom(p.family))
+      Object.assign(activePet(game),{family:p.family,phase:1,path:[id]});game.displayPhase=1
+      expect(eggFamilies(FAMILIES[p.family].eggTypes[0])).not.toContain(p.family)
+      advanceGame(game,123,'fast',now)
       expect(speciesId(game)).toBe(id);expect(isGrowing(game)).toBe(false)
-      expect(game.candyTokens).toBe(123);expect(game.captures[0].speciesId).toBe(id)
+      expect(game.candyTokens).toBe(123)
     }
     expect(EVOLUTIONS[665]).toEqual([666]);expect(EVOLUTIONS[281]).toEqual([282,475])
     expect(EVOLUTIONS[935]).toEqual([936,937]);expect(EVOLUTIONS[840]).toEqual([841,842,1011])
     expect(EVOLUTIONS[215]).toEqual([461]);expect(EVOLUTIONS[264]).toEqual([])
   })
   it('weights legendary and mythical families lower while allowing every egg candidate to hatch',()=>{
-    for(const family of FAMILIES){
+    for(const family of HATCH_FAMILIES){
       const p=POKEMON_BY_ID.get(family.species[0])!
       expect(hatchFamilyWeight(family.family)).toBe(p.mythical?3:p.legendary?10:100)
       expect(chooseHatchFamily(eggFamilies(family.eggTypes[0]),hatchRandom(family.family))).toBe(family.family)

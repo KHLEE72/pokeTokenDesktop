@@ -1,0 +1,5831 @@
+{
+  "source": {
+    "repository": "https://github.com/PokeAPI/pokeapi",
+    "revision": "81d20919845b6a445969b9265aab5cec6b04cece",
+    "files": [
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon_species.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon_forms.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon_form_names.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon_species_names.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon_types.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/types.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/pokemon_evolution.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/items.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/item_names.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/moves.csv",
+      "https://raw.githubusercontent.com/PokeAPI/pokeapi/81d20919845b6a445969b9265aab5cec6b04cece/data/v2/csv/move_names.csv"
+    ],
+    "nameCorrections": [
+      "https://news.pokemon-home.com/ko/page/716.html"
+    ],
+    "scope": "Regional forms, Mega forms, and prerequisite appearances; game conditions simplified"
+  },
+  "forms": [
+    {
+      "id": 10025,
+      "speciesId": 678,
+      "formId": 10124,
+      "identifier": "meowstic-female",
+      "kind": "special",
+      "region": null,
+      "names": {
+        "ko": "냐오닉스 (암컷의 모습)",
+        "en": "Female Meowstic",
+        "ja": "ニャオニクス（メスのすがた）"
+      },
+      "types": [
+        "psychic"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 340,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "shy",
+        "signature": {
+          "ko": "귀 안쪽의 힘은 조용히 간직하고 있을게.",
+          "en": "I'll keep the power inside my ears quiet.",
+          "ja": "耳の内側の力は、静かにしまっておくね。"
+        }
+      }
+    },
+    {
+      "id": 10033,
+      "speciesId": 3,
+      "formId": 10133,
+      "identifier": "venusaur-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가이상해꽃",
+        "en": "Mega Venusaur",
+        "ja": "メガフシギバナ"
+      },
+      "types": [
+        "grass",
+        "poison"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 0,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "venusaurite",
+      "baseAppearanceId": 3
+    },
+    {
+      "id": 10034,
+      "speciesId": 6,
+      "formId": 10134,
+      "identifier": "charizard-mega-x",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가리자몽X",
+        "en": "Mega Charizard X",
+        "ja": "メガリザードンＸ"
+      },
+      "types": [
+        "fire",
+        "dragon"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 1,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "charizardite-x",
+      "baseAppearanceId": 6
+    },
+    {
+      "id": 10035,
+      "speciesId": 6,
+      "formId": 10135,
+      "identifier": "charizard-mega-y",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가리자몽Y",
+        "en": "Mega Charizard Y",
+        "ja": "メガリザードンＹ"
+      },
+      "types": [
+        "fire",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 1,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "charizardite-y",
+      "baseAppearanceId": 6
+    },
+    {
+      "id": 10036,
+      "speciesId": 9,
+      "formId": 10136,
+      "identifier": "blastoise-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가거북왕",
+        "en": "Mega Blastoise",
+        "ja": "メガカメックス"
+      },
+      "types": [
+        "water"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 2,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "blastoisinite",
+      "baseAppearanceId": 9
+    },
+    {
+      "id": 10037,
+      "speciesId": 65,
+      "formId": 10137,
+      "identifier": "alakazam-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가후딘",
+        "en": "Mega Alakazam",
+        "ja": "メガフーディン"
+      },
+      "types": [
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 10,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "alakazite",
+      "baseAppearanceId": 65
+    },
+    {
+      "id": 10038,
+      "speciesId": 94,
+      "formId": 10138,
+      "identifier": "gengar-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가팬텀",
+        "en": "Mega Gengar",
+        "ja": "メガゲンガー"
+      },
+      "types": [
+        "ghost",
+        "poison"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 13,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "gengarite",
+      "baseAppearanceId": 94
+    },
+    {
+      "id": 10039,
+      "speciesId": 115,
+      "formId": 10139,
+      "identifier": "kangaskhan-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가캥카",
+        "en": "Mega Kangaskhan",
+        "ja": "メガガルーラ"
+      },
+      "types": [
+        "normal"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 54,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "kangaskhanite",
+      "baseAppearanceId": 115
+    },
+    {
+      "id": 10040,
+      "speciesId": 127,
+      "formId": 10140,
+      "identifier": "pinsir-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가쁘사이저",
+        "en": "Mega Pinsir",
+        "ja": "メガカイロス"
+      },
+      "types": [
+        "bug",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 59,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "pinsirite",
+      "baseAppearanceId": 127
+    },
+    {
+      "id": 10041,
+      "speciesId": 130,
+      "formId": 10141,
+      "identifier": "gyarados-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가갸라도스",
+        "en": "Mega Gyarados",
+        "ja": "メガギャラドス"
+      },
+      "types": [
+        "water",
+        "dark"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 61,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "gyaradosite",
+      "baseAppearanceId": 130
+    },
+    {
+      "id": 10042,
+      "speciesId": 142,
+      "formId": 10142,
+      "identifier": "aerodactyl-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가프테라",
+        "en": "Mega Aerodactyl",
+        "ja": "メガプテラ"
+      },
+      "types": [
+        "rock",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 67,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "aerodactylite",
+      "baseAppearanceId": 142
+    },
+    {
+      "id": 10043,
+      "speciesId": 150,
+      "formId": 10143,
+      "identifier": "mewtwo-mega-x",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가뮤츠X",
+        "en": "Mega Mewtwo X",
+        "ja": "メガミュウツーＸ"
+      },
+      "types": [
+        "psychic",
+        "fighting"
+      ],
+      "generation": 1,
+      "legendary": true,
+      "mythical": false,
+      "family": 71,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "mewtwonite-x",
+      "baseAppearanceId": 150
+    },
+    {
+      "id": 10044,
+      "speciesId": 150,
+      "formId": 10144,
+      "identifier": "mewtwo-mega-y",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가뮤츠Y",
+        "en": "Mega Mewtwo Y",
+        "ja": "メガミュウツーＹ"
+      },
+      "types": [
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": true,
+      "mythical": false,
+      "family": 71,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "mewtwonite-y",
+      "baseAppearanceId": 150
+    },
+    {
+      "id": 10045,
+      "speciesId": 181,
+      "formId": 10145,
+      "identifier": "ampharos-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가전룡",
+        "en": "Mega Ampharos",
+        "ja": "メガデンリュウ"
+      },
+      "types": [
+        "electric",
+        "dragon"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 84,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "ampharosite",
+      "baseAppearanceId": 181
+    },
+    {
+      "id": 10046,
+      "speciesId": 212,
+      "formId": 10146,
+      "identifier": "scizor-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가핫삼",
+        "en": "Mega Scizor",
+        "ja": "メガハッサム"
+      },
+      "types": [
+        "bug",
+        "steel"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 58,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "scizorite",
+      "baseAppearanceId": 212
+    },
+    {
+      "id": 10047,
+      "speciesId": 214,
+      "formId": 10147,
+      "identifier": "heracross-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가헤라크로스",
+        "en": "Mega Heracross",
+        "ja": "メガヘラクロス"
+      },
+      "types": [
+        "bug",
+        "fighting"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 100,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "heracronite",
+      "baseAppearanceId": 214
+    },
+    {
+      "id": 10048,
+      "speciesId": 229,
+      "formId": 10148,
+      "identifier": "houndoom-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가헬가",
+        "en": "Mega Houndoom",
+        "ja": "メガヘルガー"
+      },
+      "types": [
+        "dark",
+        "fire"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 109,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "houndoominite",
+      "baseAppearanceId": 229
+    },
+    {
+      "id": 10049,
+      "speciesId": 248,
+      "formId": 10149,
+      "identifier": "tyranitar-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가마기라스",
+        "en": "Mega Tyranitar",
+        "ja": "メガバンギラス"
+      },
+      "types": [
+        "rock",
+        "dark"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 121,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "tyranitarite",
+      "baseAppearanceId": 248
+    },
+    {
+      "id": 10050,
+      "speciesId": 257,
+      "formId": 10150,
+      "identifier": "blaziken-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가번치코",
+        "en": "Mega Blaziken",
+        "ja": "メガバシャーモ"
+      },
+      "types": [
+        "fire",
+        "fighting"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 126,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "blazikenite",
+      "baseAppearanceId": 257
+    },
+    {
+      "id": 10051,
+      "speciesId": 282,
+      "formId": 10151,
+      "identifier": "gardevoir-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가가디안",
+        "en": "Mega Gardevoir",
+        "ja": "メガサーナイト"
+      },
+      "types": [
+        "psychic",
+        "fairy"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 135,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "gardevoirite",
+      "baseAppearanceId": 282
+    },
+    {
+      "id": 10052,
+      "speciesId": 303,
+      "formId": 10152,
+      "identifier": "mawile-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가입치트",
+        "en": "Mega Mawile",
+        "ja": "メガクチート"
+      },
+      "types": [
+        "steel",
+        "fairy"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 146,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "mawilite",
+      "baseAppearanceId": 303
+    },
+    {
+      "id": 10053,
+      "speciesId": 306,
+      "formId": 10153,
+      "identifier": "aggron-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가보스로라",
+        "en": "Mega Aggron",
+        "ja": "メガボスゴドラ"
+      },
+      "types": [
+        "steel"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 16,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "aggronite",
+      "baseAppearanceId": 306
+    },
+    {
+      "id": 10054,
+      "speciesId": 308,
+      "formId": 10154,
+      "identifier": "medicham-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가요가램",
+        "en": "Mega Medicham",
+        "ja": "メガチャーレム"
+      },
+      "types": [
+        "fighting",
+        "psychic"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 147,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "medichamite",
+      "baseAppearanceId": 308
+    },
+    {
+      "id": 10055,
+      "speciesId": 310,
+      "formId": 10155,
+      "identifier": "manectric-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가썬더볼트",
+        "en": "Mega Manectric",
+        "ja": "メガライボルト"
+      },
+      "types": [
+        "electric"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 148,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "manectite",
+      "baseAppearanceId": 310
+    },
+    {
+      "id": 10056,
+      "speciesId": 354,
+      "formId": 10156,
+      "identifier": "banette-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가다크펫",
+        "en": "Mega Banette",
+        "ja": "メガジュペッタ"
+      },
+      "types": [
+        "ghost"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 175,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "banettite",
+      "baseAppearanceId": 354
+    },
+    {
+      "id": 10057,
+      "speciesId": 359,
+      "formId": 10157,
+      "identifier": "absol-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가앱솔",
+        "en": "Mega Absol",
+        "ja": "メガアブソル"
+      },
+      "types": [
+        "dark"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 178,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "absolite",
+      "baseAppearanceId": 359
+    },
+    {
+      "id": 10058,
+      "speciesId": 445,
+      "formId": 10158,
+      "identifier": "garchomp-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가한카리아스",
+        "en": "Mega Garchomp",
+        "ja": "メガガブリアス"
+      },
+      "types": [
+        "dragon",
+        "ground"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 223,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "garchompite",
+      "baseAppearanceId": 445
+    },
+    {
+      "id": 10059,
+      "speciesId": 448,
+      "formId": 10159,
+      "identifier": "lucario-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가루카리오",
+        "en": "Mega Lucario",
+        "ja": "メガルカリオ"
+      },
+      "types": [
+        "fighting",
+        "steel"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 225,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "lucarionite",
+      "baseAppearanceId": 448
+    },
+    {
+      "id": 10060,
+      "speciesId": 460,
+      "formId": 10160,
+      "identifier": "abomasnow-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가눈설왕",
+        "en": "Mega Abomasnow",
+        "ja": "メガユキノオー"
+      },
+      "types": [
+        "grass",
+        "ice"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 232,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "abomasite",
+      "baseAppearanceId": 460
+    },
+    {
+      "id": 10061,
+      "speciesId": 670,
+      "formId": 10163,
+      "identifier": "floette-eternal",
+      "kind": "special",
+      "region": null,
+      "names": {
+        "ko": "플라엣테 (영원의 꽃)",
+        "en": "Eternal Floette",
+        "ja": "フラエッテ（えいえんのはな）"
+      },
+      "types": [
+        "fairy"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 551,
+      "phase": 1,
+      "dialogue": {
+        "body": "floating",
+        "voice": "gentle",
+        "signature": {
+          "ko": "이 꽃과 함께, 긴 시간을 천천히 걸어왔어.",
+          "en": "This flower and I have shared a very long journey.",
+          "ja": "この花と一緒に、長い時を歩んできたよ。"
+        }
+      }
+    },
+    {
+      "id": 10062,
+      "speciesId": 380,
+      "formId": 10164,
+      "identifier": "latias-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가라티아스",
+        "en": "Mega Latias",
+        "ja": "メガラティアス"
+      },
+      "types": [
+        "dragon",
+        "psychic"
+      ],
+      "generation": 3,
+      "legendary": true,
+      "mythical": false,
+      "family": 189,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "latiasite",
+      "baseAppearanceId": 380
+    },
+    {
+      "id": 10063,
+      "speciesId": 381,
+      "formId": 10165,
+      "identifier": "latios-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가라티오스",
+        "en": "Mega Latios",
+        "ja": "メガラティオス"
+      },
+      "types": [
+        "dragon",
+        "psychic"
+      ],
+      "generation": 3,
+      "legendary": true,
+      "mythical": false,
+      "family": 190,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "latiosite",
+      "baseAppearanceId": 381
+    },
+    {
+      "id": 10064,
+      "speciesId": 260,
+      "formId": 10166,
+      "identifier": "swampert-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가대짱이",
+        "en": "Mega Swampert",
+        "ja": "メガラグラージ"
+      },
+      "types": [
+        "water",
+        "ground"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 127,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "swampertite",
+      "baseAppearanceId": 260
+    },
+    {
+      "id": 10065,
+      "speciesId": 254,
+      "formId": 10167,
+      "identifier": "sceptile-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가나무킹",
+        "en": "Mega Sceptile",
+        "ja": "メガジュカイン"
+      },
+      "types": [
+        "grass",
+        "dragon"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 125,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "sceptilite",
+      "baseAppearanceId": 254
+    },
+    {
+      "id": 10066,
+      "speciesId": 302,
+      "formId": 10168,
+      "identifier": "sableye-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가깜까미",
+        "en": "Mega Sableye",
+        "ja": "メガヤミラミ"
+      },
+      "types": [
+        "dark",
+        "ghost"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 145,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "sablenite",
+      "baseAppearanceId": 302
+    },
+    {
+      "id": 10067,
+      "speciesId": 334,
+      "formId": 10169,
+      "identifier": "altaria-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가파비코리",
+        "en": "Mega Altaria",
+        "ja": "メガチルタリス"
+      },
+      "types": [
+        "dragon",
+        "fairy"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 162,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "altarianite",
+      "baseAppearanceId": 334
+    },
+    {
+      "id": 10068,
+      "speciesId": 475,
+      "formId": 10170,
+      "identifier": "gallade-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가엘레이드",
+        "en": "Mega Gallade",
+        "ja": "メガエルレイド"
+      },
+      "types": [
+        "psychic",
+        "fighting"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 135,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "galladite",
+      "baseAppearanceId": 475
+    },
+    {
+      "id": 10069,
+      "speciesId": 531,
+      "formId": 10171,
+      "identifier": "audino-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가다부니",
+        "en": "Mega Audino",
+        "ja": "メガタブンネ"
+      },
+      "types": [
+        "normal",
+        "fairy"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 264,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "audinite",
+      "baseAppearanceId": 531
+    },
+    {
+      "id": 10070,
+      "speciesId": 319,
+      "formId": 10172,
+      "identifier": "sharpedo-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가샤크니아",
+        "en": "Mega Sharpedo",
+        "ja": "メガサメハダー"
+      },
+      "types": [
+        "water",
+        "dark"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 154,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "sharpedonite",
+      "baseAppearanceId": 319
+    },
+    {
+      "id": 10071,
+      "speciesId": 80,
+      "formId": 10173,
+      "identifier": "slowbro-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가야도란",
+        "en": "Mega Slowbro",
+        "ja": "メガヤドラン"
+      },
+      "types": [
+        "water",
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 37,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "slowbronite",
+      "baseAppearanceId": 80
+    },
+    {
+      "id": 10072,
+      "speciesId": 208,
+      "formId": 10174,
+      "identifier": "steelix-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가강철톤",
+        "en": "Mega Steelix",
+        "ja": "メガハガネール"
+      },
+      "types": [
+        "steel",
+        "ground"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 44,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "steelixite",
+      "baseAppearanceId": 208
+    },
+    {
+      "id": 10073,
+      "speciesId": 18,
+      "formId": 10175,
+      "identifier": "pidgeot-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가피죤투",
+        "en": "Mega Pidgeot",
+        "ja": "メガピジョット"
+      },
+      "types": [
+        "normal",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 9,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "pidgeotite",
+      "baseAppearanceId": 18
+    },
+    {
+      "id": 10074,
+      "speciesId": 362,
+      "formId": 10176,
+      "identifier": "glalie-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가얼음귀신",
+        "en": "Mega Glalie",
+        "ja": "メガオニゴーリ"
+      },
+      "types": [
+        "ice"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 180,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "glalitite",
+      "baseAppearanceId": 362
+    },
+    {
+      "id": 10075,
+      "speciesId": 719,
+      "formId": 10177,
+      "identifier": "diancie-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가디안시",
+        "en": "Mega Diancie",
+        "ja": "メガディアンシー"
+      },
+      "types": [
+        "rock",
+        "fairy"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": true,
+      "family": 363,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "diancite",
+      "baseAppearanceId": 719
+    },
+    {
+      "id": 10076,
+      "speciesId": 376,
+      "formId": 10178,
+      "identifier": "metagross-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가메타그로스",
+        "en": "Mega Metagross",
+        "ja": "メガメタグロス"
+      },
+      "types": [
+        "steel",
+        "psychic"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 185,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "metagrossite",
+      "baseAppearanceId": 376
+    },
+    {
+      "id": 10079,
+      "speciesId": 384,
+      "formId": 10181,
+      "identifier": "rayquaza-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가레쿠쟈",
+        "en": "Mega Rayquaza",
+        "ja": "メガレックウザ"
+      },
+      "types": [
+        "dragon",
+        "flying"
+      ],
+      "generation": 3,
+      "legendary": true,
+      "mythical": false,
+      "family": 193,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "dragon-ascent",
+      "baseAppearanceId": 384
+    },
+    {
+      "id": 10087,
+      "speciesId": 323,
+      "formId": 10189,
+      "identifier": "camerupt-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가폭타",
+        "en": "Mega Camerupt",
+        "ja": "メガバクーダ"
+      },
+      "types": [
+        "fire",
+        "ground"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 156,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "cameruptite",
+      "baseAppearanceId": 323
+    },
+    {
+      "id": 10088,
+      "speciesId": 428,
+      "formId": 10190,
+      "identifier": "lopunny-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가이어롭",
+        "en": "Mega Lopunny",
+        "ja": "メガミミロップ"
+      },
+      "types": [
+        "normal",
+        "fighting"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 213,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "lopunnite",
+      "baseAppearanceId": 428
+    },
+    {
+      "id": 10089,
+      "speciesId": 373,
+      "formId": 10191,
+      "identifier": "salamence-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가보만다",
+        "en": "Mega Salamence",
+        "ja": "メガボーマンダ"
+      },
+      "types": [
+        "dragon",
+        "flying"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 184,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "salamencite",
+      "baseAppearanceId": 373
+    },
+    {
+      "id": 10090,
+      "speciesId": 15,
+      "formId": 10192,
+      "identifier": "beedrill-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가독침붕",
+        "en": "Mega Beedrill",
+        "ja": "メガスピアー"
+      },
+      "types": [
+        "bug",
+        "poison"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 19,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "beedrillite",
+      "baseAppearanceId": 15
+    },
+    {
+      "id": 10091,
+      "speciesId": 19,
+      "formId": 10193,
+      "identifier": "rattata-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "꼬렛 (알로라의 모습)",
+        "en": "Alolan Rattata",
+        "ja": "コラッタ（アローラのすがた）"
+      },
+      "types": [
+        "dark",
+        "normal"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 552,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "mischief",
+        "signature": {
+          "ko": "밤길이라면 내 수염을 믿어 봐.",
+          "en": "Trust my whiskers on a nighttime stroll.",
+          "ja": "夜道なら、このひげに任せてね。"
+        }
+      }
+    },
+    {
+      "id": 10092,
+      "speciesId": 20,
+      "formId": 10194,
+      "identifier": "raticate-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "레트라 (알로라의 모습)",
+        "en": "Alolan Raticate",
+        "ja": "ラッタ（アローラのすがた）"
+      },
+      "types": [
+        "dark",
+        "normal"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 552,
+      "phase": 2,
+      "dialogue": {
+        "body": "round",
+        "voice": "hungry",
+        "signature": {
+          "ko": "내 볼주머니엔 맛있는 것만 챙겼지.",
+          "en": "Only the tastiest snacks go in these cheeks.",
+          "ja": "ほっぺには、おいしいものだけ入れるよ。"
+        }
+      }
+    },
+    {
+      "id": 10100,
+      "speciesId": 26,
+      "formId": 10202,
+      "identifier": "raichu-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "라이츄 (알로라의 모습)",
+        "en": "Alolan Raichu",
+        "ja": "ライチュウ（アローラのすがた）"
+      },
+      "types": [
+        "electric",
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 4,
+      "phase": 3,
+      "dialogue": {
+        "body": "floating",
+        "voice": "gentle",
+        "signature": {
+          "ko": "꼬리 보드에 올라타면 마음도 둥실 떠올라.",
+          "en": "My tailboard gives every day a little lift.",
+          "ja": "しっぽのボードで、気持ちもふわり。"
+        }
+      }
+    },
+    {
+      "id": 10101,
+      "speciesId": 27,
+      "formId": 10203,
+      "identifier": "sandshrew-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "모래두지 (알로라의 모습)",
+        "en": "Alolan Sandshrew",
+        "ja": "サンド（アローラのすがた）"
+      },
+      "types": [
+        "ice",
+        "steel"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 553,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "shy",
+        "signature": {
+          "ko": "차가운 갑옷도 네 손길 앞에선 포근해.",
+          "en": "Even icy armor feels cozy around you.",
+          "ja": "氷のよろいも、君のそばではあたたかい。"
+        }
+      }
+    },
+    {
+      "id": 10102,
+      "speciesId": 28,
+      "formId": 10204,
+      "identifier": "sandslash-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "고지 (알로라의 모습)",
+        "en": "Alolan Sandslash",
+        "ja": "サンドパン（アローラのすがた）"
+      },
+      "types": [
+        "ice",
+        "steel"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 553,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "guardian",
+        "signature": {
+          "ko": "얼음 가시는 세워도 네 자리엔 기대지 않을게.",
+          "en": "I'll keep my icy spines away from your chair.",
+          "ja": "氷のとげは、君の席に向けないよ。"
+        }
+      }
+    },
+    {
+      "id": 10103,
+      "speciesId": 37,
+      "formId": 10205,
+      "identifier": "vulpix-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "식스테일 (알로라의 모습)",
+        "en": "Alolan Vulpix",
+        "ja": "ロコン（アローラのすがた）"
+      },
+      "types": [
+        "ice"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 554,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "gentle",
+        "signature": {
+          "ko": "눈처럼 하얀 꼬리, 살며시 만져 봐.",
+          "en": "A gentle pat for my snowy tails?",
+          "ja": "雪みたいなしっぽ、そっとなでてね。"
+        }
+      }
+    },
+    {
+      "id": 10104,
+      "speciesId": 38,
+      "formId": 10206,
+      "identifier": "ninetales-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "나인테일 (알로라의 모습)",
+        "en": "Alolan Ninetales",
+        "ja": "キュウコン（アローラのすがた）"
+      },
+      "types": [
+        "ice",
+        "fairy"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 554,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "guardian",
+        "signature": {
+          "ko": "고요한 설산처럼 네 곁을 지킬게.",
+          "en": "I'll watch over you like a quiet snowy peak.",
+          "ja": "静かな雪山のように、そばで見守るよ。"
+        }
+      }
+    },
+    {
+      "id": 10105,
+      "speciesId": 50,
+      "formId": 10207,
+      "identifier": "diglett-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "디그다 (알로라의 모습)",
+        "en": "Alolan Diglett",
+        "ja": "ディグダ（アローラのすがた）"
+      },
+      "types": [
+        "ground",
+        "steel"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 555,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "curious",
+        "signature": {
+          "ko": "반짝이는 머리카락은 함부로 뽑으면 안 돼.",
+          "en": "Please don't pluck my shiny little hairs.",
+          "ja": "きらきらの毛は、抜いちゃだめだよ。"
+        }
+      }
+    },
+    {
+      "id": 10106,
+      "speciesId": 51,
+      "formId": 10208,
+      "identifier": "dugtrio-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "닥트리오 (알로라의 모습)",
+        "en": "Alolan Dugtrio",
+        "ja": "ダグトリオ（アローラのすがた）"
+      },
+      "types": [
+        "ground",
+        "steel"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 555,
+      "phase": 2,
+      "dialogue": {
+        "body": "cluster",
+        "voice": "proud",
+        "signature": {
+          "ko": "세 갈래 금빛 머릿결, 바람에도 흐트러지지 않아.",
+          "en": "Three golden hairstyles, all looking splendid.",
+          "ja": "三つの金色ヘア、今日もばっちり。"
+        }
+      }
+    },
+    {
+      "id": 10107,
+      "speciesId": 52,
+      "formId": 10209,
+      "identifier": "meowth-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "나옹 (알로라의 모습)",
+        "en": "Alolan Meowth",
+        "ja": "ニャース（アローラのすがた）"
+      },
+      "types": [
+        "dark"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 556,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "proud",
+        "signature": {
+          "ko": "쓰다듬는 순서는 내가 정해도 될까?",
+          "en": "May I choose when the next pat happens?",
+          "ja": "なでるタイミングは、私が決めてもいい？"
+        }
+      }
+    },
+    {
+      "id": 10108,
+      "speciesId": 53,
+      "formId": 10210,
+      "identifier": "persian-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "페르시온 (알로라의 모습)",
+        "en": "Alolan Persian",
+        "ja": "ペルシアン（アローラのすがた）"
+      },
+      "types": [
+        "dark"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 556,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "proud",
+        "signature": {
+          "ko": "둥근 얼굴도, 내 자존심도 소중히 다뤄 줘.",
+          "en": "Treat my round face and my pride gently.",
+          "ja": "丸い顔もプライドも、大切にしてね。"
+        }
+      }
+    },
+    {
+      "id": 10109,
+      "speciesId": 74,
+      "formId": 10211,
+      "identifier": "geodude-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "꼬마돌 (알로라의 모습)",
+        "en": "Alolan Geodude",
+        "ja": "イシツブテ（アローラのすがた）"
+      },
+      "types": [
+        "rock",
+        "electric"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 557,
+      "phase": 1,
+      "dialogue": {
+        "body": "round",
+        "voice": "curious",
+        "signature": {
+          "ko": "자석에 붙을 만한 건 없는지 살펴볼까?",
+          "en": "Anything magnetic around here to investigate?",
+          "ja": "磁石につきそうなもの、あるかな？"
+        }
+      }
+    },
+    {
+      "id": 10110,
+      "speciesId": 75,
+      "formId": 10212,
+      "identifier": "graveler-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "데구리 (알로라의 모습)",
+        "en": "Alolan Graveler",
+        "ja": "ゴローン（アローラのすがた）"
+      },
+      "types": [
+        "rock",
+        "electric"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 557,
+      "phase": 2,
+      "dialogue": {
+        "body": "round",
+        "voice": "energetic",
+        "signature": {
+          "ko": "전기를 띤 돌덩이도 오늘은 얌전히 굴러가.",
+          "en": "An electric boulder can take a gentle roll too.",
+          "ja": "電気を帯びた岩も、今日はそっと転がるよ。"
+        }
+      }
+    },
+    {
+      "id": 10111,
+      "speciesId": 76,
+      "formId": 10213,
+      "identifier": "golem-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "딱구리 (알로라의 모습)",
+        "en": "Alolan Golem",
+        "ja": "ゴローニャ（アローラのすがた）"
+      },
+      "types": [
+        "rock",
+        "electric"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 557,
+      "phase": 3,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "stoic",
+        "signature": {
+          "ko": "내 전자포는 쉬게 두고, 네 일을 지켜보마.",
+          "en": "My railgun can rest while I watch you work.",
+          "ja": "電磁砲は休ませて、君の仕事を見守ろう。"
+        }
+      }
+    },
+    {
+      "id": 10112,
+      "speciesId": 88,
+      "formId": 10214,
+      "identifier": "grimer-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "질퍽이 (알로라의 모습)",
+        "en": "Alolan Grimer",
+        "ja": "ベトベター（アローラのすがた）"
+      },
+      "types": [
+        "poison",
+        "dark"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 558,
+      "phase": 1,
+      "dialogue": {
+        "body": "blob",
+        "voice": "hungry",
+        "signature": {
+          "ko": "반짝이는 결정은 보기만 해 줘.",
+          "en": "Admire my colorful crystals from a little distance.",
+          "ja": "きらめく結晶は、見るだけにしてね。"
+        }
+      }
+    },
+    {
+      "id": 10113,
+      "speciesId": 89,
+      "formId": 10215,
+      "identifier": "muk-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "질뻐기 (알로라의 모습)",
+        "en": "Alolan Muk",
+        "ja": "ベトベトン（アローラのすがた）"
+      },
+      "types": [
+        "poison",
+        "dark"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 558,
+      "phase": 2,
+      "dialogue": {
+        "body": "blob",
+        "voice": "mischief",
+        "signature": {
+          "ko": "알록달록한 줄무늬가 오늘도 흘러가네.",
+          "en": "My colorful stripes are always on the move.",
+          "ja": "色とりどりの模様、今日も流れているよ。"
+        }
+      }
+    },
+    {
+      "id": 10114,
+      "speciesId": 103,
+      "formId": 10216,
+      "identifier": "exeggutor-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "나시 (알로라의 모습)",
+        "en": "Alolan Exeggutor",
+        "ja": "ナッシー（アローラのすがた）"
+      },
+      "types": [
+        "grass",
+        "dragon"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 48,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "dozy",
+        "signature": {
+          "ko": "목이 길어서 화면 위쪽도 잘 보이는걸.",
+          "en": "This long neck gives me quite a view.",
+          "ja": "長い首で、画面の上までよく見えるね。"
+        }
+      }
+    },
+    {
+      "id": 10115,
+      "speciesId": 105,
+      "formId": 10217,
+      "identifier": "marowak-alola",
+      "kind": "regional",
+      "region": "alola",
+      "names": {
+        "ko": "텅구리 (알로라의 모습)",
+        "en": "Alolan Marowak",
+        "ja": "ガラガラ（アローラのすがた）"
+      },
+      "types": [
+        "fire",
+        "ghost"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 49,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "guardian",
+        "signature": {
+          "ko": "초록 불꽃은 조용히 밝힐게. 놀라지 마.",
+          "en": "I'll keep my green flame calm beside you.",
+          "ja": "緑の炎は静かにともすよ。驚かないで。"
+        }
+      }
+    },
+    {
+      "id": 10147,
+      "speciesId": 801,
+      "formId": 10266,
+      "identifier": "magearna-original",
+      "kind": "special",
+      "region": null,
+      "names": {
+        "ko": "마기아나 (오리지널컬러)",
+        "en": "Original Magearna",
+        "ja": "マギアナ（５００ねんまえのいろ）"
+      },
+      "types": [
+        "steel",
+        "fairy"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": true,
+      "family": 559,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "gentle",
+        "signature": {
+          "ko": "오래전의 빛깔도 네 곁에서 다시 반짝여.",
+          "en": "My old colors shine anew beside you.",
+          "ja": "昔の彩りも、君のそばでまた輝くよ。"
+        }
+      }
+    },
+    {
+      "id": 10161,
+      "speciesId": 52,
+      "formId": 10320,
+      "identifier": "meowth-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "나옹 (가라르의 모습)",
+        "en": "Galarian Meowth",
+        "ja": "ニャース（ガラルのすがた）"
+      },
+      "types": [
+        "steel"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 560,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "proud",
+        "signature": {
+          "ko": "단단한 수염도 네 칭찬엔 조금 부드러워져.",
+          "en": "Even my tough whiskers soften at a compliment.",
+          "ja": "硬いひげも、ほめられると少し和らぐよ。"
+        }
+      }
+    },
+    {
+      "id": 10162,
+      "speciesId": 77,
+      "formId": 10321,
+      "identifier": "ponyta-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "포니타 (가라르의 모습)",
+        "en": "Galarian Ponyta",
+        "ja": "ポニータ（ガラルのすがた）"
+      },
+      "types": [
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 561,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "shy",
+        "signature": {
+          "ko": "갈기의 빛은 네가 쉬는 동안에도 은은할 거야.",
+          "en": "My mane can glow softly while you rest.",
+          "ja": "君が休む間も、たてがみはそっと輝くよ。"
+        }
+      }
+    },
+    {
+      "id": 10163,
+      "speciesId": 78,
+      "formId": 10322,
+      "identifier": "rapidash-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "날쌩마 (가라르의 모습)",
+        "en": "Galarian Rapidash",
+        "ja": "ギャロップ（ガラルのすがた）"
+      },
+      "types": [
+        "psychic",
+        "fairy"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 561,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "gentle",
+        "signature": {
+          "ko": "마음이 지쳤다면 잠깐 내 곁에 있어.",
+          "en": "Stay beside me if your heart needs a rest.",
+          "ja": "心が疲れたら、少しそばにいてね。"
+        }
+      }
+    },
+    {
+      "id": 10164,
+      "speciesId": 79,
+      "formId": 10323,
+      "identifier": "slowpoke-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "야돈 (가라르의 모습)",
+        "en": "Galarian Slowpoke",
+        "ja": "ヤドン（ガラルのすがた）"
+      },
+      "types": [
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 562,
+      "phase": 1,
+      "dialogue": {
+        "body": "round",
+        "voice": "dozy",
+        "signature": {
+          "ko": "꼬리 끝이 간질간질한데… 일단 쉴까?",
+          "en": "My tail tingles a little… time for a rest?",
+          "ja": "しっぽがむずむずするなあ…まずは休もう。"
+        }
+      }
+    },
+    {
+      "id": 10165,
+      "speciesId": 80,
+      "formId": 10324,
+      "identifier": "slowbro-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "야도란 (가라르의 모습)",
+        "en": "Galarian Slowbro",
+        "ja": "ヤドラン（ガラルのすがた）"
+      },
+      "types": [
+        "poison",
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 562,
+      "phase": 2,
+      "dialogue": {
+        "body": "round",
+        "voice": "dozy",
+        "signature": {
+          "ko": "팔의 셀러도 오늘은 조용히 있어 줬으면.",
+          "en": "I hope the Shellder on my arm stays quiet today.",
+          "ja": "腕のシェルダーも、今日は静かにしてね。"
+        }
+      }
+    },
+    {
+      "id": 10166,
+      "speciesId": 83,
+      "formId": 10325,
+      "identifier": "farfetchd-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "파오리 (가라르의 모습)",
+        "en": "Galarian Farfetch’d",
+        "ja": "カモネギ（ガラルのすがた）"
+      },
+      "types": [
+        "fighting"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 563,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "stoic",
+        "signature": {
+          "ko": "이 파는 무거워도 내가 끝까지 들고 갈 거야.",
+          "en": "This leek is heavy, but I won't give up.",
+          "ja": "重たいネギも、最後まで持っていくよ。"
+        }
+      }
+    },
+    {
+      "id": 10167,
+      "speciesId": 110,
+      "formId": 10326,
+      "identifier": "weezing-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "또도가스 (가라르의 모습)",
+        "en": "Galarian Weezing",
+        "ja": "マタドガス（ガラルのすがた）"
+      },
+      "types": [
+        "poison",
+        "fairy"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 51,
+      "phase": 2,
+      "dialogue": {
+        "body": "cluster",
+        "voice": "stoic",
+        "signature": {
+          "ko": "굴뚝은 높아도 화면은 가리지 않겠네.",
+          "en": "Tall chimneys, but I'll leave you a clear view.",
+          "ja": "煙突は高くても、画面は隠さないよ。"
+        }
+      }
+    },
+    {
+      "id": 10168,
+      "speciesId": 122,
+      "formId": 10327,
+      "identifier": "mr-mime-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "마임맨 (가라르의 모습)",
+        "en": "Galarian Mr. Mime",
+        "ja": "バリヤード（ガラルのすがた）"
+      },
+      "types": [
+        "ice",
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 219,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "performer",
+        "signature": {
+          "ko": "차가운 바닥에서도 탭 리듬은 가볍게.",
+          "en": "A chilly floor can't stop a light tap rhythm.",
+          "ja": "冷たい床でも、タップは軽やかに。"
+        }
+      }
+    },
+    {
+      "id": 10169,
+      "speciesId": 144,
+      "formId": 10328,
+      "identifier": "articuno-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "프리져 (가라르의 모습)",
+        "en": "Galarian Articuno",
+        "ja": "フリーザー（ガラルのすがた）"
+      },
+      "types": [
+        "psychic",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": true,
+      "mythical": false,
+      "family": 564,
+      "phase": 1,
+      "dialogue": {
+        "body": "wings",
+        "voice": "proud",
+        "signature": {
+          "ko": "보랏빛 시선이 부담스럽다면 살짝 돌려 주지.",
+          "en": "I'll turn my violet gaze aside if you prefer.",
+          "ja": "紫の視線が気になるなら、少しそらそう。"
+        }
+      }
+    },
+    {
+      "id": 10170,
+      "speciesId": 145,
+      "formId": 10329,
+      "identifier": "zapdos-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "썬더 (가라르의 모습)",
+        "en": "Galarian Zapdos",
+        "ja": "サンダー（ガラルのすがた）"
+      },
+      "types": [
+        "fighting",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": true,
+      "mythical": false,
+      "family": 565,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "energetic",
+        "signature": {
+          "ko": "달리기는 자신 있어. 잠깐만 기다려 봐!",
+          "en": "Running is my specialty. Watch this!",
+          "ja": "走るのは得意だよ。見てて！"
+        }
+      }
+    },
+    {
+      "id": 10171,
+      "speciesId": 146,
+      "formId": 10330,
+      "identifier": "moltres-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "파이어 (가라르의 모습)",
+        "en": "Galarian Moltres",
+        "ja": "ファイヤー（ガラルのすがた）"
+      },
+      "types": [
+        "dark",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": true,
+      "mythical": false,
+      "family": 566,
+      "phase": 1,
+      "dialogue": {
+        "body": "wings",
+        "voice": "stoic",
+        "signature": {
+          "ko": "어두운 불꽃도 네 노력을 삼키진 않아.",
+          "en": "My dark flames will leave your hard work alone.",
+          "ja": "黒い炎も、君のがんばりには触れないよ。"
+        }
+      }
+    },
+    {
+      "id": 10172,
+      "speciesId": 199,
+      "formId": 10331,
+      "identifier": "slowking-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "야도킹 (가라르의 모습)",
+        "en": "Galarian Slowking",
+        "ja": "ヤドキング（ガラルのすがた）"
+      },
+      "types": [
+        "poison",
+        "psychic"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 562,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "scholar",
+        "signature": {
+          "ko": "이 모자 속 생각은 천천히 풀어 보도록 하지.",
+          "en": "Let me slowly untangle the thoughts beneath this crown.",
+          "ja": "冠の下の考えを、ゆっくりほどこう。"
+        }
+      }
+    },
+    {
+      "id": 10173,
+      "speciesId": 222,
+      "formId": 10332,
+      "identifier": "corsola-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "코산호 (가라르의 모습)",
+        "en": "Galarian Corsola",
+        "ja": "サニーゴ（ガラルのすがた）"
+      },
+      "types": [
+        "ghost"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 567,
+      "phase": 1,
+      "dialogue": {
+        "body": "cluster",
+        "voice": "shy",
+        "signature": {
+          "ko": "하얀 가지 끝엔 살며시 손을 대 줘.",
+          "en": "Please be gentle around my pale branches.",
+          "ja": "白い枝には、そっと触れてね。"
+        }
+      }
+    },
+    {
+      "id": 10174,
+      "speciesId": 263,
+      "formId": 10333,
+      "identifier": "zigzagoon-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "지그제구리 (가라르의 모습)",
+        "en": "Galarian Zigzagoon",
+        "ja": "ジグザグマ（ガラルのすがた）"
+      },
+      "types": [
+        "dark",
+        "normal"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 568,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "energetic",
+        "signature": {
+          "ko": "지그재그로 가도 결국 네 곁에 도착하지!",
+          "en": "My zigzags always lead me back to you!",
+          "ja": "ジグザグ進んでも、最後は君のそば！"
+        }
+      }
+    },
+    {
+      "id": 10175,
+      "speciesId": 264,
+      "formId": 10334,
+      "identifier": "linoone-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "직구리 (가라르의 모습)",
+        "en": "Galarian Linoone",
+        "ja": "マッスグマ（ガラルのすがた）"
+      },
+      "types": [
+        "dark",
+        "normal"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 568,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "energetic",
+        "signature": {
+          "ko": "곧게 달리기 시작하면 멈추기 좀 어려워!",
+          "en": "Once I race ahead, stopping takes a moment!",
+          "ja": "一直線に走りだすと、止まるのは大変！"
+        }
+      }
+    },
+    {
+      "id": 10176,
+      "speciesId": 554,
+      "formId": 10335,
+      "identifier": "darumaka-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "달막화 (가라르의 모습)",
+        "en": "Galarian Darumaka",
+        "ja": "ダルマッカ（ガラルのすがた）"
+      },
+      "types": [
+        "ice"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 569,
+      "phase": 1,
+      "dialogue": {
+        "body": "round",
+        "voice": "energetic",
+        "signature": {
+          "ko": "눈덩이처럼 굴러가면 기분도 상쾌해!",
+          "en": "A little roll like a snowball feels refreshing!",
+          "ja": "雪玉みたいに転がると、気分もすっきり！"
+        }
+      }
+    },
+    {
+      "id": 10177,
+      "speciesId": 555,
+      "formId": 10336,
+      "identifier": "darmanitan-galar-standard",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "불비달마 (가라르의 모습)",
+        "en": "Standard Galarian Darmanitan",
+        "ja": "ヒヒダルマ（ガラルのすがた）"
+      },
+      "types": [
+        "ice"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 569,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "dozy",
+        "signature": {
+          "ko": "머리의 눈덩이는 기대는 쿠션이 아니야.",
+          "en": "The snowball on my head isn't a cushion.",
+          "ja": "頭の雪玉は、クッションじゃないよ。"
+        }
+      }
+    },
+    {
+      "id": 10179,
+      "speciesId": 562,
+      "formId": 10338,
+      "identifier": "yamask-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "데스마스 (가라르의 모습)",
+        "en": "Galarian Yamask",
+        "ja": "デスマス（ガラルのすがた）"
+      },
+      "types": [
+        "ground",
+        "ghost"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 570,
+      "phase": 1,
+      "dialogue": {
+        "body": "floating",
+        "voice": "shy",
+        "signature": {
+          "ko": "무늬 있는 돌도 나와 함께 살며시 옮겨 줘.",
+          "en": "Please move my patterned stone gently with me.",
+          "ja": "模様のある石も、一緒にそっと運んでね。"
+        }
+      }
+    },
+    {
+      "id": 10180,
+      "speciesId": 618,
+      "formId": 10339,
+      "identifier": "stunfisk-galar",
+      "kind": "regional",
+      "region": "galar",
+      "names": {
+        "ko": "메더 (가라르의 모습)",
+        "en": "Galarian Stunfisk",
+        "ja": "マッギョ（ガラルのすがた）"
+      },
+      "types": [
+        "ground",
+        "steel"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 571,
+      "phase": 1,
+      "dialogue": {
+        "body": "round",
+        "voice": "mischief",
+        "signature": {
+          "ko": "바닥에 숨었더라도 함부로 밟으면 안 돼.",
+          "en": "Watch your step, even when I blend into the floor.",
+          "ja": "床に紛れていても、踏まないでね。"
+        }
+      }
+    },
+    {
+      "id": 10229,
+      "speciesId": 58,
+      "formId": 10398,
+      "identifier": "growlithe-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "가디 (히스이의 모습)",
+        "en": "Hisuian Growlithe",
+        "ja": "ガーディ（ヒスイのすがた）"
+      },
+      "types": [
+        "fire",
+        "rock"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 572,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "guardian",
+        "signature": {
+          "ko": "바위 갈기를 세우고 오늘도 망을 볼게.",
+          "en": "My rocky mane and I are on watch today.",
+          "ja": "岩のたてがみを立てて、今日も見張るよ。"
+        }
+      }
+    },
+    {
+      "id": 10230,
+      "speciesId": 59,
+      "formId": 10399,
+      "identifier": "arcanine-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "윈디 (히스이의 모습)",
+        "en": "Hisuian Arcanine",
+        "ja": "ウインディ（ヒスイのすがた）"
+      },
+      "types": [
+        "fire",
+        "rock"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 572,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "proud",
+        "signature": {
+          "ko": "단단한 바위 발걸음으로 네 곁을 지키마.",
+          "en": "I'll stand beside you with steady, rocky steps.",
+          "ja": "岩のように確かな足取りで、そばを守ろう。"
+        }
+      }
+    },
+    {
+      "id": 10231,
+      "speciesId": 100,
+      "formId": 10400,
+      "identifier": "voltorb-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "찌리리공 (히스이의 모습)",
+        "en": "Hisuian Voltorb",
+        "ja": "ビリリダマ（ヒスイのすがた）"
+      },
+      "types": [
+        "electric",
+        "grass"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 573,
+      "phase": 1,
+      "dialogue": {
+        "body": "round",
+        "voice": "curious",
+        "signature": {
+          "ko": "머리 구멍에 뭐가 있는지는 비밀이야.",
+          "en": "What's inside the hole on my head? A secret.",
+          "ja": "頭の穴の中身は、ひみつだよ。"
+        }
+      }
+    },
+    {
+      "id": 10232,
+      "speciesId": 101,
+      "formId": 10401,
+      "identifier": "electrode-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "붐볼 (히스이의 모습)",
+        "en": "Hisuian Electrode",
+        "ja": "マルマイン（ヒスイのすがた）"
+      },
+      "types": [
+        "electric",
+        "grass"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 573,
+      "phase": 2,
+      "dialogue": {
+        "body": "round",
+        "voice": "mischief",
+        "signature": {
+          "ko": "심통 나 보여도 네 옆에 있는 건 좋아.",
+          "en": "I may look grumpy, but I like being here.",
+          "ja": "不機嫌そうでも、ここにいるのは好きだよ。"
+        }
+      }
+    },
+    {
+      "id": 10233,
+      "speciesId": 157,
+      "formId": 10402,
+      "identifier": "typhlosion-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "블레이범 (히스이의 모습)",
+        "en": "Hisuian Typhlosion",
+        "ja": "バクフーン（ヒスイのすがた）"
+      },
+      "types": [
+        "fire",
+        "ghost"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 74,
+      "phase": 3,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "gentle",
+        "signature": {
+          "ko": "혼백들도 오늘은 네 작업을 조용히 지켜본대.",
+          "en": "The spirits want to watch you work quietly today.",
+          "ja": "魂たちも、今日は静かに仕事を見守るって。"
+        }
+      }
+    },
+    {
+      "id": 10234,
+      "speciesId": 211,
+      "formId": 10403,
+      "identifier": "qwilfish-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "침바루 (히스이의 모습)",
+        "en": "Hisuian Qwilfish",
+        "ja": "ハリーセン（ヒスイのすがた）"
+      },
+      "types": [
+        "dark",
+        "poison"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 574,
+      "phase": 1,
+      "dialogue": {
+        "body": "fins",
+        "voice": "stoic",
+        "signature": {
+          "ko": "독 가시는 가까이서 만지지 않는 게 좋아.",
+          "en": "A little distance from my venomous spines, please.",
+          "ja": "毒のとげには、近づきすぎないでね。"
+        }
+      }
+    },
+    {
+      "id": 10235,
+      "speciesId": 215,
+      "formId": 10404,
+      "identifier": "sneasel-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "포푸니 (히스이의 모습)",
+        "en": "Hisuian Sneasel",
+        "ja": "ニューラ（ヒスイのすがた）"
+      },
+      "types": [
+        "fighting",
+        "poison"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 575,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "curious",
+        "signature": {
+          "ko": "절벽 대신 창 가장자리를 살펴볼까?",
+          "en": "Shall I inspect a window ledge instead of a cliff?",
+          "ja": "崖のかわりに、窓のふちを調べようか。"
+        }
+      }
+    },
+    {
+      "id": 10236,
+      "speciesId": 503,
+      "formId": 10405,
+      "identifier": "samurott-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "대검귀 (히스이의 모습)",
+        "en": "Hisuian Samurott",
+        "ja": "ダイケンキ（ヒスイのすがた）"
+      },
+      "types": [
+        "water",
+        "dark"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 251,
+      "phase": 3,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "stoic",
+        "signature": {
+          "ko": "조개 칼날은 거둬 둘게. 편히 일해.",
+          "en": "I'll put my shell blades away. Work at ease.",
+          "ja": "貝の刃はしまっておくよ。安心してね。"
+        }
+      }
+    },
+    {
+      "id": 10237,
+      "speciesId": 549,
+      "formId": 10406,
+      "identifier": "lilligant-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "드레디어 (히스이의 모습)",
+        "en": "Hisuian Lilligant",
+        "ja": "ドレディア（ヒスイのすがた）"
+      },
+      "types": [
+        "grass",
+        "fighting"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 272,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "performer",
+        "signature": {
+          "ko": "가벼운 발끝으로 네 하루에 박자를 더할게.",
+          "en": "I'll add a little rhythm to your day on tiptoe.",
+          "ja": "軽やかなつま先で、一日にリズムを添えるよ。"
+        }
+      }
+    },
+    {
+      "id": 10238,
+      "speciesId": 570,
+      "formId": 10407,
+      "identifier": "zorua-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "조로아 (히스이의 모습)",
+        "en": "Hisuian Zorua",
+        "ja": "ゾロア（ヒスイのすがた）"
+      },
+      "types": [
+        "normal",
+        "ghost"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 576,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "shy",
+        "signature": {
+          "ko": "하얀 털 속에서 조금만 더 쉬어도 될까?",
+          "en": "May I rest in my white fur a little longer?",
+          "ja": "白い毛にくるまって、もう少し休んでいい？"
+        }
+      }
+    },
+    {
+      "id": 10239,
+      "speciesId": 571,
+      "formId": 10408,
+      "identifier": "zoroark-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "조로아크 (히스이의 모습)",
+        "en": "Hisuian Zoroark",
+        "ja": "ゾロアーク（ヒスイのすがた）"
+      },
+      "types": [
+        "normal",
+        "ghost"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 576,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "guardian",
+        "signature": {
+          "ko": "붉은 털 사이로도 네 모습은 놓치지 않아.",
+          "en": "I can still watch over you through my red mane.",
+          "ja": "赤い毛の間からも、君を見失わないよ。"
+        }
+      }
+    },
+    {
+      "id": 10240,
+      "speciesId": 628,
+      "formId": 10409,
+      "identifier": "braviary-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "워글 (히스이의 모습)",
+        "en": "Hisuian Braviary",
+        "ja": "ウォーグル（ヒスイのすがた）"
+      },
+      "types": [
+        "psychic",
+        "flying"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 312,
+      "phase": 2,
+      "dialogue": {
+        "body": "wings",
+        "voice": "stoic",
+        "signature": {
+          "ko": "넓은 시야로 네가 갈 길을 살펴보마.",
+          "en": "I'll survey the way ahead with my broad vision.",
+          "ja": "広い視野で、進む道を見渡そう。"
+        }
+      }
+    },
+    {
+      "id": 10241,
+      "speciesId": 705,
+      "formId": 10410,
+      "identifier": "sliggoo-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "미끄네일 (히스이의 모습)",
+        "en": "Hisuian Sliggoo",
+        "ja": "ヌメイル（ヒスイのすがた）"
+      },
+      "types": [
+        "steel",
+        "dragon"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 354,
+      "phase": 2,
+      "dialogue": {
+        "body": "soft",
+        "voice": "shy",
+        "signature": {
+          "ko": "등의 껍데기가 있으면 조금 안심돼.",
+          "en": "My shell helps me feel a little safer.",
+          "ja": "背中の殻があると、少し安心するんだ。"
+        }
+      }
+    },
+    {
+      "id": 10242,
+      "speciesId": 706,
+      "formId": 10411,
+      "identifier": "goodra-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "미끄래곤 (히스이의 모습)",
+        "en": "Hisuian Goodra",
+        "ja": "ヌメルゴン（ヒスイのすがた）"
+      },
+      "types": [
+        "steel",
+        "dragon"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 354,
+      "phase": 3,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "gentle",
+        "signature": {
+          "ko": "단단한 껍질 속에서도 마음은 말랑말랑해.",
+          "en": "A sturdy shell, but a very soft heart.",
+          "ja": "硬い殻の中でも、心はやわらかいよ。"
+        }
+      }
+    },
+    {
+      "id": 10243,
+      "speciesId": 713,
+      "formId": 10412,
+      "identifier": "avalugg-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "크레베이스 (히스이의 모습)",
+        "en": "Hisuian Avalugg",
+        "ja": "クレベース（ヒスイのすがた）"
+      },
+      "types": [
+        "ice",
+        "rock"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 358,
+      "phase": 2,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "stoic",
+        "signature": {
+          "ko": "얼음 갑판과 바위턱은 든든히 버티고 있지.",
+          "en": "My icy deck and rocky jaw hold steady.",
+          "ja": "氷の甲板も岩のあごも、しっかりしているよ。"
+        }
+      }
+    },
+    {
+      "id": 10244,
+      "speciesId": 724,
+      "formId": 10413,
+      "identifier": "decidueye-hisui",
+      "kind": "regional",
+      "region": "hisui",
+      "names": {
+        "ko": "모크나이퍼 (히스이의 모습)",
+        "en": "Hisuian Decidueye",
+        "ja": "ジュナイパー（ヒスイのすがた）"
+      },
+      "types": [
+        "grass",
+        "fighting"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": false,
+      "family": 366,
+      "phase": 3,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "guardian",
+        "signature": {
+          "ko": "화살 대신 믿음직한 발걸음으로 함께할게.",
+          "en": "I'll walk beside you with steady, faithful steps.",
+          "ja": "頼もしい足取りで、一緒に進むよ。"
+        }
+      }
+    },
+    {
+      "id": 10247,
+      "speciesId": 550,
+      "formId": 10416,
+      "identifier": "basculin-white-striped",
+      "kind": "special",
+      "region": null,
+      "names": {
+        "ko": "배쓰나이 (백색근의 모습)",
+        "en": "White-Striped Basculin",
+        "ja": "バスラオ（しろすじのすがた）"
+      },
+      "types": [
+        "water"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 577,
+      "phase": 1,
+      "dialogue": {
+        "body": "fins",
+        "voice": "energetic",
+        "signature": {
+          "ko": "흰 줄무늬를 따라 물살처럼 나아가자!",
+          "en": "Follow my white stripe and keep moving forward!",
+          "ja": "白いすじを目印に、流れの先へ進もう！"
+        }
+      }
+    },
+    {
+      "id": 10250,
+      "speciesId": 128,
+      "formId": 10419,
+      "identifier": "tauros-paldea-combat-breed",
+      "kind": "regional",
+      "region": "paldea",
+      "names": {
+        "ko": "켄타로스 (팔데아의 모습 · 컴배트종)",
+        "en": "Paldean Tauros (Combat Breed)",
+        "ja": "ケンタロス（パルデアのすがた・コンバットしゅ）"
+      },
+      "types": [
+        "fighting"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 578,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "energetic",
+        "signature": {
+          "ko": "발굽을 고르며 다음 달리기를 준비 중이야.",
+          "en": "I'm setting my hooves for the next run.",
+          "ja": "ひづめを整えて、次の走りに備えるよ。"
+        }
+      }
+    },
+    {
+      "id": 10251,
+      "speciesId": 128,
+      "formId": 10420,
+      "identifier": "tauros-paldea-blaze-breed",
+      "kind": "regional",
+      "region": "paldea",
+      "names": {
+        "ko": "켄타로스 (팔데아의 모습 · 블레이즈종)",
+        "en": "Paldean Tauros (Blaze Breed)",
+        "ja": "ケンタロス（パルデアのすがた・ブレイズしゅ）"
+      },
+      "types": [
+        "fighting",
+        "fire"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 579,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "energetic",
+        "signature": {
+          "ko": "뜨거운 기운은 뿔 끝에서만 살짝 낼게.",
+          "en": "I'll keep that heat safely at my horn tips.",
+          "ja": "熱い力は、角の先だけでそっと出すよ。"
+        }
+      }
+    },
+    {
+      "id": 10252,
+      "speciesId": 128,
+      "formId": 10421,
+      "identifier": "tauros-paldea-aqua-breed",
+      "kind": "regional",
+      "region": "paldea",
+      "names": {
+        "ko": "켄타로스 (팔데아의 모습 · 워터종)",
+        "en": "Paldean Tauros (Aqua Breed)",
+        "ja": "ケンタロス（パルデアのすがた・ウォーターしゅ）"
+      },
+      "types": [
+        "fighting",
+        "water"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 580,
+      "phase": 1,
+      "dialogue": {
+        "body": "grounded",
+        "voice": "energetic",
+        "signature": {
+          "ko": "물줄기는 잠깐 쉬고 네 곁에 서 있을게.",
+          "en": "The water jets can rest while I stand by you.",
+          "ja": "水流は少し休ませて、君のそばにいるよ。"
+        }
+      }
+    },
+    {
+      "id": 10253,
+      "speciesId": 194,
+      "formId": 10422,
+      "identifier": "wooper-paldea",
+      "kind": "regional",
+      "region": "paldea",
+      "names": {
+        "ko": "우파 (팔데아의 모습)",
+        "en": "Paldean Wooper",
+        "ja": "ウパー（パルデアのすがた）"
+      },
+      "types": [
+        "poison",
+        "ground"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 581,
+      "phase": 1,
+      "dialogue": {
+        "body": "round",
+        "voice": "dozy",
+        "signature": {
+          "ko": "진흙 묻은 발로 화면을 더럽히진 않을게.",
+          "en": "I'll keep these muddy feet off your screen.",
+          "ja": "泥のついた足で、画面は汚さないよ。"
+        }
+      }
+    },
+    {
+      "id": 10258,
+      "speciesId": 978,
+      "formId": 10427,
+      "identifier": "tatsugiri-droopy",
+      "kind": "special",
+      "region": null,
+      "names": {
+        "ko": "싸리용 (늘어진 모습)",
+        "en": "Droopy Form Tatsugiri",
+        "ja": "シャリタツ（たれたすがた）"
+      },
+      "types": [
+        "dragon",
+        "water"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 582,
+      "phase": 1,
+      "dialogue": {
+        "body": "fins",
+        "voice": "mischief",
+        "signature": {
+          "ko": "늘어진 모습이어도 머릿속 계획은 또렷해.",
+          "en": "A droopy pose, but a very sharp plan.",
+          "ja": "たれた姿でも、作戦はばっちりだよ。"
+        }
+      }
+    },
+    {
+      "id": 10259,
+      "speciesId": 978,
+      "formId": 10428,
+      "identifier": "tatsugiri-stretchy",
+      "kind": "special",
+      "region": null,
+      "names": {
+        "ko": "싸리용 (뻗은 모습)",
+        "en": "Stretchy Form Tatsugiri",
+        "ja": "シャリタツ（のびたすがた）"
+      },
+      "types": [
+        "dragon",
+        "water"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 583,
+      "phase": 1,
+      "dialogue": {
+        "body": "fins",
+        "voice": "mischief",
+        "signature": {
+          "ko": "쭉 뻗어 있어도 작은 틈은 잘 찾아내지.",
+          "en": "Stretched out, yet I can spot the tiniest opening.",
+          "ja": "体を伸ばしていても、小さなすきは見逃さないよ。"
+        }
+      }
+    },
+    {
+      "id": 10278,
+      "speciesId": 36,
+      "formId": 10503,
+      "identifier": "clefable-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가픽시",
+        "en": "Mega Clefable",
+        "ja": "メガピクシー"
+      },
+      "types": [
+        "fairy",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 17,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "clefablite",
+      "baseAppearanceId": 36
+    },
+    {
+      "id": 10279,
+      "speciesId": 71,
+      "formId": 10504,
+      "identifier": "victreebel-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가우츠보트",
+        "en": "Mega Victreebel",
+        "ja": "メガウツボット"
+      },
+      "types": [
+        "grass",
+        "poison"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 34,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "victreebelite",
+      "baseAppearanceId": 71
+    },
+    {
+      "id": 10280,
+      "speciesId": 121,
+      "formId": 10505,
+      "identifier": "starmie-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가아쿠스타",
+        "en": "Mega Starmie",
+        "ja": "メガスターミー"
+      },
+      "types": [
+        "water",
+        "psychic"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 57,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "starminite",
+      "baseAppearanceId": 121
+    },
+    {
+      "id": 10281,
+      "speciesId": 149,
+      "formId": 10506,
+      "identifier": "dragonite-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가망나뇽",
+        "en": "Mega Dragonite",
+        "ja": "メガカイリュー"
+      },
+      "types": [
+        "dragon",
+        "flying"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 14,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "dragoninite",
+      "baseAppearanceId": 149
+    },
+    {
+      "id": 10282,
+      "speciesId": 154,
+      "formId": 10507,
+      "identifier": "meganium-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가메가니움",
+        "en": "Mega Meganium",
+        "ja": "メガメガニウム"
+      },
+      "types": [
+        "grass",
+        "fairy"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 73,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "meganiumite",
+      "baseAppearanceId": 154
+    },
+    {
+      "id": 10283,
+      "speciesId": 160,
+      "formId": 10508,
+      "identifier": "feraligatr-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가장크로다일",
+        "en": "Mega Feraligatr",
+        "ja": "メガオーダイル"
+      },
+      "types": [
+        "water",
+        "dragon"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 75,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "feraligite",
+      "baseAppearanceId": 160
+    },
+    {
+      "id": 10284,
+      "speciesId": 227,
+      "formId": 10509,
+      "identifier": "skarmory-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가무장조",
+        "en": "Mega Skarmory",
+        "ja": "メガエアームド"
+      },
+      "types": [
+        "steel",
+        "flying"
+      ],
+      "generation": 2,
+      "legendary": false,
+      "mythical": false,
+      "family": 108,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "skarmorite",
+      "baseAppearanceId": 227
+    },
+    {
+      "id": 10285,
+      "speciesId": 478,
+      "formId": 10510,
+      "identifier": "froslass-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가눈여아",
+        "en": "Mega Froslass",
+        "ja": "メガユキメノコ"
+      },
+      "types": [
+        "ice",
+        "ghost"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 180,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "froslassite",
+      "baseAppearanceId": 478
+    },
+    {
+      "id": 10286,
+      "speciesId": 500,
+      "formId": 10511,
+      "identifier": "emboar-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가염무왕",
+        "en": "Mega Emboar",
+        "ja": "メガエンブオー"
+      },
+      "types": [
+        "fire",
+        "fighting"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 250,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "emboarite",
+      "baseAppearanceId": 500
+    },
+    {
+      "id": 10287,
+      "speciesId": 530,
+      "formId": 10512,
+      "identifier": "excadrill-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가몰드류",
+        "en": "Mega Excadrill",
+        "ja": "メガドリュウズ"
+      },
+      "types": [
+        "ground",
+        "steel"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 263,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "excadrite",
+      "baseAppearanceId": 530
+    },
+    {
+      "id": 10288,
+      "speciesId": 545,
+      "formId": 10513,
+      "identifier": "scolipede-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가펜드라",
+        "en": "Mega Scolipede",
+        "ja": "メガペンドラー"
+      },
+      "types": [
+        "bug",
+        "poison"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 270,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "scolipite",
+      "baseAppearanceId": 545
+    },
+    {
+      "id": 10289,
+      "speciesId": 560,
+      "formId": 10514,
+      "identifier": "scrafty-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가곤율거니",
+        "en": "Mega Scrafty",
+        "ja": "メガズルズキン"
+      },
+      "types": [
+        "dark",
+        "fighting"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 278,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "scraftinite",
+      "baseAppearanceId": 560
+    },
+    {
+      "id": 10290,
+      "speciesId": 604,
+      "formId": 10515,
+      "identifier": "eelektross-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가저리더프",
+        "en": "Mega Eelektross",
+        "ja": "メガシビルドン"
+      },
+      "types": [
+        "electric"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 299,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "eelektrossite",
+      "baseAppearanceId": 604
+    },
+    {
+      "id": 10291,
+      "speciesId": 609,
+      "formId": 10516,
+      "identifier": "chandelure-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가샹델라",
+        "en": "Mega Chandelure",
+        "ja": "メガシャンデラ"
+      },
+      "types": [
+        "ghost",
+        "fire"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 301,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "chandelurite",
+      "baseAppearanceId": 609
+    },
+    {
+      "id": 10292,
+      "speciesId": 652,
+      "formId": 10517,
+      "identifier": "chesnaught-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가브리가론",
+        "en": "Mega Chesnaught",
+        "ja": "メガブリガロン"
+      },
+      "types": [
+        "grass",
+        "fighting"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 329,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "chesnaughtite",
+      "baseAppearanceId": 652
+    },
+    {
+      "id": 10293,
+      "speciesId": 655,
+      "formId": 10518,
+      "identifier": "delphox-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가마폭시",
+        "en": "Mega Delphox",
+        "ja": "メガマフォクシー"
+      },
+      "types": [
+        "fire",
+        "psychic"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 330,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "delphoxite",
+      "baseAppearanceId": 655
+    },
+    {
+      "id": 10294,
+      "speciesId": 658,
+      "formId": 10519,
+      "identifier": "greninja-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가개굴닌자",
+        "en": "Mega Greninja",
+        "ja": "メガゲッコウガ"
+      },
+      "types": [
+        "water",
+        "dark"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 331,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "greninjite",
+      "baseAppearanceId": 658
+    },
+    {
+      "id": 10295,
+      "speciesId": 668,
+      "formId": 10520,
+      "identifier": "pyroar-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가화염레오",
+        "en": "Mega Pyroar",
+        "ja": "メガカエンジシ"
+      },
+      "types": [
+        "fire",
+        "normal"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 335,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "pyroarite",
+      "baseAppearanceId": 668
+    },
+    {
+      "id": 10296,
+      "speciesId": 670,
+      "formId": 10521,
+      "identifier": "floette-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가플라엣테",
+        "en": "Mega Floette",
+        "ja": "メガフラエッテ"
+      },
+      "types": [
+        "fairy"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 336,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "floettite",
+      "baseAppearanceId": 10061
+    },
+    {
+      "id": 10297,
+      "speciesId": 687,
+      "formId": 10522,
+      "identifier": "malamar-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가칼라마네로",
+        "en": "Mega Malamar",
+        "ja": "メガカラマネロ"
+      },
+      "types": [
+        "dark",
+        "psychic"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 344,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "malamarite",
+      "baseAppearanceId": 687
+    },
+    {
+      "id": 10298,
+      "speciesId": 689,
+      "formId": 10523,
+      "identifier": "barbaracle-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가거북손데스",
+        "en": "Mega Barbaracle",
+        "ja": "メガガメノデス"
+      },
+      "types": [
+        "rock",
+        "fighting"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 345,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "barbaracite",
+      "baseAppearanceId": 689
+    },
+    {
+      "id": 10299,
+      "speciesId": 691,
+      "formId": 10524,
+      "identifier": "dragalge-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가드래캄",
+        "en": "Mega Dragalge",
+        "ja": "メガドラミドロ"
+      },
+      "types": [
+        "poison",
+        "dragon"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 346,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "dragalgite",
+      "baseAppearanceId": 691
+    },
+    {
+      "id": 10300,
+      "speciesId": 701,
+      "formId": 10525,
+      "identifier": "hawlucha-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가루차불",
+        "en": "Mega Hawlucha",
+        "ja": "メガルチャブル"
+      },
+      "types": [
+        "fighting",
+        "flying"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 351,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "hawluchanite",
+      "baseAppearanceId": 701
+    },
+    {
+      "id": 10301,
+      "speciesId": 718,
+      "formId": 10526,
+      "identifier": "zygarde-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가지가르데",
+        "en": "Mega Zygarde",
+        "ja": "メガジガルデ"
+      },
+      "types": [
+        "dragon",
+        "ground"
+      ],
+      "generation": 6,
+      "legendary": true,
+      "mythical": false,
+      "family": 362,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "zygardite",
+      "baseAppearanceId": 718
+    },
+    {
+      "id": 10302,
+      "speciesId": 780,
+      "formId": 10527,
+      "identifier": "drampa-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가할비롱",
+        "en": "Mega Drampa",
+        "ja": "メガジジーロン"
+      },
+      "types": [
+        "normal",
+        "dragon"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": false,
+      "family": 398,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "drampanite",
+      "baseAppearanceId": 780
+    },
+    {
+      "id": 10303,
+      "speciesId": 870,
+      "formId": 10528,
+      "identifier": "falinks-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가대여르",
+        "en": "Mega Falinks",
+        "ja": "メガタイレーツ"
+      },
+      "types": [
+        "fighting"
+      ],
+      "generation": 8,
+      "legendary": false,
+      "mythical": false,
+      "family": 450,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "falinksite",
+      "baseAppearanceId": 870
+    },
+    {
+      "id": 10304,
+      "speciesId": 26,
+      "formId": 10529,
+      "identifier": "raichu-mega-x",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가라이츄X",
+        "en": "Mega Raichu X",
+        "ja": "メガライチュウX"
+      },
+      "types": [
+        "electric"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 4,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "raichunite-x",
+      "baseAppearanceId": 26
+    },
+    {
+      "id": 10305,
+      "speciesId": 26,
+      "formId": 10530,
+      "identifier": "raichu-mega-y",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가라이츄Y",
+        "en": "Mega Raichu Y",
+        "ja": "メガライチュウY"
+      },
+      "types": [
+        "electric"
+      ],
+      "generation": 1,
+      "legendary": false,
+      "mythical": false,
+      "family": 4,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "raichunite-y",
+      "baseAppearanceId": 26
+    },
+    {
+      "id": 10306,
+      "speciesId": 358,
+      "formId": 10531,
+      "identifier": "chimecho-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가치렁",
+        "en": "Mega Chimecho",
+        "ja": "メガチリーン"
+      },
+      "types": [
+        "psychic",
+        "steel"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 215,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "chimechite",
+      "baseAppearanceId": 358
+    },
+    {
+      "id": 10307,
+      "speciesId": 359,
+      "formId": 10532,
+      "identifier": "absol-mega-z",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가앱솔Z",
+        "en": "Mega Absol Z",
+        "ja": "メガアブソルZ"
+      },
+      "types": [
+        "dark",
+        "ghost"
+      ],
+      "generation": 3,
+      "legendary": false,
+      "mythical": false,
+      "family": 178,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "absolite-z",
+      "baseAppearanceId": 359
+    },
+    {
+      "id": 10308,
+      "speciesId": 398,
+      "formId": 10533,
+      "identifier": "staraptor-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가찌르호크",
+        "en": "Mega Staraptor",
+        "ja": "メガムクホーク"
+      },
+      "types": [
+        "fighting",
+        "flying"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 199,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "staraptite",
+      "baseAppearanceId": 398
+    },
+    {
+      "id": 10309,
+      "speciesId": 445,
+      "formId": 10534,
+      "identifier": "garchomp-mega-z",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가한카리아스Z",
+        "en": "Mega Garchomp Z",
+        "ja": "メガガブリアスZ"
+      },
+      "types": [
+        "dragon"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 223,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "garchompite-z",
+      "baseAppearanceId": 445
+    },
+    {
+      "id": 10310,
+      "speciesId": 448,
+      "formId": 10535,
+      "identifier": "lucario-mega-z",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가루카리오Z",
+        "en": "Mega Lucario Z",
+        "ja": "メガルカリオZ"
+      },
+      "types": [
+        "fighting",
+        "steel"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": false,
+      "family": 225,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "lucarionite-z",
+      "baseAppearanceId": 448
+    },
+    {
+      "id": 10311,
+      "speciesId": 485,
+      "formId": 10536,
+      "identifier": "heatran-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가히드런",
+        "en": "Mega Heatran",
+        "ja": "メガヒードラン"
+      },
+      "types": [
+        "fire",
+        "steel"
+      ],
+      "generation": 4,
+      "legendary": true,
+      "mythical": false,
+      "family": 239,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "heatranite",
+      "baseAppearanceId": 485
+    },
+    {
+      "id": 10312,
+      "speciesId": 491,
+      "formId": 10537,
+      "identifier": "darkrai-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가다크라이",
+        "en": "Mega Darkrai",
+        "ja": "メガダークライ"
+      },
+      "types": [
+        "dark"
+      ],
+      "generation": 4,
+      "legendary": false,
+      "mythical": true,
+      "family": 245,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "darkranite",
+      "baseAppearanceId": 491
+    },
+    {
+      "id": 10313,
+      "speciesId": 623,
+      "formId": 10538,
+      "identifier": "golurk-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가골루그",
+        "en": "Mega Golurk",
+        "ja": "メガゴルーグ"
+      },
+      "types": [
+        "ground",
+        "ghost"
+      ],
+      "generation": 5,
+      "legendary": false,
+      "mythical": false,
+      "family": 309,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "golurkite",
+      "baseAppearanceId": 623
+    },
+    {
+      "id": 10314,
+      "speciesId": 678,
+      "formId": 10539,
+      "identifier": "meowstic-male-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가냐오닉스",
+        "en": "Mega Meowstic",
+        "ja": "メガニャオニクス"
+      },
+      "types": [
+        "psychic"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 340,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "meowsticite",
+      "baseAppearanceId": 678
+    },
+    {
+      "id": 10315,
+      "speciesId": 740,
+      "formId": 10540,
+      "identifier": "crabominable-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가모단단게",
+        "en": "Mega Crabominable",
+        "ja": "メガケケンカニ"
+      },
+      "types": [
+        "fighting",
+        "ice"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": false,
+      "family": 372,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "crabominite",
+      "baseAppearanceId": 740
+    },
+    {
+      "id": 10316,
+      "speciesId": 768,
+      "formId": 10541,
+      "identifier": "golisopod-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가갑주무사",
+        "en": "Mega Golisopod",
+        "ja": "メガグソクムシャ"
+      },
+      "types": [
+        "bug",
+        "steel"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": false,
+      "family": 388,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "golisopite",
+      "baseAppearanceId": 768
+    },
+    {
+      "id": 10317,
+      "speciesId": 801,
+      "formId": 10542,
+      "identifier": "magearna-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가마기아나",
+        "en": "Mega Magearna",
+        "ja": "メガマギアナ"
+      },
+      "types": [
+        "steel",
+        "fairy"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": true,
+      "family": 414,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "magearnite",
+      "baseAppearanceId": 801
+    },
+    {
+      "id": 10318,
+      "speciesId": 801,
+      "formId": 10543,
+      "identifier": "magearna-original-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가마기아나 (오리지널컬러)",
+        "en": "Mega Original Magearna",
+        "ja": "メガマギアナ（５００ねんまえのいろ）"
+      },
+      "types": [
+        "steel",
+        "fairy"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": true,
+      "family": 414,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "magearnite",
+      "baseAppearanceId": 10147
+    },
+    {
+      "id": 10319,
+      "speciesId": 807,
+      "formId": 10544,
+      "identifier": "zeraora-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가제라오라",
+        "en": "Mega Zeraora",
+        "ja": "メガゼラオラ"
+      },
+      "types": [
+        "electric"
+      ],
+      "generation": 7,
+      "legendary": false,
+      "mythical": true,
+      "family": 419,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "zeraorite",
+      "baseAppearanceId": 807
+    },
+    {
+      "id": 10320,
+      "speciesId": 952,
+      "formId": 10545,
+      "identifier": "scovillain-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가스코빌런",
+        "en": "Mega Scovillain",
+        "ja": "メガスコヴィラン"
+      },
+      "types": [
+        "grass",
+        "fire"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 498,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "scovillainite",
+      "baseAppearanceId": 952
+    },
+    {
+      "id": 10321,
+      "speciesId": 970,
+      "formId": 10546,
+      "identifier": "glimmora-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가킬라플로르",
+        "en": "Mega Glimmora",
+        "ja": "メガキラフロル"
+      },
+      "types": [
+        "rock",
+        "poison"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 508,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "glimmoranite",
+      "baseAppearanceId": 970
+    },
+    {
+      "id": 10322,
+      "speciesId": 978,
+      "formId": 10547,
+      "identifier": "tatsugiri-curly-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가싸리용",
+        "en": "Mega Curly Tatsugiri",
+        "ja": "メガシャリタツ"
+      },
+      "types": [
+        "dragon",
+        "water"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 514,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "tatsugirinite",
+      "baseAppearanceId": 978
+    },
+    {
+      "id": 10323,
+      "speciesId": 978,
+      "formId": 10548,
+      "identifier": "tatsugiri-droopy-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가싸리용 (늘어진 모습)",
+        "en": "Mega Droopy Tatsugiri",
+        "ja": "メガシャリタツ（たれたすがた）"
+      },
+      "types": [
+        "dragon",
+        "water"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 514,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "tatsugirinite",
+      "baseAppearanceId": 10258
+    },
+    {
+      "id": 10324,
+      "speciesId": 978,
+      "formId": 10549,
+      "identifier": "tatsugiri-stretchy-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가싸리용 (뻗은 모습)",
+        "en": "Mega Stretchy Tatsugiri",
+        "ja": "メガシャリタツ（のびたすがた）"
+      },
+      "types": [
+        "dragon",
+        "water"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 514,
+      "phase": 1,
+      "dialogue": null,
+      "stone": "tatsugirinite",
+      "baseAppearanceId": 10259
+    },
+    {
+      "id": 10325,
+      "speciesId": 998,
+      "formId": 10550,
+      "identifier": "baxcalibur-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가드닐레이브",
+        "en": "Mega Baxcalibur",
+        "ja": "メガセグレイブ"
+      },
+      "types": [
+        "dragon",
+        "ice"
+      ],
+      "generation": 9,
+      "legendary": false,
+      "mythical": false,
+      "family": 528,
+      "phase": 3,
+      "dialogue": null,
+      "stone": "baxcalibrite",
+      "baseAppearanceId": 998
+    },
+    {
+      "id": 10326,
+      "speciesId": 678,
+      "formId": 10554,
+      "identifier": "meowstic-female-mega",
+      "kind": "mega",
+      "region": null,
+      "names": {
+        "ko": "메가냐오닉스 (암컷의 모습)",
+        "en": "Mega Meowstic",
+        "ja": "メガニャオニクス（メスのすがた）"
+      },
+      "types": [
+        "psychic"
+      ],
+      "generation": 6,
+      "legendary": false,
+      "mythical": false,
+      "family": 340,
+      "phase": 2,
+      "dialogue": null,
+      "stone": "meowsticite",
+      "baseAppearanceId": 10025
+    }
+  ],
+  "families": [
+    {
+      "family": 551,
+      "eggTypes": [
+        "fairy"
+      ],
+      "species": [
+        10061
+      ]
+    },
+    {
+      "family": 552,
+      "eggTypes": [
+        "dark",
+        "normal"
+      ],
+      "species": [
+        10091,
+        10092
+      ]
+    },
+    {
+      "family": 553,
+      "eggTypes": [
+        "ice",
+        "steel"
+      ],
+      "species": [
+        10101,
+        10102
+      ]
+    },
+    {
+      "family": 554,
+      "eggTypes": [
+        "ice"
+      ],
+      "species": [
+        10103,
+        10104
+      ]
+    },
+    {
+      "family": 555,
+      "eggTypes": [
+        "ground",
+        "steel"
+      ],
+      "species": [
+        10105,
+        10106
+      ]
+    },
+    {
+      "family": 556,
+      "eggTypes": [
+        "dark"
+      ],
+      "species": [
+        10107,
+        10108
+      ]
+    },
+    {
+      "family": 557,
+      "eggTypes": [
+        "rock",
+        "electric"
+      ],
+      "species": [
+        10109,
+        10110,
+        10111
+      ]
+    },
+    {
+      "family": 558,
+      "eggTypes": [
+        "poison",
+        "dark"
+      ],
+      "species": [
+        10112,
+        10113
+      ]
+    },
+    {
+      "family": 559,
+      "eggTypes": [
+        "steel",
+        "fairy"
+      ],
+      "species": [
+        10147
+      ]
+    },
+    {
+      "family": 560,
+      "eggTypes": [
+        "steel"
+      ],
+      "species": [
+        10161,
+        863
+      ]
+    },
+    {
+      "family": 561,
+      "eggTypes": [
+        "psychic"
+      ],
+      "species": [
+        10162,
+        10163
+      ]
+    },
+    {
+      "family": 562,
+      "eggTypes": [
+        "psychic"
+      ],
+      "species": [
+        10164,
+        10165,
+        10172
+      ]
+    },
+    {
+      "family": 563,
+      "eggTypes": [
+        "fighting"
+      ],
+      "species": [
+        10166,
+        865
+      ]
+    },
+    {
+      "family": 564,
+      "eggTypes": [
+        "psychic",
+        "flying"
+      ],
+      "species": [
+        10169
+      ]
+    },
+    {
+      "family": 565,
+      "eggTypes": [
+        "fighting",
+        "flying"
+      ],
+      "species": [
+        10170
+      ]
+    },
+    {
+      "family": 566,
+      "eggTypes": [
+        "dark",
+        "flying"
+      ],
+      "species": [
+        10171
+      ]
+    },
+    {
+      "family": 567,
+      "eggTypes": [
+        "ghost"
+      ],
+      "species": [
+        10173,
+        864
+      ]
+    },
+    {
+      "family": 568,
+      "eggTypes": [
+        "dark",
+        "normal"
+      ],
+      "species": [
+        10174,
+        10175,
+        862
+      ]
+    },
+    {
+      "family": 569,
+      "eggTypes": [
+        "ice"
+      ],
+      "species": [
+        10176,
+        10177
+      ]
+    },
+    {
+      "family": 570,
+      "eggTypes": [
+        "ground",
+        "ghost"
+      ],
+      "species": [
+        10179,
+        867
+      ]
+    },
+    {
+      "family": 571,
+      "eggTypes": [
+        "ground",
+        "steel"
+      ],
+      "species": [
+        10180
+      ]
+    },
+    {
+      "family": 572,
+      "eggTypes": [
+        "fire",
+        "rock"
+      ],
+      "species": [
+        10229,
+        10230
+      ]
+    },
+    {
+      "family": 573,
+      "eggTypes": [
+        "electric",
+        "grass"
+      ],
+      "species": [
+        10231,
+        10232
+      ]
+    },
+    {
+      "family": 574,
+      "eggTypes": [
+        "dark",
+        "poison"
+      ],
+      "species": [
+        10234,
+        904
+      ]
+    },
+    {
+      "family": 575,
+      "eggTypes": [
+        "fighting",
+        "poison"
+      ],
+      "species": [
+        10235,
+        903
+      ]
+    },
+    {
+      "family": 576,
+      "eggTypes": [
+        "normal",
+        "ghost"
+      ],
+      "species": [
+        10238,
+        10239
+      ]
+    },
+    {
+      "family": 577,
+      "eggTypes": [
+        "water"
+      ],
+      "species": [
+        10247,
+        902
+      ]
+    },
+    {
+      "family": 578,
+      "eggTypes": [
+        "fighting"
+      ],
+      "species": [
+        10250
+      ]
+    },
+    {
+      "family": 579,
+      "eggTypes": [
+        "fighting",
+        "fire"
+      ],
+      "species": [
+        10251
+      ]
+    },
+    {
+      "family": 580,
+      "eggTypes": [
+        "fighting",
+        "water"
+      ],
+      "species": [
+        10252
+      ]
+    },
+    {
+      "family": 581,
+      "eggTypes": [
+        "poison",
+        "ground"
+      ],
+      "species": [
+        10253,
+        980
+      ]
+    },
+    {
+      "family": 582,
+      "eggTypes": [
+        "dragon",
+        "water"
+      ],
+      "species": [
+        10258
+      ]
+    },
+    {
+      "family": 583,
+      "eggTypes": [
+        "dragon",
+        "water"
+      ],
+      "species": [
+        10259
+      ]
+    }
+  ],
+  "evolutions": {
+    "25": [
+      26,
+      10100
+    ],
+    "102": [
+      103,
+      10114
+    ],
+    "104": [
+      105,
+      10115
+    ],
+    "109": [
+      110,
+      10167
+    ],
+    "156": [
+      157,
+      10233
+    ],
+    "439": [
+      122,
+      10168
+    ],
+    "502": [
+      503,
+      10236
+    ],
+    "548": [
+      549,
+      10237
+    ],
+    "627": [
+      628,
+      10240
+    ],
+    "677": [
+      678,
+      10025
+    ],
+    "704": [
+      705,
+      10241
+    ],
+    "712": [
+      713,
+      10243
+    ],
+    "723": [
+      724,
+      10244
+    ],
+    "10025": [],
+    "10061": [],
+    "10091": [
+      10092
+    ],
+    "10092": [],
+    "10100": [],
+    "10101": [
+      10102
+    ],
+    "10102": [],
+    "10103": [
+      10104
+    ],
+    "10104": [],
+    "10105": [
+      10106
+    ],
+    "10106": [],
+    "10107": [
+      10108
+    ],
+    "10108": [],
+    "10109": [
+      10110
+    ],
+    "10110": [
+      10111
+    ],
+    "10111": [],
+    "10112": [
+      10113
+    ],
+    "10113": [],
+    "10114": [],
+    "10115": [],
+    "10147": [],
+    "10161": [
+      863
+    ],
+    "10162": [
+      10163
+    ],
+    "10163": [],
+    "10164": [
+      10165,
+      10172
+    ],
+    "10165": [],
+    "10166": [
+      865
+    ],
+    "10167": [],
+    "10168": [
+      866
+    ],
+    "10169": [],
+    "10170": [],
+    "10171": [],
+    "10172": [],
+    "10173": [
+      864
+    ],
+    "10174": [
+      10175
+    ],
+    "10175": [
+      862
+    ],
+    "10176": [
+      10177
+    ],
+    "10177": [],
+    "10179": [
+      867
+    ],
+    "10180": [],
+    "10229": [
+      10230
+    ],
+    "10230": [],
+    "10231": [
+      10232
+    ],
+    "10232": [],
+    "10233": [],
+    "10234": [
+      904
+    ],
+    "10235": [
+      903
+    ],
+    "10236": [],
+    "10237": [],
+    "10238": [
+      10239
+    ],
+    "10239": [],
+    "10240": [],
+    "10241": [
+      10242
+    ],
+    "10242": [],
+    "10243": [],
+    "10244": [],
+    "10247": [
+      902
+    ],
+    "10250": [],
+    "10251": [],
+    "10252": [],
+    "10253": [
+      980
+    ],
+    "10258": [],
+    "10259": []
+  },
+  "stones": [
+    {
+      "id": "venusaurite",
+      "itemId": 698,
+      "names": {
+        "ko": "이상해꽃나이트",
+        "en": "Venusaurite",
+        "ja": "フシギバナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "charizardite-x",
+      "itemId": 699,
+      "names": {
+        "ko": "리자몽나이트X",
+        "en": "Charizardite X",
+        "ja": "リザードナイトＸ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "charizardite-y",
+      "itemId": 717,
+      "names": {
+        "ko": "리자몽나이트Y",
+        "en": "Charizardite Y",
+        "ja": "リザードナイトＹ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "blastoisinite",
+      "itemId": 700,
+      "names": {
+        "ko": "거북왕나이트",
+        "en": "Blastoisinite",
+        "ja": "カメックスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "alakazite",
+      "itemId": 718,
+      "names": {
+        "ko": "후디나이트",
+        "en": "Alakazite",
+        "ja": "フーディナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "gengarite",
+      "itemId": 695,
+      "names": {
+        "ko": "팬텀나이트",
+        "en": "Gengarite",
+        "ja": "ゲンガナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "kangaskhanite",
+      "itemId": 714,
+      "names": {
+        "ko": "캥카나이트",
+        "en": "Kangaskhanite",
+        "ja": "ガルーラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "pinsirite",
+      "itemId": 710,
+      "names": {
+        "ko": "쁘사이저나이트",
+        "en": "Pinsirite",
+        "ja": "カイロスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "gyaradosite",
+      "itemId": 715,
+      "names": {
+        "ko": "갸라도스나이트",
+        "en": "Gyaradosite",
+        "ja": "ギャラドスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "aerodactylite",
+      "itemId": 711,
+      "names": {
+        "ko": "프테라나이트",
+        "en": "Aerodactylite",
+        "ja": "プテラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "mewtwonite-x",
+      "itemId": 701,
+      "names": {
+        "ko": "뮤츠나이트X",
+        "en": "Mewtwonite X",
+        "ja": "ミュウツナイトＸ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "mewtwonite-y",
+      "itemId": 702,
+      "names": {
+        "ko": "뮤츠나이트Y",
+        "en": "Mewtwonite Y",
+        "ja": "ミュウツナイトＹ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "ampharosite",
+      "itemId": 697,
+      "names": {
+        "ko": "전룡나이트",
+        "en": "Ampharosite",
+        "ja": "デンリュウナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "scizorite",
+      "itemId": 709,
+      "names": {
+        "ko": "핫삼나이트",
+        "en": "Scizorite",
+        "ja": "ハッサムナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "heracronite",
+      "itemId": 719,
+      "names": {
+        "ko": "헤라크로스나이트",
+        "en": "Heracronite",
+        "ja": "ヘラクロスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "houndoominite",
+      "itemId": 705,
+      "names": {
+        "ko": "헬가나이트",
+        "en": "Houndoominite",
+        "ja": "ヘルガナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "tyranitarite",
+      "itemId": 708,
+      "names": {
+        "ko": "마기라스나이트",
+        "en": "Tyranitarite",
+        "ja": "バンギラスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "blazikenite",
+      "itemId": 703,
+      "names": {
+        "ko": "번치코나이트",
+        "en": "Blazikenite",
+        "ja": "バシャーモナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "gardevoirite",
+      "itemId": 696,
+      "names": {
+        "ko": "가디안나이트",
+        "en": "Gardevoirite",
+        "ja": "サーナイトナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "mawilite",
+      "itemId": 720,
+      "names": {
+        "ko": "입치트나이트",
+        "en": "Mawilite",
+        "ja": "クチートナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "aggronite",
+      "itemId": 706,
+      "names": {
+        "ko": "보스로라나이트",
+        "en": "Aggronite",
+        "ja": "ボスゴドラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "medichamite",
+      "itemId": 704,
+      "names": {
+        "ko": "요가램나이트",
+        "en": "Medichamite",
+        "ja": "チャーレムナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "manectite",
+      "itemId": 721,
+      "names": {
+        "ko": "썬더볼트나이트",
+        "en": "Manectite",
+        "ja": "ライボルトナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "banettite",
+      "itemId": 707,
+      "names": {
+        "ko": "다크펫나이트",
+        "en": "Banettite",
+        "ja": "ジュペッタナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "absolite",
+      "itemId": 716,
+      "names": {
+        "ko": "앱솔나이트",
+        "en": "Absolite",
+        "ja": "アブソルナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "garchompite",
+      "itemId": 722,
+      "names": {
+        "ko": "한카리아스나이트",
+        "en": "Garchompite",
+        "ja": "ガブリアスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "lucarionite",
+      "itemId": 712,
+      "names": {
+        "ko": "루카리오나이트",
+        "en": "Lucarionite",
+        "ja": "ルカリオナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "abomasite",
+      "itemId": 713,
+      "names": {
+        "ko": "눈설왕나이트",
+        "en": "Abomasite",
+        "ja": "ユキノオナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "latiasite",
+      "itemId": 760,
+      "names": {
+        "ko": "라티아스나이트",
+        "en": "Latiasite",
+        "ja": "ラティアスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "latiosite",
+      "itemId": 761,
+      "names": {
+        "ko": "라티오스나이트",
+        "en": "Latiosite",
+        "ja": "ラティオスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "swampertite",
+      "itemId": 793,
+      "names": {
+        "ko": "대짱이나이트",
+        "en": "Swampertite",
+        "ja": "ラグラージナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "sceptilite",
+      "itemId": 794,
+      "names": {
+        "ko": "나무킹나이트",
+        "en": "Sceptilite",
+        "ja": "ジュカインナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "sablenite",
+      "itemId": 795,
+      "names": {
+        "ko": "깜까미나이트",
+        "en": "Sablenite",
+        "ja": "ヤミラミナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "altarianite",
+      "itemId": 796,
+      "names": {
+        "ko": "파비코리나이트",
+        "en": "Altarianite",
+        "ja": "チルタリスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "galladite",
+      "itemId": 797,
+      "names": {
+        "ko": "엘레이드나이트",
+        "en": "Galladite",
+        "ja": "エルレイドナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "audinite",
+      "itemId": 798,
+      "names": {
+        "ko": "다부니나이트",
+        "en": "Audinite",
+        "ja": "タブンネナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "sharpedonite",
+      "itemId": 800,
+      "names": {
+        "ko": "샤크니아나이트",
+        "en": "Sharpedonite",
+        "ja": "サメハダナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "slowbronite",
+      "itemId": 801,
+      "names": {
+        "ko": "야도란나이트",
+        "en": "Slowbronite",
+        "ja": "ヤドランナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "steelixite",
+      "itemId": 802,
+      "names": {
+        "ko": "강철톤나이트",
+        "en": "Steelixite",
+        "ja": "ハガネールナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "pidgeotite",
+      "itemId": 803,
+      "names": {
+        "ko": "피죤투나이트",
+        "en": "Pidgeotite",
+        "ja": "ピジョットナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "glalitite",
+      "itemId": 804,
+      "names": {
+        "ko": "얼음귀신나이트",
+        "en": "Glalitite",
+        "ja": "オニゴーリナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "diancite",
+      "itemId": 805,
+      "names": {
+        "ko": "디안시나이트",
+        "en": "Diancite",
+        "ja": "ディアンシナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "metagrossite",
+      "itemId": 799,
+      "names": {
+        "ko": "메타그로스나이트",
+        "en": "Metagrossite",
+        "ja": "メタグロスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "dragon-ascent",
+      "itemId": null,
+      "names": {
+        "ko": "화룡점정",
+        "en": "Dragon Ascent",
+        "ja": "ガリョウテンセイ"
+      },
+      "kind": "technique"
+    },
+    {
+      "id": "cameruptite",
+      "itemId": 808,
+      "names": {
+        "ko": "폭타나이트",
+        "en": "Cameruptite",
+        "ja": "バクーダナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "lopunnite",
+      "itemId": 809,
+      "names": {
+        "ko": "이어롭나이트",
+        "en": "Lopunnite",
+        "ja": "ミミロップナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "salamencite",
+      "itemId": 810,
+      "names": {
+        "ko": "보만다나이트",
+        "en": "Salamencite",
+        "ja": "ボーマンダナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "beedrillite",
+      "itemId": 811,
+      "names": {
+        "ko": "독침붕나이트",
+        "en": "Beedrillite",
+        "ja": "スピアナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "clefablite",
+      "itemId": 2233,
+      "names": {
+        "ko": "픽시나이트",
+        "en": "Clefablite",
+        "ja": "ピクシナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "victreebelite",
+      "itemId": 2234,
+      "names": {
+        "ko": "우츠보트나이트",
+        "en": "Victreebelite",
+        "ja": "ウツボットナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "starminite",
+      "itemId": 2235,
+      "names": {
+        "ko": "아쿠스타나이트",
+        "en": "Starminite",
+        "ja": "スターミナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "dragoninite",
+      "itemId": 2236,
+      "names": {
+        "ko": "망나뇽나이트",
+        "en": "Dragoninite",
+        "ja": "カイリュナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "meganiumite",
+      "itemId": 2237,
+      "names": {
+        "ko": "메가니움나이트",
+        "en": "Meganiumite",
+        "ja": "メガニウムナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "feraligite",
+      "itemId": 2238,
+      "names": {
+        "ko": "장크로다일나이트",
+        "en": "Feraligite",
+        "ja": "オーダイルナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "skarmorite",
+      "itemId": 2239,
+      "names": {
+        "ko": "무장조나이트",
+        "en": "Skarmorite",
+        "ja": "エアームドナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "froslassite",
+      "itemId": 2240,
+      "names": {
+        "ko": "눈여아나이트",
+        "en": "Froslassite",
+        "ja": "ユキメノコナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "emboarite",
+      "itemId": 2243,
+      "names": {
+        "ko": "염무왕나이트",
+        "en": "Emboarite",
+        "ja": "エンブオナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "excadrite",
+      "itemId": 2244,
+      "names": {
+        "ko": "몰드류나이트",
+        "en": "Excadrite",
+        "ja": "ドリュウズナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "scolipite",
+      "itemId": 2245,
+      "names": {
+        "ko": "펜드라나이트",
+        "en": "Scolipite",
+        "ja": "ペンドラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "scraftinite",
+      "itemId": 2246,
+      "names": {
+        "ko": "곤율거니나이트",
+        "en": "Scraftinite",
+        "ja": "ズルズキナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "eelektrossite",
+      "itemId": 2247,
+      "names": {
+        "ko": "저리더프나이트",
+        "en": "Eelektrossite",
+        "ja": "シビルドナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "chandelurite",
+      "itemId": 2248,
+      "names": {
+        "ko": "샹델라나이트",
+        "en": "Chandelurite",
+        "ja": "シャンデラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "chesnaughtite",
+      "itemId": 2249,
+      "names": {
+        "ko": "브리가론나이트",
+        "en": "Chesnaughtite",
+        "ja": "ブリガロナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "delphoxite",
+      "itemId": 2250,
+      "names": {
+        "ko": "마폭시나이트",
+        "en": "Delphoxite",
+        "ja": "マフォクシナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "greninjite",
+      "itemId": 2251,
+      "names": {
+        "ko": "개굴닌자나이트",
+        "en": "Greninjite",
+        "ja": "ゲッコウガナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "pyroarite",
+      "itemId": 2252,
+      "names": {
+        "ko": "화염레오나이트",
+        "en": "Pyroarite",
+        "ja": "カエンジシナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "floettite",
+      "itemId": 2253,
+      "names": {
+        "ko": "플라엣테나이트",
+        "en": "Floettite",
+        "ja": "フラエッテナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "malamarite",
+      "itemId": 2254,
+      "names": {
+        "ko": "칼라마네로나이트",
+        "en": "Malamarite",
+        "ja": "カラマネナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "barbaracite",
+      "itemId": 2255,
+      "names": {
+        "ko": "거북손데스나이트",
+        "en": "Barbaracite",
+        "ja": "ガメノデスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "dragalgite",
+      "itemId": 2256,
+      "names": {
+        "ko": "드래캄나이트",
+        "en": "Dragalgite",
+        "ja": "ドラミドナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "hawluchanite",
+      "itemId": 2257,
+      "names": {
+        "ko": "루차불나이트",
+        "en": "Hawluchanite",
+        "ja": "ルチャブルナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "zygardite",
+      "itemId": 2258,
+      "names": {
+        "ko": "지가르데나이트",
+        "en": "Zygardite",
+        "ja": "ジガルデナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "drampanite",
+      "itemId": 2259,
+      "names": {
+        "ko": "할비롱나이트",
+        "en": "Drampanite",
+        "ja": "ジジーロナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "falinksite",
+      "itemId": 2261,
+      "names": {
+        "ko": "대여르나이트",
+        "en": "Falinksite",
+        "ja": "タイレーツナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "raichunite-x",
+      "itemId": 2262,
+      "names": {
+        "ko": "라이츄나이트X",
+        "en": "Raichunite X",
+        "ja": "ライチュウナイトＸ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "raichunite-y",
+      "itemId": 2263,
+      "names": {
+        "ko": "라이츄나이트Y",
+        "en": "Raichunite Y",
+        "ja": "ライチュウナイトＹ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "chimechite",
+      "itemId": 2264,
+      "names": {
+        "ko": "치렁나이트",
+        "en": "Chimechite",
+        "ja": "チリーンナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "absolite-z",
+      "itemId": 2265,
+      "names": {
+        "ko": "앱솔나이트Z",
+        "en": "Absolite Z",
+        "ja": "アブソルナイトZ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "staraptite",
+      "itemId": 2266,
+      "names": {
+        "ko": "찌르호크나이트",
+        "en": "Staraptite",
+        "ja": "ムクホークナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "garchompite-z",
+      "itemId": 2267,
+      "names": {
+        "ko": "한카리아스나이트Z",
+        "en": "Garchompite Z",
+        "ja": "ガブリアスナイトZ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "lucarionite-z",
+      "itemId": 2268,
+      "names": {
+        "ko": "루카리오나이트Z",
+        "en": "Lucarionite Z",
+        "ja": "ルカリオナイトZ"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "heatranite",
+      "itemId": 2241,
+      "names": {
+        "ko": "히드런나이트",
+        "en": "Heatranite",
+        "ja": "ヒードラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "darkranite",
+      "itemId": 2242,
+      "names": {
+        "ko": "다크라이나이트",
+        "en": "Darkranite",
+        "ja": "ダークライナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "golurkite",
+      "itemId": 2269,
+      "names": {
+        "ko": "골루그나이트",
+        "en": "Golurkite",
+        "ja": "ゴルーグナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "meowsticite",
+      "itemId": 2270,
+      "names": {
+        "ko": "냐오닉스나이트",
+        "en": "Meowsticite",
+        "ja": "ニャオニクスナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "crabominite",
+      "itemId": 2271,
+      "names": {
+        "ko": "모단단게나이트",
+        "en": "Crabominite",
+        "ja": "ケケンカニナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "golisopite",
+      "itemId": 2272,
+      "names": {
+        "ko": "갑주무사나이트",
+        "en": "Golisopite",
+        "ja": "グソクムシャナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "magearnite",
+      "itemId": 2273,
+      "names": {
+        "ko": "마기아나이트",
+        "en": "Magearnite",
+        "ja": "マギアナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "zeraorite",
+      "itemId": 2260,
+      "names": {
+        "ko": "제라오라나이트",
+        "en": "Zeraorite",
+        "ja": "ゼラオラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "scovillainite",
+      "itemId": 2274,
+      "names": {
+        "ko": "스코빌런나이트",
+        "en": "Scovillainite",
+        "ja": "スコヴィラナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "glimmoranite",
+      "itemId": 2277,
+      "names": {
+        "ko": "킬라플로르나이트",
+        "en": "Glimmoranite",
+        "ja": "キラフロルナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "tatsugirinite",
+      "itemId": 2276,
+      "names": {
+        "ko": "싸리용나이트",
+        "en": "Tatsugirinite",
+        "ja": "シャリタツナイト"
+      },
+      "kind": "stone"
+    },
+    {
+      "id": "baxcalibrite",
+      "itemId": 2275,
+      "names": {
+        "ko": "드닐레이브나이트",
+        "en": "Baxcalibrite",
+        "ja": "セグレイブナイト"
+      },
+      "kind": "stone"
+    }
+  ],
+  "retiredHatchFamilies": [
+    443,
+    444,
+    445,
+    446,
+    447,
+    448,
+    474,
+    475,
+    476,
+    515
+  ]
+}

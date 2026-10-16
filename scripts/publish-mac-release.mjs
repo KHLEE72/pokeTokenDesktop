@@ -24,7 +24,7 @@ else{
   const arch=process.env.PET_BUILD_ARCH
   if(process.platform!=='darwin'||!['arm64','x64'].includes(arch)||process.arch!==arch)throw Error('A matching native Mac build is required')
   if(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()!==revision)throw Error('Checkout revision mismatch')
-  const reports=['smoke','pet-motion','window-motion','dpi','health','collection','rewards','evolution','dashboard','input','session']
+  const reports=['smoke','pet-motion','window-motion','dpi','health','collection','rewards','evolution','dashboard','input','session','forms']
   const validation={}
   for(const name of reports){
     const report=JSON.parse(readFileSync(join('artifacts',`${name}-report.json`),'utf8'))

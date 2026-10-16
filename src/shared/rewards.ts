@@ -1,5 +1,7 @@
 import { GameState, POKEMON } from './model'
 import { Rarity, speciesRarity } from './rarity'
+import { nationalId, POKEMON_BY_ID } from './catalog'
+import { appearanceCollection } from './mega'
 
 export type BallId = 'poke' | 'great' | 'ultra' | 'premier' | 'luxury' | 'dusk' | 'master' | 'timer' | 'dream' | 'cherish'
 export type ThemeId = 'light' | 'dark' | Exclude<BallId, 'poke'>
@@ -38,13 +40,14 @@ export const themeUnlocked = (rewards: RewardState, theme: ThemeId): boolean => 
   const ball = themeInfo(theme).ball
   return ball === null || ballUnlocked(rewards, ball)
 }
-export const rarityDiscoveries = (game:GameState,rarity:Rarity):number => [...new Set([...game.owned,...game.ownedShiny])].filter(id=>speciesRarity(id)===rarity).length
+export const rarityDiscoveries = (game:GameState,rarity:Rarity):number => [...new Set([...game.owned,...game.ownedShiny,...appearanceCollection(game).owned,...appearanceCollection(game).ownedShiny].map(nationalId))].filter(id=>speciesRarity(id)===rarity).length
+const ghostDiscoveries=(game:GameState):number=>new Set([...game.owned,...game.ownedShiny,...appearanceCollection(game).owned,...appearanceCollection(game).ownedShiny].filter(id=>POKEMON_BY_ID.get(id)?.types.includes('ghost')).map(nationalId)).size
 export const ACHIEVEMENTS: { ball: Exclude<BallId, 'poke'>; title: string; description: string; goal: number; unit: string; value: (game: GameState) => number }[] = [
   { ball: 'great', title: '코딩의 첫 발자국', description: '연결 후 새로 사용한 토큰 100만 개를 모으세요.', goal: 1_000_000, unit: '토큰', value: game => game.tokensEarned },
   { ball: 'ultra', title: '차곡차곡 쌓인 시간', description: '연결 후 새로 사용한 토큰 5,000만 개를 모으세요.', goal: 50_000_000, unit: '토큰', value: game => game.tokensEarned },
   { ball: 'premier', title: '첫 최종 진화', description: '포켓몬 한 마리를 최종 진화시키세요.', goal: 1, unit: '마리', value: game => game.captures.length },
-  { ball: 'luxury', title: '반짝이는 만남', description: '이로치 포켓몬을 한 종류 이상 발견하세요.', goal: 1, unit: '종', value: game => game.ownedShiny.length },
-  { ball: 'dusk', title: '밤의 친구들', description: '고스트 타입 포켓몬 세 종류를 도감에 등록하세요.', goal: 3, unit: '종', value: game => [...new Set([...game.owned, ...game.ownedShiny])].filter(id => POKEMON.find(p => p.id === id)?.types.some(type => type === 'ghost')).length },
+  { ball: 'luxury', title: '반짝이는 만남', description: '이로치 포켓몬을 한 종류 이상 발견하세요.', goal: 1, unit: '종', value: game => game.ownedShiny.length+appearanceCollection(game).ownedShiny.length },
+  { ball: 'dusk', title: '밤의 친구들', description: '고스트 타입 포켓몬 세 종류를 도감에 등록하세요.', goal: 3, unit: '종', value: ghostDiscoveries },
   { ball: 'master', title: '우리의 작은 도감', description: '앱의 모든 포켓몬을 일반 또는 이로치 도감에 등록하세요.', goal: POKEMON.length, unit: '종', value: game => POKEMON.filter(p => game.owned.includes(p.id) || game.ownedShiny.includes(p.id)).length },
   { ball: 'timer', title: '오랜 전승의 발자취', description: '준전설 포켓몬 세 종류를 도감에 등록하세요.', goal: 3, unit: '종', value: game => rarityDiscoveries(game,'sublegendary') },
   { ball: 'dream', title: '꿈 너머의 전설', description: '전설 포켓몬 한 종류를 도감에 등록하세요.', goal: 1, unit: '종', value: game => rarityDiscoveries(game,'legendary') },

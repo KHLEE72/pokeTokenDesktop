@@ -1,4 +1,4 @@
-import { POKEMON } from './model'
+import { ALL_POKEMON } from './catalog'
 import { EEVEE_DIALOGUES } from './eevee-dialogue'
 import { Language } from './i18n'
 import { localizedDialogue } from './localized-dialogue'
@@ -101,7 +101,7 @@ export const DIALOGUES: Record<number, Lines> = {
 }
 
 Object.assign(DIALOGUES,EEVEE_DIALOGUES)
-for (const p of POKEMON) if (!DIALOGUES[p.id]) {
+for (const p of ALL_POKEMON) if (!DIALOGUES[p.id]) {
   DIALOGUES[p.id]=Object.fromEntries((['idle','held','falling','landing','growth','usage','petting'] as const).map(event=>[event,characterDialogue(p.id,event,'ko')!])) as Lines
 }
 export function pickDialogue(id: number | null, event: DialogueEvent, previous?: string, random = Math.random, language: Language = 'ko'): string {

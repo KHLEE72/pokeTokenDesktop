@@ -17,13 +17,18 @@ export interface Companion {
   // Optional on older v2 saves; backfilled once without recrediting usage.
   path?: number[]; evolutionTarget?: number | null
   ball?: BallId
+  mega?: number | null
 }
+export const CANDY_XP = 100_000
+export interface AppearanceCollection { owned: number[]; ownedShiny: number[]; megaStones: string[]; freeMegaStoneUsed: boolean }
+export const newAppearanceCollection = ():AppearanceCollection => ({owned:[],ownedShiny:[],megaStones:[],freeMegaStoneUsed:false})
 export interface GameState {
   version: 2; tokensEarned: number; candyTokens: number; nextId: number
   pets: Companion[]; activeId: string; displayPhase: number
   owned: number[]; ownedShiny: number[]; captures: Capture[]
+  appearances?: AppearanceCollection
 }
-export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null } | { type: 'ball'; petId: string; ball: BallId }
+export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null } | { type: 'ball'; petId: string; ball: BallId } | {type:'mega-stone';stone:string} | {type:'mega';formId:number|null;petId?:string}
 export interface Settings {
   language: Language
   dexSort: DexSort
@@ -33,7 +38,7 @@ export interface Settings {
 export const defaultSettings = (): Settings => ({ language: 'en', dexSort: 'number', pace: 'fast', size: 128, displayId: null, visible: true, paused: false, autoStart: false, theme: 'light', inBall: false, roots: { claude: [], codex: [] } })
 export const newGame = (): GameState => ({ version: 2, tokensEarned: 0, candyTokens: 0, nextId: 2,
   pets: [{ id: 'pet:1', phase: 0, family: null, xp: 0, shiny: false, eggType: 'grass', obtainedAt: null, path: [], evolutionTarget: null }],
-  activeId: 'pet:1', displayPhase: 0, owned: [], ownedShiny: [], captures: [] })
+  activeId: 'pet:1', displayPhase: 0, owned: [], ownedShiny: [], captures: [], appearances:newAppearanceCollection() })
 export interface RootStatus {
   provider: Provider; path: string; state: 'connected' | 'missing' | 'error'
   files: number; skipped: number; error?: string

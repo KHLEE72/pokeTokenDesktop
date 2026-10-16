@@ -17,6 +17,8 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `src/renderer/`: React 관리 화면, 펫 화면과 포인터 이벤트, 스타일.
 - 관리 화면의 `scrollbar-gutter: stable`은 알 보관함을 열고 닫을 때 카드 폭을 유지한다. 투명 펫 창에는 적용하지 않는다. `smoke:dashboard`는 세 언어·라이트/다크·최소/기본 창에서 폭을 비교하며 `POKETOKEN_TEST_SCALE`로 배율을 지정할 수 있다.
 - `src/shared/`: 데이터 모델, 성장·사탕·도감 규칙, 포켓몬 목록과 대사.
+- `form-catalog.json`은 `scripts/update-form-catalog.mjs`와 `form-dialogue.tsv`에서 생성한다. 기존 551개 계열 ID를 보존하고 새 계열만 뒤에 붙인다. 연결된 리전폼 진화 전용 종은 새 알 후보에서 제외하되, 기존 독립 개체·경로·완료 기록은 유지한다. 단계는 전역 `PokemonSpecies.phase` 대신 개체 `path` 안의 위치로 판정한다.
+- 리전폼·특별한 모습·메가폼 수집은 `game.appearances`에 기본 도감과 별도로 저장한다. `megaStones`와 첫 무료 선택 소진 상태는 일반/이로치·모든 개체가 공유하며 구매와 사탕 차감을 같은 트랜잭션으로 저장한다. 메가는 성장 단계가 아닌 `pet.mega` 표시 상태이고 `appearanceId`로 렌더링한다. `smoke:forms`로 구매·리전 진화·세 언어·최소 창·재시작을 확인한다.
 - `src/shared/rewards.ts`: 업적 조건·볼·테마 목록. 볼 아이콘과 업적·테마 UI는 `src/renderer/src/balls.tsx`, `rewards-ui.tsx`, `rewards.css`에 있다.
 - `src/shared/rarity.ts`: 주요 전설·준전설·환상의 앱 표시 분류. 600족·울트라비스트·패러독스를 임의로 전설로 바꾸지 않으며 부화 가중치와 분리한다. 새 업적은 일반/이로치 합산 종수로 기존 기록도 인정한다. `smoke:rarity`로 배지·테마·언어·저장 상태를 확인한다.
 - `character-profiles.json`: 고정된 도감 근거와 `dialogue-facts.tsv`·`dialogue-signatures.tsv`·`dialogue-scenes.tsv`에서 `node scripts/update-dialogue-profiles.mjs`로 생성한다. 공식 원문을 그대로 대사로 넣지 않는다. 리전폼 설명을 기본 모습에 적용하거나 날개 없는 종에게 비행·지느러미 종에게 발 착지를 말하게 하지 않는다. 이름/타입 접두사만 바꾼 공통 대사를 다시 넣지 않는다.

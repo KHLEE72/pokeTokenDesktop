@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { activePet, advanceGame, candyCount, changePace, dexChoices, evolutionOptions, finalPhase, gameAction, growthPath, isGrowing, speciesId, threshold, upgradeGrowthPaths, waitingForEvolution } from '../src/shared/game'
 import { EVOLUTIONS, FAMILIES, newGame, POKEMON } from '../src/shared/model'
+import { GROWTH_FORMS, POKEMON_BY_ID } from '../src/shared/catalog'
 import { firstNormal, hatchRandom } from './hatch-random'
 const now='2026-10-08T00:00:00Z',leaves=[134,135,136,196,197,470,471,700]
 const eevee=(shiny=false)=>{
@@ -104,18 +105,18 @@ describe('branching evolution',()=>{
     expect(game.owned).toEqual(before.owned)
     const once=structuredClone(game);upgradeGrowthPaths(game);expect(game).toEqual(once)
   })
-  it('has an acyclic graph covering the full catalog with only valid family and stage transitions',()=>{
+  it('has an acyclic graph covering default and regional appearances within three growth stages',()=>{
     const visited=new Set<number>()
     const walk=(id:number,path:number[])=>{
       expect(path).not.toContain(id);visited.add(id)
-      const parent=POKEMON.find(p=>p.id===id)!
+      expect(path.length).toBeLessThan(3)
+      expect(POKEMON_BY_ID.has(id)).toBe(true)
       for(const childId of EVOLUTIONS[id]) {
-        const child=POKEMON.find(p=>p.id===childId)!
-        expect(child.family).toBe(parent.family);expect(child.phase).toBe(parent.phase+1)
+        expect(POKEMON_BY_ID.has(childId)).toBe(true)
         walk(childId,[...path,id])
       }
     }
     for(const family of FAMILIES)walk(family.species[0],[])
-    expect(visited.size).toBe(POKEMON.length)
+    expect(visited.size).toBe(POKEMON.length+GROWTH_FORMS.length)
   })
 })

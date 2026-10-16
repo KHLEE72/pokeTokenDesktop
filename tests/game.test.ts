@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { activePet, advanceGame, candyCount, CANDY_XP, changePace, dexChoices, eggFamilies, gameAction, isGrowing, migrateGame, speciesId, threshold } from '../src/shared/game'
+import { activePet, advanceGame, candyCount, CANDY_XP, changePace, dexChoices, eggFamilies, evolutionOptions, gameAction, isGrowing, migrateGame, speciesId, threshold } from '../src/shared/game'
 import { EGG_TYPES, FAMILIES, newGame, POKEMON } from '../src/shared/model'
 import { firstNormal } from './hatch-random'
 const now='2026-10-07T00:00:00Z',normal=firstNormal()
@@ -79,6 +79,7 @@ describe('growth, candy and collection',()=>{
     expect(eggFamilies(type)).toContain(pet.family)
     if (pet.family===18) gameAction(game,{type:'target',speciesId:134},'fast',now)
     advanceGame(game,150_000_000,'fast',now,normal)
+    while(evolutionOptions(pet).length>1&&pet.xp>=threshold(pet.phase,'fast'))gameAction(game,{type:'target',speciesId:evolutionOptions(pet)[0]},'fast',now)
     expect(speciesId(game)).toBe(pet.family===18 ? 134 : family.species.at(-1));expect(pet.phase).toBe(pet.family===18 ? 2 : family.species.length)
     expect(game.captures).toHaveLength(1)
   })
@@ -97,7 +98,7 @@ describe('growth, candy and collection',()=>{
     expect(activePet(egg).eggType).toBeNull();expect(activePet(egg).xp).toBe(250_000)
   })
   it('has a unique full catalog with a hatch candidate for every egg type',()=>{
-    expect(POKEMON).toHaveLength(1025);expect(FAMILIES).toHaveLength(551)
+    expect(POKEMON).toHaveLength(1025);expect(FAMILIES).toHaveLength(584)
     expect(new Set(POKEMON.map(p=>p.id)).size).toBe(1025)
     for(const type of EGG_TYPES)expect(eggFamilies(type.id).length).toBeGreaterThan(0)
   })

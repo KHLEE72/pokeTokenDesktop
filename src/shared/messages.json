@@ -1,4 +1,9 @@
 {
+  "필요한 모습: {0}": {"en":"Required form: {0}","ja":"必要な姿：{0}"},
+  "기술 해금": {"en":"Technique unlock","ja":"技の解放"},
+  "메가 해금 {0}개": {"en":"{0} Mega unlocks","ja":"メガシンカ{0}種類解放"},
+  "시작 알: {0}": {"en":"Starting egg: {0}","ja":"最初のタマゴ：{0}"},
+  "모습 ": {"en":"Forms ","ja":"姿 "},
   " · 도감 등록": {
     "en": " · registered",
     "ja": " · 登録済み"
@@ -1214,5 +1219,181 @@
   "일반 포켓몬": {
     "en": "Ordinary Pokémon",
     "ja": "通常のポケモン"
+  },
+  "메가진화 모습": {
+    "en": "Mega Evolution form",
+    "ja": "メガシンカの姿"
+  },
+  "메가스톤은 도감의 모습·메가진화에서 해금할 수 있어요.": {
+    "en": "Unlock Mega Stones in Pokédex → Forms & Mega Evolution.",
+    "ja": "メガストーンは図鑑の「姿・メガシンカ」で解放できます。"
+  },
+  "원래 모습": {
+    "en": "Original form",
+    "ja": "元の姿"
+  },
+  " · 미해금": {
+    "en": " · Locked",
+    "ja": "・未解放"
+  },
+  "메가스톤 상점 열기": {
+    "en": "Open Mega Stone shop",
+    "ja": "メガストーンショップを開く"
+  },
+  "메가진화": {
+    "en": "Mega Evolution",
+    "ja": "メガシンカ"
+  },
+  "리전폼": {
+    "en": "Regional form",
+    "ja": "リージョンフォーム"
+  },
+  "특별한 모습": {
+    "en": "Special form",
+    "ja": "特別な姿"
+  },
+  "도감 등록": {
+    "en": "Registered",
+    "ja": "図鑑登録済み"
+  },
+  "영구 해금": {
+    "en": "Permanently unlocked",
+    "ja": "永久解放済み"
+  },
+  "첫 1개 무료 선택": {
+    "en": "Choose your first one free",
+    "ja": "最初の1個を無料で選ぶ"
+  },
+  "기본 모습을 먼저 만나주세요": {
+    "en": "Meet the required form first",
+    "ja": "必要な姿を先に仲間にしよう"
+  },
+  "사탕 {0}개로 영구 해금": {
+    "en": "Unlock forever · {0} candies",
+    "ja": "アメ{0}個で永久解放"
+  },
+  "성장 기록 보관 중": {
+    "en": "Growth progress saved",
+    "ja": "成長記録を保存中"
+  },
+  "타입 알 또는 진화 목표에서 만날 수 있어요.": {
+    "en": "Found through type eggs or evolution choices.",
+    "ja": "タイプのタマゴや進化先の選択で出会えます。"
+  },
+  "{0}번째 친구": {
+    "en": "Companion {0}",
+    "ja": "{0}匹目の仲間"
+  },
+  "리전폼과 메가진화": {
+    "en": "Regional forms & Mega Evolution",
+    "ja": "リージョンフォームとメガシンカ"
+  },
+  "첫 메가스톤 1개는 무료, 이후에는 사탕 50개로 영구 해금해요.": {
+    "en": "Your first Mega Stone is free. Each next unlock costs 50 candies.",
+    "ja": "最初のメガストーンは無料。次からはアメ50個で永久解放できます。"
+  },
+  "일반·이로치와 같은 종의 모든 개체가 해금을 공유해요.": {
+    "en": "Unlocks are shared by normal, shiny and matching companions.",
+    "ja": "通常・色違い・対応するすべての個体で解放を共有します。"
+  },
+  "사탕 {0}개": {
+    "en": "{0} candies",
+    "ja": "アメ{0}個"
+  },
+  "메가스톤 {0}개 해금": {
+    "en": "{0} Mega unlocks",
+    "ja": "メガシンカ{0}種類解放"
+  },
+  "첫 무료 선택이 남아 있어요": {
+    "en": "Your first free choice is available",
+    "ja": "最初の無料選択が残っています"
+  },
+  "모습 이름 또는 도감 번호 검색": {
+    "en": "Search forms by name or Pokédex number",
+    "ja": "姿の名前・図鑑番号で検索"
+  },
+  "모습 종류": {
+    "en": "Form category",
+    "ja": "姿の種類"
+  },
+  "모든 모습": {
+    "en": "All forms",
+    "ja": "すべての姿"
+  },
+  "알로라": {
+    "en": "Alola",
+    "ja": "アローラ"
+  },
+  "가라르": {
+    "en": "Galar",
+    "ja": "ガラル"
+  },
+  "히스이": {
+    "en": "Hisui",
+    "ja": "ヒスイ"
+  },
+  "팔데아": {
+    "en": "Paldea",
+    "ja": "パルデア"
+  },
+  "전체 모습 보기": {
+    "en": "Show all forms",
+    "ja": "すべての姿を見る"
+  },
+  "{0}개 모습 · {1} / {2} 페이지": {
+    "en": "{0} forms · Page {1} / {2}",
+    "ja": "{0}種類の姿・{1} / {2}ページ"
+  },
+  "조건에 맞는 모습이 없어요.": {
+    "en": "No forms match your search.",
+    "ja": "条件に合う姿はありません。"
+  },
+  "모습 페이지 이동": {
+    "en": "Form pagination",
+    "ja": "姿のページ移動"
+  },
+  "이동할 모습 페이지": {
+    "en": "Go to form page",
+    "ja": "移動する姿のページ"
+  },
+  "리전폼은 각 모습의 진화 경로를 따릅니다. 메가진화는 성장을 바꾸지 않으며 새 토큰은 사탕으로 모여요.": {
+    "en": "Regional forms follow their own evolution paths. Mega Evolution preserves growth; new tokens become candy.",
+    "ja": "リージョンフォームはそれぞれの進化経路をたどります。メガシンカは成長を変えず、新しいトークンはアメになります。"
+  },
+  "다른 모습 · 메가진화": {
+    "en": "Other forms · Mega Evolution",
+    "ja": "別の姿・メガシンカ"
+  },
+  "모습 · 메가진화": {
+    "en": "Forms & Mega Evolution",
+    "ja": "姿・メガシンカ"
+  },
+  "메가진화할 포켓몬을 먼저 만나주세요.": {
+    "en": "Meet a compatible Pokémon first.",
+    "ja": "対応するポケモンを先に仲間にしてください。"
+  },
+  "이미 영구 해금한 메가스톤입니다.": {
+    "en": "This Mega unlock is already permanent.",
+    "ja": "すでに永久解放済みです。"
+  },
+  "메가스톤을 구매할 사탕이 부족해요.": {
+    "en": "Not enough candies for this Mega unlock.",
+    "ja": "メガシンカの解放に必要なアメが足りません。"
+  },
+  "아직 사용할 수 없는 메가진화입니다.": {
+    "en": "This Mega Evolution is not available yet.",
+    "ja": "このメガシンカはまだ使えません。"
+  },
+  "메가스톤을 영구 해금했어요. 같은 종의 모든 친구가 함께 사용해요.": {
+    "en": "Mega unlock saved forever. Matching companions can all use it.",
+    "ja": "メガシンカを永久解放しました。対応するすべての仲間で使えます。"
+  },
+  "메가진화한 모습으로 함께해요. 새 토큰은 사탕으로 모입니다.": {
+    "en": "Together in Mega form. New tokens become candy.",
+    "ja": "メガシンカの姿で一緒に過ごします。新しいトークンはアメになります。"
+  },
+  "원래 모습으로 돌아왔어요.": {
+    "en": "Returned to the original form.",
+    "ja": "元の姿に戻りました。"
   }
 }

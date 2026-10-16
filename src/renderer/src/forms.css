@@ -1,0 +1,37 @@
+.app-shell .companion-customization { display:flex; justify-content:center; align-items:center; gap:6px; min-width:0; }
+.app-shell .companion-customization .ball-picker { min-width:0; }
+.app-shell .companion-customization .ball-picker select { max-width:116px; }
+.mega-picker { display:flex; align-items:center; min-width:0; gap:2px; }
+.app-shell .mega-picker select { width:126px; min-width:0; height:28px; padding:2px 4px; font-size:10px; }
+.mega-picker .text-button { padding:2px; font-size:16px; }
+.app-shell .home-page .companion-description h2 { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.sprite[data-artwork='true'] img { image-rendering:auto; }
+.form-shop-summary { display:flex; justify-content:space-between; gap:16px; padding:16px; background:var(--paper); border:2px solid var(--ink); border-radius:4px; }
+.form-shop-summary strong { font-size:13px; }
+.form-shop-summary p { margin:8px 0 6px; font-size:11px; }
+.form-shop-summary small { display:block; margin-top:6px; font-size:10px; line-height:1.5; color:var(--muted); }
+.form-shop-summary > div:last-child { flex-shrink:0; text-align:right; }
+.form-filters { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:16px 0; }
+.app-shell .form-filters input { flex:1; min-width:180px; padding:9px 12px; background:var(--paper); color:var(--ink); border:2px solid var(--ink); border-radius:3px; font-size:12px; }
+.app-shell .form-filters select { max-width:160px; height:36px; padding:4px; }
+.form-count { font-size:11px; }
+.form-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.form-card { display:flex; flex-direction:column; align-items:center; min-width:0; gap:8px; padding:12px; border:2px solid var(--ink); border-radius:4px; background:var(--paper); box-shadow:3px 3px #283e5020; }
+.form-card.form-active { outline:2px solid var(--gold); outline-offset:2px; }
+.form-card-top { display:flex; justify-content:space-between; gap:6px; align-self:stretch; font-size:10px; color:var(--muted); }
+.form-card > .sprite { width:112px; height:112px; margin:0; }
+.app-shell .form-card h3 { font-size:12px; line-height:1.5; text-align:center; overflow-wrap:anywhere; min-height:36px; margin:0; }
+.form-card .type-badges { flex-wrap:wrap; }
+.form-card .type-badges span { background:var(--line); color:var(--ink); }
+.app-shell .form-card p { margin:0; font-size:10px; line-height:1.5; text-align:center; }
+.form-card .form-status { color:var(--muted); }
+.form-card .stone-name,.form-card .form-route { min-height:30px; }
+.form-card .stone-name small { display:block; color:var(--muted); font-size:9px; }
+.app-shell .form-card > .button { width:100%; font-size:10px; line-height:1.5; }
+.form-card > .button:last-child { margin-top:auto; }
+.form-card > select { max-width:100%; padding:4px; }
+.form-pagination { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:20px; }
+.form-pagination select { padding:6px; }
+.app-shell .form-notes,.app-shell .forms-empty { margin-top:18px; font-size:11px; }
+.dex-card .dex-forms-link { font-size:10px; margin-top:8px; }
+@media(max-width:950px) { .form-grid { gap:10px; } .form-card { padding:9px; } .form-shop-summary { flex-direction:column; gap:6px; } .form-shop-summary > div:last-child { text-align:left; } }

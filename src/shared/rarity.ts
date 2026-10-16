@@ -1,4 +1,4 @@
-import { POKEMON_BY_ID } from './catalog'
+import { nationalId, POKEMON_BY_ID } from './catalog'
 
 export type Rarity = 'ordinary' | 'sublegendary' | 'legendary' | 'mythical'
 // Display categories, not current battle legality. "Sub-Legendary" is a fan
@@ -10,6 +10,6 @@ export const RARITIES: {id:Rarity;name:string}[] = [
 ]
 export function speciesRarity(id:number):Rarity {
   const p=POKEMON_BY_ID.get(id)
-  return p?.mythical?'mythical':p?.legendary?(major.has(id)?'legendary':'sublegendary'):'ordinary'
+  return p?.mythical?'mythical':p?.legendary?(major.has(nationalId(id))?'legendary':'sublegendary'):'ordinary'
 }
 export const rarityName=(rarity:Rarity):string=>RARITIES.find(r=>r.id===rarity)!.name

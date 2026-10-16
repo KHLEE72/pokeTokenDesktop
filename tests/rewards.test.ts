@@ -7,6 +7,7 @@ import { activePet, advanceGame } from '../src/shared/game'
 import { newGame, POKEMON, UsageRecord } from '../src/shared/model'
 import { ballUnlocked, RewardState, themeUnlocked, unlockRewards } from '../src/shared/rewards'
 import { removeTestDirectory } from './temp'
+import { hatchRandom } from './hatch-random'
 
 const stores: Store[] = [], directories: string[] = []
 function setup() {
@@ -67,7 +68,7 @@ describe('achievement rewards and saved balls', () => {
     const firstId = game.activeId
     store.act({ type: 'egg', eggType: 'fire' })
     const second = store.game
-    advanceGame(second, 500_000, 'fast', now, () => .5); store.set('game-v2', second)
+    advanceGame(second, 500_000, 'fast', now, hatchRandom(1)); store.set('game-v2', second)
     store.act({ type: 'ball', petId: second.activeId, ball: 'great' })
     store.act({ type: 'candy', count: 500 })
     expect(store.game.pets.find(p => p.id === firstId)?.ball).toBe('premier')

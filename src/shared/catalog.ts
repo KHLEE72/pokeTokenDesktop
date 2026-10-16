@@ -1,4 +1,5 @@
 import data from './catalog-data.json'
+import formData from './form-catalog.json'
 
 // Generated default-form roster. Regenerate with scripts/update-pokemon-catalog.mjs.
 export const EGG_TYPES = [
@@ -94,10 +95,21 @@ export const EGG_TYPES = [
   }
 ] as const
 export type EggType = typeof EGG_TYPES[number]['id']
-export interface PokemonSpecies { id: number; name: string; family: number; phase: number; types: readonly EggType[]; generation: number; legendary: boolean; mythical: boolean }
+export interface PokemonSpecies { id: number; name: string; family: number; phase: number; types: readonly EggType[]; generation: number; legendary: boolean; mythical: boolean; speciesId?: number }
+export type FormKind = 'regional' | 'special' | 'mega'
+export interface PokemonForm extends PokemonSpecies { speciesId: number; formId: number; identifier: string; kind: FormKind; region: string | null; names: Record<'ko'|'en'|'ja',string>; stone?: string; baseAppearanceId?: number; dialogue:{body:string;voice:string;signature:Record<'ko'|'en'|'ja',string>}|null }
 export interface PokemonFamily { family: number; eggTypes: readonly EggType[]; species: readonly number[] }
-export const FAMILIES: readonly PokemonFamily[] = data.families as PokemonFamily[]
+export const FORMS: readonly PokemonForm[] = formData.forms.map(f=>({...f,name:f.names.ko})) as PokemonForm[]
+export const MEGA_FORMS = FORMS.filter(f=>f.kind==='mega')
+export const GROWTH_FORMS = FORMS.filter(f=>f.kind!=='mega')
+export const FORM_BY_ID: ReadonlyMap<number,PokemonForm> = new Map(FORMS.map(f=>[f.id,f]))
+export const MEGA_STONES: readonly {id:string;itemId:number|null;names:Record<'ko'|'en'|'ja',string>;kind:string}[] = formData.stones
+export const FAMILIES: readonly PokemonFamily[] = [...data.families,...formData.families] as PokemonFamily[]
+const retiredHatchFamilies=new Set(formData.retiredHatchFamilies)
+export const HATCH_FAMILIES=FAMILIES.filter(f=>!retiredHatchFamilies.has(f.family))
 export const POKEMON: readonly PokemonSpecies[] = data.pokemon as PokemonSpecies[]
-export const EVOLUTIONS: Readonly<Record<number, readonly number[]>> = data.evolutions
-export const POKEMON_BY_ID: ReadonlyMap<number, PokemonSpecies> = new Map(POKEMON.map(p=>[p.id,p]))
+export const EVOLUTIONS: Readonly<Record<number, readonly number[]>> = {...data.evolutions,...formData.evolutions}
+export const ALL_POKEMON: readonly PokemonSpecies[] = [...POKEMON,...FORMS]
+export const POKEMON_BY_ID: ReadonlyMap<number, PokemonSpecies> = new Map(ALL_POKEMON.map(p=>[p.id,p]))
+export const nationalId = (id:number):number => FORM_BY_ID.get(id)?.speciesId ?? id
 export const GENERATIONS = [1,2,3,4,5,6,7,8,9] as const

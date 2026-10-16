@@ -1,6 +1,7 @@
 import raw from './character-profiles.json'
 import type { Language } from './i18n'
 import type { DialogueEvent } from './dialogue'
+import { FORM_BY_ID } from './catalog'
 
 type Text = Record<Language,string>
 interface Profile {facts:string[];body:string;voice:string;phase:number;signature?:Text;sourceVersion:number}
@@ -10,7 +11,9 @@ export const CHARACTER_DATA = raw as CharacterData
 // Traits are researched at build time. The application only selects local text;
 // no model calls, official Pokédex quotations, or name/type-prefix templates.
 export function characterDialogue(id:number|null,event:DialogueEvent,language:Language):readonly string[]|null {
-  const profile=id===null?undefined:CHARACTER_DATA.profiles[id]
+  const form=id===null?undefined:FORM_BY_ID.get(id)
+  const original=id===null?undefined:CHARACTER_DATA.profiles[form?.speciesId??id]
+  const profile:Profile|undefined=form?.dialogue&&original?{...original,...form.dialogue,facts:[]}:form?.kind==='mega'&&original?{...original,body:({10038:'floating',10040:'wings',10041:'serpent',10071:'round',10074:'floating',10301:'grounded'} as Record<number,string>)[form.id]??original.body}:original
   if(!profile)return null
   const scene=(key:string):string[]=>CHARACTER_DATA.scenes[key]?.[event]?.map(t=>t[language])??[]
   const base=scene('body:grounded'),body=scene(`body:${profile.body}`)

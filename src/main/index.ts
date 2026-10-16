@@ -199,6 +199,8 @@ else {
       else if (value.type === 'candy' && Number.isSafeInteger(value.count) && value.count>0 && value.count<=1e9) action={type:'candy',count:value.count}
       else if (value.type === 'target' && (value.speciesId===null || Number.isInteger(value.speciesId))) action={type:'target',speciesId:value.speciesId}
       else if (value.type === 'ball' && typeof value.petId === 'string' && value.petId.length < 80 && isBall(value.ball)) action={type:'ball',petId:value.petId,ball:value.ball}
+      else if(value.type==='mega-stone'&&typeof value.stone==='string'&&value.stone.length<80)action={type:'mega-stone',stone:value.stone}
+      else if(value.type==='mega'&&(value.formId===null||Number.isInteger(value.formId))&&(value.petId===undefined||typeof value.petId==='string'&&value.petId.length<80))action={type:'mega',formId:value.formId,...(value.petId===undefined?{}:{petId:value.petId})}
       else throw new Error('잘못된 요청')
       await request('game',undefined,action)
     })

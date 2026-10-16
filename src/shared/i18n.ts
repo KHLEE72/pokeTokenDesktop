@@ -1,6 +1,7 @@
 import catalog from './localized-catalog.json'
 import messages from './messages.json'
 import type { EggType } from './catalog'
+import { FORM_BY_ID } from './catalog'
 import type { BallId, ThemeId } from './rewards'
 
 export type Language = 'ko' | 'en' | 'ja'
@@ -8,7 +9,7 @@ export const LANGUAGES: { id: Language; name: string }[] = [{ id: 'ko', name: '�
 export const isLanguage = (value: unknown): value is Language => LANGUAGES.some(item => item.id === value)
 export const localeFor = (language: Language): string => ({ ko: 'ko-KR', en: 'en-US', ja: 'ja-JP' })[language]
 type Names = Record<string, Record<Language, string>>
-export const pokemonName = (id: number, language: Language): string => (catalog.species as Names)[String(id)]?.[language] ?? 'Pokémon'
+export const pokemonName = (id: number, language: Language): string => FORM_BY_ID.get(id)?.names[language] ?? (catalog.species as Names)[String(id)]?.[language] ?? 'Pokémon'
 export const typeName = (id: EggType, language: Language): string => (catalog.types as Names)[id][language]
 export const ballName = (id: BallId = 'poke', language: Language): string => (catalog.balls as Names)[id][language]
 export function themeName(id: ThemeId, language: Language): string {
@@ -16,7 +17,7 @@ export function themeName(id: ThemeId, language: Language): string {
   if (id === 'dark') return { ko: '보라시티 다크', en: 'Lavender Town Dark', ja: 'シオンタウン・ダーク' }[language]
   return ballName(id, language)
 }
-export const pokemonMatches = (id: number, query: string): boolean => Object.values((catalog.species as Names)[String(id)] ?? {}).some(name => name.normalize('NFKC').replace(/\s/g, '').toLowerCase().includes(query))
+export const pokemonMatches = (id: number, query: string): boolean => Object.values(FORM_BY_ID.get(id)?.names ?? (catalog.species as Names)[String(id)] ?? {}).some(name => name.normalize('NFKC').replace(/\s/g, '').toLowerCase().includes(query))
 export function translate(key: string, language: Language, values: unknown[] = []): string {
   const template = language === 'ko' ? key : (messages as Record<string, { en: string; ja: string }>)[key]?.[language] ?? key
   return template.replace(/\{(\d+)\}/g, (_, index: string) => String(values[Number(index)] ?? ''))
@@ -40,6 +41,7 @@ export function localizeMessage(message: string | null | undefined, language: La
   const candy = /^사탕 ([\d,]+) XP 사용(?: · (.*))?$/.exec(message)
   if (candy) return t`사탕 ${Number(candy[1].replace(/,/g, '')).toLocaleString(localeFor(language))} XP 사용` + (candy[2] ? ` · ${localizeMessage(candy[2], language)}` : '')
   for (const [id, names] of Object.entries(catalog.species)) if (message === `${names.ko}를 목표로 키워요.`) return t`${pokemonName(Number(id), language)}를 목표로 키워요.`
+  for(const form of FORM_BY_ID.values())if(message===`${form.names.ko}를 목표로 키워요.`)return t`${pokemonName(form.id,language)}를 목표로 키워요.`
   for (const [id, names] of Object.entries(catalog.balls)) if (message === `${names.ko}을 골랐어요.`) return t`${ballName(id as BallId, language)}을 골랐어요.`
   return message.split(' · ').map(part => {
     const hatch = /^(이로치 )?부화 (\d+)회$/.exec(part)

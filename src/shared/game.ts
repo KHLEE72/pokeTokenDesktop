@@ -1,9 +1,10 @@
 // Growth balance adapted from PokeTokenBar (MIT), pinned revision in THIRD_PARTY_NOTICES.md.
-import { Capture, Companion, EggType, EVOLUTIONS, FAMILIES, GameAction, GameState, newGame, Pace, POKEMON } from './model'
+import { Capture, Companion, EggType, EVOLUTIONS, FAMILIES, GameAction, GameState, newGame, Pace, CANDY_XP } from './model'
 import { ballInfo, isBall } from './rewards'
-import { POKEMON_BY_ID } from './catalog'
+import { FORM_BY_ID, HATCH_FAMILIES, POKEMON_BY_ID } from './catalog'
+import { ensureAppearances, megaUnlocked, purchaseMegaStone } from './mega'
 export const multipliers: Record<Pace, number> = { fast: 0.1, normal: 1, slow: 2 }
-export const CANDY_XP = 100_000
+export { CANDY_XP }
 export const SHINY_CHANCE = 1 / 64
 const baseThresholds = [5_000_000, 500_000_000, 1_000_000_000]
 export const threshold = (phase: number, pace: Pace): number => Math.round((baseThresholds[phase] ?? 0) * multipliers[pace])
@@ -17,6 +18,11 @@ const remainingDepth = (id: number): number => {
 export const finalPhase = (pet: Companion): number => pet.phase+remainingDepth(growthPath(pet).at(-1) ?? 0)
 export const isGrowing = (game: GameState): boolean => { const pet = activePet(game); return game.displayPhase === pet.phase && (pet.phase === 0 || pet.phase < finalPhase(pet)) }
 export const speciesId = (game: GameState): number | null => growthPath(activePet(game))[game.displayPhase-1] ?? null
+export const appearanceId = (game:GameState):number|null => {
+  const pet=activePet(game),id=speciesId(game),form=pet.mega?FORM_BY_ID.get(pet.mega):null
+  return game.displayPhase===pet.phase&&form?.baseAppearanceId===id&&megaUnlocked(game,form.id)?form.id:id
+}
+export const appearancePhase = (pet:Companion,id:number):number => growthPath(pet).indexOf(id)+1
 export const waitingForEvolution = (pet: Companion, pace: Pace): boolean => evolutionOptions(pet).length>1 && !pet.evolutionTarget && pet.xp>=threshold(pet.phase,pace)
 export const capturedSpecies = (game: GameState, capture: Capture): number => {
   const pet=game.pets.find(p=>p.id===capture.petId)
@@ -31,7 +37,7 @@ export function upgradeGrowthPaths(game: GameState): void {
 }
 export const candyCount = (game: GameState): number => Math.floor(game.candyTokens / CANDY_XP)
 export const discoveredSpecies = (game: GameState): number[] => [...new Set([...game.owned, ...game.ownedShiny])]
-export const eggFamilies = (type: EggType): number[] => FAMILIES.filter(f => f.eggTypes.some(t => t === type)).map(f => f.family)
+export const eggFamilies = (type: EggType): number[] => HATCH_FAMILIES.filter(f => f.eggTypes.some(t => t === type)).map(f => f.family)
 // Relative weights within a chosen egg type; these are not global percentages.
 export const hatchFamilyWeight = (family: number): number => {
   const root = POKEMON_BY_ID.get(FAMILIES[family].species[0])!
@@ -47,11 +53,11 @@ export function chooseHatchFamily(choices: readonly number[], random = Math.rand
 export const dexChoices = (game: GameState, id: number, shiny: boolean): Companion[] => {
   const species = POKEMON_BY_ID.get(id)
   if (!species) return []
-  return game.pets.filter(p => p.family === species.family && p.shiny === shiny && growthPath(p).includes(id))
-    .sort((a,b) => Number(b.phase === species.phase)-Number(a.phase === species.phase) || b.xp-a.xp || a.id.localeCompare(b.id))
+  return game.pets.filter(p => p.shiny === shiny && growthPath(p).includes(id))
+    .sort((a,b) => Number(b.phase === appearancePhase(b,id))-Number(a.phase === appearancePhase(a,id)) || b.xp-a.xp || a.id.localeCompare(b.id))
 }
 function register(game: GameState, pet: Companion): void {
-  const id = growthPath(pet).at(-1)!, owned = pet.shiny ? game.ownedShiny : game.owned
+  const id = growthPath(pet).at(-1)!, forms=ensureAppearances(game), owned = id>1025 ? pet.shiny?forms.ownedShiny:forms.owned : pet.shiny ? game.ownedShiny : game.owned
   if (!owned.includes(id)) owned.push(id)
 }
 function complete(game: GameState, pet: Companion, now: string): void {
@@ -99,6 +105,18 @@ export function changePace(game: GameState, before: Pace, after: Pace): void {
   }
 }
 export function gameAction(game: GameState, action: GameAction, pace: Pace, now: string): string {
+  if(action.type==='mega-stone'){
+    purchaseMegaStone(game,action.stone)
+    return '메가스톤을 영구 해금했어요. 같은 종의 모든 친구가 함께 사용해요.'
+  }
+  if(action.type==='mega'){
+    const pet=action.petId?game.pets.find(p=>p.id===action.petId):activePet(game),form=action.formId===null?null:FORM_BY_ID.get(action.formId)
+    if(!pet||action.formId!==null&&(!form||form.kind!=='mega'||form.baseAppearanceId!==(action.petId?growthPath(pet).at(-1):speciesId(game))||(!action.petId&&game.displayPhase!==pet.phase)||!megaUnlocked(game,form.id)||evolutionOptions(pet).length))throw new Error('아직 사용할 수 없는 메가진화입니다.')
+    if(action.petId){game.activeId=pet.id;game.displayPhase=pet.phase}
+    pet.mega=action.formId
+    if(form){const collection=ensureAppearances(game),owned=pet.shiny?collection.ownedShiny:collection.owned;if(!owned.includes(form.id))owned.push(form.id)}
+    return form?'메가진화한 모습으로 함께해요. 새 토큰은 사탕으로 모입니다.':'원래 모습으로 돌아왔어요.'
+  }
   if (action.type === 'ball') {
     const pet = game.pets.find(p => p.id === action.petId)
     if (!pet || pet.phase === 0 || !isBall(action.ball)) throw new Error('선택할 수 없는 볼입니다.')
@@ -116,6 +134,7 @@ export function gameAction(game: GameState, action: GameAction, pace: Pace, now:
     const pet = game.pets.find(p => p.id === action.petId)
     if (!pet || !Number.isInteger(action.phase) || action.phase < 0 || action.phase > pet.phase || (pet.phase > 0 && !growthPath(pet)[action.phase-1])) throw new Error('아직 만날 수 없는 포켓몬입니다.')
     game.activeId = pet.id; game.displayPhase = action.phase
+    pet.mega=null
     return isGrowing(game) ? '이전에 키우던 상태에서 성장을 이어갑니다.' : '완성한 모습으로 함께해요. 새 토큰은 사탕으로 모입니다.'
   }
   const pet = activePet(game)
@@ -123,7 +142,7 @@ export function gameAction(game: GameState, action: GameAction, pace: Pace, now:
     const options=evolutionOptions(pet)
     if (!isGrowing(game) || options.length<2 || (action.speciesId!==null && !options.includes(action.speciesId))) throw new Error('선택할 수 없는 진화 목표입니다.')
     pet.evolutionTarget=action.speciesId
-    return grow(game,0,pace,now,Math.random) ?? (action.speciesId ? `${POKEMON.find(p=>p.id===action.speciesId)!.name}를 목표로 키워요.` : '진화 목표를 아직 정하지 않았어요.')
+    return grow(game,0,pace,now,Math.random) ?? (action.speciesId ? `${POKEMON_BY_ID.get(action.speciesId)!.name}를 목표로 키워요.` : '진화 목표를 아직 정하지 않았어요.')
   }
   if (pet.phase === 0) throw new Error('알에는 사탕을 사용할 수 없어요.')
   if (!isGrowing(game)) throw new Error('이 모습의 성장은 이미 완료됐어요.')

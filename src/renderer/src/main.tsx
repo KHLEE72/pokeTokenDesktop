@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { version } from '../../../package.json';
 import { Snapshot, Settings, POKEMON, DisplayChoice, PetMotion, PetInputTrace, EGG_TYPES, FAMILIES, EggType, GameAction, GameState, Companion } from '../../shared/model';
-import { activePet, candyCount, CANDY_XP, dexChoices, discoveredSpecies, evolutionOptions, finalPhase, isGrowing, speciesId, threshold, waitingForEvolution } from '../../shared/game';
+import { activePet, appearanceId, appearancePhase, candyCount, CANDY_XP, dexChoices, discoveredSpecies, evolutionOptions, finalPhase, isGrowing, speciesId, threshold, waitingForEvolution } from '../../shared/game';
 import { usePetDialogue } from './pet-dialogue';
 import { PixelIcon, PixelIconKind } from './pixel-icons';
 import { ACHIEVEMENTS, BallId, ballInfo, ballUnlocked, themeInfo } from '../../shared/rewards';
@@ -14,7 +14,11 @@ import './appearance.css';
 import './rewards.css';
 import './i18n.css';
 import './dex.css';
-import { GENERATIONS } from '../../shared/catalog';
+import './forms.css';
+import { FORM_BY_ID, FORMS, GENERATIONS } from '../../shared/catalog';
+import { appearanceCollection } from '../../shared/mega';
+import { Egg, Sprite } from './sprites';
+import { FormCollection, MegaPicker } from './forms-ui';
 import { RARITIES, Rarity, speciesRarity } from '../../shared/rarity';
 import { RarityBadge } from './rarity-badge';
 import { DexSort, sortDex } from '../../shared/dex';
@@ -39,23 +43,6 @@ function useLiveSnapshot(): Snapshot | null {
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   useEffect(() => {const unsubscribe = window.desktop.onSnapshot(setSnapshot);void window.desktop.getSnapshot().then(setSnapshot);return unsubscribe;}, []);
   return snapshot;
-}
-function Egg({ type = 'grass' }: {type?: EggType | null;}): React.JSX.Element {const { language, t } = useI18n();
-  const kind = EGG_TYPES.find((t) => t.id === type);
-  return <svg className="egg" viewBox="0 0 32 40" shapeRendering="crispEdges" aria-label={kind ? localizedEggName(kind.id, language) : t("기존 포켓몬 알")}><path fill="#283e5025" d="M8 38h16v2H8Z" /><path fill="#283e50" d="M14 2h4v2h4v4h2v4h2v4h2v14h-2v4h-2v2H8v-2H6v-4H4V16h2v-4h2V8h2V4h4Z" /><path fill="#fff6dc" d="M14 4h4v2h4v4h2v6h2v14h-2v4H8v-4H6V16h2v-6h2V6h4Z" /><path fill="#e9dcad" d="M22 16h2v14h-2v2H10v-2h10v-2h2Z" /><path fill={kind?.color ?? '#76b77d'} d="M12 8h4v4h-4Zm7 10h4v6h-4ZM8 24h6v4H8Z" /><path fill="#fff" d="M10 14h2v6h-2Zm2-2h2v2h-2Z" /></svg>;
-}
-function Sprite({ id, shiny = false, eggType = 'grass', className = '' }: {id: number | null;shiny?: boolean;eggType?: EggType | null;className?: string;}): React.JSX.Element {const { language, t } = useI18n();
-  const [url, setUrl] = useState<string | null>(null);
-  useEffect(() => {
-    setUrl(null);if (!id) return;
-    let canceled = false;
-    const load = (): void => {void window.desktop.getSprite(id, shiny).then((value) => {if (!canceled) setUrl(value);}).catch(() => {});};
-    load();const timer = setInterval(load, 60_000);
-    return () => {canceled = true;clearInterval(timer);};
-  }, [id, shiny]);
-  if (!id) return <div className={`sprite ${className}`}><Egg type={eggType} /></div>;
-  const name = pokemonName(id, language);
-  return <div className={`sprite ${className}`} data-shiny={shiny}>{url ? <img src={url} alt={name} draggable={false} /> : <div className="sprite-fallback"><span>✦</span><small>{name}</small></div>}</div>;
 }
 function Pet(): React.JSX.Element | null {const { language, t } = useI18n();
   const snapshot = useSnapshot();
@@ -173,7 +160,7 @@ function Pet(): React.JSX.Element | null {const { language, t } = useI18n();
       <div className={`pet-motion state-${motion.state} ${speech?.event === 'growth' ? 'celebrating' : ''} ${reaction ? 'petted' : ''}`} style={{
         '--sway': `${motion.tilt * -motion.direction}deg`, '--land-wide': 1 + motion.impact * 0.22,
         '--land-flat': 1 - motion.impact * 0.26, '--land-hop': `${4 + motion.impact * 7}px`
-      } as React.CSSProperties}>{inBall ? <BallIcon ball={ball} /> : <Sprite id={speciesId(snapshot.game)} shiny={activePet(snapshot.game).shiny} eggType={activePet(snapshot.game).eggType} />}</div>
+      } as React.CSSProperties}>{inBall ? <BallIcon ball={ball} /> : <Sprite id={appearanceId(snapshot.game)} shiny={activePet(snapshot.game).shiny} eggType={activePet(snapshot.game).eggType} />}</div>
       {transition && <span className="ball-burst" aria-hidden="true"><i /><i /><i /><i /><i /><i /></span>}
       {reaction > 0 && !inBall && <span key={reaction} className="pet-affection" aria-hidden="true"><i>♥</i><i>✦</i><i>♥</i></span>}
       {motion.state === 'landing' && <span className="pet-dust" aria-hidden="true"><i /><i /><i /><i /></span>}
@@ -221,21 +208,23 @@ function CandyBox({ game, pace, busy, act, compact = false }: {game: GameState;p
     {(!compact || !canFeed) && <p>{pet.phase === 0 ? t("알은 토큰으로만 부화해요.") : canFeed ? t("토큰으로 자동 성장하며 사탕으로도 키울 수 있어요.") : compact ? t("새 토큰은 사탕으로 쌓여요.") : t("완성한 모습이에요. 새 토큰은 사탕으로 쌓입니다.")}</p>}</div>
     <div className="candy-actions"><label>{t("먹일 개수 ")}<input aria-label={t("먹일 사탕 개수")} type="number" min="1" max={Math.max(1, count)} value={Math.min(amount, Math.max(1, count))} disabled={busy || !canFeed || !count} onChange={(e) => setAmount(Math.max(1, Math.floor(Number(e.target.value) || 1)))} /></label>
       <button className="button primary" disabled={busy || !canFeed || !count} onClick={() => act({ type: 'candy', count: Math.min(amount, count) })}>{t("사탕 먹이기")}</button>
-      <button className="button subtle" disabled={busy || !canFeed || count < next} onClick={() => act({ type: 'candy', count: next })}>{t("다음 진화까지")}</button>
+      {(!compact||canFeed)&&<button className="button subtle" disabled={busy || !canFeed || count < next} onClick={() => act({ type: 'candy', count: next })}>{t("다음 진화까지")}</button>}
     </div></section>;
 }
-function DexCard({ snapshot, game, pace, p, shiny, status, busy, act }: {snapshot: Snapshot;game: GameState;pace: Settings['pace'];p: typeof POKEMON[number];shiny: boolean;status: DexStatus;busy: boolean;act: (action: GameAction) => void;}): React.JSX.Element {const { language, t } = useI18n();
-  const [chosen, setChosen] = useState(''),choices = dexChoices(game, p.id, shiny).filter((c) => status === 'growing' ? growingAppearance(c, p.phase) : status === 'complete' ? !growingAppearance(c, p.phase) : status === 'active' ? c.id === game.activeId && game.displayPhase === p.phase : true);
-  const pet = choices.find((c) => c.id === chosen) ?? choices.find((c) => c.id === game.activeId && game.displayPhase === p.phase) ?? choices[0];
-  const active = pet?.id === game.activeId && game.displayPhase === p.phase,growing = pet && growingAppearance(pet, p.phase);
+function DexCard({ snapshot, game, pace, p, shiny, status, busy, act, showForms }: {snapshot: Snapshot;game: GameState;pace: Settings['pace'];p: typeof POKEMON[number];shiny: boolean;status: DexStatus;busy: boolean;act: (action: GameAction) => void;showForms:(species:number)=>void;}): React.JSX.Element {const { language, t } = useI18n();
+  const phase=(c:Companion):number=>appearancePhase(c,p.id);
+  const [chosen, setChosen] = useState(''),choices = dexChoices(game, p.id, shiny).filter((c) => status === 'growing' ? growingAppearance(c, phase(c)) : status === 'complete' ? !growingAppearance(c, phase(c)) : status === 'active' ? c.id === game.activeId && game.displayPhase === phase(c) : true);
+  const pet = choices.find((c) => c.id === chosen) ?? choices.find((c) => c.id === game.activeId && game.displayPhase === phase(c)) ?? choices[0];
+  const active = pet?.id === game.activeId && game.displayPhase === phase(pet) && appearanceId(game)===p.id,growing = pet && growingAppearance(pet, phase(pet));
   return <article className={`dex-card ${pet ? '' : 'locked'} ${active ? 'dex-selected' : ''}`} data-species={p.id} data-rarity={speciesRarity(p.id)} data-variant={shiny ? 'shiny' : 'normal'}><span className="dex-number">No. {String(p.id).padStart(3, '0')} {shiny ? t("✦ 이로치") : ''}<span className="dex-species-tags">{t`${p.generation}세대`}</span><RarityBadge rarity={speciesRarity(p.id)}/></span>
     {pet ? <Sprite id={p.id} shiny={shiny} /> : <div className="locked-placeholder">?</div>}<h3>{pet ? pokemonName(p.id, language) : t("아직 만나지 못했어요")}</h3>
     <div className="type-badges">{p.types.map((type) => <span key={type} style={{ background: EGG_TYPES.find((t) => t.id === type)?.color }}>{typeName(type, language)}</span>)}</div>
     <div className="dex-card-actions">
       <span className="dex-badge">{pet ? growing ? waitingForEvolution(pet, pace) ? t("진화 대기 · 목표 선택") : t`자동 성장 · ${(pet.xp / threshold(pet.phase, pace) * 100).toFixed(1)}%` : t("진화 완료 · 사탕 적립") : t("미발견")}</span>
-      {choices.length > 1 && <select aria-label={t`${pokemonName(p.id, language)} 개체 선택`} value={pet.id} onChange={(e) => setChosen(e.target.value)}>{choices.map((c, i) => <option key={c.id} value={c.id}>{t`${i + 1}번째 친구 · ${growingAppearance(c, p.phase) ? t`${(c.xp / threshold(c.phase, pace) * 100).toFixed(1)}% 성장` : t("이 모습의 진화 완료")}`}</option>)}</select>}
+      {choices.length > 1 && <select aria-label={t`${pokemonName(p.id, language)} 개체 선택`} value={pet.id} onChange={(e) => setChosen(e.target.value)}>{choices.map((c, i) => <option key={c.id} value={c.id}>{t`${i + 1}번째 친구 · ${growingAppearance(c, phase(c)) ? t`${(c.xp / threshold(c.phase, pace) * 100).toFixed(1)}% 성장` : t("이 모습의 진화 완료")}`}</option>)}</select>}
       {pet && <BallPicker pet={pet} snapshot={snapshot} busy={busy} act={act} label={t`${pokemonName(p.id, language)} ${choices.indexOf(pet) + 1}번째 친구의 볼 선택`} />}
-      <button className="button primary" aria-label={t`${shiny ? t("이로치 ") : ''}${pokemonName(p.id, language)} 선택`} disabled={busy || !pet || active} onClick={() => act({ type: 'select', petId: pet.id, phase: p.phase })}>{active ? t("함께하는 중") : pet ? t("함께하기") : t("부화해서 만나기")}</button>
+      <button className="button primary" aria-label={t`${shiny ? t("이로치 ") : ''}${pokemonName(p.id, language)} 선택`} disabled={busy || !pet || active} onClick={() => act({ type: 'select', petId: pet.id, phase: phase(pet) })}>{active ? t("함께하는 중") : pet ? t("함께하기") : t("부화해서 만나기")}</button>
+      {FORMS.some(f=>f.speciesId===p.id)&&<button className="text-button dex-forms-link" onClick={()=>showForms(p.id)}>{t('다른 모습 · 메가진화')}</button>}
     </div>
   </article>;
 }
@@ -270,7 +259,8 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   }, [snapshot?.rewards]);
   useEffect(() => {if (!newRewards.length) return;const timer = setTimeout(() => setNewRewards([]), 6500);return () => clearTimeout(timer);}, [newRewards]);
   const [shinyDex, setShinyDex] = useState(false);
-  const [dexView, setDexView] = useState<'collection' | 'history'>('collection');
+  const [dexView, setDexView] = useState<'collection' | 'history' | 'forms'>('collection');
+  const [formSpecies,setFormSpecies]=useState<number|null>(null);
   const [dexSearch, setDexSearch] = useState('');
   const [dexGeneration, setDexGeneration] = useState<number | 'all'>('all');
   const [dexRarity, setDexRarity] = useState<Rarity | 'all'>('all');
@@ -280,9 +270,10 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   const dexToolbar = useRef<HTMLElement>(null);
   useEffect(() => setDexPage(1), [language, snapshot?.settings.dexSort]);
   const dexViewKeys = (event: React.KeyboardEvent<HTMLDivElement>): void => {
-    const index = event.key === 'Home' ? 0 : event.key === 'End' ? 1 : ['ArrowLeft', 'ArrowRight'].includes(event.key) ? (dexView === 'collection' ? 1 : 0) : -1;
+    const views=['collection','history','forms'] as const,current=views.indexOf(dexView);
+    const index = event.key === 'Home' ? 0 : event.key === 'End' ? 2 : event.key==='ArrowLeft'?(current+2)%3:event.key==='ArrowRight'?(current+1)%3:-1;
     if (index < 0) return;
-    event.preventDefault();setDexView(index === 0 ? 'collection' : 'history');
+    event.preventDefault();setDexView(views[index]);
     event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]')[index]?.focus();
   };
   const resetDexFilters = (): void => {setDexSearch('');setDexGeneration('all');setDexRarity('all');setDexType('all');setDexStatus('all');setDexPage(1);};
@@ -299,7 +290,9 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   const { game, settings } = snapshot;
   const pet = activePet(game),growing = isGrowing(game),discovered = discoveredSpecies(game);
   const waiting = waitingForEvolution(pet, settings.pace) && growing,branches = growing ? evolutionOptions(pet) : [];
-  const id = speciesId(game),name = id ? `${pet.shiny ? t("✦ 이로치 ") : ''}${pokemonName(id, language)}` : localizedEggName(pet.eggType, language);
+  const id = appearanceId(game),name = id ? `${pet.shiny ? t("✦ 이로치 ") : ''}${pokemonName(id, language)}` : localizedEggName(pet.eggType, language);
+  const showForms=(species:number):void=>{setFormSpecies(species);setDexView('forms');setTab('dex');};
+  const formCollection=appearanceCollection(game),formCount=new Set([...formCollection.owned,...formCollection.ownedShiny]).size,currentForm=id?FORM_BY_ID.get(id):undefined;
   const goal = growing ? threshold(pet.phase, settings.pace) : 0,progress = goal ? Math.min(100, pet.xp / goal * 100) : 100;
   const today = snapshot.usage.claude.today + snapshot.usage.codex.today;
   const all = snapshot.usage.claude.all + snapshot.usage.codex.all;
@@ -314,9 +307,9 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
     const choices = dexChoices(game, p.id, shinyDex);
     if (dexStatus === 'discovered') return choices.length > 0;
     if (dexStatus === 'undiscovered') return choices.length === 0;
-    if (dexStatus === 'growing') return choices.some((c) => growingAppearance(c, p.phase));
-    if (dexStatus === 'complete') return choices.some((c) => !growingAppearance(c, p.phase));
-    if (dexStatus === 'active') return choices.some((c) => c.id === game.activeId && game.displayPhase === p.phase);
+    if (dexStatus === 'growing') return choices.some((c) => growingAppearance(c, appearancePhase(c,p.id)));
+    if (dexStatus === 'complete') return choices.some((c) => !growingAppearance(c, appearancePhase(c,p.id)));
+    if (dexStatus === 'active') return choices.some((c) => c.id === game.activeId && game.displayPhase === appearancePhase(c,p.id));
     return true;
   }), settings.dexSort, game, shinyDex, language) : [];
   const hasDexFilters = Boolean(dexSearch || dexGeneration !== 'all' || dexRarity !== 'all' || dexType !== 'all' || dexStatus !== 'all');
@@ -338,9 +331,9 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
       {tab === 'home' && <section className="home-page" aria-label={t("현재 펫과 사용량")}>
         <div className="page-heading"><div><h1>{t("오늘도, 함께 성장해요")}<span>✦</span></h1><p>{t("코딩에 쓴 토큰이 작은 친구의 경험치가 됩니다.")}</p></div><button className="button subtle" disabled={busy || snapshot.scanning} onClick={() => void run(() => window.desktop.refresh())}>{snapshot.scanning ? t("확인 중…") : t("↻ 새로고침")}</button></div>
         <div className="home-grid">
-          <section className="companion-card"><div className="card-top"><span className="pill">{pet.phase === 0 ? t("부화를 기다리는 중") : waiting ? t("진화 목표를 기다리는 중") : growing ? t`성장 단계 ${pet.phase} / ${finalPhase(pet)}` : t("경험치사탕을 모으는 중")}</span><button className="companion-dex-link" title={t`나의 도감 ${discovered.length} / ${POKEMON.length}종 · 이로치 ${game.ownedShiny.length}종`} onClick={() => setTab('dex')}><PixelIcon kind="dex" />{t("도감 ")}{discovered.length}/{POKEMON.length} →</button></div>
+          <section className="companion-card"><div className="card-top"><span className="pill">{pet.phase === 0 ? t("부화를 기다리는 중") : waiting ? t("진화 목표를 기다리는 중") : growing ? t`성장 단계 ${pet.phase} / ${finalPhase(pet)}` : t("경험치사탕을 모으는 중")}</span><button className="companion-dex-link" title={t`나의 도감 ${discovered.length} / ${POKEMON.length}종 · 이로치 ${game.ownedShiny.length}종`} onClick={() => currentForm?showForms(currentForm.speciesId):setTab('dex')}><PixelIcon kind="dex" />{currentForm?<>{t('모습 ')}{formCount}/{FORMS.length}</>:<>{t("도감 ")}{discovered.length}/{POKEMON.length}</>} →</button></div>
             <div className="habitat"><div className="cloud cloud-one" /><div className="cloud cloud-two" /><div className="sun" /><div className="hill hill-one" /><div className="hill hill-two" /><div className="ground" /><div className="habitat-sprite"><Sprite id={id} shiny={pet.shiny} eggType={pet.eggType} /></div><span className="grass grass-one"><PixelIcon kind="grass" /></span><span className="grass grass-two"><PixelIcon kind="grass" /></span></div>
-            <div className="companion-description"><h2>{name}</h2>{pet.phase > 0 ? <BallPicker pet={pet} snapshot={snapshot} busy={busy} act={act} /> : <p>{t("어떤 친구가 태어날까요?")}</p>}</div>
+            <div className="companion-description"><h2 title={name}>{name}</h2>{pet.phase > 0 ? <div className="companion-customization"><BallPicker pet={pet} snapshot={snapshot} busy={busy} act={act} /><MegaPicker snapshot={snapshot} busy={busy} act={act} openShop={()=>showForms(speciesId(game)!)}/></div> : <p>{t("어떤 친구가 태어날까요?")}</p>}</div>
             <div className="growth"><div><strong><span className="exp-label">EXP</span>{branches.length > 1 ? <select className={`evolution-target ${waiting ? 'awaiting-target' : ''}`} aria-label={t("진화 목표")} value={pet.evolutionTarget ?? ''} disabled={busy} onChange={(e) => act({ type: 'target', speciesId: e.target.value ? Number(e.target.value) : null })}><option value="">{t("진화 목표 선택")}</option>{branches.map((id) => <option key={id} value={id}>{pokemonName(id, language)}{(pet.shiny ? game.ownedShiny : game.owned).includes(id) ? t(" · 도감 등록") : ''}</option>)}</select> : growing ? t`${t(labels[pet.phase])}까지` : t("이 모습의 진화 완료")}</strong><span>{progress.toFixed(1)}%</span></div><div className="progress-track" role="progressbar" aria-label={t("현재 펫 성장 진행률")} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Number(progress.toFixed(1))}><div style={{ width: `${progress}%` }} /></div><p>{waiting ? <span>{t("목표를 고르면 진화해요 · 새 토큰은 사탕으로")}</span> : growing ? <><span>{format(pet.xp)} / {format(goal)} XP</span><span>{t`${format(Math.max(0, goal - pet.xp))} XP 남음`}</span></> : <span>{t("알 또는 성장 중인 포켓몬을 고르면 자동 성장을 이어갑니다.")}</span>}</p></div>
             <div className="companion-actions"><button className="button primary" disabled={busy} onClick={() => update({ visible: !settings.visible })}>{settings.visible ? t("데스크톱 펫 숨기기") : t("데스크톱 펫 보이기")}</button>{pet.phase > 0 && <button className="button subtle" disabled={busy} onClick={() => update({ inBall: !settings.inBall, visible: true })}>{settings.inBall ? t("볼에서 꺼내기") : t("볼에 넣기")}</button>}<button className="button icon-button" disabled={busy} title={settings.paused ? t("다시 걷기") : t("이동 일시정지")} aria-label={settings.paused ? t("다시 걷기") : t("이동 일시정지")} onClick={() => update({ paused: !settings.paused })}>{settings.paused ? '▷' : 'Ⅱ'}</button></div>
           </section>
@@ -354,7 +347,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
       </section>}
       {tab === 'dex' && <>
         <div className="page-heading"><div><h1>{t("나의 작은 도감")}</h1><p>{t`${FAMILIES.length}개 진화 계열 · ${discovered.length} / ${POKEMON.length}종 발견 · 이로치 ${game.ownedShiny.length}종`}</p></div>{dexView === 'collection' && <div className="segmented"><button className={!shinyDex ? 'selected' : ''} aria-pressed={!shinyDex} onClick={() => {setShinyDex(false);setDexPage(1);}}>{t("일반 도감")}</button><button className={shinyDex ? 'selected' : ''} aria-pressed={shinyDex} onClick={() => {setShinyDex(true);setDexPage(1);}}>{t("✦ 이로치 도감")}</button></div>}</div>
-        <div className="dex-views" role="tablist" onKeyDown={dexViewKeys} aria-label={t("도감 보기")}><button id="dex-collection-tab" className={`button ${dexView === 'collection' ? 'primary' : 'subtle'}`} role="tab" tabIndex={dexView === 'collection' ? 0 : -1} aria-selected={dexView === 'collection'} aria-controls="dex-collection" onClick={() => setDexView('collection')}>{t("포켓몬 도감")}</button><button id="dex-history-tab" className={`button ${dexView === 'history' ? 'primary' : 'subtle'}`} role="tab" tabIndex={dexView === 'history' ? 0 : -1} aria-selected={dexView === 'history'} aria-controls="dex-history" onClick={() => setDexView('history')}>{t("최종 진화 기록")}<span>{game.captures.length}</span></button></div>
+        <div className="dex-views" role="tablist" onKeyDown={dexViewKeys} aria-label={t("도감 보기")}><button id="dex-collection-tab" className={`button ${dexView === 'collection' ? 'primary' : 'subtle'}`} role="tab" tabIndex={dexView === 'collection' ? 0 : -1} aria-selected={dexView === 'collection'} aria-controls="dex-collection" onClick={() => setDexView('collection')}>{t("포켓몬 도감")}</button><button id="dex-history-tab" className={`button ${dexView === 'history' ? 'primary' : 'subtle'}`} role="tab" tabIndex={dexView === 'history' ? 0 : -1} aria-selected={dexView === 'history'} aria-controls="dex-history" onClick={() => setDexView('history')}>{t("최종 진화 기록")}<span>{game.captures.length}</span></button><button id="dex-forms-tab" className={`button ${dexView==='forms'?'primary':'subtle'}`} role="tab" tabIndex={dexView==='forms'?0:-1} aria-selected={dexView==='forms'} aria-controls="dex-forms" onClick={()=>{setFormSpecies(null);setDexView('forms');}}>{t('모습 · 메가진화')}</button></div>
         {dexView === 'collection' ? <div role="tabpanel" id="dex-collection" aria-labelledby="dex-collection-tab">
         <section ref={dexToolbar} className="dex-toolbar" aria-label={t("도감 검색 및 필터")}>
           <div className="dex-filter-controls">
@@ -368,8 +361,8 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
           <div className="dex-filter-summary"><p role="status" aria-live="polite"><strong>{t`전체 ${filteredPokemon.length}종`}</strong>{filteredPokemon.length > 0 && t` 중 ${dexStart + 1}–${dexStart + pagePokemon.length}종`} · {shinyDex ? t("이로치") : t("일반")}{t(" 도감")}</p><button className="text-button" disabled={!hasDexFilters} onClick={resetDexFilters}>{t("필터 초기화")}</button></div>
           {filteredPokemon.length > 0 && <DexPagination page={currentDexPage} pages={dexPages} position="top" onChange={changeDexPage} />}
         </section>
-        {filteredPokemon.length ? <><div className="dex-grid">{pagePokemon.map((p) => <DexCard key={`${p.id}:${shinyDex}:${dexStatus}`} snapshot={snapshot} game={game} pace={settings.pace} p={p} shiny={shinyDex} status={dexStatus} busy={busy} act={act} />)}</div><DexPagination page={currentDexPage} pages={dexPages} position="bottom" onChange={changeDexPage} /></> : <div className="dex-empty"><span aria-hidden="true">⌕</span><h3>{t("조건에 맞는 친구가 없어요")}</h3><p>{t("검색어를 바꾸거나 타입·상태 필터를 풀어보세요.")}</p><button className="button subtle" onClick={resetDexFilters}>{t("전체 도감 보기")}</button></div>}
-        </div> : <EvolutionHistory game={game} />}
+        {filteredPokemon.length ? <><div className="dex-grid">{pagePokemon.map((p) => <DexCard key={`${p.id}:${shinyDex}:${dexStatus}`} snapshot={snapshot} game={game} pace={settings.pace} p={p} shiny={shinyDex} status={dexStatus} busy={busy} act={act} showForms={showForms} />)}</div><DexPagination page={currentDexPage} pages={dexPages} position="bottom" onChange={changeDexPage} /></> : <div className="dex-empty"><span aria-hidden="true">⌕</span><h3>{t("조건에 맞는 친구가 없어요")}</h3><p>{t("검색어를 바꾸거나 타입·상태 필터를 풀어보세요.")}</p><button className="button subtle" onClick={resetDexFilters}>{t("전체 도감 보기")}</button></div>}
+        </div> : dexView==='forms'?<FormCollection snapshot={snapshot} busy={busy} act={act} selectedSpecies={formSpecies} clearSpecies={()=>setFormSpecies(null)}/>:<EvolutionHistory game={game} />}
       </>}
       {tab === 'achievements' && <Achievements snapshot={snapshot} busy={busy} update={update} navigate={setTab} />}
       {tab === 'settings' && <>

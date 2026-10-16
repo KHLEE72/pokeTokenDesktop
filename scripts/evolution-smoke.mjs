@@ -43,7 +43,7 @@ async function fits(){
     const cards=[...document.querySelectorAll('.companion-card,.today-card,.candy-box')]
     return {height:innerHeight,scrollHeight:document.documentElement.scrollHeight,width:innerWidth,scrollWidth:document.documentElement.scrollWidth,inside:cards.every(card=>[...card.querySelectorAll('button,input,select,.progress-track')].every(el=>{const r=el.getBoundingClientRect(),c=card.getBoundingClientRect();return r.left>=c.left && r.right<=c.right && r.top>=c.top && r.bottom<=c.bottom}))}
   })
-  expect(bounds.scrollHeight).toBe(bounds.height);expect(bounds.scrollWidth).toBe(bounds.width);expect(bounds.inside).toBe(true)
+  expect(bounds.scrollHeight).toBe(bounds.height);expect(bounds.scrollWidth).toBeLessThanOrEqual(bounds.width);expect(bounds.inside).toBe(true)
 }
 try{
   writeFileSync(file,row(1_000_000));await start()

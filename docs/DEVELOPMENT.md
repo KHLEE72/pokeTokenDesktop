@@ -29,6 +29,7 @@ npm run dev
 | `npm run smoke:i18n` | 세 언어·공식 이름·검색·저장 검사 |
 | `npm run smoke:catalog` | 9세대 도감·일반/이로치 GIF/PNG·분기 진화·저장 검사 |
 | `npm run smoke:rarity` | 분류 배지·희귀 수집 업적·볼/테마·캐릭터 대사·최소 크기 말풍선 검사 |
+| `npm run smoke:forms` | 리전 진화·메가 무료/사탕 구매·공유·화면·저장 검사 |
 | `npm run smoke:portable` | Windows portable EXE 실제 실행 검사 |
 
 그 밖의 기능별 실행 검사는 `package.json`의 `smoke:*` 명령을 참고하세요. `npm test`는 Electron의 Node 런타임을 사용해 같은 SQLite 모듈을 검증합니다.
@@ -44,6 +45,14 @@ node scripts/update-pokemon-catalog.mjs
 node scripts/update-localized-catalog.mjs
 node scripts/update-sprite-catalog.mjs
 ```
+
+추가 모습은 `node scripts/update-form-catalog.mjs`로 `form-catalog.json`을 만든 뒤 이미지 목록을 갱신합니다. 리전폼 57개, 진화/메가에 필요한 특별한 모습 6개, 메가폼 97개를 포함합니다. `form-dialogue.tsv`는 리전폼과 선행 모습의 창작 대사이며 일반 모습의 불꽃·몸 구조 설명을 그대로 복사하지 않습니다. 메가폼은 같은 포켓몬의 성격을 이어받고 달라진 몸 구조를 보정합니다.
+
+기존 551개 계열 ID와 개체의 경로를 유지하며 새 계열 33개를 뒤에 붙입니다. 리전폼 전용 진화 종의 기존 독립 계열 10개는 저장 호환성을 위해 남기고 새 부화 후보에서는 제외합니다. 개체가 실제로 가진 경로에서 단계를 구해야 하므로 전역 `phase`를 선택 위치로 사용하지 않습니다.
+
+`game.appearances`에 추가 모습의 일반/이로치 도감, 영구 해금 ID와 무료 선택 소진 여부를 저장합니다. 첫 메가 해금 1개는 무료, 이후에는 사탕 50개이며 사탕 차감과 상태 저장은 한 트랜잭션입니다. 스톤은 개체별 소모품이 아닌 공유 해금입니다. `pet.mega`는 표시 상태이고 성장 경로에 메가 노드를 넣지 않습니다. 레쿠쟈는 실제 스톤 대신 화룡점정 해금 ID를 사용합니다.
+
+기본·125%·150% 실행 검사는 `POKETOKEN_TEST_SCALE`을 지정할 수 있습니다. 폼 이미지 320개는 고정 소스의 존재 여부를 확인하며 실제 실행 검사에서는 대표 이미지를 다운로드합니다. 메가지가르데만 해당 소스의 도트가 없어 일반/이로치 공식 일러스트 PNG를 부드럽게 표시합니다.
 
 앞의 두 스크립트는 같은 고정 PokeAPI CSV 커밋을 사용합니다. 스프라이트 스크립트는 GitHub CLI의 `gh api`로 고정 커밋의 파일 목록을 확인합니다. 새 이미지 목록으로 갱신하려면 `--refresh`를 지정합니다. 개발용 다운로드 캐시는 `artifacts/`에 남고 배포·Git에 포함되지 않습니다. 기존 19개 `family` 번호는 저장 호환성 때문에 순서를 바꾸지 않습니다. 이후 추가되는 계열 번호도 변경 시 저장 데이터 이동이 필요합니다.
 

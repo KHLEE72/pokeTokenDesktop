@@ -1,7 +1,7 @@
 import Database from 'better-sqlite3'
 import { isLanguage } from '../shared/i18n'
 import { isDexSort } from '../shared/dex'
-import { GameAction, GameState, Settings, Snapshot, UsageRecord, defaultSettings, newGame, totalTokens } from '../shared/model'
+import { GameAction, GameState, Settings, Snapshot, UsageRecord, defaultSettings, newGame, newAppearanceCollection, totalTokens } from '../shared/model'
 import { advanceGame, changePace, gameAction, LegacyGame, migrateGame, upgradeGrowthPaths } from '../shared/game'
 import { ParsedFile } from './parsers'
 import { scanRoots } from './paths'
@@ -36,6 +36,11 @@ export class Store {
       upgradeGrowthPaths(game);this.set('game-v2',game)
     })()
     const settings = this.get<Settings>('settings')
+    if(!this.game.appearances)this.db.transaction(()=>{
+      const previous=this.game
+      if(!this.get('game-before-appearances'))this.set('game-before-appearances',previous)
+      previous.appearances=newAppearanceCollection();this.set('game-v2',previous)
+    })()
     if (!settings) this.set('settings', defaultSettings())
     else if (!settings.theme || !isLanguage(settings.language) || !isDexSort(settings.dexSort)) this.set('settings', { ...settings, theme: settings.theme || 'light', language: isLanguage(settings.language) ? settings.language : 'en', dexSort: isDexSort(settings.dexSort) ? settings.dexSort : 'number' })
     this.db.transaction(() => { this.reconcileRewards(this.game) })()

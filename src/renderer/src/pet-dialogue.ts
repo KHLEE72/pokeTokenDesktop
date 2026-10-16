@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { DialogueDirector, DialogueEvent, Speech } from '../../shared/dialogue'
-import { activePet, speciesId, waitingForEvolution } from '../../shared/game'
+import { activePet, appearanceId, waitingForEvolution } from '../../shared/game'
 import { GameState, PetMotion, Snapshot } from '../../shared/model'
 import { Language, localizeMessage } from '../../shared/i18n'
 
@@ -12,7 +12,7 @@ export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { 
   const previousGame = useRef<GameState | null>(null)
   const nextIdle = useRef(Date.now() + 35_000 + Math.random() * 30_000)
   current.current = {
-    id: snapshot ? speciesId(snapshot.game) : null,
+    id: snapshot ? appearanceId(snapshot.game) : null,
     language: snapshot?.settings.language ?? 'en',
     visible: Boolean(snapshot?.settings.visible && !snapshot.settings.inBall),
     ready: Boolean(snapshot?.lastScan), waiting: snapshot ? waitingForEvolution(activePet(snapshot.game),snapshot.settings.pace) : false, state: motion.state
@@ -33,7 +33,7 @@ export function usePetDialogue(snapshot: Snapshot | null, motion: PetMotion): { 
   useEffect(() => {
     if (!snapshot?.lastScan) return
     const game = snapshot.game, before = previousGame.current
-    const changedSpecies = before && (speciesId(before) !== speciesId(game) || activePet(before).shiny !== activePet(game).shiny)
+    const changedSpecies = before && (appearanceId(before) !== appearanceId(game) || activePet(before).shiny !== activePet(game).shiny)
     const evolved = before && game.activeId === before.activeId && activePet(game).phase > activePet(before).phase
     if (changedSpecies) { director.current.clear(); setSpeech(null) }
     if (!before) say(snapshot.notice ? 'growth' : 'idle', snapshot.notice)
