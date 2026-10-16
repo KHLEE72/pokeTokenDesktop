@@ -10,3 +10,12 @@ html[lang='en'] .app-shell .home-page .companion-actions .button { font-size: 9p
 html[lang='en'] .app-shell .topbar .theme-button { max-width: 180px; }
 html[lang='en'] .app-shell .ball-collection strong { font-size: 10px; }
 .language-settings select { min-width: 140px; }
+
+/* Keep dialogue and its short growth summary inside the reserved 80 DIP above
+   the character. Long English lines need tighter leading on the smallest pet. */
+.pet-bubble:has(small) { font-size:9px; line-height:1.25; gap:2px; padding:4px; }
+.pet-bubble:has(small) small { font-size:8px; line-height:1.2; }
+@media (max-width:160px) {
+  .pet-bubble { font-size:9px; line-height:1.25; gap:2px; padding:4px; }
+  .pet-bubble small { font-size:8px; line-height:1.2; }
+}

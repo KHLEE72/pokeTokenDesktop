@@ -30,7 +30,7 @@ async function fits() {
 }
 try {
   await start()
-  await nav('업적'); expect(await page.locator('.achievement-card').count()).toBe(6)
+  await nav('업적'); expect(await page.locator('.achievement-card').count()).toBe(9)
   expect((await snapshot()).rewards.unlocked).toEqual({})
   await capture('locked')
   const locked = await page.evaluate(async () => { try { await window.desktop.updateSettings({ theme: 'luxury' }); return false } catch { return true } })
@@ -111,7 +111,7 @@ try {
   expect((await snapshot()).settings.theme).toBe('luxury')
   await pet.screenshot({ path: 'artifacts/rewards-luxury-ball.png', omitBackground: true })
   await nav('현재 펫'); await page.locator('.egg-drawer > summary').click(); await page.getByRole('button', { name: '불꽃타입 알 선택', exact: true }).click()
-  expect((await snapshot()).settings.inBall).toBe(false)
+  await expect.poll(async()=>(await snapshot()).settings.inBall).toBe(false)
   expect((await snapshot()).game.pets.find(p => p.id === activeId).ball).toBe('luxury')
   checks.push('all available theme palettes are distinct, the minimum-size home fits, inactive individuals can equip balls, and egg selection leaves ball mode safely')
   await nav('나의 도감')

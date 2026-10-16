@@ -49,6 +49,27 @@
       "sha256": "2abe559ebe41ba400232250c30e1ad9fb58c3bb909eb74c29c6951d9a34634a6",
       "width": 160,
       "height": 160
+    },
+    "timer": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Timer_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/2/23/Bag_Timer_Ball_SV_Sprite.png",
+      "sha256": "f72db9a101f2eba0ca3685d3d90dd0613ccbe52ea57291bc7f6a0c54167fc561",
+      "width": 160,
+      "height": 160
+    },
+    "dream": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Dream_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/6/6a/Bag_Dream_Ball_SV_Sprite.png",
+      "sha256": "f840c5eac85c7a6991d46aca8aff959c4447baf9f8147b9ce6cbc11d1b232ad4",
+      "width": 160,
+      "height": 160
+    },
+    "cherish": {
+      "page": "https://archives.bulbagarden.net/wiki/File:Bag_Cherish_Ball_SV_Sprite.png",
+      "image": "https://archives.bulbagarden.net/media/upload/8/8f/Bag_Cherish_Ball_SV_Sprite.png",
+      "sha256": "3b4044a43e12a771031ab9c5369f51343f0d434e92e540c095885b1ecb3dd754",
+      "width": 160,
+      "height": 160
     }
   }
 }

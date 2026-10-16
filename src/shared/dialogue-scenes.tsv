@@ -1,0 +1,342 @@
+# target(s)|event|Korean original dialogue|English original dialogue|Japanese original dialogue
+fact:shell|held|껍질까지 함께 받쳐줘. 안쪽도 놀라지 않게.|Support my shell too, so the inside stays settled.|殻ごと支えてね。中まで驚かないように。
+fact:shell|petting|껍질을 살살 쓸어주니까 안까지 편안해졌어.|A gentle stroke on my shell settles me inside too.|殻を優しくなでると、中まで落ち着くよ。
+fact:armor|held|갑옷이 걸리지 않게 넉넉히 받쳐다오.|Leave room around my armor as you support me.|よろいが引っかからぬよう、広く支えておくれ。
+fact:horn,fact:tusk,fact:fang,fact:claw|held|날카로운 끝은 피해서 잡아줘. 너도 다치면 안 되니까.|Keep your grip clear of the sharp tips. You must stay safe too.|鋭い先は避けて持ってね。君もけがをしないように。
+fact:horn,fact:tusk,fact:fang,fact:claw|petting|날카로운 곳을 피해 다가와주는구나. 나도 조심할게.|You came around the sharp parts. I will be careful too.|鋭いところを避けて来てくれたんだね。ぼくも気をつけるよ。
+fact:tailfire|held|꼬리 불꽃은 손에 닿지 않게 조금 비켜둘게.|I will keep my tail flame a little clear of your hand.|しっぽの炎は、手に当たらないよう少し離しておくね。
+fact:tailfire|petting|기분이 좋아져서 꼬리 불꽃도 살짝 커졌어.|That happy feeling made my tail flame dance a little higher.|うれしくなって、しっぽの炎も少し大きくなったよ。
+fact:fur|petting|털을 고르는 방향으로 살살 만져주니 좋아.|I like those gentle strokes along my fur.|毛並みに沿って、優しくなでてくれるのが好き。
+fact:feather|petting|깃이 눌리지 않게 살살 만져주는구나.|Such a gentle touch, without pressing my feathers flat.|羽を押しつぶさず、優しく触れてくれるんだね。
+fact:bud,fact:seed,fact:flower|held|등과 머리의 연한 부분은 누르지 않게 부탁해.|Mind the tender parts on my back and head when you lift.|背中や頭の柔らかなところは、押さないようにお願いね。
+fact:ear|held|귀를 잡아당기지 않고 받쳐주니까 편안해.|It is comfortable to be supported without pulling my ears.|耳を引っ張らずに支えてくれると、落ち着くよ。
+fact:tail|held|꼬리가 끼지 않게 살짝 들어둘게.|I will lift my tail a little so it does not get caught.|しっぽを挟まないように、少し持ち上げておこう。
+fact:magnet,fact:magnetism|held|손에 금속이 있으면 자력을 조금 낮출게.|If your hand has metal near it, I will ease my magnetism.|手元に金属があったら、磁力を少し弱めておくね。
+fact:poison,fact:venom,fact:toxin|held|위험한 부분은 손에서 멀리 둘게. 천천히 옮겨줘.|I will keep my dangerous parts away from your hand. Move slowly.|危ないところは手から遠ざけるよ。ゆっくり運んでね。
+fact:slime,fact:sludge|held|미끄러지기 쉬워. 몸 아래를 넓게 받쳐줘.|I can be slippery. Give me a broad support underneath.|滑りやすいよ。体の下を、広く支えてね。
+fact:leaf,fact:vine|held|잎과 덩굴이 접히지 않게 여유를 남겨줘.|Leave a little room so leaves and vines do not fold.|葉やつるが折れないように、少し余裕を空けてね。
+fact:mushroom|held|버섯은 꺾이지 않게 몸 아래부터 들어줘.|Lift from underneath so my mushroom does not bend.|キノコが折れないように、体の下から持ち上げてね。
+fact:hammer|held|망치는 내가 챙길게. 몸을 든든하게 받쳐줘!|I will take care of the hammer. Hold my body steady!|ハンマーは自分で持つよ。体をしっかり支えてね！
+fact:sword,fact:shield|held|날과 단단한 부분은 비켜서 잡아다오.|Keep your grip clear of blades and hard edges.|刃や硬いふちは避けて、持っておくれ。
+fact:disaster|usage|오늘도 무사히 한 걸음 쌓았네. 작은 위험은 내가 살펴볼게.|Another safe step today. I will watch for little signs of danger.|今日も無事に一歩進んだね。小さな危険の気配は、見ておくよ。
+fact:disguise,fact:illusion|usage|네가 집중하는 동안에는 놀라게 하지 않을게. 장난은 쉬는 시간에!|No surprises while you focus. Tricks can wait for the break!|集中しているあいだは驚かせないよ。いたずらは休憩のときに！
+fact:emotion,fact:telepathy|usage|애쓰는 마음이 느껴졌어. 말하지 않아도 잘 전해져.|I felt the heart you put into that. No words needed.|頑張る気持ちを感じたよ。言葉がなくても、よく伝わる。
+fact:transform|usage|네가 집중하는 모습도 따라 해봤어. 나도 제법 진지하지?|I copied your focused look. Rather serious, am I not?|君の真剣な顔もまねしてみたよ。なかなかでしょ？
+fact:headache|usage|생각을 많이 하면 머리가… 으으, 네 몫까지 생각하진 못하겠어.|Too much thinking makes my head... Oof, I cannot think for both of us.|考えすぎると頭が……うう、君の分までは考えられないよ。
+fact:sleep,fact:dream|usage|네가 애쓰는 동안 꿈을 꾸고 있었어… 응원은 꿈속에서도 했어.|I was dreaming while you worked... Cheering in my dreams still counts.|頑張るあいだ、夢を見ていたよ……夢の中でも応援していたからね。
+fact:hunger,fact:berries,fact:honey,fact:nectar,fact:fruit|usage|열심히 했으니 간식 시간도 챙기자. 내 몫도 조금 남겨줘.|After that effort, let us remember snack time. Save a little for me.|頑張ったら、おやつの時間も忘れずに。ぼくの分も少し残してね。
+fact:sunlight,fact:photosynthesis,fact:seed,fact:bud|usage|햇빛처럼 차곡차곡 힘이 쌓이네. 오늘도 조금 더 자랄 수 있겠어.|Strength gathers like sunshine. I can grow a little more today.|日差しみたいに、力が少しずつ集まるね。今日も少し育てそう。
+fact:flower,fact:pollen,fact:fragrance|usage|애쓴 만큼 꽃을 돌볼 여유도 생겼네. 향기로 인사할게.|Your effort left a moment for the flowers. A fragrant little hello.|頑張った分、花を気にかける時間もできたね。香りであいさつしよう。
+fact:leaf,fact:vine,fact:root,fact:forest|usage|조금씩 자라는 힘을 느껴. 숲처럼 서두르지 않고 쌓아가자.|I can feel that gradual growth. Let us build slowly, like a forest.|少しずつ育つ力を感じる。森のように、急がず重ねよう。
+fact:mushroom,fact:spore|usage|새 기운은 잘 받았어. 포자는 날리지 않고 조용히 응원할게.|Energy received. I will cheer quietly, without scattering spores.|新しい力は届いたよ。胞子を飛ばさず、静かに応援しよう。
+fact:flame,fact:tailfire,fact:lava,fact:volcano,fact:steam|usage|노력의 열기가 전해졌어. 내 불씨도 조금 더 힘이 나네.|The warmth of your effort reached me. My ember feels stronger too.|頑張りの熱が届いたよ。小さな火にも、また力がわくね。
+fact:electricity,fact:thunder|usage|찌릿, 충전됐어! 너무 번쩍이지 않게 조심할게.|A spark of charge! I will keep the flashes gentle.|ぴりっと充電できた！ まぶしくなりすぎないようにするね。
+fact:magnet,fact:magnetism|usage|자력을 맞추듯 차근차근 진행하고 있네. 나도 균형을 맞출게.|Steady progress, like aligned magnetism. I will keep my balance too.|磁力を合わせるように、着実に進んでいるね。ぼくも釣り合いを取ろう。
+fact:light,fact:crystal,fact:gem,fact:gold|usage|오늘의 작은 결과도 반짝이네. 놓치지 않고 간직할게.|Today's little result glints too. I will keep it safe.|今日の小さな結果も、きらっとしているね。大切にしまっておこう。
+fact:ice,fact:snow|usage|차곡차곡 쌓이는 모습이 눈 같아. 녹지 않게 잘 담아둘게.|It gathers like snow. I will keep it from slipping away.|雪みたいに少しずつ積もるね。消えないよう、大切にしておこう。
+fact:water,fact:bubble,fact:swim,fact:sea,fact:river|usage|작은 물방울이 모이듯 기운이 전해져 왔어. 잠깐 숨 돌리자.|Energy arrived like gathering droplets. Let us pause a moment.|水滴が集まるみたいに、力が届いたよ。少しひと息つこう。
+fact:shell,fact:armor|usage|새 기운으로 몸을 더 든든히 지킬 수 있겠어.|That fresh energy helps me keep my defenses steady.|新しい力で、体をもっとしっかり守れそう。
+fact:horn,fact:tusk,fact:fang,fact:claw|usage|힘은 더 생겨도 날카로운 부분은 조심히 다룰게.|More strength, but I will still handle my sharp parts with care.|力が増えても、鋭いところは慎重に扱うよ。
+fact:fur,fact:feather,fact:wing,fact:flight|usage|네가 일하는 동안 몸단장을 해뒀어. 이제 조금 더 가벼워졌네.|I tidied myself while you worked. Feeling a little lighter now.|作業するあいだ、お手入れをしておいたよ。少しすっきりしたね。
+fact:float,fact:star,fact:moon|usage|네 노력이 작은 빛처럼 닿았어. 조용히 곁을 지킬게.|Your effort reached me like a little light. I will stay quietly nearby.|頑張りが、小さな光みたいに届いたよ。静かにそばにいるね。
+fact:tail|usage|새 기운이 닿으니까 꼬리가 먼저 반응했네.|My tail reacted first when that new energy arrived.|新しい力が届いたら、しっぽが先に反応しちゃったね。
+fact:ear,fact:nose,fact:smell,fact:antenna|usage|작은 변화도 놓치지 않고 살펴보고 있어. 방금도 잘 해냈네.|I am watching even the little changes. You did well just now.|小さな変化も見逃さず確かめているよ。今のも、よく頑張ったね。
+fact:voice,fact:song,fact:dance,fact:rhythm,fact:drum,fact:music|usage|박자를 맞춰 응원했어. 네가 한 걸음 더 나아가는 동안!|I kept a cheering rhythm while you took another step!|君がもう一歩進むあいだ、拍子を合わせて応援していたよ！
+fact:fist,fact:kick,fact:training,fact:muscle,fact:wrestle|usage|네가 연습하듯 나도 꾸준히 단련할게. 서로 무리하지 말자!|I will train steadily as you practice. Neither of us needs to overdo it!|君が練習するように、ぼくも鍛え続けるよ。お互い、無理はしないでね！
+fact:sword,fact:shield,fact:hammer,fact:tool|usage|힘이 모였네. 도구도 손질하고 다음 할 일을 준비할게.|Strength gathered. I will tend my tools and prepare for what is next.|力が集まったね。道具も整えて、次に備えよう。
+fact:stone,fact:rock,fact:metal,fact:sand|usage|한 겹씩 단단해지는 기분이야. 오늘 쌓은 힘도 지켜둘게.|It feels like growing stronger layer by layer. I will keep today's strength.|ひと重ずつ、丈夫になる気分だよ。今日の力も守っておこう。
+fact:computer,fact:brain,fact:memory,fact:psychic,fact:meditate,fact:balance|usage|이번 결과도 기억해뒀어. 잠깐 쉬면 다음 생각도 정리될 거야.|I saved this result too. A pause may help organize the next thought.|今回の結果も覚えたよ。少し休めば、次の考えもまとまるはず。
+fact:spirit,fact:shadow,fact:curse,fact:night,fact:darkness|usage|그림자처럼 조용히 네 노력을 지켜봤어. 다 보고 있었지.|I watched your work as quietly as a shadow. I saw it all.|影のように静かに、頑張りを見ていたよ。ちゃんと見ていたからね。
+fact:poison,fact:venom,fact:toxin,fact:sludge,fact:slime|usage|새 힘은 받았어. 위험한 기운은 잘 다스리고 있을게.|New strength received. I will keep the dangerous part under control.|新しい力は届いたよ。危ない力は、きちんと抑えておくね。
+fact:clean|usage|조금 정리했더니 더 쾌적해졌네. 일도 잘 풀렸으면 좋겠어.|A little tidying made things nicer. I hope your work feels smoother too.|少し片づけたら気持ちよくなったね。作業も進むといいな。
+fact:dig,fact:burrow,fact:mud|usage|조금씩 파고들다 보면 길이 보이지. 네 노력도 그런 것 같아.|Digging a little at a time reveals a path. Your effort feels like that.|少しずつ掘り進めると、道が見える。君の頑張りも、そんな感じだね。
+fact:thread,fact:silk,fact:web|usage|한 가닥씩 잇는 것처럼 결과가 모이네. 든든하게 이어가자.|Results join like threads. Let us keep that weave strong.|糸をつなぐように、結果が集まるね。しっかり続けていこう。
+fact:cocoon,fact:egg|usage|겉으로 조용해도 안에는 힘이 모이고 있어. 네 덕분이야.|Quiet outside, strength gathering within. You are helping.|外は静かでも、中では力が集まっているよ。君のおかげだね。
+fact:heal,fact:protect,fact:loyal,fact:pack,fact:nest,fact:rescue|usage|네가 애쓰는 모습은 잘 봤어. 쉴 때는 내가 곁에 있을게.|I saw your effort. I will be here when you rest.|頑張る姿は見ていたよ。休むときは、そばにいるから。
+fact:territory,fact:anger|usage|네가 집중할 동안 주변을 살폈어. 잠깐 긴장을 풀어도 돼.|I watched around us while you focused. You can relax a moment.|集中するあいだ、周りを見ていたよ。少し気を緩めても大丈夫。
+fact:speed,fact:chase,fact:jump,fact:roll,fact:bounce,fact:ball|usage|움직일 힘이 더 생겼네! 그래도 다음 걸음은 너와 맞출게.|More energy to move! I will still match my next step to yours.|動く力が増えた！ でも、次の一歩は君に合わせるよ。
+fact:apple,fact:tea,fact:cream,fact:salt,fact:pepper|usage|열심히 했으니 느긋한 한때도 챙기자. 맛있게 쉬어가는 거야.|After hard work, leave room for a pleasant, tasty little break.|頑張ったら、のんびりする時間も。おいしく、ひと休みしよう。
+fact:coin,fact:treasure|usage|오늘 모은 것도 소중히 세어둘게. 작은 보물이 늘었네.|I will count today's gains with care. Another little treasure.|今日集めた分も、大切に数えよう。小さな宝が増えたね。
+fact:fossil,fact:ancient,fact:mountain,fact:desert|usage|긴 시간이 작은 순간으로 쌓이듯 오늘도 한 걸음을 남겼구나.|Long ages gather from little moments. Today left a step too.|長い時も、小さな瞬間の積み重ね。今日も一歩を残したね。
+fact:wish,fact:laughter,fact:tears,fact:curiosity,fact:play|usage|네가 해낸 걸 보니 기분이 달라졌어. 잠깐 같이 웃어볼까?|Seeing your progress changed my mood. Shall we share a little smile?|頑張りを見たら、気分が変わったよ。少し一緒に笑おうか。
+fact:ship,fact:breath|usage|잠깐 숨을 고르자. 다음 방향은 차분히 정해도 돼.|Take a breath. We can choose our next direction calmly.|少し息を整えよう。次の向きは、落ち着いて決めればいいよ。
+species:1|petting|등의 씨앗까지 따뜻해졌어. 살살 쓰다듬어줘서 고마워.|Even my bulb feels warm. Thank you for that gentle pat.|背中のタネまで、ぽかぽかだよ。優しくなでてくれてありがとう。
+species:133|petting|폭신한 목털까지 편안해졌어. 조금만 더 이대로 있자.|Even my fluffy collar feels cozy. Let us stay like this a moment.|ふわふわのえりまで、落ち着いたよ。もう少し、このままでいよう。
+species:54|held|갑자기 들면 머리가 더… 어, 왜 높아졌지?|A sudden lift makes my head... Oh, why am I up here?|急に持つと頭が……あれ、どうして高くなったの？
+species:54|falling|으으, 머리는 부딪히지 않게 해줘…!|Oof, please keep my head from bumping...!|うう、頭をぶつけないようにしてね……！
+species:54|landing|머리는 무사해… 원래 아프던 건 그대로지만.|My head is safe... Still the usual ache, though.|頭は無事……いつもの痛さは、そのままだけど。
+species:54|growth|머리가 지끈했는데 힘이 나왔어… 내가 한 거야?|My head throbbed and power came out... Did I do that?|頭がずきんとして、力が出たよ……ぼくがやったの？
+species:54|petting|머리 옆은 살살… 조금 편해진 것 같아.|Gently beside my head... That feels a little better.|頭の横はそっと……少し楽になった気がするよ。
+species:132|held|잡힌 모양도 기억해둘게. 이렇게 변하면 되는 거야?|I will remember this shape too. Should I transform like this?|つかまれた形も覚えておこう。こう変わればいいのかな？
+species:132|falling|납작하게 변하면 덜 아플까? 일단 중심부터!|Would a flatter shape help? Balance first!|平たく変われば大丈夫かな？ まずは釣り合いから！
+species:132|petting|네 웃는 표정으로 변해봤어. 잘 따라 했지?|I tried your smiling expression. A good copy, right?|君の笑顔に変わってみたよ。うまくまねできたでしょ？
+species:143|held|밥 먹은 뒤라 무거울 텐데… 괜찮니…?|Heavier after dinner... Are you all right carrying me...?|ごはんの後だから重いけど……持っていて大丈夫……？
+species:143|falling|으음… 배부터 부딪히면 잠이 깨겠는데…|Mmm... A bump on the belly would wake me up...|うーん……お腹をぶつけたら、目が覚めちゃいそう……。
+species:143|landing|쿵… 다시 잘 자리부터 찾아볼까…|Thump... Time to find my sleeping spot again...|どすん……また寝る場所から探そうかな……。
+species:143|usage|기운은 잘 받았어… 밥도 먹었으니 다시 잘까…|Energy received... Dinner is done, so perhaps another nap...|力は届いたよ……ごはんも食べたし、また寝ようかな……。
+species:143|petting|배가 편안해… 손 얹고 있어도 괜찮아…|My belly feels comfortable... You can rest your hand there...|お腹が落ち着くなあ……手を乗せていてもいいよ……。
+species:282|held|오늘은 네가 날 지켜주는 차례구나. 안심하고 맡길게.|Today you are keeping me safe. I can trust you with that.|今日は君が守ってくれる番だね。安心して任せるよ。
+species:282|falling|사이코 파워로 중심을 잡을게. 너까지 놀라지 마.|I will balance my psychic power. You need not be startled too.|サイコパワーで中心を整えよう。君まで驚かないで。
+species:282|landing|나는 무사해. 네 마음부터 살펴봐도 될까?|I am safe. May I check on your feelings first?|ぼくは無事。先に君の気持ちを確かめてもいい？
+species:282|growth|함께한 마음이 지킬 힘으로 자랐어.|Our shared feelings have grown into strength to protect.|分け合った気持ちが、守る力に育ったよ。
+species:282|usage|네가 쏟은 마음이 느껴져. 오늘도 혼자 애쓰지는 마.|I feel the heart you put into that. Do not struggle alone today.|注いだ心を感じるよ。今日も、ひとりで頑張りすぎないで。
+species:282|petting|다정함이 가슴의 뿔까지 전해져. 말은 없어도 괜찮아.|Your kindness reaches the horn on my chest. Words can wait.|優しさが胸の角まで届く。言葉はなくても大丈夫。
+species:359|held|뿔은 다치지 않게 부탁해. 기척을 읽을 때 필요하거든.|Mind my horn. I need it to sense what is coming.|角は傷つけないでね。近づく気配を読むのに必要なんだ。
+species:359|falling|위험을 살피던 내가 내려가네. 침착하게 받아볼게.|The danger-watcher is descending. I shall handle it calmly.|危険を見ていたぼくが下りるんだね。落ち着いて受け止めよう。
+species:359|landing|괜찮아. 이번 기척은 위험하지 않았어.|All is well. This sign was not a danger.|大丈夫。今の気配は、危険ではなかったよ。
+species:359|growth|다가올 위험을 조금 더 일찍 알아챌 수 있겠어.|I may notice approaching danger a little sooner now.|近づく危険に、少し早く気づけそうだよ。
+species:359|usage|오늘도 네가 무사히 해내는 걸 지켜봤어.|I watched you make it through safely today too.|今日も、君が無事に進めるのを見ていたよ。
+species:359|petting|불길한 존재로 보지 않아주는구나. 그 손길은 기억할게.|You do not see me as an ill omen. I will remember that touch.|不吉なものだとは思わないんだね。その手を、覚えておくよ。
+species:376|usage|연산 결과를 정리했다. 다음 판단까지는 잠시 기다리겠어.|Calculations organized. I shall wait a moment before the next decision.|演算結果を整理した。次の判断までは、少し待とう。
+species:376|petting|처리할 정보가 아닌 감각이군. 이 편안함은 기억하겠다.|A sensation, not data to process. I will remember this calm.|処理する情報ではない感覚だな。この落ち着きを覚えておこう。
+species:385|usage|작은 소원을 모아두었어… 눈 뜨면 네 얘기부터 들을게.|A little wish saved... When I open my eyes, tell me your story.|小さな願いを集めたよ……目を開けたら、君の話から聞こう。
+species:448|usage|애쓰는 파동이 전해졌어. 네가 쉬는 동안에도 곁을 지킬게.|Your hardworking aura reached me. I will stay beside you as you rest.|頑張る波導が届いたよ。君が休むあいだも、そばを守ろう。
+species:493|usage|작은 시작을 이어가고 있구나. 그 발걸음을 지켜보마.|You continue those small beginnings. I shall watch your path.|小さな始まりをつないでいるのだね。その歩みを見守ろう。
+species:700|held|리본 같은 더듬이는 당기지 말아줘. 네 손을 살짝 감을게.|Do not pull my ribbonlike feelers. I will gently hold your hand.|リボンみたいな触角は引っ張らないで。手にそっと巻いておくね。
+species:778|held|천은 그대로 덮어줘. 네 손이면 조금 덜 무서워.|Keep my cloth in place. Your hand makes me a little less afraid.|布はそのままにしてね。君の手なら、少し怖くない。
+species:778|falling|앗, 천이 들리지 않게…! 속은 보지 말아줘!|Oh, do not let the cloth lift...! Please do not peek underneath!|あっ、布がめくれないように……！ 中は見ないでね！
+species:778|landing|천도 머리 모양도 괜찮아. 이제 다시 곁에 있을게.|Cloth and head-shape are safe. I can stay beside you again.|布も頭の形も大丈夫。また、そばにいられるね。
+species:778|growth|조금 더 가까이 있어도 될까? 전보다 용기가 났어.|May I stay a little closer? I feel braver now.|もう少し近くにいてもいい？ 前より勇気が出たんだ。
+species:778|usage|바쁜 동안에도 곁에 있게 해줬네. 나도 혼자가 아니라 좋았어.|You let me stay while you were busy. I liked not being alone.|忙しいあいだも、そばにいさせてくれたね。ひとりじゃなくて、うれしかった。
+species:778|petting|이 모습 그대로 좋아해주는 거지? 조금 더 기대도 돼?|You like me just like this, right? May I lean a little closer?|この姿のまま、好きでいてくれるんだよね？ もう少し寄ってもいい？
+species:760|petting|나도 반가워! 너무 세게 안지 않도록 살짝만 다가갈게.|Happy to see you too! I will come gently, without too strong a hug.|ぼくもうれしい！ 強く抱きすぎないように、そっと近づくね。
+species:858|petting|소란스럽지 않은 인사로군. 이 정도의 고요함은 마음에 든다.|A quiet greeting. This much calm suits me.|騒がしくないあいさつだね。このくらいの静けさは、好ましい。
+species:959|held|망치는 내가 챙겼어! 너는 내 몸만 든든히 잡아줘.|I have my hammer! You just hold me steady.|ハンマーは持った！ 君はぼくの体を、しっかり支えてね。
+species:959|falling|망치부터 떨어뜨리면 안 돼! 꽉 잡고 내려간다!|Cannot drop the hammer first! Holding tight on the way down!|ハンマーを先に落としちゃだめ！ しっかり握って下りるよ！
+species:959|landing|망치도 멀쩡! 오늘은 뭘 두드려볼까… 아니, 일단 쉬자!|Hammer safe! What shall I pound today... No, a little rest first!|ハンマーも無事！ 今日は何をたたこうか……いや、まずは休もう！
+species:959|usage|새 기운으로 망치 손질부터! 하늘 구경은 조금 뒤에 하자.|Fresh energy for hammer maintenance! Sky-watching can wait.|新しい力で、まずハンマーのお手入れ！ 空を見るのは、あとにしよう。
+species:959|petting|손보다 망치가 무겁지? 그건 나한테 맡겨두고 쓰다듬어줘!|The hammer is heavier than your hand, right? Leave it to me and pat away!|手よりハンマーのほうが重いでしょ？ それは任せて、なでてね！
+species:1025|held|복숭아 껍질은 살짝 받쳐줘. 떡은 내가 챙길 테니까.|Support my peach shell gently. I will take care of the mochi.|桃の殻は、そっと支えてね。おもちは、ぼくが持っておくから。
+species:1025|usage|모은 사탕이 내 떡보다 많아졌나? 살짝 세어보고 싶네.|More candy than my mochi now? I would like a little count.|集めたアメは、ぼくのおもちより多いかな？ 少し数えてみたいね。
+species:1025|petting|독사슬은 가만히 둘게. 오늘은 그냥 반겨주는 거야.|My Toxic Chain stays still. Today, just a little greeting.|毒の鎖は、おとなしくしておくよ。今日は、ただあいさつするだけ。
+body:grounded|idle|몸을 가볍게 풀며 잠깐 쉬고 있어.|I am stretching a little while I rest.|体を軽くほぐしながら、ひと休みしているよ。
+body:grounded|idle|편한 자세를 찾았어. 여기서 기다릴게.|I found a comfortable spot. I will wait here.|楽な姿勢を見つけたよ。ここで待っていよう。
+body:grounded|held|배 아래를 받쳐주면 편하게 따라갈 수 있어.|Support me underneath and I can come along comfortably.|お腹の下を支えてくれると、楽についていけるよ。
+body:grounded|held|팔다리가 끼지 않게 살짝만 들어줘.|A gentle lift, with room for my limbs, please.|手足を挟まないように、そっと持ち上げてね。
+body:grounded|falling|몸의 중심부터 잡을게. 아래를 보고 있어!|Finding my balance first. I can see the ground!|まずは体の中心を整えよう。下は見えているよ！
+body:grounded|falling|착지할 자리를 보고 천천히 내려갈게.|I will watch my landing spot as I come down.|着地する場所を見ながら、ゆっくり下りるよ。
+body:grounded|landing|닿은 자리를 확인했어. 다시 편하게 머무를게.|Landing spot checked. I can settle comfortably again.|着いた場所を確かめたよ。また楽に落ち着けるね。
+body:grounded|landing|잘 내려왔어. 자세부터 바로잡을게.|Down safely. Let me settle my posture.|無事に下りたよ。まずは姿勢を整えよう。
+body:grounded|growth|몸을 펴보니 전보다 힘이 잘 들어가.|Stretching out, I can feel a little more strength.|体を伸ばすと、前より力が入るよ。
+body:grounded|growth|한 걸음이 조금 더 든든해졌어.|That next step feels a little steadier.|次の一歩が、少ししっかりしたね。
+body:grounded|usage|가볍게 움직이며 네가 해낸 일을 응원할게.|I will keep moving lightly and cheer your progress.|軽く体を動かしながら、君の頑張りを応援するよ。
+body:grounded|usage|작은 발걸음이 모였네. 나도 곁에서 힘을 보탤게.|Those little steps added up. I will do my part beside you.|小さな歩みが重なったね。ぼくも隣で力を添えるよ。
+body:grounded|petting|편안해서 몸에 힘이 풀렸어.|That helps my whole body relax.|気持ちよくて、体の力が抜けたよ。
+body:grounded|petting|네 손에 살짝 기대도 괜찮지?|May I lean into your hand a little?|その手に、少し寄りかかってもいい？
+body:floating|idle|허공에 가만히 머물러 있는 것도 편안해.|It is peaceful to stay still in midair.|空中でじっとしているのも、落ち着くよ。
+body:floating|idle|둥실, 네 시선 높이에 맞춰볼게.|Drifting gently, I will meet your gaze.|ふわり、君の目線に合わせてみよう。
+body:floating|held|오늘은 네 손에 떠받쳐져 가는 거네.|Today, your hand is carrying my little drift.|今日は君の手に支えられて、浮かんでいくんだね。
+body:floating|held|흔들리지 않게 내 기운도 가라앉힐게.|I will steady my energy so I do not wobble.|揺れないように、力も落ち着かせよう。
+body:floating|falling|아래로 흘러가네. 떠오르는 힘을 고를게.|Drifting downward. Let me steady my lift.|下へ流れていくね。浮かぶ力を整えよう。
+body:floating|falling|둥실… 높이를 조금씩 낮춰볼게.|Gently now... I will lower my height a little at a time.|ふわり……少しずつ高さを下げよう。
+body:floating|landing|낮은 자리에서도 균형은 잡혔어.|Even down here, I have found my balance.|低い場所でも、釣り合いは取れたよ。
+body:floating|landing|이 높이에서 다시 조용히 머무를게.|I will hover quietly at this height again.|この高さで、また静かに浮かんでいよう。
+body:floating|growth|떠 있는 힘이 전보다 안정됐어.|My hovering feels steadier than before.|浮かぶ力が、前より安定したよ。
+body:floating|growth|이제 조금 더 자신 있게 떠 있을 수 있겠어.|I can stay aloft with a little more confidence.|少し自信を持って、浮かんでいられそう。
+body:floating|usage|새 기운을 받으니 떠 있는 자세도 가벼워졌어.|That fresh energy makes my hovering feel lighter.|新しい力で、浮かぶ姿勢も軽くなったよ。
+body:floating|usage|네가 집중하는 동안 조용히 곁에 떠 있을게.|I will float quietly beside you while you focus.|君が集中するあいだ、そばで静かに浮かんでいるね。
+body:floating|petting|둥실, 손길에 맞춰 조금 가까이 왔어.|A little drift, closer to your gentle touch.|ふわり、優しい手に合わせて少し近づいたよ。
+body:floating|petting|손이 닿는 높이에 가만히 있어볼게.|I will stay still where your hand can reach.|手が届く高さで、じっとしていよう。
+body:soft|idle|몸을 편하게 펴두고 쉬고 있어.|I am resting with my soft body at ease.|柔らかな体を楽にして、休んでいるよ。
+body:soft|idle|말랑한 몸도 가만히 쉴 때가 좋아.|Even a soft body enjoys a quiet rest.|柔らかい体にも、じっと休む時間はいいね。
+body:soft|held|미끄러질 수 있으니까 아래를 넓게 받쳐줘.|I may slip, so please support me broadly underneath.|滑るかもしれないから、下を広く支えてね。
+body:soft|held|꾹 쥐기보다는 살포시 감싸주면 좋아.|A soft cradle feels better than a tight squeeze.|強く握るより、そっと包んでくれるとうれしい。
+body:soft|falling|말랑한 몸을 모아서 천천히 내려갈게.|Gathering my soft body as I come down.|柔らかな体をまとめて、ゆっくり下りるよ。
+body:soft|falling|흐물… 놀랐지만 중심은 놓치지 않을게.|A little wobble... Startled, but keeping my center.|ふにゃ……びっくりしたけど、中心は崩さないよ。
+body:soft|landing|말랑, 원래 모양을 다시 잡았어.|A soft landing, and my shape is back.|やわらかく着地。形もまた整ったよ。
+body:soft|landing|조금 흔들렸지만 몸은 괜찮아.|A little wobble, but my body is all right.|少し揺れたけど、体は大丈夫。
+body:soft|growth|말랑한 몸에도 힘이 차올랐어.|Even this soft body feels full of strength.|柔らかな体にも、力が満ちてきたよ。
+body:soft|growth|형태를 잡는 게 전보다 수월해졌어.|Holding my shape feels a little easier.|形を整えるのが、前より楽になったね。
+body:soft|usage|천천히 몸을 펴며 새 힘을 받고 있어.|Stretching out slowly, taking in that new energy.|ゆっくり体を広げて、新しい力を受け取っているよ。
+body:soft|usage|말랑말랑, 오늘의 기운도 잘 받아뒀어.|Soft and settled, saving today's energy.|やわらかく、今日の力もしっかり蓄えたよ。
+body:soft|petting|푹 누르지 않고 살살 만져줘서 좋아.|I like that gentle touch, without pressing too hard.|押しつぶさずに、優しく触れてくれるのが好き。
+body:soft|petting|몸이 말랑해도 다정한 손길은 알아.|A soft body can feel a kind hand too.|柔らかな体でも、優しい手はわかるよ。
+body:round|idle|동그랗게 자리를 잡고 쉬는 중이야.|Settling into a round little rest.|まるく落ち着いて、ひと休みしているよ。
+body:round|idle|가만히 있어도 중심은 잘 잡고 있어.|Even sitting still, I keep my balance.|じっとしていても、釣り合いは取れているよ。
+body:round|held|굴러가지 않게 아래를 받쳐줘.|Support me below so I do not roll away.|転がらないように、下を支えてね。
+body:round|held|둥근 몸이 손에 잘 놓였네.|This round body fits nicely in your hands.|まるい体が、手の上にちょうど収まったね。
+body:round|falling|데굴, 아니 아래로! 중심부터 잡자!|Rolling? No, downward! Balance first!|ころっ、じゃなくて下へ！ まずは釣り合い！
+body:round|falling|몸을 모으고 내려갈게. 튀지는 않게!|Gathering myself as I descend. No bouncing away!|体をまとめて下りよう。跳ねすぎないように！
+body:round|landing|데굴 굴러가진 않았네. 여기서 멈출게.|No rolling away. I will settle right here.|転がっていかなかったね。ここで止まろう。
+body:round|landing|조금 흔들, 이제 균형이 맞았어.|A tiny wobble, and balanced again.|少しゆらり、もう釣り合ったよ。
+body:round|growth|둥근 몸 안에도 힘이 더 모였어.|More strength has gathered in this round body.|まるい体の中にも、力が集まったよ。
+body:round|growth|기운이 차오르니까 자세도 든든해졌어.|More energy, a steadier posture.|力が満ちると、姿勢もしっかりするね。
+body:round|usage|동그랗게 힘을 모으는 중이야.|Gathering my energy into a little circle.|まるく力を集めているところだよ。
+body:round|usage|오늘 모은 기운도 몸 안에 잘 담아둘게.|I will keep today's energy safely within.|今日の力も、体の中に大切にしまおう。
+body:round|petting|굴러가지 않게 잡아주는 손이 편안해.|Your steady hand keeps me from rolling. That feels nice.|転がらないように支える手が、落ち着くね。
+body:round|petting|살짝 토닥여주는 게 좋아.|A little gentle pat feels lovely.|そっと、ぽんぽんしてくれるのが好き。
+body:serpent|idle|긴 몸을 느슨하게 모아두고 쉬고 있어.|Resting with my long body loosely gathered.|長い体をゆるくまとめて、休んでいるよ。
+body:serpent|idle|몸을 천천히 풀며 주변을 살펴볼게.|I will uncurl slowly and look around.|ゆっくり体をほどきながら、周りを見てみよう。
+body:serpent|held|긴 몸이 늘어지지 않게 여러 곳을 받쳐줘.|Support my long body in more than one place.|長い体がたれないように、何か所か支えてね。
+body:serpent|held|몸통을 살짝 감아서 중심을 잡을게.|I will curl a little to keep my balance.|胴を少し丸めて、釣り合いを取るね。
+body:serpent|falling|긴 몸을 모으고 내려갈게.|I will gather my long body on the way down.|長い体をまとめて、下りていくよ。
+body:serpent|falling|몸이 엉키지 않게 천천히!|Slowly, so I do not get tangled!|絡まらないように、ゆっくり！
+body:serpent|landing|몸을 펴고 나니 다시 편안해졌어.|Uncurled and comfortable again.|体を伸ばしたら、また落ち着いたよ。
+body:serpent|landing|끝까지 잘 내려왔어. 이제 가만히 쉴게.|Every bit of me is down safely. Time to rest.|体の端まで無事に下りたよ。今度はじっと休もう。
+body:serpent|growth|길게 뻗은 몸에 힘이 고르게 퍼졌어.|Strength spread evenly through my long body.|長い体に、力がむらなく広がったよ。
+body:serpent|growth|부드럽게 움직이는 게 전보다 쉬워졌어.|Moving smoothly feels easier than before.|滑らかに動くのが、前より楽になったね。
+body:serpent|usage|몸을 느슨하게 풀고 네 노력을 지켜볼게.|I will loosen up and watch your progress.|体をゆるめながら、君の頑張りを見ているよ。
+body:serpent|usage|이어지는 노력처럼 힘도 몸을 따라 흘러왔어.|Like steady effort, energy has flowed along my body.|続く頑張りのように、力も体を伝わってきたよ。
+body:serpent|petting|몸을 급히 잡아당기지 않아서 좋아.|I like that you do not tug my long body.|長い体を急に引っ張らないでくれるのが、うれしい。
+body:serpent|petting|살살 쓸어주니까 편안해졌어.|Those gentle strokes help me relax.|そっとなでられて、落ち着いたよ。
+body:fins|idle|지느러미를 가볍게 움직이며 쉬고 있어.|Resting with a gentle movement of my fins.|ひれを軽く動かしながら、休んでいるよ。
+body:fins|idle|물을 떠올리며 꼬리를 천천히 흔들어볼게.|I will move my tail slowly and think of the water.|水を思い浮かべて、尾をゆっくり動かそう。
+body:fins|held|미끄러지지 않게 몸통 아래를 받쳐줘.|Support my body underneath so I do not slip.|滑らないように、胴の下を支えてね。
+body:fins|held|지느러미를 누르지 말고 살짝 들어줘.|A gentle lift, without pressing my fins, please.|ひれを押さえず、そっと持ち上げてね。
+body:fins|falling|꼬리로 균형부터! 발로 딛는 건 못 하니까!|Tail for balance! No feet to land on!|尾で釣り合いを！ 足で立つことはできないから！
+body:fins|falling|몸을 가로로 맞춰서 내려갈게.|I will keep my body level as I come down.|体を水平にして、下りていくよ。
+body:fins|landing|지느러미도 무사해. 여기서 잠깐 쉬자.|Fins safe too. Let us rest here a while.|ひれも無事だね。ここで少し休もう。
+body:fins|landing|파닥, 자리를 다시 잡았어.|A little flutter, and settled again.|ぱたっと、また落ち着く場所を見つけたよ。
+body:fins|growth|지느러미를 움직이는 힘이 더 좋아졌어.|My fins feel stronger when I move them.|ひれを動かす力が、前より強くなったよ。
+body:fins|growth|다음에는 조금 더 힘차게 헤엄칠 수 있겠어.|My next swim may be a little stronger.|次は、もう少し力強く泳げそう。
+body:fins|usage|지느러미로 살짝 인사할게. 오늘도 잘하고 있어.|A little fin-wave. You are doing well today.|ひれで、そっとあいさつ。今日も頑張っているね。
+body:fins|usage|차곡차곡 모이는 기운이 잔물결처럼 닿았어.|That steady energy reached me like a gentle ripple.|少しずつ集まる力が、さざ波みたいに届いたよ。
+body:fins|petting|지느러미는 살살, 몸통은 든든하게 부탁해.|Gentle with the fins, steady under my body, please.|ひれはそっと、胴はしっかり支えてね。
+body:fins|petting|부드러운 손길에 꼬리가 살짝 움직였어.|My tail moved a little at that gentle touch.|優しい手に、尾が少し動いちゃった。
+body:wings|held|날개가 접히지 않게 몸통 아래를 받쳐줘.|Support my body without crumpling my wings.|翼を押し曲げないように、胴の下を支えてね。
+body:wings|held|날개를 정리하고 따라갈게. 천천히 옮겨줘.|I will settle my wings and come along. Slowly, please.|翼を整えてついていくよ。ゆっくり運んでね。
+body:wings|falling|날개로 중심을 잡고 높이를 낮출게.|Wings for balance as I lower my height.|翼で釣り合いを取りながら、高さを下げよう。
+body:wings|falling|서두르지 않고 날개를 모으며 내려갈게.|I will gather my wings and descend without haste.|急がず、翼をまとめながら下りていくよ。
+body:wings|landing|날개 끝도 무사해. 이제 접고 쉬자.|Wingtips safe. Time to fold them and rest.|翼の先も無事。たたんで、少し休もう。
+body:wings|landing|잘 내려왔어. 날개만 다시 정돈할게.|Down safely. Just my wings to settle.|無事に下りたよ。翼だけ、また整えよう。
+body:wings|petting|날개를 반대로 젖히지만 말아줘.|Just do not bend my wings the wrong way.|翼を逆に曲げないでね。
+body:wings|petting|날개 끝까지 포근해졌네.|Even my wingtips feel cozy.|翼の先まで、ぽかぽかしてきたね。
+body:cluster|held|함께 있는 친구들까지 모두 받쳐줘.|Please support all of us together.|一緒にいるみんなも、まとめて支えてね。
+body:cluster|held|흩어지지 않게 서로 자리를 잡을게.|We will hold together so nobody gets separated.|はぐれないように、それぞれ場所を整えるよ。
+body:cluster|falling|다 같이 중심을 맞추자. 흩어지지 말고!|Balance together. Nobody drift away!|みんなで釣り合いを合わせよう。離れずにね！
+body:cluster|falling|순서 맞춰 내려가자. 모두 준비됐지?|Down together, in order. Everyone ready?|並んで下りよう。みんな、準備はいい？
+body:cluster|landing|모두 모였어? 좋아, 안전하게 도착!|Everyone here? Good, safely down together!|みんなそろった？ よし、無事に到着！
+body:cluster|landing|서로 자리를 확인했어. 다시 함께 쉴게.|Positions checked. We can rest together again.|それぞれの場所を確かめたよ。また一緒に休もう。
+body:cluster|petting|모두에게 골고루 인사해주는구나.|You are greeting each of us in turn.|みんなに、順番にあいさつしてくれるんだね。
+body:cluster|petting|다 같이 반기느라 조금 들썩였네.|We all shifted a little to greet you.|みんなで迎えようとして、少し揺れちゃったね。
+body:manyfeet|held|작은 다리가 끼지 않게 넓게 받쳐줘.|Support me broadly so my little legs do not get caught.|小さな脚を挟まないよう、広く支えてね。
+body:manyfeet|held|다리를 잠깐 모아둘게. 천천히 옮겨줘.|I will gather my legs for a moment. Carry me slowly.|脚を少しまとめておくよ。ゆっくり運んでね。
+body:manyfeet|falling|여러 다리를 함께 움직여 균형을 잡을게.|All my legs will work together for balance.|たくさんの脚を合わせて、釣り合いを取ろう。
+body:manyfeet|falling|다리가 엉키지 않게 천천히 내려가자.|Slowly down, without tangling my legs.|脚がもつれないよう、ゆっくり下りよう。
+body:manyfeet|landing|다리도 모두 제자리야. 잘 내려왔네.|All legs in place. A good landing.|脚もみんな元どおり。うまく下りられたね。
+body:manyfeet|landing|작은 다리부터 하나씩 중심을 잡았어.|My little legs found their balance one by one.|小さな脚から、ひとつずつ釣り合いを取ったよ。
+body:manyfeet|petting|작은 다리까지 간질간질하네.|Even my little legs feel ticklish.|小さな脚まで、くすぐったくなったよ。
+body:manyfeet|petting|가만히 있으려고 다리에 힘을 뺐어.|I relaxed my legs so I could stay still.|じっとしていられるように、脚の力を抜いたよ。
+body:blob|held|몸이 기울어지지 않게 아래를 받쳐줘.|Support me below so my body does not tip.|体が傾かないよう、下を支えてね。
+body:blob|held|내 모양에 맞춰 살짝 감싸주면 좋아.|A gentle cradle that follows my shape feels nice.|体の形に合わせて、そっと包んでくれるとうれしい。
+body:blob|falling|몸을 모아 균형을 잡을게.|I will gather myself to keep my balance.|体をまとめて、釣り合いを取ろう。
+body:blob|falling|서두르지 않고 전체를 천천히 내려놓자.|Slowly, set all of me down together.|急がず、体全体をゆっくり下ろそう。
+body:blob|landing|모양을 바로잡고 다시 쉬는 중이야.|Shape settled, resting again.|形を整えて、また休んでいるよ。
+body:blob|landing|잘 놓였네. 이 자리가 편안해.|Set down nicely. This spot feels comfortable.|うまく置けたね。この場所は落ち着くよ。
+body:blob|petting|부드럽게 감싸주는 손이 마음에 들어.|I like the way your hand gently cradles me.|そっと包むその手が、気に入ったよ。
+body:blob|petting|살짝 닿는 손길도 잘 느껴져.|I can feel even that little touch.|ほんの少し触れる手も、ちゃんとわかるよ。
+body:cocoon|held|단단히 감싼 몸은 그대로 받쳐줘. 안에서 준비 중이야.|Support my wrapped body as it is. I am preparing inside.|包まれた体はそのまま支えてね。中で準備をしているよ。
+body:cocoon|held|안이 흔들리지 않게 조심히 옮겨줘.|Carry me gently so the inside does not shake.|中が揺れないように、そっと運んでね。
+body:cocoon|falling|겉을 단단히 하고 내려갈게. 안쪽은 지켜야지.|Bracing the outside as I descend. The inside needs protecting.|外側を固めて下りよう。中は守らないと。
+body:cocoon|falling|지금은 조용해도 내려가는 건 느껴져!|I may be still, but I can feel the drop!|じっとしていても、下りるのはわかるよ！
+body:cocoon|landing|감싼 부분도 멀쩡해. 다시 준비를 이어갈게.|My wrapping is safe. Back to preparing.|包んだところも無事。また準備を続けよう。
+body:cocoon|landing|휴, 안쪽까지 무사한 것 같아.|Phew, everything inside seems safe.|ふう、中まで無事みたいだね。
+body:cocoon|petting|안까지 따뜻한 손길이 전해져.|Your warm touch reaches inside too.|あたたかな手が、中まで伝わるよ。
+body:cocoon|petting|조용히 기다려주는구나. 나도 준비하고 있어.|You wait so patiently. I am getting ready too.|静かに待ってくれるんだね。ぼくも準備しているよ。
+body:aquatic|held|몸이 마르지 않게 잠깐만 옮겨줘.|A short move, please, so I do not dry out.|乾かないように、短い移動でお願いね。
+body:aquatic|held|물가로 갈 땐 나도 함께 데려가줘.|Take me along when you go to the water.|水辺へ行くなら、ぼくも一緒に連れていってね。
+body:aquatic|falling|물이 있는 쪽을 생각하며 중심을 잡을게.|I will think of the water and keep my balance.|水辺を思いながら、釣り合いを取ろう。
+body:aquatic|falling|몸을 다치지 않게 천천히 내려가자.|Slowly down, keeping my body safe.|体を傷めないように、ゆっくり下りよう。
+body:aquatic|landing|여기서 잠깐 숨을 고를게. 잘 내려왔네.|A little pause here. Down safely.|ここで少し落ち着こう。無事に下りられたね。
+body:aquatic|landing|몸도 무사해. 다음엔 물가에서 쉬고 싶어.|My body is safe. Next time, a rest by the water.|体も無事。次は水辺で休みたいな。
+body:aquatic|petting|물처럼 부드럽게 닿는 손이 좋아.|I like a touch as gentle as water.|水みたいに、優しく触れる手が好き。
+body:aquatic|petting|촉촉한 기운을 지키며 잠깐 기대볼게.|Keeping that moist feeling, I will lean in for a moment.|しっとりした感じを保ちながら、少し寄りかかろう。
+body:cloaked|held|덮인 부분은 들추지 말고 몸 전체를 받쳐줘.|Support all of me without lifting my covering.|覆った部分はめくらず、体ごと支えてね。
+body:cloaked|held|가린 모습 그대로 데려가줘도 괜찮아.|It is fine to carry me just as I am, covering and all.|覆った姿のまま、連れていってくれて大丈夫。
+body:cloaked|falling|덮인 부분을 꼭 챙기고 내려갈게!|Keeping my covering close on the way down!|覆ったところをしっかり守って、下りるよ！
+body:cloaked|falling|안이 보이지 않게 조심조심!|Carefully, so nothing underneath shows!|中が見えないように、そっと、そっと！
+body:cloaked|landing|덮인 부분도 잘 있네. 이제 안심이야.|My covering is safe. I can relax now.|覆ったところも無事。もう安心だね。
+body:cloaked|landing|휴, 그대로 잘 내려왔어.|Phew, safely down, just as I was.|ふう、そのまま無事に下りられたよ。
+body:cloaked|petting|덮인 모습을 아껴줘서 고마워.|Thank you for caring for me just as I am covered.|覆ったこの姿を、大切にしてくれてありがとう。
+body:cloaked|petting|겉으로도 다정한 손길이 전해져.|I can feel your kindness through the covering.|覆い越しでも、優しさは伝わるよ。
+voice:dozy|idle|음… 잠깐 눈을 감았을 뿐이야. 아마도…|Hmm... I only closed my eyes for a moment. Probably...|うーん……少し目を閉じていただけ。たぶん……。
+voice:dozy|held|깨긴 했어… 어디로 가는지 도착하면 알려줘.|I am awake... Tell me where we went after we arrive.|起きているよ……どこへ行くかは、着いてから教えて。
+voice:dozy|falling|어… 내려가는 중이었어? 이제 알았어…|Oh... We were going down? I noticed now...|あれ……下りていたの？ 今、気づいたよ……。
+voice:dozy|landing|도착했구나… 그럼 조금만 더 쉬자…|We are here... Then let us rest a little longer...|着いたんだね……じゃあ、あと少し休もう……。
+voice:dozy|growth|눈을 뜨니 좀 더 자랐네… 네 덕분이구나.|I woke up a little stronger... You helped, did you not?|目を開けたら、少し育ったね……君のおかげなんだね。
+voice:dozy|usage|기운을 받았어… 고맙다고 말하고 다시 졸아도 될까?|I felt that energy... May I thank you, then doze again?|力が届いたよ……お礼を言ってから、またうとうとしてもいい？
+voice:dozy|petting|편안해서… 또 눈이 감기네…|So comfortable... My eyes are closing again...|落ち着くなあ……また、まぶたが閉じちゃう……。
+voice:shy|idle|조금 멀찍이 있어도 네가 오는 건 기다리고 있었어.|Even from a little distance, I was waiting for you.|少し離れていても、君が来るのを待っていたよ。
+voice:shy|held|놀라긴 했지만… 네가 잡아준 거면 괜찮아.|A little startled... but I know it is you holding me.|びっくりしたけど……君が持ってくれるなら大丈夫。
+voice:shy|falling|잠깐만… 조금만 천천히 내려가면 안 될까?|Wait... Could we go down just a little more slowly?|待って……もう少しだけ、ゆっくり下りてもいい？
+voice:shy|landing|이제 괜찮아. 옆에 있어줘서 덜 무서웠어.|I am all right now. It helped to have you nearby.|もう大丈夫。そばにいてくれたから、少し怖くなかった。
+voice:shy|growth|전보다 조금은 자신이 생겼어. 티가 날까?|I feel a little more confident. Can you tell?|前より少し、自信がついたよ。わかるかな？
+voice:shy|usage|네가 애쓴 만큼 나도 용기를 내볼게.|I will try to be a little braver, just as you tried today.|君が頑張った分、ぼくも少し勇気を出してみるね。
+voice:shy|petting|처음엔 놀랐는데… 지금은 조금 더 가까이 있고 싶어.|Startled at first... Now I want to stay a little closer.|最初は驚いたけど……今は、もう少し近くにいたい。
+voice:proud|idle|실력을 보일 때까지는 여유 있게 기다리는 것도 좋지.|It is fine to wait calmly until my skill is needed.|腕を見せるときまでは、余裕を持って待つのもいいな。
+voice:proud|held|들어 올릴 줄은 몰랐는데? 제법인데.|I did not expect you to lift me. Not bad.|持ち上げるとは思わなかったな。なかなかやるね。
+voice:proud|falling|이 정도는 침착하게 넘길 수 있어. 보고 있어!|I can handle this calmly. Watch!|このくらい、落ち着いて越えられる。見ていて！
+voice:proud|landing|봤지? 이런 순간에도 자세는 흐트러뜨리지 않아.|See? I keep my composure even at moments like this.|見たかい？ こういうときでも、姿勢は崩さない。
+voice:proud|growth|좋아. 강해진 건 분명하네. 다음도 기대해.|Good. I am stronger, that is certain. Watch what comes next.|よし、強くなったのは確かだ。次も期待していて。
+voice:proud|usage|그 꾸준함, 마음에 드는데. 나도 뒤처지진 않을 거야.|I like that persistence. I will not fall behind either.|その粘り強さ、気に入ったよ。ぼくも遅れはしない。
+voice:proud|petting|흠, 이런 대접도 나쁘지는 않군. 조금 더 해도 좋아.|Hmm, this treatment is not bad. A little longer is fine.|ふむ、こういう扱いも悪くない。もう少し続けてもいいよ。
+voice:guardian|idle|주변은 살펴두었어. 네가 쉴 때는 내가 지켜볼게.|I checked around. I will keep watch while you rest.|周りは確かめたよ。君が休むときは、見ていよう。
+voice:guardian|held|오늘은 네가 날 지켜주는 차례구나. 믿고 맡길게.|Today it is your turn to keep me safe. I trust you.|今日は君が守ってくれる番だね。信じて任せよう。
+voice:guardian|falling|걱정하지 마. 중심을 잡으면서 주변도 살필게.|Do not worry. I will keep my balance and watch around us.|心配しないで。釣り合いを取りながら、周りも見るよ。
+voice:guardian|landing|나는 괜찮아. 너는 놀라지 않았니?|I am all right. Did that startle you?|ぼくは大丈夫。君はびっくりしなかった？
+voice:guardian|growth|네 곁을 지킬 힘이 더 자랐어.|My strength to stand beside you has grown.|君のそばを守る力が、もっと育ったよ。
+voice:guardian|usage|노력은 잘 받았어. 이제 네가 쉬는 동안 내가 지킬게.|I felt your effort. Now I will watch while you rest.|頑張りは届いたよ。今度は君が休むあいだ、見守ろう。
+voice:guardian|petting|지켜야 할 이유가 또 하나 생겼네.|One more reason to keep you safe.|守りたい理由が、またひとつできたね。
+voice:gentle|idle|서두르지 않아도 돼. 오늘은 어떤 하루였어?|No need to hurry. How was your day?|急がなくていいよ。今日は、どんな一日だった？
+voice:gentle|held|어디로 가든 잠깐 함께할 수 있어서 좋아.|Wherever we go, I am happy to share a little time.|どこへ行くにしても、少し一緒にいられるのはうれしい。
+voice:gentle|falling|천천히, 놀란 마음도 함께 가라앉혀보자.|Slowly now. Let us settle those startled feelings too.|ゆっくりね。驚いた気持ちも、一緒に落ち着かせよう。
+voice:gentle|landing|편안한 자리를 찾았네. 같이 한숨 돌리자.|A comfortable spot. Let us take a breath together.|落ち着く場所だね。一緒にひと息つこう。
+voice:gentle|growth|네가 들인 시간이 조용히 자라고 있었구나.|The time you gave us was quietly helping me grow.|君が重ねた時間が、静かに育ててくれていたんだね。
+voice:gentle|usage|오늘 애쓴 만큼, 네게도 다정한 시간을 남겨줘.|After today's effort, leave a little kindness for yourself too.|今日頑張った分、自分にも優しい時間を残してね。
+voice:gentle|petting|말하지 않아도 다정한 마음이 전해져.|Your kindness reaches me without a word.|言葉にしなくても、優しい気持ちは伝わるよ。
+voice:curious|idle|방금 눈에 들어온 걸 조금 더 살펴보고 싶어.|Something caught my eye. I want a closer look.|今、目に入ったものを、もう少し確かめたいな。
+voice:curious|held|여기서 보면 다르게 보이네. 저건 뭘까?|Things look different from here. What is that over there?|ここからだと違って見えるね。あれは何だろう？
+voice:curious|falling|아래가 가까워지고 있어! 저기서 보는 풍경은 어떨까?|The ground is getting closer! What will the view be like there?|下が近づいている！ あそこからは、どう見えるのかな？
+voice:curious|landing|새 자리네. 주변부터 구경해도 돼?|A new spot. May I look around first?|新しい場所だね。先に周りを見てもいい？
+voice:curious|growth|전보다 할 수 있는 게 늘었을까? 확인해보고 싶어.|Can I do more than before? I want to find out.|前よりできることが増えたかな。確かめてみたいな。
+voice:curious|usage|이번에는 무엇을 해낸 거야? 네 이야기가 궁금해.|What did you work on this time? I am curious about your story.|今度は何を進めたの？ 君の話が気になるな。
+voice:curious|petting|그 손길도 조금씩 알아가는 중이야.|I am getting to know that touch a little at a time.|その手の感じも、少しずつ覚えているよ。
+voice:energetic|idle|준비운동 끝! 네가 준비되면 나도 바로 출발이야!|Warm-ups done! Ready when you are!|準備運動、完了！ 君の準備ができたら、すぐ出発だよ！
+voice:energetic|held|우와, 높아졌어! 어디로 데려가줄 거야?|Wow, higher up! Where are we headed?|わあ、高くなった！ どこへ連れていってくれるの？
+voice:energetic|falling|좋아, 힘 빼고 준비! 이대로 내려간다!|All right, relax and ready! Down we go!|よし、力を抜いて準備！ このまま下りるよ！
+voice:energetic|landing|도착! 한 번 놀랐으니 잠깐 쉬고 또 가자!|Arrived! A quick rest after that surprise, then onward!|到着！ びっくりした分、少し休んでまた行こう！
+voice:energetic|growth|우와, 기운이 넘쳐! 전보다 더 해볼 수 있겠어!|Wow, so much energy! I can try even more now!|わあ、力がいっぱい！ 前よりもっと挑戦できそう！
+voice:energetic|usage|또 한 걸음 해냈네! 내가 제일 먼저 응원할게!|Another step done! Let me cheer first!|また一歩進んだね！ 一番に応援するよ！
+voice:energetic|petting|헤헤, 기운이 더 났어! 이번엔 내가 반겨줄 차례!|Hehe, more energy already! My turn to greet you!|えへへ、元気が出た！ 今度はぼくが迎える番だね！
+voice:hungry|idle|다음 간식 시간은 언제야? 아까 먹은 건 별개야.|When is the next snack? The last one does not count.|次のおやつはいつ？ さっき食べた分は、別だよ。
+voice:hungry|held|간식 있는 데로 가는 거야? 그럼 잘 따라갈게!|Are we going where the snacks are? I will come along nicely!|おやつのあるところへ行くの？ それなら、おとなしくついていく！
+voice:hungry|falling|배에 힘주고 내려가자! 간식도 소화시켜야지!|Brace the belly and down we go! A little snack digestion too!|お腹に力を入れて下りよう！ おやつの消化もしないとね！
+voice:hungry|landing|휴, 무사해. 놀랐더니 또 배고파졌어.|Phew, safe. That surprise made me hungry again.|ふう、無事だね。びっくりしたら、またお腹がすいちゃった。
+voice:hungry|growth|더 자랐으니 더 먹어도 되는 걸까?|Now that I have grown, may I eat a little more?|育った分、もう少し食べてもいいのかな？
+voice:hungry|usage|새 기운을 받았어! 그래도 간식 배는 남아 있지.|Fresh energy! Still room for a snack, though.|新しい力が届いた！ でも、おやつの分はまだ入るよ。
+voice:hungry|petting|좋아… 간식만큼이나 기분 좋은데?|Nice... Almost as good as a snack!|いいね……おやつくらい、うれしいかも？
+voice:mischief|idle|조용하네… 아주 작은 장난 하나쯤은 괜찮겠지?|So quiet... One tiny little trick would be fine, right?|静かだね……小さないたずら、ひとつくらいならいいよね？
+voice:mischief|held|앗, 잡혔다! 이번에는 내가 놀랄 차례였네.|Ah, caught! My turn to be surprised this time.|あっ、つかまった！ 今度はぼくが驚く番だったね。
+voice:mischief|falling|우왓, 이건 내 장난이 아닌데!|Whoa, this one was not my trick!|わあ、これはぼくのいたずらじゃないよ！
+voice:mischief|landing|아무 일도 없던 척… 방금 건 비밀이야.|Acting like nothing happened... Our little secret.|何もなかった顔で……今のは秘密だよ。
+voice:mischief|growth|더 솜씨가 좋아졌어. 무슨 솜씨인지는 비밀!|My skills improved. Which skills? A secret!|腕が上がったよ。何の腕かは、秘密！
+voice:mischief|usage|몰래 지켜봤지. 잘한 거, 내가 못 봤을 줄 알았어?|I watched quietly. Did you think I missed your good work?|こっそり見ていたよ。頑張ったの、気づかないと思った？
+voice:mischief|petting|장난칠 생각이었는데… 조금만 더 쓰다듬어줘.|I was going to tease you... but a few more pats first.|からかうつもりだったのに……もう少し、なでて。
+voice:performer|idle|작은 무대라도 좋아. 오늘의 박자부터 골라볼까?|Even a little stage will do. Shall we choose today's rhythm?|小さな舞台でもいいよ。今日のリズムから選ぼうか。
+voice:performer|held|무대가 높아졌네! 인사는 여기서 해도 돼?|The stage got higher! May I greet the audience from here?|舞台が高くなったね！ ここからあいさつしてもいい？
+voice:performer|falling|하나, 둘… 착지까지 박자를 놓치지 말자!|One, two... Keep the beat right through the landing!|いち、に……着地まで、拍子を忘れずに！
+voice:performer|landing|마지막 동작까지 완벽! 박수는 조금 작게 해줘.|Final pose, done! A little quiet applause, please.|最後のポーズまで完了！ 拍手は、少し小さめにね。
+voice:performer|growth|다음 무대에서는 더 멋진 모습을 보여줄게.|I will bring something better to our next performance.|次の舞台では、もっと素敵な姿を見せるよ。
+voice:performer|usage|오늘의 노력에 맞춰 새 박자를 만들어봤어.|I made a new rhythm for today's effort.|今日の頑張りに合わせて、新しい拍子を作ってみたよ。
+voice:performer|petting|그 손길은 나만을 위한 앙코르 같아.|That touch feels like an encore just for me.|その手は、ぼくだけへのアンコールみたい。
+voice:scholar|idle|생각을 정리하는 중이야. 먼저 살펴볼 건 무엇일까?|Sorting my thoughts. What should I examine first?|考えを整理しているよ。まず、何から確かめようかな。
+voice:scholar|held|관찰 위치가 바뀌었군. 여기서도 살펴보겠어.|Observation point changed. I shall examine this view too.|観察する位置が変わったね。ここからも確かめよう。
+voice:scholar|falling|아래까지의 거리를 확인했어. 침착하게 가자.|Distance downward checked. Let us stay calm.|下までの距離は確かめた。落ち着いて進もう。
+voice:scholar|landing|착지 확인. 잠깐 정돈한 다음 계속 살펴볼게.|Landing confirmed. A brief reset, then back to observing.|着地を確認。少し整えてから、また観察を続けよう。
+voice:scholar|growth|새로 할 수 있는 일이 늘었어. 차근차근 확인해보자.|There is more I can do now. Let us check it carefully.|新しくできることが増えた。ひとつずつ確かめてみよう。
+voice:scholar|usage|작은 결과도 모아두면 다음 판단의 근거가 되지.|Even small results can help us make the next decision.|小さな結果も集めれば、次を決める手がかりになる。
+voice:scholar|petting|예상보다 편안하네. 이 감각도 기억해두겠어.|More soothing than expected. I shall remember this feeling.|予想より落ち着くね。この感覚も、覚えておこう。
+voice:stoic|idle|때를 기다리고 있다. 서두를 이유는 없지.|I am waiting for the right moment. There is no reason to hurry.|時を待っている。急ぐ理由はない。
+voice:stoic|held|무게를 느꼈겠군. 천천히 옮겨도 좋다.|You must feel the weight. A slow move is fine.|重さを感じただろう。ゆっくり運んで構わない。
+voice:stoic|falling|흔들림은 잠시다. 중심을 잃지 않겠다.|The disturbance is brief. I will keep my center.|揺れはひとときだ。中心は失わぬ。
+voice:stoic|landing|다시 자리를 잡았다. 염려하지 않아도 된다.|Settled again. There is no need for concern.|再び場所を整えた。案ずることはない。
+voice:stoic|growth|쌓인 시간이 힘이 되었다. 잘 간직하마.|Our accumulated time became strength. I shall keep it well.|積み重ねた時が、力となった。大切に保とう。
+voice:stoic|usage|서두르지 않은 걸음도 분명 앞으로 나아간다.|An unhurried step still moves forward.|急がぬ一歩も、確かに前へ進む。
+voice:stoic|petting|…이런 조용한 시간도 나쁘지 않군.|...A quiet moment like this is not unwelcome.|……このような静かな時間も、悪くはない。
+voice:playful|idle|기다리는 동안 작은 놀이를 생각해뒀어. 같이 할래?|I thought of a little game while waiting. Want to play?|待つあいだに、小さな遊びを考えたよ。一緒にする？
+voice:playful|held|잡았다! 이번에는 내가 따라가는 차례야?|Caught me! Is it my turn to come along?|つかまった！ 今度は、ついていく番かな？
+voice:playful|falling|우와앗! 놀이처럼 해도 착지는 조심해야지!|Wheee! Even in play, the landing needs care!|わあっ！ 遊びみたいでも、着地には気をつけないと！
+voice:playful|landing|도착! 방금 한 번 신나게 놀았네.|Arrived! That was a lively little moment.|到着！ 今のは、ちょっとにぎやかだったね。
+voice:playful|growth|조금 더 자랐어도 같이 노는 건 그대로 좋아!|A little bigger, still just as happy to play together!|少し育っても、一緒に遊ぶのは変わらず好き！
+voice:playful|usage|네가 한 일만큼 나도 한 번 더 힘내볼게!|I will try a little more, just as you did!|君が頑張った分、ぼくももうひと頑張りするよ！
+voice:playful|petting|간질간질! 그럼 나도 살짝 반겨줄게.|Ticklish! Let me greet you back, just a little.|くすぐったい！ じゃあ、ぼくからも、ちょっとあいさつ。

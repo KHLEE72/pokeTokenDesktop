@@ -19,7 +19,7 @@ function names(table,key,id){
 }
 const species=Object.fromEntries(roster.map(p=>[p.id,names(tables.pokemon_species_names,'pokemon_species_id',p.id)]))
 const types=Object.fromEntries([...new Set(roster.flatMap(p=>p.types))].map(type=>[type,names(tables.type_names,'type_id',typeIds.get(type))]))
-const identifiers={poke:'poke-ball',great:'great-ball',ultra:'ultra-ball',premier:'premier-ball',luxury:'luxury-ball',dusk:'dusk-ball',master:'master-ball'}
+const identifiers={poke:'poke-ball',great:'great-ball',ultra:'ultra-ball',premier:'premier-ball',luxury:'luxury-ball',dusk:'dusk-ball',master:'master-ball',timer:'timer-ball',dream:'dream-ball',cherish:'cherish-ball'}
 const balls=Object.fromEntries(Object.entries(identifiers).map(([key,id])=>[key,names(tables.item_names,'item_id',itemIds.get(id))]))
 const result={source:{repository:'https://github.com/PokeAPI/pokeapi',revision,files:files.map(name=>`${base}${name}.csv`),languages:languageIds},species,types,balls}
 writeFileSync('src/shared/localized-catalog.json',JSON.stringify(result,null,2)+'\n')

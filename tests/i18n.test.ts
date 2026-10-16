@@ -68,7 +68,7 @@ describe('official localized names and offline translations', () => {
     expect(director.say(1,'petting',null,'en')?.text).toContain('bulb')
     expect(director.say(133,'petting',null,'ja')?.text).toContain('えり')
   })
-  it('ships seven unchanged 160px PNGs with recorded provenance and alpha', () => {
+  it('ships ten unchanged 160px PNGs with recorded provenance and alpha', () => {
     for(const ball of BALLS) {
       const png=readFileSync(`src/renderer/src/assets/balls/${ball.id}.png`)
       expect(png.subarray(0,8).toString('hex')).toBe('89504e470d0a1a0a')

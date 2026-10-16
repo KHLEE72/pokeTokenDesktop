@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { mkdir, writeFile } from 'node:fs/promises'
 
 // Original, unmodified Scarlet/Violet bag sprites. See THIRD_PARTY_NOTICES.md.
-const names = { poke: 'Poké', great: 'Great', ultra: 'Ultra', premier: 'Premier', luxury: 'Luxury', dusk: 'Dusk', master: 'Master' }
+const names = { poke: 'Poké', great: 'Great', ultra: 'Ultra', premier: 'Premier', luxury: 'Luxury', dusk: 'Dusk', master: 'Master', timer: 'Timer', dream: 'Dream', cherish: 'Cherish' }
 const directory = new URL('../src/renderer/src/assets/balls/', import.meta.url)
 await mkdir(directory, { recursive: true })
 const sources = {}
@@ -18,4 +18,4 @@ for (const [id, name] of Object.entries(names)) {
   sources[id] = { page: `https://archives.bulbagarden.net/wiki/File:${encodeURIComponent(filename)}`, image: url, sha256: createHash('sha256').update(data).digest('hex'), width: 160, height: 160 }
 }
 await writeFile(new URL('sources.json', directory), JSON.stringify({ game: 'Pokémon Scarlet and Violet', sources }, null, 2) + '\n')
-console.log('Bundled seven original 160px ball sprites.')
+console.log(`Bundled ${Object.keys(names).length} original 160px ball sprites.`)

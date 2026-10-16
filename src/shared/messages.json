@@ -1170,5 +1170,49 @@
   "환상": {
     "en": "Mythical",
     "ja": "幻"
+  },
+  "준전설": {
+    "en": "Sub-Legendary",
+    "ja": "準伝説"
+  },
+  "분류": {
+    "en": "Category",
+    "ja": "分類"
+  },
+  "모든 분류": {
+    "en": "All categories",
+    "ja": "すべての分類"
+  },
+  "도감 분류 필터": {
+    "en": "Pokédex category filter",
+    "ja": "図鑑の分類フィルター"
+  },
+  "오랜 전승의 발자취": {
+    "en": "Tracks of Ancient Tales",
+    "ja": "古い伝承の足跡"
+  },
+  "준전설 포켓몬 세 종류를 도감에 등록하세요.": {
+    "en": "Register three different Sub-Legendary Pokémon.",
+    "ja": "準伝説のポケモンを3種類、図鑑に登録しよう。"
+  },
+  "꿈 너머의 전설": {
+    "en": "A Legend Beyond Dreams",
+    "ja": "夢の先の伝説"
+  },
+  "전설 포켓몬 한 종류를 도감에 등록하세요.": {
+    "en": "Register a Legendary Pokémon.",
+    "ja": "伝説のポケモンを1種類、図鑑に登録しよう。"
+  },
+  "환상이 건넨 초대장": {
+    "en": "An Invitation from Myth",
+    "ja": "幻からの招待状"
+  },
+  "환상의 포켓몬 한 종류를 도감에 등록하세요.": {
+    "en": "Register a Mythical Pokémon.",
+    "ja": "幻のポケモンを1種類、図鑑に登録しよう。"
+  },
+  "일반 포켓몬": {
+    "en": "Ordinary Pokémon",
+    "ja": "通常のポケモン"
   }
 }

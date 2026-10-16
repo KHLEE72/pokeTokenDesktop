@@ -15,6 +15,8 @@ import './rewards.css';
 import './i18n.css';
 import './dex.css';
 import { GENERATIONS } from '../../shared/catalog';
+import { RARITIES, Rarity, speciesRarity } from '../../shared/rarity';
+import { RarityBadge } from './rarity-badge';
 import { DexSort, sortDex } from '../../shared/dex';
 import { EvolutionHistory } from './evolution-history';
 import { LANGUAGES, Language, ballName, eggName as localizedEggName, localeFor, localizeMessage, pokemonMatches, pokemonName, themeName, typeName } from '../../shared/i18n';
@@ -226,7 +228,7 @@ function DexCard({ snapshot, game, pace, p, shiny, status, busy, act }: {snapsho
   const [chosen, setChosen] = useState(''),choices = dexChoices(game, p.id, shiny).filter((c) => status === 'growing' ? growingAppearance(c, p.phase) : status === 'complete' ? !growingAppearance(c, p.phase) : status === 'active' ? c.id === game.activeId && game.displayPhase === p.phase : true);
   const pet = choices.find((c) => c.id === chosen) ?? choices.find((c) => c.id === game.activeId && game.displayPhase === p.phase) ?? choices[0];
   const active = pet?.id === game.activeId && game.displayPhase === p.phase,growing = pet && growingAppearance(pet, p.phase);
-  return <article className={`dex-card ${pet ? '' : 'locked'} ${active ? 'dex-selected' : ''}`} data-species={p.id} data-variant={shiny ? 'shiny' : 'normal'}><span className="dex-number">No. {String(p.id).padStart(3, '0')} {shiny ? t("✦ 이로치") : ''}<span className="dex-species-tags">{t`${p.generation}세대`}{p.mythical ? ` · ${t("환상")}` : p.legendary ? ` · ${t("전설")}` : ''}</span></span>
+  return <article className={`dex-card ${pet ? '' : 'locked'} ${active ? 'dex-selected' : ''}`} data-species={p.id} data-rarity={speciesRarity(p.id)} data-variant={shiny ? 'shiny' : 'normal'}><span className="dex-number">No. {String(p.id).padStart(3, '0')} {shiny ? t("✦ 이로치") : ''}<span className="dex-species-tags">{t`${p.generation}세대`}</span><RarityBadge rarity={speciesRarity(p.id)}/></span>
     {pet ? <Sprite id={p.id} shiny={shiny} /> : <div className="locked-placeholder">?</div>}<h3>{pet ? pokemonName(p.id, language) : t("아직 만나지 못했어요")}</h3>
     <div className="type-badges">{p.types.map((type) => <span key={type} style={{ background: EGG_TYPES.find((t) => t.id === type)?.color }}>{typeName(type, language)}</span>)}</div>
     <div className="dex-card-actions">
@@ -271,6 +273,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   const [dexView, setDexView] = useState<'collection' | 'history'>('collection');
   const [dexSearch, setDexSearch] = useState('');
   const [dexGeneration, setDexGeneration] = useState<number | 'all'>('all');
+  const [dexRarity, setDexRarity] = useState<Rarity | 'all'>('all');
   const [dexType, setDexType] = useState<EggType | 'all'>('all');
   const [dexStatus, setDexStatus] = useState<DexStatus>('all');
   const [dexPage, setDexPage] = useState(1);
@@ -282,7 +285,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
     event.preventDefault();setDexView(index === 0 ? 'collection' : 'history');
     event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]')[index]?.focus();
   };
-  const resetDexFilters = (): void => {setDexSearch('');setDexGeneration('all');setDexType('all');setDexStatus('all');setDexPage(1);};
+  const resetDexFilters = (): void => {setDexSearch('');setDexGeneration('all');setDexRarity('all');setDexType('all');setDexStatus('all');setDexPage(1);};
   useEffect(() => window.desktop.onNavigate(setTab), []);
   useEffect(() => {if (tab === 'settings') void window.desktop.getDisplays().then(setDisplays);}, [tab, language]);
   useEffect(() => {const theme = snapshot?.settings.theme ?? 'light';document.documentElement.dataset.theme = theme;document.documentElement.dataset.palette = themeInfo(theme).dark ? 'dark' : 'light';}, [snapshot?.settings.theme]);
@@ -305,6 +308,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   const filteredPokemon = tab === 'dex' ? sortDex(POKEMON.filter((p) => {
     if (query && !pokemonMatches(p.id, query) && !(/^\d+$/.test(numberQuery) && p.id === Number(numberQuery))) return false;
     if (dexGeneration !== 'all' && p.generation !== dexGeneration) return false;
+    if (dexRarity !== 'all' && speciesRarity(p.id) !== dexRarity) return false;
     if (dexType !== 'all' && !p.types.some((type) => type === dexType)) return false;
     if (dexStatus === 'all') return true;
     const choices = dexChoices(game, p.id, shinyDex);
@@ -315,7 +319,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
     if (dexStatus === 'active') return choices.some((c) => c.id === game.activeId && game.displayPhase === p.phase);
     return true;
   }), settings.dexSort, game, shinyDex, language) : [];
-  const hasDexFilters = Boolean(dexSearch || dexGeneration !== 'all' || dexType !== 'all' || dexStatus !== 'all');
+  const hasDexFilters = Boolean(dexSearch || dexGeneration !== 'all' || dexRarity !== 'all' || dexType !== 'all' || dexStatus !== 'all');
   const dexPages = Math.max(1, Math.ceil(filteredPokemon.length / DEX_PAGE_SIZE)),currentDexPage = Math.min(dexPage, dexPages);
   const dexStart = (currentDexPage - 1) * DEX_PAGE_SIZE,pagePokemon = filteredPokemon.slice(dexStart, dexStart + DEX_PAGE_SIZE);
   const changeDexPage = (page: number): void => {
@@ -358,6 +362,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
             <label className="dex-filter">{t("세대")}<select aria-label={t("도감 세대 필터")} value={dexGeneration} onChange={(e) => {setDexGeneration(e.target.value === 'all' ? 'all' : Number(e.target.value));setDexPage(1);}}><option value="all">{t("모든 세대")}</option>{GENERATIONS.map((generation) => <option key={generation} value={generation}>{t`${generation}세대`}</option>)}</select></label>
             <label className="dex-filter">{t("타입")}<select aria-label={t("도감 타입 필터")} value={dexType} onChange={(e) => {setDexType(e.target.value as EggType | 'all');setDexPage(1);}}><option value="all">{t("모든 타입")}</option>{EGG_TYPES.map((type) => <option key={type.id} value={type.id}>{typeName(type.id, language)}</option>)}</select></label>
             <label className="dex-filter">{t("상태")}<select aria-label={t("도감 상태 필터")} value={dexStatus} onChange={(e) => {setDexStatus(e.target.value as DexStatus);setDexPage(1);}}>{dexStatuses.map((status) => <option key={status.value} value={status.value}>{t(status.label)}</option>)}</select></label>
+            <label className="dex-filter">{t("분류")}<select aria-label={t("도감 분류 필터")} value={dexRarity} onChange={e=>{setDexRarity(e.target.value as Rarity|'all');setDexPage(1);}}><option value="all">{t("모든 분류")}</option>{RARITIES.map(r=><option key={r.id} value={r.id}>{t(r.name)}</option>)}</select></label>
             <label className="dex-filter">{t("정렬")}<select aria-label={t("도감 정렬")} value={settings.dexSort} disabled={busy} onChange={(e) => {setDexPage(1);update({ dexSort: e.target.value as DexSort });}}><option value="number">{t("번호순")}</option><option value="name">{t("이름순")}</option><option value="acquired">{t("획득순 · 최근 먼저")}</option></select></label>
           </div>
           <div className="dex-filter-summary"><p role="status" aria-live="polite"><strong>{t`전체 ${filteredPokemon.length}종`}</strong>{filteredPokemon.length > 0 && t` 중 ${dexStart + 1}–${dexStart + pagePokemon.length}종`} · {shinyDex ? t("이로치") : t("일반")}{t(" 도감")}</p><button className="text-button" disabled={!hasDexFilters} onClick={resetDexFilters}>{t("필터 초기화")}</button></div>

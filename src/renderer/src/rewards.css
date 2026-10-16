@@ -8,7 +8,7 @@
 .app-shell .home-page .companion-actions { gap: 6px; }
 .app-shell .home-page .companion-actions .button { padding-inline: 6px; white-space: nowrap; font-size: 10px; min-width: 0; }
 .dex-card .ball-picker { justify-content: center; }
-.ball-collection { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; padding: 16px; border: 2px solid var(--reward-edge); border-radius: 4px; background: var(--paper); box-shadow: 3px 3px var(--reward-shadow); }
+.ball-collection { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; padding: 16px; border: 2px solid var(--reward-edge); border-radius: 4px; background: var(--paper); box-shadow: 3px 3px var(--reward-shadow); }
 .ball-collection > div { display: flex; flex-direction: column; align-items: center; gap: 7px; text-align: center; }
 .ball-collection .ball-icon { width: 42px; height: 42px; }
 .ball-collection strong { font-size: 11px; }
@@ -59,7 +59,10 @@
 .app-shell[data-theme='luxury'] { --ink: #f0e0c0; --muted: #c0ae91; --paper: #26232a; --red: #d3ac63; --gold: #e3c789; --blue: #d3ac63; --line: #756246; --soft: #393137; --deep: #1b191f; --on-accent: #26232a; --reward-edge: #b7965b; --reward-shadow: #0009; --scene: #2a242e; --hill: #5b5146; --soil: #4b4237; background-color: #16141a; background-image: radial-gradient(#524433 1px, transparent 1px); }
 .app-shell[data-theme='dusk'] { --ink: #e2efdf; --muted: #abc4b3; --paper: #20352c; --red: #81ba92; --gold: #eca369; --blue: #81ba92; --line: #5b8270; --soft: #304d40; --deep: #16271f; --on-accent: #16271f; --reward-edge: #8dae93; --reward-shadow: #001c1488; --scene: #142d2b; --hill: #436e55; --soil: #32543e; background-color: #12221b; background-image: radial-gradient(#325242 1px, transparent 1px); }
 .app-shell[data-theme='master'] { --ink: #f4e3ff; --muted: #c8addb; --paper: #332344; --red: #d3a0ee; --gold: #eca3cf; --blue: #d3a0ee; --line: #87639e; --soft: #503160; --deep: #23182f; --on-accent: #332344; --reward-edge: #c499dc; --reward-shadow: #17042188; --scene: #2b1e43; --hill: #785684; --soil: #624371; background-color: #21132e; background-image: radial-gradient(#604371 1px, transparent 1px); }
-.app-shell:is([data-theme='great'],[data-theme='ultra'],[data-theme='premier'],[data-theme='luxury'],[data-theme='dusk'],[data-theme='master']) {
+.app-shell[data-theme='timer'] { --ink:#403c34; --muted:#756a5a; --paper:#fff9ec; --red:#c96435; --gold:#e9b55b; --blue:#498e92; --line:#d5bda1; --soft:#f2e2cb; --deep:#fffdf7; --on-accent:#fffaf1; --reward-edge:#a45b36; --reward-shadow:#66402b28; --scene:#ecf2e7; --hill:#96b4a0; --soil:#b49d79; background-color:#f7f0df; background-image:radial-gradient(#d5bda1 1px,transparent 1px); }
+.app-shell[data-theme='dream'] { --ink:#f9e5fc; --muted:#d1badb; --paper:#29203f; --red:#f19ad6; --gold:#afe7de; --blue:#87d6d7; --line:#7e5c98; --soft:#493058; --deep:#1c1930; --on-accent:#331b3f; --reward-edge:#da98d5; --reward-shadow:#10071e99; --scene:#202840; --hill:#5a6284; --soil:#4f486e; background-color:#19172c; background-image:radial-gradient(#77578c 1px,transparent 1px); }
+.app-shell[data-theme='cherish'] { --ink:#ffe8dc; --muted:#d4afb3; --paper:#321b25; --red:#f57687; --gold:#efd29a; --blue:#edb66e; --line:#975160; --soft:#502936; --deep:#20151c; --on-accent:#321b25; --reward-edge:#cf7f88; --reward-shadow:#16050e99; --scene:#382335; --hill:#74505c; --soil:#58404a; background-color:#201219; background-image:radial-gradient(#693343 1px,transparent 1px); }
+.app-shell:is([data-theme='great'],[data-theme='ultra'],[data-theme='premier'],[data-theme='luxury'],[data-theme='dusk'],[data-theme='master'],[data-theme='timer'],[data-theme='dream'],[data-theme='cherish']) {
   .sidebar { background: var(--red); border-color: var(--reward-edge); box-shadow: inset -4px 0 #0002; }
   .sidebar::before { background: var(--gold); border-color: var(--reward-edge); }
   .brand { color: var(--on-accent); text-shadow: 2px 2px #0002; }
@@ -122,6 +125,9 @@ html[data-theme='ultra'] { --scroll-track: #1b2029; --scroll-thumb: #c8ac62; --s
 html[data-theme='luxury'] { --scroll-track: #1b191f; --scroll-thumb: #b7965b; --scroll-edge: #756246; --scroll-hover: #e16e65; }
 html[data-theme='dusk'] { --scroll-track: #16271f; --scroll-thumb: #81ba92; --scroll-edge: #5b8270; --scroll-hover: #eca369; }
 html[data-theme='master'] { --scroll-track: #23182f; --scroll-thumb: #d3a0ee; --scroll-edge: #87639e; --scroll-hover: #eca3cf; }
+html[data-theme='timer'] { --scroll-track:#f2e2cb; --scroll-thumb:#c96435; --scroll-edge:#a45b36; --scroll-hover:#498e92; }
+html[data-theme='dream'] { --scroll-track:#1c1930; --scroll-thumb:#bc7faf; --scroll-edge:#7e5c98; --scroll-hover:#87d6d7; }
+html[data-theme='cherish'] { --scroll-track:#20151c; --scroll-thumb:#cf7f88; --scroll-edge:#975160; --scroll-hover:#efd29a; }
 
 .ball-resting .pet-character { cursor: pointer; }
 .pet-motion > .ball-icon { width: 100%; height: 100%; }

@@ -1,9 +1,23 @@
 .dex-views { display: flex; gap: 8px; margin: 0 0 20px; border-bottom: 2px solid var(--line); padding-bottom: 12px; }
 .dex-views button { display: flex; align-items: center; gap: 8px; }
 .dex-views button span { font-size: 10px; opacity: .75; }
-.dex-filter-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.dex-filter-controls { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .dex-filter-controls .dex-search { grid-column: 1 / -1; }
 .dex-species-tags { display: block; margin-top: 7px; font-size: 9px; line-height: 1.7; letter-spacing: 0; }
+.dex-number { position: relative; min-height: 80px; }
+.rarity-badge { --rarity-ink:#a0f3eb; --rarity-dark:#153f46; --rarity-line:#58b9c3; display:inline-flex; align-items:center; gap:5px; padding:5px 7px; border:1px solid var(--rarity-line); border-radius:2px; color:var(--rarity-ink); background:linear-gradient(125deg,var(--rarity-dark),#111b30); box-shadow:inset 0 1px #ffffff28,0 2px 8px #0002; font-size:9px; letter-spacing:.03em; white-space:nowrap; line-height:1.4; }
+.dex-number > .rarity-badge { position:absolute; left:0; bottom:8px; margin-top:0; }
+.rarity-badge svg { width:17px; height:17px; fill:currentColor; flex:none; }
+.rarity-badge .rarity-cut { fill:var(--rarity-dark); }
+.rarity-badge i { font-style:normal; opacity:.7; font-size:8px; }
+.rarity-legendary { --rarity-ink:#ffe2a0; --rarity-dark:#5a3c20; --rarity-line:#d4aa52; }
+.rarity-mythical { --rarity-ink:#f7d6ff; --rarity-dark:#553169; --rarity-line:#d39ae5; background:radial-gradient(circle at 80% 20%,#fff6 0 1px,transparent 2px),linear-gradient(125deg,#553169,#252147); }
+.dex-card[data-rarity='sublegendary'] { border-color:#58a6b1; box-shadow:inset 0 3px #58a6b133; }
+.dex-card[data-rarity='legendary'] { border-color:#c6a451; box-shadow:inset 0 3px #d7ad573b,0 3px 14px #a7802215; }
+.dex-card[data-rarity='mythical'] { border-color:#b88ad8; box-shadow:inset 0 3px #c99be73b,0 3px 14px #985ad51c; }
+.dex-card.dex-selected { border-color:var(--red); }
+.dex-card .rarity-badge { max-width:100%; }
+@media (max-width:1100px) { .dex-filter-controls { grid-template-columns:repeat(3,minmax(0,1fr)); } }
 .dex-filter-controls .dex-filter select { min-width: 0; width: 100%; }
 .evolution-history { scroll-margin-top: 16px; }
 .evolution-history-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }

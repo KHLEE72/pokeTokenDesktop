@@ -3,12 +3,11 @@ import { DIALOGUES, DialogueDirector, DialogueEvent, pickDialogue } from '../src
 import { POKEMON } from '../src/shared/model'
 
 describe('character dialogue', () => {
-  it('gives the egg and every evolution distinct lines for each interaction', () => {
+  it('gives the egg and every species three alternatives and avoids the previous line', () => {
     const events: DialogueEvent[] = ['idle', 'held', 'falling', 'landing', 'growth', 'usage', 'petting']
     for (const event of events) {
-      const lines = [0, ...POKEMON.map(p => p.id)].flatMap(id => DIALOGUES[id][event])
-      expect(new Set(lines).size).toBe(lines.length)
       for (const id of [null, ...POKEMON.map(p => p.id)]) {
+        expect(new Set(DIALOGUES[id??0][event]).size).toBe(3)
         const first = pickDialogue(id, event, undefined, () => 0)
         expect(pickDialogue(id, event, first, () => 0)).not.toBe(first)
       }

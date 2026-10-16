@@ -17,6 +17,8 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `src/renderer/`: React 관리 화면, 펫 화면과 포인터 이벤트, 스타일.
 - `src/shared/`: 데이터 모델, 성장·사탕·도감 규칙, 포켓몬 목록과 대사.
 - `src/shared/rewards.ts`: 업적 조건·볼·테마 목록. 볼 아이콘과 업적·테마 UI는 `src/renderer/src/balls.tsx`, `rewards-ui.tsx`, `rewards.css`에 있다.
+- `src/shared/rarity.ts`: 주요 전설·준전설·환상의 앱 표시 분류. 600족·울트라비스트·패러독스를 임의로 전설로 바꾸지 않으며 부화 가중치와 분리한다. 새 업적은 일반/이로치 합산 종수로 기존 기록도 인정한다. `smoke:rarity`로 배지·테마·언어·저장 상태를 확인한다.
+- `character-profiles.json`: 고정된 도감 근거와 `dialogue-facts.tsv`·`dialogue-signatures.tsv`·`dialogue-scenes.tsv`에서 `node scripts/update-dialogue-profiles.mjs`로 생성한다. 공식 원문을 그대로 대사로 넣지 않는다. 리전폼 설명을 기본 모습에 적용하거나 날개 없는 종에게 비행·지느러미 종에게 발 착지를 말하게 하지 않는다. 이름/타입 접두사만 바꾼 공통 대사를 다시 넣지 않는다.
 - `src/shared/i18n.ts`, `messages.json`: 한국어·영어·일본어 문구와 저장된 알림 표시. 포켓몬·타입·볼의 공식 명칭은 ID로 `localized-catalog.json`에서 조회한다. 언어 변경은 게임·사용량 기록을 수정하지 않는다. 화면 변경은 `smoke:i18n`으로 세 언어의 최소 창 크기·검색·저장도 확인한다.
 - `src/shared/dex.ts`: 도감 번호·공식 이름·최초 등록 순서 정렬. `owned`·`ownedShiny`의 기존 등록 순서를 보존한다. 한국어 선택자를 쓰는 실행 검사는 `scripts/test-electron.mjs`에서 언어를 명시하고, 기본 언어 검사는 원래 Playwright 런처를 사용한다.
 - `catalog-data.json`·`localized-catalog.json`·`sprite-catalog.json`: 1~9세대 기본 모습 1,025종·공식 이름·고정 커밋 이미지 목록. `scripts/update-*-catalog.mjs`로 생성한다. 기존 19계열의 `family` 번호를 재배열하지 않는다. 리전폼 전용 진화는 기본 모습에 연결하지 않는다. GIF 없는 종은 정적 PNG를 쓰고 일반/이로치 캐시를 구분한다. 목록·부화·이미지 변경은 `smoke:catalog`도 확인한다.

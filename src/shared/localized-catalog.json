@@ -5269,6 +5269,21 @@
       "ko": "마스터볼",
       "en": "Master Ball",
       "ja": "マスターボール"
+    },
+    "timer": {
+      "ko": "타이머볼",
+      "en": "Timer Ball",
+      "ja": "タイマーボール"
+    },
+    "dream": {
+      "ko": "드림볼",
+      "en": "Dream Ball",
+      "ja": "ドリームボール"
+    },
+    "cherish": {
+      "ko": "프레셔스볼",
+      "en": "Cherish Ball",
+      "ja": "プレシャスボール"
     }
   }
 }

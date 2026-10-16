@@ -126,9 +126,9 @@ try{
     await page.locator('.dex-search input').fill('');if(language!=='ko')await noKorean()
     await nav(2);if(language!=='ko')await noKorean()
     const images=await page.locator('.ball-collection .ball-icon').evaluateAll(imgs=>imgs.map(img=>({id:img.dataset.ball,width:img.naturalWidth,height:img.naturalHeight,rendering:getComputedStyle(img).imageRendering,loaded:img.complete})))
-    expect(images).toHaveLength(7);expect(images.every(i=>i.width===160&&i.height===160&&i.rendering==='auto'&&i.loaded)).toBe(true)
+    expect(images).toHaveLength(10);expect(images.every(i=>i.width===160&&i.height===160&&i.rendering==='auto'&&i.loaded)).toBe(true)
     await page.screenshot({path:`artifacts/i18n-balls-${language}-${scale}.png`,fullPage:true})
-    checks.push(`${language}: immediate UI/pet/tray language, official names, all evolution targets, cross-language search, three sorts, separate shiny acquisition order, all 23 history records in pages of 10/10/3, typed egg names without hatch spoilers, seven local 160px balls, minimum-size home and preserved game`)
+    checks.push(`${language}: immediate UI/pet/tray language, official names, all evolution targets, cross-language search, three sorts, separate shiny acquisition order, all 23 history records in pages of 10/10/3, typed egg names without hatch spoilers, ten local 160px balls, minimum-size home and preserved game`)
   }
   // Persist the added language across a complete process restart.
   await page.evaluate(()=>window.desktop.updateSettings({language:'ja',inBall:true}))
