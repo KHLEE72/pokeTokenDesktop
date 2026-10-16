@@ -54,13 +54,13 @@
 
 | 환경 | 다운로드 | 실행 방법 |
 | --- | --- | --- |
-| **Windows 10/11 · x64** | [Windows EXE](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v0.4.12/PokeToken-Desktop-0.4.12-win-x64.exe) | 설치 없이 파일 실행 |
+| **Windows 10/11 · x64** | [Windows EXE · v1.0.0](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v1.0.0/PokeToken-Desktop-1.0.0-win-x64.exe) | 설치 없이 파일 실행 |
 | **Mac · Apple Silicon** | [M 시리즈 DMG](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v0.4.9/PokeToken-Desktop-0.4.9-mac-arm64.dmg) | 앱을 응용 프로그램 폴더로 이동 |
 | **Mac · Intel** | [Intel DMG](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v0.4.9/PokeToken-Desktop-0.4.9-mac-x64.dmg) | 앱을 응용 프로그램 폴더로 이동 |
 
-Windows는 **v0.4.12**, Mac은 **v0.4.9** 배포 파일입니다. Mac 첫 실행은 [설치 안내](docs/MAC_TESTING.md)를 참고하세요. 모든 배포 파일은 [Releases](https://github.com/KHLEE72/pokeTokenShimeji/releases)에서 확인할 수 있습니다.
+Windows는 **v1.0.0**, Mac은 이전 **v0.4.9** 배포 파일입니다. Mac 파일에는 이 문서의 최신 기능이 모두 포함되어 있지 않습니다. Mac 첫 실행은 [설치 안내](docs/MAC_TESTING.md)를 참고하세요. 배포 파일과 SHA-256은 [Releases](https://github.com/KHLEE72/pokeTokenShimeji/releases)에서 확인할 수 있습니다.
 
-기존 앱이 켜져 있다면 트레이·메뉴바에서 **종료**한 뒤 새 파일을 실행하세요. 성장·도감·사탕·설정은 이어집니다. 비공개 저장소의 파일을 받으려면 저장소 접근 권한이 필요합니다.
+기존 앱이 켜져 있다면 트레이·메뉴바에서 **종료**한 뒤 새 파일을 실행하세요. 성장·도감·사탕·설정은 이어집니다. Windows 파일은 배포 서명이 없는 개인 팬 프로젝트 빌드입니다.
 
 ## 처음 시작하기
 
@@ -204,6 +204,8 @@ npm run dev
 ```
 
 빌드·테스트·Windows/Mac 패키징은 [개발 안내](docs/DEVELOPMENT.md)를 참고하세요.
+
+기능 제안과 오류 재현은 [Issues](https://github.com/KHLEE72/pokeTokenShimeji/issues), 코드 변경은 [기여 안내](CONTRIBUTING.md)를 참고하세요.
 
 </details>
 
