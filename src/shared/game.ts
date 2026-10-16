@@ -1,6 +1,7 @@
 // Growth balance adapted from PokeTokenBar (MIT), pinned revision in THIRD_PARTY_NOTICES.md.
 import { Capture, Companion, EggType, EVOLUTIONS, FAMILIES, GameAction, GameState, newGame, Pace, POKEMON } from './model'
 import { ballInfo, isBall } from './rewards'
+import { POKEMON_BY_ID } from './catalog'
 export const multipliers: Record<Pace, number> = { fast: 0.1, normal: 1, slow: 2 }
 export const CANDY_XP = 100_000
 export const SHINY_CHANCE = 1 / 64
@@ -31,8 +32,20 @@ export function upgradeGrowthPaths(game: GameState): void {
 export const candyCount = (game: GameState): number => Math.floor(game.candyTokens / CANDY_XP)
 export const discoveredSpecies = (game: GameState): number[] => [...new Set([...game.owned, ...game.ownedShiny])]
 export const eggFamilies = (type: EggType): number[] => FAMILIES.filter(f => f.eggTypes.some(t => t === type)).map(f => f.family)
+// Relative weights within a chosen egg type; these are not global percentages.
+export const hatchFamilyWeight = (family: number): number => {
+  const root = POKEMON_BY_ID.get(FAMILIES[family].species[0])!
+  return root.mythical ? 3 : root.legendary ? 10 : 100
+}
+export function chooseHatchFamily(choices: readonly number[], random = Math.random): number {
+  if (!choices.length) throw new Error('부화할 수 있는 진화 계열이 없습니다.')
+  if (choices.length === 1) return choices[0]
+  let roll = Math.max(0, Math.min(1 - Number.EPSILON, random())) * choices.reduce((sum, id) => sum + hatchFamilyWeight(id), 0)
+  for (const id of choices) { roll -= hatchFamilyWeight(id); if (roll < 0) return id }
+  return choices.at(-1)!
+}
 export const dexChoices = (game: GameState, id: number, shiny: boolean): Companion[] => {
-  const species = POKEMON.find(p => p.id === id)
+  const species = POKEMON_BY_ID.get(id)
   if (!species) return []
   return game.pets.filter(p => p.family === species.family && p.shiny === shiny && growthPath(p).includes(id))
     .sort((a,b) => Number(b.phase === species.phase)-Number(a.phase === species.phase) || b.xp-a.xp || a.id.localeCompare(b.id))
@@ -59,8 +72,7 @@ function grow(game: GameState, xp: number, pace: Pace, now: string, random: () =
     if (pet.phase === 0) {
       const unfinished = [0,1,2].filter(f=>!game.captures.some(c=>c.family===f))
       const choices = pet.eggType ? eggFamilies(pet.eggType) : unfinished.length ? unfinished : [0,1,2]
-      const index = choices.length === 1 ? 0 : Math.max(0,Math.min(choices.length-1,Math.floor(random()*choices.length)))
-      pet.family = choices[index]; pet.phase = 1; pet.shiny = random() < SHINY_CHANCE; pet.obtainedAt = now; hatch = true
+      pet.family = chooseHatchFamily(choices, random); pet.phase = 1; pet.shiny = random() < SHINY_CHANCE; pet.obtainedAt = now; hatch = true
       pet.path=[FAMILIES[pet.family].species[0]];pet.evolutionTarget=null
     } else {
       pet.path=[...growthPath(pet),options.length===1 ? options[0] : pet.evolutionTarget!]

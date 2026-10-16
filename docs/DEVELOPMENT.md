@@ -27,11 +27,28 @@ npm run dev
 | `npm run smoke` | 성장·저장·재실행 검사 |
 | `npm run smoke:rewards` | 업적·볼·테마 검사 |
 | `npm run smoke:i18n` | 세 언어·공식 이름·검색·저장 검사 |
+| `npm run smoke:catalog` | 9세대 도감·일반/이로치 GIF/PNG·분기 진화·저장 검사 |
 | `npm run smoke:portable` | Windows portable EXE 실제 실행 검사 |
 
 그 밖의 기능별 실행 검사는 `package.json`의 `smoke:*` 명령을 참고하세요. `npm test`는 Electron의 Node 런타임을 사용해 같은 SQLite 모듈을 검증합니다.
 
 테스트는 임시 `POKETOKEN_DATA_DIR`와 `POKETOKEN_TEST_MODE=1`을 사용합니다. 실제 사용자 저장 데이터나 기본 로그 폴더를 테스트 fixture로 사용하지 않습니다.
+
+### 포켓몬 데이터
+
+`src/shared/catalog-data.json`에 1~9세대 기본 모습 1,025종·551계열, `localized-catalog.json`에 세 언어의 공식 명칭, `sprite-catalog.json`에 일반·이로치 이미지의 존재 여부와 소스 커밋을 보관합니다. 앱 실행 중 API로 목록을 가져오지 않으며 이미지만 필요할 때 다운로드합니다.
+
+```sh
+node scripts/update-pokemon-catalog.mjs
+node scripts/update-localized-catalog.mjs
+node scripts/update-sprite-catalog.mjs
+```
+
+앞의 두 스크립트는 같은 고정 PokeAPI CSV 커밋을 사용합니다. 스프라이트 스크립트는 GitHub CLI의 `gh api`로 고정 커밋의 파일 목록을 확인합니다. 새 이미지 목록으로 갱신하려면 `--refresh`를 지정합니다. 개발용 다운로드 캐시는 `artifacts/`에 남고 배포·Git에 포함되지 않습니다. 기존 19개 `family` 번호는 저장 호환성 때문에 순서를 바꾸지 않습니다. 이후 추가되는 계열 번호도 변경 시 저장 데이터 이동이 필요합니다.
+
+알 타입은 계열 첫 형태의 타입입니다. 원작 조건은 생략하고 여러 진화형은 목표 선택으로 처리합니다. 리전폼 전용 연결은 일반 모습의 진화로 연결하지 않고 후속 종을 독립 부화시킵니다. 일반·전설·환상 계열의 부화 가중치는 같은 타입 알 안에서 각각 100·10·3이며 고정 퍼센트가 아닙니다. 이로치 판정은 부화당 1/64로 별도입니다.
+
+기존 대사가 없는 종은 이름·타입에 맞는 상황별 공통 대사를 사용합니다. 테스트 런처는 `POKETOKEN_TEST_MODE=1`일 때만 `POKETOKEN_TEST_HATCH=first`로 부화를 재현하며 운영 앱의 무작위 선택에는 영향을 주지 않습니다.
 
 ## 패키징
 

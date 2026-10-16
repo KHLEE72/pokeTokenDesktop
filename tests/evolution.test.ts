@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import { activePet, advanceGame, candyCount, changePace, dexChoices, evolutionOptions, finalPhase, gameAction, growthPath, isGrowing, speciesId, threshold, upgradeGrowthPaths, waitingForEvolution } from '../src/shared/game'
 import { EVOLUTIONS, FAMILIES, newGame, POKEMON } from '../src/shared/model'
+import { firstNormal, hatchRandom } from './hatch-random'
 const now='2026-10-08T00:00:00Z',leaves=[134,135,136,196,197,470,471,700]
 const eevee=(shiny=false)=>{
   const game=newGame();gameAction(game,{type:'egg',eggType:'normal'},'fast',now)
-  let calls=0
-  advanceGame(game,500_000,'fast',now,()=>calls++===0 ? .999 : shiny ? 0 : .5)
+  advanceGame(game,500_000,'fast',now,hatchRandom(18,shiny))
   expect(speciesId(game)).toBe(133)
   return game
 }
@@ -68,7 +68,7 @@ describe('branching evolution',()=>{
     expect(()=>gameAction(game,{type:'target',speciesId:197},'fast',now)).toThrow()
     expect(game).toEqual(before);advanceGame(game,100_000,'fast',now)
     gameAction(game,{type:'egg',eggType:'normal'},'fast',now)
-    advanceGame(game,500_000,'fast',now,()=>.999)
+    advanceGame(game,500_000,'fast',now,hatchRandom(18))
     expect(game.activeId).not.toBe(first)
     gameAction(game,{type:'target',speciesId:197},'fast',now);advanceGame(game,50_000_000,'fast',now)
     expect(game.owned).toEqual([133,700,197]);expect(dexChoices(game,133,false)).toHaveLength(2)
@@ -91,11 +91,11 @@ describe('branching evolution',()=>{
       for(const id of [1,133,-1,NaN,1.5])expect(()=>gameAction(game,{type:'target',speciesId:id},'fast',now)).toThrow()
       expect(game).toEqual(before)
     }
-    const linear=newGame();advanceGame(linear,500_000,'fast',now)
+    const linear=newGame();advanceGame(linear,500_000,'fast',now,firstNormal())
     expect(()=>gameAction(linear,{type:'target',speciesId:2},'fast',now)).toThrow()
   })
   it('backfills actual linear paths and capture species without changing XP, candy or owned species',()=>{
-    const game=newGame();advanceGame(game,150_600_000,'fast',now)
+    const game=newGame();advanceGame(game,150_600_000,'fast',now,firstNormal())
     const pet=activePet(game);delete pet.path;delete pet.evolutionTarget;delete game.captures[0].speciesId
     const before=structuredClone(game)
     upgradeGrowthPaths(game)

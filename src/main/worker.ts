@@ -3,7 +3,10 @@ import { Store } from './store'
 import { Scanner } from './scanner'
 import { GameAction, Settings } from '../shared/model'
 const store = new Store(workerData.path)
-const scanner = new Scanner(store)
+// Explicitly reproducible hatches for isolated desktop integration scenarios.
+let testDraw = 0
+const random = process.env.POKETOKEN_TEST_MODE === '1' && process.env.POKETOKEN_TEST_HATCH === 'first' ? () => testDraw++ % 2 === 0 ? 0 : .5 : Math.random
+const scanner = new Scanner(store, random)
 let scanning = false
 const publish = (): void => { parentPort!.postMessage({ type: 'snapshot', value: { ...store.snapshot(), roots: scanner.statuses, scanning } }) }
 let queue = Promise.resolve()

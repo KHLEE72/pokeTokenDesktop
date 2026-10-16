@@ -5,7 +5,7 @@ export { expect }
 // English; language/default/persistence coverage uses the raw launcher instead.
 export const _electron = {
   async launch(options) {
-    const app = await electronApp.launch(options)
+    const app = await electronApp.launch(options.env?.POKETOKEN_TEST_MODE === '1' ? { ...options, env: { ...options.env, POKETOKEN_TEST_HATCH: 'first' } } : options)
     if (options.env?.POKETOKEN_TEST_MODE === '1' && !options.args?.some(arg => arg.includes('window-fixture.cjs'))) {
       await app.firstWindow()
       await expect.poll(() => app.windows().some(page => page.url().includes('view=dashboard'))).toBe(true)

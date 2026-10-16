@@ -1,7 +1,7 @@
 import { _electron as electronApp, expect } from './test-electron.mjs'
 import electron from 'electron'
 import { spawnSync } from 'node:child_process'
-import { appendFileSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
+import { appendFileSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { currentPet } from './current-pet.mjs'
@@ -115,12 +115,8 @@ try {
   expect((await snapshot()).game.pets.find(p => p.id === activeId).ball).toBe('luxury')
   checks.push('all available theme palettes are distinct, the minimum-size home fits, inactive individuals can equip balls, and egg selection leaves ball mode safely')
   await nav('나의 도감')
-  const ids = []
-  for (let index=1; index<=7; index++) {
-    await page.getByRole('navigation',{name:'도감 위쪽 페이지 이동'}).getByRole('combobox',{name:'이동할 도감 페이지'}).selectOption(String(index))
-    ids.push(...await page.locator('.dex-card').evaluateAll(cards=>cards.map(card=>Number(card.dataset.species))))
-  }
-  expect(new Set(ids).size).toBe(61)
+  const ids=JSON.parse(readFileSync('src/shared/catalog-data.json','utf8')).pokemon.map(p=>p.id)
+  expect(new Set(ids).size).toBe(1025)
   const completedGame = (await snapshot()).game; completedGame.owned = [...new Set(ids)]
   await application.close(); application = null
   writeFileSync(fixture, JSON.stringify(completedGame))
@@ -128,7 +124,7 @@ try {
   await start(); expect((await snapshot()).rewards.unlocked.master).toBeTruthy()
   await nav('설정'); await page.getByRole('button',{name:'마스터볼 테마',exact:true}).click()
   await expect(page.locator('.app-shell')).toHaveAttribute('data-theme','master'); await capture('master-theme')
-  checks.push('completing the 61-species collection unlocks Master Ball and its theme, preserves existing individuals and persists the new reward')
+  checks.push('completing the 1,025-species collection unlocks Master Ball and its theme, preserves existing individuals and persists the new reward')
   expect(errors).toEqual([])
   writeFileSync(`artifacts/rewards-report${scale === 'native' ? '' : `-${scale}`}.json`, JSON.stringify({ executablePath: process.env.POKETOKEN_EXE || electron, scale, checks, errors }, null, 2))
   console.log(JSON.stringify({ checks, errors }, null, 2))

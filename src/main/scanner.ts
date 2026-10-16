@@ -9,7 +9,7 @@ export class Scanner {
   private discovered = new Map<string, string[]>()
   private lastDiscovery = 0
   statuses: RootStatus[] = []
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store, private readonly random = Math.random) {}
   private async walk(path: string, errors: string[]): Promise<string[]> {
     const found: string[] = []
     const stack = [path]
@@ -92,7 +92,7 @@ export class Scanner {
     }
     for (const id of established) baseline.delete(id)
     this.store.db.transaction(() => {
-      this.store.sync([...dedupClaude(claude), ...codexRecords], baseline, linkedAt)
+      this.store.sync([...dedupClaude(claude), ...codexRecords], baseline, linkedAt, this.random)
       for (const key of pendingReady) this.store.readyRoot(key)
       this.store.set('lastScan', new Date().toISOString())
     })()

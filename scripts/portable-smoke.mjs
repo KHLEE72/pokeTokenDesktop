@@ -11,9 +11,37 @@ const port=server.address().port;await new Promise(resolve=>server.close(resolve
 const directory=mkdtempSync(join(tmpdir(),'poketoken-portable-')),logs=join(directory,'logs');mkdirSync(logs)
 const version=JSON.parse(readFileSync('package.json','utf8')).version
 const executable=resolve(`release/PokeToken-Desktop-${version}-win-x64.exe`)
-const env={...process.env,POKETOKEN_DATA_DIR:join(directory,'data'),POKETOKEN_TEST_MODE:'1'};delete env.ELECTRON_RUN_AS_NODE
+const env={...process.env,POKETOKEN_DATA_DIR:join(directory,'data'),POKETOKEN_TEST_MODE:'1',POKETOKEN_TEST_HATCH:'first'};delete env.ELECTRON_RUN_AS_NODE
 const child=spawn(executable,[`--remote-debugging-port=${port}`],{env,windowsHide:true,stdio:'ignore'})
 let browser,applicationPid
+const inputAttempts=[]
+const dragEvents=()=>readFileSync(join(directory,'data','diagnostics','pet-input.jsonl'),'utf8').split('\n').slice(0,-1).map(line=>JSON.parse(line)).filter(row=>row.event==='ipc.drag')
+async function shortClick(petPage,x,y,inBall=false){
+  // CDP does not freeze the physical cursor. Retry only a proven native drag;
+  // missing delivery or a stationary release returning "drop" remains a failure.
+  for(let attempt=0;attempt<3;attempt++){
+    const previousSeq=dragEvents().at(-1)?.seq??0
+    await petPage.mouse.move(x,y);await petPage.mouse.down()
+    await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','held')
+    if(!inBall)await expect(petPage.locator('.pet-bubble')).toHaveAttribute('data-dialogue','held')
+    await petPage.mouse.up()
+    // Diagnostics batches writes for 250ms; wait after release, without holding
+    // the mouse down longer while the physical cursor might move.
+    await expect.poll(()=>dragEvents().findLast(row=>row.data.action==='release')?.seq??0).toBeGreaterThan(previousSeq)
+    const events=dragEvents(),start=events.findLast(row=>row.data.action==='start'),release=events.findLast(row=>row.data.action==='release')
+    expect(start.seq).toBeGreaterThan(previousSeq)
+    expect(release.time>=start.time).toBe(true)
+    const distance=Math.hypot(release.data.before.cursor.x-start.data.before.cursor.x,release.data.before.cursor.y-start.data.before.cursor.y)
+    inputAttempts.push({inBall,attempt,result:release.data.result,start:start.data.before.cursor,release:release.data.before.cursor,distance})
+    if(release.data.result==='pet'){
+      if(!inBall){await expect(petPage.locator('.pet-bubble')).toHaveAttribute('data-dialogue','petting');await expect(petPage.locator('.pet-affection')).toBeVisible()}
+      return
+    }
+    expect(release.data.result).toBe('drop');expect(distance).toBeGreaterThan(4)
+    await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','idle')
+  }
+  throw Error('Physical cursor moved during all three portable short-click attempts.')
+}
 try{
   await expect.poll(async()=>{try{return(await fetch(`http://127.0.0.1:${port}/json/version`)).ok}catch{return false}},{timeout:60_000}).toBe(true)
   browser=await chromium.connectOverCDP(`http://127.0.0.1:${port}`)
@@ -64,17 +92,11 @@ try{
   // The first pixel has zero preceding/filter pixels; its fourth byte is its alpha.
   expect(inflateSync(Buffer.concat(chunks))[4]).toBe(0)
   await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','idle')
-  await petPage.mouse.move(80,110);await petPage.mouse.down()
-  await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','held')
-  await expect(petPage.locator('.pet-bubble')).toHaveAttribute('data-dialogue','held')
-  await petPage.mouse.up()
-  await expect(petPage.locator('.pet-character')).toHaveAttribute('data-motion','idle')
-  await expect(petPage.locator('.pet-bubble')).toHaveAttribute('data-dialogue','petting')
-  await expect(petPage.locator('.pet-affection')).toBeVisible()
+  await shortClick(petPage,80,110)
   await page.getByRole('button',{name:'볼에 넣기',exact:true}).click()
   await expect(petPage.locator('.pet-surface')).toHaveAttribute('data-in-ball','true')
   await expect.poll(()=>petPage.evaluate(()=>innerWidth)).toBe(88)
-  await petPage.mouse.move(44,94);await petPage.mouse.down();await petPage.mouse.up()
+  await shortClick(petPage,44,94,true)
   await expect(petPage.locator('.pet-surface')).toHaveAttribute('data-in-ball','false')
   await expect(page.locator('.egg-drawer')).not.toHaveAttribute('open')
   expect(await page.locator('.activity-strip').evaluate(el=>el.getBoundingClientRect().bottom<=innerHeight)).toBe(true)
@@ -91,14 +113,15 @@ try{
   await expect(page.locator('.dex-card')).toHaveCount(9)
   const pager=page.getByRole('navigation',{name:'도감 위쪽 페이지 이동'})
   await expect(pager.getByRole('button',{name:'이전 페이지',exact:true})).toBeDisabled()
-  await pager.getByRole('combobox',{name:'이동할 도감 페이지'}).selectOption('7')
-  await expect(page.locator('.dex-card')).toHaveCount(7)
+  await pager.getByRole('combobox',{name:'이동할 도감 페이지'}).selectOption('114')
+  await expect(page.locator('.dex-card')).toHaveCount(8)
   await expect(pager.getByRole('button',{name:'다음 페이지',exact:true})).toBeDisabled()
   await page.getByRole('searchbox',{name:'포켓몬 이름 또는 도감 번호 검색'}).fill('No. 025')
   await expect(page.locator('.dex-card')).toHaveCount(1)
   await expect(pager.getByRole('combobox',{name:'이동할 도감 페이지'})).toHaveValue('1')
   writeFileSync('artifacts/portable-report.json',JSON.stringify({executable,checks:['portable launcher extracted and started','packaged preload, worker, SQLite and tray resources loaded','historical baseline excluded','new usage hatches through packaged IPC','runtime sprite download displayed','pet background is transparent (PNG alpha verified)','immediate hold and petting reaction work in the portable executable','updated home summary and egg drawer render in the portable executable','packaged dex search, combined filters, reset and button placement work','nine cards per page, last-page remainder, boundaries and search page reset work in the portable executable','bundled pixel fonts and the local candy sprite render in the portable executable','stored egg types and progress remain visible across switching; the dex has no duplicate candy panel'],errors:[]},null,2))
   const reportPath='artifacts/portable-report.json',report=JSON.parse(readFileSync(reportPath,'utf8'))
+  report.inputAttempts=inputAttempts
   report.checks.push('portable payload contains the exact renderer bundle from the latest source build','portable pet recalls into a compact ball and summons again on a short click')
   writeFileSync(reportPath,JSON.stringify(report,null,2))
   console.log('Portable executable checks passed.')

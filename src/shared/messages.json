@@ -1146,5 +1146,29 @@
   "다음 기록": {
     "en": "Next records",
     "ja": "次の記録"
+  },
+  "세대": {
+    "en": "Generation",
+    "ja": "世代"
+  },
+  "모든 세대": {
+    "en": "All generations",
+    "ja": "すべての世代"
+  },
+  "도감 세대 필터": {
+    "en": "Pokédex generation filter",
+    "ja": "図鑑の世代フィルター"
+  },
+  "{0}세대": {
+    "en": "Generation {0}",
+    "ja": "第{0}世代"
+  },
+  "전설": {
+    "en": "Legendary",
+    "ja": "伝説"
+  },
+  "환상": {
+    "en": "Mythical",
+    "ja": "幻"
   }
 }

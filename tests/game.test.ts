@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { activePet, advanceGame, candyCount, CANDY_XP, changePace, dexChoices, eggFamilies, gameAction, isGrowing, migrateGame, speciesId, threshold } from '../src/shared/game'
 import { EGG_TYPES, FAMILIES, newGame, POKEMON } from '../src/shared/model'
-const now='2026-10-07T00:00:00Z',normal=()=>.5
+import { firstNormal } from './hatch-random'
+const now='2026-10-07T00:00:00Z',normal=firstNormal()
 describe('growth, candy and collection',()=>{
   it('hatches at the exact boundary and preserves overflow',()=>{
     const game=newGame();advanceGame(game,499_999,'fast',now,normal)
@@ -95,9 +96,9 @@ describe('growth, candy and collection',()=>{
     const egg=migrateGame({phase:0,family:null,xp:250_000,tokensEarned:100,owned:[],captures:[]},now)
     expect(activePet(egg).eggType).toBeNull();expect(activePet(egg).xp).toBe(250_000)
   })
-  it('has a unique example catalog with an evolution chain for every egg type',()=>{
-    expect(POKEMON).toHaveLength(61);expect(FAMILIES).toHaveLength(19)
-    expect(new Set(POKEMON.map(p=>p.id)).size).toBe(61)
+  it('has a unique full catalog with a hatch candidate for every egg type',()=>{
+    expect(POKEMON).toHaveLength(1025);expect(FAMILIES).toHaveLength(551)
+    expect(new Set(POKEMON.map(p=>p.id)).size).toBe(1025)
     for(const type of EGG_TYPES)expect(eggFamilies(type.id).length).toBeGreaterThan(0)
   })
   it('does not grow from invalid or negative usage',()=>{

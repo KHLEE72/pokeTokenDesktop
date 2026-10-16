@@ -1,23 +1,10 @@
 import { readFileSync, writeFileSync } from 'node:fs'
+import { base, revision, table } from './pokeapi-data.mjs'
 
 // Official localized game names from PokéAPI's source data, pinned for offline use.
-const revision = '81d20919845b6a445969b9265aab5cec6b04cece'
-const base = `https://raw.githubusercontent.com/PokeAPI/pokeapi/${revision}/data/v2/csv/`
-function csv(text) {
-  const rows=[];let row=[],field='',quoted=false
-  for(let i=0;i<text.length;i++){
-    const c=text[i]
-    if(c==='"'){if(quoted&&text[i+1]==='"'){field+='"';i++}else quoted=!quoted}
-    else if(!quoted&&(c===','||c==='\n')){row.push(field);field='';if(c==='\n'){rows.push(row);row=[]}}
-    else if(c!=='\r')field+=c
-  }
-  if(field||row.length){row.push(field);rows.push(row)}
-  const header=rows.shift();return rows.map(row=>Object.fromEntries(header.map((key,i)=>[key,row[i]])))
-}
 const files=['pokemon_species_names','type_names','types','items','item_names']
-const tables=Object.fromEntries(await Promise.all(files.map(async name=>{const r=await fetch(`${base}${name}.csv`);if(!r.ok)throw Error(`Failed ${name}: ${r.status}`);return[name,csv(await r.text())]})))
-const source=readFileSync('src/shared/catalog.ts','utf8')
-const roster=JSON.parse(source.match(/export const POKEMON = (\[[\s\S]*?\]) as const/)[1])
+const tables=Object.fromEntries(await Promise.all(files.map(async name=>[name,await table(name)])))
+const roster=JSON.parse(readFileSync('src/shared/catalog-data.json','utf8')).pokemon
 const typeIds=new Map(tables.types.map(row=>[row.identifier,row.id]))
 const itemIds=new Map(tables.items.map(row=>[row.identifier,row.id]))
 const languageIds={ko:'3',en:'9',ja:'1'}
