@@ -10,11 +10,12 @@ const data = join(directory, 'data')
 const env = { ...process.env, POKETOKEN_DATA_DIR: data, POKETOKEN_TEST_MODE: '1' }
 delete env.ELECTRON_RUN_AS_NODE
 mkdirSync('artifacts', { recursive: true })
-const errors = [], checks = []
+const errors = [], checks = [], widthLayouts = []
+const scale = process.env.POKETOKEN_TEST_SCALE || 'native'
 let application, page
 
 async function start() {
-  application = await electronApp.launch({ executablePath: process.env.POKETOKEN_EXE || electron, args: process.env.POKETOKEN_EXE ? [] : ['.'], env, timeout: 60000 })
+  application = await electronApp.launch({ executablePath: process.env.POKETOKEN_EXE || electron, args: [...(process.env.POKETOKEN_EXE ? [] : ['.']), ...(scale === 'native' ? [] : [`--force-device-scale-factor=${scale}`])], env, timeout: 60000 })
   await application.firstWindow()
   await expect.poll(() => application.windows().some(p => p.url().includes('view=dashboard'))).toBe(true)
   page = application.windows().find(p => p.url().includes('view=dashboard'))
@@ -53,6 +54,33 @@ async function summaryFits({ closed = true } = {}) {
   }
   return layout
 }
+async function storageWidthStaysStable() {
+  const measure = () => page.evaluate(() => {
+    const selectors = ['.workspace', '.topbar', '.page-heading', '.home-grid', '.companion-card', '.today-card', '.candy-box', '.activity-strip', '.egg-drawer']
+    return Object.fromEntries(selectors.map(selector => {
+      const rect = document.querySelector(selector).getBoundingClientRect()
+      return [selector, { left: rect.left, width: rect.width }]
+    }))
+  })
+  await expect(page.locator('.egg-drawer')).not.toHaveAttribute('open')
+  const closed = await measure()
+  await page.locator('.egg-drawer > summary').click()
+  await expect(page.locator('.egg-drawer')).toHaveAttribute('open')
+  const opened = await measure()
+  expect(await page.evaluate(() => document.documentElement.scrollHeight > innerHeight)).toBe(true)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false)
+  await page.locator('.egg-drawer > summary').click()
+  await expect(page.locator('.egg-drawer')).not.toHaveAttribute('open')
+  const reclosed = await measure()
+  for (const [selector, rect] of Object.entries(closed)) {
+    for (const state of [opened, reclosed]) {
+      expect(Math.abs(state[selector].left - rect.left), `${selector} horizontal position`).toBeLessThanOrEqual(0.5)
+      expect(Math.abs(state[selector].width - rect.width), `${selector} width`).toBeLessThanOrEqual(0.5)
+    }
+  }
+  await summaryFits()
+  return { closed, opened, reclosed }
+}
 
 try {
   await start()
@@ -88,6 +116,19 @@ try {
   await expect(page.locator('.egg-preview-more')).toHaveText('+1개 더 보기')
   await expect.poll(() => page.locator('.candy-box img[data-item="rare-candy"]').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true)
   expect(await page.evaluate(() => document.fonts.check('12px Galmuri') && document.fonts.check('10px "Galmuri Small"'))).toBe(true)
+  for (const language of ['en', 'ja', 'ko']) {
+    for (const theme of ['dark', 'light']) {
+      await page.evaluate(settings => window.desktop.updateSettings(settings), { language, theme })
+      await expect(page.locator('html')).toHaveAttribute('lang', language)
+      await expect(page.locator('.app-shell')).toHaveAttribute('data-theme', theme)
+      for (const size of [[1040, 800], [850, 680]]) {
+        await resize(...size)
+        widthLayouts.push({ language, theme, size, ...await storageWidthStaysStable() })
+      }
+    }
+  }
+  await resize(1040, 800)
+  checks.push('opening and closing egg storage preserves the horizontal positions and widths of nine dashboard regions in all three languages, light/dark themes and default/minimum windows')
   const normalLayout = await summaryFits()
   await page.screenshot({ path: 'artifacts/dashboard-home.png' })
   await resize(850, 680)
@@ -268,7 +309,8 @@ try {
   await page.getByRole('button',{name:'보라시티 다크 테마',exact:true}).click()
   checks.push('local pixel fonts and the candy sprite load; themed home, dex and settings render without horizontal overflow')
   expect(errors).toEqual([])
-  const report = { checks, errors, normalLayout, compactLayout, eggLayout, completedLayout }
+  const report = { checks, errors, scale, widthLayouts, normalLayout, compactLayout, eggLayout, completedLayout }
   writeFileSync('artifacts/dashboard-report.json', JSON.stringify(report, null, 2))
-  console.log(JSON.stringify(report, null, 2))
+  writeFileSync(`artifacts/dashboard-report-${scale}.json`, JSON.stringify(report, null, 2))
+  console.log(JSON.stringify({ checks, errors, scale, storageWidthScenarios: widthLayouts.length, normalLayout, compactLayout, eggLayout, completedLayout }, null, 2))
 } finally { if (application) await application.close() }

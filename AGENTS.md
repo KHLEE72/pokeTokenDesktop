@@ -15,6 +15,7 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `src/main/`: 앱·트레이·창 관리, 펫 이동과 입력, 로그 파싱·스캔, SQLite 저장, 이미지 캐시. 스캔과 저장은 worker에서 처리한다.
 - `src/preload/`: 화면에 노출하는 IPC API. 화면에서 Node.js를 직접 사용하지 않는다.
 - `src/renderer/`: React 관리 화면, 펫 화면과 포인터 이벤트, 스타일.
+- 관리 화면의 `scrollbar-gutter: stable`은 알 보관함을 열고 닫을 때 카드 폭을 유지한다. 투명 펫 창에는 적용하지 않는다. `smoke:dashboard`는 세 언어·라이트/다크·최소/기본 창에서 폭을 비교하며 `POKETOKEN_TEST_SCALE`로 배율을 지정할 수 있다.
 - `src/shared/`: 데이터 모델, 성장·사탕·도감 규칙, 포켓몬 목록과 대사.
 - `src/shared/rewards.ts`: 업적 조건·볼·테마 목록. 볼 아이콘과 업적·테마 UI는 `src/renderer/src/balls.tsx`, `rewards-ui.tsx`, `rewards.css`에 있다.
 - `src/shared/rarity.ts`: 주요 전설·준전설·환상의 앱 표시 분류. 600족·울트라비스트·패러독스를 임의로 전설로 바꾸지 않으며 부화 가중치와 분리한다. 새 업적은 일반/이로치 합산 종수로 기존 기록도 인정한다. `smoke:rarity`로 배지·테마·언어·저장 상태를 확인한다.

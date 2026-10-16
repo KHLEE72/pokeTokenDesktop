@@ -27,7 +27,7 @@ async function noKorean(){
 }
 async function fits(){
   const layout=await page.evaluate(()=>({width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,controls:[...document.querySelectorAll('.home-grid button,.home-grid input,.home-grid select')].map(e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,bottom:r.bottom}})}))
-  expect(layout.scrollWidth).toBe(layout.width);expect(layout.scrollHeight).toBe(layout.height)
+  expect(layout.scrollWidth).toBeLessThanOrEqual(layout.width);expect(layout.scrollHeight).toBe(layout.height)
   expect(layout.controls.every(r=>r.left>=0&&r.right<=layout.width&&r.bottom<=layout.height),JSON.stringify(layout)).toBe(true)
 }
 try{

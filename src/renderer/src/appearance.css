@@ -55,6 +55,8 @@
 
 /* A square, cartridge-style scrollbar. Native keyboard and wheel scrolling stay intact. */
 html { --scroll-track: #e6e3d5; --scroll-thumb: #b6b9a6; --scroll-edge: #647984; --scroll-hover: #c7a95e; --scroll-shine: #fffbee; }
+/* Reserve dashboard scroll space so opening storage never resizes its cards. */
+html:not(.pet-html) { scrollbar-gutter: stable; }
 html:not(.pet-html)::-webkit-scrollbar, html:not(.pet-html) ::-webkit-scrollbar { width: 12px; height: 12px; }
 html:not(.pet-html)::-webkit-scrollbar-track, html:not(.pet-html) ::-webkit-scrollbar-track { background: var(--scroll-track); border-left: 1px solid var(--scroll-edge); }
 html:not(.pet-html)::-webkit-scrollbar-thumb, html:not(.pet-html) ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border: 2px solid var(--scroll-track); border-radius: 0; box-shadow: inset 1px 1px var(--scroll-shine), inset -1px -1px var(--scroll-edge); min-height: 32px; }
