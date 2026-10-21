@@ -15,6 +15,25 @@ describe('serverless updates',()=>{
       const bad=release('2.0.0');bad.assets[0].browser_download_url=url;expect(()=>findUpdate([bad],'1.0.0','win32','x64')).toThrow()
     }
   })
+  it('portable updates select only the matching portable EXE and require a GitHub SHA-256 and size',()=>{
+    const row={...release('2.0.0'),assets:[{...asset('2.0.0'),digest:`sha256:${'a'.repeat(64)}`,size:1000},asset('2.0.0','Setup-x64.exe')]}
+    expect(findUpdate([row],'1.0.0','win32','x64',true)).toMatchObject({version:'2.0.0',sha256:'a'.repeat(64),size:1000,url:asset('2.0.0').browser_download_url})
+    expect(findUpdate([release('2.0.0','Setup-x64.exe')],'1.0.0','win32','x64',true)).toBeNull()
+    expect(()=>findUpdate([release('2.0.0')],'1.0.0','win32','x64',true)).toThrow('검증 정보')
+    for(const size of [-1,0,600_000_001,1.5])expect(()=>findUpdate([{...row,assets:[{...row.assets[0],size}]}],'1.0.0','win32','x64',true)).toThrow()
+  })
+  it('one explicit apply downloads, flushes and awaits portable replacement, while a failed download cannot quit',async()=>{
+    const order:string[]=[],backend:UpdateBackend={check:async()=> '2.0.0',download:async()=>{order.push('download')},install:async()=>{await Promise.resolve();order.push('replace')}}
+    const controller=new UpdateController('1.0.0','portable',{latest:async()=>null,backend,publish:()=>{},open:async()=>{},beforeInstall:async()=>{order.push('flush')}})
+    await controller.check();expect(order).toEqual([]);await controller.apply();expect(order).toEqual(['download','flush','replace']);expect(controller.state.status).toBe('installing')
+    const broken=new UpdateController('1.0.0','portable',{latest:async()=>null,backend:{...backend,download:async()=>{throw Error('Network lost')}},publish:()=>{},open:async()=>{},beforeInstall:async()=>{order.push('bad flush')}})
+    await broken.check();await broken.apply();expect(broken.state.status).toBe('error');expect(order).toEqual(['download','flush','replace'])
+  })
+  it('accepts an update pressed as the available event is published and limits progress notifications',async()=>{
+    let applying:Promise<void>|undefined;const install=vi.fn(),publish=vi.fn((state)=>{if(state.status==='available')applying=controller.apply()})
+    const controller=new UpdateController('1.0.0','portable',{latest:async()=>null,backend:{check:async()=> '2.0.0',download:async progress=>{for(let i=0;i<=10_000;i++)progress(i/100)},install},publish,open:async()=>{},beforeInstall:async()=>{}})
+    await controller.check();await applying;expect(install).toHaveBeenCalledTimes(1);expect(publish.mock.calls.filter(([state])=>state.status==='downloading').length).toBeLessThanOrEqual(101)
+  })
   it('deduplicates concurrent checks, rate-limits checks and opens only its verified release asset',async()=>{
     let now=0,resolve!:(value:{version:string;url:string})=>void
     const latest=vi.fn(()=>new Promise<{version:string;url:string}>(r=>resolve=r)),open=vi.fn(async()=>{}),publish=vi.fn()

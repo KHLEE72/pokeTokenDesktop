@@ -1722,5 +1722,37 @@
   "다음": {
     "en": "Next",
     "ja": "次へ"
+  },
+  "진행 상태를 저장하고 업데이트를 적용하는 중…": {
+    "en": "Saving progress and applying the update…",
+    "ja": "進行状況を保存して更新を適用中…"
+  },
+  "새 포터블 EXE를 검증한 뒤 현재 파일을 교체하고 재실행해요. 도감·성장·설정은 유지돼요.": {
+    "en": "The new portable EXE will be verified, replace this file and restart. Your Pokédex, growth and settings will be kept.",
+    "ja": "新しいポータブルEXEを検証し、現在のファイルを置き換えて再起動します。図鑑・成長・設定は引き継がれます。"
+  },
+  "새 버전을 다운로드한 뒤 직접 교체해주세요.": {
+    "en": "Download the new version and replace the app manually.",
+    "ja": "新しいバージョンをダウンロードし、アプリを手動で置き換えてください。"
+  },
+  "업데이트하고 재시작": {
+    "en": "Update and restart",
+    "ja": "更新して再起動"
+  },
+  "업데이트 파일의 검증 정보를 확인하지 못했어요.": {
+    "en": "The update file could not be verified.",
+    "ja": "更新ファイルの検証情報を確認できませんでした。"
+  },
+  "업데이트 파일이 손상됐어요. 다시 다운로드해주세요.": {
+    "en": "The update file is corrupted. Please download it again.",
+    "ja": "更新ファイルが破損しています。もう一度ダウンロードしてください。"
+  },
+  "EXE가 있는 폴더에 쓸 수 없어요. 쓰기 가능한 폴더로 옮긴 뒤 다시 시도해주세요.": {
+    "en": "The EXE folder is not writable. Move it to a writable folder and try again.",
+    "ja": "EXEのフォルダーに書き込めません。書き込み可能なフォルダーに移動して、もう一度お試しください。"
+  },
+  "업데이트를 적용하지 못해 이전 버전으로 복구했어요. 다시 시도해주세요.": {
+    "en": "The update could not start, so the previous version was restored. Please try again.",
+    "ja": "更新を適用できなかったため、前のバージョンに復元しました。もう一度お試しください。"
   }
 }

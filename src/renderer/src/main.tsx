@@ -5,7 +5,7 @@ import { Snapshot, Settings, POKEMON, DisplayChoice, PetMotion, PetInputTrace, E
 import { activePet, appearanceId, appearancePhase, candyCount, CANDY_XP, dexChoices, discoveredSpecies, evolutionOptions, finalPhase, isGrowing, speciesId, threshold, waitingForEvolution } from '../../shared/game';
 import { usePetDialogue } from './pet-dialogue';
 import { HomeHonors, LeagueCollection } from './league-ui';
-import { UpdateSettings, UpdateHint } from './updates-ui';
+import { SidebarUpdate, UpdateHint } from './updates-ui';
 import { PixelIcon, PixelIconKind } from './pixel-icons';
 import { ACHIEVEMENTS, BallId, ballInfo, ballUnlocked, themeInfo } from '../../shared/rewards';
 import { BallIcon } from './balls';
@@ -279,7 +279,8 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
     event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]')[index]?.focus();
   };
   const resetDexFilters = (): void => {setDexSearch('');setDexGeneration('all');setDexRarity('all');setDexType('all');setDexStatus('all');setDexPage(1);};
-  useEffect(() => window.desktop.onNavigate(setTab), []);
+  const [updatesOpen,setUpdatesOpen]=useState(false);
+  useEffect(() => window.desktop.onNavigate(value=>value==='updates'?setUpdatesOpen(true):setTab(value)), []);
   useEffect(() => {if (tab === 'settings') void window.desktop.getDisplays().then(setDisplays);}, [tab, language]);
   useEffect(() => {const theme = snapshot?.settings.theme ?? 'light';document.documentElement.dataset.theme = theme;document.documentElement.dataset.palette = themeInfo(theme).dark ? 'dark' : 'light';}, [snapshot?.settings.theme]);
   const run = async (action: () => Promise<unknown>): Promise<void> => {
@@ -324,15 +325,17 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
   return <div className="app-shell" data-theme={settings.theme} data-palette={themeInfo(settings.theme).dark ? 'dark' : 'light'}>
     <aside className="sidebar">
       <div className="brand"><span className="brand-mark"><PixelIcon kind="ball" /></span><div>PokeToken<span>{t("DESKTOP ADVENTURE")}</span></div></div>
-      <nav aria-label={t("주 메뉴")}>{[['home', 'ball', t("현재 펫 · 사용량")], ['dex', 'dex', t("나의 도감")], ['achievements', 'trophy', t("업적 · 볼 컬렉션")], ['league','trophy',t('배지 · 리그 칭호')], ['settings', 'settings', t("설정")]].map(([key, icon, text]) => <button key={key} data-tab={key} className={tab === key ? 'nav-active' : ''} onClick={() => setTab(key)}><PixelIcon kind={icon as PixelIconKind} />{t(text)}</button>)}</nav>
+      <nav aria-label={t("주 메뉴")}>{[['home', 'ball', t("현재 펫 · 사용량")], ['dex', 'dex', t("나의 도감")], ['achievements', 'trophy', t("업적 · 볼 컬렉션")], ['league','badge',t('배지 · 리그 칭호')], ['settings', 'settings', t("설정")]].map(([key, icon, text]) => <button key={key} data-tab={key} className={tab === key ? 'nav-active' : ''} onClick={() => setTab(key)}><PixelIcon kind={icon as PixelIconKind} />{t(text)}</button>)}</nav>
+      <SidebarUpdate open={updatesOpen} show={()=>setUpdatesOpen(true)} close={()=>setUpdatesOpen(false)}/>
+      <HomeHonors snapshot={snapshot} location="sidebar" open={()=>setTab('league')}/>
       <div className="sidebar-bottom"><span className={`status-dot ${connected ? 'online' : ''}`} />{snapshot.scanning ? t("사용량 확인 중") : connected ? t("로그 연결됨") : t("로그 연결 대기")}<p>{t("평소처럼 코딩하세요.")}<br />{t("작은 친구가 함께 자랍니다.")}</p><small>{t`v${version} · 내 컴퓨터에 저장`}</small></div>
     </aside>
-    <UpdateHint open={()=>setTab('settings')}/>
+    <UpdateHint open={()=>setUpdatesOpen(true)}/>
     <main className={`workspace ${tab === 'home' ? 'workspace-home' : ''}`}>
-      <header className="topbar">{tab==='home'?<div className="topbar-honors"><HomeHonors snapshot={snapshot} open={()=>setTab('league')}/></div>:<span className="eyebrow"><span className="console-light" aria-hidden="true" />{t("POKETOKEN / TRAINER'S LOG")}</span>}<div className="topbar-actions"><button className="theme-button" disabled={busy} aria-label={settings.theme === 'dark' ? t("라이트 모드로 변경") : settings.theme === 'light' ? t("보라시티 다크 모드로 변경") : t("화면 테마 선택")} title={themeName(settings.theme, language)} onClick={() => settings.theme === 'light' || settings.theme === 'dark' ? update({ theme: settings.theme === 'dark' ? 'light' : 'dark' }) : setTab('settings')}><PixelIcon kind={themeInfo(settings.theme).dark ? 'moon' : 'sun'} /><span>{themeName(settings.theme, language)}</span></button><span className="date">{new Date().toLocaleDateString(localeFor(language), { month: 'long', day: 'numeric', weekday: 'short' })}</span></div></header>
+      <header className="topbar"><span className="eyebrow"><span className="console-light" aria-hidden="true" />{t("POKETOKEN / TRAINER'S LOG")}</span><div className="topbar-actions">{tab==='home'&&<button className="home-refresh button subtle" disabled={busy||snapshot.scanning} aria-label={t("↻ 새로고침")} title={t("↻ 새로고침")} onClick={()=>void run(()=>window.desktop.refresh())}>↻</button>}<button className="theme-button" disabled={busy} aria-label={settings.theme === 'dark' ? t("라이트 모드로 변경") : settings.theme === 'light' ? t("보라시티 다크 모드로 변경") : t("화면 테마 선택")} title={themeName(settings.theme, language)} onClick={() => settings.theme === 'light' || settings.theme === 'dark' ? update({ theme: settings.theme === 'dark' ? 'light' : 'dark' }) : setTab('settings')}><PixelIcon kind={themeInfo(settings.theme).dark ? 'moon' : 'sun'} /><span>{themeName(settings.theme, language)}</span></button><span className="date">{new Date().toLocaleDateString(localeFor(language), { month: 'long', day: 'numeric', weekday: 'short' })}</span></div></header>
       {error && <div className="error-banner" role="alert">{localizeMessage(error, language)}<button onClick={() => setError(null)}>{t("닫기")}</button></div>}
       {tab === 'home' && <section className="home-page" aria-label={t("현재 펫과 사용량")}>
-        <div className="page-heading"><div><h1>{t("오늘도, 함께 성장해요")}<span>✦</span></h1><p>{t("코딩에 쓴 토큰이 작은 친구의 경험치가 됩니다.")}</p></div><button className="button subtle" disabled={busy || snapshot.scanning} onClick={() => void run(() => window.desktop.refresh())}>{snapshot.scanning ? t("확인 중…") : t("↻ 새로고침")}</button></div>
+        <div className="page-heading home-heading"><div><h1>{t("오늘도, 함께 성장해요")}<span>✦</span></h1><p>{t("코딩에 쓴 토큰이 작은 친구의 경험치가 됩니다.")}</p></div><HomeHonors snapshot={snapshot} open={()=>setTab('league')}/></div>
         <div className="home-grid">
           <section className="companion-card"><div className="card-top"><span className="pill">{pet.phase === 0 ? t("부화를 기다리는 중") : waiting ? t("진화 목표를 기다리는 중") : growing ? t`성장 단계 ${pet.phase} / ${finalPhase(pet)}` : t("경험치사탕을 모으는 중")}</span><button className="companion-dex-link" title={t`나의 도감 ${discovered.length} / ${POKEMON.length}종 · 이로치 ${game.ownedShiny.length}종`} onClick={() => currentForm?showForms(currentForm.speciesId):setTab('dex')}><PixelIcon kind="dex" />{currentForm?<>{t('모습 ')}{formCount}/{FORMS.length}</>:<>{t("도감 ")}{discovered.length}/{POKEMON.length}</>} →</button></div>
             <div className="habitat"><div className="cloud cloud-one" /><div className="cloud cloud-two" /><div className="sun" /><div className="hill hill-one" /><div className="hill hill-two" /><div className="ground" /><div className="habitat-sprite"><Sprite id={id} shiny={pet.shiny} eggType={pet.eggType} /></div><span className="grass grass-one"><PixelIcon kind="grass" /></span><span className="grass grass-two"><PixelIcon kind="grass" /></span></div>
@@ -370,7 +373,6 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
       {tab === 'achievements' && <Achievements snapshot={snapshot} busy={busy} update={update} navigate={setTab} />}
       {tab === 'league' && <LeagueCollection snapshot={snapshot} busy={busy} save={display=>run(()=>window.desktop.setLeagueDisplay(display))}/>}
       {tab === 'settings' && <>
-        <UpdateSettings/>
         <div className="page-heading"><div><h1>{t("함께하는 방식")}</h1><p>{t("성장 속도와 데스크톱 펫을 내 취향에 맞춰보세요.")}</p></div></div>
         <section className="settings-card language-settings"><h3>{t("언어")}</h3><div className="setting-row"><div><strong>{t("표시 언어")}</strong><p>{t("메뉴, 대사와 포켓몬 이름에 바로 적용됩니다.")}</p></div><select aria-label={t("표시 언어")} value={settings.language} disabled={busy} onChange={(e) => update({ language: e.target.value as Language })}>{LANGUAGES.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></div></section>
         <ThemePicker snapshot={snapshot} busy={busy} update={update} navigate={setTab} />

@@ -44,8 +44,19 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run smoke:updater
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke:dashboard
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke:evolution
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Remove-Item Env:POKETOKEN_EXE
           npm run smoke:portable
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Verify portable replacement and recovery
+        shell: pwsh
+        run: |
+          npm exec electron-builder -- --win portable --x64 --publish never --config.extraMetadata.version=9.9.9 --config.directories.output=artifacts/update-target --config.compression=store
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke:portable-update
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Attach verified assets to draft
         env:

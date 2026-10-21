@@ -22,14 +22,14 @@ if(mode==='upload'){
  const digest=async(path,algorithm='sha256',encoding='hex')=>{const hash=createHash(algorithm);for await(const bytes of createReadStream(path))hash.update(bytes);return hash.digest(encoding)}
  if(!text.includes(`version: ${version}`)||!text.includes(`url: ${files[0]}`)||!text.includes(`sha512: ${await digest(join('release',files[0]),'sha512','base64')}`))throw Error('Update manifest does not match the installer')
  const validation={}
- for(const name of ['league','forms','i18n-smoke-native','portable','updater-download']){
+ for(const name of ['league','forms','i18n-smoke-native','dashboard','evolution','portable','updater-download','portable-update']){
   const file=name==='i18n-smoke-native'?`artifacts/${name}.json`:`artifacts/${name}-report.json`,report=JSON.parse(readFileSync(file,'utf8'))
   if(report.errors?.length||!report.checks?.length)throw Error(`Failed/missing ${name} execution check`)
   validation[name]=report.checks.length
  }
  const info=`build-info-win-${version}.json`,sums=`SHA256SUMS-win-${version}.txt`
  const assets=await Promise.all([...files,manifest].map(async file=>({file,bytes:statSync(join('release',file)).size,sha256:await digest(join('release',file))})))
- writeFileSync(join('release',info),JSON.stringify({version,sourceCommit:revision,architecture:'x64',assets,validation,workflowRun:`https://github.com/${repository}/actions/runs/${process.env.GITHUB_RUN_ID}`},null,2)+'\n')
+ writeFileSync(join('release',info),JSON.stringify({version,sourceCommit:revision,architecture:'x64',assets,validation,workflowRun:process.env.GITHUB_RUN_ID?`https://github.com/${repository}/actions/runs/${process.env.GITHUB_RUN_ID}`:null},null,2)+'\n')
  writeFileSync(join('release',sums),assets.map(a=>`${a.sha256}  ${a.file}`).join('\n')+'\n')
  // Metadata is uploaded last, after every binary has been verified. Keep the
  // release a draft; publishing it is a separate, explicit release decision.

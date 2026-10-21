@@ -30,6 +30,8 @@ win:
   extraResources:
     - from: native/window-surfaces.ps1
       to: native/window-surfaces.ps1
+    - from: native/portable-update.ps1
+      to: native/portable-update.ps1
   target:
     - nsis
     - portable

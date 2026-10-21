@@ -24,6 +24,7 @@ module.exports = function verifyPackage(context) {
     if (!asar.extractFile(archive, normalize(path)).length) throw new Error(`Missing runtime file or license: ${path}`)
   }
   if (platform === 'win32') {
+    if(!readFileSync(join(resources,'native','portable-update.ps1')).equals(readFileSync(join(context.packager.projectDir,'native','portable-update.ps1'))))throw new Error('Missing or stale portable update helper')
     const locales = readdirSync(join(context.appOutDir, 'locales')).filter(name => name.endsWith('.pak')).sort()
     if (locales.join(',') !== 'en-US.pak,ja.pak,ko.pak') throw new Error(`Incorrect Electron locales: ${locales.join(', ')}`)
   }

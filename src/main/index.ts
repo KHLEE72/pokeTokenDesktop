@@ -12,7 +12,7 @@ import { activePet } from '../shared/game'
 import { isLanguage, translator } from '../shared/i18n'
 import { isDexSort } from '../shared/dex'
 import { LEAGUE_BY_ID, LeagueDisplay } from '../shared/league'
-import { createUpdates } from './update-service'
+import { createUpdates, portableUpdateStarted } from './update-service'
 import type { UpdateController } from './updates'
 
 app.setName('PokeToken Desktop')
@@ -116,7 +116,7 @@ function trayMenu(): void {
     { label: t('설정'), click: () => openDashboard('settings') },
     { label: t('업적 · 볼 컬렉션'), click: () => openDashboard('achievements') },
     { label: t('배지 · 리그 칭호'), click: () => openDashboard('league') },
-    { label: updates?.state.status==='available'||updates?.state.status==='downloaded'?t('새 업데이트가 있어요'):t('업데이트 확인'),click:()=>{openDashboard('settings');void updates?.check()} },
+    { label: updates?.state.status==='available'||updates?.state.status==='downloaded'?t('새 업데이트가 있어요'):t('업데이트 확인'),click:()=>{openDashboard('updates');void updates?.check()} },
     { label: t('펫 입력 복구'), click: () => controller.repairInput() },
     { label: t('입력 문제 시점 기록'), click: () => diagnostics.record('user.mark',controller.inputState) },
     { label: t('입력 진단 로그 폴더'), click: () => { diagnostics.record('diagnostic.folder-opened',controller.inputState); void diagnostics.flush().then(()=>shell.openPath(join(app.getPath('userData'),'diagnostics'))) } },
@@ -170,8 +170,10 @@ else {
     dashboard.webContents.on('will-navigate', event => event.preventDefault())
     dashboard.once('ready-to-show', () => { if (!process.argv.includes('--hidden') && !app.getLoginItemSettings().wasOpenedAtLogin) dashboard.show() })
     pet.webContents.on('did-finish-load', () => controller.apply(snapshot.settings))
-    void load(dashboard, 'dashboard'); void load(pet, 'pet')
+    const pagesReady=Promise.all([load(dashboard,'dashboard'),load(pet,'pet')])
     worker = new Worker(join(__dirname, 'worker.js'), { workerData: { path: join(app.getPath('userData'), 'poketoken.sqlite') } })
+    const workerReady=new Promise<void>(resolve=>{const ready=(message:{type:string}):void=>{if(message.type==='snapshot'){worker.removeListener('message',ready);resolve()}};worker.on('message',ready)})
+    void Promise.all([pagesReady,workerReady]).then(()=>portableUpdateStarted()).catch(()=>{})
     updates=createUpdates(state=>{if(quitting)return;if(!dashboard.isDestroyed())dashboard.webContents.send('update:state',state);if(!tray.isDestroyed())trayMenu()},async()=>{await request('refresh');await request('flush')})
     worker.on('message', message => {
       if (message.type === 'snapshot') {
@@ -222,8 +224,8 @@ else {
       await shell.openExternal(source)
     })
     ipcMain.handle('update:get',event=>{allowed(event);if(event.sender.id!==dashboard.webContents.id)throw new Error('잘못된 요청');return updates!.state})
-    ipcMain.handle('update:action',async(event,action)=>{allowed(event);if(event.sender.id!==dashboard.webContents.id||!['check','download','install','open'].includes(action))throw new Error('잘못된 요청');await updates![action as 'check'|'download'|'install'|'open']()})
-    ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'achievements', 'league', 'settings'].includes(tab) ? tab : 'home') })
+    ipcMain.handle('update:action',async(event,action)=>{allowed(event);if(event.sender.id!==dashboard.webContents.id||!['check','download','install','apply','open'].includes(action))throw new Error('잘못된 요청');await updates![action as 'check'|'download'|'install'|'apply'|'open']()})
+    ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'achievements', 'league', 'settings', 'updates'].includes(tab) ? tab : 'home') })
     ipcMain.on('pet:pointer', (event, active) => { if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
     let traceWindow=0,traceCount=0
     ipcMain.on('pet:input-trace',(event,value)=>{

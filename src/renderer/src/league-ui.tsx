@@ -13,12 +13,13 @@ export function LeagueIcon({goal,locked=false}:{goal:LeagueGoal;locked?:boolean}
   if(goal.kind==='title')return <svg viewBox="0 0 64 64" className={`league-icon ${locked?'locked':''}`} aria-hidden="true"><path d="M10 21 23 31 32 13 41 31 54 21 48 48H16Z" fill="#e7ba5b" stroke="#795e38" strokeWidth="2"/><path d="M20 48H44V54H20Z" fill="#b8863f"/><path d="M27 35 32 28 37 35 32 42Z" fill={color}/><path d="M15 20 24 33M33 18 38 31" stroke="#fff5cf" strokeWidth="3"/></svg>
   return <svg viewBox="0 0 64 64" className={`league-icon ${locked?'locked':''}`} aria-hidden="true"><path d="M22 4H42L59 22V42L42 59H22L5 42V22Z" fill="#d8dfe3" stroke="#6e818f" strokeWidth="2"/><path d="M23 9H41L54 23V41L41 54H23L10 41V23Z" fill={color}/><path d={symbols[goal.type]??symbols.normal} fill={['ice','psychic'].includes(goal.type)?'none':'#fff5d9'} stroke="#fff5d9" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round"/><path d="M16 19 25 12H37" fill="none" stroke="#fff" opacity=".6" strokeWidth="3"/><path d="M50 44 41 53H26" fill="none" stroke="#40546d" opacity=".2" strokeWidth="3"/></svg>
 }
-export function HomeHonors({snapshot,open}:{snapshot:Snapshot;open:()=>void}):React.JSX.Element {
+export function HomeHonors({snapshot,open,location='home'}:{snapshot:Snapshot;open:()=>void;location?:'home'|'sidebar'}):React.JSX.Element|null {
   const {language,t}=useI18n(),state=snapshot.league??newLeague(),title=state.title?LEAGUE_BY_ID.get(state.title):undefined
   const badges=state.badges.map(id=>LEAGUE_BY_ID.get(id)).filter((g):g is LeagueGoal=>Boolean(g))
-  return <button className={`home-honors ${badges.length||title?'has-honors':''}`} onClick={open} aria-label={t('배지와 칭호 전시 설정')} title={[title?.names[language],...badges.map(g=>g.names[language])].filter(Boolean).join(' · ')}>
-    <span className="home-title">{title?<><LeagueIcon goal={title}/>{title.names[language]}</>:t('배지 · 칭호 전시하기 →')}</span>
-    {badges.length>0&&<span className="home-badges">{badges.map(goal=><span key={goal.id} data-honor={goal.id}><LeagueIcon goal={goal}/></span>)}</span>}
+  if(!badges.length&&!title)return null
+  return <button className={`home-honors honors-${location}`} onClick={open} aria-label={t('배지와 칭호 전시 설정')} title={[title?.names[language],...badges.map(g=>g.names[language])].filter(Boolean).join(' · ')}>
+    {title&&<span className="home-title"><LeagueIcon goal={title}/><span>{title.names[language]}</span></span>}
+    {badges.length>0&&<span className="home-badges">{badges.map(goal=><span key={goal.id} data-honor={goal.id} title={goal.names[language]}><LeagueIcon goal={goal}/></span>)}</span>}
   </button>
 }
 export function LeagueCollection({snapshot,busy,save}:{snapshot:Snapshot;busy:boolean;save:(display:LeagueDisplay)=>Promise<void>}):React.JSX.Element {

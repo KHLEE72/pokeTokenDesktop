@@ -2,12 +2,14 @@ import React from 'react'
 import candy from './assets/rare-candy.png'
 import ball from './assets/poke-ball.png'
 
-export type PixelIconKind = 'ball' | 'candy' | 'dex' | 'settings' | 'token' | 'xp' | 'trophy' | 'grass' | 'moon' | 'sun'
+export type PixelIconKind = 'ball' | 'candy' | 'dex' | 'settings' | 'token' | 'xp' | 'trophy' | 'badge' | 'update' | 'grass' | 'moon' | 'sun'
 
 export function PixelIcon({kind,className=''}:{kind:PixelIconKind;className?:string}):React.JSX.Element {
   const style=`pixel-icon ${className}`
   if(kind==='ball' || kind==='candy')return <img className={style} src={kind==='ball'?ball:candy} data-item={kind==='ball'?'poke-ball':'rare-candy'} alt="" aria-hidden="true" draggable={false}/>
   const art:Record<Exclude<PixelIconKind,'ball'|'candy'>,React.ReactNode>={
+    badge:<><path fill="#283e50" d="M4 2h16v12h-2v4h-4v4h-4v-4H6v-4H4Z"/><path fill="#76bed9" d="M6 4h12v9h-2v3h-4v3h-1v-3H8v-3H6Z"/><path fill="#fff4d3" d="M11 5h2v3h3v3h-3v3h-2v-3H8V8h3Z"/><path fill="#f4c856" d="M2 17h4v5l-2-1-2 1Zm16 0h4v5l-2-1-2 1Z"/></>,
+    update:<><path fill="#283e50" d="M6 3h10v2h3V2h3v9h-9V8h4V7h-2V6H7v2H5v4H2V7h2V5h2Zm12 18H8v-2H5v3H2v-9h9v3H7v1h2v1h8v-2h2v-4h3v5h-2v2h-2Z"/><path fill="#76bed9" d="M7 4h8v2H7Zm10 14H9v2h8Z"/></>,
     moon:<><path fill="#c8b5fa" d="M9 2h6v2h-4v4H9v6h2v4h6v-2h3v-3h2v5h-2v2h-4v2H8v-2H4v-4H2V8h2V4h5Z"/><path fill="#fff0c7" d="M17 4h2v2h2v2h-2v2h-2V8h-2V6h2Z"/></>,
     sun:<><path fill="#dca843" d="M10 1h4v4h-4Zm0 18h4v4h-4ZM1 10h4v4H1Zm18 0h4v4h-4ZM4 4h3v3H4Zm13 0h3v3h-3ZM4 17h3v3H4Zm13 0h3v3h-3Z"/><path fill="#f4cb65" d="M9 6h6v2h3v8h-3v2H9v-2H6V8h3Z"/><path fill="#fff4d3" d="M9 8h3v3H9Z"/></>,
     dex:<><path fill="#283e50" d="M5 2h14v2h2v16h-2v2H5v-2H3V4h2Z"/><path fill="#e66b60" d="M5 4h14v16H5Z"/><path fill="#fff4d3" d="M7 7h10v8H7Z"/><path fill="#8fcbd2" d="M9 9h6v4H9Z"/><path fill="#283e50" d="M7 17h4v2H7Zm8 0h2v2h-2Z"/><path fill="#f4c856" d="M7 4h3v2H7Z"/></>,

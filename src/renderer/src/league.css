@@ -29,4 +29,11 @@
 .home-honors { display:flex; align-items:flex-start; flex-direction:column; gap:0; border:0; padding:0; background:transparent; color:var(--ink); max-width:100%; }
 .home-title { display:flex; align-items:center; justify-content:center; gap:4px; max-width:100%; font-size:9px; line-height:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }.home-title .league-icon { width:17px; height:17px; }
 .home-badges { display:flex; justify-content:flex-start; gap:3px; }.home-badges .league-icon { width:22px; height:22px; }
+.home-title>span { min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.app-shell .home-heading { align-items:center; gap:10px; }.home-heading>div { min-width:0; }
+.home-heading .honors-home { flex-shrink:0; width:208px; align-items:flex-end; gap:5px; padding:7px 9px; border:1px solid var(--line); border-radius:5px; background:var(--paper); }
+.home-heading .home-title { justify-content:flex-end; width:100%; }.home-heading .home-badges { gap:2px; }.home-heading .home-badges .league-icon { width:21px; height:21px; }
+.app-shell .honors-sidebar { width:100%; flex-shrink:0; gap:7px; margin:10px 0 14px; padding:10px 8px; border:1px solid #ffffff50; border-radius:3px; background:#1a20342b; color:#fff9e7; }
+.honors-sidebar .home-title { width:100%; justify-content:flex-start; font-size:10px; }.honors-sidebar .home-badges { display:grid; width:100%; grid-template-columns:repeat(8,minmax(0,1fr)); gap:1px; }.honors-sidebar .home-badges .league-icon { width:100%; height:auto; }
+@media(max-width:950px) { .app-shell .home-page .home-heading h1 { font-size:19px; }.home-heading .honors-home { width:190px; padding-inline:6px; }.home-heading .home-badges .league-icon { width:20px; height:20px; } }
 @media(max-width:1000px) { .league-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.honor-slots { gap:4px; }.honor-title-select { flex-direction:column; align-items:stretch; } }

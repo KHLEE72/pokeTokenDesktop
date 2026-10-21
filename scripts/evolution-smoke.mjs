@@ -70,6 +70,13 @@ try{
   expect(snapshot.game.candyTokens).toBe(500_000);expect(snapshot.game.captures).toEqual([])
   await expect(page.getByRole('progressbar',{name:'현재 펫 성장 진행률'})).toHaveAttribute('aria-valuenow','100')
   await expect(page.getByRole('button',{name:'사탕 먹이기',exact:true})).toBeDisabled()
+  for(const theme of ['light','dark']) {
+    await page.evaluate(theme=>window.desktop.updateSettings({theme}),theme)
+    const feed=page.getByRole('button',{name:'사탕 먹이기',exact:true})
+    await feed.hover()
+    await expect(feed).toHaveCSS('cursor','default')
+  }
+  checks.push('at 100% XP, hovering the disabled candy button uses the normal cursor in light and dark themes')
   await fits();await page.screenshot({path:'artifacts/eevee-waiting-dark.png'})
   await application.close();application=null;await start()
   expect((await state()).game).toEqual(snapshot.game)
@@ -109,7 +116,10 @@ try{
   const second=structuredClone(snapshot.game),secondId=`pet:${second.nextId++}`
   second.pets.push({id:secondId,family:18,phase:1,xp:49_950_000,shiny:false,eggType:'normal',obtainedAt:now,path:[133],evolutionTarget:134})
   second.owned.push(133);second.activeId=secondId;second.displayPhase=1
-  await seed(second);await page.getByRole('button',{name:'사탕 먹이기',exact:true}).click()
+  await seed(second)
+  await expect(page.getByRole('button',{name:'사탕 먹이기',exact:true})).toBeEnabled()
+  await expect(page.getByRole('button',{name:'사탕 먹이기',exact:true})).toHaveCSS('cursor','pointer')
+  await page.getByRole('button',{name:'사탕 먹이기',exact:true}).click()
   await expect.poll(async()=>selected(await state()).path).toEqual([133,134])
   snapshot=await state();expect(selected(snapshot).path).toEqual([133,134]);expect(snapshot.game.candyTokens).toBe(550_000)
   expect(snapshot.game.owned).toEqual([133,134]);expect(snapshot.game.ownedShiny).toEqual([133,700])
