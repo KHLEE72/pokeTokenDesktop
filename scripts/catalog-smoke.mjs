@@ -15,7 +15,7 @@ const ids=[1,152,252,387,495,650,722,810,906,1025,132]
 mkdirSync('artifacts',{recursive:true})
 let application,page
 const snapshot=()=>page.evaluate(()=>window.desktop.getSnapshot())
-const nav=index=>page.locator('.sidebar nav button').nth(index).click()
+const nav=index=>page.locator(`.sidebar nav button[data-tab="${['home','dex','achievements','settings'][index]}"]`).click()
 async function start(){
   application=await electronApp.launch({executablePath:process.env.POKETOKEN_EXE||electron,args:[...(process.env.POKETOKEN_EXE?[]:['.']),...(scale==='native'?[]:[`--force-device-scale-factor=${scale}`])],env,timeout:60000})
   await application.firstWindow();page=application.windows().find(w=>w.url().includes('view=dashboard'))

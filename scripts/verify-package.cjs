@@ -20,7 +20,7 @@ module.exports = function verifyPackage(context) {
   if (!packagedAddon.equals(readFileSync(join(context.packager.projectDir, expected)))) throw new Error('Packaged SQLite addon differs from the target prebuild')
   const unwanted = files.filter(path => /^node_modules\/better-sqlite3\/(deps\/|src\/|binding\.gyp$)/.test(path) || /^node_modules\/node-addon-api\/(tools\/|.*\.(h|c|gyp|gypi)$)/.test(path))
   if (unwanted.length) throw new Error(`Build-only files remain in the package: ${unwanted.slice(0, 5).join(', ')}`)
-  for (const path of ['out/main/index.js', 'out/main/worker.js', 'out/preload/index.js', 'out/renderer/index.html', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'node_modules/better-sqlite3/LICENSE', 'node_modules/node-addon-api/LICENSE.md']) {
+  for (const path of ['out/main/index.js', 'out/main/worker.js', 'out/preload/index.js', 'out/renderer/index.html', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'node_modules/better-sqlite3/LICENSE', 'node_modules/node-addon-api/LICENSE.md', 'node_modules/electron-updater/LICENSE', 'node_modules/semver/LICENSE']) {
     if (!asar.extractFile(archive, normalize(path)).length) throw new Error(`Missing runtime file or license: ${path}`)
   }
   if (platform === 'win32') {

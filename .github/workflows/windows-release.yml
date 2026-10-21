@@ -1,0 +1,53 @@
+name: Windows release build
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing draft release tag matching this commit and package version
+        type: string
+        required: true
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ inputs.release_tag }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22.22.3'
+          cache: npm
+      - name: Verify draft and tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/publish-windows-release.mjs check
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - name: Build installer and portable
+        run: npm run dist:win
+      - name: Verify packaged app and download handling
+        shell: pwsh
+        run: |
+          $env:POKETOKEN_EXE = (Resolve-Path 'release/win-unpacked/PokeToken Desktop.exe').Path
+          npm run smoke:league
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke:forms
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke:i18n
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke:updater
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Remove-Item Env:POKETOKEN_EXE
+          npm run smoke:portable
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Attach verified assets to draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/publish-windows-release.mjs upload

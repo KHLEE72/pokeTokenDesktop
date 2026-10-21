@@ -1,6 +1,6 @@
 {
   "name": "poketoken-desktop",
-  "version": "1.0.0-preview.1",
+  "version": "1.0.0-preview.2",
   "private": true,
   "description": "AI coding tokens, a little desktop companion.",
   "main": "out/main/index.js",
@@ -17,7 +17,9 @@
     "smoke": "node scripts/smoke.mjs",
     "smoke:portable": "node scripts/portable-smoke.mjs",
     "smoke:dev": "node scripts/dev-smoke.mjs",
-    "dist:win": "npm run build && electron-builder --win portable --x64 --publish never",
+    "dist:win": "npm run build && electron-builder --win nsis portable --x64 --publish never",
+    "dist:win:portable": "npm run build && electron-builder --win portable --x64 --publish never",
+    "dist:win:installer": "npm run build && electron-builder --win nsis --x64 --publish never",
     "dist:mac:arm64": "npm run build && electron-builder --mac dmg --arm64 --publish never",
     "dist:mac:x64": "npm run build && electron-builder --mac dmg --x64 --publish never",
     "smoke:pet": "node scripts/pet-smoke.mjs",
@@ -34,12 +36,16 @@
     "smoke:catalog": "node scripts/catalog-smoke.mjs",
     "smoke:rarity": "node scripts/rarity-smoke.mjs",
     "smoke:delivery": "node scripts/delivery-smoke.mjs",
-    "smoke:forms": "node scripts/forms-smoke.mjs"
+    "smoke:forms": "node scripts/forms-smoke.mjs",
+    "smoke:league": "node scripts/league-smoke.mjs",
+    "smoke:updater": "node scripts/updater-download-smoke.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",
+    "electron-updater": "6.8.9",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "semver": "7.7.3"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
@@ -47,6 +53,7 @@
     "@types/node": "26.6.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "@types/semver": "7.7.1",
     "@vitejs/plugin-react": "5.2.0",
     "electron": "44.5.1",
     "electron-builder": "26.15.3",

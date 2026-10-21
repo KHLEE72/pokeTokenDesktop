@@ -3,6 +3,8 @@ export type Pace = 'fast' | 'normal' | 'slow'
 import type { BallId, RewardState, ThemeId } from './rewards'
 import type { Language } from './i18n'
 import type { DexSort } from './dex'
+import type { LeagueDisplay, LeagueState } from './league'
+import type { UpdateAction, UpdateState } from './updates'
 export interface Tokens { input: number; output: number; cacheRead: number; cacheWrite: number }
 export interface UsageRecord extends Tokens { id: string; provider: Provider; timestamp: string }
 export const totalTokens = (v: Tokens): number => v.input + v.output + v.cacheRead + v.cacheWrite
@@ -47,6 +49,7 @@ export interface Snapshot {
   game: GameState; settings: Settings; usage: Record<Provider, { today: number; all: number }>
   roots: RootStatus[]; scanning: boolean; lastScan: string | null; notice: string | null
   rewards: RewardState
+  league?: LeagueState
 }
 export interface DisplayChoice { id: string; label: string }
 export type PetMotionState = 'idle' | 'walking' | 'held' | 'falling' | 'landing'
@@ -68,6 +71,11 @@ export interface DesktopAPI {
   getDisplays(): Promise<DisplayChoice[]>
   getSprite(id: number, shiny?: boolean): Promise<string | null>
   gameAction(action: GameAction): Promise<void>
+  setLeagueDisplay(display: LeagueDisplay): Promise<void>
+  getUpdateState(): Promise<UpdateState>
+  updateAction(action: UpdateAction): Promise<void>
+  onUpdateState(callback: (state: UpdateState) => void): () => void
+  openLeagueSource(goalId: string, partyIndex: number): Promise<void>
   openDashboard(tab?: string): Promise<void>
   onNavigate(callback: (tab: string) => void): () => void
   onMotion(callback: (motion: PetMotion) => void): () => void

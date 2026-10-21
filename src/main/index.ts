@@ -11,6 +11,9 @@ import { isBall, isTheme } from '../shared/rewards'
 import { activePet } from '../shared/game'
 import { isLanguage, translator } from '../shared/i18n'
 import { isDexSort } from '../shared/dex'
+import { LEAGUE_BY_ID, LeagueDisplay } from '../shared/league'
+import { createUpdates } from './update-service'
+import type { UpdateController } from './updates'
 
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
@@ -20,12 +23,13 @@ let windowTracker: WindowTracker | undefined
 let preferences: Electron.WebPreferences
 let quitting = false, nextId = 1
 let diagnostics: InputDiagnostics
+let updates:UpdateController|undefined
 let snapshot: Snapshot = { game: newGame(), settings: defaultSettings(), rewards: { unlocked: {} }, usage: { claude: { today: 0, all: 0 }, codex: { today: 0, all: 0 } }, roots: [], scanning: true, lastScan: null, notice: null }
 const pending = new Map<number, { resolve: () => void; reject: (e: Error) => void; timer: NodeJS.Timeout }>()
-const request = (op: string, patch?: Partial<Settings>, action?: GameAction): Promise<void> => new Promise((resolve, reject) => {
+const request = (op: string, patch?: Partial<Settings>, action?: GameAction, display?:LeagueDisplay): Promise<void> => new Promise((resolve, reject) => {
   const id = nextId++
   const timer = setTimeout(() => { pending.delete(id); reject(new Error('처리 시간이 길어지고 있습니다. 잠시 후 다시 확인해주세요.')) }, 120_000)
-  pending.set(id, { resolve, reject, timer }); worker.postMessage({ id, op, patch, action })
+  pending.set(id, { resolve, reject, timer }); worker.postMessage({ id, op, patch, action, display })
 })
 function load(window: BrowserWindow, view: string): Promise<void> {
   if (process.env.ELECTRON_RENDERER_URL) return window.loadURL(`${process.env.ELECTRON_RENDERER_URL}?view=${view}`)
@@ -111,6 +115,8 @@ function trayMenu(): void {
     { label: snapshot.settings.paused ? t('다시 걷기') : t('이동 일시정지'), click: () => void request('settings', { paused: !snapshot.settings.paused }).catch(() => {}) },
     { label: t('설정'), click: () => openDashboard('settings') },
     { label: t('업적 · 볼 컬렉션'), click: () => openDashboard('achievements') },
+    { label: t('배지 · 리그 칭호'), click: () => openDashboard('league') },
+    { label: updates?.state.status==='available'||updates?.state.status==='downloaded'?t('새 업데이트가 있어요'):t('업데이트 확인'),click:()=>{openDashboard('settings');void updates?.check()} },
     { label: t('펫 입력 복구'), click: () => controller.repairInput() },
     { label: t('입력 문제 시점 기록'), click: () => diagnostics.record('user.mark',controller.inputState) },
     { label: t('입력 진단 로그 폴더'), click: () => { diagnostics.record('diagnostic.folder-opened',controller.inputState); void diagnostics.flush().then(()=>shell.openPath(join(app.getPath('userData'),'diagnostics'))) } },
@@ -166,6 +172,7 @@ else {
     pet.webContents.on('did-finish-load', () => controller.apply(snapshot.settings))
     void load(dashboard, 'dashboard'); void load(pet, 'pet')
     worker = new Worker(join(__dirname, 'worker.js'), { workerData: { path: join(app.getPath('userData'), 'poketoken.sqlite') } })
+    updates=createUpdates(state=>{if(!dashboard.isDestroyed())dashboard.webContents.send('update:state',state);trayMenu()},async()=>{await request('refresh');await request('flush')})
     worker.on('message', message => {
       if (message.type === 'snapshot') {
         snapshot = message.value
@@ -204,7 +211,19 @@ else {
       else throw new Error('잘못된 요청')
       await request('game',undefined,action)
     })
-    ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'achievements', 'settings'].includes(tab) ? tab : 'home') })
+    ipcMain.handle('league:display',async(event,value)=>{
+      allowed(event);if(event.sender.id!==dashboard.webContents.id||!value||!Array.isArray(value.badges)||value.badges.length>8||value.badges.some((id:unknown)=>typeof id!=='string'||id.length>100)||value.title!==null&&(typeof value.title!=='string'||value.title.length>100))throw new Error('잘못된 전시 설정입니다.')
+      await request('league',undefined,undefined,{badges:value.badges,title:value.title})
+    })
+    ipcMain.handle('league:source',async(event,id,index)=>{
+      allowed(event);if(event.sender.id!==dashboard.webContents.id||typeof id!=='string'||!Number.isInteger(index))throw new Error('잘못된 요청')
+      const source=LEAGUE_BY_ID.get(id)?.parties[index]?.source
+      if(!source||!source.startsWith('https://www.serebii.net/'))throw new Error('잘못된 요청')
+      await shell.openExternal(source)
+    })
+    ipcMain.handle('update:get',event=>{allowed(event);if(event.sender.id!==dashboard.webContents.id)throw new Error('잘못된 요청');return updates!.state})
+    ipcMain.handle('update:action',async(event,action)=>{allowed(event);if(event.sender.id!==dashboard.webContents.id||!['check','download','install','open'].includes(action))throw new Error('잘못된 요청');await updates![action as 'check'|'download'|'install'|'open']()})
+    ipcMain.handle('dashboard:open', (event, tab) => { allowed(event); openDashboard(['home', 'dex', 'achievements', 'league', 'settings'].includes(tab) ? tab : 'home') })
     ipcMain.on('pet:pointer', (event, active) => { if (event.sender.id === pet.webContents.id) controller.pointer(active === true) })
     let traceWindow=0,traceCount=0
     ipcMain.on('pet:input-trace',(event,value)=>{
@@ -228,10 +247,13 @@ else {
     ]).popup({ window: pet }) })
     void request('refresh').catch(() => {})
     const scanTimer = setInterval(() => { if (!snapshot.scanning) void request('scan').catch(() => {}) }, 10_000)
+    const updateStart=process.env.POKETOKEN_TEST_MODE!=='1'&&app.isPackaged?setTimeout(()=>void updates?.check(),20_000):undefined
+    const updateTimer=process.env.POKETOKEN_TEST_MODE!=='1'&&app.isPackaged?setInterval(()=>void updates?.check(),6*60*60*1000):undefined
     app.on('before-quit', event => {
       if(quitting)return
       event.preventDefault();quitting=true
       diagnostics.record('session.end',controller.inputState)
+      clearTimeout(updateStart);clearInterval(updateTimer)
       clearInterval(scanTimer); windowTracker?.destroy(); controller.destroy(); tray.destroy(); void worker.terminate(); for (const p of pending.values()) clearTimeout(p.timer)
       void Promise.race([diagnostics.close(),new Promise(resolve=>setTimeout(resolve,1500))]).finally(()=>app.quit())
     })

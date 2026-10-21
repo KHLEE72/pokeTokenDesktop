@@ -1,0 +1,32 @@
+.league-page { padding-bottom:24px; }
+.league-tally { color:var(--muted); font-size:11px; white-space:nowrap; }
+.honor-display { padding:18px; border:1px solid var(--line); border-radius:14px; background:var(--paper); margin-bottom:14px; }
+.honor-display-heading { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.honor-display h2 { font-size:15px; }.honor-display-heading>span,.honor-display>p { font-size:10px; color:var(--muted); }
+.honor-slots { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:8px; margin:16px 0; }
+.honor-slot { display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px dashed var(--line); border-radius:9px; min-width:0; min-height:68px; color:var(--muted); font-size:12px; }
+.honor-slot.filled { border-style:solid; background:color-mix(in srgb,var(--gold) 9%,transparent); }
+.honor-remove { padding:4px; border:0; background:transparent; }.honor-remove .league-icon { width:36px; height:36px; }
+.honor-move { display:flex; gap:6px; }.honor-move button { padding:0 5px; border:0; background:transparent; color:var(--ink); }
+.honor-slot[draggable='true'] { cursor:grab; }.honor-slot[draggable='true']:active { cursor:grabbing; }
+.honor-title-select { display:flex; align-items:center; gap:12px; font-size:11px; margin-bottom:8px; }.honor-title-select select { flex:1; min-width:0; }
+.league-page select,.league-page input { border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:8px; font:inherit; font-size:11px; max-width:100%; }
+.league-rules,.league-footnote { font-size:11px; margin:12px 0 18px; color:var(--muted); }
+.league-filters { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }.league-filters select:first-of-type { max-width:260px; }.league-filters input { flex:1; min-width:170px; }
+.league-pagination { display:flex; align-items:center; justify-content:flex-end; gap:8px; margin:14px 0; font-size:11px; color:var(--muted); }.league-pagination>span { margin-right:auto; }
+.league-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; align-items:start; }
+.league-card { border:1px solid var(--line); background:var(--paper); border-radius:12px; padding:14px; min-width:0; position:relative; }
+.league-card.earned { border-color:color-mix(in srgb,var(--gold) 65%,var(--line)); }.league-card.on-display { box-shadow:0 0 0 2px var(--gold); }
+.league-card-head { display:flex; align-items:center; flex-wrap:wrap; gap:7px; margin-bottom:8px; }.league-card-head>span { flex:1; min-width:70px; color:var(--muted); font-size:9px; }.league-card-head>small { font-size:9px; color:var(--muted); }
+.league-icon { display:block; width:40px; height:40px; flex-shrink:0; filter:drop-shadow(0 2px 1px #27334633); }.league-icon.locked { filter:grayscale(1); opacity:.45; }
+.league-card h2 { font-size:14px; line-height:1.5; overflow-wrap:anywhere; }.league-trainers { color:var(--muted); font-size:10px; min-height:30px; margin:5px 0 10px; }
+.league-card .progress-track { height:6px; margin:7px 0; background:color-mix(in srgb,var(--line) 45%,transparent); }.league-card .progress-track i { display:block; height:100%; background:var(--gold); }.league-card>p { font-size:10px; }.league-card>.button { width:100%; white-space:normal; margin-top:12px; min-height:34px; }
+.league-requirements { border-top:1px solid var(--line); margin-top:12px; padding-top:8px; }.league-requirements>summary { cursor:pointer; color:var(--muted); font-size:10px; }.league-party { border-top:1px dashed var(--line); padding:10px 0; }.league-party>strong { font-size:11px; }.league-party>small { display:block; font-size:9px; color:var(--muted); margin:4px 0; }.league-party>.text-button { font-size:9px; }
+.party-pokemon { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; }.party-pokemon>span { opacity:.55; min-width:0; text-align:center; font-size:9px; overflow-wrap:anywhere; }.party-pokemon>.registered { opacity:1; color:var(--ink); }.party-pokemon .sprite { width:42px; height:42px; display:block; margin:auto; }.party-pokemon .sprite img { max-width:100%; max-height:100%; }
+.party-pokemon .sprite-fallback { width:42px; height:42px; overflow:hidden; font-size:16px; }.party-pokemon .sprite-fallback small { display:none; }.party-pokemon>span>span { display:block; min-height:26px; line-height:1.4; margin-top:3px; }
+.league-message { padding:10px; border:1px solid var(--gold); border-radius:8px; margin-bottom:10px; font-size:11px; }.league-empty { padding:30px; text-align:center; }
+.topbar-honors { flex:1; min-width:0; padding-right:8px; }.topbar-honors+.topbar-actions { flex-shrink:0; }
+.home-honors { display:flex; align-items:flex-start; flex-direction:column; gap:0; border:0; padding:0; background:transparent; color:var(--ink); max-width:100%; }
+.home-title { display:flex; align-items:center; justify-content:center; gap:4px; max-width:100%; font-size:9px; line-height:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }.home-title .league-icon { width:17px; height:17px; }
+.home-badges { display:flex; justify-content:flex-start; gap:3px; }.home-badges .league-icon { width:22px; height:22px; }
+@media(max-width:1000px) { .league-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.honor-slots { gap:4px; }.honor-title-select { flex-direction:column; align-items:stretch; } }

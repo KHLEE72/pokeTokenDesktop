@@ -1,9 +1,24 @@
 {
-  "필요한 모습: {0}": {"en":"Required form: {0}","ja":"必要な姿：{0}"},
-  "기술 해금": {"en":"Technique unlock","ja":"技の解放"},
-  "메가 해금 {0}개": {"en":"{0} Mega unlocks","ja":"メガシンカ{0}種類解放"},
-  "시작 알: {0}": {"en":"Starting egg: {0}","ja":"最初のタマゴ：{0}"},
-  "모습 ": {"en":"Forms ","ja":"姿 "},
+  "필요한 모습: {0}": {
+    "en": "Required form: {0}",
+    "ja": "必要な姿：{0}"
+  },
+  "기술 해금": {
+    "en": "Technique unlock",
+    "ja": "技の解放"
+  },
+  "메가 해금 {0}개": {
+    "en": "{0} Mega unlocks",
+    "ja": "メガシンカ{0}種類解放"
+  },
+  "시작 알: {0}": {
+    "en": "Starting egg: {0}",
+    "ja": "最初のタマゴ：{0}"
+  },
+  "모습 ": {
+    "en": "Forms ",
+    "ja": "姿 "
+  },
   " · 도감 등록": {
     "en": " · registered",
     "ja": " · 登録済み"
@@ -1395,5 +1410,317 @@
   "원래 모습으로 돌아왔어요.": {
     "en": "Returned to the original form.",
     "ja": "元の姿に戻りました。"
+  },
+  "배지 · 리그 칭호": {
+    "en": "Badges & League Titles",
+    "ja": "バッジ・リーグ称号"
+  },
+  "새 업데이트가 있어요": {
+    "en": "An update is available",
+    "ja": "アップデートがあります"
+  },
+  "업데이트 확인": {
+    "en": "Check for updates",
+    "ja": "更新を確認"
+  },
+  "잘못된 전시 설정입니다.": {
+    "en": "Invalid display selection.",
+    "ja": "展示の設定が正しくありません。"
+  },
+  "획득한 배지 8개와 칭호 1개까지 전시할 수 있어요.": {
+    "en": "Display up to eight earned badges and one earned title.",
+    "ja": "獲得したバッジ８個と称号１個まで展示できます。"
+  },
+  "배지와 칭호 전시 설정": {
+    "en": "Customize badges and title",
+    "ja": "バッジと称号の展示設定"
+  },
+  "배지 · 칭호 전시하기 →": {
+    "en": "Display badges & title →",
+    "ja": "バッジ・称号を展示 →"
+  },
+  "전시 설정을 저장하지 못했어요. 다시 시도해주세요.": {
+    "en": "Could not save your display. Please try again.",
+    "ja": "展示を保存できませんでした。もう一度お試しください。"
+  },
+  "배지는 최대 8개까지 전시할 수 있어요. 먼저 하나를 해제해주세요.": {
+    "en": "You can display eight badges. Remove one before adding another.",
+    "ja": "展示できるバッジは８個までです。先に１個を外してください。"
+  },
+  "배지와 리그 칭호": {
+    "en": "Badges and league titles",
+    "ja": "バッジとリーグ称号"
+  },
+  "여행의 증표": {
+    "en": "Tokens of Your Journey",
+    "ja": "旅のあかし"
+  },
+  "도감에 모은 친구들로, 각 지방의 리그에 도전해요.": {
+    "en": "Complete trainer teams in your Pokédex to earn regional honors.",
+    "ja": "図鑑の仲間を集めて、各地方のリーグのあかしを獲得しよう。"
+  },
+  "배지 {0} · 칭호 {1}": {
+    "en": "{0} badges · {1} titles",
+    "ja": "バッジ {0}個・称号 {1}個"
+  },
+  "나의 전시대": {
+    "en": "Your Showcase",
+    "ja": "マイ展示台"
+  },
+  "배지 최대 8개 · 칭호 1개": {
+    "en": "Up to 8 badges · 1 title",
+    "ja": "バッジ８個まで・称号１個"
+  },
+  "{0} 전시 해제": {
+    "en": "Remove {0} from display",
+    "ja": "{0}を展示から外す"
+  },
+  "{0}번째 배지 왼쪽으로": {
+    "en": "Move badge {0} left",
+    "ja": "{0}番目のバッジを左へ"
+  },
+  "{0}번째 배지 오른쪽으로": {
+    "en": "Move badge {0} right",
+    "ja": "{0}番目のバッジを右へ"
+  },
+  "전시할 칭호": {
+    "en": "Displayed title",
+    "ja": "展示する称号"
+  },
+  "칭호 전시 안 함": {
+    "en": "No displayed title",
+    "ja": "称号を展示しない"
+  },
+  "배지를 끌거나 화살표로 순서를 바꾸고, 누르면 전시를 해제해요.": {
+    "en": "Drag badges or use the arrows to reorder. Click a badge to remove it.",
+    "ja": "ドラッグか矢印で順序を変更。バッジを押すと展示から外せます。"
+  },
+  "일반·이로치·리전폼·메가폼 중 하나라도 등록한 종은 인정해요. 같은 종은 한 번만 필요하고, 획득한 증표는 영구 보관돼요.": {
+    "en": "Normal, shiny, regional and Mega records all count by species. Each species is needed once; earned honors are permanent.",
+    "ja": "通常・色違い・リージョンフォーム・メガのいずれかを登録すれば種として達成。同じ種は１回だけで、獲得したあかしは永久に残ります。"
+  },
+  "증표 종류": {
+    "en": "Honor type",
+    "ja": "あかしの種類"
+  },
+  "배지": {
+    "en": "Badges",
+    "ja": "バッジ"
+  },
+  "리그 칭호": {
+    "en": "League titles",
+    "ja": "リーグ称号"
+  },
+  "작품 선택": {
+    "en": "Game edition",
+    "ja": "作品を選択"
+  },
+  "모든 작품": {
+    "en": "All editions",
+    "ja": "すべての作品"
+  },
+  "획득 상태": {
+    "en": "Earned status",
+    "ja": "獲得状況"
+  },
+  "배지·트레이너·포켓몬 검색": {
+    "en": "Search badge, Trainer or Pokémon",
+    "ja": "バッジ・トレーナー・ポケモンを検索"
+  },
+  "{0}개 증표 · {1} / {2} 페이지": {
+    "en": "{0} honors · Page {1} / {2}",
+    "ja": "{0}個のあかし・{1} / {2}ページ"
+  },
+  "{0} / {1}종 등록": {
+    "en": "{0} / {1} species registered",
+    "ja": "{0} / {1}種を登録"
+  },
+  "요구 파티와 출처": {
+    "en": "Required teams & sources",
+    "ja": "必要なパーティと出典"
+  },
+  "파티 출처 열기 ↗": {
+    "en": "Open team source ↗",
+    "ja": "パーティの出典を開く ↗"
+  },
+  "전시 해제": {
+    "en": "Remove from display",
+    "ja": "展示から外す"
+  },
+  "메인에 전시": {
+    "en": "Display on Home",
+    "ja": "ホームに展示"
+  },
+  "{0}종 더 모으기": {
+    "en": "Collect {0} more species",
+    "ja": "あと{0}種を集めよう"
+  },
+  "조건에 맞는 증표가 없어요.": {
+    "en": "No honors match these filters.",
+    "ja": "条件に合うあかしはありません。"
+  },
+  "재대결·최종 강화 파티를 우선하며, 없으면 초전을 사용해요. 버전·스타팅별 변형은 합쳐서 집계하고, 알로라의 시련 증표는 이 앱의 수집 보상이에요.": {
+    "en": "Endgame rematches take priority; otherwise the first battle is used. Version and starter variants are combined. Alola trial emblems are collection rewards created for this app.",
+    "ja": "強化された再戦を優先し、ない場合は初戦を採用。バージョン・最初のパートナーによる違いは合算します。アローラの試練のあかしはこのアプリ独自の報酬です。"
+  },
+  "초전 · 강화 재대결 없음": {
+    "en": "First battle · no stronger fixed rematch",
+    "ja": "初戦・強化された固定再戦なし"
+  },
+  "강화 재대결": {
+    "en": "Enhanced rematch",
+    "ja": "強化再戦"
+  },
+  "최종 강화 재대결": {
+    "en": "Final enhanced rematch",
+    "ja": "最終強化再戦"
+  },
+  "PWT 월드 리더스 · 선택 후보 6종": {
+    "en": "PWT World Leaders · six-species team pool",
+    "ja": "PWTワールドリーダーズ・選出候補６種"
+  },
+  "배틀샤토 · 최고 작위 재대결": {
+    "en": "Battle Chateau · highest-rank rematch",
+    "ja": "バトルシャトー・最高爵位の再戦"
+  },
+  "챌린지 모드 · 강화 리그 재대결": {
+    "en": "Challenge Mode · enhanced League rematch",
+    "ja": "チャレンジモード・強化リーグ再戦"
+  },
+  "섬 순회 시련 · 주인과 SOS 동료": {
+    "en": "Island trial · Totem and SOS allies",
+    "ja": "島巡りの試練・ぬしと呼び出す仲間"
+  },
+  "섬 순회 큰 시련 · 강화 재대결 없음": {
+    "en": "Grand trial · no stronger fixed rematch",
+    "ja": "大試練・強化された固定再戦なし"
+  },
+  "방어전 도전자 · 강화 파티": {
+    "en": "Title Defense challenger · enhanced team",
+    "ja": "防衛戦の挑戦者・強化パーティ"
+  },
+  "리그 방어전 · 스타팅별 최종 파티": {
+    "en": "League Title Defense · all starter variants",
+    "ja": "リーグ防衛戦・最初のパートナー別パーティ"
+  },
+  "가라르 스타 토너먼트 재대결": {
+    "en": "Galarian Star Tournament rematch",
+    "ja": "ガラルスタートーナメント再戦"
+  },
+  "가라르 스타 토너먼트 재대결 · 사천왕 없는 작품": {
+    "en": "Galarian Star Tournament · this game has no Elite Four",
+    "ja": "ガラルスタートーナメント・四天王がいない作品"
+  },
+  "남청의 원반 · 리그부 재대결": {
+    "en": "The Indigo Disk · League Club rematch",
+    "ja": "藍の円盤・リーグ部の再戦"
+  },
+  "앱 업데이트": {
+    "en": "App updates",
+    "ja": "アプリの更新"
+  },
+  "현재 버전 {0}": {
+    "en": "Current version {0}",
+    "ja": "現在のバージョン {0}"
+  },
+  "새 버전 {0}": {
+    "en": "New version {0}",
+    "ja": "新しいバージョン {0}"
+  },
+  "최신 버전을 확인해보세요.": {
+    "en": "Check for a newer version.",
+    "ja": "新しいバージョンを確認できます。"
+  },
+  "업데이트를 확인하는 중…": {
+    "en": "Checking for updates…",
+    "ja": "更新を確認中…"
+  },
+  "현재 사용할 수 있는 최신 버전이에요.": {
+    "en": "You have the latest available version for this device.",
+    "ja": "この端末で利用できる最新バージョンです。"
+  },
+  "새 버전이 준비됐어요.": {
+    "en": "A new version is available.",
+    "ja": "新しいバージョンがあります。"
+  },
+  "업데이트를 다운로드하는 중…": {
+    "en": "Downloading update…",
+    "ja": "更新をダウンロード中…"
+  },
+  "다운로드 완료. 재시작하면 업데이트돼요.": {
+    "en": "Update downloaded. Restart to apply it.",
+    "ja": "ダウンロード完了。再起動で更新します。"
+  },
+  "업데이트를 확인하지 못했어요.": {
+    "en": "Could not check for updates.",
+    "ja": "更新を確認できませんでした。"
+  },
+  "개발 실행에서는 자동 업데이트를 확인하지 않아요.": {
+    "en": "Update checks are disabled in development.",
+    "ja": "開発実行では更新を確認しません。"
+  },
+  "이 실행 방식은 새 설치 파일을 다운로드해 적용해요. Windows 설치형은 앱 안에서 다운로드·재시작 업데이트를 지원해요.": {
+    "en": "Download and apply the new package for this build. Installed Windows builds support downloading and restarting to update inside the app.",
+    "ja": "この実行方式では新しい配布ファイルを入手して更新します。Windowsのインストール版ではアプリ内でダウンロード・再起動して更新できます。"
+  },
+  "업데이트 다운로드 진행률": {
+    "en": "Update download progress",
+    "ja": "更新ダウンロードの進捗"
+  },
+  "업데이트 다운로드": {
+    "en": "Download update",
+    "ja": "更新をダウンロード"
+  },
+  "새 버전 다운로드 ↗": {
+    "en": "Download new version ↗",
+    "ja": "新バージョンを入手 ↗"
+  },
+  "저장하고 재시작하여 업데이트": {
+    "en": "Save, restart & update",
+    "ja": "保存して再起動・更新"
+  },
+  "GitHub Releases에서 시작 시·6시간마다 확인해요. 프리뷰와 다른 OS의 배포는 건너뛰며, 자동으로 설치하거나 종료하지 않아요.": {
+    "en": "Checks GitHub Releases at startup and every six hours. Preview releases and builds for other systems are skipped. Installation and restart require your action.",
+    "ja": "起動時と６時間ごとにGitHub Releasesを確認します。プレビュー版と別OS用は対象外です。インストールと再起動は操作したときだけ行います。"
+  },
+  "업데이트 알림 닫기": {
+    "en": "Dismiss update notification",
+    "ja": "更新通知を閉じる"
+  },
+  "공개된 업데이트 정보를 찾을 수 없어요. 저장소 공개 상태와 릴리스를 확인해주세요.": {
+    "en": "No public update feed is available. Check repository visibility and published releases.",
+    "ja": "公開された更新情報がありません。リポジトリの公開状態とリリースを確認してください。"
+  },
+  "GitHub 요청이 많아요. 잠시 후 다시 확인해주세요.": {
+    "en": "GitHub is rate-limiting requests. Please try again later.",
+    "ja": "GitHubへのリクエストが多すぎます。しばらくしてからお試しください。"
+  },
+  "네트워크 연결을 확인한 뒤 다시 시도해주세요.": {
+    "en": "Check your network connection and try again.",
+    "ja": "ネットワーク接続を確認してもう一度お試しください。"
+  },
+  "업데이트 정보를 읽지 못했어요.": {
+    "en": "Could not read update information.",
+    "ja": "更新情報を読み取れませんでした。"
+  },
+  "업데이트 다운로드 주소를 확인하지 못했어요.": {
+    "en": "Could not verify the update download address.",
+    "ja": "更新ファイルのダウンロード先を確認できませんでした。"
+  },
+  "업데이트를 완료하지 못했어요. 잠시 후 다시 시도해주세요.": {
+    "en": "Could not complete the update. Please try again later.",
+    "ja": "更新を完了できませんでした。しばらくしてからお試しください。"
+  },
+  "전체": {
+    "en": "All",
+    "ja": "すべて"
+  },
+  "이전": {
+    "en": "Previous",
+    "ja": "前へ"
+  },
+  "다음": {
+    "en": "Next",
+    "ja": "次へ"
   }
 }

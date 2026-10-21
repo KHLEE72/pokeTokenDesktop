@@ -7,6 +7,7 @@ import { ParsedFile } from './parsers'
 import { scanRoots } from './paths'
 import { ballUnlocked, isBall, isTheme, RewardState, themeUnlocked, unlockRewards } from '../shared/rewards'
 import { activePet } from '../shared/game'
+import { LeagueState, newLeague, unlockLeague, validateLeagueDisplay } from '../shared/league'
 
 export interface CachedFile { path: string; provider: string; mtime: number; size: number; data: ParsedFile }
 export class Store {
@@ -52,10 +53,18 @@ export class Store {
   set(key: string, value: unknown): void { this.db.prepare('INSERT OR REPLACE INTO meta VALUES (?, ?)').run(key, JSON.stringify(value)) }
   get game(): GameState { return this.get<GameState>('game-v2')! }
   get rewards(): RewardState { return this.get<RewardState>('achievements-v1') ?? { unlocked: {} } }
+  get league(): LeagueState {return this.get<LeagueState>('league-v1')??newLeague()}
+  updateLeague(value:unknown):void {
+    this.db.transaction(()=>{
+      const state=this.league;unlockLeague(this.game,state,new Date().toISOString())
+      Object.assign(state,validateLeagueDisplay(value,state));this.set('league-v1',state)
+    })()
+  }
   private reconcileRewards(game: GameState): void {
     const rewards = this.rewards
     unlockRewards(game, rewards, new Date().toISOString())
     this.set('achievements-v1', rewards)
+    const league=this.league;unlockLeague(game,league,new Date().toISOString());this.set('league-v1',league)
   }
   act(action: GameAction): void {
     this.db.transaction(() => {
@@ -136,7 +145,7 @@ export class Store {
       SUM(CASE WHEN timestamp >= ? AND timestamp < ? THEN input+output+cacheRead+cacheWrite ELSE 0 END) AS today
       FROM usage GROUP BY provider`).all(start.toISOString(), end.toISOString()) as { provider: 'claude' | 'codex'; total: number; today: number }[]
     for (const row of rows) usage[row.provider] = { all: row.total ?? 0, today: row.today ?? 0 }
-    return { game: this.game, settings: this.settings, rewards: this.rewards, usage, roots: [], scanning: false, lastScan: this.get<string>('lastScan'), notice: this.get<string>('notice') }
+    return { game: this.game, settings: this.settings, rewards: this.rewards, league:this.league, usage, roots: [], scanning: false, lastScan: this.get<string>('lastScan'), notice: this.get<string>('notice') }
   }
   close(): void { this.db.close() }
 }

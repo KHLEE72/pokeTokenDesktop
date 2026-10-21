@@ -12,7 +12,7 @@ const scale=process.env.POKETOKEN_TEST_SCALE||'native',checks=[],errors=[],layou
 const forms=JSON.parse(readFileSync('src/shared/form-catalog.json','utf8')),catalog=JSON.parse(readFileSync('src/shared/localized-catalog.json','utf8'))
 let application,page,pet
 const snapshot=()=>page.evaluate(()=>window.desktop.getSnapshot())
-const nav=async n=>{await page.locator('.sidebar nav button').nth(n).click();await page.evaluate(()=>window.scrollTo(0,0))}
+const nav=async n=>{await page.locator(`.sidebar nav button[data-tab="${['home','dex','achievements','settings'][n]}"]`).click();await page.evaluate(()=>window.scrollTo(0,0))}
 const showForms=async()=>{await nav(1);await page.locator('#dex-forms-tab').click()}
 async function start(){
   application=await electronApp.launch({executablePath:process.env.POKETOKEN_EXE||electron,args:[...(process.env.POKETOKEN_EXE?[]:['.']),...(scale==='native'?[]:[`--force-device-scale-factor=${scale}`])],env,timeout:60000})

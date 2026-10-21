@@ -41,7 +41,11 @@ The UI bundles unmodified Galmuri11, Galmuri11 Bold, and Galmuri9 web fonts from
 
 ## Runtime dependencies
 
-Electron, React, better-sqlite3 and other dependencies retain their licenses in their respective npm packages. Build and development dependencies are listed and pinned in `package-lock.json`.
+Electron, React, better-sqlite3, electron-updater (MIT), semver (ISC) and other dependencies retain their licenses in their respective npm packages. Build and development dependencies are listed and pinned in `package-lock.json`.
+
+## League collection reference data
+
+Trainer party membership and battle contexts were researched from Serebii's game reference pages. Source URLs, retrieval date and content hashes are recorded in `docs/league-sources.json`; the app retains only factual species IDs, trainer names and the selected battle context, with links back to the source. No reference-page prose, screenshots or trainer artwork is bundled. Trainer naming references include Bulbapedia's character pages. Trial emblems, champion titles and the type-themed badge illustrations are created for this app. Pokémon and character names retain their respective owners' rights.
 
 ## Original PokeTokenBar license
 

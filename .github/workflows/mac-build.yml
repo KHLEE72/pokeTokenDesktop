@@ -94,6 +94,7 @@ jobs:
           npm run smoke:session
           npm run smoke:forms
           npm run smoke:i18n
+          npm run smoke:league
       - name: Upload verified DMG to draft release
         if: ${{ success() && inputs.release_tag != '' }}
         env:

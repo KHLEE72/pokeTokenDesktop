@@ -30,10 +30,19 @@ win:
   extraResources:
     - from: native/window-surfaces.ps1
       to: native/window-surfaces.ps1
-  target: portable
+  target:
+    - nsis
+    - portable
   signExecutable: false
   icon: build/icon.ico
 mac:
+  # Ad-hoc signed builds use the in-app version check and DMG download link.
+  publish:
+    provider: github
+    owner: KHLEE72
+    repo: pokeTokenShimeji
+    releaseType: draft
+    publishAutoUpdate: false
   files:
     - out/**/*
     - package.json
@@ -58,4 +67,15 @@ mac:
   notarize: false
 dmg:
   sign: false
-publish: null
+nsis:
+  artifactName: PokeToken-Desktop-${version}-Setup-${arch}.exe
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+  runAfterFinish: true
+publish:
+  provider: github
+  owner: KHLEE72
+  repo: pokeTokenShimeji
+  releaseType: draft

@@ -15,7 +15,7 @@ const ids=[144,145,146,150,151,778,359,959,129,132,376,282,54,143,1025]
 mkdirSync('artifacts',{recursive:true})
 let application,page,pet
 const snapshot=()=>page.evaluate(()=>window.desktop.getSnapshot())
-const nav=async index=>{await page.locator('.sidebar nav button').nth(index).click();await page.evaluate(()=>scrollTo(0,0))}
+const nav=async index=>{await page.locator(`.sidebar nav button[data-tab="${['home','dex','achievements','settings'][index]}"]`).click();await page.evaluate(()=>scrollTo(0,0))}
 async function start(){
   application=await electronApp.launch({executablePath:process.env.POKETOKEN_EXE||electron,args:[...(process.env.POKETOKEN_EXE?[]:['.']),...(scale==='native'?[]:[`--force-device-scale-factor=${scale}`])],env,timeout:60000})
   await application.firstWindow();await expect.poll(()=>application.windows().some(w=>w.url().includes('view=pet'))).toBe(true)

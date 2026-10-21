@@ -1,0 +1,8143 @@
+{
+  "source": {
+    "reviewed": "2026-10-21",
+    "policy": "Fixed endgame/rematch parties preferred. Version/starter variants and PWT candidate pools are unions; species identity ignores appearance and shiny status. Trial emblems and champion titles are app-created rewards, not in-game achievements.",
+    "nameReference": "https://bulbapedia.bulbagarden.net/wiki/Category:Gym_Leaders"
+  },
+  "series": [
+    {
+      "id": "rgb",
+      "region": "kanto",
+      "names": {
+        "ko": "레드·그린·블루",
+        "en": "Red / Green / Blue",
+        "ja": "赤・緑・青"
+      }
+    },
+    {
+      "id": "yellow",
+      "region": "kanto",
+      "names": {
+        "ko": "피카츄",
+        "en": "Yellow",
+        "ja": "ピカチュウ"
+      }
+    },
+    {
+      "id": "gs",
+      "region": "johto",
+      "names": {
+        "ko": "금·은",
+        "en": "Gold / Silver",
+        "ja": "金・銀"
+      }
+    },
+    {
+      "id": "crystal",
+      "region": "johto",
+      "names": {
+        "ko": "크리스탈",
+        "en": "Crystal",
+        "ja": "クリスタル"
+      }
+    },
+    {
+      "id": "rs",
+      "region": "hoenn",
+      "names": {
+        "ko": "루비·사파이어",
+        "en": "Ruby / Sapphire",
+        "ja": "ルビー・サファイア"
+      }
+    },
+    {
+      "id": "emerald",
+      "region": "hoenn",
+      "names": {
+        "ko": "에메랄드",
+        "en": "Emerald",
+        "ja": "エメラルド"
+      }
+    },
+    {
+      "id": "frlg",
+      "region": "kanto",
+      "names": {
+        "ko": "파이어레드·리프그린",
+        "en": "FireRed / LeafGreen",
+        "ja": "ファイアレッド・リーフグリーン"
+      }
+    },
+    {
+      "id": "dp",
+      "region": "sinnoh",
+      "names": {
+        "ko": "디아루가·펄기아",
+        "en": "Diamond / Pearl",
+        "ja": "ダイヤモンド・パール"
+      }
+    },
+    {
+      "id": "pt",
+      "region": "sinnoh",
+      "names": {
+        "ko": "플라티나",
+        "en": "Platinum",
+        "ja": "プラチナ"
+      }
+    },
+    {
+      "id": "hgss",
+      "region": "johto",
+      "names": {
+        "ko": "하트골드·소울실버",
+        "en": "HeartGold / SoulSilver",
+        "ja": "ハートゴールド・ソウルシルバー"
+      }
+    },
+    {
+      "id": "bw",
+      "region": "unova",
+      "names": {
+        "ko": "블랙·화이트",
+        "en": "Black / White",
+        "ja": "ブラック・ホワイト"
+      }
+    },
+    {
+      "id": "b2w2",
+      "region": "unova",
+      "names": {
+        "ko": "블랙 2·화이트 2",
+        "en": "Black 2 / White 2",
+        "ja": "ブラック２・ホワイト２"
+      }
+    },
+    {
+      "id": "xy",
+      "region": "kalos",
+      "names": {
+        "ko": "X·Y",
+        "en": "X / Y",
+        "ja": "Ｘ・Ｙ"
+      }
+    },
+    {
+      "id": "oras",
+      "region": "hoenn",
+      "names": {
+        "ko": "오메가루비·알파사파이어",
+        "en": "Omega Ruby / Alpha Sapphire",
+        "ja": "オメガルビー・アルファサファイア"
+      }
+    },
+    {
+      "id": "sm",
+      "region": "alola",
+      "names": {
+        "ko": "썬·문",
+        "en": "Sun / Moon",
+        "ja": "サン・ムーン"
+      }
+    },
+    {
+      "id": "usum",
+      "region": "alola",
+      "names": {
+        "ko": "울트라썬·울트라문",
+        "en": "Ultra Sun / Ultra Moon",
+        "ja": "ウルトラサン・ウルトラムーン"
+      }
+    },
+    {
+      "id": "lgpe",
+      "region": "kanto",
+      "names": {
+        "ko": "레츠고! 피카츄·이브이",
+        "en": "Let's Go! Pikachu / Eevee",
+        "ja": "ピカチュウ・イーブイ"
+      }
+    },
+    {
+      "id": "sword",
+      "region": "galar",
+      "names": {
+        "ko": "소드",
+        "en": "Sword",
+        "ja": "ソード"
+      }
+    },
+    {
+      "id": "shield",
+      "region": "galar",
+      "names": {
+        "ko": "실드",
+        "en": "Shield",
+        "ja": "シールド"
+      }
+    },
+    {
+      "id": "bdsp",
+      "region": "sinnoh",
+      "names": {
+        "ko": "브릴리언트 다이아몬드·샤이닝 펄",
+        "en": "Brilliant Diamond / Shining Pearl",
+        "ja": "ブリリアントダイヤモンド・シャイニングパール"
+      }
+    },
+    {
+      "id": "sv",
+      "region": "paldea",
+      "names": {
+        "ko": "스칼렛·바이올렛",
+        "en": "Scarlet / Violet",
+        "ja": "スカーレット・バイオレット"
+      }
+    },
+    {
+      "id": "bb",
+      "region": "blueberry",
+      "names": {
+        "ko": "남청의 원반",
+        "en": "The Indigo Disk",
+        "ja": "藍の円盤"
+      }
+    }
+  ],
+  "goals": [
+    {
+      "id": "rgb-boulder",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "웅의 배지",
+        "en": "Boulder Badge",
+        "ja": "タケシのバッジ"
+      },
+      "icon": "boulder",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brock",
+            "ko": "웅",
+            "ja": "タケシ"
+          },
+          "species": [
+            74,
+            95
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-cascade",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "이슬의 배지",
+        "en": "Cascade Badge",
+        "ja": "カスミのバッジ"
+      },
+      "icon": "cascade",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Misty",
+            "ko": "이슬",
+            "ja": "カスミ"
+          },
+          "species": [
+            120,
+            121
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-thunder",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "마티스의 배지",
+        "en": "Thunder Badge",
+        "ja": "マチスのバッジ"
+      },
+      "icon": "thunder",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lt. Surge",
+            "ko": "마티스",
+            "ja": "マチス"
+          },
+          "species": [
+            100,
+            25,
+            26
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-rainbow",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "민화의 배지",
+        "en": "Rainbow Badge",
+        "ja": "エリカのバッジ"
+      },
+      "icon": "rainbow",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Erika",
+            "ko": "민화",
+            "ja": "エリカ"
+          },
+          "species": [
+            71,
+            114,
+            45
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-soul",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "독수의 배지",
+        "en": "Soul Badge",
+        "ja": "キョウのバッジ"
+      },
+      "icon": "soul",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Koga",
+            "ko": "독수",
+            "ja": "キョウ"
+          },
+          "species": [
+            109,
+            89,
+            110
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-marsh",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "초련의 배지",
+        "en": "Marsh Badge",
+        "ja": "ナツメのバッジ"
+      },
+      "icon": "marsh",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sabrina",
+            "ko": "초련",
+            "ja": "ナツメ"
+          },
+          "species": [
+            64,
+            122,
+            49,
+            65
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-volcano",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "강연의 배지",
+        "en": "Volcano Badge",
+        "ja": "カツラのバッジ"
+      },
+      "icon": "volcano",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blaine",
+            "ko": "강연",
+            "ja": "カツラ"
+          },
+          "species": [
+            58,
+            77,
+            78,
+            59
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-earth",
+      "series": "rgb",
+      "kind": "badge",
+      "names": {
+        "ko": "비주기의 배지",
+        "en": "Earth Badge",
+        "ja": "サカキのバッジ"
+      },
+      "icon": "earth",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Giovanni",
+            "ko": "비주기",
+            "ja": "サカキ"
+          },
+          "species": [
+            111,
+            51,
+            31,
+            34,
+            112
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rgb-champion",
+      "series": "rgb",
+      "kind": "title",
+      "names": {
+        "ko": "레드·그린·블루 챔피언",
+        "en": "Red / Green / Blue Champion",
+        "ja": "赤・緑・青の王者"
+      },
+      "icon": "crown",
+      "type": "kanto",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lorelei",
+            "ko": "칸나",
+            "ja": "カンナ"
+          },
+          "species": [
+            87,
+            91,
+            80,
+            124,
+            131
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bruno",
+            "ko": "시바",
+            "ja": "シバ"
+          },
+          "species": [
+            95,
+            107,
+            106,
+            68
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Agatha",
+            "ko": "국화",
+            "ja": "キクコ"
+          },
+          "species": [
+            94,
+            42,
+            93,
+            24
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lance",
+            "ko": "목호",
+            "ja": "ワタル"
+          },
+          "species": [
+            130,
+            148,
+            142,
+            149
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            18,
+            65,
+            112,
+            59,
+            130,
+            3
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            18,
+            65,
+            112,
+            130,
+            103,
+            6
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            18,
+            65,
+            112,
+            103,
+            59,
+            9
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rb/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-boulder",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "웅의 배지",
+        "en": "Boulder Badge",
+        "ja": "タケシのバッジ"
+      },
+      "icon": "boulder",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brock",
+            "ko": "웅",
+            "ja": "タケシ"
+          },
+          "species": [
+            74,
+            95
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-cascade",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "이슬의 배지",
+        "en": "Cascade Badge",
+        "ja": "カスミのバッジ"
+      },
+      "icon": "cascade",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Misty",
+            "ko": "이슬",
+            "ja": "カスミ"
+          },
+          "species": [
+            120,
+            121
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-thunder",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "마티스의 배지",
+        "en": "Thunder Badge",
+        "ja": "マチスのバッジ"
+      },
+      "icon": "thunder",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lt. Surge",
+            "ko": "마티스",
+            "ja": "マチス"
+          },
+          "species": [
+            26
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-rainbow",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "민화의 배지",
+        "en": "Rainbow Badge",
+        "ja": "エリカのバッジ"
+      },
+      "icon": "rainbow",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Erika",
+            "ko": "민화",
+            "ja": "エリカ"
+          },
+          "species": [
+            70,
+            114,
+            44
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-soul",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "독수의 배지",
+        "en": "Soul Badge",
+        "ja": "キョウのバッジ"
+      },
+      "icon": "soul",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Koga",
+            "ko": "독수",
+            "ja": "キョウ"
+          },
+          "species": [
+            48,
+            49
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-marsh",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "초련의 배지",
+        "en": "Marsh Badge",
+        "ja": "ナツメのバッジ"
+      },
+      "icon": "marsh",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sabrina",
+            "ko": "초련",
+            "ja": "ナツメ"
+          },
+          "species": [
+            63,
+            64,
+            65
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-volcano",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "강연의 배지",
+        "en": "Volcano Badge",
+        "ja": "カツラのバッジ"
+      },
+      "icon": "volcano",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blaine",
+            "ko": "강연",
+            "ja": "カツラ"
+          },
+          "species": [
+            38,
+            78,
+            59
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-earth",
+      "series": "yellow",
+      "kind": "badge",
+      "names": {
+        "ko": "비주기의 배지",
+        "en": "Earth Badge",
+        "ja": "サカキのバッジ"
+      },
+      "icon": "earth",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Giovanni",
+            "ko": "비주기",
+            "ja": "サカキ"
+          },
+          "species": [
+            51,
+            53,
+            31,
+            34,
+            112
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "yellow-champion",
+      "series": "yellow",
+      "kind": "title",
+      "names": {
+        "ko": "피카츄 챔피언",
+        "en": "Yellow Champion",
+        "ja": "ピカチュウの王者"
+      },
+      "icon": "crown",
+      "type": "kanto",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lorelei",
+            "ko": "칸나",
+            "ja": "カンナ"
+          },
+          "species": [
+            87,
+            91,
+            80,
+            124,
+            131
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bruno",
+            "ko": "시바",
+            "ja": "シバ"
+          },
+          "species": [
+            95,
+            107,
+            106,
+            68
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Agatha",
+            "ko": "국화",
+            "ja": "キクコ"
+          },
+          "species": [
+            94,
+            42,
+            93,
+            24
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lance",
+            "ko": "목호",
+            "ja": "ワタル"
+          },
+          "species": [
+            130,
+            148,
+            142,
+            149
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            28,
+            65,
+            103,
+            82,
+            38,
+            134
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            28,
+            65,
+            103,
+            38,
+            91,
+            135
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            28,
+            65,
+            103,
+            91,
+            82,
+            136
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/yellow/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-zephyr",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "비상의 배지",
+        "en": "Zephyr Badge",
+        "ja": "ハヤトのバッジ"
+      },
+      "icon": "zephyr",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Falkner",
+            "ko": "비상",
+            "ja": "ハヤト"
+          },
+          "species": [
+            16,
+            17
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-hive",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "호일의 배지",
+        "en": "Hive Badge",
+        "ja": "ツクシのバッジ"
+      },
+      "icon": "hive",
+      "type": "bug",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Bugsy",
+            "ko": "호일",
+            "ja": "ツクシ"
+          },
+          "species": [
+            11,
+            14,
+            123
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-plain",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "꼭두의 배지",
+        "en": "Plain Badge",
+        "ja": "アカネのバッジ"
+      },
+      "icon": "plain",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Whitney",
+            "ko": "꼭두",
+            "ja": "アカネ"
+          },
+          "species": [
+            35,
+            241
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-fog",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "유빈의 배지",
+        "en": "Fog Badge",
+        "ja": "マツバのバッジ"
+      },
+      "icon": "fog",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Morty",
+            "ko": "유빈",
+            "ja": "マツバ"
+          },
+          "species": [
+            92,
+            93,
+            94
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-storm",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "사도의 배지",
+        "en": "Storm Badge",
+        "ja": "シジマのバッジ"
+      },
+      "icon": "storm",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Chuck",
+            "ko": "사도",
+            "ja": "シジマ"
+          },
+          "species": [
+            57,
+            62
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-mineral",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "규리의 배지",
+        "en": "Mineral Badge",
+        "ja": "ミカンのバッジ"
+      },
+      "icon": "mineral",
+      "type": "steel",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Jasmine",
+            "ko": "규리",
+            "ja": "ミカン"
+          },
+          "species": [
+            81,
+            208
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-glacier",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "류옹의 배지",
+        "en": "Glacier Badge",
+        "ja": "ヤナギのバッジ"
+      },
+      "icon": "glacier",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Pryce",
+            "ko": "류옹",
+            "ja": "ヤナギ"
+          },
+          "species": [
+            86,
+            87,
+            221
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-rising",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "이향의 배지",
+        "en": "Rising Badge",
+        "ja": "イブキのバッジ"
+      },
+      "icon": "rising",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Clair",
+            "ko": "이향",
+            "ja": "イブキ"
+          },
+          "species": [
+            148,
+            230
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-thunder",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "마티스의 배지",
+        "en": "Thunder Badge",
+        "ja": "マチスのバッジ"
+      },
+      "icon": "thunder",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lt. Surge",
+            "ko": "마티스",
+            "ja": "マチス"
+          },
+          "species": [
+            26,
+            101,
+            82,
+            125
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-marsh",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "초련의 배지",
+        "en": "Marsh Badge",
+        "ja": "ナツメのバッジ"
+      },
+      "icon": "marsh",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sabrina",
+            "ko": "초련",
+            "ja": "ナツメ"
+          },
+          "species": [
+            196,
+            122,
+            65
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-rainbow",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "민화의 배지",
+        "en": "Rainbow Badge",
+        "ja": "エリカのバッジ"
+      },
+      "icon": "rainbow",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Erika",
+            "ko": "민화",
+            "ja": "エリカ"
+          },
+          "species": [
+            114,
+            189,
+            71,
+            182
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-soul",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "도희의 배지",
+        "en": "Soul Badge",
+        "ja": "アンズのバッジ"
+      },
+      "icon": "soul",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Janine",
+            "ko": "도희",
+            "ja": "アンズ"
+          },
+          "species": [
+            169,
+            110,
+            168,
+            49
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-cascade",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "이슬의 배지",
+        "en": "Cascade Badge",
+        "ja": "カスミのバッジ"
+      },
+      "icon": "cascade",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Misty",
+            "ko": "이슬",
+            "ja": "カスミ"
+          },
+          "species": [
+            55,
+            195,
+            131,
+            121
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-boulder",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "웅의 배지",
+        "en": "Boulder Badge",
+        "ja": "タケシのバッジ"
+      },
+      "icon": "boulder",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brock",
+            "ko": "웅",
+            "ja": "タケシ"
+          },
+          "species": [
+            75,
+            111,
+            139,
+            95,
+            141
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-volcano",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "강연의 배지",
+        "en": "Volcano Badge",
+        "ja": "カツラのバッジ"
+      },
+      "icon": "volcano",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blaine",
+            "ko": "강연",
+            "ja": "カツラ"
+          },
+          "species": [
+            219,
+            126,
+            78
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-earth",
+      "series": "gs",
+      "kind": "badge",
+      "names": {
+        "ko": "그린의 배지",
+        "en": "Earth Badge",
+        "ja": "グリーンのバッジ"
+      },
+      "icon": "earth",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            18,
+            65,
+            112,
+            130,
+            103,
+            59
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "gs-champion",
+      "series": "gs",
+      "kind": "title",
+      "names": {
+        "ko": "금·은 챔피언",
+        "en": "Gold / Silver Champion",
+        "ja": "金・銀の王者"
+      },
+      "icon": "crown",
+      "type": "johto",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Will",
+            "ko": "일목",
+            "ja": "イツキ"
+          },
+          "species": [
+            178,
+            124,
+            103,
+            80
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Koga",
+            "ko": "독수",
+            "ja": "キョウ"
+          },
+          "species": [
+            168,
+            49,
+            205,
+            89,
+            169
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bruno",
+            "ko": "시바",
+            "ja": "シバ"
+          },
+          "species": [
+            237,
+            106,
+            107,
+            95,
+            68
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Karen",
+            "ko": "카렌",
+            "ja": "カリン"
+          },
+          "species": [
+            197,
+            45,
+            94,
+            198,
+            229
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lance",
+            "ko": "목호",
+            "ja": "ワタル"
+          },
+          "species": [
+            130,
+            149,
+            142,
+            6
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/gs/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-zephyr",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "비상의 배지",
+        "en": "Zephyr Badge",
+        "ja": "ハヤトのバッジ"
+      },
+      "icon": "zephyr",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Falkner",
+            "ko": "비상",
+            "ja": "ハヤト"
+          },
+          "species": [
+            16,
+            17
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-hive",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "호일의 배지",
+        "en": "Hive Badge",
+        "ja": "ツクシのバッジ"
+      },
+      "icon": "hive",
+      "type": "bug",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Bugsy",
+            "ko": "호일",
+            "ja": "ツクシ"
+          },
+          "species": [
+            11,
+            14,
+            123
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-plain",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "꼭두의 배지",
+        "en": "Plain Badge",
+        "ja": "アカネのバッジ"
+      },
+      "icon": "plain",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Whitney",
+            "ko": "꼭두",
+            "ja": "アカネ"
+          },
+          "species": [
+            35,
+            241
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-fog",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "유빈의 배지",
+        "en": "Fog Badge",
+        "ja": "マツバのバッジ"
+      },
+      "icon": "fog",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Morty",
+            "ko": "유빈",
+            "ja": "マツバ"
+          },
+          "species": [
+            92,
+            93,
+            94
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-storm",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "사도의 배지",
+        "en": "Storm Badge",
+        "ja": "シジマのバッジ"
+      },
+      "icon": "storm",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Chuck",
+            "ko": "사도",
+            "ja": "シジマ"
+          },
+          "species": [
+            57,
+            62
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-mineral",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "규리의 배지",
+        "en": "Mineral Badge",
+        "ja": "ミカンのバッジ"
+      },
+      "icon": "mineral",
+      "type": "steel",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Jasmine",
+            "ko": "규리",
+            "ja": "ミカン"
+          },
+          "species": [
+            81,
+            208
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-glacier",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "류옹의 배지",
+        "en": "Glacier Badge",
+        "ja": "ヤナギのバッジ"
+      },
+      "icon": "glacier",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Pryce",
+            "ko": "류옹",
+            "ja": "ヤナギ"
+          },
+          "species": [
+            86,
+            87,
+            221
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-rising",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "이향의 배지",
+        "en": "Rising Badge",
+        "ja": "イブキのバッジ"
+      },
+      "icon": "rising",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Clair",
+            "ko": "이향",
+            "ja": "イブキ"
+          },
+          "species": [
+            148,
+            230
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-thunder",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "마티스의 배지",
+        "en": "Thunder Badge",
+        "ja": "マチスのバッジ"
+      },
+      "icon": "thunder",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lt. Surge",
+            "ko": "마티스",
+            "ja": "マチス"
+          },
+          "species": [
+            26,
+            101,
+            82,
+            125
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-marsh",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "초련의 배지",
+        "en": "Marsh Badge",
+        "ja": "ナツメのバッジ"
+      },
+      "icon": "marsh",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sabrina",
+            "ko": "초련",
+            "ja": "ナツメ"
+          },
+          "species": [
+            196,
+            122,
+            65
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-rainbow",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "민화의 배지",
+        "en": "Rainbow Badge",
+        "ja": "エリカのバッジ"
+      },
+      "icon": "rainbow",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Erika",
+            "ko": "민화",
+            "ja": "エリカ"
+          },
+          "species": [
+            114,
+            189,
+            71,
+            182
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-soul",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "도희의 배지",
+        "en": "Soul Badge",
+        "ja": "アンズのバッジ"
+      },
+      "icon": "soul",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Janine",
+            "ko": "도희",
+            "ja": "アンズ"
+          },
+          "species": [
+            169,
+            110,
+            168,
+            49
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-cascade",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "이슬의 배지",
+        "en": "Cascade Badge",
+        "ja": "カスミのバッジ"
+      },
+      "icon": "cascade",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Misty",
+            "ko": "이슬",
+            "ja": "カスミ"
+          },
+          "species": [
+            55,
+            195,
+            131,
+            121
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-boulder",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "웅의 배지",
+        "en": "Boulder Badge",
+        "ja": "タケシのバッジ"
+      },
+      "icon": "boulder",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brock",
+            "ko": "웅",
+            "ja": "タケシ"
+          },
+          "species": [
+            75,
+            111,
+            139,
+            95,
+            141
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-volcano",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "강연의 배지",
+        "en": "Volcano Badge",
+        "ja": "カツラのバッジ"
+      },
+      "icon": "volcano",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blaine",
+            "ko": "강연",
+            "ja": "カツラ"
+          },
+          "species": [
+            219,
+            126,
+            78
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-earth",
+      "series": "crystal",
+      "kind": "badge",
+      "names": {
+        "ko": "그린의 배지",
+        "en": "Earth Badge",
+        "ja": "グリーンのバッジ"
+      },
+      "icon": "earth",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            18,
+            65,
+            112,
+            130,
+            103,
+            59
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "crystal-champion",
+      "series": "crystal",
+      "kind": "title",
+      "names": {
+        "ko": "크리스탈 챔피언",
+        "en": "Crystal Champion",
+        "ja": "クリスタルの王者"
+      },
+      "icon": "crown",
+      "type": "johto",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Will",
+            "ko": "일목",
+            "ja": "イツキ"
+          },
+          "species": [
+            178,
+            124,
+            103,
+            80
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Koga",
+            "ko": "독수",
+            "ja": "キョウ"
+          },
+          "species": [
+            168,
+            49,
+            205,
+            89,
+            169
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bruno",
+            "ko": "시바",
+            "ja": "シバ"
+          },
+          "species": [
+            237,
+            106,
+            107,
+            95,
+            68
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Karen",
+            "ko": "카렌",
+            "ja": "カリン"
+          },
+          "species": [
+            197,
+            45,
+            94,
+            198,
+            229
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lance",
+            "ko": "목호",
+            "ja": "ワタル"
+          },
+          "species": [
+            130,
+            149,
+            142,
+            6
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/crystal/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-stone",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "원규의 배지",
+        "en": "Stone Badge",
+        "ja": "ツツジのバッジ"
+      },
+      "icon": "stone",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Roxanne",
+            "ko": "원규",
+            "ja": "ツツジ"
+          },
+          "species": [
+            74,
+            299
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-knuckle",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "철구의 배지",
+        "en": "Knuckle Badge",
+        "ja": "トウキのバッジ"
+      },
+      "icon": "knuckle",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brawly",
+            "ko": "철구",
+            "ja": "トウキ"
+          },
+          "species": [
+            66,
+            296
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-dynamo",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "암페어의 배지",
+        "en": "Dynamo Badge",
+        "ja": "テッセンのバッジ"
+      },
+      "icon": "dynamo",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Wattson",
+            "ko": "암페어",
+            "ja": "テッセン"
+          },
+          "species": [
+            81,
+            100,
+            82
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-heat",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "민지의 배지",
+        "en": "Heat Badge",
+        "ja": "アスナのバッジ"
+      },
+      "icon": "heat",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Flannery",
+            "ko": "민지",
+            "ja": "アスナ"
+          },
+          "species": [
+            218,
+            324
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-balance",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "종길의 배지",
+        "en": "Balance Badge",
+        "ja": "センリのバッジ"
+      },
+      "icon": "balance",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Norman",
+            "ko": "종길",
+            "ja": "センリ"
+          },
+          "species": [
+            289,
+            288
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-feather",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "은송의 배지",
+        "en": "Feather Badge",
+        "ja": "ナギのバッジ"
+      },
+      "icon": "feather",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Winona",
+            "ko": "은송",
+            "ja": "ナギ"
+          },
+          "species": [
+            277,
+            279,
+            227,
+            334
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-mind",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "풍 & 란의 배지",
+        "en": "Mind Badge",
+        "ja": "フウとランのバッジ"
+      },
+      "icon": "mind",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Tate & Liza",
+            "ko": "풍 & 란",
+            "ja": "フウとラン"
+          },
+          "species": [
+            337,
+            338
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-rain",
+      "series": "rs",
+      "kind": "badge",
+      "names": {
+        "ko": "윤진의 배지",
+        "en": "Rain Badge",
+        "ja": "ミクリのバッジ"
+      },
+      "icon": "rain",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Wallace",
+            "ko": "윤진",
+            "ja": "ミクリ"
+          },
+          "species": [
+            370,
+            340,
+            364,
+            119,
+            350
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "rs-champion",
+      "series": "rs",
+      "kind": "title",
+      "names": {
+        "ko": "루비·사파이어 챔피언",
+        "en": "Ruby / Sapphire Champion",
+        "ja": "ルビー・サファイアの王者"
+      },
+      "icon": "crown",
+      "type": "hoenn",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sidney",
+            "ko": "혁진",
+            "ja": "カゲツ"
+          },
+          "species": [
+            262,
+            275,
+            332,
+            319,
+            359
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Phoebe",
+            "ko": "회연",
+            "ja": "フヨウ"
+          },
+          "species": [
+            356,
+            354,
+            302
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Glacia",
+            "ko": "미혜",
+            "ja": "プリム"
+          },
+          "species": [
+            362,
+            364,
+            365
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Drake",
+            "ko": "권수",
+            "ja": "ゲンジ"
+          },
+          "species": [
+            372,
+            334,
+            330,
+            373
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Steven",
+            "ko": "성호",
+            "ja": "ダイゴ"
+          },
+          "species": [
+            227,
+            344,
+            306,
+            346,
+            348,
+            376
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/rubysapphire/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-stone",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "원규의 배지",
+        "en": "Stone Badge",
+        "ja": "ツツジのバッジ"
+      },
+      "icon": "stone",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Roxanne",
+            "ko": "원규",
+            "ja": "ツツジ"
+          },
+          "species": [
+            142,
+            76,
+            139,
+            141,
+            208,
+            299
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/roxanne.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-knuckle",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "철구의 배지",
+        "en": "Knuckle Badge",
+        "ja": "トウキのバッジ"
+      },
+      "icon": "knuckle",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brawly",
+            "ko": "철구",
+            "ja": "トウキ"
+          },
+          "species": [
+            106,
+            107,
+            68,
+            308,
+            237,
+            297
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/brawly.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-dynamo",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "암페어의 배지",
+        "en": "Dynamo Badge",
+        "ja": "テッセンのバッジ"
+      },
+      "icon": "dynamo",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Wattson",
+            "ko": "암페어",
+            "ja": "テッセン"
+          },
+          "species": [
+            125,
+            26,
+            181,
+            101,
+            82,
+            310
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/wattson.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-heat",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "민지의 배지",
+        "en": "Heat Badge",
+        "ja": "アスナのバッジ"
+      },
+      "icon": "heat",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Flannery",
+            "ko": "민지",
+            "ja": "アスナ"
+          },
+          "species": [
+            59,
+            219,
+            229,
+            78,
+            323,
+            324
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/flannery.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-balance",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "종길의 배지",
+        "en": "Balance Badge",
+        "ja": "センリのバッジ"
+      },
+      "icon": "balance",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Norman",
+            "ko": "종길",
+            "ja": "センリ"
+          },
+          "species": [
+            289,
+            242,
+            115,
+            128,
+            327
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/norman.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-feather",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "은송의 배지",
+        "en": "Feather Badge",
+        "ja": "ナギのバッジ"
+      },
+      "icon": "feather",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Winona",
+            "ko": "은송",
+            "ja": "ナギ"
+          },
+          "species": [
+            164,
+            357,
+            279,
+            149,
+            227,
+            334
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/winona.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-mind",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "풍 & 란의 배지",
+        "en": "Mind Badge",
+        "ja": "フウとランのバッジ"
+      },
+      "icon": "mind",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Tate & Liza",
+            "ko": "풍 & 란",
+            "ja": "フウとラン"
+          },
+          "species": [
+            97,
+            344,
+            199,
+            178,
+            337,
+            338
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/lizatate.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-rain",
+      "series": "emerald",
+      "kind": "badge",
+      "names": {
+        "ko": "아단의 배지",
+        "en": "Rain Badge",
+        "ja": "アダンのバッジ"
+      },
+      "icon": "rain",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Juan",
+            "ko": "아단",
+            "ja": "アダン"
+          },
+          "species": [
+            131,
+            340,
+            186,
+            365,
+            342,
+            230
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/emerald/entrycall/juan.shtml"
+        }
+      ]
+    },
+    {
+      "id": "emerald-champion",
+      "series": "emerald",
+      "kind": "title",
+      "names": {
+        "ko": "에메랄드 챔피언",
+        "en": "Emerald Champion",
+        "ja": "エメラルドの王者"
+      },
+      "icon": "crown",
+      "type": "hoenn",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sidney",
+            "ko": "혁진",
+            "ja": "カゲツ"
+          },
+          "species": [
+            262,
+            275,
+            332,
+            342,
+            359
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/emerald/elite.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Phoebe",
+            "ko": "회연",
+            "ja": "フヨウ"
+          },
+          "species": [
+            356,
+            354,
+            302
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/emerald/elite.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Glacia",
+            "ko": "미혜",
+            "ja": "プリム"
+          },
+          "species": [
+            364,
+            362,
+            365
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/emerald/elite.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Drake",
+            "ko": "권수",
+            "ja": "ゲンジ"
+          },
+          "species": [
+            372,
+            334,
+            230,
+            330,
+            373
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/emerald/elite.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Wallace",
+            "ko": "윤진",
+            "ja": "ミクリ"
+          },
+          "species": [
+            321,
+            73,
+            272,
+            340,
+            130,
+            350
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/emerald/elite.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-boulder",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "웅의 배지",
+        "en": "Boulder Badge",
+        "ja": "タケシのバッジ"
+      },
+      "icon": "boulder",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brock",
+            "ko": "웅",
+            "ja": "タケシ"
+          },
+          "species": [
+            74,
+            95
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-cascade",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "이슬의 배지",
+        "en": "Cascade Badge",
+        "ja": "カスミのバッジ"
+      },
+      "icon": "cascade",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Misty",
+            "ko": "이슬",
+            "ja": "カスミ"
+          },
+          "species": [
+            120,
+            121
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-thunder",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "마티스의 배지",
+        "en": "Thunder Badge",
+        "ja": "マチスのバッジ"
+      },
+      "icon": "thunder",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lt. Surge",
+            "ko": "마티스",
+            "ja": "マチス"
+          },
+          "species": [
+            100,
+            25,
+            26
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-rainbow",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "민화의 배지",
+        "en": "Rainbow Badge",
+        "ja": "エリカのバッジ"
+      },
+      "icon": "rainbow",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Erika",
+            "ko": "민화",
+            "ja": "エリカ"
+          },
+          "species": [
+            71,
+            114,
+            45
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-soul",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "독수의 배지",
+        "en": "Soul Badge",
+        "ja": "キョウのバッジ"
+      },
+      "icon": "soul",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Koga",
+            "ko": "독수",
+            "ja": "キョウ"
+          },
+          "species": [
+            109,
+            89,
+            110
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-marsh",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "초련의 배지",
+        "en": "Marsh Badge",
+        "ja": "ナツメのバッジ"
+      },
+      "icon": "marsh",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sabrina",
+            "ko": "초련",
+            "ja": "ナツメ"
+          },
+          "species": [
+            64,
+            122,
+            49,
+            65
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-volcano",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "강연의 배지",
+        "en": "Volcano Badge",
+        "ja": "カツラのバッジ"
+      },
+      "icon": "volcano",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blaine",
+            "ko": "강연",
+            "ja": "カツラ"
+          },
+          "species": [
+            58,
+            77,
+            78,
+            59
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-earth",
+      "series": "frlg",
+      "kind": "badge",
+      "names": {
+        "ko": "비주기의 배지",
+        "en": "Earth Badge",
+        "ja": "サカキのバッジ"
+      },
+      "icon": "earth",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Giovanni",
+            "ko": "비주기",
+            "ja": "サカキ"
+          },
+          "species": [
+            111,
+            51,
+            31,
+            34
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/fireredleafgreen/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "frlg-champion",
+      "series": "frlg",
+      "kind": "title",
+      "names": {
+        "ko": "파이어레드·리프그린 챔피언",
+        "en": "FireRed / LeafGreen Champion",
+        "ja": "ファイアレッド・リーフグリーンの王者"
+      },
+      "icon": "crown",
+      "type": "kanto",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lorelei",
+            "ko": "칸나",
+            "ja": "カンナ"
+          },
+          "species": [
+            87,
+            91,
+            221,
+            124,
+            131
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/fireredleafgreen/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bruno",
+            "ko": "시바",
+            "ja": "シバ"
+          },
+          "species": [
+            208,
+            107,
+            106,
+            68
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/fireredleafgreen/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Agatha",
+            "ko": "국화",
+            "ja": "キクコ"
+          },
+          "species": [
+            94,
+            169,
+            200,
+            24
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/fireredleafgreen/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lance",
+            "ko": "목호",
+            "ja": "ワタル"
+          },
+          "species": [
+            130,
+            149,
+            230,
+            142
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/fireredleafgreen/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            214,
+            65,
+            248,
+            130,
+            59,
+            3
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/fireredleafgreen/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            214,
+            65,
+            248,
+            103,
+            130,
+            6
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/fireredleafgreen/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            214,
+            65,
+            248,
+            59,
+            103,
+            9
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/fireredleafgreen/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-coal",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "강석의 배지",
+        "en": "Coal Badge",
+        "ja": "ヒョウタのバッジ"
+      },
+      "icon": "coal",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Roark",
+            "ko": "강석",
+            "ja": "ヒョウタ"
+          },
+          "species": [
+            74,
+            95,
+            408
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-forest",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "유채의 배지",
+        "en": "Forest Badge",
+        "ja": "ナタネのバッジ"
+      },
+      "icon": "forest",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Gardenia",
+            "ko": "유채",
+            "ja": "ナタネ"
+          },
+          "species": [
+            420,
+            387,
+            407
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-cobble",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "자두의 배지",
+        "en": "Cobble Badge",
+        "ja": "スモモのバッジ"
+      },
+      "icon": "cobble",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Maylene",
+            "ko": "자두",
+            "ja": "スモモ"
+          },
+          "species": [
+            307,
+            67,
+            448
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-fen",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "맥실러의 배지",
+        "en": "Fen Badge",
+        "ja": "マキシのバッジ"
+      },
+      "icon": "fen",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Crasher Wake",
+            "ko": "맥실러",
+            "ja": "マキシ"
+          },
+          "species": [
+            130,
+            195,
+            419
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-relic",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "멜리사의 배지",
+        "en": "Relic Badge",
+        "ja": "メリッサのバッジ"
+      },
+      "icon": "relic",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Fantina",
+            "ko": "멜리사",
+            "ja": "メリッサ"
+          },
+          "species": [
+            426,
+            94,
+            429
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-mine",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "동관의 배지",
+        "en": "Mine Badge",
+        "ja": "トウガンのバッジ"
+      },
+      "icon": "mine",
+      "type": "steel",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Byron",
+            "ko": "동관",
+            "ja": "トウガン"
+          },
+          "species": [
+            436,
+            208,
+            411
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-icicle",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "무청의 배지",
+        "en": "Icicle Badge",
+        "ja": "スズナのバッジ"
+      },
+      "icon": "icicle",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Candice",
+            "ko": "무청",
+            "ja": "スズナ"
+          },
+          "species": [
+            459,
+            215,
+            308,
+            460
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-beacon",
+      "series": "dp",
+      "kind": "badge",
+      "names": {
+        "ko": "전진의 배지",
+        "en": "Beacon Badge",
+        "ja": "デンジのバッジ"
+      },
+      "icon": "beacon",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Volkner",
+            "ko": "전진",
+            "ja": "デンジ"
+          },
+          "species": [
+            26,
+            424,
+            224,
+            405
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/gymleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "dp-champion",
+      "series": "dp",
+      "kind": "title",
+      "names": {
+        "ko": "디아루가·펄기아 챔피언",
+        "en": "Diamond / Pearl Champion",
+        "ja": "ダイヤモンド・パールの王者"
+      },
+      "icon": "crown",
+      "type": "sinnoh",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Aaron",
+            "ko": "충호",
+            "ja": "リョウ"
+          },
+          "species": [
+            269,
+            214,
+            416,
+            267,
+            452
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/elite4.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bertha",
+            "ko": "들국화",
+            "ja": "キクノ"
+          },
+          "species": [
+            195,
+            450,
+            185,
+            340,
+            76
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/elite4.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Flint",
+            "ko": "대엽",
+            "ja": "オーバ"
+          },
+          "species": [
+            78,
+            392,
+            208,
+            428,
+            426
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/elite4.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lucian",
+            "ko": "오엽",
+            "ja": "ゴヨウ"
+          },
+          "species": [
+            122,
+            203,
+            308,
+            65,
+            437
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/elite4.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Cynthia",
+            "ko": "난천",
+            "ja": "シロナ"
+          },
+          "species": [
+            442,
+            445,
+            423,
+            350,
+            407,
+            448
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/diamondpearl/elite4.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-coal",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "강석의 배지",
+        "en": "Coal Badge",
+        "ja": "ヒョウタのバッジ"
+      },
+      "icon": "coal",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Roark",
+            "ko": "강석",
+            "ja": "ヒョウタ"
+          },
+          "species": [
+            142,
+            476,
+            409,
+            76,
+            248
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-forest",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "유채의 배지",
+        "en": "Forest Badge",
+        "ja": "ナタネのバッジ"
+      },
+      "icon": "forest",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Gardenia",
+            "ko": "유채",
+            "ja": "ナタネ"
+          },
+          "species": [
+            189,
+            421,
+            182,
+            389,
+            407
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-cobble",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "자두의 배지",
+        "en": "Cobble Badge",
+        "ja": "スモモのバッジ"
+      },
+      "icon": "cobble",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Maylene",
+            "ko": "자두",
+            "ja": "スモモ"
+          },
+          "species": [
+            237,
+            286,
+            308,
+            448,
+            68
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-fen",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "맥실러의 배지",
+        "en": "Fen Badge",
+        "ja": "マキシのバッジ"
+      },
+      "icon": "fen",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Crasher Wake",
+            "ko": "맥실러",
+            "ja": "マキシ"
+          },
+          "species": [
+            319,
+            419,
+            195,
+            130,
+            272
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-relic",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "멜리사의 배지",
+        "en": "Relic Badge",
+        "ja": "メリッサのバッジ"
+      },
+      "icon": "relic",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Fantina",
+            "ko": "멜리사",
+            "ja": "メリッサ"
+          },
+          "species": [
+            354,
+            429,
+            94,
+            426,
+            477
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-mine",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "동관의 배지",
+        "en": "Mine Badge",
+        "ja": "トウガンのバッジ"
+      },
+      "icon": "mine",
+      "type": "steel",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Byron",
+            "ko": "동관",
+            "ja": "トウガン"
+          },
+          "species": [
+            227,
+            462,
+            208,
+            411,
+            306
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-icicle",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "무청의 배지",
+        "en": "Icicle Badge",
+        "ja": "スズナのバッジ"
+      },
+      "icon": "icicle",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Candice",
+            "ko": "무청",
+            "ja": "スズナ"
+          },
+          "species": [
+            461,
+            460,
+            473,
+            478,
+            471
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-beacon",
+      "series": "pt",
+      "kind": "badge",
+      "names": {
+        "ko": "전진의 배지",
+        "en": "Beacon Badge",
+        "ja": "デンジのバッジ"
+      },
+      "icon": "beacon",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Volkner",
+            "ko": "전진",
+            "ja": "デンジ"
+          },
+          "species": [
+            135,
+            26,
+            405,
+            466,
+            171
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/platinum/toptrainercafe.shtml"
+        }
+      ]
+    },
+    {
+      "id": "pt-champion",
+      "series": "pt",
+      "kind": "title",
+      "names": {
+        "ko": "플라티나 챔피언",
+        "en": "Platinum Champion",
+        "ja": "プラチナの王者"
+      },
+      "icon": "crown",
+      "type": "sinnoh",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Aaron",
+            "ko": "충호",
+            "ja": "リョウ"
+          },
+          "species": [
+            469,
+            212,
+            416,
+            214,
+            452
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/platinum/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bertha",
+            "ko": "들국화",
+            "ja": "キクノ"
+          },
+          "species": [
+            340,
+            472,
+            76,
+            464,
+            450
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/platinum/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Flint",
+            "ko": "대엽",
+            "ja": "オーバ"
+          },
+          "species": [
+            229,
+            136,
+            78,
+            392,
+            467
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/platinum/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lucian",
+            "ko": "오엽",
+            "ja": "ゴヨウ"
+          },
+          "species": [
+            122,
+            196,
+            437,
+            65,
+            475
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/platinum/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Cynthia",
+            "ko": "난천",
+            "ja": "シロナ"
+          },
+          "species": [
+            442,
+            407,
+            468,
+            448,
+            350,
+            445
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/platinum/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-zephyr",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "비상의 배지",
+        "en": "Zephyr Badge",
+        "ja": "ハヤトのバッジ"
+      },
+      "icon": "zephyr",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Falkner",
+            "ko": "비상",
+            "ja": "ハヤト"
+          },
+          "species": [
+            398,
+            164,
+            277,
+            430,
+            279,
+            18
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-hive",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "호일의 배지",
+        "en": "Hive Badge",
+        "ja": "ツクシのバッジ"
+      },
+      "icon": "hive",
+      "type": "bug",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Bugsy",
+            "ko": "호일",
+            "ja": "ツクシ"
+          },
+          "species": [
+            292,
+            416,
+            127,
+            214,
+            469,
+            212
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-plain",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "꼭두의 배지",
+        "en": "Plain Badge",
+        "ja": "アカネのバッジ"
+      },
+      "icon": "plain",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Whitney",
+            "ko": "꼭두",
+            "ja": "アカネ"
+          },
+          "species": [
+            400,
+            463,
+            36,
+            203,
+            301,
+            241
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-fog",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "유빈의 배지",
+        "en": "Fog Badge",
+        "ja": "マツバのバッジ"
+      },
+      "icon": "fog",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Morty",
+            "ko": "유빈",
+            "ja": "マツバ"
+          },
+          "species": [
+            426,
+            477,
+            302,
+            429,
+            94
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-storm",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "사도의 배지",
+        "en": "Storm Badge",
+        "ja": "シジマのバッジ"
+      },
+      "icon": "storm",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Chuck",
+            "ko": "사도",
+            "ja": "シジマ"
+          },
+          "species": [
+            308,
+            107,
+            106,
+            286,
+            57,
+            62
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-mineral",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "규리의 배지",
+        "en": "Mineral Badge",
+        "ja": "ミカンのバッジ"
+      },
+      "icon": "mineral",
+      "type": "steel",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Jasmine",
+            "ko": "규리",
+            "ja": "ミカン"
+          },
+          "species": [
+            437,
+            227,
+            395,
+            376,
+            462,
+            208
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-glacier",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "류옹의 배지",
+        "en": "Glacier Badge",
+        "ja": "ヤナギのバッジ"
+      },
+      "icon": "glacier",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Pryce",
+            "ko": "류옹",
+            "ja": "ヤナギ"
+          },
+          "species": [
+            460,
+            362,
+            478,
+            87,
+            365,
+            473
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-rising",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "이향의 배지",
+        "en": "Rising Badge",
+        "ja": "イブキのバッジ"
+      },
+      "icon": "rising",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Clair",
+            "ko": "이향",
+            "ja": "イブキ"
+          },
+          "species": [
+            148,
+            130,
+            142,
+            6,
+            230,
+            149
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-boulder",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "웅의 배지",
+        "en": "Boulder Badge",
+        "ja": "タケシのバッジ"
+      },
+      "icon": "boulder",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brock",
+            "ko": "웅",
+            "ja": "タケシ"
+          },
+          "species": [
+            76,
+            369,
+            139,
+            141,
+            409,
+            95
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-cascade",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "이슬의 배지",
+        "en": "Cascade Badge",
+        "ja": "カスミのバッジ"
+      },
+      "icon": "cascade",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Misty",
+            "ko": "이슬",
+            "ja": "カスミ"
+          },
+          "species": [
+            195,
+            131,
+            171,
+            419,
+            350,
+            121
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-thunder",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "마티스의 배지",
+        "en": "Thunder Badge",
+        "ja": "マチスのバッジ"
+      },
+      "icon": "thunder",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lt. Surge",
+            "ko": "마티스",
+            "ja": "マチス"
+          },
+          "species": [
+            462,
+            101,
+            310,
+            466,
+            417,
+            26
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-rainbow",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "민화의 배지",
+        "en": "Rainbow Badge",
+        "ja": "エリカのバッジ"
+      },
+      "icon": "rainbow",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Erika",
+            "ko": "민화",
+            "ja": "エリカ"
+          },
+          "species": [
+            189,
+            71,
+            182,
+            275,
+            407,
+            465
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-soul",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "도희의 배지",
+        "en": "Soul Badge",
+        "ja": "アンズのバッジ"
+      },
+      "icon": "soul",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Janine",
+            "ko": "도희",
+            "ja": "アンズ"
+          },
+          "species": [
+            168,
+            454,
+            110,
+            452,
+            169,
+            49
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-marsh",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "초련의 배지",
+        "en": "Marsh Badge",
+        "ja": "ナツメのバッジ"
+      },
+      "icon": "marsh",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sabrina",
+            "ko": "초련",
+            "ja": "ナツメ"
+          },
+          "species": [
+            196,
+            122,
+            124,
+            202,
+            475,
+            65
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-volcano",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "강연의 배지",
+        "en": "Volcano Badge",
+        "ja": "カツラのバッジ"
+      },
+      "icon": "volcano",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blaine",
+            "ko": "강연",
+            "ja": "カツラ"
+          },
+          "species": [
+            324,
+            323,
+            78,
+            219,
+            229,
+            467
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-earth",
+      "series": "hgss",
+      "kind": "badge",
+      "names": {
+        "ko": "그린의 배지",
+        "en": "Earth Badge",
+        "ja": "グリーンのバッジ"
+      },
+      "icon": "earth",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blue",
+            "ko": "그린",
+            "ja": "グリーン"
+          },
+          "species": [
+            68,
+            59,
+            103,
+            464,
+            248,
+            18
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "hgss-champion",
+      "series": "hgss",
+      "kind": "title",
+      "names": {
+        "ko": "하트골드·소울실버 챔피언",
+        "en": "HeartGold / SoulSilver Champion",
+        "ja": "ハートゴールド・ソウルシルバーの王者"
+      },
+      "icon": "crown",
+      "type": "johto",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Will",
+            "ko": "일목",
+            "ja": "イツキ"
+          },
+          "species": [
+            437,
+            124,
+            326,
+            80,
+            282,
+            178
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Koga",
+            "ko": "독수",
+            "ja": "キョウ"
+          },
+          "species": [
+            435,
+            454,
+            317,
+            49,
+            89,
+            169
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bruno",
+            "ko": "시바",
+            "ja": "シバ"
+          },
+          "species": [
+            237,
+            106,
+            297,
+            68,
+            448,
+            107
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Karen",
+            "ko": "카렌",
+            "ja": "カリン"
+          },
+          "species": [
+            461,
+            442,
+            430,
+            197,
+            229,
+            359
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lance",
+            "ko": "목호",
+            "ja": "ワタル"
+          },
+          "species": [
+            373,
+            445,
+            149,
+            6,
+            334,
+            130
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/heartgoldsoulsilver/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-trio",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "덴트의 배지",
+        "en": "Trio Badge",
+        "ja": "デントのバッジ"
+      },
+      "icon": "trio",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Chili",
+            "ko": "팟",
+            "ja": "ポッド"
+          },
+          "species": [
+            506,
+            513,
+            495
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Cilan",
+            "ko": "덴트",
+            "ja": "デント"
+          },
+          "species": [
+            506,
+            511,
+            501
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Cress",
+            "ko": "콘",
+            "ja": "コーン"
+          },
+          "species": [
+            506,
+            515,
+            498
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-basic",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "알로에의 배지",
+        "en": "Basic Badge",
+        "ja": "アロエのバッジ"
+      },
+      "icon": "basic",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lenora",
+            "ko": "알로에",
+            "ja": "アロエ"
+          },
+          "species": [
+            507,
+            505
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-insect",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "아티의 배지",
+        "en": "Insect Badge",
+        "ja": "アーティのバッジ"
+      },
+      "icon": "insect",
+      "type": "bug",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Burgh",
+            "ko": "아티",
+            "ja": "アーティ"
+          },
+          "species": [
+            544,
+            557,
+            542
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-bolt",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "카밀레의 배지",
+        "en": "Bolt Badge",
+        "ja": "カミツレのバッジ"
+      },
+      "icon": "bolt",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Elesa",
+            "ko": "카밀레",
+            "ja": "カミツレ"
+          },
+          "species": [
+            587,
+            523
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-quake",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "야콘의 배지",
+        "en": "Quake Badge",
+        "ja": "ヤーコンのバッジ"
+      },
+      "icon": "quake",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Clay",
+            "ko": "야콘",
+            "ja": "ヤーコン"
+          },
+          "species": [
+            552,
+            536,
+            530
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-jet",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "풍란의 배지",
+        "en": "Jet Badge",
+        "ja": "フウロのバッジ"
+      },
+      "icon": "jet",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Skyla",
+            "ko": "풍란",
+            "ja": "フウロ"
+          },
+          "species": [
+            528,
+            521,
+            581
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-freeze",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "담죽의 배지",
+        "en": "Freeze Badge",
+        "ja": "ハチクのバッジ"
+      },
+      "icon": "freeze",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brycen",
+            "ko": "담죽",
+            "ja": "ハチク"
+          },
+          "species": [
+            583,
+            615,
+            614
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-legend",
+      "series": "bw",
+      "kind": "badge",
+      "names": {
+        "ko": "사간의 배지",
+        "en": "Legend Badge",
+        "ja": "シャガのバッジ"
+      },
+      "icon": "legend",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Drayden",
+            "ko": "사간",
+            "ja": "シャガ"
+          },
+          "species": [
+            611,
+            621,
+            612
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Iris",
+            "ko": "아이리스",
+            "ja": "アイリス"
+          },
+          "species": [
+            611,
+            621,
+            612
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/blackwhite/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bw-champion",
+      "series": "bw",
+      "kind": "title",
+      "names": {
+        "ko": "블랙·화이트 챔피언",
+        "en": "Black / White Champion",
+        "ja": "ブラック・ホワイトの王者"
+      },
+      "icon": "crown",
+      "type": "unova",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Shauntal",
+            "ko": "망초",
+            "ja": "シキミ"
+          },
+          "species": [
+            563,
+            593,
+            478,
+            426,
+            623,
+            609
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/blackwhite/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Grimsley",
+            "ko": "블래리",
+            "ja": "ギーマ"
+          },
+          "species": [
+            319,
+            510,
+            560,
+            452,
+            553,
+            625
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/blackwhite/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Caitlin",
+            "ko": "카틀레야",
+            "ja": "カトレア"
+          },
+          "species": [
+            518,
+            561,
+            437,
+            579,
+            576,
+            376
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/blackwhite/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Marshal",
+            "ko": "연무",
+            "ja": "レンブ"
+          },
+          "species": [
+            286,
+            539,
+            538,
+            454,
+            620,
+            534
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/blackwhite/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Alder",
+            "ko": "노간주",
+            "ja": "アデク"
+          },
+          "species": [
+            617,
+            626,
+            621,
+            584,
+            589,
+            637
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/blackwhite/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-basic",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "체렌의 배지",
+        "en": "Basic Badge",
+        "ja": "チェレンのバッジ"
+      },
+      "icon": "basic",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Cheren",
+            "ko": "체렌",
+            "ja": "チェレン"
+          },
+          "species": [
+            508,
+            474,
+            573,
+            463,
+            351,
+            626
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-toxic",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "보미카의 배지",
+        "en": "Toxic Badge",
+        "ja": "ホミカのバッジ"
+      },
+      "icon": "toxic",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Roxie",
+            "ko": "보미카",
+            "ja": "ホミカ"
+          },
+          "species": [
+            545,
+            454,
+            569,
+            169,
+            452,
+            591
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-insect",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "아티의 배지",
+        "en": "Insect Badge",
+        "ja": "アーティのバッジ"
+      },
+      "icon": "insect",
+      "type": "bug",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Burgh",
+            "ko": "아티",
+            "ja": "アーティ"
+          },
+          "species": [
+            542,
+            416,
+            558,
+            214,
+            617,
+            632
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-bolt",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "카밀레의 배지",
+        "en": "Bolt Badge",
+        "ja": "カミツレのバッジ"
+      },
+      "icon": "bolt",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Elesa",
+            "ko": "카밀레",
+            "ja": "カミツレ"
+          },
+          "species": [
+            523,
+            181,
+            405,
+            587,
+            604,
+            618
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-quake",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "야콘의 배지",
+        "en": "Quake Badge",
+        "ja": "ヤーコンのバッジ"
+      },
+      "icon": "quake",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Clay",
+            "ko": "야콘",
+            "ja": "ヤーコン"
+          },
+          "species": [
+            530,
+            330,
+            553,
+            537,
+            473,
+            623
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-jet",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "풍란의 배지",
+        "en": "Jet Badge",
+        "ja": "フウロのバッジ"
+      },
+      "icon": "jet",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Skyla",
+            "ko": "풍란",
+            "ja": "フウロ"
+          },
+          "species": [
+            581,
+            189,
+            426,
+            630,
+            567,
+            628
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-legend",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "사간의 배지",
+        "en": "Legend Badge",
+        "ja": "シャガのバッジ"
+      },
+      "icon": "legend",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Drayden",
+            "ko": "사간",
+            "ja": "シャガ"
+          },
+          "species": [
+            612,
+            621,
+            635,
+            330,
+            334,
+            373
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-wave",
+      "series": "b2w2",
+      "kind": "badge",
+      "names": {
+        "ko": "시즈의 배지",
+        "en": "Wave Badge",
+        "ja": "シズイのバッジ"
+      },
+      "icon": "wave",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Marlon",
+            "ko": "시즈",
+            "ja": "シズイ"
+          },
+          "species": [
+            593,
+            565,
+            121,
+            195,
+            91,
+            321
+          ],
+          "basis": "PWT 월드 리더스 · 선택 후보 6종",
+          "source": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml"
+        }
+      ]
+    },
+    {
+      "id": "b2w2-champion",
+      "series": "b2w2",
+      "kind": "title",
+      "names": {
+        "ko": "블랙 2·화이트 2 챔피언",
+        "en": "Black 2 / White 2 Champion",
+        "ja": "ブラック２・ホワイト２の王者"
+      },
+      "icon": "crown",
+      "type": "unova",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Shauntal",
+            "ko": "망초",
+            "ja": "シキミ"
+          },
+          "species": [
+            563,
+            94,
+            478,
+            426,
+            623,
+            609
+          ],
+          "basis": "챌린지 모드 · 강화 리그 재대결",
+          "source": "https://www.serebii.net/black2white2/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Grimsley",
+            "ko": "블래리",
+            "ja": "ギーマ"
+          },
+          "species": [
+            430,
+            560,
+            553,
+            229,
+            248,
+            625
+          ],
+          "basis": "챌린지 모드 · 강화 리그 재대결",
+          "source": "https://www.serebii.net/black2white2/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Caitlin",
+            "ko": "카틀레야",
+            "ja": "カトレア"
+          },
+          "species": [
+            518,
+            65,
+            475,
+            579,
+            576,
+            376
+          ],
+          "basis": "챌린지 모드 · 강화 리그 재대결",
+          "source": "https://www.serebii.net/black2white2/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Marshal",
+            "ko": "연무",
+            "ja": "レンブ"
+          },
+          "species": [
+            538,
+            539,
+            68,
+            448,
+            620,
+            534
+          ],
+          "basis": "챌린지 모드 · 강화 리그 재대결",
+          "source": "https://www.serebii.net/black2white2/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Iris",
+            "ko": "아이리스",
+            "ja": "アイリス"
+          },
+          "species": [
+            635,
+            373,
+            567,
+            306,
+            131,
+            612
+          ],
+          "basis": "챌린지 모드 · 강화 리그 재대결",
+          "source": "https://www.serebii.net/black2white2/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-bug",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "비올라의 배지",
+        "en": "Bug Badge",
+        "ja": "ビオラのバッジ"
+      },
+      "icon": "bug",
+      "type": "bug",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Viola",
+            "ko": "비올라",
+            "ja": "ビオラ"
+          },
+          "species": [
+            284,
+            666
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-cliff",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "자크로의 배지",
+        "en": "Cliff Badge",
+        "ja": "ザクロのバッジ"
+      },
+      "icon": "cliff",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Grant",
+            "ko": "자크로",
+            "ja": "ザクロ"
+          },
+          "species": [
+            699,
+            697
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-rumble",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "코르니의 배지",
+        "en": "Rumble Badge",
+        "ja": "コルニのバッジ"
+      },
+      "icon": "rumble",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Korrina",
+            "ko": "코르니",
+            "ja": "コルニ"
+          },
+          "species": [
+            701,
+            448
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-plant",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "후쿠지의 배지",
+        "en": "Plant Badge",
+        "ja": "フクジのバッジ"
+      },
+      "icon": "plant",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Ramos",
+            "ko": "후쿠지",
+            "ja": "フクジ"
+          },
+          "species": [
+            71,
+            673
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-voltage",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "시트론의 배지",
+        "en": "Voltage Badge",
+        "ja": "シトロンのバッジ"
+      },
+      "icon": "voltage",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Clemont",
+            "ko": "시트론",
+            "ja": "シトロン"
+          },
+          "species": [
+            462,
+            695
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-fairy",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "마슈의 배지",
+        "en": "Fairy Badge",
+        "ja": "マーシュのバッジ"
+      },
+      "icon": "fairy",
+      "type": "fairy",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Valerie",
+            "ko": "마슈",
+            "ja": "マーシュ"
+          },
+          "species": [
+            303,
+            700
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-psychic",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "고지카의 배지",
+        "en": "Psychic Badge",
+        "ja": "ゴジカのバッジ"
+      },
+      "icon": "psychic",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Olympia",
+            "ko": "고지카",
+            "ja": "ゴジカ"
+          },
+          "species": [
+            199,
+            678
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-iceberg",
+      "series": "xy",
+      "kind": "badge",
+      "names": {
+        "ko": "우르프의 배지",
+        "en": "Iceberg Badge",
+        "ja": "ウルップのバッジ"
+      },
+      "icon": "iceberg",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Wulfric",
+            "ko": "우르프",
+            "ja": "ウルップ"
+          },
+          "species": [
+            460,
+            713
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "xy-champion",
+      "series": "xy",
+      "kind": "title",
+      "names": {
+        "ko": "X·Y 챔피언",
+        "en": "X / Y Champion",
+        "ja": "Ｘ・Ｙの王者"
+      },
+      "icon": "crown",
+      "type": "kalos",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Wikstrom",
+            "ko": "간피",
+            "ja": "ガンピ"
+          },
+          "species": [
+            212,
+            476,
+            681
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Malva",
+            "ko": "파키라",
+            "ja": "パキラ"
+          },
+          "species": [
+            668,
+            663,
+            609
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Drasna",
+            "ko": "드라세나",
+            "ja": "ドラセナ"
+          },
+          "species": [
+            691,
+            715,
+            334
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Siebold",
+            "ko": "즈미",
+            "ja": "ズミ"
+          },
+          "species": [
+            693,
+            689,
+            121
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Diantha",
+            "ko": "카르네",
+            "ja": "カルネ"
+          },
+          "species": [
+            701,
+            706,
+            711,
+            282
+          ],
+          "basis": "배틀샤토 · 최고 작위 재대결",
+          "source": "https://www.serebii.net/xy/battlechateau.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-stone",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "원규의 배지",
+        "en": "Stone Badge",
+        "ja": "ツツジのバッジ"
+      },
+      "icon": "stone",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Roxanne",
+            "ko": "원규",
+            "ja": "ツツジ"
+          },
+          "species": [
+            74,
+            299
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-knuckle",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "철구의 배지",
+        "en": "Knuckle Badge",
+        "ja": "トウキのバッジ"
+      },
+      "icon": "knuckle",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brawly",
+            "ko": "철구",
+            "ja": "トウキ"
+          },
+          "species": [
+            66,
+            296
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-dynamo",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "암페어의 배지",
+        "en": "Dynamo Badge",
+        "ja": "テッセンのバッジ"
+      },
+      "icon": "dynamo",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Wattson",
+            "ko": "암페어",
+            "ja": "テッセン"
+          },
+          "species": [
+            81,
+            100,
+            82
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-heat",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "민지의 배지",
+        "en": "Heat Badge",
+        "ja": "アスナのバッジ"
+      },
+      "icon": "heat",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Flannery",
+            "ko": "민지",
+            "ja": "アスナ"
+          },
+          "species": [
+            218,
+            322,
+            324
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-balance",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "종길의 배지",
+        "en": "Balance Badge",
+        "ja": "センリのバッジ"
+      },
+      "icon": "balance",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Norman",
+            "ko": "종길",
+            "ja": "センリ"
+          },
+          "species": [
+            289,
+            288
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-feather",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "은송의 배지",
+        "en": "Feather Badge",
+        "ja": "ナギのバッジ"
+      },
+      "icon": "feather",
+      "type": "flying",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Winona",
+            "ko": "은송",
+            "ja": "ナギ"
+          },
+          "species": [
+            277,
+            279,
+            227,
+            334
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-mind",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "풍 & 란의 배지",
+        "en": "Mind Badge",
+        "ja": "フウとランのバッジ"
+      },
+      "icon": "mind",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Tate & Liza",
+            "ko": "풍 & 란",
+            "ja": "フウとラン"
+          },
+          "species": [
+            337,
+            338
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-rain",
+      "series": "oras",
+      "kind": "badge",
+      "names": {
+        "ko": "윤진의 배지",
+        "en": "Rain Badge",
+        "ja": "ミクリのバッジ"
+      },
+      "icon": "rain",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Wallace",
+            "ko": "윤진",
+            "ja": "ミクリ"
+          },
+          "species": [
+            370,
+            340,
+            364,
+            119,
+            350
+          ],
+          "basis": "초전 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml"
+        }
+      ]
+    },
+    {
+      "id": "oras-champion",
+      "series": "oras",
+      "kind": "title",
+      "names": {
+        "ko": "오메가루비·알파사파이어 챔피언",
+        "en": "Omega Ruby / Alpha Sapphire Champion",
+        "ja": "オメガルビー・アルファサファイアの王者"
+      },
+      "icon": "crown",
+      "type": "hoenn",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sidney",
+            "ko": "혁진",
+            "ja": "カゲツ"
+          },
+          "species": [
+            560,
+            275,
+            319,
+            571,
+            630,
+            359
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Phoebe",
+            "ko": "회연",
+            "ja": "フヨウ"
+          },
+          "species": [
+            354,
+            429,
+            426,
+            609,
+            477,
+            302
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Glacia",
+            "ko": "미혜",
+            "ja": "プリム"
+          },
+          "species": [
+            460,
+            614,
+            478,
+            584,
+            365,
+            362
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Drake",
+            "ko": "권수",
+            "ja": "ゲンジ"
+          },
+          "species": [
+            334,
+            691,
+            230,
+            330,
+            612,
+            373
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Steven",
+            "ko": "성호",
+            "ja": "ダイゴ"
+          },
+          "species": [
+            227,
+            344,
+            703,
+            142,
+            306,
+            376
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-trial-normal",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "일리마 시련 증표",
+        "en": "Ilima Trial Emblem",
+        "ja": "イリマの試練の証"
+      },
+      "icon": "trial-normal",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Ilima",
+            "ko": "일리마",
+            "ja": "イリマ"
+          },
+          "species": [
+            735,
+            734,
+            20,
+            19
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/sunmoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-trial-water",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "수련 시련 증표",
+        "en": "Lana Trial Emblem",
+        "ja": "スイレンの試練の証"
+      },
+      "icon": "trial-water",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lana",
+            "ko": "수련",
+            "ja": "スイレン"
+          },
+          "species": [
+            746,
+            594
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/sunmoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-trial-fire",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "키아웨 시련 증표",
+        "en": "Kiawe Trial Emblem",
+        "ja": "カキの試練の証"
+      },
+      "icon": "trial-fire",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Kiawe",
+            "ko": "키아웨",
+            "ja": "カキ"
+          },
+          "species": [
+            758,
+            757
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/sunmoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-trial-grass",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "마오 시련 증표",
+        "en": "Mallow Trial Emblem",
+        "ja": "マオの試練の証"
+      },
+      "icon": "trial-grass",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Mallow",
+            "ko": "마오",
+            "ja": "マオ"
+          },
+          "species": [
+            754,
+            351,
+            732
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/sunmoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-trial-electric",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "마마네 시련 증표",
+        "en": "Sophocles Trial Emblem",
+        "ja": "マーマネの試練の証"
+      },
+      "icon": "trial-electric",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sophocles",
+            "ko": "마마네",
+            "ja": "マーマネ"
+          },
+          "species": [
+            738,
+            737
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/sunmoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-trial-ghost",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "아세로라 시련 증표",
+        "en": "Acerola Trial Emblem",
+        "ja": "アセロラの試練の証"
+      },
+      "icon": "trial-ghost",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Acerola",
+            "ko": "아세로라",
+            "ja": "アセロラ"
+          },
+          "species": [
+            778,
+            93,
+            94
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/sunmoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-trial-dragon",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "포니대협곡 시련 증표",
+        "en": "Vast Poni Canyon Trial Emblem",
+        "ja": "ポニの大峡谷の試練の証"
+      },
+      "icon": "trial-dragon",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Vast Poni Canyon",
+            "ko": "포니대협곡",
+            "ja": "ポニの大峡谷"
+          },
+          "species": [
+            784,
+            212,
+            783
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/sunmoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-grand-fighting",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "할라의 큰 시련 증표",
+        "en": "Hala Grand Trial Emblem",
+        "ja": "ハラの大試練の証"
+      },
+      "icon": "grand-fighting",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Hala",
+            "ko": "할라",
+            "ja": "ハラ"
+          },
+          "species": [
+            297,
+            57,
+            760,
+            62,
+            740
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-grand-rock",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "라이치의 큰 시련 증표",
+        "en": "Olivia Grand Trial Emblem",
+        "ja": "ライチの大試練の証"
+      },
+      "icon": "grand-rock",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Olivia",
+            "ko": "라이치",
+            "ja": "ライチ"
+          },
+          "species": [
+            369,
+            703,
+            76,
+            476,
+            745
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-grand-dark",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "나누의 큰 시련 증표",
+        "en": "Nanu Grand Trial Emblem",
+        "ja": "クチナシの大試練の証"
+      },
+      "icon": "grand-dark",
+      "type": "dark",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Nanu",
+            "ko": "나누",
+            "ja": "クチナシ"
+          },
+          "species": [
+            302,
+            552,
+            53
+          ],
+          "basis": "섬 순회 큰 시련 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/sunmoon/grandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-grand-ground",
+      "series": "sm",
+      "kind": "badge",
+      "names": {
+        "ko": "하푸의 큰 시련 증표",
+        "en": "Hapu Grand Trial Emblem",
+        "ja": "ハプウの大試練の証"
+      },
+      "icon": "grand-ground",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Hapu",
+            "ko": "하푸",
+            "ja": "ハプウ"
+          },
+          "species": [
+            51,
+            423,
+            553,
+            330,
+            750
+          ],
+          "basis": "방어전 도전자 · 강화 파티",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sm-champion",
+      "series": "sm",
+      "kind": "title",
+      "names": {
+        "ko": "썬·문 챔피언",
+        "en": "Sun / Moon Champion",
+        "ja": "サン・ムーンの王者"
+      },
+      "icon": "crown",
+      "type": "alola",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Hala",
+            "ko": "할라",
+            "ja": "ハラ"
+          },
+          "species": [
+            297,
+            57,
+            760,
+            62,
+            740
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Olivia",
+            "ko": "라이치",
+            "ja": "ライチ"
+          },
+          "species": [
+            369,
+            703,
+            76,
+            476,
+            745
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Acerola",
+            "ko": "아세로라",
+            "ja": "アセロラ"
+          },
+          "species": [
+            302,
+            426,
+            781,
+            478,
+            770
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Kahili",
+            "ko": "카일리",
+            "ja": "カヒリ"
+          },
+          "species": [
+            227,
+            169,
+            741,
+            630,
+            733
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Kukui",
+            "ko": "쿠쿠이박사",
+            "ja": "ククイ博士"
+          },
+          "species": [
+            745,
+            38,
+            628,
+            462,
+            143,
+            727
+          ],
+          "basis": "리그 방어전 · 스타팅별 최종 파티",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Kukui",
+            "ko": "쿠쿠이박사",
+            "ja": "ククイ博士"
+          },
+          "species": [
+            745,
+            38,
+            628,
+            462,
+            143,
+            730
+          ],
+          "basis": "리그 방어전 · 스타팅별 최종 파티",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Kukui",
+            "ko": "쿠쿠이박사",
+            "ja": "ククイ博士"
+          },
+          "species": [
+            745,
+            38,
+            628,
+            462,
+            143,
+            724
+          ],
+          "basis": "리그 방어전 · 스타팅별 최종 파티",
+          "source": "https://www.serebii.net/sunmoon/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-normal",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "일리마 시련 증표",
+        "en": "Ilima Trial Emblem",
+        "ja": "イリマの試練の証"
+      },
+      "icon": "trial-normal",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Ilima",
+            "ko": "일리마",
+            "ja": "イリマ"
+          },
+          "species": [
+            735,
+            734,
+            20,
+            19
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-water",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "수련 시련 증표",
+        "en": "Lana Trial Emblem",
+        "ja": "スイレンの試練の証"
+      },
+      "icon": "trial-water",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lana",
+            "ko": "수련",
+            "ja": "スイレン"
+          },
+          "species": [
+            752,
+            284,
+            751
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-fire",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "키아웨 시련 증표",
+        "en": "Kiawe Trial Emblem",
+        "ja": "カキの試練の証"
+      },
+      "icon": "trial-fire",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Kiawe",
+            "ko": "키아웨",
+            "ja": "カキ"
+          },
+          "species": [
+            105,
+            758
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-grass",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "마오 시련 증표",
+        "en": "Mallow Trial Emblem",
+        "ja": "マオの試練の証"
+      },
+      "icon": "trial-grass",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Mallow",
+            "ko": "마오",
+            "ja": "マオ"
+          },
+          "species": [
+            754,
+            352,
+            764
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-electric",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "마마네 시련 증표",
+        "en": "Sophocles Trial Emblem",
+        "ja": "マーマネの試練の証"
+      },
+      "icon": "trial-electric",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sophocles",
+            "ko": "마마네",
+            "ja": "マーマネ"
+          },
+          "species": [
+            777,
+            227,
+            702
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-ghost",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "아세로라 시련 증표",
+        "en": "Acerola Trial Emblem",
+        "ja": "アセロラの試練の証"
+      },
+      "icon": "trial-ghost",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Acerola",
+            "ko": "아세로라",
+            "ja": "アセロラ"
+          },
+          "species": [
+            778,
+            354,
+            593
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-dragon",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "포니대협곡 시련 증표",
+        "en": "Vast Poni Canyon Trial Emblem",
+        "ja": "ポニの大峡谷の試練の証"
+      },
+      "icon": "trial-dragon",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Vast Poni Canyon",
+            "ko": "포니대협곡",
+            "ja": "ポニの大峡谷"
+          },
+          "species": [
+            784,
+            212,
+            715
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-trial-fairy",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "말리화 시련 증표",
+        "en": "Mina Trial Emblem",
+        "ja": "マツリカの試練の証"
+      },
+      "icon": "trial-fairy",
+      "type": "fairy",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Mina",
+            "ko": "말리화",
+            "ja": "マツリカ"
+          },
+          "species": [
+            743,
+            242,
+            279
+          ],
+          "basis": "섬 순회 시련 · 주인과 SOS 동료",
+          "source": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-grand-fighting",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "할라의 큰 시련 증표",
+        "en": "Hala Grand Trial Emblem",
+        "ja": "ハラの大試練の証"
+      },
+      "icon": "grand-fighting",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Hala",
+            "ko": "할라",
+            "ja": "ハラ"
+          },
+          "species": [
+            66,
+            296,
+            739
+          ],
+          "basis": "섬 순회 큰 시련 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/ultrasunultramoon/grandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-grand-rock",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "라이치의 큰 시련 증표",
+        "en": "Olivia Grand Trial Emblem",
+        "ja": "ライチの大試練の証"
+      },
+      "icon": "grand-rock",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Olivia",
+            "ko": "라이치",
+            "ja": "ライチ"
+          },
+          "species": [
+            348,
+            346,
+            526,
+            476,
+            745
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-grand-dark",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "나누의 큰 시련 증표",
+        "en": "Nanu Grand Trial Emblem",
+        "ja": "クチナシの大試練の証"
+      },
+      "icon": "grand-dark",
+      "type": "dark",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Nanu",
+            "ko": "나누",
+            "ja": "クチナシ"
+          },
+          "species": [
+            302,
+            552,
+            53
+          ],
+          "basis": "섬 순회 큰 시련 · 강화 재대결 없음",
+          "source": "https://www.serebii.net/ultrasunultramoon/grandtrials.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-grand-ground",
+      "series": "usum",
+      "kind": "badge",
+      "names": {
+        "ko": "하푸의 큰 시련 증표",
+        "en": "Hapu Grand Trial Emblem",
+        "ja": "ハプウの大試練の証"
+      },
+      "icon": "grand-ground",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Hapu",
+            "ko": "하푸",
+            "ja": "ハプウ"
+          },
+          "species": [
+            623,
+            423,
+            553,
+            330,
+            750
+          ],
+          "basis": "방어전 도전자 · 강화 파티",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "usum-champion",
+      "series": "usum",
+      "kind": "title",
+      "names": {
+        "ko": "울트라썬·울트라문 챔피언",
+        "en": "Ultra Sun / Ultra Moon Champion",
+        "ja": "ウルトラサン・ウルトラムーンの王者"
+      },
+      "icon": "crown",
+      "type": "alola",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Molayne",
+            "ko": "멀레",
+            "ja": "マーレイン"
+          },
+          "species": [
+            707,
+            625,
+            462,
+            376,
+            51
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Olivia",
+            "ko": "라이치",
+            "ja": "ライチ"
+          },
+          "species": [
+            348,
+            346,
+            526,
+            476,
+            745
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Acerola",
+            "ko": "아세로라",
+            "ja": "アセロラ"
+          },
+          "species": [
+            354,
+            426,
+            781,
+            478,
+            770
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Kahili",
+            "ko": "카일리",
+            "ja": "カヒリ"
+          },
+          "species": [
+            628,
+            701,
+            741,
+            630,
+            733
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Hau",
+            "ko": "하우",
+            "ja": "ハウ"
+          },
+          "species": [
+            26,
+            136,
+            128,
+            715,
+            740,
+            730
+          ],
+          "basis": "리그 방어전 · 스타팅별 최종 파티",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Hau",
+            "ko": "하우",
+            "ja": "ハウ"
+          },
+          "species": [
+            26,
+            134,
+            128,
+            715,
+            740,
+            724
+          ],
+          "basis": "리그 방어전 · 스타팅별 최종 파티",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Hau",
+            "ko": "하우",
+            "ja": "ハウ"
+          },
+          "species": [
+            26,
+            470,
+            128,
+            715,
+            740,
+            727
+          ],
+          "basis": "리그 방어전 · 스타팅별 최종 파티",
+          "source": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-boulder",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "웅의 배지",
+        "en": "Boulder Badge",
+        "ja": "タケシのバッジ"
+      },
+      "icon": "boulder",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brock",
+            "ko": "웅",
+            "ja": "タケシ"
+          },
+          "species": [
+            95,
+            141,
+            139,
+            142,
+            76
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-cascade",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "이슬의 배지",
+        "en": "Cascade Badge",
+        "ja": "カスミのバッジ"
+      },
+      "icon": "cascade",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Misty",
+            "ko": "이슬",
+            "ja": "カスミ"
+          },
+          "species": [
+            55,
+            87,
+            121,
+            134,
+            130
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-thunder",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "마티스의 배지",
+        "en": "Thunder Badge",
+        "ja": "マチスのバッジ"
+      },
+      "icon": "thunder",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lt. Surge",
+            "ko": "마티스",
+            "ja": "マチス"
+          },
+          "species": [
+            101,
+            135,
+            125,
+            82,
+            26
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-rainbow",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "민화의 배지",
+        "en": "Rainbow Badge",
+        "ja": "エリカのバッジ"
+      },
+      "icon": "rainbow",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Erika",
+            "ko": "민화",
+            "ja": "エリカ"
+          },
+          "species": [
+            114,
+            47,
+            71,
+            103,
+            45
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-soul",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "독수의 배지",
+        "en": "Soul Badge",
+        "ja": "キョウのバッジ"
+      },
+      "icon": "soul",
+      "type": "poison",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Koga",
+            "ko": "독수",
+            "ja": "キョウ"
+          },
+          "species": [
+            73,
+            42,
+            110,
+            49,
+            89
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-marsh",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "초련의 배지",
+        "en": "Marsh Badge",
+        "ja": "ナツメのバッジ"
+      },
+      "icon": "marsh",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Sabrina",
+            "ko": "초련",
+            "ja": "ナツメ"
+          },
+          "species": [
+            122,
+            124,
+            97,
+            80,
+            65
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-volcano",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "강연의 배지",
+        "en": "Volcano Badge",
+        "ja": "カツラのバッジ"
+      },
+      "icon": "volcano",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Blaine",
+            "ko": "강연",
+            "ja": "カツラ"
+          },
+          "species": [
+            126,
+            78,
+            38,
+            136,
+            59
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-earth",
+      "series": "lgpe",
+      "kind": "badge",
+      "names": {
+        "ko": "비주기의 배지",
+        "en": "Earth Badge",
+        "ja": "サカキのバッジ"
+      },
+      "icon": "earth",
+      "type": "ground",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Giovanni",
+            "ko": "비주기",
+            "ja": "サカキ"
+          },
+          "species": [
+            128,
+            130,
+            142,
+            65,
+            103,
+            6
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "lgpe-champion",
+      "series": "lgpe",
+      "kind": "title",
+      "names": {
+        "ko": "레츠고! 피카츄·이브이 챔피언",
+        "en": "Let's Go! Pikachu / Eevee Champion",
+        "ja": "ピカチュウ・イーブイの王者"
+      },
+      "icon": "crown",
+      "type": "kanto",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Lorelei",
+            "ko": "칸나",
+            "ja": "カンナ"
+          },
+          "species": [
+            87,
+            124,
+            91,
+            80,
+            28,
+            131
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bruno",
+            "ko": "시바",
+            "ja": "シバ"
+          },
+          "species": [
+            95,
+            106,
+            107,
+            62,
+            76,
+            68
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Agatha",
+            "ko": "국화",
+            "ja": "キクコ"
+          },
+          "species": [
+            24,
+            94,
+            42,
+            110,
+            105
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lance",
+            "ko": "목호",
+            "ja": "ワタル"
+          },
+          "species": [
+            117,
+            142,
+            130,
+            103,
+            6,
+            149
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Trace",
+            "ko": "진우",
+            "ja": "シン"
+          },
+          "species": [
+            18,
+            45,
+            105,
+            78,
+            80,
+            135
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Trace",
+            "ko": "진우",
+            "ja": "シン"
+          },
+          "species": [
+            18,
+            45,
+            105,
+            78,
+            80,
+            26
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/letsgopikachueevee/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-grass",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "아킬의 배지",
+        "en": "Grass Badge",
+        "ja": "ヤローのバッジ"
+      },
+      "icon": "grass",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Milo",
+            "ko": "아킬",
+            "ja": "ヤロー"
+          },
+          "species": [
+            275,
+            421,
+            841
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-water",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "야청의 배지",
+        "en": "Water Badge",
+        "ja": "ルリナのバッジ"
+      },
+      "icon": "water",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Nessa",
+            "ko": "야청",
+            "ja": "ルリナ"
+          },
+          "species": [
+            768,
+            748,
+            834
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-fire",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "순무의 배지",
+        "en": "Fire Badge",
+        "ja": "カブのバッジ"
+      },
+      "icon": "fire",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Kabu",
+            "ko": "순무",
+            "ja": "カブ"
+          },
+          "species": [
+            324,
+            59,
+            851
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-fighting",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "채두의 배지",
+        "en": "Fighting Badge",
+        "ja": "サイトウのバッジ"
+      },
+      "icon": "fighting",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Bea",
+            "ko": "채두",
+            "ja": "サイトウ"
+          },
+          "species": [
+            701,
+            870,
+            68
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-fairy",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "포플러의 배지",
+        "en": "Fairy Badge",
+        "ja": "ポプラのバッジ"
+      },
+      "icon": "fairy",
+      "type": "fairy",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Opal",
+            "ko": "포플러",
+            "ja": "ポプラ"
+          },
+          "species": [
+            110,
+            468,
+            869
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-rock",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "마쿠와의 배지",
+        "en": "Rock Badge",
+        "ja": "マクワのバッジ"
+      },
+      "icon": "rock",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Gordie",
+            "ko": "마쿠와",
+            "ja": "マクワ"
+          },
+          "species": [
+            213,
+            248,
+            839
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-dark",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "두송의 배지",
+        "en": "Dark Badge",
+        "ja": "ネズのバッジ"
+      },
+      "icon": "dark",
+      "type": "dark",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Piers",
+            "ko": "두송",
+            "ja": "ネズ"
+          },
+          "species": [
+            435,
+            849,
+            862
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-dragon",
+      "series": "sword",
+      "kind": "badge",
+      "names": {
+        "ko": "금랑의 배지",
+        "en": "Dragon Badge",
+        "ja": "キバナのバッジ"
+      },
+      "icon": "dragon",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Raihan",
+            "ko": "금랑",
+            "ja": "キバナ"
+          },
+          "species": [
+            330,
+            706,
+            884
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sword-champion",
+      "series": "sword",
+      "kind": "title",
+      "names": {
+        "ko": "소드 챔피언",
+        "en": "Sword Champion",
+        "ja": "ソードの王者"
+      },
+      "icon": "crown",
+      "type": "galar",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Leon",
+            "ko": "단델",
+            "ja": "ダンデ"
+          },
+          "species": [
+            681,
+            887,
+            6
+          ],
+          "basis": "가라르 스타 토너먼트 재대결 · 사천왕 없는 작품",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-grass",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "아킬의 배지",
+        "en": "Grass Badge",
+        "ja": "ヤローのバッジ"
+      },
+      "icon": "grass",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Milo",
+            "ko": "아킬",
+            "ja": "ヤロー"
+          },
+          "species": [
+            272,
+            421,
+            842
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-water",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "야청의 배지",
+        "en": "Water Badge",
+        "ja": "ルリナのバッジ"
+      },
+      "icon": "water",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Nessa",
+            "ko": "야청",
+            "ja": "ルリナ"
+          },
+          "species": [
+            768,
+            748,
+            834
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-fire",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "순무의 배지",
+        "en": "Fire Badge",
+        "ja": "カブのバッジ"
+      },
+      "icon": "fire",
+      "type": "fire",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Kabu",
+            "ko": "순무",
+            "ja": "カブ"
+          },
+          "species": [
+            324,
+            59,
+            851
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-ghost",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "어니언의 배지",
+        "en": "Ghost Badge",
+        "ja": "オニオンのバッジ"
+      },
+      "icon": "ghost",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Allister",
+            "ko": "어니언",
+            "ja": "オニオン"
+          },
+          "species": [
+            477,
+            864,
+            94
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-fairy",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "포플러의 배지",
+        "en": "Fairy Badge",
+        "ja": "ポプラのバッジ"
+      },
+      "icon": "fairy",
+      "type": "fairy",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Opal",
+            "ko": "포플러",
+            "ja": "ポプラ"
+          },
+          "species": [
+            110,
+            468,
+            869
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-ice",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "멜론의 배지",
+        "en": "Ice Badge",
+        "ja": "メロンのバッジ"
+      },
+      "icon": "ice",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Melony",
+            "ko": "멜론",
+            "ja": "メロン"
+          },
+          "species": [
+            866,
+            555,
+            131
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-dark",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "두송의 배지",
+        "en": "Dark Badge",
+        "ja": "ネズのバッジ"
+      },
+      "icon": "dark",
+      "type": "dark",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Piers",
+            "ko": "두송",
+            "ja": "ネズ"
+          },
+          "species": [
+            435,
+            849,
+            862
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-dragon",
+      "series": "shield",
+      "kind": "badge",
+      "names": {
+        "ko": "금랑의 배지",
+        "en": "Dragon Badge",
+        "ja": "キバナのバッジ"
+      },
+      "icon": "dragon",
+      "type": "dragon",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Raihan",
+            "ko": "금랑",
+            "ja": "キバナ"
+          },
+          "species": [
+            330,
+            706,
+            884
+          ],
+          "basis": "가라르 스타 토너먼트 재대결",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "shield-champion",
+      "series": "shield",
+      "kind": "title",
+      "names": {
+        "ko": "실드 챔피언",
+        "en": "Shield Champion",
+        "ja": "シールドの王者"
+      },
+      "icon": "crown",
+      "type": "galar",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Leon",
+            "ko": "단델",
+            "ja": "ダンデ"
+          },
+          "species": [
+            681,
+            887,
+            6
+          ],
+          "basis": "가라르 스타 토너먼트 재대결 · 사천왕 없는 작품",
+          "source": "https://www.serebii.net/swordshield/galarianstartournament.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-coal",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "강석의 배지",
+        "en": "Coal Badge",
+        "ja": "ヒョウタのバッジ"
+      },
+      "icon": "coal",
+      "type": "rock",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Roark",
+            "ko": "강석",
+            "ja": "ヒョウタ"
+          },
+          "species": [
+            248,
+            142,
+            348,
+            476,
+            369,
+            409
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-forest",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "유채의 배지",
+        "en": "Forest Badge",
+        "ja": "ナタネのバッジ"
+      },
+      "icon": "forest",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Gardenia",
+            "ko": "유채",
+            "ja": "ナタネ"
+          },
+          "species": [
+            189,
+            192,
+            421,
+            286,
+            389,
+            407
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-cobble",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "자두의 배지",
+        "en": "Cobble Badge",
+        "ja": "スモモのバッジ"
+      },
+      "icon": "cobble",
+      "type": "fighting",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Maylene",
+            "ko": "자두",
+            "ja": "スモモ"
+          },
+          "species": [
+            237,
+            286,
+            214,
+            392,
+            308,
+            448
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-fen",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "맥실러의 배지",
+        "en": "Fen Badge",
+        "ja": "マキシのバッジ"
+      },
+      "icon": "fen",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Crasher Wake",
+            "ko": "맥실러",
+            "ja": "マキシ"
+          },
+          "species": [
+            186,
+            230,
+            272,
+            367,
+            130,
+            419
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-relic",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "멜리사의 배지",
+        "en": "Relic Badge",
+        "ja": "メリッサのバッジ"
+      },
+      "icon": "relic",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Fantina",
+            "ko": "멜리사",
+            "ja": "メリッサ"
+          },
+          "species": [
+            426,
+            354,
+            477,
+            429,
+            478,
+            94
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-mine",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "동관의 배지",
+        "en": "Mine Badge",
+        "ja": "トウガンのバッジ"
+      },
+      "icon": "mine",
+      "type": "steel",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Byron",
+            "ko": "동관",
+            "ja": "トウガン"
+          },
+          "species": [
+            227,
+            208,
+            462,
+            395,
+            306,
+            411
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-icicle",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "무청의 배지",
+        "en": "Icicle Badge",
+        "ja": "スズナのバッジ"
+      },
+      "icon": "icicle",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Candice",
+            "ko": "무청",
+            "ja": "スズナ"
+          },
+          "species": [
+            460,
+            124,
+            473,
+            478,
+            471,
+            461
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-beacon",
+      "series": "bdsp",
+      "kind": "badge",
+      "names": {
+        "ko": "전진의 배지",
+        "en": "Beacon Badge",
+        "ja": "デンジのバッジ"
+      },
+      "icon": "beacon",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Volkner",
+            "ko": "전진",
+            "ja": "デンジ"
+          },
+          "species": [
+            279,
+            26,
+            405,
+            171,
+            135,
+            466
+          ],
+          "basis": "강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bdsp-champion",
+      "series": "bdsp",
+      "kind": "title",
+      "names": {
+        "ko": "브릴리언트 다이아몬드·샤이닝 펄 챔피언",
+        "en": "Brilliant Diamond / Shining Pearl Champion",
+        "ja": "ブリリアントダイヤモンド・シャイニングパールの王者"
+      },
+      "icon": "crown",
+      "type": "sinnoh",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Aaron",
+            "ko": "충호",
+            "ja": "リョウ"
+          },
+          "species": [
+            469,
+            212,
+            416,
+            214,
+            330,
+            452
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Bertha",
+            "ko": "들국화",
+            "ja": "キクノ"
+          },
+          "species": [
+            340,
+            472,
+            34,
+            450,
+            473,
+            464
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Flint",
+            "ko": "대엽",
+            "ja": "オーバ"
+          },
+          "species": [
+            38,
+            229,
+            78,
+            392,
+            59,
+            467
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lucian",
+            "ko": "오엽",
+            "ja": "ゴヨウ"
+          },
+          "species": [
+            122,
+            196,
+            437,
+            65,
+            80,
+            475
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/elitefour.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Cynthia",
+            "ko": "난천",
+            "ja": "シロナ"
+          },
+          "species": [
+            442,
+            474,
+            468,
+            448,
+            350,
+            445
+          ],
+          "basis": "최종 강화 재대결",
+          "source": "https://www.serebii.net/brilliantdiamondshiningpearl/elitefour.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-bug",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "단풍의 배지",
+        "en": "Bug Badge",
+        "ja": "カエデのバッジ"
+      },
+      "icon": "bug",
+      "type": "bug",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Katy",
+            "ko": "단풍",
+            "ja": "カエデ"
+          },
+          "species": [
+            918,
+            214,
+            205,
+            920,
+            752,
+            217
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-grass",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "콜사의 배지",
+        "en": "Grass Badge",
+        "ja": "コルサのバッジ"
+      },
+      "icon": "grass",
+      "type": "grass",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Brassius",
+            "ko": "콜사",
+            "ja": "コルサ"
+          },
+          "species": [
+            286,
+            930,
+            45,
+            763,
+            549,
+            185
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-electric",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "모야모의 배지",
+        "en": "Electric Badge",
+        "ja": "ナンジャモのバッジ"
+      },
+      "icon": "electric",
+      "type": "electric",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Iono",
+            "ko": "모야모",
+            "ja": "ナンジャモ"
+          },
+          "species": [
+            941,
+            101,
+            939,
+            405,
+            466,
+            429
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-water",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "곤포의 배지",
+        "en": "Water Badge",
+        "ja": "ハイダイのバッジ"
+      },
+      "icon": "water",
+      "type": "water",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Kofu",
+            "ko": "곤포",
+            "ja": "ハイダイ"
+          },
+          "species": [
+            279,
+            976,
+            160,
+            961,
+            693,
+            740
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-normal",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "청목의 배지",
+        "en": "Normal Badge",
+        "ja": "アオキのバッジ"
+      },
+      "icon": "normal",
+      "type": "normal",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Larry",
+            "ko": "청목",
+            "ja": "アオキ"
+          },
+          "species": [
+            916,
+            128,
+            982,
+            334,
+            973,
+            398
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-ghost",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "라임의 배지",
+        "en": "Ghost Badge",
+        "ja": "ライムのバッジ"
+      },
+      "icon": "ghost",
+      "type": "ghost",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Ryme",
+            "ko": "라임",
+            "ja": "ライム"
+          },
+          "species": [
+            354,
+            778,
+            623,
+            442,
+            972,
+            849
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-psychic",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "리파의 배지",
+        "en": "Psychic Badge",
+        "ja": "リップのバッジ"
+      },
+      "icon": "psychic",
+      "type": "psychic",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Tulip",
+            "ko": "리파",
+            "ja": "リップ"
+          },
+          "species": [
+            981,
+            282,
+            956,
+            475,
+            655,
+            671
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-ice",
+      "series": "sv",
+      "kind": "badge",
+      "names": {
+        "ko": "그루샤의 배지",
+        "en": "Ice Badge",
+        "ja": "グルーシャのバッジ"
+      },
+      "icon": "ice",
+      "type": "ice",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Grusha",
+            "ko": "그루샤",
+            "ja": "グルーシャ"
+          },
+          "species": [
+            38,
+            614,
+            873,
+            975,
+            461,
+            334
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "sv-champion",
+      "series": "sv",
+      "kind": "title",
+      "names": {
+        "ko": "스칼렛·바이올렛 챔피언",
+        "en": "Scarlet / Violet Champion",
+        "ja": "スカーレット・バイオレットの王者"
+      },
+      "icon": "crown",
+      "type": "paldea",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Rika",
+            "ko": "칠리",
+            "ja": "チリ"
+          },
+          "species": [
+            51,
+            340,
+            323,
+            389,
+            232,
+            980
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Poppy",
+            "ko": "뽀삐",
+            "ja": "ポピー"
+          },
+          "species": [
+            879,
+            411,
+            437,
+            462,
+            823,
+            959
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Larry",
+            "ko": "청목",
+            "ja": "アオキ"
+          },
+          "species": [
+            916,
+            128,
+            982,
+            334,
+            973,
+            398
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Hassel",
+            "ko": "팔자크",
+            "ja": "ハッサク"
+          },
+          "species": [
+            884,
+            715,
+            612,
+            691,
+            149,
+            998
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Geeta",
+            "ko": "테사",
+            "ja": "オモダカ"
+          },
+          "species": [
+            970,
+            956,
+            652,
+            713,
+            887,
+            983
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    },
+    {
+      "id": "bb-champion",
+      "series": "bb",
+      "kind": "title",
+      "names": {
+        "ko": "남청의 원반 챔피언",
+        "en": "The Indigo Disk Champion",
+        "ja": "藍の円盤の王者"
+      },
+      "icon": "crown",
+      "type": "blueberry",
+      "parties": [
+        {
+          "trainer": {
+            "en": "Crispin",
+            "ko": "하솔",
+            "ja": "アカマツ"
+          },
+          "species": [
+            479,
+            663,
+            103,
+            323,
+            467,
+            257
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Amarys",
+            "ko": "네리",
+            "ja": "ネリネ"
+          },
+          "species": [
+            227,
+            51,
+            212,
+            579,
+            395,
+            376
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Drayton",
+            "ko": "제빈",
+            "ja": "カキツバタ"
+          },
+          "species": [
+            149,
+            330,
+            612,
+            254,
+            230,
+            1018
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Lacey",
+            "ko": "타로",
+            "ja": "タロ"
+          },
+          "species": [
+            547,
+            210,
+            730,
+            80,
+            869,
+            530
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        },
+        {
+          "trainer": {
+            "en": "Kieran",
+            "ko": "카지",
+            "ja": "スグリ"
+          },
+          "species": [
+            186,
+            149,
+            861,
+            474,
+            727,
+            1019
+          ],
+          "basis": "남청의 원반 · 리그부 재대결",
+          "source": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml"
+        }
+      ]
+    }
+  ]
+}

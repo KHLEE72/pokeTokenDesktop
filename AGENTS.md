@@ -20,6 +20,8 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `form-catalog.json`은 `scripts/update-form-catalog.mjs`와 `form-dialogue.tsv`에서 생성한다. 기존 551개 계열 ID를 보존하고 새 계열만 뒤에 붙인다. 연결된 리전폼 진화 전용 종은 새 알 후보에서 제외하되, 기존 독립 개체·경로·완료 기록은 유지한다. 단계는 전역 `PokemonSpecies.phase` 대신 개체 `path` 안의 위치로 판정한다.
 - 리전폼·특별한 모습·메가폼 수집은 `game.appearances`에 기본 도감과 별도로 저장한다. `megaStones`와 첫 무료 선택 소진 상태는 일반/이로치·모든 개체가 공유하며 구매와 사탕 차감을 같은 트랜잭션으로 저장한다. 메가는 성장 단계가 아닌 `pet.mega` 표시 상태이고 `appearanceId`로 렌더링한다. `smoke:forms`로 구매·리전 진화·세 언어·최소 창·재시작을 확인한다.
 - `src/shared/rewards.ts`: 업적 조건·볼·테마 목록. 볼 아이콘과 업적·테마 UI는 `src/renderer/src/balls.tsx`, `rewards-ui.tsx`, `rewards.css`에 있다.
+- `league-catalog.json`은 작품별 파티·채택 전투·출처를 보관한다. 집계는 일반/이로치/폼을 전국도감 종으로 합치고 `league-v1`에 영구 해금과 배지 8개·칭호 1개 전시를 저장한다. 기존 목표 ID를 바꾸지 않는다. 기준은 `docs/LEAGUE_CATALOG.md`, 실행 검사는 `smoke:league`를 따른다. 사이드바 검사는 순서 대신 `data-tab`을 사용한다.
+- 업데이트는 `src/main/update-service.ts`·`updates.ts`에서만 수행한다. Windows 설치형은 `electron-updater`, portable/임시 서명 Mac은 버전 확인·다운로드 링크를 사용한다. 앱에 GitHub 토큰을 넣지 않는다. 저장소 공개/릴리스 게시와 설치 실행은 별도 작업이며 `docs/UPDATES.md`와 `smoke:updater`를 참고한다.
 - `src/shared/rarity.ts`: 주요 전설·준전설·환상의 앱 표시 분류. 600족·울트라비스트·패러독스를 임의로 전설로 바꾸지 않으며 부화 가중치와 분리한다. 새 업적은 일반/이로치 합산 종수로 기존 기록도 인정한다. `smoke:rarity`로 배지·테마·언어·저장 상태를 확인한다.
 - `character-profiles.json`: 고정된 도감 근거와 `dialogue-facts.tsv`·`dialogue-signatures.tsv`·`dialogue-scenes.tsv`에서 `node scripts/update-dialogue-profiles.mjs`로 생성한다. 공식 원문을 그대로 대사로 넣지 않는다. 리전폼 설명을 기본 모습에 적용하거나 날개 없는 종에게 비행·지느러미 종에게 발 착지를 말하게 하지 않는다. 이름/타입 접두사만 바꾼 공통 대사를 다시 넣지 않는다.
 - `src/shared/i18n.ts`, `messages.json`: 한국어·영어·일본어 문구와 저장된 알림 표시. 포켓몬·타입·볼의 공식 명칭은 ID로 `localized-catalog.json`에서 조회한다. 언어 변경은 게임·사용량 기록을 수정하지 않는다. 화면 변경은 `smoke:i18n`으로 세 언어의 최소 창 크기·검색·저장도 확인한다.

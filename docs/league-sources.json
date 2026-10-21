@@ -1,0 +1,189 @@
+{
+  "reviewed": "2026-10-21",
+  "sources": [
+    {
+      "url": "https://www.serebii.net/black2white2/elitefour.shtml",
+      "sha256": "c672654242591755ec0492fd4f98d6547c616cbe0eb47d9530d437f5bb896f11"
+    },
+    {
+      "url": "https://www.serebii.net/black2white2/pwt/worldleaders.shtml",
+      "sha256": "87c04f9a2857ccab8f45a257cfe10aedb428d5e0baaedbda4ba5b57395c8499e"
+    },
+    {
+      "url": "https://www.serebii.net/blackwhite/elitefour.shtml",
+      "sha256": "9f1343298f329c1f0a0a209b5c00a344fe931ccde2d68235973b1d75e068e8d7"
+    },
+    {
+      "url": "https://www.serebii.net/blackwhite/gyms.shtml",
+      "sha256": "5197884aed5453f53a955c77319b9955f2e62bcaa07bd96ddadaf8eb61d58512"
+    },
+    {
+      "url": "https://www.serebii.net/brilliantdiamondshiningpearl/elitefour.shtml",
+      "sha256": "daede1a57708cf7ee2ab607a8acece2b33a035ea49fe172dc85dc16405717280"
+    },
+    {
+      "url": "https://www.serebii.net/brilliantdiamondshiningpearl/gymrematch.shtml",
+      "sha256": "1c738d35652bc8152a1883ef0327a6cdbc3002e850cc62a31df21b93ea27cd24"
+    },
+    {
+      "url": "https://www.serebii.net/crystal/elitefour.shtml",
+      "sha256": "aaee954d52e5ddfc5124a6155b5a1c8ec50c43c7f5c56592d2c07db29e66783c"
+    },
+    {
+      "url": "https://www.serebii.net/crystal/gyms.shtml",
+      "sha256": "c8334e74f28032675a5c55c8ae23ea5288ba86c9fd14f6a71e995506c947d758"
+    },
+    {
+      "url": "https://www.serebii.net/diamondpearl/elite4.shtml",
+      "sha256": "b09eb3c32c9e70b2a9b1682acf1d92288c7adfb5f55d499032e88bf86779de61"
+    },
+    {
+      "url": "https://www.serebii.net/diamondpearl/gymleaders.shtml",
+      "sha256": "b9774c2a6d94862d16e416f18da2a7de9e7611b6045d93df4ed96a7524a5631c"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/elite.shtml",
+      "sha256": "286e8f717ba4360d6798007b5e54f2ae8f29af0b7e2237f35fb7b3c55bae9844"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/brawly.shtml",
+      "sha256": "94585842ae5c4ad8cda12cbab26cabb1a143a03f60baed092ccc175839926e17"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/flannery.shtml",
+      "sha256": "89c8d887a0644e702d96836ba86913fc41d6538bbe047d18fa9c835d68cd3491"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/juan.shtml",
+      "sha256": "a644439ce7a2d4326942f6f52814a7dd489d5f80eafbefd0af70ebca6dea0c52"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/lizatate.shtml",
+      "sha256": "42a1c20691673fbbf34686570d916b956b33136ebf1d19d402e636410880583c"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/norman.shtml",
+      "sha256": "1b8c59091fc0f33eb7d2005692824d7472f5b1a6e0dc7fcf873dccb849a0a0e5"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/roxanne.shtml",
+      "sha256": "ab7fe13627d81964554c056f84211c61572c7a2dfa6ade47476a6a263c903c1f"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/wattson.shtml",
+      "sha256": "071749c477ad650bcc926a85e7e6540abf3c284c3e27314de02d90d264175a50"
+    },
+    {
+      "url": "https://www.serebii.net/emerald/entrycall/winona.shtml",
+      "sha256": "bc25090a283cba3b26a0ae87d57b77c46efc5f6486e8364580581416f2ccd781"
+    },
+    {
+      "url": "https://www.serebii.net/fireredleafgreen/elitefour.shtml",
+      "sha256": "8ec1bcc199514cf44214c5a2db9406705a14b1b713a079f94c5d1ea830b68727"
+    },
+    {
+      "url": "https://www.serebii.net/fireredleafgreen/gyms.shtml",
+      "sha256": "2de2009df30997c6cb262e26c527b0ced0ea70dab9ad64cfdda1c49065dcdcb1"
+    },
+    {
+      "url": "https://www.serebii.net/gs/elitefour.shtml",
+      "sha256": "cfc2ad72d5c861055d7e091bb3c9fbd3b4bc5289c7c6acb243f86e7fbc53486e"
+    },
+    {
+      "url": "https://www.serebii.net/gs/gyms.shtml",
+      "sha256": "1a24014ba66fc2fac7bc90ee4da044c1eefb4ed03bf1691262919ad844c83bdf"
+    },
+    {
+      "url": "https://www.serebii.net/heartgoldsoulsilver/elitefour.shtml",
+      "sha256": "dd51ff5dd2c7526a1b2b460f90f4467691879ec1d494bcf1717cb4ba381e4aa9"
+    },
+    {
+      "url": "https://www.serebii.net/heartgoldsoulsilver/gym-rematch.shtml",
+      "sha256": "dfc9d5e71d3a7c5878d8299b94cccb4633ebad467b3a391e09c32719d04e9c1f"
+    },
+    {
+      "url": "https://www.serebii.net/letsgopikachueevee/elitefour.shtml",
+      "sha256": "d0f87a915eb4e0588eb2b5b26bfd80fdb73d8bda1ba54ea5ce903277dd4889e9"
+    },
+    {
+      "url": "https://www.serebii.net/letsgopikachueevee/gymrematch.shtml",
+      "sha256": "4d45c729ff344b63ebd865f2def713302406a478af6467fa5a71cf20c16253a2"
+    },
+    {
+      "url": "https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml",
+      "sha256": "cc0b418c4e58235513c35cdd8e0cdfe4e2bdd4af9111142d37d1ec0fcd1942cd"
+    },
+    {
+      "url": "https://www.serebii.net/omegarubyalphasapphire/gyms.shtml",
+      "sha256": "67781764ec77e9d60aa3dac8527ef0469c8bd968b5da3b759512404bc477a5ea"
+    },
+    {
+      "url": "https://www.serebii.net/platinum/elitefour.shtml",
+      "sha256": "650a360a3a23f0b991ca6a842d2a435139b20321de2e726317e691aa351e8fcf"
+    },
+    {
+      "url": "https://www.serebii.net/platinum/toptrainercafe.shtml",
+      "sha256": "3f6835ef2619df2e425a9ef2bc81d501904f3d7d8fe7cfa275bf57f7bd4576f5"
+    },
+    {
+      "url": "https://www.serebii.net/rb/elitefour.shtml",
+      "sha256": "23590c390dd426d24174c03d32de5bed8e98de48bdca6a97e2cdfcfe9771cdae"
+    },
+    {
+      "url": "https://www.serebii.net/rb/gyms.shtml",
+      "sha256": "98bebee45f72aadb52db001607af82d351706db8e61c4c5c73dbef3bc8e119e3"
+    },
+    {
+      "url": "https://www.serebii.net/rubysapphire/elitefour.shtml",
+      "sha256": "5e9ee80c5577d131b86540369004131de7f2388787ee63d9c35fe8f4fbd22f98"
+    },
+    {
+      "url": "https://www.serebii.net/rubysapphire/gyms.shtml",
+      "sha256": "04e0919972665ae880c67bc114f1044bef79a9e33334af3065f083fe6e8db187"
+    },
+    {
+      "url": "https://www.serebii.net/scarletviolet/leagueclubbattles.shtml",
+      "sha256": "36efd66bd1f8dbed67790f92570aafb4535048e65629cd258f206936daf89dd9"
+    },
+    {
+      "url": "https://www.serebii.net/sunmoon/elitefour.shtml",
+      "sha256": "08630cb83aeba4947929ecf00923c94ee06aab32944274a01292376fc73583b6"
+    },
+    {
+      "url": "https://www.serebii.net/sunmoon/grandtrials.shtml",
+      "sha256": "60aec31aae0bceb7b47826e9889d36a343ba292fad57cba5d39c7bc3d4971332"
+    },
+    {
+      "url": "https://www.serebii.net/sunmoon/islandtrials.shtml",
+      "sha256": "a8a2b9fed6d890b6ba6135e2d5807e17b529674b18c22276e996b296b5d8a0e4"
+    },
+    {
+      "url": "https://www.serebii.net/swordshield/galarianstartournament.shtml",
+      "sha256": "51a4fe513105b39ac37b96a465b6fa53e50624e4f613222db801474ac04473d1"
+    },
+    {
+      "url": "https://www.serebii.net/ultrasunultramoon/elitefour.shtml",
+      "sha256": "58e574a2592d6a2c464eb2f2ee99af2edc4eab2301c383e8b8bbb4b7b7e4d82f"
+    },
+    {
+      "url": "https://www.serebii.net/ultrasunultramoon/grandtrials.shtml",
+      "sha256": "d1b904f940624b151042a5d1906d12c6ae548d8e384f2e66809cb0bc8df254df"
+    },
+    {
+      "url": "https://www.serebii.net/ultrasunultramoon/islandtrials.shtml",
+      "sha256": "e45ff83102b0b0e74b60bfba66163c5e92113ebef9c8161be7d7c7566b3da0ab"
+    },
+    {
+      "url": "https://www.serebii.net/xy/battlechateau.shtml",
+      "sha256": "a601549af520a5a8659356c9ce936786d574cd1b623ef2f89ac4dd597a36172e"
+    },
+    {
+      "url": "https://www.serebii.net/yellow/elitefour.shtml",
+      "sha256": "d182c0694e068536369815f15ca5696a345536e63ec3d5d205283d2c1efdf8d9"
+    },
+    {
+      "url": "https://www.serebii.net/yellow/gyms.shtml",
+      "sha256": "a24a1f2c8d890ccfc74b7ca3543a063dd4e1c944654015dc6849caa03cc32909"
+    }
+  ]
+}
