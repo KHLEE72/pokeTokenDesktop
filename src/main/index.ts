@@ -172,7 +172,7 @@ else {
     pet.webContents.on('did-finish-load', () => controller.apply(snapshot.settings))
     void load(dashboard, 'dashboard'); void load(pet, 'pet')
     worker = new Worker(join(__dirname, 'worker.js'), { workerData: { path: join(app.getPath('userData'), 'poketoken.sqlite') } })
-    updates=createUpdates(state=>{if(!dashboard.isDestroyed())dashboard.webContents.send('update:state',state);trayMenu()},async()=>{await request('refresh');await request('flush')})
+    updates=createUpdates(state=>{if(quitting)return;if(!dashboard.isDestroyed())dashboard.webContents.send('update:state',state);if(!tray.isDestroyed())trayMenu()},async()=>{await request('refresh');await request('flush')})
     worker.on('message', message => {
       if (message.type === 'snapshot') {
         snapshot = message.value

@@ -15,6 +15,7 @@ const snapshot=()=>page.evaluate(()=>window.desktop.getSnapshot())
 const nav=async tab=>{await page.locator(`.sidebar nav button[data-tab="${tab}"]`).click();await page.evaluate(()=>scrollTo(0,0))}
 async function start(){
  application=await _electron.launch({executablePath:process.env.POKETOKEN_EXE||electron,args:[...(process.env.POKETOKEN_EXE?[]:['.']),...(scale==='native'?[]:[`--force-device-scale-factor=${scale}`])],env,timeout:60000})
+ application.process().stderr?.on('data',chunk=>{const text=String(chunk);if(/Object has been destroyed|UnhandledPromiseRejection|Error occurred in handler for 'update:action'/.test(text))errors.push(text)})
  await application.firstWindow();await expect.poll(()=>application.windows().some(p=>p.url().includes('view=dashboard'))).toBe(true)
  page=application.windows().find(p=>p.url().includes('view=dashboard'));page.on('pageerror',e=>errors.push(e.message))
  await expect.poll(async()=>Boolean((await snapshot()).lastScan)).toBe(true);await page.evaluate(()=>document.fonts.ready)
@@ -63,6 +64,11 @@ try{
  checks.push('required trainer teams and official species names are inspectable; the GitHub fixture exposes a newer OS build without installing; restart preserves display, unlock dates, candy, XP and language')
  await page.evaluate(()=>window.desktop.setLeagueDisplay({badges:[],title:null}));await nav('home');expect((await snapshot()).league.badges).toEqual([]);expect(Object.keys((await snapshot()).league.unlocked)).toHaveLength(221)
  checks.push('clearing the home display preserves all permanently earned badges and titles')
+ await application.close();application=null;await start()
+ await application.evaluate(({app,net})=>{delete process.env.POKETOKEN_UPDATE_FIXTURE;net.fetch=()=>new Promise(resolve=>app.once('before-quit',()=>resolve({status:404,ok:false})))})
+ await page.evaluate(()=>{void window.desktop.updateAction('check').catch(()=>{})});await expect.poll(()=>page.evaluate(()=>window.desktop.getUpdateState()).then(s=>s.status)).toBe('checking')
+ await application.close();application=null
+ checks.push('closing during a pending update check drops late network results after tray destruction without errors or interrupted shutdown')
  expect(errors).toEqual([]);const report={version:JSON.parse(readFileSync('package.json','utf8')).version,directory,scale,checks,errors,layouts};writeFileSync(`artifacts/league-report-${scale}.json`,JSON.stringify(report,null,2));writeFileSync('artifacts/league-report.json',JSON.stringify(report,null,2));console.log(JSON.stringify({scale,checks,errors},null,2))
 }catch(error){await page?.screenshot({path:`artifacts/league-failure-${scale}.png`,fullPage:true}).catch(()=>{});writeFileSync(`artifacts/league-failure-${scale}.json`,JSON.stringify({directory,error:String(error),checks,errors},null,2));throw error}
 finally{if(application)await application.close()}
