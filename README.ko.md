@@ -9,7 +9,8 @@
 <p align="center">
   <strong>코딩하는 동안, 작은 친구의 모험이 자라요.</strong><br>
   Claude Code · Codex에서 사용한 토큰으로 포켓몬을 키우는 데스크톱 펫.<br>
-  알을 부화하고, 도감을 채우고, 내 책상 위에 친구를 한 마리.
+  알을 부화하고, 도감을 채우고, 내 책상 위에 친구를 한 마리.<br>
+  <sub>AI 코딩 도구로 100% 바이브 코딩한 개인 프로젝트입니다.</sub>
 </p>
 
 <p align="center">
@@ -24,6 +25,7 @@
   <img src="https://img.shields.io/badge/Windows-10%20%2F%2011-3575b8?style=flat-square" alt="Windows 10 / 11">
   <img src="https://img.shields.io/badge/macOS-14%2B-42404d?style=flat-square" alt="macOS 14 이상">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-6b8e73?style=flat-square" alt="코드 라이선스 MIT"></a>
+  <img src="https://img.shields.io/badge/100%25-vibe_coded-9670c4?style=flat-square" alt="100% 바이브 코딩">
 </p>
 
 <p align="center">
@@ -59,7 +61,7 @@
 
 - 배포용 코드 서명·Apple 공증이 없는 빌드입니다. Mac에서 첫 실행을 막으면 [Mac 실행 안내](docs/MAC_TESTING.md)와 [Apple 안내](https://support.apple.com/ko-kr/102445)를 참고하세요.
 - 사이드바의 **설정 아래 → 업데이트 확인**을 누르면 새 버전을 확인할 수 있습니다. Windows 포터블은 버튼을 눌러 새 EXE를 내려받고 검증한 뒤 교체·재실행합니다. Mac은 다운로드한 DMG로 직접 교체합니다.
-- 업데이트 확인은 공개된 GitHub Releases를 사용합니다. 저장소가 비공개인 동안에는 앱에서 확인할 수 없으며, 앱에 GitHub 인증 토큰을 넣지 않습니다.
+- 업데이트 확인은 이 저장소의 공개 GitHub Releases를 사용하며, 별도 GitHub 로그인이나 인증 토큰이 필요하지 않습니다.
 - 직접 교체할 때는 이전 앱을 트레이·메뉴바에서 먼저 종료하세요. 기존 Windows 설치형 사용자도 포터블로 전환할 수 있고, 같은 앱 데이터 폴더의 성장 기록을 이어갑니다.
 - v1.2.0까지의 빌드는 이전 저장소 이름으로 업데이트 주소를 검사합니다. 이름이 바뀐 저장소의 업데이트를 이어가려면 v1.2.2을 한 번 직접 내려받아 실행하세요.
 
@@ -246,7 +248,7 @@ npm ci
 npm run dev
 ```
 
-빌드·검증은 [개발 안내](docs/DEVELOPMENT.md), 코드 변경을 보내기 전에는 [기여 안내](CONTRIBUTING.md)를 참고하세요.
+빌드·검증은 [개발 안내](docs/DEVELOPMENT.md), 코드 변경을 보내기 전에는 [한국어 기여 안내](CONTRIBUTING.ko.md) 또는 [English contributing guide](CONTRIBUTING.md)를 참고하세요.
 
 </details>
 

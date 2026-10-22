@@ -9,7 +9,8 @@
 <p align="center">
   <strong>Your code. Their next adventure.</strong><br>
   Turn your Claude Code &amp; Codex tokens into a little Pokémon companion.<br>
-  Hatch eggs, grow your collection, and keep a friend on your desktop.
+  Hatch eggs, grow your collection, and keep a friend on your desktop.<br>
+  <sub>A personal project, 100% vibe coded with AI coding assistants.</sub>
 </p>
 
 <p align="center">
@@ -24,6 +25,7 @@
   <img src="https://img.shields.io/badge/Windows-10%20%2F%2011-3575b8?style=flat-square" alt="Windows 10 / 11">
   <img src="https://img.shields.io/badge/macOS-14%2B-42404d?style=flat-square" alt="macOS 14 and later">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-6b8e73?style=flat-square" alt="Code license: MIT"></a>
+  <img src="https://img.shields.io/badge/100%25-vibe_coded-9670c4?style=flat-square" alt="100% vibe coded">
 </p>
 
 <p align="center">
@@ -59,7 +61,7 @@
 
 - These builds do not have commercial code signing or Apple notarization. If macOS blocks the first launch, see the [Mac launch guide](docs/MAC_TESTING.md) and [Apple's instructions](https://support.apple.com/en-us/102445).
 - **Check for updates** is below Settings in the sidebar. On Windows portable builds, the update button downloads and verifies the new EXE, replaces the old one, and restarts the app. Mac builds open the download for manual replacement.
-- Update checks use public GitHub Releases. A private repository cannot be checked by the app; no GitHub token is bundled.
+- Update checks use this repository's public GitHub Releases; no GitHub sign-in or bundled token is required.
 - To replace a version manually, quit the previous app from the tray or menu bar first. Older Windows installer users can switch to the portable EXE. Saved progress stays in the same application data folder.
 - Builds through v1.2.0 use the previous repository name for update validation. Download v1.2.2 manually once to switch to the renamed repository's update feed.
 
@@ -246,7 +248,7 @@ npm ci
 npm run dev
 ```
 
-See the [development guide](docs/DEVELOPMENT.md) for builds and checks, and the [contributing guide](CONTRIBUTING.md) before sending a change. Supporting technical documents are currently in Korean.
+See the [development guide](docs/DEVELOPMENT.md) for builds and checks, and read the contributing guide in [English](CONTRIBUTING.md) or [한국어](CONTRIBUTING.ko.md) before sending a change. Detailed development and validation notes are currently in Korean.
 
 </details>
 
