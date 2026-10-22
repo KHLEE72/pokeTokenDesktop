@@ -8,7 +8,7 @@ const directory=mkdtempSync(join(tmpdir(),'poketoken-league-ui-')),data=join(dir
 mkdirSync('artifacts',{recursive:true})
 const env={...process.env,POKETOKEN_DATA_DIR:data,POKETOKEN_TEST_MODE:'1',POKETOKEN_UPDATE_FIXTURE:feed};delete env.ELECTRON_RUN_AS_NODE
 const os=process.platform==='darwin'?`mac-${process.arch}.dmg`:'Setup-x64.exe',name=`PokeToken-Desktop-9.9.9-${os}`
-writeFileSync(feed,JSON.stringify([{tag_name:'v9.9.9',assets:[{name,browser_download_url:`https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v9.9.9/${name}`}]}]))
+writeFileSync(feed,JSON.stringify([{tag_name:'v9.9.9',assets:[{name,browser_download_url:`https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v9.9.9/${name}`}]}]))
 const scale=process.env.POKETOKEN_TEST_SCALE||'native',checks=[],errors=[],layouts=[]
 const badgeArt=JSON.parse(readFileSync('src/shared/badge-art-catalog.json','utf8')),artwork=[]
 let application,page

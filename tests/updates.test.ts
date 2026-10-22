@@ -1,6 +1,6 @@
 import { describe,expect,it,vi } from 'vitest'
 import { findUpdate,UpdateController,UpdateBackend } from '../src/main/updates'
-const asset=(version:string,os='win-x64.exe')=>({name:`PokeToken-Desktop-${version}-${os}`,browser_download_url:`https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v${version}/PokeToken-Desktop-${version}-${os}`})
+const asset=(version:string,os='win-x64.exe')=>({name:`PokeToken-Desktop-${version}-${os}`,browser_download_url:`https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v${version}/PokeToken-Desktop-${version}-${os}`})
 const release=(version:string,os='win-x64.exe')=>({tag_name:`v${version}`,assets:[asset(version,os)]})
 describe('serverless updates',()=>{
   it('uses semver and only published stable releases with the current OS and architecture',()=>{
@@ -11,7 +11,7 @@ describe('serverless updates',()=>{
   })
   it('prefers the installer for portable upgrades and rejects redirected/external asset addresses',()=>{
     const row=release('2.0.0');row.assets.push(asset('2.0.0','Setup-x64.exe'));expect(findUpdate([row],'1.0.0','win32','x64')?.url).toContain('Setup-x64.exe')
-    for(const url of ['https://evil.example/setup.exe','http://github.com/KHLEE72/pokeTokenShimeji/releases/download/v2.0.0/setup.exe','https://github.com/KHLEE72/other/releases/download/v2.0.0/setup.exe']){
+    for(const url of ['https://evil.example/setup.exe','http://github.com/KHLEE72/pokeTokenDesktop/releases/download/v2.0.0/setup.exe','https://github.com/KHLEE72/other/releases/download/v2.0.0/setup.exe']){
       const bad=release('2.0.0');bad.assets[0].browser_download_url=url;expect(()=>findUpdate([bad],'1.0.0','win32','x64')).toThrow()
     }
   })

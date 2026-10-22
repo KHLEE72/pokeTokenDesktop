@@ -9,5 +9,5 @@ export interface UpdateState {
   error: string | null
 }
 export type UpdateAction = 'check' | 'download' | 'install' | 'apply' | 'open'
-export const UPDATE_REPOSITORY = { owner: 'KHLEE72', repo: 'pokeTokenShimeji' } as const
+export const UPDATE_REPOSITORY = { owner: 'KHLEE72', repo: 'pokeTokenDesktop' } as const
 export const RELEASES_URL = `https://github.com/${UPDATE_REPOSITORY.owner}/${UPDATE_REPOSITORY.repo}/releases`

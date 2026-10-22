@@ -31,7 +31,7 @@ async function launch(caseName){
  console.log(`portable updater: starting ${caseName}`)
  const folder=join(directory,`${caseName} 한글 [portable] O'Brien & space`);mkdirSync(folder)
  const executable=join(folder,'나의 PokeToken.exe');copyFileSync(source,executable);activeData=join(folder,'data');feed=join(folder,'releases.json');port=await freePort()
- const name='PokeToken-Desktop-9.9.9-win-x64.exe';writeFileSync(feed,JSON.stringify([{tag_name:'v9.9.9',assets:[{name,digest:`sha256:${sha(serving)}`,size:readFileSync(serving).length,browser_download_url:`https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v9.9.9/${name}`}]}]))
+ const name='PokeToken-Desktop-9.9.9-win-x64.exe';writeFileSync(feed,JSON.stringify([{tag_name:'v9.9.9',assets:[{name,digest:`sha256:${sha(serving)}`,size:readFileSync(serving).length,browser_download_url:`https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v9.9.9/${name}`}]}]))
  const env={...process.env,POKETOKEN_DATA_DIR:activeData,POKETOKEN_TEST_MODE:'1',POKETOKEN_UPDATE_FIXTURE:feed,POKETOKEN_UPDATE_TEST_DOWNLOAD:download};delete env.ELECTRON_RUN_AS_NODE
  const start=async()=>{child=spawn(executable,[`--remote-debugging-port=${port}`],{env,windowsHide:true,stdio:'ignore'});await attach()}
  await start();await page.evaluate(()=>window.desktop.updateSettings({language:'ko',theme:'dark',paused:true}))

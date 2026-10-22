@@ -1,10 +1,16 @@
 # 검증 기록
 
+## 저장소 이름을 pokeTokenDesktop으로 변경 (2026-10-22)
+
+GitHub 저장소와 로컬 `origin`을 `KHLEE72/pokeTokenDesktop`으로 변경했습니다. 저장소는 비공개를 유지하고, 변경 전후 모든 릴리스의 ID·태그·초안/프리뷰 상태 및 첨부 파일 ID·이름·크기·SHA-256이 같은지 대조했습니다. 이전 저장소 이름의 인증된 GitHub API 요청도 새 저장소를 반환합니다. README 두 언어·개발 문서·업데이트 API와 URL 검증·패키징 및 실행 검사용 피드를 새 이름으로 맞췄습니다. 앱 ID·제품명·사용자 데이터 위치와 기존 태그·배포 파일은 유지하며 새 버전은 게시하지 않았습니다.
+
+`npm test -- tests/updates.test.ts`의 8개 테스트, `npm run build`의 타입 검사·네이티브 준비·앱 빌드, `npm run smoke:updater`의 실제 Electron 다운로드/해시/실패 처리 4개 검사가 통과했습니다. 인증된 실제 릴리스 피드로 Windows portable·Mac arm64/x64 각각 새 주소의 v1.2.0 선택·현재 버전의 업데이트 없음·이전 주소 검증기의 새 URL 거부를 확인했습니다. 기존 v1.2.0 이하 바이너리는 다음 버전을 한 번 수동 다운로드해야 하며 양쪽 README와 업데이트 안내에 기록했습니다. 저장소가 비공개이므로 인증 없는 공개 업데이트 확인은 검증하지 않았습니다. 대조 자료와 피드 검증 결과는 로컬 `artifacts/repository-*-rename.json`·`artifacts/repository-rename-report.json`에 보관합니다.
+
 ## v1.2.0 정식 Windows·Mac 릴리스 (2026-10-22)
 
-앱 버전과 배포 파일을 `1.2.0`으로 승격하고 [정식 릴리스](https://github.com/KHLEE72/pokeTokenShimeji/releases/tag/v1.2.0)를 **Latest**로 게시했습니다. 소스 태그는 `3de3d5db2fffc148c9d33190dec35170e5421ba6`입니다. Windows portable EXE 1개와 Mac arm64/x64 DMG 2개만 첨부하며 SHA-256·소스 커밋·빌드 확인은 본문에 기록합니다. README의 세 다운로드 링크도 같은 정식 버전으로 맞췄습니다.
+앱 버전과 배포 파일을 `1.2.0`으로 승격하고 [정식 릴리스](https://github.com/KHLEE72/pokeTokenDesktop/releases/tag/v1.2.0)를 **Latest**로 게시했습니다. 소스 태그는 `3de3d5db2fffc148c9d33190dec35170e5421ba6`입니다. Windows portable EXE 1개와 Mac arm64/x64 DMG 2개만 첨부하며 SHA-256·소스 커밋·빌드 확인은 본문에 기록합니다. README의 세 다운로드 링크도 같은 정식 버전으로 맞췄습니다.
 
-Windows 타입 검사·빌드·CI와 실제 portable EXE의 숨김 시작 포함 실행 검사 15항목이 통과했습니다. 실제 패키지의 `out/` 594개 파일과 네이티브 보조 프로그램 2개를 현재 빌드/소스와 대조했습니다. [Mac 빌드](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/39724467655)는 Apple Silicon·Intel 각각 네이티브 러너에서 단위/통합 테스트·DMG 빌드·ad-hoc 서명 검증·패키지 실행 확인을 모두 통과했습니다. 사용자 Mac의 장시간 사용·물리 멀티 모니터 확인과 Apple 공증은 별도입니다.
+Windows 타입 검사·빌드·CI와 실제 portable EXE의 숨김 시작 포함 실행 검사 15항목이 통과했습니다. 실제 패키지의 `out/` 594개 파일과 네이티브 보조 프로그램 2개를 현재 빌드/소스와 대조했습니다. [Mac 빌드](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/39724467655)는 Apple Silicon·Intel 각각 네이티브 러너에서 단위/통합 테스트·DMG 빌드·ad-hoc 서명 검증·패키지 실행 확인을 모두 통과했습니다. 사용자 Mac의 장시간 사용·물리 멀티 모니터 확인과 Apple 공증은 별도입니다.
 
 게시된 GitHub의 실제 릴리스 메타데이터를 앱의 `findUpdate`에 전달해 9가지 선택 조건을 확인했습니다. Windows portable과 두 Mac 아키텍처에서 `1.1.0`·`1.2.0-preview.5`가 정식 `1.2.0`을 선택하고, 이미 `1.2.0`이면 업데이트를 제안하지 않습니다. Windows는 GitHub의 실제 SHA-256·크기와 선택 결과도 일치합니다. **사용자 요청대로 저장소는 비공개를 유지합니다.** 인증 없는 API 요청은 현재 404이므로 공개 피드를 통한 실제 업데이트 성공을 검증한 것은 아닙니다. 저장소 공개 후 같은 정식 릴리스가 기존 앱의 업데이트 조회 대상이 됩니다.
 
@@ -20,9 +26,9 @@ GB/GBC/HGSS 원본 도트, GBA 트레이너카드 아틀라스, 플라티나의 
 
 최종 Windows 패키지 앱의 150% 배율에서도 `smoke:league` 9항목이 통과했습니다. 개발 실행과 합쳐 배지 이미지 표본 398개와 세 언어/두 테마/두 배율의 최소 홈 12조합을 확인했습니다. 패키지의 `out/` 594개 파일(기존 GIF 432개·새 배지 PNG 136개 포함)과 네이티브 보조 프로그램 2개가 현재 빌드/소스와 바이트 단위로 일치하며 대상 SQLite 바이너리와 모든 필수 파일·크레딧/라이선스 검사를 통과했습니다.
 
-같은 버전을 [Windows·macOS 미리보기 릴리스](https://github.com/KHLEE72/pokeTokenShimeji/releases/tag/v1.2.0-preview.5)로 게시했습니다. 태그는 `030d0304118ef46323a6a36502e582622f089d7c`이며 앱 코드는 유지하고 배율 검사의 오래된 10px 고정 기대값을 현재 말풍선의 9/10px 반응형 규칙에 맞췄습니다. Windows portable을 별도 출력 폴더에서 새로 빌드해 현재 `out/` 594개와 네이티브 보조 프로그램을 대조하고 실제 EXE의 숨김 시작 포함 실행 검사 15항목을 통과했습니다. 같은 태그의 Windows CI도 통과했습니다.
+같은 버전을 [Windows·macOS 미리보기 릴리스](https://github.com/KHLEE72/pokeTokenDesktop/releases/tag/v1.2.0-preview.5)로 게시했습니다. 태그는 `030d0304118ef46323a6a36502e582622f089d7c`이며 앱 코드는 유지하고 배율 검사의 오래된 10px 고정 기대값을 현재 말풍선의 9/10px 반응형 규칙에 맞췄습니다. Windows portable을 별도 출력 폴더에서 새로 빌드해 현재 `out/` 594개와 네이티브 보조 프로그램을 대조하고 실제 EXE의 숨김 시작 포함 실행 검사 15항목을 통과했습니다. 같은 태그의 Windows CI도 통과했습니다.
 
-Mac은 [Apple Silicon](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/39723330365/job/119641557509)과 [Intel](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/39723260068/job/119641329400) 각각 네이티브 Mac 러너에서 의존성 설치·단위/통합 테스트·DMG 빌드·ad-hoc 서명 검증과 패키지 실행 검사 14묶음을 통과했습니다. 이 검사는 Mac 러너에서 앱을 실제 실행한 결과이며 일반 사용자 Mac에서의 장시간 사용·물리 멀티 모니터 검증과 Apple 공증을 뜻하지 않습니다. 세 실행 파일의 GitHub SHA-256/크기를 로컬 Windows 파일 및 Mac 빌드 기록과 대조했습니다. 릴리스에는 Windows portable EXE 1개·Mac DMG 2개만 첨부하고, 해시·소스 커밋·검증 범위는 본문에 기록하며 상세 빌드 정보는 로컬에 보관합니다.
+Mac은 [Apple Silicon](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/39723330365/job/119641557509)과 [Intel](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/39723260068/job/119641329400) 각각 네이티브 Mac 러너에서 의존성 설치·단위/통합 테스트·DMG 빌드·ad-hoc 서명 검증과 패키지 실행 검사 14묶음을 통과했습니다. 이 검사는 Mac 러너에서 앱을 실제 실행한 결과이며 일반 사용자 Mac에서의 장시간 사용·물리 멀티 모니터 검증과 Apple 공증을 뜻하지 않습니다. 세 실행 파일의 GitHub SHA-256/크기를 로컬 Windows 파일 및 Mac 빌드 기록과 대조했습니다. 릴리스에는 Windows portable EXE 1개·Mac DMG 2개만 첨부하고, 해시·소스 커밋·검증 범위는 본문에 기록하며 상세 빌드 정보는 로컬에 보관합니다.
 
 ## v1.2.0-preview.4 정지 이미지의 2D 애니메이션 교체 (2026-10-22)
 
@@ -292,7 +298,7 @@ Windows x64의 실제 파일 크기 비교입니다. MB는 10진 기준이며, �
 
 실행 자료는 로컬 `artifacts/i18n-smoke-native.json`, `artifacts/i18n-smoke-1.5.json`, `artifacts/i18n-*.png`, `artifacts/rewards-report*.json`, `artifacts/dashboard-report.json`, `artifacts/evolution-report.json`, `artifacts/portable-report.json`에 보관합니다. 기존 관리 화면 테스트의 알 선택 검사는 비동기 저장 완료를 기다리도록 보완했습니다. 강제 배율 검사와 실제 모니터 배율 변경은 구분합니다. 실제 사용자 저장 데이터는 테스트에 사용하지 않았습니다.
 
-Windows 파일은 `release/PokeToken-Desktop-0.4.12-win-x64.exe`이며 SHA-256은 `743e5d1557346038feb4ee3f3314e50c8e9a6dcefda9902df5b434d37696cd9e`입니다. 빌드 정보는 `release/build-info-0.4.12.json`에 보관합니다. [v0.4.12 Windows 릴리스](https://github.com/KHLEE72/pokeTokenShimeji/releases/tag/v0.4.12)에 EXE·해시·빌드 정보를 게시하고 업로드 파일 3개의 크기와 SHA-256이 로컬 파일과 일치함을 확인했습니다. 태그는 빌드 소스 `e8e4a7ebdca989ef37aa1c0a9f078c133c977659`를 가리킵니다. macOS 0.4.12 패키징·실행 검사는 수행하지 않았으며 기존 v0.4.9 릴리스는 유지합니다.
+Windows 파일은 `release/PokeToken-Desktop-0.4.12-win-x64.exe`이며 SHA-256은 `743e5d1557346038feb4ee3f3314e50c8e9a6dcefda9902df5b434d37696cd9e`입니다. 빌드 정보는 `release/build-info-0.4.12.json`에 보관합니다. [v0.4.12 Windows 릴리스](https://github.com/KHLEE72/pokeTokenDesktop/releases/tag/v0.4.12)에 EXE·해시·빌드 정보를 게시하고 업로드 파일 3개의 크기와 SHA-256이 로컬 파일과 일치함을 확인했습니다. 태그는 빌드 소스 `e8e4a7ebdca989ef37aa1c0a9f078c133c977659`를 가리킵니다. macOS 0.4.12 패키징·실행 검사는 수행하지 않았으며 기존 v0.4.9 릴리스는 유지합니다.
 
 ## v0.4.11 볼 윤곽·디테일 개선 (2026-10-15)
 
@@ -345,7 +351,7 @@ Windows 실행 파일은 `release/PokeToken-Desktop-0.4.10-win-x64.exe`이며 SH
 | Mac x64 | macOS 15.7.9 Intel 네이티브 러너에서 단위·통합 133개, DMG 생성·ad-hoc 서명 확인 및 아래 패키지 실행 검사 통과 |
 | 두 Mac 패키지 각각 | 성장·저장·재시작 9항목, 펫 8항목, 창 위 동작 9항목, 네이티브 DPI/크기 6조건·72회 이동, 입력/창 순서 복구 5항목, 도감·사탕 6항목, 업적·볼·테마 6항목, 이브이 분기 7항목, 홈·도감·설정 8항목, 입력 진단 7항목, 모의 세션 복귀 4항목 통과 |
 
-[Mac CI 38658367180](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/38658367180)는 두 아키텍처 모두 성공했습니다. 앞선 실행은 패키징·실행 검사 후 Actions 아티팩트 저장 용량 제한으로 업로드만 실패했습니다. 이번 실행은 검증된 DMG와 빌드 정보를 기존 릴리스 초안에 직접 첨부하고 GitHub의 SHA-256과 비교합니다. 지정한 초안·버전·태그 커밋이 빌드와 일치해야 첨부하며 기존의 다른 파일을 덮어쓰지 않습니다.
+[Mac CI 38658367180](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/38658367180)는 두 아키텍처 모두 성공했습니다. 앞선 실행은 패키징·실행 검사 후 Actions 아티팩트 저장 용량 제한으로 업로드만 실패했습니다. 이번 실행은 검증된 DMG와 빌드 정보를 기존 릴리스 초안에 직접 첨부하고 GitHub의 SHA-256과 비교합니다. 지정한 초안·버전·태그 커밋이 빌드와 일치해야 첨부하며 기존의 다른 파일을 덮어쓰지 않습니다.
 
 Mac 검증은 실제 macOS CI 러너에서 패키지 앱을 실행한 결과입니다. 사용자 Mac에서의 장시간 사용, 물리적인 듀얼 모니터·분리·절전 및 실제 잠금 화면 전환 검증과 구분합니다. Mac은 macOS 14 이상이 대상이며 Apple 개발자 인증·공증은 포함하지 않습니다. 자동 잠금·복귀 검사는 모의 이벤트입니다.
 
@@ -393,7 +399,7 @@ Windows SDK가 없는 로컬 환경에서 better-sqlite3 13.0.3의 동봉 Node-A
 | Windows 세션 복구 | 기존 6항목 통과. 실패한 창의 입력 복구·상태 보존·수동 트레이 복구·포커스·숨김·종료 확인. 잠금/복귀는 모의 이벤트 검사이며 실제 잠금 확인과 구분 |
 | Apple Silicon Mac | macOS 14.8.9에서 DMG 생성·서명 확인, 성장 9항목·펫 8항목·창 위 동작 9항목·회복 5항목·도감/사탕 6항목·UI 8항목·입력 7항목·세션 4항목·네이티브 DPI 6조건/72회 이동 통과 |
 
-두 최종 패키지의 소스는 `f7b5e0962f4217dc90f7dda832ee2efc9bf65fbc`입니다. [Mac CI 37730949097](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37730949097)는 실제 macOS 러너에서 패키지 앱을 실행한 결과이며 사용자 Mac 실기에서의 장시간 검증과 구분합니다. GitHub ZIP 해시·DMG 해시·arm64 아키텍처·소스 커밋을 확인했습니다. 보고서·화면·메타데이터는 로컬 `artifacts/evolution-report.json`, `artifacts/eevee-*.png`, `artifacts/eevee-metadata.json`, `artifacts/mac-arm64-37730949097`에 보관하며 Git에는 포함하지 않습니다.
+두 최종 패키지의 소스는 `f7b5e0962f4217dc90f7dda832ee2efc9bf65fbc`입니다. [Mac CI 37730949097](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/37730949097)는 실제 macOS 러너에서 패키지 앱을 실행한 결과이며 사용자 Mac 실기에서의 장시간 검증과 구분합니다. GitHub ZIP 해시·DMG 해시·arm64 아키텍처·소스 커밋을 확인했습니다. 보고서·화면·메타데이터는 로컬 `artifacts/evolution-report.json`, `artifacts/eevee-*.png`, `artifacts/eevee-metadata.json`, `artifacts/mac-arm64-37730949097`에 보관하며 Git에는 포함하지 않습니다.
 
 - Windows portable SHA-256: `2ddd56f4840775e605145287651602f1af6bf2eef7855b5283458ea3c47784e9`
 - Mac arm64 DMG SHA-256: `c189a5f70e2517592ce532b5be707b1a8539380d3c686a767bf9f5aa82cb02a5`
@@ -416,7 +422,7 @@ Windows SDK가 없는 로컬 환경에서 better-sqlite3 13.0.3의 동봉 Node-A
 
 Windows 패키지 소스는 `cb6e3ee98f338d0f79171ba317b6e77e4fcd28ea`, Mac은 `5c9b7d2d1d9fe0c757cf612cd003223b7c39859d`입니다. 두 커밋의 앱 코드는 같고 이후 변경은 접힌 알 요약에 맞춘 실행 검사, 첫 입력 전 실제 창 표시/클릭 통과 해제를 기다리는 준비 조건과 검증 문서입니다. 입력 검사 종료 시 진단 로그를 테스트 자료에 남깁니다. 검증 화면과 보고서는 로컬 `artifacts/dashboard-*.png`, `artifacts/dashboard-report.json`, `artifacts/mac-arm64-37722028314`에 보관하고 Git에는 포함하지 않습니다.
 
-[Mac CI 37722028314](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37722028314)는 실제 macOS 러너에서 패키지 앱을 실행한 결과이며 사용자 Mac 실기에서의 장시간 검증과 구분합니다. 다운로드 ZIP의 GitHub 아티팩트 해시, DMG 해시·arm64 아키텍처·소스 커밋을 확인했습니다.
+[Mac CI 37722028314](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/37722028314)는 실제 macOS 러너에서 패키지 앱을 실행한 결과이며 사용자 Mac 실기에서의 장시간 검증과 구분합니다. 다운로드 ZIP의 GitHub 아티팩트 해시, DMG 해시·arm64 아키텍처·소스 커밋을 확인했습니다.
 
 - Windows portable SHA-256: `3e8ca037e8f05024184c9f7f0458081fc03accbfef6d11e99bf7a3a2404b161a`
 - Mac arm64 DMG SHA-256: `bad32eca9462bad9ca6dcc937cbd5313a300ab85fd05a74fa70090ec8ee8038d`
@@ -436,7 +442,7 @@ Windows 패키지 소스는 `cb6e3ee98f338d0f79171ba317b6e77e4fcd28ea`, Mac은 `
 | Apple Silicon Mac 패키지 | macOS 14.8.9 CI에서 105개 테스트, DMG 생성·서명 확인·성장·펫·창 위 동작·DPI·회복·도감·UI·입력 진단 및 세션 상태 보존 4항목 통과 |
 | 실제 Windows 잠금·해제 | 사용자가 0.4.6으로 직접 잠금·해제 후 클릭·잡기 정상 동작을 확인. 11:49:34 복귀 → 11:49:35 새 창/세대 2 준비 → 누름·핸들러·잡기 시작 3회, 놓기 2회·쓰다듬기 1회가 로그로 연결됨. 포커스 획득·캡처 오류·복구 실패 없음 |
 
-패키지 소스는 `564a49207c149ea2bc4c9cd91d89c71f80d1f136`입니다. 이후 커밋은 테스트의 비동기 로그 대기와 검증 문서를 수정하며 앱 코드는 동일합니다. [Mac CI 37718951586](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37718951586)의 실행은 사용자 Mac에서의 실기 검증과 구분합니다.
+패키지 소스는 `564a49207c149ea2bc4c9cd91d89c71f80d1f136`입니다. 이후 커밋은 테스트의 비동기 로그 대기와 검증 문서를 수정하며 앱 코드는 동일합니다. [Mac CI 37718951586](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/37718951586)의 실행은 사용자 Mac에서의 실기 검증과 구분합니다.
 
 - Windows portable SHA-256: `17a665aa9833f3dab435202b3ff24d5d47d975a22712ea7fa1a95cf63ccdff78`
 - Mac arm64 DMG SHA-256: `6f7a716efcb15df43fea183316e5390c70bfa9fb8effab2e64dff6dc199f418b`
@@ -461,7 +467,7 @@ Windows 패키지 소스는 `cb6e3ee98f338d0f79171ba317b6e77e4fcd28ea`, Mac은 `
 | Windows 패키지 | 입력 진단 7항목·창 위 동작 9항목·회복 5항목 통과, native/125%/150% DPI·크기·모니터 36조건/432회 이동 통과, 실제 portable 실행 파일 7항목 통과 |
 | Apple Silicon Mac 패키지 | macOS 14.8.9 CI에서 99개 테스트·DMG 생성·서명 확인·패키지 실행 검사 모두 통과. 새 입력 진단 7항목, 도감/사탕 6항목 및 기존 성장·펫·창 위 동작·DPI·회복 검사 통과 |
 
-두 패키지의 소스는 `149fdf7a2d7bb4d0237ac1f0d80e4cc18d97e4d7`입니다. Mac 실행 검증은 [CI 실행 37585372222](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37585372222)의 환경에서 수행했으며 사용자 Mac 실기에서의 장시간 검증과 구분합니다. 테스트와 다운로드 자료는 로컬 `artifacts/mac-arm64-37585372222`에 보관합니다.
+두 패키지의 소스는 `149fdf7a2d7bb4d0237ac1f0d80e4cc18d97e4d7`입니다. Mac 실행 검증은 [CI 실행 37585372222](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/37585372222)의 환경에서 수행했으며 사용자 Mac 실기에서의 장시간 검증과 구분합니다. 테스트와 다운로드 자료는 로컬 `artifacts/mac-arm64-37585372222`에 보관합니다.
 
 - Windows portable SHA-256: `3382b4b39113b15abef1413a2681e01d0b087c67dbaca442ec6f149b8377b0a8`
 - Mac arm64 DMG SHA-256: `5d2d7be36d7a6ad78973bd4d8d212bda24bc9065519bec4c77d4b6b9df9be6ae`
@@ -489,7 +495,7 @@ Windows 패키지 소스는 `cb6e3ee98f338d0f79171ba317b6e77e4fcd28ea`, Mac은 `
 
 기존 게임 값은 `game`에 복구용으로 남기고 새 상태는 `game-v2`에 저장합니다. 사용량 반영 기준과 원장을 공유하여 과거 사용량을 다시 경험치나 사탕으로 지급하지 않습니다. 선택 변경 전에 새 파일까지 스캔해 이미 발생한 사용량을 이전 선택에 먼저 반영합니다. 사탕 소비·선택 변경·새 상태 저장은 SQLite 트랜잭션으로 처리합니다.
 
-Windows 패키지 소스는 `571f764f6cdb1048ea5e5d9d53344ae3b4f3d6a4`, Mac은 `ab7736aed249181b9c7fe0a7788956c93193cebf`입니다. 두 버전의 앱 코드는 동일하며 차이는 성장과 수동 선택을 구분하는 시각 테스트 데이터입니다. 이후 `1ecdc50`은 Windows에서 검증한 사탕 진화 연출 검사를 추가했습니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37575946495) 및 보고서·화면은 `artifacts/mac-arm64-37575946495/`에 보관합니다. 이는 물리 Mac·장시간 방치·혼합 배율 실기 확인을 대신하지 않습니다.
+Windows 패키지 소스는 `571f764f6cdb1048ea5e5d9d53344ae3b4f3d6a4`, Mac은 `ab7736aed249181b9c7fe0a7788956c93193cebf`입니다. 두 버전의 앱 코드는 동일하며 차이는 성장과 수동 선택을 구분하는 시각 테스트 데이터입니다. 이후 `1ecdc50`은 Windows에서 검증한 사탕 진화 연출 검사를 추가했습니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/37575946495) 및 보고서·화면은 `artifacts/mac-arm64-37575946495/`에 보관합니다. 이는 물리 Mac·장시간 방치·혼합 배율 실기 확인을 대신하지 않습니다.
 
 | v0.4.0 전달 파일 | SHA-256 |
 | --- | --- |
@@ -515,7 +521,7 @@ Mac ZIP은 GitHub 아티팩트 해시와, DMG는 빌드에서 생성한 해시�
 | Windows portable EXE 직접 실행 | `smoke:portable` 7개 검사 통과; 추출·preload·SQLite·부화·이미지·투명도·즉시 잡기·쓰다듬기 확인 |
 | Mac arm64 패키지 | 네이티브 DMG 생성·ad-hoc 서명 검증 통과; 네이티브 배율에서 6개 크기/화면 사례·72회 DOM 드래그 통과 |
 
-패키지 소스는 `4d98e7d2ee3227b9c9e30b9703454cab535aa9c5`입니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/37558488030)은 성공했습니다. Mac 보고서·화면은 `artifacts/mac-arm64-37558488030/`, Windows 복구 보고서는 `artifacts/health-report.json`, Codex 순서 확인은 `artifacts/codex-order-report.json`에 저장합니다. 네이티브 검사는 창 식별자·순서·입력 플래그만 읽으며 창 제목·본문·다른 앱의 화면은 수집하지 않습니다.
+패키지 소스는 `4d98e7d2ee3227b9c9e30b9703454cab535aa9c5`입니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/37558488030)은 성공했습니다. Mac 보고서·화면은 `artifacts/mac-arm64-37558488030/`, Windows 복구 보고서는 `artifacts/health-report.json`, Codex 순서 확인은 `artifacts/codex-order-report.json`에 저장합니다. 네이티브 검사는 창 식별자·순서·입력 플래그만 읽으며 창 제목·본문·다른 앱의 화면은 수집하지 않습니다.
 
 입력 상태 변경을 주입한 반복 검사와 시계 변경 검사는 수시간 실제 방치 후 자연 재현을 대신하지 않습니다. 물리 모니터·실제 마우스·장시간 사용에서 재발하는지는 추가 확인이 필요합니다. 기존 성장·도감·설정 저장 경로는 유지합니다.
 
@@ -543,7 +549,7 @@ Windows는 펫의 HWND만 제외하고 일반 제목 표시줄·크기 변경 �
 
 Windows 125%·150% 검사는 앱과 외부 테스트 창 프로세스에만 배율을 지정한 결과입니다. OS 전체 배율 설정이나 사용자의 커서를 변경하지 않았습니다. 자체 제목 표시줄 창과 관리 화면 검사는 별도 임시 데이터로 실제 네이티브 창을 감지하며, 포인터 자동화의 범위는 아래 설명과 같습니다. 이전 검사는 일반 외부 창만 포함했으므로 이 두 사례를 추가했습니다. 보고서는 `artifacts/window-motion-report.json`, `artifacts/window-motion-report-1.25.json`, `artifacts/window-motion-report-1.5.json`에 저장합니다.
 
-패키지 소스는 `39f08a0a756f88724d4d0380d1cd51571dff71d2`입니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/36971050904)과 내려받은 보고서·화면은 `artifacts/mac-arm64-36971050904/`에 보관합니다. 물리 Mac 및 Windows 혼합 배율의 실기 확인 범위는 아래 남은 항목과 같습니다.
+패키지 소스는 `39f08a0a756f88724d4d0380d1cd51571dff71d2`입니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/36971050904)과 내려받은 보고서·화면은 `artifacts/mac-arm64-36971050904/`에 보관합니다. 물리 Mac 및 Windows 혼합 배율의 실기 확인 범위는 아래 남은 항목과 같습니다.
 
 | v0.3.2 전달 파일 | SHA-256 |
 | --- | --- |
@@ -570,7 +576,7 @@ Mac 전달 아티팩트 ZIP의 SHA-256은 GitHub 아티팩트 메타데이터와
 
 Windows 배율 검사는 실제 연결된 1920×1080 모니터 2대를 사용하고, 앱 프로세스에만 `--force-device-scale-factor=1.25`/`1.5`를 지정합니다. Windows 전체 화면 설정과 사용자 커서는 변경하지 않습니다. 각 크기 96/128/192 DIP로 모니터를 왕복하면서 네이티브 콘텐츠 창 크기·바닥 위치·말풍선 비율과 관리 화면 확대의 영향을 확인합니다. 보고서와 캡처는 `artifacts/dpi-report.json`, `artifacts/pet-dpi-*.png`, `artifacts/pet-petted.png`에 저장합니다. 서로 다른 배율·해상도 조합은 고정 모니터 좌표를 사용하는 단위 테스트로 검증하며, 실제 125%+150% 혼합 설정의 물리 모니터 확인은 남아 있습니다.
 
-최종 Windows·Mac 패키지의 소스는 `fc99bdc64c83d93dc2386f9d4e4ced6a9317513d`입니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/36969226341)에서 네이티브 arm64 의존성·Swift 보조 프로그램·DMG를 만들고, 60개 테스트와 `codesign --verify --deep --strict`, 실제 패키지 앱의 성장·저장 9개 검사, 펫 상호작용 8개, 창 동작 7개, 배율/크기 6개 사례를 통과했습니다. 러너는 macOS 14.8.9 (23J631)이며 가상 화면 배율은 100%입니다. 물리 Mac Retina·Spaces·혼합 배율 확인을 대신하지 않습니다. Mac 보고서·캡처는 `artifacts/mac-arm64-36969226341/`에 보관합니다.
+최종 Windows·Mac 패키지의 소스는 `fc99bdc64c83d93dc2386f9d4e4ced6a9317513d`입니다. [Mac 실행 기록](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/36969226341)에서 네이티브 arm64 의존성·Swift 보조 프로그램·DMG를 만들고, 60개 테스트와 `codesign --verify --deep --strict`, 실제 패키지 앱의 성장·저장 9개 검사, 펫 상호작용 8개, 창 동작 7개, 배율/크기 6개 사례를 통과했습니다. 러너는 macOS 14.8.9 (23J631)이며 가상 화면 배율은 100%입니다. 물리 Mac Retina·Spaces·혼합 배율 확인을 대신하지 않습니다. Mac 보고서·캡처는 `artifacts/mac-arm64-36969226341/`에 보관합니다.
 
 전달 파일은 로컬 `release/PokeToken-Desktop-0.3.1-win-x64.exe`, `release/PokeToken-Desktop-0.3.1-mac-arm64.dmg`입니다. ZIP은 GitHub 아티팩트 해시와, DMG는 Mac 빌드에서 생성한 SHA-256과 각각 일치함을 확인했습니다. 저장 경로를 유지하므로 기존 성장·도감·설정은 그대로 사용합니다.
 
@@ -619,7 +625,7 @@ Mac 아티팩트 ZIP은 GitHub의 아티팩트 SHA-256과, 추출한 DMG는 빌�
 
 ## Apple Silicon Mac 패키지
 
-[Mac 빌드 실행 기록](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/36966692638): 소스 커밋 `9ac0f517186ccf0d2e4d0da58bf9a6dc1e76875e`, 네이티브 `darwin arm64`, macOS 14.8.9 (23J631). Windows에서 교차 빌드한 파일이 아니라 Mac 러너에서 의존성을 설치하고 패키징한 결과입니다.
+[Mac 빌드 실행 기록](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/36966692638): 소스 커밋 `9ac0f517186ccf0d2e4d0da58bf9a6dc1e76875e`, 네이티브 `darwin arm64`, macOS 14.8.9 (23J631). Windows에서 교차 빌드한 파일이 아니라 Mac 러너에서 의존성을 설치하고 패키징한 결과입니다.
 
 | 항목 | 결과 |
 | --- | --- |

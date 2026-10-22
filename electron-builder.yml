@@ -42,7 +42,7 @@ mac:
   publish:
     provider: github
     owner: KHLEE72
-    repo: pokeTokenShimeji
+    repo: pokeTokenDesktop
     releaseType: draft
     publishAutoUpdate: false
   files:
@@ -79,5 +79,5 @@ nsis:
 publish:
   provider: github
   owner: KHLEE72
-  repo: pokeTokenShimeji
+  repo: pokeTokenDesktop
   releaseType: draft

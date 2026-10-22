@@ -7,8 +7,8 @@ Electron + TypeScript + React로 만드는 Windows/macOS 데스크톱 펫입니�
 Node.js 22.12 이상과 npm을 준비합니다.
 
 ```sh
-git clone https://github.com/KHLEE72/pokeTokenShimeji.git
-cd pokeTokenShimeji
+git clone https://github.com/KHLEE72/pokeTokenDesktop.git
+cd pokeTokenDesktop
 npm ci
 npm run dev
 ```
