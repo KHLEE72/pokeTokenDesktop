@@ -121,6 +121,6 @@ npm run dist:mac:arm64
 
 ## 문서와 이미지
 
-[README](../README.md)의 화면은 개인 데이터와 분리한 예시 저장 상태로 촬영했습니다. `docs/images/`의 PNG는 실제 앱 화면과 앱 아이콘이며, 네 개의 포켓몬 GIF는 앱이 사용하는 [PokeAPI/sprites](https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon/versions/generation-v/black-white/animated)에서 받은 원본입니다. 이미지를 바꿀 때 로그 경로·개인 사용량·대화 내용이 포함되지 않는지 확인하세요.
+[영문 README](../README.md)와 [한국어 README](../README.ko.md)는 상단 언어 버튼으로 연결하며, 기능과 다운로드 안내를 함께 갱신합니다. 화면은 개인 데이터와 분리한 예시 저장 상태로 언어별 촬영했습니다. `docs/images/`의 PNG는 실제 앱 화면과 앱 아이콘이며, 네 개의 포켓몬 GIF는 앱이 사용하는 [PokeAPI/sprites](https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon/versions/generation-v/black-white/animated)에서 받은 원본입니다. 이미지를 바꿀 때 로그 경로·개인 사용량·대화 내용이 포함되지 않는지 확인하세요.
 
 [작업 안내](../AGENTS.md) · [검증 기록](VALIDATION.md) · [서드파티 고지](../THIRD_PARTY_NOTICES.md)
