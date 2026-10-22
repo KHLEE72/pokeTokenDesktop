@@ -4,14 +4,17 @@ import { LEAGUE_SERIES, LEAGUE_GOALS, LEAGUE_BY_ID, LeagueDisplay, LeagueGoal, l
 import { pokemonName, pokemonMatches } from '../../shared/i18n'
 import { useI18n } from './i18n'
 import { Sprite } from './sprites'
+import badgeArt from '../../shared/badge-art-catalog.json'
 import './league.css'
 
 const colors:Record<string,string>={rock:'#aa9074',water:'#57aee1',electric:'#f5c64c',grass:'#6fba71',poison:'#b879c8',psychic:'#f18aaa',fire:'#ed8b53',ground:'#d4ad62',flying:'#a9b8e8',bug:'#a7bd5e',normal:'#c6bca5',ghost:'#9b8bd1',fighting:'#d56b62',steel:'#a9bac8',ice:'#79cdd7',dragon:'#7d94df',dark:'#817689',fairy:'#e9a4c8'}
-const symbols:Record<string,string>={rock:'M23 15 42 18 50 34 38 49 19 43 14 28Z',water:'M32 9C27 20 16 29 16 39a16 16 0 0 0 32 0C48 29 37 20 32 9Z',electric:'M35 9 17 35H29L25 55 48 26H35Z',grass:'M49 13C28 11 13 22 16 38c4 15 23 16 29 1 4-9 2-17 4-26ZM19 43 40 23',poison:'M32 13C19 13 12 22 15 34c2 6 8 7 8 14h18c0-7 7-8 8-14 3-12-4-21-17-21Z',psychic:'M32 32c-8-12-21-2-14 9s31 10 31-10S22 4 15 21',fire:'M33 8C38 23 50 26 49 39c-1 20-34 22-35 0-1-9 6-13 7-22 3 6 6 9 8 8 1-4 4-11 4-17Z',ground:'M10 46 24 18 33 35 42 24 54 46Z',flying:'M12 39 49 13 46 29 26 43 18 47 22 32M29 31 45 25',bug:'M32 20c-18-17-28 12-8 25h16c20-13 10-42-8-25ZM32 20V48M24 10 28 18M40 10 36 18',normal:'M17 18H47V46H17ZM25 26H39V38H25Z',ghost:'M16 49V28a16 16 0 0 1 32 0v21l-8-5-8 5-8-5ZM25 27V34M39 27V34',fighting:'M18 42V26h8V16h8v10h8v-6h7v22L38 50H27Z',steel:'M20 12H44L55 32 44 52H20L9 32ZM24 24H40V40H24Z',ice:'M32 8V56M11 20 53 44M11 44 53 20M25 13 32 20 39 13M25 51 32 44 39 51',dragon:'M15 48 19 30 32 13 48 17 41 29 50 39 36 48 26 40 20 51ZM33 23 37 24',dark:'M42 12A23 23 0 1 0 51 43 21 21 0 0 1 42 12Z',fairy:'M32 9 37 25 53 31 37 37 32 54 26 37 10 31 26 25Z'}
+const badgeGoals:Record<string,string>=badgeArt.goals
+const badgeImages:Record<string,{pixel:boolean}>=badgeArt.assets
 export function LeagueIcon({goal,locked=false}:{goal:LeagueGoal;locked?:boolean}):React.JSX.Element {
   const color=colors[goal.type]??'#cfaa5c'
   if(goal.kind==='title')return <svg viewBox="0 0 64 64" className={`league-icon ${locked?'locked':''}`} aria-hidden="true"><path d="M10 21 23 31 32 13 41 31 54 21 48 48H16Z" fill="#e7ba5b" stroke="#795e38" strokeWidth="2"/><path d="M20 48H44V54H20Z" fill="#b8863f"/><path d="M27 35 32 28 37 35 32 42Z" fill={color}/><path d="M15 20 24 33M33 18 38 31" stroke="#fff5cf" strokeWidth="3"/></svg>
-  return <svg viewBox="0 0 64 64" className={`league-icon ${locked?'locked':''}`} aria-hidden="true"><path d="M22 4H42L59 22V42L42 59H22L5 42V22Z" fill="#d8dfe3" stroke="#6e818f" strokeWidth="2"/><path d="M23 9H41L54 23V41L41 54H23L10 41V23Z" fill={color}/><path d={symbols[goal.type]??symbols.normal} fill={['ice','psychic'].includes(goal.type)?'none':'#fff5d9'} stroke="#fff5d9" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round"/><path d="M16 19 25 12H37" fill="none" stroke="#fff" opacity=".6" strokeWidth="3"/><path d="M50 44 41 53H26" fill="none" stroke="#40546d" opacity=".2" strokeWidth="3"/></svg>
+  const art=badgeGoals[goal.id]
+  return <img className={`league-icon badge-icon ${locked?'locked':''}`} src={`./badges/${art}.png`} data-badge-art={art} style={{imageRendering:badgeImages[art]?.pixel?'pixelated':'auto'}} alt="" aria-hidden="true" draggable={false}/>
 }
 export function HomeHonors({snapshot,open,location='home'}:{snapshot:Snapshot;open:()=>void;location?:'home'|'sidebar'}):React.JSX.Element|null {
   const {language,t}=useI18n(),state=snapshot.league??newLeague(),title=state.title?LEAGUE_BY_ID.get(state.title):undefined

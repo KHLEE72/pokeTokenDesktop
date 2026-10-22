@@ -33,6 +33,12 @@ module.exports = function verifyPackage(context) {
   }
   const credit = 'out/renderer/licenses/EBDX-sprite-credits.txt'
   if (!asar.extractFile(archive, normalize(credit)).equals(readFileSync(join(context.packager.projectDir, 'src/renderer/public/licenses/EBDX-sprite-credits.txt')))) throw new Error('Missing or stale EBDX creator credits')
+  const badgeArt = JSON.parse(readFileSync(join(context.packager.projectDir, 'src/shared/badge-art-catalog.json'), 'utf8'))
+  for (const [id, badge] of Object.entries(badgeArt.assets)) {
+    const bytes = asar.extractFile(archive, normalize(`out/renderer/badges/${id}.png`))
+    if (createHash('sha256').update(bytes).digest('hex') !== badge.sha256) throw new Error(`Missing or stale badge art: ${id}`)
+  }
+  if (!asar.extractFile(archive, normalize('out/renderer/licenses/Badge-art-credits.txt')).length) throw new Error('Missing badge artwork attribution')
   if (platform === 'win32') {
     if(!readFileSync(join(resources,'native','portable-update.ps1')).equals(readFileSync(join(context.packager.projectDir,'native','portable-update.ps1'))))throw new Error('Missing or stale portable update helper')
     const locales = readdirSync(join(context.appOutDir, 'locales')).filter(name => name.endsWith('.pak')).sort()

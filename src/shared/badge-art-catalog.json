@@ -1,0 +1,2641 @@
+{
+  "goals": {
+    "rgb-boulder": "rgb-boulder",
+    "rgb-cascade": "rgb-cascade",
+    "rgb-thunder": "rgb-thunder",
+    "rgb-rainbow": "rgb-rainbow",
+    "rgb-soul": "rgb-soul",
+    "rgb-marsh": "rgb-marsh",
+    "rgb-volcano": "rgb-volcano",
+    "rgb-earth": "rgb-earth",
+    "yellow-boulder": "yellow-boulder",
+    "yellow-cascade": "yellow-cascade",
+    "yellow-thunder": "yellow-thunder",
+    "yellow-rainbow": "yellow-rainbow",
+    "yellow-soul": "yellow-soul",
+    "yellow-marsh": "yellow-marsh",
+    "yellow-volcano": "yellow-volcano",
+    "yellow-earth": "yellow-earth",
+    "gs-zephyr": "gsc-zephyr",
+    "gs-hive": "gsc-hive",
+    "gs-plain": "gsc-plain",
+    "gs-fog": "gsc-fog",
+    "gs-storm": "gsc-storm",
+    "gs-mineral": "gsc-mineral",
+    "gs-glacier": "gsc-glacier",
+    "gs-rising": "gsc-rising",
+    "gs-thunder": "hgss-thunder",
+    "gs-marsh": "hgss-marsh",
+    "gs-rainbow": "hgss-rainbow",
+    "gs-soul": "hgss-soul",
+    "gs-cascade": "hgss-cascade",
+    "gs-boulder": "hgss-boulder",
+    "gs-volcano": "hgss-volcano",
+    "gs-earth": "hgss-earth",
+    "crystal-zephyr": "gsc-zephyr",
+    "crystal-hive": "gsc-hive",
+    "crystal-plain": "gsc-plain",
+    "crystal-fog": "gsc-fog",
+    "crystal-storm": "gsc-storm",
+    "crystal-mineral": "gsc-mineral",
+    "crystal-glacier": "gsc-glacier",
+    "crystal-rising": "gsc-rising",
+    "crystal-thunder": "hgss-thunder",
+    "crystal-marsh": "hgss-marsh",
+    "crystal-rainbow": "hgss-rainbow",
+    "crystal-soul": "hgss-soul",
+    "crystal-cascade": "hgss-cascade",
+    "crystal-boulder": "hgss-boulder",
+    "crystal-volcano": "hgss-volcano",
+    "crystal-earth": "hgss-earth",
+    "rs-stone": "rs-stone",
+    "rs-knuckle": "rs-knuckle",
+    "rs-dynamo": "rs-dynamo",
+    "rs-heat": "rs-heat",
+    "rs-balance": "rs-balance",
+    "rs-feather": "rs-feather",
+    "rs-mind": "rs-mind",
+    "rs-rain": "rs-rain",
+    "emerald-stone": "emerald-stone",
+    "emerald-knuckle": "emerald-knuckle",
+    "emerald-dynamo": "emerald-dynamo",
+    "emerald-heat": "emerald-heat",
+    "emerald-balance": "emerald-balance",
+    "emerald-feather": "emerald-feather",
+    "emerald-mind": "emerald-mind",
+    "emerald-rain": "emerald-rain",
+    "frlg-boulder": "frlg-boulder",
+    "frlg-cascade": "frlg-cascade",
+    "frlg-thunder": "frlg-thunder",
+    "frlg-rainbow": "frlg-rainbow",
+    "frlg-soul": "frlg-soul",
+    "frlg-marsh": "frlg-marsh",
+    "frlg-volcano": "frlg-volcano",
+    "frlg-earth": "frlg-earth",
+    "dp-coal": "sinnoh-coal",
+    "dp-forest": "sinnoh-forest",
+    "dp-cobble": "sinnoh-cobble",
+    "dp-fen": "sinnoh-fen",
+    "dp-relic": "sinnoh-relic",
+    "dp-mine": "sinnoh-mine",
+    "dp-icicle": "sinnoh-icicle",
+    "dp-beacon": "sinnoh-beacon",
+    "pt-coal": "sinnoh-coal",
+    "pt-forest": "sinnoh-forest",
+    "pt-cobble": "sinnoh-cobble",
+    "pt-fen": "sinnoh-fen",
+    "pt-relic": "sinnoh-relic",
+    "pt-mine": "sinnoh-mine",
+    "pt-icicle": "sinnoh-icicle",
+    "pt-beacon": "sinnoh-beacon",
+    "hgss-zephyr": "hgss-zephyr",
+    "hgss-hive": "hgss-hive",
+    "hgss-plain": "hgss-plain",
+    "hgss-fog": "hgss-fog",
+    "hgss-storm": "hgss-storm",
+    "hgss-mineral": "hgss-mineral",
+    "hgss-glacier": "hgss-glacier",
+    "hgss-rising": "hgss-rising",
+    "hgss-boulder": "hgss-boulder",
+    "hgss-cascade": "hgss-cascade",
+    "hgss-thunder": "hgss-thunder",
+    "hgss-rainbow": "hgss-rainbow",
+    "hgss-soul": "hgss-soul",
+    "hgss-marsh": "hgss-marsh",
+    "hgss-volcano": "hgss-volcano",
+    "hgss-earth": "hgss-earth",
+    "bw-trio": "unova-trio",
+    "bw-basic": "unova-basic",
+    "bw-insect": "unova-insect",
+    "bw-bolt": "unova-bolt",
+    "bw-quake": "unova-quake",
+    "bw-jet": "unova-jet",
+    "bw-freeze": "unova-freeze",
+    "bw-legend": "unova-legend",
+    "b2w2-basic": "unova-basic",
+    "b2w2-toxic": "unova-toxic",
+    "b2w2-insect": "unova-insect",
+    "b2w2-bolt": "unova-bolt",
+    "b2w2-quake": "unova-quake",
+    "b2w2-jet": "unova-jet",
+    "b2w2-legend": "unova-legend",
+    "b2w2-wave": "unova-wave",
+    "xy-bug": "xy-bug",
+    "xy-cliff": "xy-cliff",
+    "xy-rumble": "xy-rumble",
+    "xy-plant": "xy-plant",
+    "xy-voltage": "xy-voltage",
+    "xy-fairy": "xy-fairy",
+    "xy-psychic": "xy-psychic",
+    "xy-iceberg": "xy-iceberg",
+    "oras-stone": "oras-stone",
+    "oras-knuckle": "oras-knuckle",
+    "oras-dynamo": "oras-dynamo",
+    "oras-heat": "oras-heat",
+    "oras-balance": "oras-balance",
+    "oras-feather": "oras-feather",
+    "oras-mind": "oras-mind",
+    "oras-rain": "oras-rain",
+    "sm-trial-normal": "alola-normal",
+    "sm-trial-water": "alola-water",
+    "sm-trial-fire": "alola-fire",
+    "sm-trial-grass": "alola-grass",
+    "sm-trial-electric": "alola-electric",
+    "sm-trial-ghost": "alola-ghost",
+    "sm-trial-dragon": "alola-dragon",
+    "sm-grand-fighting": "alola-grand-fighting",
+    "sm-grand-rock": "alola-grand-rock",
+    "sm-grand-dark": "alola-grand-dark",
+    "sm-grand-ground": "alola-grand-ground",
+    "usum-trial-normal": "alola-normal",
+    "usum-trial-water": "alola-water",
+    "usum-trial-fire": "alola-fire",
+    "usum-trial-grass": "alola-grass",
+    "usum-trial-electric": "alola-electric",
+    "usum-trial-ghost": "alola-ghost",
+    "usum-trial-dragon": "alola-dragon",
+    "usum-trial-fairy": "alola-fairy",
+    "usum-grand-fighting": "alola-grand-fighting",
+    "usum-grand-rock": "alola-grand-rock",
+    "usum-grand-dark": "alola-grand-dark",
+    "usum-grand-ground": "alola-grand-ground",
+    "lgpe-boulder": "lgpe-boulder",
+    "lgpe-cascade": "lgpe-cascade",
+    "lgpe-thunder": "lgpe-thunder",
+    "lgpe-rainbow": "lgpe-rainbow",
+    "lgpe-soul": "lgpe-soul",
+    "lgpe-marsh": "lgpe-marsh",
+    "lgpe-volcano": "lgpe-volcano",
+    "lgpe-earth": "lgpe-earth",
+    "sword-grass": "galar-grass",
+    "sword-water": "galar-water",
+    "sword-fire": "galar-fire",
+    "sword-fighting": "galar-fighting",
+    "sword-fairy": "galar-fairy",
+    "sword-rock": "galar-rock",
+    "sword-dark": "galar-dark",
+    "sword-dragon": "galar-dragon",
+    "shield-grass": "galar-grass",
+    "shield-water": "galar-water",
+    "shield-fire": "galar-fire",
+    "shield-ghost": "galar-ghost",
+    "shield-fairy": "galar-fairy",
+    "shield-ice": "galar-ice",
+    "shield-dark": "galar-dark",
+    "shield-dragon": "galar-dragon",
+    "bdsp-coal": "sinnoh-coal",
+    "bdsp-forest": "sinnoh-forest",
+    "bdsp-cobble": "sinnoh-cobble",
+    "bdsp-fen": "sinnoh-fen",
+    "bdsp-relic": "sinnoh-relic",
+    "bdsp-mine": "sinnoh-mine",
+    "bdsp-icicle": "sinnoh-icicle",
+    "bdsp-beacon": "sinnoh-beacon",
+    "sv-bug": "sv-bug",
+    "sv-grass": "sv-grass",
+    "sv-electric": "sv-electric",
+    "sv-water": "sv-water",
+    "sv-normal": "sv-normal",
+    "sv-ghost": "sv-ghost",
+    "sv-psychic": "sv-psychic",
+    "sv-ice": "sv-ice"
+  },
+  "assets": {
+    "rgb-boulder": {
+      "sha256": "dff0b219b864a54fde355b9c0ad5ad64dddd0d650af2f091268ef46402817e2a",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/2/25/RB_Boulder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Boulder_Badge.png",
+          "game": "RB Boulder Badge.png",
+          "timestamp": "2025-01-19T09:39:00Z",
+          "sha256": "dff0b219b864a54fde355b9c0ad5ad64dddd0d650af2f091268ef46402817e2a"
+        }
+      ],
+      "extraction": {}
+    },
+    "rgb-cascade": {
+      "sha256": "f3e72fcc016f058f88df803cc7825171089e17870ffff56634bc3aea4a25e442",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/b/b3/RB_Cascade_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Cascade_Badge.png",
+          "game": "RB Cascade Badge.png",
+          "timestamp": "2025-01-19T09:40:46Z",
+          "sha256": "f3e72fcc016f058f88df803cc7825171089e17870ffff56634bc3aea4a25e442"
+        }
+      ],
+      "extraction": {}
+    },
+    "rgb-thunder": {
+      "sha256": "e42d91e3b8bf4461b1a89efd54d0b3c176037387fa07df3240f5f4cf7a4977ea",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/b/b5/RB_Thunder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Thunder_Badge.png",
+          "game": "RB Thunder Badge.png",
+          "timestamp": "2025-01-19T09:40:52Z",
+          "sha256": "e42d91e3b8bf4461b1a89efd54d0b3c176037387fa07df3240f5f4cf7a4977ea"
+        }
+      ],
+      "extraction": {}
+    },
+    "rgb-rainbow": {
+      "sha256": "db7e57f1d0d151defbebdcaaf5577166643efc28b28982ea5b6e163bed96e62b",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/c/ce/RB_Rainbow_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Rainbow_Badge.png",
+          "game": "RB Rainbow Badge.png",
+          "timestamp": "2025-01-19T09:40:57Z",
+          "sha256": "db7e57f1d0d151defbebdcaaf5577166643efc28b28982ea5b6e163bed96e62b"
+        }
+      ],
+      "extraction": {}
+    },
+    "rgb-soul": {
+      "sha256": "b0d3503246e47d6e1b96d5abd4f3b0fc8137a37d425182cb1b698dfab7f4398e",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/6/66/RB_Soul_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Soul_Badge.png",
+          "game": "RB Soul Badge.png",
+          "timestamp": "2025-01-19T09:41:02Z",
+          "sha256": "b0d3503246e47d6e1b96d5abd4f3b0fc8137a37d425182cb1b698dfab7f4398e"
+        }
+      ],
+      "extraction": {}
+    },
+    "rgb-marsh": {
+      "sha256": "b2ed7cf038a743ab293aed0816f466c800f38eae051bfcc75b55ef979828a00d",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d3/RB_Marsh_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Marsh_Badge.png",
+          "game": "RB Marsh Badge.png",
+          "timestamp": "2025-01-19T09:41:06Z",
+          "sha256": "b2ed7cf038a743ab293aed0816f466c800f38eae051bfcc75b55ef979828a00d"
+        }
+      ],
+      "extraction": {}
+    },
+    "rgb-volcano": {
+      "sha256": "e61ea9ff29148cbf2cdc994e58748d2b44b7e5c0fd915241f177ff0b6f799234",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/df/RB_Volcano_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Volcano_Badge.png",
+          "game": "RB Volcano Badge.png",
+          "timestamp": "2025-01-19T09:41:11Z",
+          "sha256": "e61ea9ff29148cbf2cdc994e58748d2b44b7e5c0fd915241f177ff0b6f799234"
+        }
+      ],
+      "extraction": {}
+    },
+    "rgb-earth": {
+      "sha256": "e24cc3d2753ac2a76df024ebc8050feb84bfc6273986cd152dcb1c929dfe36ae",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/7/73/RB_Earth_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:RB_Earth_Badge.png",
+          "game": "RB Earth Badge.png",
+          "timestamp": "2025-01-19T09:41:26Z",
+          "sha256": "e24cc3d2753ac2a76df024ebc8050feb84bfc6273986cd152dcb1c929dfe36ae"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-boulder": {
+      "sha256": "0e34da6c69a64a159992ab13568102707d0be764e4d36320c862df2b6ea04512",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d3/Y_Boulder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Boulder_Badge.png",
+          "game": "Y Boulder Badge.png",
+          "timestamp": "2025-01-19T09:57:01Z",
+          "sha256": "0e34da6c69a64a159992ab13568102707d0be764e4d36320c862df2b6ea04512"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-cascade": {
+      "sha256": "1a512100a48df471fc4797aea53fed3f2af3f239b75a192487b4aaac105e727d",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/6/60/Y_Cascade_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Cascade_Badge.png",
+          "game": "Y Cascade Badge.png",
+          "timestamp": "2025-01-19T09:57:10Z",
+          "sha256": "1a512100a48df471fc4797aea53fed3f2af3f239b75a192487b4aaac105e727d"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-thunder": {
+      "sha256": "0cc37d52d323eb896cea5114aca5c9095f4c4768478390cef9fb52708a6947f4",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/7/75/Y_Thunder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Thunder_Badge.png",
+          "game": "Y Thunder Badge.png",
+          "timestamp": "2025-01-19T09:57:17Z",
+          "sha256": "0cc37d52d323eb896cea5114aca5c9095f4c4768478390cef9fb52708a6947f4"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-rainbow": {
+      "sha256": "3d4fbc93804293051415124157632e00ccf02df3236543c06ce4ed80d1c1c4dc",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/8/8c/Y_Rainbow_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Rainbow_Badge.png",
+          "game": "Y Rainbow Badge.png",
+          "timestamp": "2025-01-19T09:57:26Z",
+          "sha256": "3d4fbc93804293051415124157632e00ccf02df3236543c06ce4ed80d1c1c4dc"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-soul": {
+      "sha256": "b3bd4ac6913103b18488c6650b2d2e70f690a229c3fbdfa9bc525e2df82174a8",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/b/b2/Y_Soul_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Soul_Badge.png",
+          "game": "Y Soul Badge.png",
+          "timestamp": "2025-01-19T09:57:35Z",
+          "sha256": "b3bd4ac6913103b18488c6650b2d2e70f690a229c3fbdfa9bc525e2df82174a8"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-marsh": {
+      "sha256": "eaf0bd4521d781121d0ab45f6f3e35330d1ba823601a37ac9cf61e9131fdb294",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/9/9a/Y_Marsh_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Marsh_Badge.png",
+          "game": "Y Marsh Badge.png",
+          "timestamp": "2025-01-19T09:57:42Z",
+          "sha256": "eaf0bd4521d781121d0ab45f6f3e35330d1ba823601a37ac9cf61e9131fdb294"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-volcano": {
+      "sha256": "a01f04af8b212499a5c6a462d45e72229ef4175debf34c295f2c6373c9b74875",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/3/3c/Y_Volcano_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Volcano_Badge.png",
+          "game": "Y Volcano Badge.png",
+          "timestamp": "2025-01-19T09:57:50Z",
+          "sha256": "a01f04af8b212499a5c6a462d45e72229ef4175debf34c295f2c6373c9b74875"
+        }
+      ],
+      "extraction": {}
+    },
+    "yellow-earth": {
+      "sha256": "e2c78178a7ae48c87d3862440604bf70a71cb7390bd95ec37adf7d4c29f2a6be",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/f/fc/Y_Earth_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Y_Earth_Badge.png",
+          "game": "Y Earth Badge.png",
+          "timestamp": "2025-01-19T09:57:59Z",
+          "sha256": "e2c78178a7ae48c87d3862440604bf70a71cb7390bd95ec37adf7d4c29f2a6be"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-zephyr": {
+      "sha256": "70c075fa47a3040c14509ab2f6be66f27e05bcf6abc5369521194db64ba0da34",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d3/GSC_Zephyr_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Zephyr_Badge.png",
+          "game": "GSC Zephyr Badge.png",
+          "timestamp": "2025-01-19T12:16:06Z",
+          "sha256": "70c075fa47a3040c14509ab2f6be66f27e05bcf6abc5369521194db64ba0da34"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-hive": {
+      "sha256": "830ea81ee3cb3d175901636a0e540d33675335c2abecec48d18f5adc044f1bec",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/0/02/GSC_Hive_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Hive_Badge.png",
+          "game": "GSC Hive Badge.png",
+          "timestamp": "2025-01-19T12:17:27Z",
+          "sha256": "830ea81ee3cb3d175901636a0e540d33675335c2abecec48d18f5adc044f1bec"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-plain": {
+      "sha256": "ad71bfb6d2d6b25acc516aa357e3bfd1791b85faf61abafd2a37f5845f758736",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/a/a4/GSC_Plain_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Plain_Badge.png",
+          "game": "GSC Plain Badge.png",
+          "timestamp": "2025-01-19T12:17:38Z",
+          "sha256": "ad71bfb6d2d6b25acc516aa357e3bfd1791b85faf61abafd2a37f5845f758736"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-fog": {
+      "sha256": "3055eb9526be1663b6832eda3cf3417e4c934ecf63dad383580c3d32438c2ffc",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/4/46/GSC_Fog_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Fog_Badge.png",
+          "game": "GSC Fog Badge.png",
+          "timestamp": "2025-01-19T12:17:49Z",
+          "sha256": "3055eb9526be1663b6832eda3cf3417e4c934ecf63dad383580c3d32438c2ffc"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-storm": {
+      "sha256": "170aabcd94ef63c4f68fa75bc2d9f08179d382a0d96002599b53f57142fc15e7",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/7/7a/GSC_Storm_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Storm_Badge.png",
+          "game": "GSC Storm Badge.png",
+          "timestamp": "2025-01-19T12:18:05Z",
+          "sha256": "170aabcd94ef63c4f68fa75bc2d9f08179d382a0d96002599b53f57142fc15e7"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-mineral": {
+      "sha256": "dc30396fbf59a6995a014819fa627aa0e3531c3eb51355f2d7e2717709c3bd49",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/9/92/GSC_Mineral_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Mineral_Badge.png",
+          "game": "GSC Mineral Badge.png",
+          "timestamp": "2025-01-19T12:18:20Z",
+          "sha256": "dc30396fbf59a6995a014819fa627aa0e3531c3eb51355f2d7e2717709c3bd49"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-glacier": {
+      "sha256": "18b3db4a8bb5e820a4e0fa81663cafa02a1ed22471689e10ac31b20b1cecaaa5",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/7/77/GSC_Glacier_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Glacier_Badge.png",
+          "game": "GSC Glacier Badge.png",
+          "timestamp": "2025-01-19T12:18:31Z",
+          "sha256": "18b3db4a8bb5e820a4e0fa81663cafa02a1ed22471689e10ac31b20b1cecaaa5"
+        }
+      ],
+      "extraction": {}
+    },
+    "gsc-rising": {
+      "sha256": "a4bec5c93abba17e8316116d74008eab910413a39435f1aa0f96b2250519d5a9",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/a/ac/GSC_Rising_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:GSC_Rising_Badge.png",
+          "game": "GSC Rising Badge.png",
+          "timestamp": "2025-01-19T12:18:47Z",
+          "sha256": "a4bec5c93abba17e8316116d74008eab910413a39435f1aa0f96b2250519d5a9"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-zephyr": {
+      "sha256": "8015747472ab2aaa0cb47617e198e22cbc9ff22421c50883e24879ac2efcc6d8",
+      "width": 22,
+      "height": 24,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/3/3a/HGSS_Zephyr_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Zephyr_Badge.png",
+          "game": "HGSS Zephyr Badge.png",
+          "timestamp": "2025-01-19T12:30:07Z",
+          "sha256": "8015747472ab2aaa0cb47617e198e22cbc9ff22421c50883e24879ac2efcc6d8"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-hive": {
+      "sha256": "25fa933747a11a963c895285e1b445c54e3a2a33b38a7ca223140b4876c0f701",
+      "width": 22,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/2/27/HGSS_Hive_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Hive_Badge.png",
+          "game": "HGSS Hive Badge.png",
+          "timestamp": "2025-01-19T12:30:15Z",
+          "sha256": "25fa933747a11a963c895285e1b445c54e3a2a33b38a7ca223140b4876c0f701"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-plain": {
+      "sha256": "ad98efe294a9e13563ad074f427cd141a22b0acbcfcff3f24b6cf2f6a5fc4aaa",
+      "width": 24,
+      "height": 24,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/4/4c/HGSS_Plain_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Plain_Badge.png",
+          "game": "HGSS Plain Badge.png",
+          "timestamp": "2025-01-19T12:30:23Z",
+          "sha256": "ad98efe294a9e13563ad074f427cd141a22b0acbcfcff3f24b6cf2f6a5fc4aaa"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-fog": {
+      "sha256": "424c3e0003ef1e198439f798c3a795af03e3e9cb1cd5388febe4cbc4d36842cd",
+      "width": 22,
+      "height": 20,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/8/8b/HGSS_Fog_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Fog_Badge.png",
+          "game": "HGSS Fog Badge.png",
+          "timestamp": "2025-01-19T12:30:29Z",
+          "sha256": "424c3e0003ef1e198439f798c3a795af03e3e9cb1cd5388febe4cbc4d36842cd"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-storm": {
+      "sha256": "bd8cbf1c504ea5f45e4d17e0c40ef47daeeed274bf09f1b107dc7fa0c9621948",
+      "width": 23,
+      "height": 20,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d6/HGSS_Storm_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Storm_Badge.png",
+          "game": "HGSS Storm Badge.png",
+          "timestamp": "2025-01-19T12:30:35Z",
+          "sha256": "bd8cbf1c504ea5f45e4d17e0c40ef47daeeed274bf09f1b107dc7fa0c9621948"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-mineral": {
+      "sha256": "6828289471dcf3102e77f3b30d247906d24752a543a0f85b49ae37a749e463a1",
+      "width": 22,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/6/6b/HGSS_Mineral_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Mineral_Badge.png",
+          "game": "HGSS Mineral Badge.png",
+          "timestamp": "2025-01-19T12:30:42Z",
+          "sha256": "6828289471dcf3102e77f3b30d247906d24752a543a0f85b49ae37a749e463a1"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-glacier": {
+      "sha256": "9a79fba528403d9efcabce224434000657f49978624d001811832a517206eac2",
+      "width": 20,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/2/20/HGSS_Glacier_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Glacier_Badge.png",
+          "game": "HGSS Glacier Badge.png",
+          "timestamp": "2025-01-19T12:30:50Z",
+          "sha256": "9a79fba528403d9efcabce224434000657f49978624d001811832a517206eac2"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-rising": {
+      "sha256": "1a6d0a194a5dd0ec35e3e5da97947273dc394cf1912829b9712672ee649342cf",
+      "width": 20,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/6/69/HGSS_Rising_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Rising_Badge.png",
+          "game": "HGSS Rising Badge.png",
+          "timestamp": "2025-01-19T12:31:00Z",
+          "sha256": "1a6d0a194a5dd0ec35e3e5da97947273dc394cf1912829b9712672ee649342cf"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-boulder": {
+      "sha256": "e2ea0a5eae669b4a4af135cee4bf4663f3f10da005e8f2585d01fdcd81e29f1e",
+      "width": 22,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/8/8f/HGSS_Boulder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Boulder_Badge.png",
+          "game": "HGSS Boulder Badge.png",
+          "timestamp": "2025-01-19T10:06:59Z",
+          "sha256": "e2ea0a5eae669b4a4af135cee4bf4663f3f10da005e8f2585d01fdcd81e29f1e"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-cascade": {
+      "sha256": "8ed9de7def6908968669e1d3f172abaeab00d74b6a54b5e895062290d1df4897",
+      "width": 16,
+      "height": 23,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/b/b7/HGSS_Cascade_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Cascade_Badge.png",
+          "game": "HGSS Cascade Badge.png",
+          "timestamp": "2025-01-19T10:07:06Z",
+          "sha256": "8ed9de7def6908968669e1d3f172abaeab00d74b6a54b5e895062290d1df4897"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-thunder": {
+      "sha256": "49778d5702b64a61121bb09ea72c9d4b4974897456f1598b89afaf38e7ef4870",
+      "width": 24,
+      "height": 24,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/1/17/HGSS_Thunder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Thunder_Badge.png",
+          "game": "HGSS Thunder Badge.png",
+          "timestamp": "2025-01-19T10:07:13Z",
+          "sha256": "49778d5702b64a61121bb09ea72c9d4b4974897456f1598b89afaf38e7ef4870"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-rainbow": {
+      "sha256": "e10181494eead0f7f56b73c69edefddc709b6e5bf9a2183675698686c3d05c77",
+      "width": 22,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/6/67/HGSS_Rainbow_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Rainbow_Badge.png",
+          "game": "HGSS Rainbow Badge.png",
+          "timestamp": "2025-01-19T10:07:20Z",
+          "sha256": "e10181494eead0f7f56b73c69edefddc709b6e5bf9a2183675698686c3d05c77"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-soul": {
+      "sha256": "2ef19552d111ba293dda2b0ef28666ebecc072fac17eca0bdbf271aedf379ff0",
+      "width": 23,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d6/HGSS_Soul_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Soul_Badge.png",
+          "game": "HGSS Soul Badge.png",
+          "timestamp": "2025-01-19T10:07:31Z",
+          "sha256": "2ef19552d111ba293dda2b0ef28666ebecc072fac17eca0bdbf271aedf379ff0"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-marsh": {
+      "sha256": "6791b15c88c7cc424e94a4fc55dcfdf8b8b189f607aaff5199aa2bc2d4af021e",
+      "width": 22,
+      "height": 22,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d6/HGSS_Marsh_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Marsh_Badge.png",
+          "game": "HGSS Marsh Badge.png",
+          "timestamp": "2025-01-19T10:07:39Z",
+          "sha256": "6791b15c88c7cc424e94a4fc55dcfdf8b8b189f607aaff5199aa2bc2d4af021e"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-volcano": {
+      "sha256": "589b41dd51639779014cd94bdbb35ad3a7a0aed2ae8b2d2e16a92ca2e0b785de",
+      "width": 20,
+      "height": 23,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/6/6a/HGSS_Volcano_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Volcano_Badge.png",
+          "game": "HGSS Volcano Badge.png",
+          "timestamp": "2025-01-19T10:07:46Z",
+          "sha256": "589b41dd51639779014cd94bdbb35ad3a7a0aed2ae8b2d2e16a92ca2e0b785de"
+        }
+      ],
+      "extraction": {}
+    },
+    "hgss-earth": {
+      "sha256": "e77a451b67c2005f0fdbed8e26cb869a4f9b5a1dc5e6d92ff262b802c167afab",
+      "width": 20,
+      "height": 20,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/4/47/HGSS_Earth_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:HGSS_Earth_Badge.png",
+          "game": "HGSS Earth Badge.png",
+          "timestamp": "2025-01-19T10:07:53Z",
+          "sha256": "e77a451b67c2005f0fdbed8e26cb869a4f9b5a1dc5e6d92ff262b802c167afab"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-boulder": {
+      "sha256": "e29134d483230105be6817bf9098af40a901329dcbe643e14431e55930947a51",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/7/7d/LGPE_Boulder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Boulder_Badge.png",
+          "game": "LGPE Boulder Badge.png",
+          "timestamp": "2025-02-22T04:46:14Z",
+          "sha256": "e29134d483230105be6817bf9098af40a901329dcbe643e14431e55930947a51"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-cascade": {
+      "sha256": "924ec0e83bb1aaed9e039e471818ba299b5168b9a77aadb971ff7e17fd4ebf96",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/4/42/LGPE_Cascade_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Cascade_Badge.png",
+          "game": "LGPE Cascade Badge.png",
+          "timestamp": "2025-02-22T04:46:15Z",
+          "sha256": "924ec0e83bb1aaed9e039e471818ba299b5168b9a77aadb971ff7e17fd4ebf96"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-thunder": {
+      "sha256": "4f4752238a2bfeb54e1369fbb19f324a9f453f22ae17d24664810beefe263450",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/0/03/LGPE_Thunder_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Thunder_Badge.png",
+          "game": "LGPE Thunder Badge.png",
+          "timestamp": "2025-02-22T04:46:16Z",
+          "sha256": "4f4752238a2bfeb54e1369fbb19f324a9f453f22ae17d24664810beefe263450"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-rainbow": {
+      "sha256": "435c309c7471baead3e23700a7c7027b211697efdc73e58a97d9dedd4d2fd883",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/a/a0/LGPE_Rainbow_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Rainbow_Badge.png",
+          "game": "LGPE Rainbow Badge.png",
+          "timestamp": "2025-02-22T04:46:18Z",
+          "sha256": "435c309c7471baead3e23700a7c7027b211697efdc73e58a97d9dedd4d2fd883"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-soul": {
+      "sha256": "529b8fa70d6c0988c7ec1c074b753be938f02a0878017f0f481c93c4a28dc239",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/f/fc/LGPE_Soul_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Soul_Badge.png",
+          "game": "LGPE Soul Badge.png",
+          "timestamp": "2025-02-22T04:46:19Z",
+          "sha256": "529b8fa70d6c0988c7ec1c074b753be938f02a0878017f0f481c93c4a28dc239"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-marsh": {
+      "sha256": "4d80b1abc4fd3dc238a6e2717eee3066c3fc7e3162046a6c29be651888ae84b7",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/9/94/LGPE_Marsh_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Marsh_Badge.png",
+          "game": "LGPE Marsh Badge.png",
+          "timestamp": "2025-02-22T04:46:20Z",
+          "sha256": "4d80b1abc4fd3dc238a6e2717eee3066c3fc7e3162046a6c29be651888ae84b7"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-volcano": {
+      "sha256": "160d53519973e013948f0fd818a18f968c59fdabd9a67facc22e9333288741d8",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/6/63/LGPE_Volcano_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Volcano_Badge.png",
+          "game": "LGPE Volcano Badge.png",
+          "timestamp": "2025-02-22T04:46:21Z",
+          "sha256": "160d53519973e013948f0fd818a18f968c59fdabd9a67facc22e9333288741d8"
+        }
+      ],
+      "extraction": {}
+    },
+    "lgpe-earth": {
+      "sha256": "1de002ad699d9358ca022852fba6ea37c0ab4a7b15e25f6ed6bc0377131bd8a0",
+      "width": 64,
+      "height": 64,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/a/a2/LGPE_Earth_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:LGPE_Earth_Badge.png",
+          "game": "LGPE Earth Badge.png",
+          "timestamp": "2025-02-22T04:46:21Z",
+          "sha256": "1de002ad699d9358ca022852fba6ea37c0ab4a7b15e25f6ed6bc0377131bd8a0"
+        }
+      ],
+      "extraction": {}
+    },
+    "rs-stone": {
+      "sha256": "7c6048093fa0bc28ba1ce237379d5cd526f85b52124f221dd36ccf1112fdc739",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "rs-knuckle": {
+      "sha256": "705a9d3a837f08b915af9ebbdb7313865dce53b752a37dfe3e7533fb284a29ef",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          16,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "rs-dynamo": {
+      "sha256": "e7c9e3fe10640f3961d0f6292af79c0380c61598bae387917798ce274922f3b2",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          32,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "rs-heat": {
+      "sha256": "d144850129ec10842beed499aeca896623bbfea1a44f79d811251321d3ba0cbb",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          48,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "rs-balance": {
+      "sha256": "005afbb339c40a9e0b8680425276b555a868d387861563444e2ae53633521ef1",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          64,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "rs-feather": {
+      "sha256": "35b9a55c35094e3c6665701819b58be8d1eabe7975b7f1812fa8131dcdb51ecd",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          80,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "rs-mind": {
+      "sha256": "843d12388e6687dab52a170b055d497a515e70e40f1b76442a6f25f3f5d18fe8",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          96,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "rs-rain": {
+      "sha256": "2fb27672866246370934fba685ca2f03c8083b7d0689d255a497c0bfc2ebeeb7",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png",
+          "game": "rs",
+          "sha256": "1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          112,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-stone": {
+      "sha256": "a6376094a3674a4d857aa84f3daf7c7e84f834c236074e62f92bc84b69ad5aa6",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-knuckle": {
+      "sha256": "c374907bb711289ae46fd48e9cd5a4d01b30326da2da8bcac6dc20d578fb6b96",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          16,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-dynamo": {
+      "sha256": "34e3cac2786e47eca5ea3034b43bea913c9b715a665a8ef25e56ab31ffbbdb8d",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          32,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-heat": {
+      "sha256": "801423fc940636e4c66a99d45401ef2dba5b8369c0c711200018667afc881e92",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          48,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-balance": {
+      "sha256": "4b8d70ae9ac3234b8e0cc9becf7d70a7181519de6150f5f42e79384741b0c3f2",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          64,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-feather": {
+      "sha256": "40230d0d21e27902e39a9f94def9b299cee00d37bb24752deff4b57824f90d9f",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          80,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-mind": {
+      "sha256": "8f6ae27103045956e2032c721ccbc996a1711b2e1453391d2adb25390bcbbb56",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          96,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "emerald-rain": {
+      "sha256": "0b823795b4ab0a0c4147f414eccf84e3161376bf74f23afe84c0d40f58398cc0",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png",
+          "game": "emerald",
+          "sha256": "ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          112,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-boulder": {
+      "sha256": "38064ede1c25e989ec728d5f378ba255638e53c92bcddb895b24e0b0e1ca8995",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-cascade": {
+      "sha256": "de72c90ec1253555a242296b7bd50ea7f4c89612b118690751cb678a601a8198",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          16,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-thunder": {
+      "sha256": "957ce69cb926cff424fc50eca9764afd98c85e71043f5db8d006a6226a0b4948",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          32,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-rainbow": {
+      "sha256": "199692a4d90357e7300f2d3b9879d9c41ed2eaf9ef8a83216c6a1ebb375db77c",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          48,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-soul": {
+      "sha256": "5e71ca43fa5749eaf61f8ac0da5a4ebbc4415f755cabd47f52c15e2114e2d6e8",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          64,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-marsh": {
+      "sha256": "3b8e450e92af86dc03da5d3a6f2060f1fa9e2347929347c8174fe313b081fbe5",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          80,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-volcano": {
+      "sha256": "f0eb2d402270bfb51a7da003fdfe7484867930b3e55fedcfd294bc6e7d472b9e",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          96,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "frlg-earth": {
+      "sha256": "e3fba404fe0f6ced344b050e5e6da0cc3a3a2c55afe881ec9a735b4634abeeac",
+      "width": 16,
+      "height": 16,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "page": "https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png",
+          "game": "frlg",
+          "sha256": "213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          112,
+          0,
+          16,
+          16
+        ],
+        "transparentIndex": 0
+      }
+    },
+    "sinnoh-coal": {
+      "sha256": "a34f3eb356ad96dcc9246d87c5eecff924e5162d140581bb823f1d68c0285ac9",
+      "width": 38,
+      "height": 38,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/coal_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/coal_badge.pal",
+          "game": "Platinum",
+          "sha256": "abc56a16fb25929ffc90518c008db1ae5ed9a326c7602629a7023d0b6f1a18a2"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "sinnoh-forest": {
+      "sha256": "b66f486479b04f7aaf453a3c05bb79278cd87ca2c185fe50140df97ecf15c201",
+      "width": 40,
+      "height": 37,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/forest_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/forest_badge.pal",
+          "game": "Platinum",
+          "sha256": "f645ad326d0adff4b2d832bb4497b2f73fd66199d5d5d549aceb3010d59a4402"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          65,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "sinnoh-cobble": {
+      "sha256": "cb088d7be76fc78c0e55b34e545346fd2b8cb61ae924f665a1c45befc7a5634f",
+      "width": 40,
+      "height": 40,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/cobble_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/cobble_badge.pal",
+          "game": "Platinum",
+          "sha256": "2180e16ca763417d797a24391d0ba120e588e603bdd26689cff4538ac1d631b0"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          130,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "sinnoh-fen": {
+      "sha256": "75efd09e1df48c21afee0093ffee999346faee0f9e3f9bea2a176c1749f6818d",
+      "width": 38,
+      "height": 38,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/fen_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/fen_badge.pal",
+          "game": "Platinum",
+          "sha256": "ebf8ff54f7f5a9f7443dbe27e3838f9a74c45e1d3341f3cd9dde76cb7d0a6c4a"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          195,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "sinnoh-relic": {
+      "sha256": "c79ed55aba82397e4c87e6b1001eca18978ee15d3d786d2e3c50de7c006efe31",
+      "width": 40,
+      "height": 36,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/relic_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/relic_badge.pal",
+          "game": "Platinum",
+          "sha256": "080e1dbaa54ae577344e75f00463b861e6c8ec1703463ac47a779fb56458005c"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          260,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "sinnoh-mine": {
+      "sha256": "4b9f6f3f5b352bc0f07a1345601d1c2671f7c6a02f472d25d2e6903717f2c002",
+      "width": 38,
+      "height": 38,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/mine_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/mine_badge.pal",
+          "game": "Platinum",
+          "sha256": "59d2b5af63c41b19c6170be4a78e3efdd0e49667d4845be6c6946cf12a95b87b"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          325,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "sinnoh-icicle": {
+      "sha256": "a88063d0898b6ed391d5e4d2410ca34154db0cb613815f962065bca4bcee7a11",
+      "width": 38,
+      "height": 37,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/icicle_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/icicle_badge.pal",
+          "game": "Platinum",
+          "sha256": "e04d03bc7fa46feab90dde72f24193d89cc80bc9e9b10a1e3b0b9b143c0f6964"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          390,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "sinnoh-beacon": {
+      "sha256": "69fb3d5ad8ad75ca245f2f5bc87c571c7bf384cf3fbe1db43849781ea1ea659d",
+      "width": 36,
+      "height": 38,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png",
+          "page": "https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case",
+          "game": "Platinum",
+          "sha256": "720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/beacon_badge.pal",
+          "page": "https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/beacon_badge.pal",
+          "game": "Platinum",
+          "sha256": "05f72fb56884188551ac69bddcf252c807ecbc627a07f7144f42badde4f9d21c"
+        }
+      ],
+      "extraction": {
+        "crop": [
+          0,
+          455,
+          64,
+          64
+        ],
+        "paletteModulo": 16,
+        "transparentIndex": 0,
+        "trim": true
+      }
+    },
+    "unova-trio": {
+      "sha256": "e1f34ca53fe8bfef0a7eb968072f6f4f02b9efedbb165cc2ac649aade2d891ef",
+      "width": 44,
+      "height": 44,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/7/74/Trio_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Trio_Badge.png",
+          "game": "Trio Badge.png",
+          "timestamp": "2026-05-28T01:36:08Z",
+          "sha256": "e1f34ca53fe8bfef0a7eb968072f6f4f02b9efedbb165cc2ac649aade2d891ef"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-basic": {
+      "sha256": "d7b29f4e3d7ffd6ba5cf618ca8f38ce8908707d15c3ff0dc9c83033f62d3b676",
+      "width": 48,
+      "height": 48,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/8/85/Basic_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Basic_Badge.png",
+          "game": "Basic Badge.png",
+          "timestamp": "2026-05-28T01:36:45Z",
+          "sha256": "d7b29f4e3d7ffd6ba5cf618ca8f38ce8908707d15c3ff0dc9c83033f62d3b676"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-insect": {
+      "sha256": "f39653077496ef3bd8e0ddae01403e981f19123fff13f65fdf074e22bff915ab",
+      "width": 48,
+      "height": 48,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/8/8a/Insect_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Insect_Badge.png",
+          "game": "Insect Badge.png",
+          "timestamp": "2026-05-28T01:38:17Z",
+          "sha256": "f39653077496ef3bd8e0ddae01403e981f19123fff13f65fdf074e22bff915ab"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-bolt": {
+      "sha256": "87f71f96d534d4766c60aa95439ec8c612361269ea8a05ecd55155d100bb0bf5",
+      "width": 49,
+      "height": 49,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/5/5b/Bolt_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Bolt_Badge.png",
+          "game": "Bolt Badge.png",
+          "timestamp": "2026-05-28T01:39:20Z",
+          "sha256": "87f71f96d534d4766c60aa95439ec8c612361269ea8a05ecd55155d100bb0bf5"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-quake": {
+      "sha256": "9012be6602cbc120b3572fe24881a1dd4346667bce27e5ac569374aa2b335d92",
+      "width": 48,
+      "height": 48,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/2/29/Quake_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Quake_Badge.png",
+          "game": "Quake Badge.png",
+          "timestamp": "2026-05-28T01:39:49Z",
+          "sha256": "9012be6602cbc120b3572fe24881a1dd4346667bce27e5ac569374aa2b335d92"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-jet": {
+      "sha256": "63bd7d5de9e0e94ce2c851c108a4fbea9e67b66eac72cc2af4d5699d10f532b2",
+      "width": 49,
+      "height": 49,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/9/9c/Jet_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Jet_Badge.png",
+          "game": "Jet Badge.png",
+          "timestamp": "2026-05-28T01:40:26Z",
+          "sha256": "63bd7d5de9e0e94ce2c851c108a4fbea9e67b66eac72cc2af4d5699d10f532b2"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-freeze": {
+      "sha256": "490c4ea4e2b55b7e037119bfad9fe968c32efe9fd790db8bca70ff2978aee8be",
+      "width": 49,
+      "height": 49,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/a/ac/Freeze_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Freeze_Badge.png",
+          "game": "Freeze Badge.png",
+          "timestamp": "2026-05-28T01:41:10Z",
+          "sha256": "490c4ea4e2b55b7e037119bfad9fe968c32efe9fd790db8bca70ff2978aee8be"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-legend": {
+      "sha256": "0171d972b0b1470748fc174e7a463d25fa889215e03b484d680e6ce8dd55ee43",
+      "width": 47,
+      "height": 47,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/c/c0/Legend_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Legend_Badge.png",
+          "game": "Legend Badge.png",
+          "timestamp": "2026-05-28T01:41:41Z",
+          "sha256": "0171d972b0b1470748fc174e7a463d25fa889215e03b484d680e6ce8dd55ee43"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-toxic": {
+      "sha256": "e38fe13a5e719bc8e31f2b2a1ff3253a7dd6acb0856f7bf020ceff8bdba9b860",
+      "width": 47,
+      "height": 47,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/3/3e/Toxic_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Toxic_Badge.png",
+          "game": "Toxic Badge.png",
+          "timestamp": "2026-05-28T01:42:25Z",
+          "sha256": "e38fe13a5e719bc8e31f2b2a1ff3253a7dd6acb0856f7bf020ceff8bdba9b860"
+        }
+      ],
+      "extraction": {}
+    },
+    "unova-wave": {
+      "sha256": "56aad23043d562f30f8b97694b5ea21250f8dcc554ef61572a37a02ec7628e94",
+      "width": 49,
+      "height": 49,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/0/00/Wave_Badge.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Wave_Badge.png",
+          "game": "Wave Badge.png",
+          "timestamp": "2026-05-28T01:43:25Z",
+          "sha256": "56aad23043d562f30f8b97694b5ea21250f8dcc554ef61572a37a02ec7628e94"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-bug": {
+      "sha256": "911bdf677528be29258ba9fc7e499b6f0d40cac48628df83b220318990a5974c",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/43.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/43.png",
+          "game": "xy",
+          "sha256": "911bdf677528be29258ba9fc7e499b6f0d40cac48628df83b220318990a5974c"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-cliff": {
+      "sha256": "40be5e616e21325b04daad1aa3c3d20bfff84cff0e486b262bdae22724803eaf",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/44.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/44.png",
+          "game": "xy",
+          "sha256": "40be5e616e21325b04daad1aa3c3d20bfff84cff0e486b262bdae22724803eaf"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-rumble": {
+      "sha256": "0c7a17024e33e5f6bb19946de3edaca7df627ba8d288953b6ee6df619c047b7a",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/45.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/45.png",
+          "game": "xy",
+          "sha256": "0c7a17024e33e5f6bb19946de3edaca7df627ba8d288953b6ee6df619c047b7a"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-plant": {
+      "sha256": "c6f1632aaa76b2a06d3b7ceac4eb40cb105a996bdad90cb85567be5a9fe94e93",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/46.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/46.png",
+          "game": "xy",
+          "sha256": "c6f1632aaa76b2a06d3b7ceac4eb40cb105a996bdad90cb85567be5a9fe94e93"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-voltage": {
+      "sha256": "f54d1ae2c236434e35d0dd162bb559320c4e77891704235185a6581dcd7eff8f",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/47.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/47.png",
+          "game": "xy",
+          "sha256": "f54d1ae2c236434e35d0dd162bb559320c4e77891704235185a6581dcd7eff8f"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-fairy": {
+      "sha256": "7f6c9b7e19981222864c518b4ae9b3389e1bc86a5c6687ae3240a3b10d82f76d",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/48.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/48.png",
+          "game": "xy",
+          "sha256": "7f6c9b7e19981222864c518b4ae9b3389e1bc86a5c6687ae3240a3b10d82f76d"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-psychic": {
+      "sha256": "eec9f447a78ebe1ec076a3838fcf12411aa096242620ffb5bfdde7b4efa3dd84",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/49.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/49.png",
+          "game": "xy",
+          "sha256": "eec9f447a78ebe1ec076a3838fcf12411aa096242620ffb5bfdde7b4efa3dd84"
+        }
+      ],
+      "extraction": {}
+    },
+    "xy-iceberg": {
+      "sha256": "6981c8ab940798bb046d7319bd3d7043fbd45d382d87de908476ea2d3ab60da1",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/50.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/50.png",
+          "game": "xy",
+          "sha256": "6981c8ab940798bb046d7319bd3d7043fbd45d382d87de908476ea2d3ab60da1"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-stone": {
+      "sha256": "d171026353ac682e8ffe7115f275a86fef5582f714b86e5df96a73abfe94eb94",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/17.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/17.png",
+          "game": "oras",
+          "sha256": "d171026353ac682e8ffe7115f275a86fef5582f714b86e5df96a73abfe94eb94"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-knuckle": {
+      "sha256": "1cd616afff6c9254ed50038dbea9a047ec2819c32ba25c77c00b70a04210a7f7",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/18.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/18.png",
+          "game": "oras",
+          "sha256": "1cd616afff6c9254ed50038dbea9a047ec2819c32ba25c77c00b70a04210a7f7"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-dynamo": {
+      "sha256": "3519ca0c91c7fea2a47f025f4d6aa470bbf5cdc8f6bf8ebb6e0b4a7d4ab266ba",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/19.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/19.png",
+          "game": "oras",
+          "sha256": "3519ca0c91c7fea2a47f025f4d6aa470bbf5cdc8f6bf8ebb6e0b4a7d4ab266ba"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-heat": {
+      "sha256": "c4e86ebc6c22023025fdb50a0e7bbf0ce208d81e45168e17e5c1adb58b68df18",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/20.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/20.png",
+          "game": "oras",
+          "sha256": "c4e86ebc6c22023025fdb50a0e7bbf0ce208d81e45168e17e5c1adb58b68df18"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-balance": {
+      "sha256": "fdc8c85542d1208a056d12f2ec5763cf64b73711dec2ed1cf2165dcb5ebe4f58",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/21.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/21.png",
+          "game": "oras",
+          "sha256": "fdc8c85542d1208a056d12f2ec5763cf64b73711dec2ed1cf2165dcb5ebe4f58"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-feather": {
+      "sha256": "6081c06a99a88636f2462223b5e896fe70c800ad56020439d46f39a484314269",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/22.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/22.png",
+          "game": "oras",
+          "sha256": "6081c06a99a88636f2462223b5e896fe70c800ad56020439d46f39a484314269"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-mind": {
+      "sha256": "30c67e7a0bb4785ae9a820100da62a135749eeadda187da10e03a12e39426885",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/23.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/23.png",
+          "game": "oras",
+          "sha256": "30c67e7a0bb4785ae9a820100da62a135749eeadda187da10e03a12e39426885"
+        }
+      ],
+      "extraction": {}
+    },
+    "oras-rain": {
+      "sha256": "56c8b90aaebdd7eb883f9f01d8b2d9c9d5fbc8f67bb4cbcd98603cd04fc6e267",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/24.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/24.png",
+          "game": "oras",
+          "sha256": "56c8b90aaebdd7eb883f9f01d8b2d9c9d5fbc8f67bb4cbcd98603cd04fc6e267"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-grass": {
+      "sha256": "ce9622bccdcaf697d191db47ca48356a61aa92101f038ad803f487dff42b8d1b",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/51.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/51.png",
+          "game": "galar",
+          "sha256": "ce9622bccdcaf697d191db47ca48356a61aa92101f038ad803f487dff42b8d1b"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-water": {
+      "sha256": "be8e416a40cf690a28012653ca15ac0e8c6a2d3667ab73c68530d41eb554d125",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/52.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/52.png",
+          "game": "galar",
+          "sha256": "be8e416a40cf690a28012653ca15ac0e8c6a2d3667ab73c68530d41eb554d125"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-fire": {
+      "sha256": "a4ad9767577c1d249c1f833b4b267e277bd88ba069416927b090a2a08d3d4524",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/53.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/53.png",
+          "game": "galar",
+          "sha256": "a4ad9767577c1d249c1f833b4b267e277bd88ba069416927b090a2a08d3d4524"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-fighting": {
+      "sha256": "bf7dbcad6cedb6c7b5e8a5a10badbdd901eeda3bd5167039d465f612391e2089",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/54.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/54.png",
+          "game": "galar",
+          "sha256": "bf7dbcad6cedb6c7b5e8a5a10badbdd901eeda3bd5167039d465f612391e2089"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-ghost": {
+      "sha256": "2577d98c5fac53dae322c8adc0a917c2ba1a44f6f82439a53ac1bb62aa853e07",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/55.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/55.png",
+          "game": "galar",
+          "sha256": "2577d98c5fac53dae322c8adc0a917c2ba1a44f6f82439a53ac1bb62aa853e07"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-fairy": {
+      "sha256": "7fae6b5899143bfd0c6157db3e6bbe868af17aa2738c52cfabca5ecb97f1fb13",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/56.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/56.png",
+          "game": "galar",
+          "sha256": "7fae6b5899143bfd0c6157db3e6bbe868af17aa2738c52cfabca5ecb97f1fb13"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-rock": {
+      "sha256": "0053465903392e3196350356c7f7040c95ab6e1131a4a6ef061c8b9b24b1f4a4",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/57.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/57.png",
+          "game": "galar",
+          "sha256": "0053465903392e3196350356c7f7040c95ab6e1131a4a6ef061c8b9b24b1f4a4"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-ice": {
+      "sha256": "faa93888378893458cc2297c38945692b18c654d1f24fd841c1a10fe0e892894",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/58.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/58.png",
+          "game": "galar",
+          "sha256": "faa93888378893458cc2297c38945692b18c654d1f24fd841c1a10fe0e892894"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-dark": {
+      "sha256": "059c69836543fa66159ab9d2be0825fb13e1dd4d517b82ea3774a4647f222cfb",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/59.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/59.png",
+          "game": "galar",
+          "sha256": "059c69836543fa66159ab9d2be0825fb13e1dd4d517b82ea3774a4647f222cfb"
+        }
+      ],
+      "extraction": {}
+    },
+    "galar-dragon": {
+      "sha256": "3cbd9bae6b2a205866c9178b471b00f8ba66a9e5d63012adc731590a9892de03",
+      "width": 120,
+      "height": 120,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/60.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/60.png",
+          "game": "galar",
+          "sha256": "3cbd9bae6b2a205866c9178b471b00f8ba66a9e5d63012adc731590a9892de03"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-bug": {
+      "sha256": "d0634aa6bedcfc6ed86e786c8bcbc96510cec3124b0e078d1fd49c0a25b0a6ec",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/9/95/SVbadge_VictoryRoad_Bug.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Bug.png",
+          "game": "SVbadge VictoryRoad Bug.png",
+          "timestamp": "2022-11-18T15:35:43Z",
+          "sha256": "d0634aa6bedcfc6ed86e786c8bcbc96510cec3124b0e078d1fd49c0a25b0a6ec"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-grass": {
+      "sha256": "f3994eebf18192c65a8ed66a202ded787d777952b8c8ec499888f3d0ce918ec6",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/a/ac/SVbadge_VictoryRoad_Grass.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Grass.png",
+          "game": "SVbadge VictoryRoad Grass.png",
+          "timestamp": "2022-11-18T15:36:32Z",
+          "sha256": "f3994eebf18192c65a8ed66a202ded787d777952b8c8ec499888f3d0ce918ec6"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-electric": {
+      "sha256": "857c2542d9d44a15221b066ab2391f81f6c8ae90ccf9c8d532fcabbc2a808a83",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/f/ff/SVbadge_VictoryRoad_Electric.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Electric.png",
+          "game": "SVbadge VictoryRoad Electric.png",
+          "timestamp": "2022-11-18T15:36:00Z",
+          "sha256": "857c2542d9d44a15221b066ab2391f81f6c8ae90ccf9c8d532fcabbc2a808a83"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-water": {
+      "sha256": "78ff6d26bc8d03730636d1fc4d42cf36b961191812fc5dcceecd48c38f3b063c",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/4/4f/SVbadge_VictoryRoad_Water.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Water.png",
+          "game": "SVbadge VictoryRoad Water.png",
+          "timestamp": "2022-11-18T15:37:47Z",
+          "sha256": "78ff6d26bc8d03730636d1fc4d42cf36b961191812fc5dcceecd48c38f3b063c"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-normal": {
+      "sha256": "4ec949aaa932bb0fba639c13735da99f899ebc611b9c7f5fa1e711a7920b64a6",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d6/SVbadge_VictoryRoad_Normal.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Normal.png",
+          "game": "SVbadge VictoryRoad Normal.png",
+          "timestamp": "2022-11-18T15:37:05Z",
+          "sha256": "4ec949aaa932bb0fba639c13735da99f899ebc611b9c7f5fa1e711a7920b64a6"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-ghost": {
+      "sha256": "d039bd6d640c341232e956d455cc80eeb59994dad7ed557982ea0a1058fc78a4",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/4/4c/SVbadge_VictoryRoad_Ghost.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Ghost.png",
+          "game": "SVbadge VictoryRoad Ghost.png",
+          "timestamp": "2022-11-18T15:36:18Z",
+          "sha256": "d039bd6d640c341232e956d455cc80eeb59994dad7ed557982ea0a1058fc78a4"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-psychic": {
+      "sha256": "6602a8b0a93070a550d935b78febabdb04ea4db5a04fac9c74d3d13bb646fceb",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/2/2d/SVbadge_VictoryRoad_Psychic.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Psychic.png",
+          "game": "SVbadge VictoryRoad Psychic.png",
+          "timestamp": "2022-11-18T15:37:22Z",
+          "sha256": "6602a8b0a93070a550d935b78febabdb04ea4db5a04fac9c74d3d13bb646fceb"
+        }
+      ],
+      "extraction": {}
+    },
+    "sv-ice": {
+      "sha256": "242a58f857802ae2dffd2948402352cb104e6c6c19e48e6caa18fb89ac15fef4",
+      "width": 256,
+      "height": 256,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/4/46/SVbadge_VictoryRoad_Ice.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Ice.png",
+          "game": "SVbadge VictoryRoad Ice.png",
+          "timestamp": "2022-11-18T15:36:48Z",
+          "sha256": "242a58f857802ae2dffd2948402352cb104e6c6c19e48e6caa18fb89ac15fef4"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-normal": {
+      "sha256": "f5a08f04ef99b15779f7f52d8af309fd271a1db6a418b3fb23e108afc84259e0",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/normalium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/normalium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "f5a08f04ef99b15779f7f52d8af309fd271a1db6a418b3fb23e108afc84259e0"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-water": {
+      "sha256": "0baa25ceb7baae9e6058a3b0c2dfd4e5759180d00f82f414af3b7d25c46c185d",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/waterium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/waterium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "0baa25ceb7baae9e6058a3b0c2dfd4e5759180d00f82f414af3b7d25c46c185d"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-fire": {
+      "sha256": "3be21d73129110b86175e285fdbef0c4a24a5a3fe8a502f17fbe31e715b45b67",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/firium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/firium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "3be21d73129110b86175e285fdbef0c4a24a5a3fe8a502f17fbe31e715b45b67"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-grass": {
+      "sha256": "b30bff36891cda17e666e60ac8af9c266ef4c50946b9e2cf6ef8c1754e943aec",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/grassium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/grassium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "b30bff36891cda17e666e60ac8af9c266ef4c50946b9e2cf6ef8c1754e943aec"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-electric": {
+      "sha256": "6793cc568c017b6c1e3fcdcb2c4021b11391232cad6c0204c9075218b1b74232",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/electrium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/electrium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "6793cc568c017b6c1e3fcdcb2c4021b11391232cad6c0204c9075218b1b74232"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-ghost": {
+      "sha256": "e4439ac682765706b5aef114df79a69c4f4a68c75d49752667e4bc4f401062cf",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/ghostium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/ghostium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "e4439ac682765706b5aef114df79a69c4f4a68c75d49752667e4bc4f401062cf"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-dragon": {
+      "sha256": "f28ff42a5017cce6cb21616df21741e905e2a3f53a6be3eea17b914974f80b5d",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/dragonium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/dragonium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "f28ff42a5017cce6cb21616df21741e905e2a3f53a6be3eea17b914974f80b5d"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-fairy": {
+      "sha256": "01e9697f93209cb4730763784e790c629d5d2bb694f0d3faaad283e9584d4f96",
+      "width": 30,
+      "height": 30,
+      "pixel": true,
+      "originals": [
+        {
+          "url": "https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/fairium-z--bag.png",
+          "page": "https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/fairium-z--bag.png",
+          "game": "Sun / Moon / Ultra Sun / Ultra Moon",
+          "sha256": "01e9697f93209cb4730763784e790c629d5d2bb694f0d3faaad283e9584d4f96"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-grand-fighting": {
+      "sha256": "978db0799fc2a19ae96cffe08787bd89a7d72cfb77810959e5c257b7b79ccec0",
+      "width": 128,
+      "height": 128,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/c/cb/Melemele_Trial_Completion.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Melemele_Trial_Completion.png",
+          "game": "Melemele Trial Completion.png",
+          "timestamp": "2017-04-13T03:34:11Z",
+          "sha256": "978db0799fc2a19ae96cffe08787bd89a7d72cfb77810959e5c257b7b79ccec0"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-grand-rock": {
+      "sha256": "75f61aeda5d37f4955319d5738f0bcbea4091e9dead75ee2024f62c58ac80485",
+      "width": 128,
+      "height": 128,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/d/d7/Akala_Trial_Completion.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Akala_Trial_Completion.png",
+          "game": "Akala Trial Completion.png",
+          "timestamp": "2017-04-13T03:34:12Z",
+          "sha256": "75f61aeda5d37f4955319d5738f0bcbea4091e9dead75ee2024f62c58ac80485"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-grand-dark": {
+      "sha256": "1605a8dc3947143af957f4246c826b7eea4a338032fa8a11f0d797e51987d59f",
+      "width": 128,
+      "height": 128,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/3/3a/Ula%27ula_Trial_Completion.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Ula%27ula_Trial_Completion.png",
+          "game": "Ula'ula Trial Completion.png",
+          "timestamp": "2017-04-13T03:34:12Z",
+          "sha256": "1605a8dc3947143af957f4246c826b7eea4a338032fa8a11f0d797e51987d59f"
+        }
+      ],
+      "extraction": {}
+    },
+    "alola-grand-ground": {
+      "sha256": "a1c58cb0b62c6ea0f3cba3e6da9f54daf841b21ce9c41e9c659636ef706151c2",
+      "width": 128,
+      "height": 128,
+      "pixel": false,
+      "originals": [
+        {
+          "url": "https://archives.bulbagarden.net/media/upload/e/e3/Poni_Trial_Completion.png",
+          "page": "https://archives.bulbagarden.net/wiki/File:Poni_Trial_Completion.png",
+          "game": "Poni Trial Completion.png",
+          "timestamp": "2017-04-13T03:34:13Z",
+          "sha256": "a1c58cb0b62c6ea0f3cba3e6da9f54daf841b21ce9c41e9c659636ef706151c2"
+        }
+      ],
+      "extraction": {}
+    }
+  },
+  "notes": [
+    "GSC Kanto goals use HGSS pixel sprites of the corresponding Kanto badge designs.",
+    "Diamond/Pearl and BDSP share the Sinnoh badge designs, represented with original Platinum pixel sprites.",
+    "Alola rewards remain app collection emblems, represented by their trial Z-Crystals and island trial-completion passport stamps.",
+    "Modern badge artwork retains its original pixels and silhouettes; no generic type badge or AI redraw is used."
+  ]
+}

@@ -77,6 +77,12 @@ node scripts/update-sprite-catalog.mjs
 
 테스트 런처는 `POKETOKEN_TEST_MODE=1`일 때만 `POKETOKEN_TEST_HATCH=first`로 부화를 재현하며 운영 앱의 무작위 선택에는 영향을 주지 않습니다.
 
+### 배지 이미지
+
+`scripts/badge-art-sources.json`에 고정한 원본 URL·해시·팔레트·추출 영역을 `python scripts/update-badge-art.py`(개발용 Pillow)로 검증하고 PNG 136개를 생성합니다. `badge-art-catalog.json`은 타입 대신 기존 목표 ID 199개에 이미지를 연결합니다. 배포에 필요한 그림과 크레딧은 `src/renderer/public/badges/`와 `public/licenses/`에 동봉하며 네트워크 없이 표시합니다. 작품별 소스 선택은 [배지 목록 안내](LEAGUE_CATALOG.md)를 참고하세요.
+
+`npm run smoke:league`는 모든 배지 카드의 실제 디코딩·이미지 ID·크기·렌더링 방식, 혼합 전시·성장 상태 보존·세 언어/두 테마의 최소 창을 확인합니다. `POKETOKEN_TEST_SCALE=1.5`로 배율을 지정할 수 있습니다. 패키지 검사는 동봉 PNG의 SHA-256과 크레딧도 확인합니다.
+
 ## 패키징
 
 ### Windows x64

@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { mkdtempSync } from 'node:fs'
+import { mkdtempSync, readFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { LEAGUE_GOALS, LEAGUE_SERIES, LEAGUE_BY_ID, leagueRequirements, leagueProgress, newLeague, registeredSpecies, unlockLeague, validateLeagueDisplay } from '../src/shared/league'
@@ -7,12 +8,36 @@ import { newGame } from '../src/shared/model'
 import { POKEMON_BY_ID } from '../src/shared/catalog'
 import { Store } from '../src/main/store'
 import { removeTestDirectory } from './temp'
+import badgeArt from '../src/shared/badge-art-catalog.json'
 
 const now='2026-10-21T00:00:00Z',directories:string[]=[],stores:Store[]=[]
 afterEach(()=>{for(const store of stores.splice(0))if(store.db.open)store.close();for(const dir of directories.splice(0))removeTestDirectory(dir)})
 function open():Store {const dir=mkdtempSync(join(tmpdir(),'poketoken-league-'));directories.push(dir);const store=new Store(join(dir,'save.sqlite'));stores.push(store);return store}
 function requirements(id:string):number[]{return leagueRequirements(LEAGUE_BY_ID.get(id)!)}
 describe('league catalog and collection',()=>{
+  it('maps all 199 badges by game and badge identity to intact local artwork without changing reward IDs',()=>{
+    const bindings:Record<string,string>=badgeArt.goals
+    const images:Record<string,{sha256:string;width:number;height:number;pixel:boolean;originals:{url:string;sha256:string}[]}>=badgeArt.assets
+    expect(Object.keys(bindings).sort()).toEqual(LEAGUE_GOALS.filter(g=>g.kind==='badge').map(g=>g.id).sort())
+    expect(new Set(Object.values(bindings)).size).toBe(136)
+    for(const [id,metadata] of Object.entries(images)){
+      const bytes=readFileSync(`src/renderer/public/badges/${id}.png`)
+      expect(createHash('sha256').update(bytes).digest('hex')).toBe(metadata.sha256)
+      expect(bytes.subarray(0,8).toString('hex')).toBe('89504e470d0a1a0a')
+      expect(bytes.readUInt32BE(16)).toBe(metadata.width);expect(bytes.readUInt32BE(20)).toBe(metadata.height)
+      expect(metadata.originals.length).toBeGreaterThan(0)
+      for(const source of metadata.originals){expect(source.url).toMatch(/^https:\/\//);expect(source.sha256).toMatch(/^[a-f0-9]{64}$/)}
+    }
+    for(const ids of [['hgss-cascade','emerald-rain','sword-water','sv-water'],['hgss-rainbow','xy-plant','sword-grass']]){
+      expect(new Set(ids.map(id=>images[bindings[id]].sha256)).size).toBe(ids.length)
+    }
+    expect(bindings['hgss-boulder']).not.toBe(bindings['rgb-boulder'])
+    expect(bindings['sm-trial-water']).toBe('alola-water')
+    expect(bindings['sm-grand-fighting']).toBe('alola-grand-fighting')
+    expect(bindings['sm-grand-fighting']).not.toBe(bindings['sm-grand-rock'])
+    expect(bindings['sword-water']).toBe(bindings['shield-water'])
+    expect(bindings['rgb-champion']).toBeUndefined()
+  })
   it('covers the mainline league editions with usable sources and valid non-empty parties',()=>{
     expect(LEAGUE_SERIES).toHaveLength(22);expect(LEAGUE_GOALS.filter(g=>g.kind==='badge')).toHaveLength(199)
     expect(LEAGUE_GOALS.filter(g=>g.kind==='title')).toHaveLength(22);expect(LEAGUE_BY_ID.size).toBe(LEAGUE_GOALS.length)

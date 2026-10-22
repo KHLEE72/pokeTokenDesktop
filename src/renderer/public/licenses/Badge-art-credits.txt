@@ -1,0 +1,590 @@
+Game badge, Z-Crystal and trial stamp artwork
+Original graphics: Nintendo / Game Freak / The Pokemon Company.
+Sources: Bulbagarden Archives, PokeAPI/sprites and pret game decompilation projects.
+These game image assets are not licensed under this application's MIT license.
+Native GBA and Platinum sprite/palette atlas frames are extracted losslessly; other PNGs are unchanged.
+
+GSC Kanto goals use HGSS pixel sprites of the corresponding Kanto badge designs.
+Diamond/Pearl and BDSP share the Sinnoh badge designs, represented with original Platinum pixel sprites.
+Alola rewards remain app collection emblems, represented by their trial Z-Crystals and island trial-completion passport stamps.
+Modern badge artwork retains its original pixels and silhouettes; no generic type badge or AI redraw is used.
+
+rgb-boulder: RB Boulder Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Boulder_Badge.png
+https://archives.bulbagarden.net/media/upload/2/25/RB_Boulder_Badge.png
+SHA-256: dff0b219b864a54fde355b9c0ad5ad64dddd0d650af2f091268ef46402817e2a
+
+rgb-cascade: RB Cascade Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Cascade_Badge.png
+https://archives.bulbagarden.net/media/upload/b/b3/RB_Cascade_Badge.png
+SHA-256: f3e72fcc016f058f88df803cc7825171089e17870ffff56634bc3aea4a25e442
+
+rgb-thunder: RB Thunder Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Thunder_Badge.png
+https://archives.bulbagarden.net/media/upload/b/b5/RB_Thunder_Badge.png
+SHA-256: e42d91e3b8bf4461b1a89efd54d0b3c176037387fa07df3240f5f4cf7a4977ea
+
+rgb-rainbow: RB Rainbow Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Rainbow_Badge.png
+https://archives.bulbagarden.net/media/upload/c/ce/RB_Rainbow_Badge.png
+SHA-256: db7e57f1d0d151defbebdcaaf5577166643efc28b28982ea5b6e163bed96e62b
+
+rgb-soul: RB Soul Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Soul_Badge.png
+https://archives.bulbagarden.net/media/upload/6/66/RB_Soul_Badge.png
+SHA-256: b0d3503246e47d6e1b96d5abd4f3b0fc8137a37d425182cb1b698dfab7f4398e
+
+rgb-marsh: RB Marsh Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Marsh_Badge.png
+https://archives.bulbagarden.net/media/upload/d/d3/RB_Marsh_Badge.png
+SHA-256: b2ed7cf038a743ab293aed0816f466c800f38eae051bfcc75b55ef979828a00d
+
+rgb-volcano: RB Volcano Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Volcano_Badge.png
+https://archives.bulbagarden.net/media/upload/d/df/RB_Volcano_Badge.png
+SHA-256: e61ea9ff29148cbf2cdc994e58748d2b44b7e5c0fd915241f177ff0b6f799234
+
+rgb-earth: RB Earth Badge.png
+https://archives.bulbagarden.net/wiki/File:RB_Earth_Badge.png
+https://archives.bulbagarden.net/media/upload/7/73/RB_Earth_Badge.png
+SHA-256: e24cc3d2753ac2a76df024ebc8050feb84bfc6273986cd152dcb1c929dfe36ae
+
+yellow-boulder: Y Boulder Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Boulder_Badge.png
+https://archives.bulbagarden.net/media/upload/d/d3/Y_Boulder_Badge.png
+SHA-256: 0e34da6c69a64a159992ab13568102707d0be764e4d36320c862df2b6ea04512
+
+yellow-cascade: Y Cascade Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Cascade_Badge.png
+https://archives.bulbagarden.net/media/upload/6/60/Y_Cascade_Badge.png
+SHA-256: 1a512100a48df471fc4797aea53fed3f2af3f239b75a192487b4aaac105e727d
+
+yellow-thunder: Y Thunder Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Thunder_Badge.png
+https://archives.bulbagarden.net/media/upload/7/75/Y_Thunder_Badge.png
+SHA-256: 0cc37d52d323eb896cea5114aca5c9095f4c4768478390cef9fb52708a6947f4
+
+yellow-rainbow: Y Rainbow Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Rainbow_Badge.png
+https://archives.bulbagarden.net/media/upload/8/8c/Y_Rainbow_Badge.png
+SHA-256: 3d4fbc93804293051415124157632e00ccf02df3236543c06ce4ed80d1c1c4dc
+
+yellow-soul: Y Soul Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Soul_Badge.png
+https://archives.bulbagarden.net/media/upload/b/b2/Y_Soul_Badge.png
+SHA-256: b3bd4ac6913103b18488c6650b2d2e70f690a229c3fbdfa9bc525e2df82174a8
+
+yellow-marsh: Y Marsh Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Marsh_Badge.png
+https://archives.bulbagarden.net/media/upload/9/9a/Y_Marsh_Badge.png
+SHA-256: eaf0bd4521d781121d0ab45f6f3e35330d1ba823601a37ac9cf61e9131fdb294
+
+yellow-volcano: Y Volcano Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Volcano_Badge.png
+https://archives.bulbagarden.net/media/upload/3/3c/Y_Volcano_Badge.png
+SHA-256: a01f04af8b212499a5c6a462d45e72229ef4175debf34c295f2c6373c9b74875
+
+yellow-earth: Y Earth Badge.png
+https://archives.bulbagarden.net/wiki/File:Y_Earth_Badge.png
+https://archives.bulbagarden.net/media/upload/f/fc/Y_Earth_Badge.png
+SHA-256: e2c78178a7ae48c87d3862440604bf70a71cb7390bd95ec37adf7d4c29f2a6be
+
+gsc-zephyr: GSC Zephyr Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Zephyr_Badge.png
+https://archives.bulbagarden.net/media/upload/d/d3/GSC_Zephyr_Badge.png
+SHA-256: 70c075fa47a3040c14509ab2f6be66f27e05bcf6abc5369521194db64ba0da34
+
+gsc-hive: GSC Hive Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Hive_Badge.png
+https://archives.bulbagarden.net/media/upload/0/02/GSC_Hive_Badge.png
+SHA-256: 830ea81ee3cb3d175901636a0e540d33675335c2abecec48d18f5adc044f1bec
+
+gsc-plain: GSC Plain Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Plain_Badge.png
+https://archives.bulbagarden.net/media/upload/a/a4/GSC_Plain_Badge.png
+SHA-256: ad71bfb6d2d6b25acc516aa357e3bfd1791b85faf61abafd2a37f5845f758736
+
+gsc-fog: GSC Fog Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Fog_Badge.png
+https://archives.bulbagarden.net/media/upload/4/46/GSC_Fog_Badge.png
+SHA-256: 3055eb9526be1663b6832eda3cf3417e4c934ecf63dad383580c3d32438c2ffc
+
+gsc-storm: GSC Storm Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Storm_Badge.png
+https://archives.bulbagarden.net/media/upload/7/7a/GSC_Storm_Badge.png
+SHA-256: 170aabcd94ef63c4f68fa75bc2d9f08179d382a0d96002599b53f57142fc15e7
+
+gsc-mineral: GSC Mineral Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Mineral_Badge.png
+https://archives.bulbagarden.net/media/upload/9/92/GSC_Mineral_Badge.png
+SHA-256: dc30396fbf59a6995a014819fa627aa0e3531c3eb51355f2d7e2717709c3bd49
+
+gsc-glacier: GSC Glacier Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Glacier_Badge.png
+https://archives.bulbagarden.net/media/upload/7/77/GSC_Glacier_Badge.png
+SHA-256: 18b3db4a8bb5e820a4e0fa81663cafa02a1ed22471689e10ac31b20b1cecaaa5
+
+gsc-rising: GSC Rising Badge.png
+https://archives.bulbagarden.net/wiki/File:GSC_Rising_Badge.png
+https://archives.bulbagarden.net/media/upload/a/ac/GSC_Rising_Badge.png
+SHA-256: a4bec5c93abba17e8316116d74008eab910413a39435f1aa0f96b2250519d5a9
+
+hgss-zephyr: HGSS Zephyr Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Zephyr_Badge.png
+https://archives.bulbagarden.net/media/upload/3/3a/HGSS_Zephyr_Badge.png
+SHA-256: 8015747472ab2aaa0cb47617e198e22cbc9ff22421c50883e24879ac2efcc6d8
+
+hgss-hive: HGSS Hive Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Hive_Badge.png
+https://archives.bulbagarden.net/media/upload/2/27/HGSS_Hive_Badge.png
+SHA-256: 25fa933747a11a963c895285e1b445c54e3a2a33b38a7ca223140b4876c0f701
+
+hgss-plain: HGSS Plain Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Plain_Badge.png
+https://archives.bulbagarden.net/media/upload/4/4c/HGSS_Plain_Badge.png
+SHA-256: ad98efe294a9e13563ad074f427cd141a22b0acbcfcff3f24b6cf2f6a5fc4aaa
+
+hgss-fog: HGSS Fog Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Fog_Badge.png
+https://archives.bulbagarden.net/media/upload/8/8b/HGSS_Fog_Badge.png
+SHA-256: 424c3e0003ef1e198439f798c3a795af03e3e9cb1cd5388febe4cbc4d36842cd
+
+hgss-storm: HGSS Storm Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Storm_Badge.png
+https://archives.bulbagarden.net/media/upload/d/d6/HGSS_Storm_Badge.png
+SHA-256: bd8cbf1c504ea5f45e4d17e0c40ef47daeeed274bf09f1b107dc7fa0c9621948
+
+hgss-mineral: HGSS Mineral Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Mineral_Badge.png
+https://archives.bulbagarden.net/media/upload/6/6b/HGSS_Mineral_Badge.png
+SHA-256: 6828289471dcf3102e77f3b30d247906d24752a543a0f85b49ae37a749e463a1
+
+hgss-glacier: HGSS Glacier Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Glacier_Badge.png
+https://archives.bulbagarden.net/media/upload/2/20/HGSS_Glacier_Badge.png
+SHA-256: 9a79fba528403d9efcabce224434000657f49978624d001811832a517206eac2
+
+hgss-rising: HGSS Rising Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Rising_Badge.png
+https://archives.bulbagarden.net/media/upload/6/69/HGSS_Rising_Badge.png
+SHA-256: 1a6d0a194a5dd0ec35e3e5da97947273dc394cf1912829b9712672ee649342cf
+
+hgss-boulder: HGSS Boulder Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Boulder_Badge.png
+https://archives.bulbagarden.net/media/upload/8/8f/HGSS_Boulder_Badge.png
+SHA-256: e2ea0a5eae669b4a4af135cee4bf4663f3f10da005e8f2585d01fdcd81e29f1e
+
+hgss-cascade: HGSS Cascade Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Cascade_Badge.png
+https://archives.bulbagarden.net/media/upload/b/b7/HGSS_Cascade_Badge.png
+SHA-256: 8ed9de7def6908968669e1d3f172abaeab00d74b6a54b5e895062290d1df4897
+
+hgss-thunder: HGSS Thunder Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Thunder_Badge.png
+https://archives.bulbagarden.net/media/upload/1/17/HGSS_Thunder_Badge.png
+SHA-256: 49778d5702b64a61121bb09ea72c9d4b4974897456f1598b89afaf38e7ef4870
+
+hgss-rainbow: HGSS Rainbow Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Rainbow_Badge.png
+https://archives.bulbagarden.net/media/upload/6/67/HGSS_Rainbow_Badge.png
+SHA-256: e10181494eead0f7f56b73c69edefddc709b6e5bf9a2183675698686c3d05c77
+
+hgss-soul: HGSS Soul Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Soul_Badge.png
+https://archives.bulbagarden.net/media/upload/d/d6/HGSS_Soul_Badge.png
+SHA-256: 2ef19552d111ba293dda2b0ef28666ebecc072fac17eca0bdbf271aedf379ff0
+
+hgss-marsh: HGSS Marsh Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Marsh_Badge.png
+https://archives.bulbagarden.net/media/upload/d/d6/HGSS_Marsh_Badge.png
+SHA-256: 6791b15c88c7cc424e94a4fc55dcfdf8b8b189f607aaff5199aa2bc2d4af021e
+
+hgss-volcano: HGSS Volcano Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Volcano_Badge.png
+https://archives.bulbagarden.net/media/upload/6/6a/HGSS_Volcano_Badge.png
+SHA-256: 589b41dd51639779014cd94bdbb35ad3a7a0aed2ae8b2d2e16a92ca2e0b785de
+
+hgss-earth: HGSS Earth Badge.png
+https://archives.bulbagarden.net/wiki/File:HGSS_Earth_Badge.png
+https://archives.bulbagarden.net/media/upload/4/47/HGSS_Earth_Badge.png
+SHA-256: e77a451b67c2005f0fdbed8e26cb869a4f9b5a1dc5e6d92ff262b802c167afab
+
+lgpe-boulder: LGPE Boulder Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Boulder_Badge.png
+https://archives.bulbagarden.net/media/upload/7/7d/LGPE_Boulder_Badge.png
+SHA-256: e29134d483230105be6817bf9098af40a901329dcbe643e14431e55930947a51
+
+lgpe-cascade: LGPE Cascade Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Cascade_Badge.png
+https://archives.bulbagarden.net/media/upload/4/42/LGPE_Cascade_Badge.png
+SHA-256: 924ec0e83bb1aaed9e039e471818ba299b5168b9a77aadb971ff7e17fd4ebf96
+
+lgpe-thunder: LGPE Thunder Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Thunder_Badge.png
+https://archives.bulbagarden.net/media/upload/0/03/LGPE_Thunder_Badge.png
+SHA-256: 4f4752238a2bfeb54e1369fbb19f324a9f453f22ae17d24664810beefe263450
+
+lgpe-rainbow: LGPE Rainbow Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Rainbow_Badge.png
+https://archives.bulbagarden.net/media/upload/a/a0/LGPE_Rainbow_Badge.png
+SHA-256: 435c309c7471baead3e23700a7c7027b211697efdc73e58a97d9dedd4d2fd883
+
+lgpe-soul: LGPE Soul Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Soul_Badge.png
+https://archives.bulbagarden.net/media/upload/f/fc/LGPE_Soul_Badge.png
+SHA-256: 529b8fa70d6c0988c7ec1c074b753be938f02a0878017f0f481c93c4a28dc239
+
+lgpe-marsh: LGPE Marsh Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Marsh_Badge.png
+https://archives.bulbagarden.net/media/upload/9/94/LGPE_Marsh_Badge.png
+SHA-256: 4d80b1abc4fd3dc238a6e2717eee3066c3fc7e3162046a6c29be651888ae84b7
+
+lgpe-volcano: LGPE Volcano Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Volcano_Badge.png
+https://archives.bulbagarden.net/media/upload/6/63/LGPE_Volcano_Badge.png
+SHA-256: 160d53519973e013948f0fd818a18f968c59fdabd9a67facc22e9333288741d8
+
+lgpe-earth: LGPE Earth Badge.png
+https://archives.bulbagarden.net/wiki/File:LGPE_Earth_Badge.png
+https://archives.bulbagarden.net/media/upload/a/a2/LGPE_Earth_Badge.png
+SHA-256: 1de002ad699d9358ca022852fba6ea37c0ab4a7b15e25f6ed6bc0377131bd8a0
+
+rs-sheet: rs
+https://github.com/pret/pokeruby/blob/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png
+https://raw.githubusercontent.com/pret/pokeruby/5784633ce4ef7ade1a7f2d2d0c288e3d5e6cdd7f/graphics/trainer_card/badges.png
+SHA-256: 1b51b134ee850b888d0f1ba0a7b8e7b8a646164b6297604cb23e71dad0c85c21
+
+emerald-sheet: emerald
+https://github.com/pret/pokeemerald/blob/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png
+https://raw.githubusercontent.com/pret/pokeemerald/731ad5bfd6e6f265508d0efcca0ba42f9dcf5881/graphics/trainer_card/badges.png
+SHA-256: ed73005fdd0a259d548537da077bc3fa0a4967e5ccc19e8cee9e06a3d39a24e0
+
+frlg-sheet: frlg
+https://github.com/pret/pokefirered/blob/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png
+https://raw.githubusercontent.com/pret/pokefirered/ce6406d8c2eaf46d543c8a2606de0c3cb1951982/graphics/trainer_card/badges.png
+SHA-256: 213fcf06d1125b42df17c9de249fa8cd76a428da2b38582a04c9b1f52b2130c1
+
+platinum-sheet: Platinum
+https://github.com/pret/pokeplatinum/tree/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/badge_case_sprites.png
+SHA-256: 720c0f668758fdb66d8299fe22e3e81700908573f4e01bf25d897fe873858443
+
+platinum-coal-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/coal_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/coal_badge.pal
+SHA-256: abc56a16fb25929ffc90518c008db1ae5ed9a326c7602629a7023d0b6f1a18a2
+
+platinum-forest-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/forest_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/forest_badge.pal
+SHA-256: f645ad326d0adff4b2d832bb4497b2f73fd66199d5d5d549aceb3010d59a4402
+
+platinum-cobble-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/cobble_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/cobble_badge.pal
+SHA-256: 2180e16ca763417d797a24391d0ba120e588e603bdd26689cff4538ac1d631b0
+
+platinum-fen-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/fen_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/fen_badge.pal
+SHA-256: ebf8ff54f7f5a9f7443dbe27e3838f9a74c45e1d3341f3cd9dde76cb7d0a6c4a
+
+platinum-relic-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/relic_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/relic_badge.pal
+SHA-256: 080e1dbaa54ae577344e75f00463b861e6c8ec1703463ac47a779fb56458005c
+
+platinum-mine-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/mine_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/mine_badge.pal
+SHA-256: 59d2b5af63c41b19c6170be4a78e3efdd0e49667d4845be6c6946cf12a95b87b
+
+platinum-icicle-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/icicle_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/icicle_badge.pal
+SHA-256: e04d03bc7fa46feab90dde72f24193d89cc80bc9e9b10a1e3b0b9b143c0f6964
+
+platinum-beacon-palette: Platinum
+https://github.com/pret/pokeplatinum/blob/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/beacon_badge.pal
+https://raw.githubusercontent.com/pret/pokeplatinum/76620288b623f09ab16503d39392e61ac615291c/res/graphics/trainer_case/beacon_badge.pal
+SHA-256: 05f72fb56884188551ac69bddcf252c807ecbc627a07f7144f42badde4f9d21c
+
+unova-trio: Trio Badge.png
+https://archives.bulbagarden.net/wiki/File:Trio_Badge.png
+https://archives.bulbagarden.net/media/upload/7/74/Trio_Badge.png
+SHA-256: e1f34ca53fe8bfef0a7eb968072f6f4f02b9efedbb165cc2ac649aade2d891ef
+
+unova-basic: Basic Badge.png
+https://archives.bulbagarden.net/wiki/File:Basic_Badge.png
+https://archives.bulbagarden.net/media/upload/8/85/Basic_Badge.png
+SHA-256: d7b29f4e3d7ffd6ba5cf618ca8f38ce8908707d15c3ff0dc9c83033f62d3b676
+
+unova-insect: Insect Badge.png
+https://archives.bulbagarden.net/wiki/File:Insect_Badge.png
+https://archives.bulbagarden.net/media/upload/8/8a/Insect_Badge.png
+SHA-256: f39653077496ef3bd8e0ddae01403e981f19123fff13f65fdf074e22bff915ab
+
+unova-bolt: Bolt Badge.png
+https://archives.bulbagarden.net/wiki/File:Bolt_Badge.png
+https://archives.bulbagarden.net/media/upload/5/5b/Bolt_Badge.png
+SHA-256: 87f71f96d534d4766c60aa95439ec8c612361269ea8a05ecd55155d100bb0bf5
+
+unova-quake: Quake Badge.png
+https://archives.bulbagarden.net/wiki/File:Quake_Badge.png
+https://archives.bulbagarden.net/media/upload/2/29/Quake_Badge.png
+SHA-256: 9012be6602cbc120b3572fe24881a1dd4346667bce27e5ac569374aa2b335d92
+
+unova-jet: Jet Badge.png
+https://archives.bulbagarden.net/wiki/File:Jet_Badge.png
+https://archives.bulbagarden.net/media/upload/9/9c/Jet_Badge.png
+SHA-256: 63bd7d5de9e0e94ce2c851c108a4fbea9e67b66eac72cc2af4d5699d10f532b2
+
+unova-freeze: Freeze Badge.png
+https://archives.bulbagarden.net/wiki/File:Freeze_Badge.png
+https://archives.bulbagarden.net/media/upload/a/ac/Freeze_Badge.png
+SHA-256: 490c4ea4e2b55b7e037119bfad9fe968c32efe9fd790db8bca70ff2978aee8be
+
+unova-legend: Legend Badge.png
+https://archives.bulbagarden.net/wiki/File:Legend_Badge.png
+https://archives.bulbagarden.net/media/upload/c/c0/Legend_Badge.png
+SHA-256: 0171d972b0b1470748fc174e7a463d25fa889215e03b484d680e6ce8dd55ee43
+
+unova-toxic: Toxic Badge.png
+https://archives.bulbagarden.net/wiki/File:Toxic_Badge.png
+https://archives.bulbagarden.net/media/upload/3/3e/Toxic_Badge.png
+SHA-256: e38fe13a5e719bc8e31f2b2a1ff3253a7dd6acb0856f7bf020ceff8bdba9b860
+
+unova-wave: Wave Badge.png
+https://archives.bulbagarden.net/wiki/File:Wave_Badge.png
+https://archives.bulbagarden.net/media/upload/0/00/Wave_Badge.png
+SHA-256: 56aad23043d562f30f8b97694b5ea21250f8dcc554ef61572a37a02ec7628e94
+
+xy-bug: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/43.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/43.png
+SHA-256: 911bdf677528be29258ba9fc7e499b6f0d40cac48628df83b220318990a5974c
+
+xy-cliff: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/44.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/44.png
+SHA-256: 40be5e616e21325b04daad1aa3c3d20bfff84cff0e486b262bdae22724803eaf
+
+xy-rumble: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/45.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/45.png
+SHA-256: 0c7a17024e33e5f6bb19946de3edaca7df627ba8d288953b6ee6df619c047b7a
+
+xy-plant: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/46.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/46.png
+SHA-256: c6f1632aaa76b2a06d3b7ceac4eb40cb105a996bdad90cb85567be5a9fe94e93
+
+xy-voltage: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/47.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/47.png
+SHA-256: f54d1ae2c236434e35d0dd162bb559320c4e77891704235185a6581dcd7eff8f
+
+xy-fairy: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/48.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/48.png
+SHA-256: 7f6c9b7e19981222864c518b4ae9b3389e1bc86a5c6687ae3240a3b10d82f76d
+
+xy-psychic: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/49.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/49.png
+SHA-256: eec9f447a78ebe1ec076a3838fcf12411aa096242620ffb5bfdde7b4efa3dd84
+
+xy-iceberg: xy
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/50.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/50.png
+SHA-256: 6981c8ab940798bb046d7319bd3d7043fbd45d382d87de908476ea2d3ab60da1
+
+oras-stone: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/17.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/17.png
+SHA-256: d171026353ac682e8ffe7115f275a86fef5582f714b86e5df96a73abfe94eb94
+
+oras-knuckle: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/18.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/18.png
+SHA-256: 1cd616afff6c9254ed50038dbea9a047ec2819c32ba25c77c00b70a04210a7f7
+
+oras-dynamo: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/19.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/19.png
+SHA-256: 3519ca0c91c7fea2a47f025f4d6aa470bbf5cdc8f6bf8ebb6e0b4a7d4ab266ba
+
+oras-heat: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/20.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/20.png
+SHA-256: c4e86ebc6c22023025fdb50a0e7bbf0ce208d81e45168e17e5c1adb58b68df18
+
+oras-balance: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/21.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/21.png
+SHA-256: fdc8c85542d1208a056d12f2ec5763cf64b73711dec2ed1cf2165dcb5ebe4f58
+
+oras-feather: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/22.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/22.png
+SHA-256: 6081c06a99a88636f2462223b5e896fe70c800ad56020439d46f39a484314269
+
+oras-mind: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/23.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/23.png
+SHA-256: 30c67e7a0bb4785ae9a820100da62a135749eeadda187da10e03a12e39426885
+
+oras-rain: oras
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/24.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/24.png
+SHA-256: 56c8b90aaebdd7eb883f9f01d8b2d9c9d5fbc8f67bb4cbcd98603cd04fc6e267
+
+galar-grass: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/51.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/51.png
+SHA-256: ce9622bccdcaf697d191db47ca48356a61aa92101f038ad803f487dff42b8d1b
+
+galar-water: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/52.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/52.png
+SHA-256: be8e416a40cf690a28012653ca15ac0e8c6a2d3667ab73c68530d41eb554d125
+
+galar-fire: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/53.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/53.png
+SHA-256: a4ad9767577c1d249c1f833b4b267e277bd88ba069416927b090a2a08d3d4524
+
+galar-fighting: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/54.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/54.png
+SHA-256: bf7dbcad6cedb6c7b5e8a5a10badbdd901eeda3bd5167039d465f612391e2089
+
+galar-ghost: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/55.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/55.png
+SHA-256: 2577d98c5fac53dae322c8adc0a917c2ba1a44f6f82439a53ac1bb62aa853e07
+
+galar-fairy: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/56.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/56.png
+SHA-256: 7fae6b5899143bfd0c6157db3e6bbe868af17aa2738c52cfabca5ecb97f1fb13
+
+galar-rock: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/57.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/57.png
+SHA-256: 0053465903392e3196350356c7f7040c95ab6e1131a4a6ef061c8b9b24b1f4a4
+
+galar-ice: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/58.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/58.png
+SHA-256: faa93888378893458cc2297c38945692b18c654d1f24fd841c1a10fe0e892894
+
+galar-dark: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/59.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/59.png
+SHA-256: 059c69836543fa66159ab9d2be0825fb13e1dd4d517b82ea3774a4647f222cfb
+
+galar-dragon: galar
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/60.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/badges/60.png
+SHA-256: 3cbd9bae6b2a205866c9178b471b00f8ba66a9e5d63012adc731590a9892de03
+
+sv-bug: SVbadge VictoryRoad Bug.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Bug.png
+https://archives.bulbagarden.net/media/upload/9/95/SVbadge_VictoryRoad_Bug.png
+SHA-256: d0634aa6bedcfc6ed86e786c8bcbc96510cec3124b0e078d1fd49c0a25b0a6ec
+
+sv-grass: SVbadge VictoryRoad Grass.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Grass.png
+https://archives.bulbagarden.net/media/upload/a/ac/SVbadge_VictoryRoad_Grass.png
+SHA-256: f3994eebf18192c65a8ed66a202ded787d777952b8c8ec499888f3d0ce918ec6
+
+sv-electric: SVbadge VictoryRoad Electric.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Electric.png
+https://archives.bulbagarden.net/media/upload/f/ff/SVbadge_VictoryRoad_Electric.png
+SHA-256: 857c2542d9d44a15221b066ab2391f81f6c8ae90ccf9c8d532fcabbc2a808a83
+
+sv-water: SVbadge VictoryRoad Water.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Water.png
+https://archives.bulbagarden.net/media/upload/4/4f/SVbadge_VictoryRoad_Water.png
+SHA-256: 78ff6d26bc8d03730636d1fc4d42cf36b961191812fc5dcceecd48c38f3b063c
+
+sv-normal: SVbadge VictoryRoad Normal.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Normal.png
+https://archives.bulbagarden.net/media/upload/d/d6/SVbadge_VictoryRoad_Normal.png
+SHA-256: 4ec949aaa932bb0fba639c13735da99f899ebc611b9c7f5fa1e711a7920b64a6
+
+sv-ghost: SVbadge VictoryRoad Ghost.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Ghost.png
+https://archives.bulbagarden.net/media/upload/4/4c/SVbadge_VictoryRoad_Ghost.png
+SHA-256: d039bd6d640c341232e956d455cc80eeb59994dad7ed557982ea0a1058fc78a4
+
+sv-psychic: SVbadge VictoryRoad Psychic.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Psychic.png
+https://archives.bulbagarden.net/media/upload/2/2d/SVbadge_VictoryRoad_Psychic.png
+SHA-256: 6602a8b0a93070a550d935b78febabdb04ea4db5a04fac9c74d3d13bb646fceb
+
+sv-ice: SVbadge VictoryRoad Ice.png
+https://archives.bulbagarden.net/wiki/File:SVbadge_VictoryRoad_Ice.png
+https://archives.bulbagarden.net/media/upload/4/46/SVbadge_VictoryRoad_Ice.png
+SHA-256: 242a58f857802ae2dffd2948402352cb104e6c6c19e48e6caa18fb89ac15fef4
+
+alola-normal: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/normalium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/normalium-z--bag.png
+SHA-256: f5a08f04ef99b15779f7f52d8af309fd271a1db6a418b3fb23e108afc84259e0
+
+alola-water: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/waterium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/waterium-z--bag.png
+SHA-256: 0baa25ceb7baae9e6058a3b0c2dfd4e5759180d00f82f414af3b7d25c46c185d
+
+alola-fire: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/firium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/firium-z--bag.png
+SHA-256: 3be21d73129110b86175e285fdbef0c4a24a5a3fe8a502f17fbe31e715b45b67
+
+alola-grass: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/grassium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/grassium-z--bag.png
+SHA-256: b30bff36891cda17e666e60ac8af9c266ef4c50946b9e2cf6ef8c1754e943aec
+
+alola-electric: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/electrium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/electrium-z--bag.png
+SHA-256: 6793cc568c017b6c1e3fcdcb2c4021b11391232cad6c0204c9075218b1b74232
+
+alola-ghost: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/ghostium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/ghostium-z--bag.png
+SHA-256: e4439ac682765706b5aef114df79a69c4f4a68c75d49752667e4bc4f401062cf
+
+alola-dragon: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/dragonium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/dragonium-z--bag.png
+SHA-256: f28ff42a5017cce6cb21616df21741e905e2a3f53a6be3eea17b914974f80b5d
+
+alola-fairy: Sun / Moon / Ultra Sun / Ultra Moon
+https://github.com/PokeAPI/sprites/blob/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/fairium-z--bag.png
+https://raw.githubusercontent.com/PokeAPI/sprites/ba403973fdf9d0ac59175813861e6a1f8ed5020c/sprites/items/fairium-z--bag.png
+SHA-256: 01e9697f93209cb4730763784e790c629d5d2bb694f0d3faaad283e9584d4f96
+
+alola-grand-fighting: Melemele Trial Completion.png
+https://archives.bulbagarden.net/wiki/File:Melemele_Trial_Completion.png
+https://archives.bulbagarden.net/media/upload/c/cb/Melemele_Trial_Completion.png
+SHA-256: 978db0799fc2a19ae96cffe08787bd89a7d72cfb77810959e5c257b7b79ccec0
+
+alola-grand-rock: Akala Trial Completion.png
+https://archives.bulbagarden.net/wiki/File:Akala_Trial_Completion.png
+https://archives.bulbagarden.net/media/upload/d/d7/Akala_Trial_Completion.png
+SHA-256: 75f61aeda5d37f4955319d5738f0bcbea4091e9dead75ee2024f62c58ac80485
+
+alola-grand-dark: Ula'ula Trial Completion.png
+https://archives.bulbagarden.net/wiki/File:Ula%27ula_Trial_Completion.png
+https://archives.bulbagarden.net/media/upload/3/3a/Ula%27ula_Trial_Completion.png
+SHA-256: 1605a8dc3947143af957f4246c826b7eea4a338032fa8a11f0d797e51987d59f
+
+alola-grand-ground: Poni Trial Completion.png
+https://archives.bulbagarden.net/wiki/File:Poni_Trial_Completion.png
+https://archives.bulbagarden.net/media/upload/e/e3/Poni_Trial_Completion.png
+SHA-256: a1c58cb0b62c6ea0f3cba3e6da9f54daf841b21ce9c41e9c659636ef706151c2
