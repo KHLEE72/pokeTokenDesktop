@@ -88,9 +88,11 @@ node scripts/update-sprite-catalog.mjs
 ### Windows x64
 
 ```sh
-npm run dist:win
+npm run dist:win:portable
 npm run smoke:portable
 ```
+
+현재 릴리스는 portable EXE만 첨부합니다. `npm run dist:win`은 설치형 Setup도 함께 생성하는 전체 빌드이므로 포터블 전용 배포에는 위 명령을 사용합니다.
 
 ### macOS
 

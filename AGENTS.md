@@ -48,7 +48,7 @@ Node.js 22.12 이상과 npm을 사용하며, 의존성 설치는 `npm ci`로 한
 | `npm test` | Electron의 Node 런타임으로 테스트 실행 |
 | `npm run build` | 타입 검사·네이티브 준비·앱 빌드 |
 | `npm run smoke` | 빌드된 앱의 성장·저장·화면·재시작 검사 |
-| `npm run dist:win` | `release/`에 Windows x64 portable EXE 생성 |
+| `npm run dist:win:portable` | `release/`에 Windows x64 portable EXE만 생성 |
 
 - 코드 변경은 타입 검사와 관련 테스트로 확인한다. 버그 수정은 재현 조건을 검증하는 테스트가 유용하면 추가한다.
 - 앱 실행에 영향을 주면 빌드 후 실행 검사도 한다. 펫·창·배율·입력 변경은 `package.json`의 관련 `smoke:*` 명령을 선택한다.

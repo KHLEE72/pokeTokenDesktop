@@ -1,5 +1,13 @@
 # 검증 기록
 
+## v1.2.1 정식 Windows·Mac 릴리스 (2026-10-22)
+
+새 저장소 주소를 반영한 [v1.2.1 정식 릴리스](https://github.com/KHLEE72/pokeTokenDesktop/releases/tag/v1.2.1)를 Latest로 게시했습니다. 소스 태그 `v1.2.1`은 `e29659fd7876687c79472f7fda37313b7cbb53d9`를 가리키며 Windows portable EXE 1개·Mac arm64/x64 DMG 2개만 첨부했습니다. 셋업·업데이트 YAML·별도 해시/빌드 정보는 첨부하지 않고 해시와 검증 범위는 릴리스 본문에 기록합니다. 이전 v1.2.0 파일과 태그는 유지합니다.
+
+Windows 전체 테스트 227개, 타입 검사·빌드·[CI](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/39729269693)와 실제 portable EXE의 숨김 시작 포함 15개 검사가 통과했습니다. 패키지의 새 업데이트 주소와 현재 빌드 파일 594개, 동봉 GIF 432개, 배지 그림 136개 및 네이티브 보조 프로그램을 대조했습니다. 같은 태그의 [Mac 빌드](https://github.com/KHLEE72/pokeTokenDesktop/actions/runs/39729286177)는 Apple Silicon·Intel 각각 네이티브 러너에서 단위/통합 테스트·DMG 빌드·ad-hoc 서명 검증과 패키지 앱 실행 검사 14묶음을 통과했습니다. DMG를 내려받아 GitHub 해시·빌드 정보의 소스 커밋·칩·크기와 대조했으며, 일반 사용자 Mac의 장시간 사용·물리 멀티 모니터와 Apple 공증은 별도입니다.
+
+인증된 실제 릴리스 피드에서 Windows portable·Mac arm64/x64의 새 주소 선택과 현재 버전의 업데이트 없음도 확인했습니다. 저장소는 비공개를 유지하므로 인증 없는 앱 업데이트 조회는 공개 후 가능합니다. 이전 v1.2.0 이하 바이너리는 옛 주소를 검사하므로 이번 v1.2.1을 한 번 수동 다운로드해야 합니다. 상세 빌드 정보·검증 자료는 로컬 `release/publish-v1.2.1/`·`artifacts/release-1.2.1-verified.json`·`artifacts/release-1.2.1-published.json`에 보관합니다.
+
 ## 저장소 이름을 pokeTokenDesktop으로 변경 (2026-10-22)
 
 GitHub 저장소와 로컬 `origin`을 `KHLEE72/pokeTokenDesktop`으로 변경했습니다. 저장소는 비공개를 유지하고, 변경 전후 모든 릴리스의 ID·태그·초안/프리뷰 상태 및 첨부 파일 ID·이름·크기·SHA-256이 같은지 대조했습니다. 이전 저장소 이름의 인증된 GitHub API 요청도 새 저장소를 반환합니다. README 두 언어·개발 문서·업데이트 API와 URL 검증·패키징 및 실행 검사용 피드를 새 이름으로 맞췄습니다. 앱 ID·제품명·사용자 데이터 위치와 기존 태그·배포 파일은 유지하며 새 버전은 게시하지 않았습니다.
