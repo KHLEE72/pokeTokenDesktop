@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/KHLEE72/pokeTokenDesktop/releases/tag/v1.2.0"><img src="https://img.shields.io/badge/release-v1.2.0-9670c4?style=flat-square" alt="Release 1.2.0"></a>
+  <a href="https://github.com/KHLEE72/pokeTokenDesktop/releases/tag/v1.2.1"><img src="https://img.shields.io/badge/release-v1.2.1-9670c4?style=flat-square" alt="Release 1.2.1"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%2F%2011-3575b8?style=flat-square" alt="Windows 10 / 11">
   <img src="https://img.shields.io/badge/macOS-14%2B-42404d?style=flat-square" alt="macOS 14 and later">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-6b8e73?style=flat-square" alt="Code license: MIT"></a>
@@ -48,11 +48,11 @@
 
 **Choose your platform.** Windows runs from a single portable EXE; on Mac, open the DMG and drag the app into Applications.
 
-| Platform | Download v1.2.0 |
+| Platform | Download v1.2.1 |
 | --- | --- |
-| **Windows 10 / 11 · x64** | [Download portable EXE](https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v1.2.0/PokeToken-Desktop-1.2.0-win-x64.exe) |
-| **macOS 14+ · Apple Silicon** | [Download DMG · M-series](https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v1.2.0/PokeToken-Desktop-1.2.0-mac-arm64.dmg) |
-| **macOS 14+ · Intel** | [Download DMG · Intel](https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v1.2.0/PokeToken-Desktop-1.2.0-mac-x64.dmg) |
+| **Windows 10 / 11 · x64** | [Download portable EXE](https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v1.2.1/PokeToken-Desktop-1.2.1-win-x64.exe) |
+| **macOS 14+ · Apple Silicon** | [Download DMG · M-series](https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v1.2.1/PokeToken-Desktop-1.2.1-mac-arm64.dmg) |
+| **macOS 14+ · Intel** | [Download DMG · Intel](https://github.com/KHLEE72/pokeTokenDesktop/releases/download/v1.2.1/PokeToken-Desktop-1.2.1-mac-x64.dmg) |
 
 <details>
 <summary><strong>First launch &amp; keeping the app up to date</strong></summary>
@@ -61,7 +61,7 @@
 - **Check for updates** is below Settings in the sidebar. On Windows portable builds, the update button downloads and verifies the new EXE, replaces the old one, and restarts the app. Mac builds open the download for manual replacement.
 - Update checks use public GitHub Releases. A private repository cannot be checked by the app; no GitHub token is bundled.
 - To replace a version manually, quit the previous app from the tray or menu bar first. Older Windows installer users can switch to the portable EXE. Saved progress stays in the same application data folder.
-- Builds through v1.2.0 use the previous repository name for update validation. Download the next release manually once to switch to the renamed repository's update feed.
+- Builds through v1.2.0 use the previous repository name for update validation. Download v1.2.1 manually once to switch to the renamed repository's update feed.
 
 </details>
 
