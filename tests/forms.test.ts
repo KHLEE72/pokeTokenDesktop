@@ -44,8 +44,8 @@ describe('regional and Mega appearance catalog',()=>{
     for(const form of FORMS){
       const normal=spriteSources(form.id),shiny=spriteSources(form.id,true)
       expect(normal.length,form.identifier).toBeGreaterThan(0);expect(shiny.length,form.identifier).toBeGreaterThan(0)
-      expect(shiny.every(source=>source.url.includes('/shiny/'))).toBe(true)
-      expect(normal.every(source=>!source.url.includes('/shiny/'))).toBe(true)
+      expect(shiny.every(source=>source.url.startsWith('bundled:')?source.url===`bundled:${form.id}-shiny.gif`:source.url.includes('/shiny/')||source.url.includes('/FRONT_SHINY/'))).toBe(true)
+      expect(normal.every(source=>!source.url.includes('/shiny/')&&!source.url.endsWith('-shiny.gif'))).toBe(true)
     }
   })
   it('hatches regional roots with their own types, preserves shiny and evolves along the regional route',()=>{
@@ -87,10 +87,10 @@ describe('regional and Mega appearance catalog',()=>{
   })
 })
 describe('permanent Mega unlocks and candy accounting',()=>{
-  it('allows exactly one free choice, then charges exactly 50 candies and keeps partial candy XP',()=>{
-    const game=completed();game.candyTokens=50*CANDY_XP+12_345
+  it('allows exactly one free choice, then charges exactly 1000 candies and keeps partial candy XP',()=>{
+    const game=completed();game.candyTokens=1000*CANDY_XP+12_345
     gameAction(game,{type:'mega-stone',stone:'charizardite-x'},'fast',now)
-    expect(stonePrice(game)).toBe(50);expect(game.candyTokens).toBe(5_012_345)
+    expect(stonePrice(game)).toBe(1000);expect(game.candyTokens).toBe(100_012_345)
     gameAction(game,{type:'mega-stone',stone:'charizardite-y'},'fast',now)
     expect(game.candyTokens).toBe(12_345);expect(candyCount(game)).toBe(0)
     expect(appearanceCollection(game).megaStones).toEqual(['charizardite-x','charizardite-y'])
@@ -103,8 +103,18 @@ describe('permanent Mega unlocks and candy accounting',()=>{
     for(const stone of ['fake-stone','venusaurite'])expect(()=>gameAction(game,{type:'mega-stone',stone},'fast',now)).toThrow()
     expect(game).toEqual(before)
     gameAction(game,{type:'mega-stone',stone:'charizardite-x'},'fast',now)
-    game.candyTokens=50*CANDY_XP-1
+    game.candyTokens=1000*CANDY_XP-1
     expect(()=>gameAction(game,{type:'mega-stone',stone:'charizardite-y'},'fast',now)).toThrow('부족')
+  })
+  it('preserves previously purchased stones and balances while applying the new price to the next unlock',()=>{
+    const game=completed()
+    game.appearances={owned:[],ownedShiny:[],megaStones:['charizardite-x'],freeMegaStoneUsed:true}
+    game.candyTokens=50*CANDY_XP
+    gameAction(game,{type:'mega',formId:10034},'fast',now)
+    expect(appearanceId(game)).toBe(10034);expect(game.candyTokens).toBe(50*CANDY_XP)
+    expect(stonePrice(game)).toBe(1000)
+    expect(()=>gameAction(game,{type:'mega-stone',stone:'charizardite-y'},'fast',now)).toThrow('부족')
+    expect(appearanceCollection(game).megaStones).toEqual(['charizardite-x'])
   })
   it('toggles Mega appearance while preserving growth, ball, captures and XP; new tokens remain candy',()=>{
     const game=completed();gameAction(game,{type:'mega-stone',stone:'charizardite-x'},'fast',now)
@@ -133,7 +143,7 @@ describe('permanent Mega unlocks and candy accounting',()=>{
     expect(()=>gameAction(game,{type:'mega',formId:10071},'fast',now)).toThrow()
     game.owned=[670]
     expect(()=>gameAction(game,{type:'mega-stone',stone:'floettite'},'fast',now)).toThrow()
-    game.appearances!.owned.push(10061);game.candyTokens=50*CANDY_XP
+    game.appearances!.owned.push(10061);game.candyTokens=1000*CANDY_XP
     gameAction(game,{type:'mega-stone',stone:'floettite'},'fast',now)
     expect(appearanceCollection(game).megaStones).toContain('floettite')
   })
@@ -158,7 +168,7 @@ describe('appearance storage migration and transactions',()=>{
     const saved=migrated.game;migrated.close()
     const reopened=open(path)
     expect(reopened.game).toEqual(saved);expect(appearanceId(reopened.game)).toBe(10034)
-    expect(stonePrice(reopened.game)).toBe(50)
+    expect(stonePrice(reopened.game)).toBe(1000)
     expect(()=>reopened.act({type:'mega-stone',stone:'charizardite-y'})).toThrow()
     expect(reopened.game).toEqual(saved)
   })

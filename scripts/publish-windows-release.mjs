@@ -22,7 +22,7 @@ if(mode==='upload'){
  const digest=async(path,algorithm='sha256',encoding='hex')=>{const hash=createHash(algorithm);for await(const bytes of createReadStream(path))hash.update(bytes);return hash.digest(encoding)}
  if(!text.includes(`version: ${version}`)||!text.includes(`url: ${files[0]}`)||!text.includes(`sha512: ${await digest(join('release',files[0]),'sha512','base64')}`))throw Error('Update manifest does not match the installer')
  const validation={}
- for(const name of ['league','forms','i18n-smoke-native','dashboard','evolution','auto-hatch','portable','updater-download','portable-update']){
+ for(const name of ['league','forms','sprites','i18n-smoke-native','dashboard','evolution','auto-hatch','portable','updater-download','portable-update']){
   const file=name==='i18n-smoke-native'?`artifacts/${name}.json`:`artifacts/${name}-report.json`,report=JSON.parse(readFileSync(file,'utf8'))
   if(report.errors?.length||!report.checks?.length)throw Error(`Failed/missing ${name} execution check`)
   validation[name]=report.checks.length

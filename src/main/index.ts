@@ -148,7 +148,7 @@ else {
     mkdirSync(app.getPath('userData'), { recursive: true })
     diagnostics = new InputDiagnostics(join(app.getPath('userData'),'diagnostics'))
     diagnostics.record('session.start',{version:app.getVersion(),platform:process.platform,arch:process.arch,electron:process.versions.electron,chrome:process.versions.chrome})
-    sprites = new SpriteCache(join(app.getPath('userData'), 'sprites'))
+    sprites = new SpriteCache(join(app.getPath('userData'), 'sprites'), undefined, join(__dirname, '../renderer/sprites'))
     const loginStart=new LoginStart(app,process.platform,app.isPackaged,app.getPath('exe'),app.getAppPath(),process.env.PORTABLE_EXECUTABLE_FILE,process.env.POKETOKEN_TEST_MODE==='1')
     let loginRestored=false
     preferences = { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }

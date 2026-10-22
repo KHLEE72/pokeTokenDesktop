@@ -1,0 +1,5307 @@
+{
+  "source": {
+    "repository": "https://github.com/Ghasty001/Animated_sprites_by_Ghasty001",
+    "revision": "25ab1b072dd2fdf96f5c85d503403317f33a857f",
+    "permission": "Free to use with credit",
+    "credits": "README.md"
+  },
+  "pokemon": [
+    {
+      "id": 690,
+      "name": "Skrelp",
+      "normal": "FRONT/SKRELP.gif",
+      "shiny": "FRONT_SHINY/SKRELP.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 695,
+      "name": "Heliolisk",
+      "normal": "FRONT/HELIOLISK.gif",
+      "shiny": "FRONT_SHINY/HELIOLISK.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 741,
+      "name": "Oricorio",
+      "normal": "FRONT/ORICORIO.gif",
+      "shiny": "FRONT_SHINY/ORICORIO.gif",
+      "credits": [
+        "Ghasty001",
+        "aXl"
+      ]
+    },
+    {
+      "id": 768,
+      "name": "Golisopod",
+      "normal": "FRONT/GOLISOPOD.gif",
+      "shiny": "FRONT_SHINY/GOLISOPOD.gif",
+      "credits": [
+        "Ghasty001",
+        "leParagon"
+      ]
+    },
+    {
+      "id": 825,
+      "name": "Dottler",
+      "normal": "FRONT/DOTTLER.gif",
+      "shiny": "FRONT_SHINY/DOTTLER.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads",
+        "leParagon"
+      ]
+    },
+    {
+      "id": 826,
+      "name": "Orbeetle",
+      "normal": "FRONT/ORBEETLE.gif",
+      "shiny": "FRONT_SHINY/ORBEETLE.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 829,
+      "name": "Gossifleur",
+      "normal": "FRONT/Gossifleur.gif",
+      "shiny": "FRONT_SHINY/Gossifleur.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 841,
+      "name": "Flapple",
+      "normal": "FRONT/FLAPPLE.gif",
+      "shiny": "FRONT_SHINY/FLAPPLE.gif",
+      "credits": [
+        "Ghasty001",
+        "Blaquaza",
+        "leParagon"
+      ]
+    },
+    {
+      "id": 842,
+      "name": "Appletun",
+      "normal": "FRONT/APPLETUN.gif",
+      "shiny": "FRONT_SHINY/APPLETUN.gif",
+      "credits": [
+        "Ghasty001",
+        "Blaquaza",
+        "leParagon"
+      ]
+    },
+    {
+      "id": 903,
+      "name": "Sneasler",
+      "normal": "FRONT/SNEASLER.gif",
+      "shiny": "FRONT_SHINY/SNEASLER.gif",
+      "credits": [
+        "Ghasty001",
+        "Blaquaza",
+        "G.E.Z.",
+        "KattenK"
+      ]
+    },
+    {
+      "id": 909,
+      "name": "Fuecoco",
+      "normal": "FRONT/FUECOCO.gif",
+      "shiny": "FRONT_SHINY/FUECOCO.gif",
+      "credits": [
+        "Ghasty001",
+        "Bloxable"
+      ]
+    },
+    {
+      "id": 910,
+      "name": "Crocalor",
+      "normal": "FRONT/CROCALOR.gif",
+      "shiny": "FRONT_SHINY/CROCALOR.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 911,
+      "name": "Skeledirge",
+      "normal": "FRONT/SKELEDIRGE.gif",
+      "shiny": "FRONT_SHINY/SKELEDIRGE.gif",
+      "credits": [
+        "Ghasty001",
+        "Bloxable"
+      ]
+    },
+    {
+      "id": 926,
+      "name": "Fidough",
+      "normal": "FRONT/FIDOUGH.gif",
+      "shiny": "FRONT_SHINY/FIDOUGH.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads"
+      ]
+    },
+    {
+      "id": 927,
+      "name": "Dachsbun",
+      "normal": "FRONT/DACHSBUN.gif",
+      "shiny": "FRONT_SHINY/DACHSBUN.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads"
+      ]
+    },
+    {
+      "id": 928,
+      "name": "Smoliv",
+      "normal": "FRONT/SMOLIV.gif",
+      "shiny": "FRONT_SHINY/SMOLIV.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 929,
+      "name": "Dolliv",
+      "normal": "FRONT/DOLLIV.gif",
+      "shiny": "FRONT_SHINY/DOLLIV.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 930,
+      "name": "Arboliva",
+      "normal": "FRONT/ARBOLIVA.gif",
+      "shiny": "FRONT_SHINY/ARBOLIVA.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 933,
+      "name": "Naclstack",
+      "normal": "FRONT/NACLSTACK.gif",
+      "shiny": "FRONT_SHINY/NACLSTACK.gif",
+      "credits": [
+        "Ghasty001",
+        "Kyledove"
+      ]
+    },
+    {
+      "id": 934,
+      "name": "Garganacl",
+      "normal": "FRONT/GARGANACL.gif",
+      "shiny": "FRONT_SHINY/GARGANACL.gif",
+      "credits": [
+        "Ghasty001",
+        "Kyledove"
+      ]
+    },
+    {
+      "id": 936,
+      "name": "Armarouge",
+      "normal": "FRONT/ARMAROUGE.gif",
+      "shiny": "FRONT_SHINY/ARMAROUGE.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads",
+        "lennybitao"
+      ]
+    },
+    {
+      "id": 937,
+      "name": "Ceruledge",
+      "normal": "FRONT/CERULEDGE.gif",
+      "shiny": "FRONT_SHINY/CERULEDGE shiny.gif",
+      "credits": [
+        "Ghasty001",
+        "Base artist unidentified in upstream credits"
+      ]
+    },
+    {
+      "id": 944,
+      "name": "Shroodle",
+      "normal": "FRONT/SHROODLE.gif",
+      "shiny": "FRONT_SHINY/SHROODLE.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads"
+      ]
+    },
+    {
+      "id": 945,
+      "name": "Grafaiai",
+      "normal": "FRONT/GRAFAIAI.gif",
+      "shiny": "FRONT_SHINY/GRAFAIAI.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads"
+      ]
+    },
+    {
+      "id": 946,
+      "name": "Bramblin",
+      "normal": "FRONT/BRAMBLIN.gif",
+      "shiny": "FRONT_SHINY/BRAMBLIN shiny.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads"
+      ]
+    },
+    {
+      "id": 947,
+      "name": "Brambleghast",
+      "normal": "FRONT/BRAMBLEGHAST.gif",
+      "shiny": "FRONT_SHINY/BRAMBLEGHAST shiny.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads"
+      ]
+    },
+    {
+      "id": 979,
+      "name": "Annihilape",
+      "normal": "FRONT/ANNIHILAPE.gif",
+      "shiny": "FRONT_SHINY/ANNIHILAPE.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 983,
+      "name": "Kingambit",
+      "normal": "FRONT/KINGAMBIT.gif",
+      "shiny": "FRONT_SHINY/KINGAMBIT.gif",
+      "credits": [
+        "Ghasty001",
+        "Anarlaurendil"
+      ]
+    },
+    {
+      "id": 10067,
+      "name": "Mega Altaria",
+      "normal": "FRONT/ALTARIA_Mega.gif",
+      "shiny": "FRONT_SHINY/ALTARIA_Mega.gif",
+      "credits": [
+        "Ghasty001",
+        "Falgaia"
+      ]
+    },
+    {
+      "id": 10234,
+      "name": "Hisuian Qwilfish",
+      "normal": "FRONT/QWILFISH_1.gif",
+      "shiny": "FRONT_SHINY/QWILFISH_1.gif",
+      "credits": [
+        "Ghasty001",
+        "KingOfThe-X-Roads",
+        "Katten"
+      ]
+    },
+    {
+      "id": 10235,
+      "name": "Hisuian Sneasel",
+      "normal": "FRONT/SNEASEL-m.gif",
+      "shiny": "FRONT_SHINY/SNEASEL-m.gif",
+      "credits": [
+        "Ghasty001",
+        "Blaquaza",
+        "G.E.Z.",
+        "KattenK"
+      ]
+    },
+    {
+      "id": 10240,
+      "name": "Hisuian Braviary",
+      "normal": "FRONT/BRAVIARY.gif",
+      "shiny": "FRONT_SHINY/BRAVIARY.gif",
+      "credits": [
+        "Ghasty001",
+        "G.E.Z.",
+        "KingOfThe-X-Roads"
+      ]
+    },
+    {
+      "id": 10279,
+      "name": "Mega Victreebel",
+      "normal": "FRONT/VICTREBELL_mega.gif",
+      "shiny": "FRONT_SHINY/VICTREBELL_mega.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 10290,
+      "name": "Mega Eelektross",
+      "normal": "FRONT/EELEKTROSS_Mega.gif",
+      "shiny": "FRONT_SHINY/EELEKTROSS_Mega.gif",
+      "credits": [
+        "Ghasty001",
+        "kiriaura"
+      ]
+    },
+    {
+      "id": 10291,
+      "name": "Mega Chandelure",
+      "normal": "FRONT/CHANDELURE_Mega.gif",
+      "shiny": "FRONT_SHINY/CHANDELURE_Mega.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    },
+    {
+      "id": 10297,
+      "name": "Mega Malamar",
+      "normal": "FRONT/MALAMAR_Mega.gif",
+      "shiny": "FRONT_SHINY/MALAMAR_Mega.gif",
+      "credits": [
+        "Ghasty001"
+      ]
+    }
+  ],
+  "ebdx": {
+    "repository": "https://github.com/ChromeValiant/Pokemon-Essentials-21-With-Unofficial-EBDX",
+    "revision": "4bd3abfe4185af0561f01d6dcd448bc1d02e0f8d",
+    "credits": "README.md",
+    "readmeSha256": "973b229527098dbdf88c7cfe385ee831b34d51bd4350e3ae96753e1ac864a5d0",
+    "frameDurationMs": 90,
+    "keepStaticShiny": [
+      10282,
+      10283,
+      10298
+    ],
+    "pokemon": [
+      {
+        "id": 650,
+        "speciesId": 650,
+        "name": "Chespin",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CHESPIN.png",
+          "sha256": "34daeb46d246c60073e03fb8caf4db719ea775d1db7bb3c41777b25304f6645e",
+          "frames": 52,
+          "uniqueFrames": 16
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CHESPIN.png",
+          "sha256": "1a79bfadc0726fa38a506b5aea4f9344c6c260e9e624fcba81045882025ebfc3",
+          "frames": 52,
+          "uniqueFrames": 16
+        }
+      },
+      {
+        "id": 652,
+        "speciesId": 652,
+        "name": "Chesnaught",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": null,
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CHESNAUGHT.png",
+          "sha256": "4252b54bb040a0990ef544e1b63a7479171ea9ee4fc2e8f91de2160fdd21b2b9",
+          "frames": 90,
+          "uniqueFrames": 23
+        }
+      },
+      {
+        "id": 655,
+        "speciesId": 655,
+        "name": "Delphox",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DELPHOX.png",
+          "sha256": "bc2b4270410a113b53040773df2ceaa570d296aefdd6ff667ffb94759c40684c",
+          "frames": 176,
+          "uniqueFrames": 176
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DELPHOX.png",
+          "sha256": "4f6381df8fccdaa150b128df68906b3a865baf08a1419f98d92fcf58ec530a3e",
+          "frames": 176,
+          "uniqueFrames": 176
+        }
+      },
+      {
+        "id": 657,
+        "speciesId": 657,
+        "name": "Frogadier",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FROGADIER.png",
+          "sha256": "7920c43733b45d79661d55b05d758cdeacfd8f8dd43e90caf8bfb4853dcae7d1",
+          "frames": 23,
+          "uniqueFrames": 5
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FROGADIER.png",
+          "sha256": "26120d795ed3207f303fd01e4c5960728986ffdac2872ba797f3fbbe8652d647",
+          "frames": 23,
+          "uniqueFrames": 5
+        }
+      },
+      {
+        "id": 659,
+        "speciesId": 659,
+        "name": "Bunnelby",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BUNNELBY.png",
+          "sha256": "04fa7e539c0e8d094eba62f5a1b6ea94220509b4ee76352354f831c700bd07b7",
+          "frames": 16,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BUNNELBY.png",
+          "sha256": "a064ea3496d76608c48696f5c618903913189af2cd542437b44d09416c951c71",
+          "frames": 16,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 660,
+        "speciesId": 660,
+        "name": "Diggersby",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DIGGERSBY.png",
+          "sha256": "d10d9536a14f1c451bf9aac913275dfc1fac5c72ee238f0d410fcd6d99bca00c",
+          "frames": 111,
+          "uniqueFrames": 111
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DIGGERSBY.png",
+          "sha256": "1f3d94c2f9673e23e6ad56a6901e0deb59d43a3071516e8ef12f378ba4cc99d0",
+          "frames": 111,
+          "uniqueFrames": 111
+        }
+      },
+      {
+        "id": 673,
+        "speciesId": 673,
+        "name": "Gogoat",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GOGOAT.png",
+          "sha256": "f3cf65d3b57d439374b2400a1211ab7e7fe21a9e5fd43820d4b23410dcb3bb15",
+          "frames": 16,
+          "uniqueFrames": 4
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GOGOAT.png",
+          "sha256": "8133b231d79f21fcb134e0e5b6d18259c5706f78a7cdfd24990c9cc8b061937b",
+          "frames": 16,
+          "uniqueFrames": 4
+        }
+      },
+      {
+        "id": 676,
+        "speciesId": 676,
+        "name": "Furfrou",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FURFROU.png",
+          "sha256": "a572a3bb5cd35bff0d860202b8e7e1049e454964fff04505d5557dfad7105f15",
+          "frames": 24,
+          "uniqueFrames": 4
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FURFROU.png",
+          "sha256": "c9c4fe1c57c1fea4047eaa4294e8d40f64895669d1d6e725ead47a2977dca487",
+          "frames": 24,
+          "uniqueFrames": 4
+        }
+      },
+      {
+        "id": 677,
+        "speciesId": 677,
+        "name": "Espurr",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ESPURR.png",
+          "sha256": "bbc5c110b63af390746a2ba95f12133ad7cf5cca74a564e2e473483953d4891a",
+          "frames": 28,
+          "uniqueFrames": 22
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ESPURR.png",
+          "sha256": "8b4d7630d2c5a8451aa75f5210edb3fa425bed1d9445d0006769d04aba72a742",
+          "frames": 28,
+          "uniqueFrames": 22
+        }
+      },
+      {
+        "id": 678,
+        "speciesId": 678,
+        "name": "Meowstic",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MEOWSTIC.png",
+          "sha256": "31cd37b28b787d8662c37fb4d4351589f1c6042853aba6a76c8e639d5970caf6",
+          "frames": 102,
+          "uniqueFrames": 102
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MEOWSTIC.png",
+          "sha256": "163bc178e2f1f72dae88f986f5fa4d3cfd5521fbfb775861f4315963b9d7ee9b",
+          "frames": 102,
+          "uniqueFrames": 97
+        }
+      },
+      {
+        "id": 680,
+        "speciesId": 680,
+        "name": "Doublade",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DOUBLADE.png",
+          "sha256": "ae2177f3e7ea2222a0259dfe4b931c31d73296286e6ba849afc8f336a06b7431",
+          "frames": 17,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DOUBLADE.png",
+          "sha256": "30649e00275d0210d128ce524921b3cdcfd3e7fbc75a694dfb0f0f9072e420ce",
+          "frames": 17,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 683,
+        "speciesId": 683,
+        "name": "Aromatisse",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/AROMATISSE.png",
+          "sha256": "160a6d5d2a3f4a2805e88fbb625c2f5b6d0cc14dbfa8c809b38784d923bf4bd2",
+          "frames": 12,
+          "uniqueFrames": 4
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/AROMATISSE.png",
+          "sha256": "0fe7734998136c4d6f302a4e02dca4ffb6d81298ae5c661d0074e5cbebfb1b16",
+          "frames": 12,
+          "uniqueFrames": 4
+        }
+      },
+      {
+        "id": 689,
+        "speciesId": 689,
+        "name": "Barbaracle",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BARBARACLE.png",
+          "sha256": "663c0b4bf6a9db6b8d43c0e5b96e924a13df45d1521b4a100710b326928d7a74",
+          "frames": 11,
+          "uniqueFrames": 6
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BARBARACLE.png",
+          "sha256": "4e4a7ba88093de71dac6d4092c398d88ee31cb689e2da5140da90dbcfe176029",
+          "frames": 11,
+          "uniqueFrames": 6
+        }
+      },
+      {
+        "id": 699,
+        "speciesId": 699,
+        "name": "Aurorus",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/AURORUS.png",
+          "sha256": "29577bea6c6797c5a094339ed5d03aa51826a4824b42b33e027824d801a78828",
+          "frames": 120,
+          "uniqueFrames": 120
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/AURORUS.png",
+          "sha256": "eee58bbda9308cc8788a85fe8a4d8d5d548eec1e13227b1229ac4f15c542ee00",
+          "frames": 120,
+          "uniqueFrames": 120
+        }
+      },
+      {
+        "id": 701,
+        "speciesId": 701,
+        "name": "Hawlucha",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/HAWLUCHA.png",
+          "sha256": "c810c6c68788c3e875b6d95d499de56f4f45b0881df7cc5793f149161d8bf9ea",
+          "frames": 53,
+          "uniqueFrames": 13
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/HAWLUCHA.png",
+          "sha256": "c7a8e2362be65538774eb4b7513b7846867b4c05e15442e2da1ea360d4597959",
+          "frames": 53,
+          "uniqueFrames": 13
+        }
+      },
+      {
+        "id": 710,
+        "speciesId": 710,
+        "name": "Pumpkaboo",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PUMPKABOO.png",
+          "sha256": "d99134ad9d5c48534380695b72820d1dcbbe6dfbeec8e66a58ce5a479d304810",
+          "frames": 70,
+          "uniqueFrames": 28
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PUMPKABOO.png",
+          "sha256": "8de72a87c1bb0d14de5e7afc427c9055f12beb6b05d9621883908b94e8103ae6",
+          "frames": 70,
+          "uniqueFrames": 27
+        }
+      },
+      {
+        "id": 711,
+        "speciesId": 711,
+        "name": "Gourgeist",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GOURGEIST.png",
+          "sha256": "f71bf7d497b0f74932c274ec0a833047f7dd42fa1334e2571d8e8e5aae9b8624",
+          "frames": 43,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GOURGEIST.png",
+          "sha256": "0b68a3f2265bb6f7f7b0008f5a24f14a98beba5fd447760650036e83d844015d",
+          "frames": 43,
+          "uniqueFrames": 10
+        }
+      },
+      {
+        "id": 715,
+        "speciesId": 715,
+        "name": "Noivern",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": null,
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/NOIVERN.png",
+          "sha256": "bf9f5407ca0412125e01492b04f42d1570167faaf951808e87c87dac6b99ae7f",
+          "frames": 18,
+          "uniqueFrames": 12
+        }
+      },
+      {
+        "id": 723,
+        "speciesId": 723,
+        "name": "Dartrix",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DARTRIX.png",
+          "sha256": "05d305502f3625c650eac7eade7e2c09f0d07727c696377b706c1c1583176dc9",
+          "frames": 47,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DARTRIX.png",
+          "sha256": "1f4756fbfb85cbc356adcadde53c423081d602ba94a83e71432a8240aaddf012",
+          "frames": 47,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 724,
+        "speciesId": 724,
+        "name": "Decidueye",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DECIDUEYE.png",
+          "sha256": "bdeb8d5a2a5ac6b7fa58e122a0a12d55919f19169799b03ece7a4b5b41e2b7fd",
+          "frames": 49,
+          "uniqueFrames": 23
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DECIDUEYE.png",
+          "sha256": "aeef7ae12fc642561d0e46cda77045b8b78584ccd3ad29434cda9d26cc69c35d",
+          "frames": 49,
+          "uniqueFrames": 23
+        }
+      },
+      {
+        "id": 726,
+        "speciesId": 726,
+        "name": "Torracat",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TORRACAT.png",
+          "sha256": "e17f79a3bf8e58e2ab94f3e07effcabc0512b2c29bd71d879ff040b17a45dff9",
+          "frames": 12,
+          "uniqueFrames": 9
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TORRACAT.png",
+          "sha256": "fcaa010e3302efa5ef065e9a6b4b836540934aac1437218d2b966aab95d704f2",
+          "frames": 12,
+          "uniqueFrames": 9
+        }
+      },
+      {
+        "id": 747,
+        "speciesId": 747,
+        "name": "Mareanie",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MAREANIE.png",
+          "sha256": "26fb73b83dc7cdd0fa5657a792138f96d35ceb3ed9d34266e5fac45cbb75417f",
+          "frames": 8,
+          "uniqueFrames": 3
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MAREANIE.png",
+          "sha256": "3aa27e1a7b07fbe4a897b22da47e3d879e01cac6b642d94cdab1204d827d21cb",
+          "frames": 8,
+          "uniqueFrames": 3
+        }
+      },
+      {
+        "id": 757,
+        "speciesId": 757,
+        "name": "Salandit",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SALANDIT.png",
+          "sha256": "d7474b913bf8e51b54871862b17cb3871eed559e5d753368de5dc89c782c0c74",
+          "frames": 56,
+          "uniqueFrames": 14
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SALANDIT.png",
+          "sha256": "e522feefb755b06101edfe56bdc36607defe314473f0e99823d11907d74b4fd9",
+          "frames": 56,
+          "uniqueFrames": 14
+        }
+      },
+      {
+        "id": 758,
+        "speciesId": 758,
+        "name": "Salazzle",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SALAZZLE.png",
+          "sha256": "9097e8f224609300814c7df7a7f51a56fec9e4b7cb96b502fd21225cf147d96d",
+          "frames": 24,
+          "uniqueFrames": 12
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SALAZZLE.png",
+          "sha256": "103c774c18d9821d046b125fb542a5f85c58bc22edf9c1a1ab2e62feeea33e10",
+          "frames": 24,
+          "uniqueFrames": 12
+        }
+      },
+      {
+        "id": 763,
+        "speciesId": 763,
+        "name": "Tsareena",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TSAREENA.png",
+          "sha256": "96fdb69a1d262a6cbf739e25f8bd5351490d1e2b361fb1e8bbb5fd1aae9e91ab",
+          "frames": 68,
+          "uniqueFrames": 16
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TSAREENA.png",
+          "sha256": "7c41feaeb92a64cf00b28350fb9addde235d0da77d65bb339a302644de769313",
+          "frames": 68,
+          "uniqueFrames": 16
+        }
+      },
+      {
+        "id": 765,
+        "speciesId": 765,
+        "name": "Oranguru",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ORANGURU.png",
+          "sha256": "d3d0a607e1df204723f943ac4ff3f2350c9b7de12ff6ff8971b968f68447e581",
+          "frames": 12,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ORANGURU.png",
+          "sha256": "dc7d0332402452b1487cd0b749ee4c7266c8decae1b3f82d8c1e0067ddbcb176",
+          "frames": 12,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 766,
+        "speciesId": 766,
+        "name": "Passimian",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PASSIMIAN.png",
+          "sha256": "07fbdd4fc3ea9d9e55463cc059ddadbbabc429f03e6be8cb6f33411e92dfd9c8",
+          "frames": 13,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PASSIMIAN.png",
+          "sha256": "72f7b652bce8130202e9e96aae86256b4de3ec08de8570b14f843677326747c6",
+          "frames": 13,
+          "uniqueFrames": 9
+        }
+      },
+      {
+        "id": 788,
+        "speciesId": 788,
+        "name": "Tapu Fini",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TAPUFINI.png",
+          "sha256": "50cf149a1693268421db8f70b6c365b2d180d58766882385c0dfa64939a4fd42",
+          "frames": 14,
+          "uniqueFrames": 9
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TAPUFINI.png",
+          "sha256": "b5944ed396e14a3a539458fdd2c55de264d2b74ef722f0d538b21d7656ffabf9",
+          "frames": 14,
+          "uniqueFrames": 9
+        }
+      },
+      {
+        "id": 799,
+        "speciesId": 799,
+        "name": "Guzzlord",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GUZZLORD.png",
+          "sha256": "8b1c2eae629873873614b5fc223cf4b8a7df06d17968666ad600a20df33c5121",
+          "frames": 14,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GUZZLORD.png",
+          "sha256": "d4a49ce47de2cfd664ff7fa82f52089bd963ba329c775e9cbda7c9a588f85aea",
+          "frames": 14,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 803,
+        "speciesId": 803,
+        "name": "Poipole",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/POIPOLE.png",
+          "sha256": "6bbad381fc4252a027495de75dd2bf9734e08141a79146f86386cf557d30d50a",
+          "frames": 120,
+          "uniqueFrames": 115
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/POIPOLE.png",
+          "sha256": "1498d094ec309f665ac76c551c3f6850bb3cf60681cc0aa3b2863b9b4cf044e4",
+          "frames": 120,
+          "uniqueFrames": 105
+        }
+      },
+      {
+        "id": 812,
+        "speciesId": 812,
+        "name": "Rillaboom",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/RILLABOOM.png",
+          "sha256": "2d1f7b2e27bee3394c086a0a0514bcfb22eec3844ec51623e4792b2f0521ff10",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/RILLABOOM.png",
+          "sha256": "c5611664d2b4c28c95a9ccc44b1b49a5048174889fb30f0d0fb5b0c3b072b2ac",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 815,
+        "speciesId": 815,
+        "name": "Cinderace",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CINDERACE.png",
+          "sha256": "e22bd89e1ee5151283288864afc4fddcd98b1e8aa99e62f2d192d92f47d3c1b3",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CINDERACE.png",
+          "sha256": "71b36183d216eedfda477bfc8271860497064a254169ba5ce13967025eefe5f0",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 819,
+        "speciesId": 819,
+        "name": "Skwovet",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SKWOVET.png",
+          "sha256": "defba81f55ca5a30363b1291c58e6bfce01a128a2c75539cd0507161dbbac140",
+          "frames": 12,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SKWOVET.png",
+          "sha256": "356d6a4e956eb1500a8a13a81b9ea200b8c14a3da08bdf684de3b59184cda71a",
+          "frames": 12,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 820,
+        "speciesId": 820,
+        "name": "Greedent",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GREEDENT.png",
+          "sha256": "567fc9bb4e25ff1c5ba456e8af7c5efd17a34d1d97f91b12e675f6acaa27387b",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GREEDENT.png",
+          "sha256": "02a3f3f3da4a4fe7dc583af199c33d6da786e0ac3e73d0b70cd58e364a197ac0",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 827,
+        "speciesId": 827,
+        "name": "Nickit",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/NICKIT.png",
+          "sha256": "86a58540ca07d9ac827f535abb40cdd934ad21b0f5c33d917c75c087441bea1e",
+          "frames": 12,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/NICKIT.png",
+          "sha256": "e6647d8a321133beb7f84a2ba2d1522bb312f20ae1025d7fe32b3b3a72939193",
+          "frames": 12,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 828,
+        "speciesId": 828,
+        "name": "Thievul",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/THIEVUL.png",
+          "sha256": "32ba975f4f0286f8ef11de9d41435400ba110f58834dad4fb9ed22bfdc9461ea",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/THIEVUL.png",
+          "sha256": "5841d5881c3ca0eff3977f7a37356b50b25852913ddd678b209115dc946d1e07",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 836,
+        "speciesId": 836,
+        "name": "Boltund",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BOLTUND.png",
+          "sha256": "df8130ddb584e6a36e319fc2d67ceb940973d7beca403a4b3f00ff11f3e2787c",
+          "frames": 24,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BOLTUND.png",
+          "sha256": "2ca1268bead9c84502f73e68577a147b2ef59eb3e59c88c65f7339b73f8e0a6c",
+          "frames": 24,
+          "uniqueFrames": 10
+        }
+      },
+      {
+        "id": 850,
+        "speciesId": 850,
+        "name": "Sizzlipede",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SIZZLIPEDE.png",
+          "sha256": "d0e6fab3e97d2234838f79422ae755fea7a7fe025dfeac9fc891fe3348ade693",
+          "frames": 77,
+          "uniqueFrames": 34
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SIZZLIPEDE.png",
+          "sha256": "85f1ab03879948fba37511a8f3f117824a5682341829da3d77c6bc922109ea4a",
+          "frames": 77,
+          "uniqueFrames": 34
+        }
+      },
+      {
+        "id": 851,
+        "speciesId": 851,
+        "name": "Centiskorch",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CENTISKORCH.png",
+          "sha256": "d9a68e1f516c38e312b8747075f61333b87b35336c8902747a33bf304e0d29e8",
+          "frames": 24,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CENTISKORCH.png",
+          "sha256": "9c2da1ca03fd223a0d4acdfd229422ddf6ffde5ca45828468559ae983a7c131f",
+          "frames": 24,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 853,
+        "speciesId": 853,
+        "name": "Grapploct",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GRAPPLOCT.png",
+          "sha256": "7ff3eaf714629ce0b92885696b44816ff1208e2ef9557f06aa375a48e46241d7",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GRAPPLOCT.png",
+          "sha256": "a7dfcd5e1dff2715afbce23689aad717e67ee6a8e5ab36349ac1754babbf63e2",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 854,
+        "speciesId": 854,
+        "name": "Sinistea",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SINISTEA.png",
+          "sha256": "6bdde7137b56665121dda52933a620390181d615ca2adba581a557655eb250bf",
+          "frames": 12,
+          "uniqueFrames": 9
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SINISTEA.png",
+          "sha256": "d91ac673ddabb5aff21c0dafba742d9ad830eaf8b82aea1e4ea7ec01f347a11a",
+          "frames": 12,
+          "uniqueFrames": 9
+        }
+      },
+      {
+        "id": 855,
+        "speciesId": 855,
+        "name": "Polteageist",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/POLTEAGEIST.png",
+          "sha256": "6129443fdb36bfae6859e91d0f847eb310eebfc99631d465f04fa13f63aab7d5",
+          "frames": 13,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/POLTEAGEIST.png",
+          "sha256": "28d831c442bb9ab01b4053bb1c44bc16193fe9d723995ec011b68a785a2c926f",
+          "frames": 13,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 857,
+        "speciesId": 857,
+        "name": "Hattrem",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/HATTREM.png",
+          "sha256": "607f05a1eaa9c69098366b2485498e45beb152bce7d4609d98c840bab1ba45ff",
+          "frames": 32,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/HATTREM.png",
+          "sha256": "e323149e90dc552e89f60f16f946369d21971956bea5ab1c3db3305ed80e7051",
+          "frames": 32,
+          "uniqueFrames": 10
+        }
+      },
+      {
+        "id": 860,
+        "speciesId": 860,
+        "name": "Morgrem",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MORGREM.png",
+          "sha256": "ae08ab162157fee2ba4c0f171606ce9143c9aa1ecafb48202c5e2e9e9b4978ce",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MORGREM.png",
+          "sha256": "4d6ab29511957d55875731a2d00e51049d5e7c8435fd52a2bc7dd8c5c3947e5b",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 865,
+        "speciesId": 865,
+        "name": "Sirfetch’d",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SIRFETCHD.png",
+          "sha256": "71bda49a6cd59d4ae8bd092789549f74e56ede98e14808fbbb5ea6f9a22717cd",
+          "frames": 54,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SIRFETCHD.png",
+          "sha256": "4fd312c2dc7c122e908e4262c05f044d3ec449922109b33a960a24d52409d4fa",
+          "frames": 54,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 870,
+        "speciesId": 870,
+        "name": "Falinks",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": null,
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FALINKS.png",
+          "sha256": "a5661f58dc03daf0fb21223c749e8d251644f313ec9b61c1ecda9abf2782eed5",
+          "frames": 18,
+          "uniqueFrames": 16
+        }
+      },
+      {
+        "id": 879,
+        "speciesId": 879,
+        "name": "Copperajah",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/COPPERAJAH.png",
+          "sha256": "4c60d3b2e0f0d410e4b1cec129f3ecf588de5b653a81229349d987c768f63fa4",
+          "frames": 12,
+          "uniqueFrames": 9
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/COPPERAJAH.png",
+          "sha256": "3b0d9d5e072dd95bde041a518094164cb37efccb82626cf188123821d5b68755",
+          "frames": 12,
+          "uniqueFrames": 9
+        }
+      },
+      {
+        "id": 881,
+        "speciesId": 881,
+        "name": "Arctozolt",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ARCTOZOLT.png",
+          "sha256": "97c32e91d43a9406ed4b9f7712a6dadfe457d2be8c7d63460e9781dc313823e9",
+          "frames": 115,
+          "uniqueFrames": 25
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ARCTOZOLT.png",
+          "sha256": "43b6958646937388b8b43f12a7a6ba98f885851a993797f1c4f335b69b4f1f70",
+          "frames": 115,
+          "uniqueFrames": 25
+        }
+      },
+      {
+        "id": 891,
+        "speciesId": 891,
+        "name": "Kubfu",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/KUBFU.png",
+          "sha256": "0bedbc5e9d135f8071bcb49d72f609b9d362425605be81aea932467ca184f6cf",
+          "frames": 32,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/KUBFU.png",
+          "sha256": "3749c64b0a2179001c12ec53a1b7c2d03ca3377683f1a9c1cd0792926fe98bdc",
+          "frames": 32,
+          "uniqueFrames": 10
+        }
+      },
+      {
+        "id": 892,
+        "speciesId": 892,
+        "name": "Urshifu",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/URSHIFU.png",
+          "sha256": "1f7ca23ef5fabdd8158c833257c601e15c0c27601d9a5689a3333cd921d3a4d6",
+          "frames": 32,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/URSHIFU.png",
+          "sha256": "83e78bf546acb0a31265108d899995b51709b351134a0f281d2c08daa35794d8",
+          "frames": 32,
+          "uniqueFrames": 10
+        }
+      },
+      {
+        "id": 893,
+        "speciesId": 893,
+        "name": "Zarude",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ZARUDE.png",
+          "sha256": "51aa0c9327b15b1abd0c06419044f2e4d2f19c73c63f77ffde157b878d703b3d",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ZARUDE.png",
+          "sha256": "85cf966f05eeeaf58669e1de0ed76901c2fa95f1707c8172169af4a1e10fb8bf",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 894,
+        "speciesId": 894,
+        "name": "Regieleki",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/REGIELEKI.png",
+          "sha256": "084ebf81a16a709ae764b75f873c50b218c86975ce532d1d4b0534fe67a33e33",
+          "frames": 24,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/REGIELEKI.png",
+          "sha256": "b09014c3818e4b6e11adfa62f2d8169c92ed6ee59563c02f5b2334e3c3a8a7ab",
+          "frames": 24,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 897,
+        "speciesId": 897,
+        "name": "Spectrier",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SPECTRIER.png",
+          "sha256": "35ef4fc3448753a7d0ba3c9c609f2a8d855346a4f01b9026385c9d731a0688ee",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SPECTRIER.png",
+          "sha256": "197086d215cb59b34eeef361423ceabc2e2e3e1c88680202a994694da365d1f5",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 900,
+        "speciesId": 900,
+        "name": "Kleavor",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/KLEAVOR.PNG",
+          "sha256": "d0d6af9917d92851dd58884c12ade6ca447411318f3337db48f6f315c699c27b",
+          "frames": 22,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/KLEAVOR.PNG",
+          "sha256": "9171f6c48c59b243bdb9e4c170581dc41d31d9368ac9426f85187d490a619c5b",
+          "frames": 22,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 905,
+        "speciesId": 905,
+        "name": "Enamorus",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 8 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ENAMORUS.PNG",
+          "sha256": "3f770ea82bb7310f8f41410751f6c8e8ac4876192526cda98fd495f9c7cc2316",
+          "frames": 113,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ENAMORUS.PNG",
+          "sha256": "4420f3724b91ef56c43595cee0f86c7849e339809b529f44a9f6f8d26d0507ce",
+          "frames": 113,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 906,
+        "speciesId": 906,
+        "name": "Sprigatito",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SPRIGATITO.png",
+          "sha256": "cebd4def81bd10785f401c3a2ef2b2a7765b41f4eeb8412a42731bcec863b5de",
+          "frames": 53,
+          "uniqueFrames": 14
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SPRIGATITO.png",
+          "sha256": "7aa7b9ae9ac77a4b3dbd3ac8a8d334d0856d6b8027bc3dd5aef2157026460a58",
+          "frames": 53,
+          "uniqueFrames": 53
+        }
+      },
+      {
+        "id": 907,
+        "speciesId": 907,
+        "name": "Floragato",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FLORAGATO.png",
+          "sha256": "1e0651a082e29c8e91037fdb61137f3b608c81917c90960e3f18ab810c8dc04b",
+          "frames": 70,
+          "uniqueFrames": 36
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FLORAGATO.png",
+          "sha256": "7e1aa2e7b3bb88713611190666739e37193bf2b2687a9bf5ada221250cb3b186",
+          "frames": 70,
+          "uniqueFrames": 36
+        }
+      },
+      {
+        "id": 908,
+        "speciesId": 908,
+        "name": "Meowscarada",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MEOWSCARADA.png",
+          "sha256": "7dd79a6429328a8263e14202ac9f7bf931d3b8314cdedf2ed127352ae878bead",
+          "frames": 68,
+          "uniqueFrames": 40
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MEOWSCARADA.png",
+          "sha256": "a03b2761e91e55a2a0ee4899086c94a9792db8dc70bd443eff9ee20e5d11509c",
+          "frames": 68,
+          "uniqueFrames": 40
+        }
+      },
+      {
+        "id": 912,
+        "speciesId": 912,
+        "name": "Quaxly",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/QUAXLY.png",
+          "sha256": "733e87be35ad71db4ab959cfaecfe5f18427a5f2b2b8dbc5571f279ed53e2227",
+          "frames": 62,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/QUAXLY.png",
+          "sha256": "e1fd1e08fb62d1a1ad5ba838c6bcb18e76aaa0c527025aa9c8d28e3bb922158b",
+          "frames": 62,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 913,
+        "speciesId": 913,
+        "name": "Quaxwell",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/QUAXWELL.png",
+          "sha256": "e12bc0490d35f4cf784e3e45b7ca82b65ad89ce7c303d96006e6ee7a5ee55d1d",
+          "frames": 70,
+          "uniqueFrames": 43
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/QUAXWELL.png",
+          "sha256": "746f766007ea21f318555f2b0e0aa2329ca90d2d81c573aaa59e5e7e39326220",
+          "frames": 70,
+          "uniqueFrames": 43
+        }
+      },
+      {
+        "id": 914,
+        "speciesId": 914,
+        "name": "Quaquaval",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/QUAQUAVAL.png",
+          "sha256": "f7672325c9d49181a2142516aeb35ec019be9d0b951834915e50e50f4eab97d6",
+          "frames": 54,
+          "uniqueFrames": 54
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/QUAQUAVAL.png",
+          "sha256": "2f708ca0b0e17d579160d1dbb0dc9b23f98346978a3d57dc1ab399022d8a7692",
+          "frames": 54,
+          "uniqueFrames": 54
+        }
+      },
+      {
+        "id": 915,
+        "speciesId": 915,
+        "name": "Lechonk",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/LECHONK.png",
+          "sha256": "3c64456fc21704b9e6042d8859538a18aa891c083cc02f99ff7b560cfc159200",
+          "frames": 39,
+          "uniqueFrames": 14
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/LECHONK.png",
+          "sha256": "6d589f7e72f1f7d5dd3c5aa55f8068f7a883b157f3ed76d78234c15246e2409d",
+          "frames": 39,
+          "uniqueFrames": 14
+        }
+      },
+      {
+        "id": 916,
+        "speciesId": 916,
+        "name": "Oinkologne",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/OINKOLOGNE.png",
+          "sha256": "573f1a3bf9a992227fb2a127261367df94673982d0a46e65ff9ccf5ceb7eb293",
+          "frames": 8,
+          "uniqueFrames": 4
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/OINKOLOGNE.png",
+          "sha256": "0268340ad6b777893c12bb784504712c3d23200dcd13f7543fd8ea9b441eb903",
+          "frames": 8,
+          "uniqueFrames": 4
+        }
+      },
+      {
+        "id": 917,
+        "speciesId": 917,
+        "name": "Tarountula",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TAROUNTULA.png",
+          "sha256": "5ae1134f5e2c6b9f5c5e9255303edfdce4ed88f8b0a32a1cd6d25717b731373b",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TAROUNTULA.png",
+          "sha256": "eb4d683038105a1a34c39f048b6bc0c1d09aad0626973ca8bdc0a348f65b38de",
+          "frames": 47,
+          "uniqueFrames": 30
+        }
+      },
+      {
+        "id": 918,
+        "speciesId": 918,
+        "name": "Spidops",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SPIDOPS.png",
+          "sha256": "8cdc7e50b8e64c72ee24e103c25e71e70cff7df60d6bd4e46908fb879d93585c",
+          "frames": 87,
+          "uniqueFrames": 41
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SPIDOPS.png",
+          "sha256": "46b0d167d31fc326bb901c244b935c58a1151685e02bf45bb9b9fd4fe5477ed4",
+          "frames": 87,
+          "uniqueFrames": 41
+        }
+      },
+      {
+        "id": 919,
+        "speciesId": 919,
+        "name": "Nymble",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/NYMBLE.png",
+          "sha256": "ef05c8f8a704147f8bddded52020cc32accbb58fbd9fd246fb01a77b97d74e13",
+          "frames": 82,
+          "uniqueFrames": 34
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/NYMBLE.png",
+          "sha256": "69ede5daa782c412025c3275259de4c9daff605fba2e76abc4b3c1c2cf006405",
+          "frames": 82,
+          "uniqueFrames": 34
+        }
+      },
+      {
+        "id": 920,
+        "speciesId": 920,
+        "name": "Lokix",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/LOKIX.png",
+          "sha256": "9616df14495c131d38b23832b90f6866a718b01b3c7f4a92eeff3c53db1802ba",
+          "frames": 87,
+          "uniqueFrames": 48
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/LOKIX.png",
+          "sha256": "17f5741ae8b09b529d0f78f9967de3a289ab5d00e422ef4929cb2bf18a5461ee",
+          "frames": 87,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 921,
+        "speciesId": 921,
+        "name": "Pawmi",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PAWMI.png",
+          "sha256": "48c753c6b3877a76465464d1ef08fd39476846bcafc92e3864883f6afad7223c",
+          "frames": 90,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PAWMI.png",
+          "sha256": "2fd098166f839f2adf0994d7b175e7be68bf6288b677f4b2aac594ac67d1f27f",
+          "frames": 90,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 922,
+        "speciesId": 922,
+        "name": "Pawmo",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PAWMO.png",
+          "sha256": "46822359e5464e1646fd1f59e4ee3a2b9f2ad7bfee6b1d2b27c55cd776cc3296",
+          "frames": 78,
+          "uniqueFrames": 46
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PAWMO.png",
+          "sha256": "ead44d170e3c5c3ec86ab735b3bb8e85cf3103a3520dafc6315276e9ec9ae4ce",
+          "frames": 78,
+          "uniqueFrames": 46
+        }
+      },
+      {
+        "id": 923,
+        "speciesId": 923,
+        "name": "Pawmot",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PAWMOT.PNG",
+          "sha256": "22d5e66937693255254c197bf04ce505a816d8a6586712ee233cc5aacd4fc81f",
+          "frames": 82,
+          "uniqueFrames": 50
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PAWMOT.png",
+          "sha256": "612a4da9a1d60a29b9c8009f0e1c8df386e440fd5c613bb55981b15bd705b458",
+          "frames": 82,
+          "uniqueFrames": 50
+        }
+      },
+      {
+        "id": 931,
+        "speciesId": 931,
+        "name": "Squawkabilly",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SQUAWKABILLY.png",
+          "sha256": "16e8b892faa713619f9a760b4250e4ff9eb172a6de1859ed05f23d4da6a35f19",
+          "frames": 72,
+          "uniqueFrames": 18
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SQUAWKABILLY.png",
+          "sha256": "ad646aa873d57de1d2ce7c9b3a632b10810c77868176209d3fee2188e2104e4a",
+          "frames": 72,
+          "uniqueFrames": 18
+        }
+      },
+      {
+        "id": 935,
+        "speciesId": 935,
+        "name": "Charcadet",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CHARCADET.png",
+          "sha256": "65c41e77e5498f292c0ebe061ecf766f4163e1d17925cdb38cbd0551bd7c59af",
+          "frames": 20,
+          "uniqueFrames": 12
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CHARCADET.png",
+          "sha256": "7cfd733b6fde373e3b4125980873e5be38c991d2784d7b8b4a7fbdab433e15e5",
+          "frames": 20,
+          "uniqueFrames": 12
+        }
+      },
+      {
+        "id": 939,
+        "speciesId": 939,
+        "name": "Bellibolt",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BELLIBOLT.png",
+          "sha256": "341fef6b6b219fda6c0c73e7d14baaacf2359e77a32ae763cbef4c50c8d5c1a3",
+          "frames": 32,
+          "uniqueFrames": 16
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BELLIBOLT.png",
+          "sha256": "33ef1267a1be9d7213b39be7e48c45ab470d674d855581556dc49c24840a9403",
+          "frames": 32,
+          "uniqueFrames": 18
+        }
+      },
+      {
+        "id": 941,
+        "speciesId": 941,
+        "name": "Kilowattrel",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/KILOWATTREL.png",
+          "sha256": "45ddb61eae482252aad52b16905f261b068fd031e9288606092da84b91044789",
+          "frames": 15,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/KILOWATTREL.png",
+          "sha256": "7530f7c852f46105de5e72ba4a877fd74cad55b72b00a1cef141cdbb6995490e",
+          "frames": 15,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 942,
+        "speciesId": 942,
+        "name": "Maschiff",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MASCHIFF.png",
+          "sha256": "9870b74d6f90f7feb365fe0e14fa1af702fea93492b4b99a402147fd0cbb451f",
+          "frames": 81,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MASCHIFF.png",
+          "sha256": "b04614dd60ecfdd6e7c48ec789af756ae40e0113c0f5ca6315b51bcce9cbfe43",
+          "frames": 81,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 943,
+        "speciesId": 943,
+        "name": "Mabosstiff",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MABOSSTIFF.png",
+          "sha256": "7b49f57c60d64075f02bdd0987b4f07f2a32272630ada2bb66b72a6fc02e4b96",
+          "frames": 74,
+          "uniqueFrames": 31
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MABOSSTIFF.png",
+          "sha256": "82a6eb1d920a4fbd7dfa57da4c7b8fa80f5c847455542a96ea1501e2683921a6",
+          "frames": 74,
+          "uniqueFrames": 31
+        }
+      },
+      {
+        "id": 948,
+        "speciesId": 948,
+        "name": "Toedscool",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TOEDSCOOL.png",
+          "sha256": "90de4078d2d00294abe589bfd610c2f026fd853739063f6ddebc85b6210e738d",
+          "frames": 48,
+          "uniqueFrames": 29
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TOEDSCOOL.png",
+          "sha256": "de523627f9a43616e39454a57ad98906229d16a5d203a0339f80f1fce334f0d2",
+          "frames": 48,
+          "uniqueFrames": 29
+        }
+      },
+      {
+        "id": 949,
+        "speciesId": 949,
+        "name": "Toedscruel",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TOEDSCRUEL.png",
+          "sha256": "5b0a219af4a24f04f10e7550e069715f1207865de1b0b58dd7347a64738b393e",
+          "frames": 8,
+          "uniqueFrames": 4
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TOEDSCRUEL.png",
+          "sha256": "86fab241c8518d5affbcd03f8acfce9ddf83b2f471d5242404b885c0d13bfa31",
+          "frames": 8,
+          "uniqueFrames": 4
+        }
+      },
+      {
+        "id": 950,
+        "speciesId": 950,
+        "name": "Klawf",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/KLAWF.png",
+          "sha256": "616020a667c6b7bee097f5e89290d0d5d260fc6eb97ce4f31592933ed498a184",
+          "frames": 48,
+          "uniqueFrames": 21
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/KLAWF.png",
+          "sha256": "53ca3e281ebcac1a40dc43c7d02937916fd9e6c683d3f45d898a171e5e5775da",
+          "frames": 48,
+          "uniqueFrames": 21
+        }
+      },
+      {
+        "id": 951,
+        "speciesId": 951,
+        "name": "Capsakid",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CAPSAKID.png",
+          "sha256": "4b03bdb1b0e79494a1b44ecd6cf068241ae316f9b508cf346774adf8a4369c94",
+          "frames": 12,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CAPSAKID.png",
+          "sha256": "df8869fe147ad160b9e45784fee14bbe2415f0256a2d7ae7e9a7a7a703fd21e4",
+          "frames": 12,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 952,
+        "speciesId": 952,
+        "name": "Scovillain",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SCOVILLAIN.png",
+          "sha256": "30d463c2e20ee642f76f02f33f863e78810f0f8658b9ca19d7f894bb132410d4",
+          "frames": 12,
+          "uniqueFrames": 6
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SCOVILLAIN.png",
+          "sha256": "29c5178ee39faafc823304a6dde382226a9e7c7d8757078e74f17e20a3cd0057",
+          "frames": 12,
+          "uniqueFrames": 6
+        }
+      },
+      {
+        "id": 953,
+        "speciesId": 953,
+        "name": "Rellor",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/RELLOR.png",
+          "sha256": "cfecc45968e39979416ab3ed59144ef07d5faf57382a7fcd9fdca646132222d6",
+          "frames": 10,
+          "uniqueFrames": 5
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/RELLOR.png",
+          "sha256": "41a1a7dbb7f887a252f49d2c66c77a4650ddf215116501869ec3ce09c0128f2c",
+          "frames": 10,
+          "uniqueFrames": 5
+        }
+      },
+      {
+        "id": 954,
+        "speciesId": 954,
+        "name": "Rabsca",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/RABSCA.png",
+          "sha256": "8172108b7f8ac9aad319697b38f4eab8347ed350f0e527f37f4a84d3fb03e67b",
+          "frames": 33,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/RABSCA.png",
+          "sha256": "062d660a23e2f3bb8c7f0f3a4fa429b0b87b7224ee25f311b6a6bb337f7d9b6e",
+          "frames": 33,
+          "uniqueFrames": 10
+        }
+      },
+      {
+        "id": 955,
+        "speciesId": 955,
+        "name": "Flittle",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FLITTLE.png",
+          "sha256": "5a8516dafe07096d1b3cb30b184a553ef362753d02b321bc54e17be90d10c9ae",
+          "frames": 62,
+          "uniqueFrames": 19
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FLITTLE.png",
+          "sha256": "cd39944dce997ab291af8b427c44374f25e5f54a5cb80ceb19d57ba87029db74",
+          "frames": 62,
+          "uniqueFrames": 19
+        }
+      },
+      {
+        "id": 956,
+        "speciesId": 956,
+        "name": "Espathra",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ESPATHRA.png",
+          "sha256": "cffbbdc2c436e68da8437a68408f2683ccbe74555e7ad5693d9a22437c88c547",
+          "frames": 62,
+          "uniqueFrames": 22
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ESPATHRA.png",
+          "sha256": "dbb774c0cb173fa916fe0649a3fac9485de3792c4ed9fd2770fc16341bc0ce61",
+          "frames": 62,
+          "uniqueFrames": 22
+        }
+      },
+      {
+        "id": 957,
+        "speciesId": 957,
+        "name": "Tinkatink",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TINKATINK.png",
+          "sha256": "b8db5c411d927966052cfadd9c1301c7c9179341de6b7ed4c921d5fade2920fc",
+          "frames": 81,
+          "uniqueFrames": 44
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TINKATINK.png",
+          "sha256": "eabceb22f5428afece66c40273bc118c3be2f1a914da28283ba6e8438fd9052b",
+          "frames": 81,
+          "uniqueFrames": 44
+        }
+      },
+      {
+        "id": 958,
+        "speciesId": 958,
+        "name": "Tinkatuff",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TINKATUFF.png",
+          "sha256": "94df57d0b54fb2fc58d8e81dd712b550369a12e7f059688f7e7c9e7f2726958e",
+          "frames": 52,
+          "uniqueFrames": 27
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TINKATUFF.png",
+          "sha256": "e72ed63fe65577fc8f324ac06d90fb0c938c3e3d98172703b97827611b7a3688",
+          "frames": 52,
+          "uniqueFrames": 27
+        }
+      },
+      {
+        "id": 959,
+        "speciesId": 959,
+        "name": "Tinkaton",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TINKATON.png",
+          "sha256": "363e98d73df0b4134b61b1fce31bd5d602ee2a6b07edd40f706761e333d8f3ae",
+          "frames": 16,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TINKATON.png",
+          "sha256": "b113727a5e358dda5ce4315233e53f722bc1ce5b258bebcd3a1e560d28a42d09",
+          "frames": 16,
+          "uniqueFrames": 12
+        }
+      },
+      {
+        "id": 960,
+        "speciesId": 960,
+        "name": "Wiglett",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/WIGLETT.png",
+          "sha256": "a1b3a5f544a1d99d1a911a86fa2aaa9464fc64d905459369ed144b111356aacd",
+          "frames": 52,
+          "uniqueFrames": 14
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/WIGLETT.png",
+          "sha256": "49a20af7dbb26350057473b73bcd60df86131a6d20c3a572c126c5b0571c03ee",
+          "frames": 52,
+          "uniqueFrames": 14
+        }
+      },
+      {
+        "id": 961,
+        "speciesId": 961,
+        "name": "Wugtrio",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/WUGTRIO.png",
+          "sha256": "964b44969ecd5309f95a5ab0ae011a3e9602be7a2b9dc28d9b7f70c1865d4308",
+          "frames": 97,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/WUGTRIO.png",
+          "sha256": "1d51b680219913c706386b56472352b4c0c94572f4575b07a88a6add0b7174cf",
+          "frames": 97,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 962,
+        "speciesId": 962,
+        "name": "Bombirdier",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BOMBIRDIER.png",
+          "sha256": "d233b7b6a2e8e2250a0e520239a2cc509375a996f9fb153828dd7eefe9198f39",
+          "frames": 7,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BOMBIRDIER.png",
+          "sha256": "2926a8bb52705d5f6aed005b09e98a1b61a1443f86812b0720e791fe1138a8e3",
+          "frames": 7,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 963,
+        "speciesId": 963,
+        "name": "Finizen",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FINIZEN.png",
+          "sha256": "175fcd4edf973080dd1c834bc4fe0e3742aadc2030e58c5166a90758ce5b3f26",
+          "frames": 76,
+          "uniqueFrames": 23
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FINIZEN.png",
+          "sha256": "497b37f8fa1b083f76d0207efdc8d2122b06f2b0fbca3e9f749fb7f0a0dbd38b",
+          "frames": 76,
+          "uniqueFrames": 23
+        }
+      },
+      {
+        "id": 964,
+        "speciesId": 964,
+        "name": "Palafin",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PALAFIN.png",
+          "sha256": "1631513ec882638bde7d7a95cbc3cac04eef16117280683ba8abba78f65940a2",
+          "frames": 76,
+          "uniqueFrames": 23
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PALAFIN.png",
+          "sha256": "1d6b5c0173fa1de32fe437e1d6f7fa37021e2ef4538674ae48d3ee146c549afe",
+          "frames": 76,
+          "uniqueFrames": 23
+        }
+      },
+      {
+        "id": 965,
+        "speciesId": 965,
+        "name": "Varoom",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/VAROOM.png",
+          "sha256": "169c09c6fb9361a5a0b595fc2aa58e8082b2d3bdaf9d8211b04ae09f9372f795",
+          "frames": 54,
+          "uniqueFrames": 29
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/VAROOM.png",
+          "sha256": "197c8bb9e817a41e73ee16a7f854b438a1ebba7fe9b8b74a97d8fa4d5a15b8ec",
+          "frames": 54,
+          "uniqueFrames": 29
+        }
+      },
+      {
+        "id": 966,
+        "speciesId": 966,
+        "name": "Revavroom",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/REVAVROOM.png",
+          "sha256": "7cfda11d9889877abf660d95cc5123c830b0d9cc353f2fe39a9b33fd0285b0ba",
+          "frames": 79,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/REVAVROOM.png",
+          "sha256": "95edede2db8f64ab2d643201b272b9ed29f5ebee016fc7d21cd8a4e68a0bfb8c",
+          "frames": 79,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 967,
+        "speciesId": 967,
+        "name": "Cyclizar",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CYCLIZAR.png",
+          "sha256": "fb32eab5e9624dd923c3835d59267ef37d5ffb2370d1b1fbb33e8cd416ac8bbb",
+          "frames": 93,
+          "uniqueFrames": 42
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CYCLIZAR.png",
+          "sha256": "ab4b8b1fb3d4a65b39ab442fdc77f877a571a6bcd778390abd3a827668534428",
+          "frames": 93,
+          "uniqueFrames": 42
+        }
+      },
+      {
+        "id": 968,
+        "speciesId": 968,
+        "name": "Orthworm",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ORTHWORM.png",
+          "sha256": "e559da676003794b1e86652b892dd9fc75e7a27d64344fbcd76ac2c133847547",
+          "frames": 94,
+          "uniqueFrames": 27
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ORTHWORM.png",
+          "sha256": "15ad1021d6ddb074e7d6def5e80fc56a61e2c5a65a4497689473f4b4fb29b2a5",
+          "frames": 94,
+          "uniqueFrames": 27
+        }
+      },
+      {
+        "id": 970,
+        "speciesId": 970,
+        "name": "Glimmora",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GLIMMORA.png",
+          "sha256": "3d5085b1ee4970064cda16aeba872830495bcbb8400849ccaaaea9c9c4291631",
+          "frames": 24,
+          "uniqueFrames": 12
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GLIMMORA.png",
+          "sha256": "8888b8b3c35b313c819d7905a645bd1ab5ad1e53150dd74979b3fa5bf57a744d",
+          "frames": 24,
+          "uniqueFrames": 12
+        }
+      },
+      {
+        "id": 971,
+        "speciesId": 971,
+        "name": "Greavard",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GREAVARD.png",
+          "sha256": "b9fb04c6643cc0037af1e9c6fa315e5571f4b0fc43ca72db71153894aa40e914",
+          "frames": 26,
+          "uniqueFrames": 8
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GREAVARD.png",
+          "sha256": "462c239d21d956da7dd72450b0d70559695ce185b0e96c486086098a9aa26e61",
+          "frames": 26,
+          "uniqueFrames": 8
+        }
+      },
+      {
+        "id": 972,
+        "speciesId": 972,
+        "name": "Houndstone",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/HOUNDSTONE.png",
+          "sha256": "d0ae57d61c1ef334a50d0448216eac52471ddd251ac8b2af400ff63347a55350",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/HOUNDSTONE.png",
+          "sha256": "d67bd0847d5623a71c69d162c228a34ac01ebef96c8130f1034baa6fa8581e7b",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 973,
+        "speciesId": 973,
+        "name": "Flamigo",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FLAMIGO.png",
+          "sha256": "e7fc8090c72f961152dd22e3bb3cfb18cfdc317076a5bd335f5b0f6292a78f05",
+          "frames": 82,
+          "uniqueFrames": 37
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FLAMIGO.png",
+          "sha256": "64db5b0d2df75183c9d6e1383421aeede70fdefe7474915ad1729f1446273414",
+          "frames": 82,
+          "uniqueFrames": 37
+        }
+      },
+      {
+        "id": 974,
+        "speciesId": 974,
+        "name": "Cetoddle",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CETODDLE.png",
+          "sha256": "603b7ca89d6593c4abbfc2e118d9da098d6206b2e57bc41bab771174262f3232",
+          "frames": 58,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CETODDLE.png",
+          "sha256": "8f025ce3f20f430b25e5584e6627943f64d5e96f35a8554c402c8f0bd232b983",
+          "frames": 58,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 975,
+        "speciesId": 975,
+        "name": "Cetitan",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CETITAN.png",
+          "sha256": "30056f7945a6a725b6808f58985bb17c2a1f293e174beca83e60516aabeef56c",
+          "frames": 96,
+          "uniqueFrames": 27
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CETITAN.png",
+          "sha256": "12fc735f20a9ea6fb4f535aeb323ca051669d200abeebc39b518fb59d8809005",
+          "frames": 96,
+          "uniqueFrames": 27
+        }
+      },
+      {
+        "id": 976,
+        "speciesId": 976,
+        "name": "Veluza",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/VELUZA.png",
+          "sha256": "c0944121bada8b5673194dec8827f3d95344e3dd065080cfb1db259e4c9c9581",
+          "frames": 52,
+          "uniqueFrames": 13
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/VELUZA.png",
+          "sha256": "da7a8aea834fed0380a5307a2e08e0fb6863bc2c9b65b6b43ec9ca9d9af3b5c9",
+          "frames": 52,
+          "uniqueFrames": 13
+        }
+      },
+      {
+        "id": 977,
+        "speciesId": 977,
+        "name": "Dondozo",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DONDOZO.png",
+          "sha256": "7d9350e69d7d0935327f3f19eacc9caa1df3e5f5de5b4dbb8bf7265f13d24bd2",
+          "frames": 40,
+          "uniqueFrames": 16
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DONDOZO.png",
+          "sha256": "ba2c100e0d575e4d370bcb5c805ca4c74cd7501255cac6bfee8e3ac1484c24f5",
+          "frames": 40,
+          "uniqueFrames": 16
+        }
+      },
+      {
+        "id": 981,
+        "speciesId": 981,
+        "name": "Farigiraf",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FARIGIRAF.png",
+          "sha256": "38eda34975b7b705a00037899c3b8d5e6e7f9327d16a78b751f329dd32ca0bd0",
+          "frames": 40,
+          "uniqueFrames": 19
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FARIGIRAF.png",
+          "sha256": "0e20c64fe2632347c9323f97e4c8d3f3f69063ee5b4a6c7f8f338f5584e5603b",
+          "frames": 40,
+          "uniqueFrames": 19
+        }
+      },
+      {
+        "id": 982,
+        "speciesId": 982,
+        "name": "Dudunsparce",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DUDUNSPARCE.png",
+          "sha256": "1312384903e83ad1bbb84bcf36a447e23f1b4ab9540da82c11f0270a2c8970f5",
+          "frames": 62,
+          "uniqueFrames": 12
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DUDUNSPARCE.png",
+          "sha256": "a2fadc514f2d833057dc0da9fab393e9ce2a13a024131c5a6915eb6084fedc27",
+          "frames": 62,
+          "uniqueFrames": 12
+        }
+      },
+      {
+        "id": 985,
+        "speciesId": 985,
+        "name": "Scream Tail",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SCREAMTAIL.png",
+          "sha256": "2fdf589433ea9171125b23078dec5b47352a78873b3ce696e41992115773e1af",
+          "frames": 82,
+          "uniqueFrames": 15
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SCREAMTAIL.png",
+          "sha256": "ad8b11a9f5f4624bec416c0310bc88a9b3029ac181eb5646d7d7707d043cb0a5",
+          "frames": 82,
+          "uniqueFrames": 15
+        }
+      },
+      {
+        "id": 986,
+        "speciesId": 986,
+        "name": "Brute Bonnet",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BRUTEBONNET.png",
+          "sha256": "60f86c07dada9a8acaaf19dc6cfc80378f4ff88b55735f3e9ddfcd67da1c28f9",
+          "frames": 43,
+          "uniqueFrames": 15
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BRUTEBONNET.png",
+          "sha256": "f62f513eb8768122b6bfabdf8941d7ce8d00f6492c75c41a2f09ba1824f9e627",
+          "frames": 43,
+          "uniqueFrames": 15
+        }
+      },
+      {
+        "id": 988,
+        "speciesId": 988,
+        "name": "Slither Wing",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SLITHERWING.png",
+          "sha256": "c22d619749009e8e9864f2bc5c78f6ac90b97bae5f954f7ad3e3e7e44f5c1729",
+          "frames": 92,
+          "uniqueFrames": 14
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SLITHERWING.png",
+          "sha256": "57298654abf3a78880b5f34a90d2a1c347f6db6da73e8b664416b2967679a7e9",
+          "frames": 92,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 989,
+        "speciesId": 989,
+        "name": "Sandy Shocks",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SANDYSHOCKS.png",
+          "sha256": "47785e9412ffcda16cc755f3280901a17fac00e2344b9d3955788acae752888f",
+          "frames": 48,
+          "uniqueFrames": 21
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SANDYSHOCKS.png",
+          "sha256": "d150bc1c5f5258262ca60984c6284a2e54829894ace1b0bc32abd0c8e98216b0",
+          "frames": 48,
+          "uniqueFrames": 21
+        }
+      },
+      {
+        "id": 990,
+        "speciesId": 990,
+        "name": "Iron Treads",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/IRONTREADS.png",
+          "sha256": "2312f108f484546967e36936ca12e73d2e3129fdd40d1bb9216da42095ca43da",
+          "frames": 64,
+          "uniqueFrames": 28
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/IRONTREADS.png",
+          "sha256": "8b370a50dbe29817fb96dbe94c3b5a14a17d2154ddebab3d7930c88c2067bf8f",
+          "frames": 64,
+          "uniqueFrames": 28
+        }
+      },
+      {
+        "id": 991,
+        "speciesId": 991,
+        "name": "Iron Bundle",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/IRONBUNDLE.png",
+          "sha256": "ca0cd0484ceb36325bbca97bf3f7d7eb447e99219f7a99d7c8509cd47a9c6495",
+          "frames": 21,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/IRONBUNDLE.png",
+          "sha256": "936729eaa4292647df62c6465fe25c8b6118aa797a0398ac785376a4a37ac064",
+          "frames": 21,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 993,
+        "speciesId": 993,
+        "name": "Iron Jugulis",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/IRONJUGULIS.png",
+          "sha256": "fb65fadecc8f309d1d883ea99514964e46aa7ff27b487f6ac328cefbfb45e435",
+          "frames": 48,
+          "uniqueFrames": 40
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/IRONJUGULIS.png",
+          "sha256": "0f17f1009f44d0070b994e504756e5f2462bbbdd7b22ea130dc8fea3562b1289",
+          "frames": 48,
+          "uniqueFrames": 40
+        }
+      },
+      {
+        "id": 998,
+        "speciesId": 998,
+        "name": "Baxcalibur",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BAXCALIBUR.png",
+          "sha256": "54e7b6007d6905b5bc22038619ad296e65689d171e6a0c8a47971e9fff6fd7f7",
+          "frames": 77,
+          "uniqueFrames": 36
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BAXCALIBUR.png",
+          "sha256": "9bc01b3c890498f93fa78d931c8eafabbc16a78d91dd4ebe54f1ec7d9c7eed43",
+          "frames": 77,
+          "uniqueFrames": 36
+        }
+      },
+      {
+        "id": 1005,
+        "speciesId": 1005,
+        "name": "Roaring Moon",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ROARINGMOON.png",
+          "sha256": "30dd18954e84f2e5a82f1a41805d66952c0819d13f4de2831ff151556fbf03b1",
+          "frames": 16,
+          "uniqueFrames": 16
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ROARINGMOON.png",
+          "sha256": "573b22e1d6436cb945d19c20eb00de32e1dad175b08933fce004e02b4fd85c80",
+          "frames": 16,
+          "uniqueFrames": 16
+        }
+      },
+      {
+        "id": 1007,
+        "speciesId": 1007,
+        "name": "Koraidon",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/KORAIDON.png",
+          "sha256": "9d9381c891d609f789b07209915e1d7a040ddc57fe8feb2fb3d356cc8743b3b4",
+          "frames": 82,
+          "uniqueFrames": 20
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/KORAIDON.png",
+          "sha256": "b64a60ca07e23422d50babf32e5c5cf9d967df25042fec48eb8bd8732a0ec82e",
+          "frames": 82,
+          "uniqueFrames": 20
+        }
+      },
+      {
+        "id": 1009,
+        "speciesId": 1009,
+        "name": "Walking Wake",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/WALKINGWAKE.png",
+          "sha256": "172d9ac566f3114b5e89569d9c075408c64b4455f30bd993891101261d8b0587",
+          "frames": 90,
+          "uniqueFrames": 31
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/WALKINGWAKE.png",
+          "sha256": "716a9c0d893e2c86b328ee3ea2dcc8b498cf0f88d52ad03be145eb29004046e6",
+          "frames": 90,
+          "uniqueFrames": 31
+        }
+      },
+      {
+        "id": 1010,
+        "speciesId": 1010,
+        "name": "Iron Leaves",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/IRONLEAVES.png",
+          "sha256": "1a42453bd2a17364425e64859d9d1844f62ca80683b820304544023a35af326c",
+          "frames": 62,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/IRONLEAVES.png",
+          "sha256": "c253e0b80fc685e6b7fa288fb1c671e8a815764cdcb2ce62510cd14aeac3e98a",
+          "frames": 62,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 1011,
+        "speciesId": 1011,
+        "name": "Dipplin",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DIPPLIN.png",
+          "sha256": "4e790a1a6dcd6ae74885b184c21c64a570b31251f0f058c6806bf67915d4b6b9",
+          "frames": 66,
+          "uniqueFrames": 19
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DIPPLIN.png",
+          "sha256": "90b38a97f13fad35a6d68ea424c79627bbb782ec7226099193df83308a36d487",
+          "frames": 66,
+          "uniqueFrames": 20
+        }
+      },
+      {
+        "id": 1012,
+        "speciesId": 1012,
+        "name": "Poltchageist",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/POLTCHAGEIST.png",
+          "sha256": "1e48b21a24f4c6e5452f9910bf5bad78b89e7445c48dee945587f23fda11fe8a",
+          "frames": 91,
+          "uniqueFrames": 48
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/POLTCHAGEIST.png",
+          "sha256": "0eb619c93848f22e1c36bfe0d2fc0ad9bdbd204fc478377816a11e9e3f9f5d64",
+          "frames": 91,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 1013,
+        "speciesId": 1013,
+        "name": "Sinistcha",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SINISTCHA.png",
+          "sha256": "8d0a87a63913324dfdbcf7c099188897099335b61b85c7a17b58eb7e513daa76",
+          "frames": 24,
+          "uniqueFrames": 13
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SINISTCHA.png",
+          "sha256": "d18306589d6d867b9f05570e902d93dc7d0e76b175755d302d6318ef3c89a7fc",
+          "frames": 24,
+          "uniqueFrames": 13
+        }
+      },
+      {
+        "id": 1014,
+        "speciesId": 1014,
+        "name": "Okidogi",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/OKIDOGI.png",
+          "sha256": "49459ba2ca590983e7e8919ce4a8cccafee1dd4cd3477bd2ad61cc2ff910b5f7",
+          "frames": 123,
+          "uniqueFrames": 39
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/OKIDOGI.png",
+          "sha256": "76ed6dd7cf4d4ed15b9eb8b40f053f5a15640e48aae06ec910f953adc3b6184e",
+          "frames": 123,
+          "uniqueFrames": 39
+        }
+      },
+      {
+        "id": 1015,
+        "speciesId": 1015,
+        "name": "Munkidori",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MUNKIDORI.png",
+          "sha256": "56223c588d3f5635a103ee22f4b6ea0259c08fe07a977939f1be33a6b0acb832",
+          "frames": 26,
+          "uniqueFrames": 10
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MUNKIDORI.png",
+          "sha256": "a1ad2a25ec64ffc54df84b1a065e94fcd75cb9013a77abb424111e1b28fef488",
+          "frames": 26,
+          "uniqueFrames": 10
+        }
+      },
+      {
+        "id": 1016,
+        "speciesId": 1016,
+        "name": "Fezandipiti",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FEZANDIPITI.png",
+          "sha256": "17806603fd7ff014271266f5a3a34761f3817304b57eccb6e6954ca61614f338",
+          "frames": 132,
+          "uniqueFrames": 34
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FEZANDIPITI.png",
+          "sha256": "3525c89568f2ad99d7b668ea916ca1c3e60be0c58b61a0424b81ce4053aeb3d2",
+          "frames": 132,
+          "uniqueFrames": 34
+        }
+      },
+      {
+        "id": 1017,
+        "speciesId": 1017,
+        "name": "Ogerpon",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/OGERPON.png",
+          "sha256": "01efbe6e2d58839ce89e9303b0cb076f101f5dc7f36d2b705f344d1f8944b97c",
+          "frames": 63,
+          "uniqueFrames": 20
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/OGERPON.png",
+          "sha256": "2fb6c2971d1c12ed3ab4296873cc4c7d00f5739a695f3e308b5090865a48a6cb",
+          "frames": 63,
+          "uniqueFrames": 20
+        }
+      },
+      {
+        "id": 1018,
+        "speciesId": 1018,
+        "name": "Archaludon",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ARCHALUDON.png",
+          "sha256": "19380d2dade85de76b5d3ed6a88cd00cd33dc2d6a9dfcec793877b1536849475",
+          "frames": 54,
+          "uniqueFrames": 16
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ARCHALUDON.png",
+          "sha256": "80bea15d144734ede3751a430ac64649b1a5b4db34366a04902e2b38e8be61ca",
+          "frames": 54,
+          "uniqueFrames": 16
+        }
+      },
+      {
+        "id": 1021,
+        "speciesId": 1021,
+        "name": "Raging Bolt",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/RAGINGBOLT.png",
+          "sha256": "16ebb6ee2bede78dfa8e02af0b7b0a499e79b5e7460836ddcccbf86a6bfc3f5d",
+          "frames": 79,
+          "uniqueFrames": 32
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/RAGINGBOLT.png",
+          "sha256": "d0fde74ed6ea13cb35e2b067263a7f63ac2a20a6b900ba23759d073ae41d5158",
+          "frames": 79,
+          "uniqueFrames": 32
+        }
+      },
+      {
+        "id": 1022,
+        "speciesId": 1022,
+        "name": "Iron Boulder",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/IRONBOULDER.png",
+          "sha256": "42c4f669d2874607e542999282ddad0dbf238a20d12a9b386d36d8c68e392f00",
+          "frames": 8,
+          "uniqueFrames": 4
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/IRONBOULDER.png",
+          "sha256": "2f53f47c64ad54e7371c05229847e9fa6797e9f90342977fcf7770370afd15c0",
+          "frames": 8,
+          "uniqueFrames": 4
+        }
+      },
+      {
+        "id": 1023,
+        "speciesId": 1023,
+        "name": "Iron Crown",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/IRONCROWN.png",
+          "sha256": "df7e4d8c8dcb0935b12738b1b661ef3c0227db2cc3907b19bb8af13e5ca3de98",
+          "frames": 85,
+          "uniqueFrames": 18
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/IRONCROWN.png",
+          "sha256": "2666b62e03aff046409afce43e0729d0662eb6fa65a57478b1981dd42aa319c6",
+          "frames": 85,
+          "uniqueFrames": 18
+        }
+      },
+      {
+        "id": 1025,
+        "speciesId": 1025,
+        "name": "Pecharunt",
+        "form": 0,
+        "formName": null,
+        "credits": [
+          "Smogon Gen 9 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PECHARUNT.png",
+          "sha256": "a72a2a26688b21d12cc6288eb5256f517d0d1fcfe12ac942014324d000ef161b",
+          "frames": 137,
+          "uniqueFrames": 72
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PECHARUNT.png",
+          "sha256": "03f56f9c8ace8567a9382ddd95a16c78299c52003f9bae08563c91aa92dc66ac",
+          "frames": 137,
+          "uniqueFrames": 72
+        }
+      },
+      {
+        "id": 10025,
+        "speciesId": 678,
+        "name": "Female Meowstic",
+        "form": 1,
+        "formName": "Female",
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MEOWSTIC_1.png",
+          "sha256": "64267554b833b6cd4ffeb889c4cdbd6397a35f9459aefc02a9a857328c7b29bc",
+          "frames": 113,
+          "uniqueFrames": 109
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MEOWSTIC_1.png",
+          "sha256": "183fe2bf68b94cc06e02a781047053d76c1009e692c13fbb4e2e2bb7abfe1696",
+          "frames": 113,
+          "uniqueFrames": 92
+        }
+      },
+      {
+        "id": 10033,
+        "speciesId": 3,
+        "name": "Mega Venusaur",
+        "form": 1,
+        "formName": "Mega Venusaur",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/VENUSAUR_1.png",
+          "sha256": "9562cfb787ac6cfd2b74e6a2546e43e51ea893e8a8e3221f1aa65184e12023b5",
+          "frames": 74,
+          "uniqueFrames": 49
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/VENUSAUR_1.png",
+          "sha256": "c67990be5cd93759553043df657181ec905a05bb5d173b07dba2b38199d56e91",
+          "frames": 74,
+          "uniqueFrames": 49
+        }
+      },
+      {
+        "id": 10035,
+        "speciesId": 6,
+        "name": "Mega Charizard Y",
+        "form": 2,
+        "formName": "Mega Charizard Y",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CHARIZARD_2.png",
+          "sha256": "e162a856666c97cf54a59803cec1a74a02615e818811e2acddb53b6df8a92d31",
+          "frames": 72,
+          "uniqueFrames": 65
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CHARIZARD_2.png",
+          "sha256": "077b54e391f72870efadeb6c820a60a61f7e6b43b7958370c3ef8c0927b93cb2",
+          "frames": 72,
+          "uniqueFrames": 65
+        }
+      },
+      {
+        "id": 10036,
+        "speciesId": 9,
+        "name": "Mega Blastoise",
+        "form": 1,
+        "formName": "Mega Blastoise",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BLASTOISE_1.png",
+          "sha256": "7b2488b5753ad09212b2fe5dbd245f3b577b8f74ca0f3de27db05db07a254893",
+          "frames": 68,
+          "uniqueFrames": 44
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BLASTOISE_1.png",
+          "sha256": "58414d6a900ab3ca16f98d0b39386770054bc7f1a3a1a1ce066826d997dcc9a4",
+          "frames": 68,
+          "uniqueFrames": 45
+        }
+      },
+      {
+        "id": 10038,
+        "speciesId": 94,
+        "name": "Mega Gengar",
+        "form": 1,
+        "formName": "Mega Gengar",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GENGAR_1.png",
+          "sha256": "c2d3e66df73eb3eb068996caf39f05f2ceb8ba6fa78c8e24846d19be4210ae3c",
+          "frames": 66,
+          "uniqueFrames": 37
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GENGAR_1.png",
+          "sha256": "ad7899f0633f65621314a97823d9667e3023e8b6b575e0308d109574a60eb38d",
+          "frames": 66,
+          "uniqueFrames": 37
+        }
+      },
+      {
+        "id": 10039,
+        "speciesId": 115,
+        "name": "Mega Kangaskhan",
+        "form": 1,
+        "formName": "Mega Kangaskhan",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/KANGASKHAN_1.png",
+          "sha256": "93eea4c361091d7d582e5e48368bb233c8a4ebb54f628aa837967e1c524b1454",
+          "frames": 74,
+          "uniqueFrames": 51
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/KANGASKHAN_1.png",
+          "sha256": "c753a3feb3d6738c95f2aeb9216d61dec271bec80d6f14da773d0a9fc19bdc54",
+          "frames": 74,
+          "uniqueFrames": 52
+        }
+      },
+      {
+        "id": 10040,
+        "speciesId": 127,
+        "name": "Mega Pinsir",
+        "form": 1,
+        "formName": "Mega Pinsir",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PINSIR_1.png",
+          "sha256": "a867332c84b73bc72d3767ba2f2a611185b0e885940ed5f61c12b374b39018d7",
+          "frames": 72,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PINSIR_1.png",
+          "sha256": "49aa6a53ea6e45ccddf596e615342af2c9b702fb2bd3203e0a279751eadc9f7c",
+          "frames": 72,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 10041,
+        "speciesId": 130,
+        "name": "Mega Gyarados",
+        "form": 1,
+        "formName": "Mega Gyarados",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GYARADOS_1.png",
+          "sha256": "943a1843a20e2a248d015dffcf7555f820a44c4668622d624234f8c356777b19",
+          "frames": 48,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GYARADOS_1.png",
+          "sha256": "3cec28ce5a9e21a3cd4dbc6a77c717af8001a10237b19d32a94e1281778174c2",
+          "frames": 48,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 10042,
+        "speciesId": 142,
+        "name": "Mega Aerodactyl",
+        "form": 1,
+        "formName": "Mega Aerodactyl",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/AERODACTYL_1.png",
+          "sha256": "8bcd7f46c1a83edbb9a8171d08169fd0002b0a7d7401e43b031ee93ba4018841",
+          "frames": 60,
+          "uniqueFrames": 39
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/AERODACTYL_1.png",
+          "sha256": "78fd3d13d4c73fc5eaeb980892ce11e47b483435547d86a4777cfd853c663de8",
+          "frames": 60,
+          "uniqueFrames": 39
+        }
+      },
+      {
+        "id": 10047,
+        "speciesId": 214,
+        "name": "Mega Heracross",
+        "form": 1,
+        "formName": "Mega Heracross",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/HERACROSS_1.png",
+          "sha256": "09ada03b0fe1bb41df05efdb4f834e76161643d7aafe4fb9723e72dc19be7896",
+          "frames": 72,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/HERACROSS_1.png",
+          "sha256": "45b7a1e9856dd4e1e16a5b52d326741b810bb3a42eb5f44e40a5e1d7e287912e",
+          "frames": 72,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 10048,
+        "speciesId": 229,
+        "name": "Mega Houndoom",
+        "form": 1,
+        "formName": "Mega Houndoom",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/HOUNDOOM_1.png",
+          "sha256": "266b938b49bf07712c57f4e2d50aa07901142ac6f957fc5ea8374a4fa5356475",
+          "frames": 72,
+          "uniqueFrames": 54
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/HOUNDOOM_1.png",
+          "sha256": "f5c33a5f5625c1bd91caa0a679b6745c49c8dc18b31290add338d765958e530b",
+          "frames": 72,
+          "uniqueFrames": 59
+        }
+      },
+      {
+        "id": 10053,
+        "speciesId": 306,
+        "name": "Mega Aggron",
+        "form": 1,
+        "formName": "Mega Aggron",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/AGGRON_1.png",
+          "sha256": "93805ce4cbff4b0d92abf9d70fe5ba24a19daaffc17245d60f120f1519ae1ef9",
+          "frames": 75,
+          "uniqueFrames": 50
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/AGGRON_1.png",
+          "sha256": "5e3016d41b8a5b1c6bd618778b423c7e4e79105990848dcaa34bcee40018647a",
+          "frames": 75,
+          "uniqueFrames": 50
+        }
+      },
+      {
+        "id": 10061,
+        "speciesId": 670,
+        "name": "Eternal Floette",
+        "form": 5,
+        "formName": "Eternal Flower",
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FLOETTE_5.png",
+          "sha256": "ee5a61952ed7d69c6a579638a15639a7f709c21418afffb96d7ad1c095b45c64",
+          "frames": 44,
+          "uniqueFrames": 13
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FLOETTE_5.png",
+          "sha256": "efb9e002e6008cc2a70418abf433ada312a1004b374459e8dc720a5105a9c1d2",
+          "frames": 44,
+          "uniqueFrames": 13
+        }
+      },
+      {
+        "id": 10064,
+        "speciesId": 260,
+        "name": "Mega Swampert",
+        "form": 1,
+        "formName": "Mega Swampert",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SWAMPERT_1.png",
+          "sha256": "12805f7753b21815ff3ef17aa1119ce56a82026ca26ebae471110070dd147997",
+          "frames": 74,
+          "uniqueFrames": 49
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SWAMPERT_1.png",
+          "sha256": "494e24edb29225cb67cb6728b9bebba3555f29a929ca5ebc79ded49e364bd64b",
+          "frames": 74,
+          "uniqueFrames": 49
+        }
+      },
+      {
+        "id": 10065,
+        "speciesId": 254,
+        "name": "Mega Sceptile",
+        "form": 1,
+        "formName": "Mega Sceptile",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SCEPTILE_1.png",
+          "sha256": "0b8d95a034252bf58b757e7588756533ee956787b090fa52ec151eaa4825db92",
+          "frames": 72,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SCEPTILE_1.png",
+          "sha256": "fced65a50499be929420db0970afde897a415771bc3a1ce8b26ccf6cfd5dba75",
+          "frames": 72,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 10066,
+        "speciesId": 302,
+        "name": "Mega Sableye",
+        "form": 1,
+        "formName": "Mega Sableye",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SABLEYE_1.png",
+          "sha256": "970d4ee581bc6e9750ef8a7fb4dd48efffa672d163f10911c4338dd52895f2c2",
+          "frames": 69,
+          "uniqueFrames": 44
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SABLEYE_1.png",
+          "sha256": "da55a9b8f4390906ec080ac91e7d9786d419bc038697f18541ca3c1b75d4d07e",
+          "frames": 69,
+          "uniqueFrames": 44
+        }
+      },
+      {
+        "id": 10068,
+        "speciesId": 475,
+        "name": "Mega Gallade",
+        "form": 1,
+        "formName": "Mega Gallade",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GALLADE_1.png",
+          "sha256": "a6f4916284fab1950eff164200f8c9d8c55af514e1eb32259448dad2fa10b354",
+          "frames": 78,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GALLADE_1.png",
+          "sha256": "a7a02a3a7f9263980e1309c7d25ba95680ea4ff47e5bd2e2db0b6d9d1cd8f425",
+          "frames": 78,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 10069,
+        "speciesId": 531,
+        "name": "Mega Audino",
+        "form": 1,
+        "formName": "Mega Audino",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/AUDINO_1.png",
+          "sha256": "46046bb43c54892926552f7318363910f2166942cca93946afdb7275a958d277",
+          "frames": 78,
+          "uniqueFrames": 53
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/AUDINO_1.png",
+          "sha256": "fd0db309e86583dedd6827a4241fed237b0e50e8860dca060ef0acb1cf405fe2",
+          "frames": 78,
+          "uniqueFrames": 53
+        }
+      },
+      {
+        "id": 10070,
+        "speciesId": 319,
+        "name": "Mega Sharpedo",
+        "form": 1,
+        "formName": "Mega Sharpedo",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SHARPEDO_1.png",
+          "sha256": "5580dec1dec3249626f728fca4d5b9b906ac240b26df2f6b381e71f1eb437db8",
+          "frames": 76,
+          "uniqueFrames": 54
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SHARPEDO_1.png",
+          "sha256": "817ea5a32d32d258181a1e710d09788cf00d86cea2510b49573d544f78dc0c3a",
+          "frames": 76,
+          "uniqueFrames": 54
+        }
+      },
+      {
+        "id": 10071,
+        "speciesId": 80,
+        "name": "Mega Slowbro",
+        "form": 2,
+        "formName": "Mega Slowbro",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SLOWBRO_2.png",
+          "sha256": "b6ca0e8a7af6010b03915a851268b6f4d6c00c0ca410a4a9a4990ecc99666f21",
+          "frames": 79,
+          "uniqueFrames": 52
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SLOWBRO_2.png",
+          "sha256": "16ba025be5a88c17d26ebf8690f3e6a000918090e1d53d3fa22538774e2848c4",
+          "frames": 79,
+          "uniqueFrames": 71
+        }
+      },
+      {
+        "id": 10073,
+        "speciesId": 18,
+        "name": "Mega Pidgeot",
+        "form": 1,
+        "formName": "Mega Pidgeot",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PIDGEOT_1.png",
+          "sha256": "ed15f4f5a768fb2abda538391a51bc2bde1e3cc3a1c54eaf6152e01da4952191",
+          "frames": 48,
+          "uniqueFrames": 48
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PIDGEOT_1.png",
+          "sha256": "624fffd15975ef6a7081d0f38e80945994ed2b231ce68754301e5c94d654b381",
+          "frames": 48,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 10075,
+        "speciesId": 719,
+        "name": "Mega Diancie",
+        "form": 1,
+        "formName": "Mega Diancie",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DIANCIE_1.png",
+          "sha256": "06a71aee5c677223599c79195da3da730923d61dd71d059de559715b963814b7",
+          "frames": 74,
+          "uniqueFrames": 49
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DIANCIE_1.png",
+          "sha256": "743337da168bf94b1bd49974c9fb935add66bac2f92a3fd2068d9d47f33ee44e",
+          "frames": 74,
+          "uniqueFrames": 53
+        }
+      },
+      {
+        "id": 10076,
+        "speciesId": 376,
+        "name": "Mega Metagross",
+        "form": 1,
+        "formName": "Mega Metagross",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/METAGROSS_1.png",
+          "sha256": "5f498517803458bcbbe709ffe911d74090765f0813dc1c7368d159b954477649",
+          "frames": 71,
+          "uniqueFrames": 46
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/METAGROSS_1.png",
+          "sha256": "78f08b113d5c99c28e759b0aa8f07b02b76bfc9d607d30f6ae6ef37e74308276",
+          "frames": 71,
+          "uniqueFrames": 46
+        }
+      },
+      {
+        "id": 10087,
+        "speciesId": 323,
+        "name": "Mega Camerupt",
+        "form": 1,
+        "formName": "Mega Camerupt",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CAMERUPT_1.png",
+          "sha256": "aaab1adefd79b3ae176d9599b8a034363efb25c72d7c98af8c8851d13e803394",
+          "frames": 72,
+          "uniqueFrames": 48
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CAMERUPT_1.png",
+          "sha256": "0a8ca3e8d356337c3802ea2d30b0b76f84e41051d5f7749ceda2144aa612aa0c",
+          "frames": 72,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 10088,
+        "speciesId": 428,
+        "name": "Mega Lopunny",
+        "form": 1,
+        "formName": "Mega Lopunny",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/LOPUNNY_1.png",
+          "sha256": "a2e5c477fbb4d01a7ca6de599e423d9be850d2ebd023549a35e53883f7388745",
+          "frames": 69,
+          "uniqueFrames": 53
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/LOPUNNY_1.png",
+          "sha256": "3161a6d10d39e6bb6d3e7f49bab5d871636390a8a70b5edecee24697cdfdf0e8",
+          "frames": 69,
+          "uniqueFrames": 53
+        }
+      },
+      {
+        "id": 10163,
+        "speciesId": 78,
+        "name": "Galarian Rapidash",
+        "form": 1,
+        "formName": "Galarian",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/RAPIDASH_1.png",
+          "sha256": "d669e06ba08fc4ee1498ab0ffad01765edf48c1e3929ad3f969fea6ee91e42fc",
+          "frames": 24,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/RAPIDASH_1.png",
+          "sha256": "e5ac528b97cd1cfeb67ddaf46a0b1b453cb8eb0ad993e18310ab5fd179c4c8ac",
+          "frames": 24,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 10168,
+        "speciesId": 122,
+        "name": "Galarian Mr. Mime",
+        "form": 1,
+        "formName": "Galarian",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MRMIME_1.png",
+          "sha256": "548b01d109cb1a0985255ed17b0c5d5821137225b68db0d1a162295ea26951fc",
+          "frames": 60,
+          "uniqueFrames": 56
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MRMIME_1.png",
+          "sha256": "776ccf868268428b3cdb4fa05222cfd6fb0886f837bf07c781d325bbe7addc46",
+          "frames": 60,
+          "uniqueFrames": 33
+        }
+      },
+      {
+        "id": 10171,
+        "speciesId": 146,
+        "name": "Galarian Moltres",
+        "form": 1,
+        "formName": "Galarian",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MOLTRES_1.png",
+          "sha256": "7306597471549ef088a279935c12cff76996cebaf1aa2545d3880b4a3fb87355",
+          "frames": 88,
+          "uniqueFrames": 88
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MOLTRES_1.png",
+          "sha256": "ddd45990598112cc5f142366f38df05902498062854ada55a21525005130656e",
+          "frames": 88,
+          "uniqueFrames": 88
+        }
+      },
+      {
+        "id": 10176,
+        "speciesId": 554,
+        "name": "Galarian Darumaka",
+        "form": 2,
+        "formName": "Galarian",
+        "credits": [
+          "Smogon Gen 5 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DARUMAKA_2.png",
+          "sha256": "9947821531dd8b5656ee127d44c50be9f87bc5bdeb5f457a7a03d2943b2f9b38",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DARUMAKA_2.png",
+          "sha256": "02fe7cec88cfaf6e66d1673667a0d4416a05db5a25e215872084e5f7cc07f0be",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 10177,
+        "speciesId": 555,
+        "name": "Standard Galarian Darmanitan",
+        "form": 2,
+        "formName": "Galarian Standard Mode",
+        "credits": [
+          "Smogon Gen 5 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DARMANITAN_2.png",
+          "sha256": "b98884a3ed654b985cccebf2cefcce7e6803c35433a0a095298a9d8fcebe102e",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DARMANITAN_2.png",
+          "sha256": "d77aa7511c53323ebf5e711d6059674709201b98aea00e7a2fdd102474113ee4",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 10179,
+        "speciesId": 562,
+        "name": "Galarian Yamask",
+        "form": 1,
+        "formName": "Galarian",
+        "credits": [
+          "Smogon Gen 5 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/YAMASK_1.png",
+          "sha256": "aa912d963e6894b25f328c77f411f38ce1fe95aeef7f40ba233b0090079ff205",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/YAMASK_1.png",
+          "sha256": "304e89f775db1990eb5473d1b1e94daa6403d98c9521aecb940d503dcf5000f9",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 10180,
+        "speciesId": 618,
+        "name": "Galarian Stunfisk",
+        "form": 1,
+        "formName": "Galarian",
+        "credits": [
+          "Smogon Gen 5 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/STUNFISK_1.png",
+          "sha256": "9df1a8747cc802d06d287dc08968de455ae9eb0c6c04a689d2645ba08e96f3f6",
+          "frames": 12,
+          "uniqueFrames": 7
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/STUNFISK_1.png",
+          "sha256": "541e5949860b2aed8f7666a024e03f05d8b51ee3478feb7205c66dd4d26fcd9f",
+          "frames": 12,
+          "uniqueFrames": 7
+        }
+      },
+      {
+        "id": 10229,
+        "speciesId": 58,
+        "name": "Hisuian Growlithe",
+        "form": 1,
+        "formName": "Hisuian",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GROWLITHE_1.PNG",
+          "sha256": "d89a521b0362c8118d4cfcd5b7f71a7d8d915678c31d1c477501912abd3c1652",
+          "frames": 114,
+          "uniqueFrames": 114
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GROWLITHE_1.PNG",
+          "sha256": "65390323841ba552b7f48e87867c84f8a83ec9a87c00f9b4bb98b2664cfe4823",
+          "frames": 114,
+          "uniqueFrames": 114
+        }
+      },
+      {
+        "id": 10230,
+        "speciesId": 59,
+        "name": "Hisuian Arcanine",
+        "form": 1,
+        "formName": "Hisuian",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ARCANINE_1.PNG",
+          "sha256": "e28a868e7e9b74a4c6d988ee1af2357dd4fbea396bad7ad284a39e4a63c9f799",
+          "frames": 102,
+          "uniqueFrames": 23
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ARCANINE_1.PNG",
+          "sha256": "3061ecc2d93987ba103daca87f6d89b05e457a5e5d93e66306ce77682e33b7fa",
+          "frames": 102,
+          "uniqueFrames": 23
+        }
+      },
+      {
+        "id": 10232,
+        "speciesId": 101,
+        "name": "Hisuian Electrode",
+        "form": 1,
+        "formName": "Hisuian",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ELECTRODE_1.PNG",
+          "sha256": "774ebe1437f6e0bdec841affd9dee95218f3de93e5d69fce972166f74b3f5528",
+          "frames": 64,
+          "uniqueFrames": 28
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ELECTRODE_1.PNG",
+          "sha256": "456755297ad7316daefd362b33f4234ef7262976fd7f0ffe571f1928bec5367a",
+          "frames": 64,
+          "uniqueFrames": 28
+        }
+      },
+      {
+        "id": 10233,
+        "speciesId": 157,
+        "name": "Hisuian Typhlosion",
+        "form": 1,
+        "formName": "Hisuian",
+        "credits": [
+          "Smogon Gen 2 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TYPHLOSION_1.PNG",
+          "sha256": "fc283a5059f24b25c1315b4da0935c50575aa1d852eba9aea2015b71304410a0",
+          "frames": 114,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TYPHLOSION_1.PNG",
+          "sha256": "fddc531ca945523aad7b7c699549bf8bcb4c9724347fe582502dad5f1415ec3d",
+          "frames": 114,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 10238,
+        "speciesId": 570,
+        "name": "Hisuian Zorua",
+        "form": 1,
+        "formName": "Hisuian",
+        "credits": [
+          "Smogon Gen 5 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ZORUA_1.PNG",
+          "sha256": "aa1796e4c6981034311956e6a6da62c02eb815ee22993a131fa3a9acc0350697",
+          "frames": 108,
+          "uniqueFrames": 23
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ZORUA_1.PNG",
+          "sha256": "be4e29ed786dcaecd71617d8ce9e5cd79a0bba2ae33bc5ba2b72ff1b3098fa2f",
+          "frames": 108,
+          "uniqueFrames": 23
+        }
+      },
+      {
+        "id": 10243,
+        "speciesId": 713,
+        "name": "Hisuian Avalugg",
+        "form": 1,
+        "formName": "Hisuian",
+        "credits": [
+          "Smogon Gen 6 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/AVALUGG_1.PNG",
+          "sha256": "ae9e0c0537eb7c9d80cf489549425f17f4500c3ed45eec9d468779b707c2d289",
+          "frames": 124,
+          "uniqueFrames": 27
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/AVALUGG_1.PNG",
+          "sha256": "0904f100a79fca49b700fa19601a74a03547a7f10e6a691f292e31f4b559e1a4",
+          "frames": 124,
+          "uniqueFrames": 27
+        }
+      },
+      {
+        "id": 10244,
+        "speciesId": 724,
+        "name": "Hisuian Decidueye",
+        "form": 1,
+        "formName": "Hisuian",
+        "credits": [
+          "Smogon Gen 7 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DECIDUEYE_1.PNG",
+          "sha256": "027c63e4ebaccbbb416a03221fdbc39d178e6ec37e690d8f784f66e738aebc96",
+          "frames": 156,
+          "uniqueFrames": 55
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DECIDUEYE_1.PNG",
+          "sha256": "5a0301195d0a6d73705c011cb7a7b0b49c4ea178d0618eb12aed644dd3fc2149",
+          "frames": 156,
+          "uniqueFrames": 55
+        }
+      },
+      {
+        "id": 10250,
+        "speciesId": 128,
+        "name": "Paldean Tauros (Combat Breed)",
+        "form": 1,
+        "formName": "Paldean (Combat Breed)",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TAUROS_1.png",
+          "sha256": "c252f4085ac6adf4f4d244ee6cda4928b8a2ecfbb350ba161e3e12dcbc063147",
+          "frames": 100,
+          "uniqueFrames": 82
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TAUROS_1.png",
+          "sha256": "47e4ecce53fbd13e2a77d843048c4342b6e891d2cf15421a8593cb9d9697e9b2",
+          "frames": 100,
+          "uniqueFrames": 81
+        }
+      },
+      {
+        "id": 10251,
+        "speciesId": 128,
+        "name": "Paldean Tauros (Blaze Breed)",
+        "form": 2,
+        "formName": "Paldean (Blaze Breed)",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TAUROS_2.png",
+          "sha256": "a6669d60010d08fb9c6d3a1aab5877951eafea94c35affbbee004c0046988fbd",
+          "frames": 81,
+          "uniqueFrames": 49
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TAUROS_2.png",
+          "sha256": "5b7a31b584d46e8a3d2be39a071890125d070a326a423df2bb3aa24832611718",
+          "frames": 81,
+          "uniqueFrames": 49
+        }
+      },
+      {
+        "id": 10252,
+        "speciesId": 128,
+        "name": "Paldean Tauros (Aqua Breed)",
+        "form": 3,
+        "formName": "Paldean (Aqua Breed)",
+        "credits": [
+          "Smogon Gen 1 Sprite Project contributors",
+          "Sprites Animados contributors (see EBDX-sprite-credits.txt)",
+          "mangalos810"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TAUROS_3.png",
+          "sha256": "3deb8c667e5a01c9d69e63a6a799ac73292cb2c62dad304a1c433a1e2e03c5b4",
+          "frames": 65,
+          "uniqueFrames": 63
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TAUROS_3.png",
+          "sha256": "bf6a6233fe5fa678a8d0139cecda12985e547d303e034e927c2f9b21485e0a1e",
+          "frames": 65,
+          "uniqueFrames": 63
+        }
+      },
+      {
+        "id": 10278,
+        "speciesId": 36,
+        "name": "Mega Clefable",
+        "form": 1,
+        "formName": "Mega Clefable",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CLEFABLE_1.png",
+          "sha256": "169f081c99f2a285d8e03fd0197bc575bb3a8b7f75a29b00ba489091c4ea5170",
+          "frames": 72,
+          "uniqueFrames": 71
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CLEFABLE_1.png",
+          "sha256": "8edbd8e0a2a387c765adba9747fefa10abc928f409781cb5977d91ac2d6cfb92",
+          "frames": 72,
+          "uniqueFrames": 71
+        }
+      },
+      {
+        "id": 10280,
+        "speciesId": 121,
+        "name": "Mega Starmie",
+        "form": 1,
+        "formName": "Mega Starmie",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/STARMIE_1.png",
+          "sha256": "3541a0d9b09d8405e89cfee2eb03818a23978fd5b3fe038659ed2729914079cc",
+          "frames": 60,
+          "uniqueFrames": 52
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/STARMIE_1.png",
+          "sha256": "4785b6c6bb4de6048f51b5242558f314e3abef59fa2328eb3cb2a7ccdf8cb4b8",
+          "frames": 60,
+          "uniqueFrames": 52
+        }
+      },
+      {
+        "id": 10281,
+        "speciesId": 149,
+        "name": "Mega Dragonite",
+        "form": 1,
+        "formName": "Mega Dragonite",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DRAGONITE_1.png",
+          "sha256": "38de1b77c653c2237fcc4189f473a654ce9703a9b0617e133e871abc56a4d80d",
+          "frames": 48,
+          "uniqueFrames": 33
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DRAGONITE_1.png",
+          "sha256": "187bed2f3d2375dc1aabec79abaf744f1fd680192f26e12763b6920abc5c2f33",
+          "frames": 48,
+          "uniqueFrames": 33
+        }
+      },
+      {
+        "id": 10282,
+        "speciesId": 154,
+        "name": "Mega Meganium",
+        "form": 1,
+        "formName": "Mega Meganium",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MEGANIUM_1.png",
+          "sha256": "fcff65e9ec7522dff968e011548982501609349a39b4cabb1697213289ee570c",
+          "frames": 50,
+          "uniqueFrames": 36
+        },
+        "shiny": null
+      },
+      {
+        "id": 10283,
+        "speciesId": 160,
+        "name": "Mega Feraligatr",
+        "form": 1,
+        "formName": "Mega Feraligatr",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FERALIGATR_1.png",
+          "sha256": "35c4457ba113333c5d8755502b9a9c4425191e0b2c325268623eb60b95283266",
+          "frames": 60,
+          "uniqueFrames": 59
+        },
+        "shiny": null
+      },
+      {
+        "id": 10284,
+        "speciesId": 227,
+        "name": "Mega Skarmory",
+        "form": 1,
+        "formName": "Mega Skarmory",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SKARMORY_1.png",
+          "sha256": "af8930a3ce438e94c314c1d8b2cc21cb5305ad484934f9f690a27b8e50d55168",
+          "frames": 11,
+          "uniqueFrames": 11
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SKARMORY_1.png",
+          "sha256": "2e9e2d4f02d44e9288bc1d37b66b94af5a625b40404cbd490f91b3aba2e86420",
+          "frames": 11,
+          "uniqueFrames": 11
+        }
+      },
+      {
+        "id": 10285,
+        "speciesId": 478,
+        "name": "Mega Froslass",
+        "form": 1,
+        "formName": "Mega Froslass",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FROSLASS_1.png",
+          "sha256": "456f62d37e51eb01322df6d0c87036e35219537de84a788d5d1d1011813a9e8f",
+          "frames": 75,
+          "uniqueFrames": 51
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FROSLASS_1.png",
+          "sha256": "5e4f17b50fc6fae96f943689e05b1b6062616b413b5126385dafb17ac5705bae",
+          "frames": 75,
+          "uniqueFrames": 51
+        }
+      },
+      {
+        "id": 10286,
+        "speciesId": 500,
+        "name": "Mega Emboar",
+        "form": 1,
+        "formName": "Mega Emboar",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/EMBOAR_1.png",
+          "sha256": "b5941527c1afa1ff9050ae4adff0b77899fb4f0613f2297338cde4bc5ceca046",
+          "frames": 49,
+          "uniqueFrames": 45
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/EMBOAR_1.png",
+          "sha256": "0e9918796eaef3728f76dc4629aa1c9b822c988ece7c2c34ba54c9db7d6c7b98",
+          "frames": 49,
+          "uniqueFrames": 45
+        }
+      },
+      {
+        "id": 10287,
+        "speciesId": 530,
+        "name": "Mega Excadrill",
+        "form": 1,
+        "formName": "Mega Excadrill",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/EXCADRILL_1.png",
+          "sha256": "eb703046e6205db243bf9c5881b5cb9bf098a9deabffb200be1bc9f58ac81711",
+          "frames": 37,
+          "uniqueFrames": 35
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/EXCADRILL_1.png",
+          "sha256": "81d3afb88c3e78e5ab76a2fd44820c8941dfb54ad7a473e1669cf9830b7f4821",
+          "frames": 37,
+          "uniqueFrames": 35
+        }
+      },
+      {
+        "id": 10288,
+        "speciesId": 545,
+        "name": "Mega Scolipede",
+        "form": 1,
+        "formName": "Mega Scolipede",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SCOLIPEDE_1.png",
+          "sha256": "45cd86c76c911739f0e06c364be25c57b73eeea479227c4bd7d9819686a29425",
+          "frames": 41,
+          "uniqueFrames": 39
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SCOLIPEDE_1.png",
+          "sha256": "43439a82522d027644cad7d5bf516626ca8c5075631f5db2f7d059a350e6fc0b",
+          "frames": 41,
+          "uniqueFrames": 39
+        }
+      },
+      {
+        "id": 10289,
+        "speciesId": 560,
+        "name": "Mega Scrafty",
+        "form": 1,
+        "formName": "Mega Scrafty",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SCRAFTY_1.png",
+          "sha256": "7de678ec74f76847350e9ed7f243cdd7750c170f64eba8df01bc1df024d3af2f",
+          "frames": 54,
+          "uniqueFrames": 39
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SCRAFTY_1.png",
+          "sha256": "20224893499c5b161af86e46b972a2c60680aa72f475b197248a5c0a93b38951",
+          "frames": 54,
+          "uniqueFrames": 46
+        }
+      },
+      {
+        "id": 10292,
+        "speciesId": 652,
+        "name": "Mega Chesnaught",
+        "form": 1,
+        "formName": "Mega Chesnaught",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CHESNAUGHT_1.png",
+          "sha256": "0bb189fdc053b0708f60f3ee07c554c9f1167233e1bd0c869dbd20e6e07a750c",
+          "frames": 52,
+          "uniqueFrames": 48
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CHESNAUGHT_1.png",
+          "sha256": "5899ced328bc0f5d9a048e73c5ca9797b59ddf0b3ad3b53af45480f7765bdff7",
+          "frames": 52,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 10293,
+        "speciesId": 655,
+        "name": "Mega Delphox",
+        "form": 1,
+        "formName": "Mega Delphox",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DELPHOX_1.png",
+          "sha256": "70a6e4548ad8de3edbfb23a346a787d0daaa3ec1179d8416736c9ce82c010728",
+          "frames": 42,
+          "uniqueFrames": 42
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DELPHOX_1.png",
+          "sha256": "24bd45367b48aa9a03d6e0bd5d665329d8d5c4b305404ad720a80ef07d8257df",
+          "frames": 42,
+          "uniqueFrames": 42
+        }
+      },
+      {
+        "id": 10294,
+        "speciesId": 658,
+        "name": "Mega Greninja",
+        "form": 3,
+        "formName": "Mega Greninja",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GRENINJA_3.png",
+          "sha256": "bef2df0bfe5c147d4a98ebfe49ea4c9cc0a18cd7a40da89359d250d9bc94c352",
+          "frames": 48,
+          "uniqueFrames": 48
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GRENINJA_3.png",
+          "sha256": "3ddcf4942cc172dcf554ebee36582de1aa2ccb6eaa547eaa30078b389b0f4144",
+          "frames": 48,
+          "uniqueFrames": 48
+        }
+      },
+      {
+        "id": 10295,
+        "speciesId": 668,
+        "name": "Mega Pyroar",
+        "form": 1,
+        "formName": "Mega Pyroar",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/PYROAR_1.png",
+          "sha256": "8cdd7308834b6a3de4e68a56f8c8b466da8c018f8cc74ef6b847591742732142",
+          "frames": 61,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/PYROAR_1.png",
+          "sha256": "f30e370ef6cf7ae9205370210df38721ea1b8c49bd751cd358aab8542e9ca5a9",
+          "frames": 69,
+          "uniqueFrames": 63
+        }
+      },
+      {
+        "id": 10296,
+        "speciesId": 670,
+        "name": "Mega Floette",
+        "form": 6,
+        "formName": "Mega Floette",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FLOETTE_6.png",
+          "sha256": "e429ece4f1e569464c5594ec16aeae6072cf1748001c65c383d336750a3cd6f3",
+          "frames": 64,
+          "uniqueFrames": 55
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FLOETTE_6.png",
+          "sha256": "ea1b8099216b931bf104f125d9b583ffaee867b0bbf4babea3a8c30b5025dd2e",
+          "frames": 64,
+          "uniqueFrames": 55
+        }
+      },
+      {
+        "id": 10298,
+        "speciesId": 689,
+        "name": "Mega Barbaracle",
+        "form": 1,
+        "formName": "Mega Barbaracle",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BARBARACLE_1.png",
+          "sha256": "0ae91d245340f9bb9f8fbb4d4d4066bc94bcf62343ad2257fb390a751565b759",
+          "frames": 43,
+          "uniqueFrames": 36
+        },
+        "shiny": null
+      },
+      {
+        "id": 10299,
+        "speciesId": 691,
+        "name": "Mega Dragalge",
+        "form": 1,
+        "formName": "Mega Dragalge",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DRAGALGE_1.png",
+          "sha256": "15883077c7f3a71672578cc515458933fbf0f8034fd5ce78cbb0597017552886",
+          "frames": 68,
+          "uniqueFrames": 67
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DRAGALGE_1.png",
+          "sha256": "7f76e8ee86d160176f12ed220826667b6848aed40402fce7591391ea58ce56d6",
+          "frames": 68,
+          "uniqueFrames": 67
+        }
+      },
+      {
+        "id": 10300,
+        "speciesId": 701,
+        "name": "Mega Hawlucha",
+        "form": 1,
+        "formName": "Mega Hawlucha",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/HAWLUCHA_1.png",
+          "sha256": "e678b9837356251d188b55e66c65f7f0bfb2ccf05eec3d78bab8d526dea4bd8e",
+          "frames": 54,
+          "uniqueFrames": 34
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/HAWLUCHA_1.png",
+          "sha256": "5cac7e0e82ade57a7df60c3e4875f1cb738e4d9679c1d51a2d0e557aa16f24f9",
+          "frames": 54,
+          "uniqueFrames": 34
+        }
+      },
+      {
+        "id": 10301,
+        "speciesId": 718,
+        "name": "Mega Zygarde",
+        "form": 4,
+        "formName": "Mega Zygarde",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ZYGARDE_4.png",
+          "sha256": "c229492139a3c4d556daf0a34505043c06f479450484857ee14572a48cb9e6b6",
+          "frames": 54,
+          "uniqueFrames": 54
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ZYGARDE_4.png",
+          "sha256": "1f2a33b1e5ed39edec461b220f9942681a7d2c1382827c2785b7e21b52481825",
+          "frames": 54,
+          "uniqueFrames": 54
+        }
+      },
+      {
+        "id": 10302,
+        "speciesId": 780,
+        "name": "Mega Drampa",
+        "form": 1,
+        "formName": "Mega Drampa",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DRAMPA_1.png",
+          "sha256": "d626b687c5aa5d173d83d632ca7173c63a3b70ba12cfbdea6bb4419dcbf3b520",
+          "frames": 44,
+          "uniqueFrames": 44
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DRAMPA_1.png",
+          "sha256": "deb3fed98acb436a164332c01b250f204a24e647cb0ba27e419f5a4e3cfb0a65",
+          "frames": 44,
+          "uniqueFrames": 44
+        }
+      },
+      {
+        "id": 10303,
+        "speciesId": 870,
+        "name": "Mega Falinks",
+        "form": 1,
+        "formName": "Mega Falinks",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/FALINKS_1.png",
+          "sha256": "b77fb2ac6e192524ad67eea508c57567489d7a597eb140cc1a3b109d86625d46",
+          "frames": 48,
+          "uniqueFrames": 30
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/FALINKS_1.png",
+          "sha256": "5db3cbae6e11b846f2a324e1f6348068ed03abe1e16f0f5f816d080c786b83f6",
+          "frames": 48,
+          "uniqueFrames": 34
+        }
+      },
+      {
+        "id": 10304,
+        "speciesId": 26,
+        "name": "Mega Raichu X",
+        "form": 2,
+        "formName": "Mega Raichu X",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/RAICHU_2.png",
+          "sha256": "165978dc3df0b968e07e1be82dff5746c88283f60ed69330661ac4ac57f2ca89",
+          "frames": 24,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/RAICHU_2.png",
+          "sha256": "fc1023d5a65399cc7ffaf24083734ae995aae2fd421ef36a152546426bc6bc8a",
+          "frames": 24,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 10305,
+        "speciesId": 26,
+        "name": "Mega Raichu Y",
+        "form": 3,
+        "formName": "Mega Raichu Y",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/RAICHU_3.png",
+          "sha256": "7a8877e79e7bc2533ca3cc1562496d1197bef446212f4799d65cd842db40e4c8",
+          "frames": 48,
+          "uniqueFrames": 35
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/RAICHU_3.png",
+          "sha256": "f7d3e751d128192bb070f0d1aa59c20a2c8923fba7ff7af1beeddd6d45dbad31",
+          "frames": 48,
+          "uniqueFrames": 35
+        }
+      },
+      {
+        "id": 10306,
+        "speciesId": 358,
+        "name": "Mega Chimecho",
+        "form": 1,
+        "formName": "Mega Chimecho",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CHIMECHO_1.png",
+          "sha256": "6741f9281c36129bde1966deb2376c382ae3a402596f606d161d7321e91397e3",
+          "frames": 36,
+          "uniqueFrames": 36
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CHIMECHO_1.png",
+          "sha256": "50d89b369d383d0c7e548cf9640024ff54812b6a6a98575afe1d654d6f32ebf5",
+          "frames": 36,
+          "uniqueFrames": 36
+        }
+      },
+      {
+        "id": 10307,
+        "speciesId": 359,
+        "name": "Mega Absol Z",
+        "form": 2,
+        "formName": "Mega Absol Z",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ABSOL_2.png",
+          "sha256": "28b30e37258732ca028174daebf34acd66d64b927bf2e7de21a0e55d42b06af8",
+          "frames": 62,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ABSOL_2.png",
+          "sha256": "d42e7565f678bd088d3eee89bd43566df996ef1690891507e66d621db703a1b7",
+          "frames": 62,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 10308,
+        "speciesId": 398,
+        "name": "Mega Staraptor",
+        "form": 1,
+        "formName": "Mega Staraptor",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/STARAPTOR_1.png",
+          "sha256": "51f4e4eb4d560d346e4baf3362ae632cce2c19afa1850fd3b0f56dcf34fadd6f",
+          "frames": 12,
+          "uniqueFrames": 12
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/STARAPTOR_1.png",
+          "sha256": "d6c2702d1c2d0ab822d2ea880f0db7d9cb43d3a1f69649cb2f1b48cb91984b86",
+          "frames": 12,
+          "uniqueFrames": 12
+        }
+      },
+      {
+        "id": 10309,
+        "speciesId": 445,
+        "name": "Mega Garchomp Z",
+        "form": 2,
+        "formName": "Mega Garchomp Z",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GARCHOMP_2.png",
+          "sha256": "c3e97fbf9627efcd2cf052a610f3b83225a37e2f4806a6bbeb33b04d69915862",
+          "frames": 60,
+          "uniqueFrames": 51
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GARCHOMP_2.png",
+          "sha256": "7a6057063595b52db87dfb4cdcb4e397b35e8dd226cbaa5071851cec41766a70",
+          "frames": 60,
+          "uniqueFrames": 51
+        }
+      },
+      {
+        "id": 10310,
+        "speciesId": 448,
+        "name": "Mega Lucario Z",
+        "form": 2,
+        "formName": "Mega Lucario Z",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/LUCARIO_2.png",
+          "sha256": "bed2bd5bb6c3e42f92383d50070e79da3a090731f62d42a0f0402cf435804197",
+          "frames": 60,
+          "uniqueFrames": 35
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/LUCARIO_2.png",
+          "sha256": "8c09483c9e6bc426a6f4c97f00c7c0c12f0f7ada265cac8e75ebff963df58ac1",
+          "frames": 60,
+          "uniqueFrames": 35
+        }
+      },
+      {
+        "id": 10311,
+        "speciesId": 485,
+        "name": "Mega Heatran",
+        "form": 1,
+        "formName": "Mega Heatran",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/HEATRAN_1.png",
+          "sha256": "6410ace11f05046f3727e6c45fd8e9755b4a1ddac62de2ee53744ab362673f1e",
+          "frames": 33,
+          "uniqueFrames": 33
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/HEATRAN_1.png",
+          "sha256": "ca31c28dcf704776c47e764bb2e9bed6fda2ad944aefa8d9b74e688761f07878",
+          "frames": 33,
+          "uniqueFrames": 33
+        }
+      },
+      {
+        "id": 10312,
+        "speciesId": 491,
+        "name": "Mega Darkrai",
+        "form": 1,
+        "formName": "Mega Darkrai",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/DARKRAI_1.png",
+          "sha256": "ed73d158e8c295cc443c1e34c0f26bfeff0a099a93f2241be1b6961cc15230bc",
+          "frames": 58,
+          "uniqueFrames": 44
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/DARKRAI_1.png",
+          "sha256": "a50ce7e165815e635f010088bb0df353063991b82a1cec2d2089388f74380d83",
+          "frames": 58,
+          "uniqueFrames": 44
+        }
+      },
+      {
+        "id": 10313,
+        "speciesId": 623,
+        "name": "Mega Golurk",
+        "form": 1,
+        "formName": "Mega Golurk",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GOLURK_1.png",
+          "sha256": "12623b3744e59d421d9b68ece6a73fe5d3360e64f5f30b7798a3279d27685221",
+          "frames": 22,
+          "uniqueFrames": 22
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GOLURK_1.png",
+          "sha256": "885f75c28195222881d2312eed103c94218ce813da445d8f69319a6e5c032e7d",
+          "frames": 22,
+          "uniqueFrames": 22
+        }
+      },
+      {
+        "id": 10314,
+        "speciesId": 678,
+        "name": "Mega Meowstic",
+        "form": 2,
+        "formName": "Mega Meowstic",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MEOWSTIC_2.png",
+          "sha256": "1923c677d4622867b00a56a6942b9278e89225c2d0a41fe215b16b89cd41a0ca",
+          "frames": 72,
+          "uniqueFrames": 47
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MEOWSTIC_2.png",
+          "sha256": "314ef2f2cb8cfe4689e85c447fd8bc500c28d93e37b71a19cfbcbe55df43ce12",
+          "frames": 72,
+          "uniqueFrames": 47
+        }
+      },
+      {
+        "id": 10315,
+        "speciesId": 740,
+        "name": "Mega Crabominable",
+        "form": 1,
+        "formName": "Mega Crabominable",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/CRABOMINABLE_1.png",
+          "sha256": "63431a228170d6443c662a5a0f98b5a2484e01e9c3c4e7f3bef6343280ea4939",
+          "frames": 54,
+          "uniqueFrames": 40
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/CRABOMINABLE_1.png",
+          "sha256": "13b3a3eee8a48a1ebec8a2a714ef82793fdbc7b8f112fb2d45cdca5f7c36795d",
+          "frames": 54,
+          "uniqueFrames": 40
+        }
+      },
+      {
+        "id": 10316,
+        "speciesId": 768,
+        "name": "Mega Golisopod",
+        "form": 1,
+        "formName": "Mega Golisopod",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GOLISOPOD_1.png",
+          "sha256": "8be0aef86cbffda59ebe063ab531c2b175151c16961f307e5cced9789e455787",
+          "frames": 24,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GOLISOPOD_1.png",
+          "sha256": "89789f32ddc43e45123e893a8991c91d03501a66d2c3da3b3ee30e750449c9f2",
+          "frames": 24,
+          "uniqueFrames": 24
+        }
+      },
+      {
+        "id": 10317,
+        "speciesId": 801,
+        "name": "Mega Magearna",
+        "form": 2,
+        "formName": "Mega Magearna",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MAGEARNA_2.png",
+          "sha256": "daa9d5141496621610560954bdc210dccdb9f37615ac375fb0b59ca137b5ab86",
+          "frames": 49,
+          "uniqueFrames": 49
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MAGEARNA_2.png",
+          "sha256": "f29d47aa9551eca17af628df1091ef10870deba18d943420ccf76ef07a40de38",
+          "frames": 49,
+          "uniqueFrames": 49
+        }
+      },
+      {
+        "id": 10318,
+        "speciesId": 801,
+        "name": "Mega Original Magearna",
+        "form": 3,
+        "formName": "Mega Magearna (Original Color)",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MAGEARNA_3.png",
+          "sha256": "4f884e2603a4cb5f7726502da104890a04cbe683df54ec470102574f0e760268",
+          "frames": 49,
+          "uniqueFrames": 49
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MAGEARNA_3.png",
+          "sha256": "639c5348a92c93f9e7ab592bdb96d0a62f3c077b71c8a98d82790b4cedb8ea42",
+          "frames": 49,
+          "uniqueFrames": 49
+        }
+      },
+      {
+        "id": 10319,
+        "speciesId": 807,
+        "name": "Mega Zeraora",
+        "form": 1,
+        "formName": "Mega Zeraora",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/ZERAORA_1.png",
+          "sha256": "9be54d5e915c7b92d783ea733b6560f3db8520a479eca552109a5b0aa43f0e02",
+          "frames": 64,
+          "uniqueFrames": 35
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/ZERAORA_1.png",
+          "sha256": "95fac158c65692fe0ebeb4a9866f56630172e60f02185090c6c2c1d584b609e1",
+          "frames": 64,
+          "uniqueFrames": 35
+        }
+      },
+      {
+        "id": 10320,
+        "speciesId": 952,
+        "name": "Mega Scovillain",
+        "form": 1,
+        "formName": "Mega Scovillain",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/SCOVILLAIN_1.png",
+          "sha256": "25b85024c3c47a7120823847cb8332e06b446290b026bc0cc664c2146f93ad84",
+          "frames": 60,
+          "uniqueFrames": 36
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/SCOVILLAIN_1.png",
+          "sha256": "d0fcb81764e611f4f331b2f4706a73023da04d34f403673cfd2e1ed2f0089d2a",
+          "frames": 60,
+          "uniqueFrames": 36
+        }
+      },
+      {
+        "id": 10321,
+        "speciesId": 970,
+        "name": "Mega Glimmora",
+        "form": 1,
+        "formName": "Mega Glimmora",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/GLIMMORA_1.png",
+          "sha256": "346c86c647319f7a2b0fc370c16b3b46869e80cef10eaec8e2afbc45b2f8cbd1",
+          "frames": 33,
+          "uniqueFrames": 33
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/GLIMMORA_1.png",
+          "sha256": "4e748ab16acc28c79cb7a0d7148c0f2010cf115f52b35c61debec4cffc9f95f3",
+          "frames": 33,
+          "uniqueFrames": 33
+        }
+      },
+      {
+        "id": 10322,
+        "speciesId": 978,
+        "name": "Mega Curly Tatsugiri",
+        "form": 3,
+        "formName": "Mega Tatsugiri (Curly Form)",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TATSUGIRI_3.png",
+          "sha256": "3dfb29e4a3fbae1aa9007c714a0534eb4460ba423395a41ee1f0564502290031",
+          "frames": 60,
+          "uniqueFrames": 60
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TATSUGIRI_3.png",
+          "sha256": "ae3c9e1424b166b6691868b97bc438dd0d512b0fabcf47b59159309b5ce28ab2",
+          "frames": 60,
+          "uniqueFrames": 60
+        }
+      },
+      {
+        "id": 10323,
+        "speciesId": 978,
+        "name": "Mega Droopy Tatsugiri",
+        "form": 4,
+        "formName": "Mega Tatsugiri (Droopy Form)",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TATSUGIRI_4.png",
+          "sha256": "c7ddce381398257fede1adfdf1d85bd427c349ff3c01234c12503134de18c18a",
+          "frames": 60,
+          "uniqueFrames": 60
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TATSUGIRI_4.png",
+          "sha256": "1545ecc83c998626b3e824754ffd884e8d9a807bc424089bb2e38f120698370f",
+          "frames": 60,
+          "uniqueFrames": 60
+        }
+      },
+      {
+        "id": 10324,
+        "speciesId": 978,
+        "name": "Mega Stretchy Tatsugiri",
+        "form": 5,
+        "formName": "Mega Tatsugiri (Stretchy Form)",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/TATSUGIRI_5.png",
+          "sha256": "5fa77b8354e2f2df37ff0646ee16bac15d20760efee1c2a14153d21ff434281a",
+          "frames": 60,
+          "uniqueFrames": 60
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/TATSUGIRI_5.png",
+          "sha256": "c8e86722b6e791cd8f15e579333d7b216ec183f47888f0d71df6fa67db8b6714",
+          "frames": 60,
+          "uniqueFrames": 60
+        }
+      },
+      {
+        "id": 10325,
+        "speciesId": 998,
+        "name": "Mega Baxcalibur",
+        "form": 1,
+        "formName": "Mega Baxcalibur",
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/BAXCALIBUR_1.png",
+          "sha256": "57e55f773b8170878ea2a6d7f310f6e6b6e858459261e66ac6cc14ad6570abe2",
+          "frames": 61,
+          "uniqueFrames": 60
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/BAXCALIBUR_1.png",
+          "sha256": "fcee6d3407ccebbb93dc50da6d26361d317a6b2a40eff51d013be7060b37c11c",
+          "frames": 61,
+          "uniqueFrames": 60
+        }
+      },
+      {
+        "id": 10326,
+        "speciesId": 678,
+        "name": "Mega Meowstic",
+        "form": 3,
+        "formName": null,
+        "credits": [
+          "Aronousqui"
+        ],
+        "normal": {
+          "path": "Graphics/Pokemon/Front/MEOWSTIC_3.png",
+          "sha256": "1c8fa6387adb6e454137e4f697dd1a7c7408c5306a8f82b4d2763771785731ca",
+          "frames": 50,
+          "uniqueFrames": 24
+        },
+        "shiny": {
+          "path": "Graphics/Pokemon/Front shiny/MEOWSTIC_3.png",
+          "sha256": "f6087715edad32e7f8b14ee5bd17e1d71de2b1d20e92e212a210b0a22b387b63",
+          "frames": 50,
+          "uniqueFrames": 24
+        }
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "poketoken-desktop",
-  "version": "1.2.0-preview.2",
+  "version": "1.2.0-preview.4",
   "private": true,
   "description": "AI coding tokens, a little desktop companion.",
   "main": "out/main/index.js",
@@ -40,7 +40,8 @@
     "smoke:league": "node scripts/league-smoke.mjs",
     "smoke:updater": "node scripts/updater-download-smoke.mjs",
     "smoke:portable-update": "node scripts/portable-update-smoke.mjs",
-    "smoke:auto-hatch": "node scripts/auto-hatch-smoke.mjs"
+    "smoke:auto-hatch": "node scripts/auto-hatch-smoke.mjs",
+    "smoke:sprites": "node scripts/sprite-smoke.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

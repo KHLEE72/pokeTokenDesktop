@@ -1,0 +1,277 @@
+Additional animated 2D pixel sprites
+
+Ghasty001 animations: free to use with credit, as stated in the pinned upstream README.
+https://github.com/Ghasty001/Animated_sprites_by_Ghasty001/blob/25ab1b072dd2fdf96f5c85d503403317f33a857f/README.md
+Credits include the original base sprite artists:
+
+690 Skrelp: Ghasty001
+695 Heliolisk: Ghasty001
+741 Oricorio: Ghasty001, aXl
+768 Golisopod: Ghasty001, leParagon
+825 Dottler: Ghasty001, KingOfThe-X-Roads, leParagon
+826 Orbeetle: Ghasty001
+829 Gossifleur: Ghasty001
+841 Flapple: Ghasty001, Blaquaza, leParagon
+842 Appletun: Ghasty001, Blaquaza, leParagon
+903 Sneasler: Ghasty001, Blaquaza, G.E.Z., KattenK
+909 Fuecoco: Ghasty001, Bloxable
+910 Crocalor: Ghasty001
+911 Skeledirge: Ghasty001, Bloxable
+926 Fidough: Ghasty001, KingOfThe-X-Roads
+927 Dachsbun: Ghasty001, KingOfThe-X-Roads
+928 Smoliv: Ghasty001
+929 Dolliv: Ghasty001
+930 Arboliva: Ghasty001
+933 Naclstack: Ghasty001, Kyledove
+934 Garganacl: Ghasty001, Kyledove
+936 Armarouge: Ghasty001, KingOfThe-X-Roads, lennybitao
+937 Ceruledge: Ghasty001, Base artist unidentified in upstream credits
+944 Shroodle: Ghasty001, KingOfThe-X-Roads
+945 Grafaiai: Ghasty001, KingOfThe-X-Roads
+946 Bramblin: Ghasty001, KingOfThe-X-Roads
+947 Brambleghast: Ghasty001, KingOfThe-X-Roads
+979 Annihilape: Ghasty001
+983 Kingambit: Ghasty001, Anarlaurendil
+10067 Mega Altaria: Ghasty001, Falgaia
+10234 Hisuian Qwilfish: Ghasty001, KingOfThe-X-Roads, Katten
+10235 Hisuian Sneasel: Ghasty001, Blaquaza, G.E.Z., KattenK
+10240 Hisuian Braviary: Ghasty001, G.E.Z., KingOfThe-X-Roads
+10279 Mega Victreebel: Ghasty001
+10290 Mega Eelektross: Ghasty001, kiriaura
+10291 Mega Chandelure: Ghasty001
+10297 Mega Malamar: Ghasty001
+
+Wattrel, normal and shiny: Pagefault Games contributors.
+https://github.com/pagefaultgames/pokerogue-assets/tree/009cac30c39d3615c7b2c320c3984af368871031
+License: CC BY-NC-SA 4.0 — https://creativecommons.org/licenses/by-nc-sa/4.0/
+Adaptation: atlas frames repacked as GIF; pixel artwork unchanged.
+Full license: PokeRogue-CC-BY-NC-SA-4.0.txt
+
+Pokémon characters remain the property of their respective rights holders. These asset permissions do not license this project’s code.
+
+EBDX Renovation Project animated 2D sprites
+https://github.com/ChromeValiant/Pokemon-Essentials-21-With-Unofficial-EBDX/tree/4bd3abfe4185af0561f01d6dcd448bc1d02e0f8d
+Full upstream creator credits: EBDX-sprite-credits.txt
+Mega sprites: Aronousqui. Other contributors include the Smogon sprite projects, Sprites Animados and mangalos810; see per-appearance credits below and the full upstream README.
+Adaptation: PNG strips repacked as GIF at 90 ms per frame without changing colors, transparency, positions or frame order.
+These fan/game assets are not covered by this application's MIT license.
+Shiny Mega Meganium, Mega Feraligatr and Mega Barbaracle retain their previous PNG: upstream normal/shiny strips have identical colors.
+
+650 Chespin: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+652 Chesnaught: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+655 Delphox: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+657 Frogadier: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+659 Bunnelby: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+660 Diggersby: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+673 Gogoat: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+676 Furfrou: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+677 Espurr: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+678 Meowstic: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+680 Doublade: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+683 Aromatisse: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+689 Barbaracle: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+699 Aurorus: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+701 Hawlucha: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+710 Pumpkaboo: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+711 Gourgeist: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+715 Noivern: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+723 Dartrix: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+724 Decidueye: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+726 Torracat: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+747 Mareanie: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+757 Salandit: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+758 Salazzle: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+763 Tsareena: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+765 Oranguru: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+766 Passimian: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+788 Tapu Fini: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+799 Guzzlord: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+803 Poipole: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+812 Rillaboom: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+815 Cinderace: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+819 Skwovet: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+820 Greedent: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+827 Nickit: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+828 Thievul: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+836 Boltund: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+850 Sizzlipede: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+851 Centiskorch: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+853 Grapploct: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+854 Sinistea: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+855 Polteageist: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+857 Hattrem: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+860 Morgrem: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+865 Sirfetch’d: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+870 Falinks: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+879 Copperajah: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+881 Arctozolt: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+891 Kubfu: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+892 Urshifu: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+893 Zarude: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+894 Regieleki: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+897 Spectrier: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+900 Kleavor: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+905 Enamorus: Smogon Gen 8 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+906 Sprigatito: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+907 Floragato: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+908 Meowscarada: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+912 Quaxly: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+913 Quaxwell: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+914 Quaquaval: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+915 Lechonk: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+916 Oinkologne: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+917 Tarountula: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+918 Spidops: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+919 Nymble: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+920 Lokix: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+921 Pawmi: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+922 Pawmo: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+923 Pawmot: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+931 Squawkabilly: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+935 Charcadet: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+939 Bellibolt: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+941 Kilowattrel: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+942 Maschiff: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+943 Mabosstiff: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+948 Toedscool: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+949 Toedscruel: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+950 Klawf: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+951 Capsakid: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+952 Scovillain: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+953 Rellor: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+954 Rabsca: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+955 Flittle: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+956 Espathra: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+957 Tinkatink: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+958 Tinkatuff: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+959 Tinkaton: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+960 Wiglett: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+961 Wugtrio: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+962 Bombirdier: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+963 Finizen: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+964 Palafin: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+965 Varoom: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+966 Revavroom: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+967 Cyclizar: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+968 Orthworm: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+970 Glimmora: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+971 Greavard: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+972 Houndstone: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+973 Flamigo: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+974 Cetoddle: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+975 Cetitan: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+976 Veluza: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+977 Dondozo: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+981 Farigiraf: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+982 Dudunsparce: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+985 Scream Tail: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+986 Brute Bonnet: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+988 Slither Wing: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+989 Sandy Shocks: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+990 Iron Treads: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+991 Iron Bundle: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+993 Iron Jugulis: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+998 Baxcalibur: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1005 Roaring Moon: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1007 Koraidon: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1009 Walking Wake: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1010 Iron Leaves: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1011 Dipplin: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1012 Poltchageist: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1013 Sinistcha: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1014 Okidogi: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1015 Munkidori: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1016 Fezandipiti: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1017 Ogerpon: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1018 Archaludon: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1021 Raging Bolt: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1022 Iron Boulder: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1023 Iron Crown: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+1025 Pecharunt: Smogon Gen 9 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10025 Female Meowstic: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+10033 Mega Venusaur: Aronousqui
+10035 Mega Charizard Y: Aronousqui
+10036 Mega Blastoise: Aronousqui
+10038 Mega Gengar: Aronousqui
+10039 Mega Kangaskhan: Aronousqui
+10040 Mega Pinsir: Aronousqui
+10041 Mega Gyarados: Aronousqui
+10042 Mega Aerodactyl: Aronousqui
+10047 Mega Heracross: Aronousqui
+10048 Mega Houndoom: Aronousqui
+10053 Mega Aggron: Aronousqui
+10061 Eternal Floette: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10064 Mega Swampert: Aronousqui
+10065 Mega Sceptile: Aronousqui
+10066 Mega Sableye: Aronousqui
+10068 Mega Gallade: Aronousqui
+10069 Mega Audino: Aronousqui
+10070 Mega Sharpedo: Aronousqui
+10071 Mega Slowbro: Aronousqui
+10073 Mega Pidgeot: Aronousqui
+10075 Mega Diancie: Aronousqui
+10076 Mega Metagross: Aronousqui
+10087 Mega Camerupt: Aronousqui
+10088 Mega Lopunny: Aronousqui
+10163 Galarian Rapidash: Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10168 Galarian Mr. Mime: Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+10171 Galarian Moltres: Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+10176 Galarian Darumaka: Smogon Gen 5 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10177 Standard Galarian Darmanitan: Smogon Gen 5 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10179 Galarian Yamask: Smogon Gen 5 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10180 Galarian Stunfisk: Smogon Gen 5 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10229 Hisuian Growlithe: Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10230 Hisuian Arcanine: Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10232 Hisuian Electrode: Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10233 Hisuian Typhlosion: Smogon Gen 2 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10238 Hisuian Zorua: Smogon Gen 5 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10243 Hisuian Avalugg: Smogon Gen 6 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10244 Hisuian Decidueye: Smogon Gen 7 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10250 Paldean Tauros (Combat Breed): Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+10251 Paldean Tauros (Blaze Breed): Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt)
+10252 Paldean Tauros (Aqua Breed): Smogon Gen 1 Sprite Project contributors, Sprites Animados contributors (see EBDX-sprite-credits.txt), mangalos810
+10278 Mega Clefable: Aronousqui
+10280 Mega Starmie: Aronousqui
+10281 Mega Dragonite: Aronousqui
+10282 Mega Meganium: Aronousqui
+10283 Mega Feraligatr: Aronousqui
+10284 Mega Skarmory: Aronousqui
+10285 Mega Froslass: Aronousqui
+10286 Mega Emboar: Aronousqui
+10287 Mega Excadrill: Aronousqui
+10288 Mega Scolipede: Aronousqui
+10289 Mega Scrafty: Aronousqui
+10292 Mega Chesnaught: Aronousqui
+10293 Mega Delphox: Aronousqui
+10294 Mega Greninja: Aronousqui
+10295 Mega Pyroar: Aronousqui
+10296 Mega Floette: Aronousqui
+10298 Mega Barbaracle: Aronousqui
+10299 Mega Dragalge: Aronousqui
+10300 Mega Hawlucha: Aronousqui
+10301 Mega Zygarde: Aronousqui
+10302 Mega Drampa: Aronousqui
+10303 Mega Falinks: Aronousqui
+10304 Mega Raichu X: Aronousqui
+10305 Mega Raichu Y: Aronousqui
+10306 Mega Chimecho: Aronousqui
+10307 Mega Absol Z: Aronousqui
+10308 Mega Staraptor: Aronousqui
+10309 Mega Garchomp Z: Aronousqui
+10310 Mega Lucario Z: Aronousqui
+10311 Mega Heatran: Aronousqui
+10312 Mega Darkrai: Aronousqui
+10313 Mega Golurk: Aronousqui
+10314 Mega Meowstic: Aronousqui
+10315 Mega Crabominable: Aronousqui
+10316 Mega Golisopod: Aronousqui
+10317 Mega Magearna: Aronousqui
+10318 Mega Original Magearna: Aronousqui
+10319 Mega Zeraora: Aronousqui
+10320 Mega Scovillain: Aronousqui
+10321 Mega Glimmora: Aronousqui
+10322 Mega Curly Tatsugiri: Aronousqui
+10323 Mega Droopy Tatsugiri: Aronousqui
+10324 Mega Stretchy Tatsugiri: Aronousqui
+10325 Mega Baxcalibur: Aronousqui
+10326 Mega Meowstic: Aronousqui

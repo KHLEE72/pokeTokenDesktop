@@ -38,7 +38,7 @@ try{
   const make=(id,family,phase,path,shiny=false,xp=0)=>({id,family,phase,path,shiny,xp,eggType:'fire',obtainedAt:now,evolutionTarget:null,ball:'poke'})
   game.pets=[make('pet:1',1,3,[4,5,6]),make('pet:2',1,3,[4,5,6],true),make('pet:3',0,3,[1,2,3]),make('pet:4',vulpix.family,1,[10103],false,49_900_000)]
   for(const [index,eggType]of ['grass','water','fire'].entries())game.pets.push({id:`pet:${index+5}`,family:null,phase:0,path:[],shiny:false,xp:index*100_000,eggType,obtainedAt:null,evolutionTarget:null})
-  Object.assign(game,{activeId:'pet:1',displayPhase:3,nextId:8,owned:[4,5,6,1,2,3],ownedShiny:[4,5,6],candyTokens:5_100_000,tokensEarned:0,captures:[],appearances:{owned:[10103],ownedShiny:[],megaStones:[],freeMegaStoneUsed:false}})
+  Object.assign(game,{activeId:'pet:1',displayPhase:3,nextId:8,owned:[4,5,6,1,2,3],ownedShiny:[4,5,6],candyTokens:100_100_000,tokensEarned:0,captures:[],appearances:{owned:[10103],ownedShiny:[],megaStones:[],freeMegaStoneUsed:false}})
   await application.close();application=null
   const fixture=join(directory,'fixture.json');writeFileSync(fixture,JSON.stringify(game))
   expect(spawnSync(electron,['scripts/collection-fixture.cjs',join(data,'poketoken.sqlite'),fixture],{env:{...env,ELECTRON_RUN_AS_NODE:'1'},windowsHide:true,stdio:'inherit'}).status).toBe(0)
@@ -47,13 +47,13 @@ try{
   await expect(card(10034).getByRole('button',{name:'첫 1개 무료 선택'})).toBeEnabled()
   await card(10034).getByRole('button',{name:'첫 1개 무료 선택'}).click()
   await expect.poll(async()=>(await snapshot()).game.appearances.megaStones).toEqual(['charizardite-x'])
-  expect((await snapshot()).game.candyTokens).toBe(5_100_000)
-  await card(10035).getByRole('button',{name:'사탕 50개로 영구 해금'}).click()
+  expect((await snapshot()).game.candyTokens).toBe(100_100_000)
+  await card(10035).getByRole('button',{name:'사탕 1000개로 영구 해금'}).click()
   await expect.poll(async()=>(await snapshot()).game.candyTokens).toBe(100_000)
   await expect(card(10034).getByRole('button',{name:'함께하기',exact:true})).toBeEnabled()
   await expect.poll(()=>page.locator('.form-card img').evaluateAll(imgs=>imgs.length===2&&imgs.every(img=>img.complete&&img.naturalWidth>0))).toBe(true)
   await page.screenshot({path:`artifacts/forms-shop-${scale}.png`})
-  checks.push('first Charizard stone is free, second costs exactly 50 candies, X/Y are separate permanent unlocks and purchased buttons disappear')
+  checks.push('first Charizard stone is free, second costs exactly 1000 candies, X/Y are separate permanent unlocks and purchased buttons disappear')
 
   await card(10034).getByRole('button',{name:'함께하기',exact:true}).click()
   await expect.poll(async()=>(await snapshot()).game.pets.find(p=>p.id==='pet:1').mega).toBe(10034)
@@ -110,17 +110,17 @@ try{
     await expect.poll(()=>card(id).locator('img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true)
   }
   await search().fill('Mega Zygarde')
-  await expect(card(10301).locator('[data-artwork="true"] img')).toBeVisible()
+  await expect(card(10301).locator('.sprite:not([data-artwork]) img')).toBeVisible()
   await page.locator('.form-filters button[aria-pressed]').click()
   await expect(card(10301).locator('img')).toBeVisible({timeout:30000})
-  checks.push('representative Alola/Galar/Hisui/Paldea, prerequisite and Z-A forms download; Mega Zygarde uses separate normal/shiny artwork sources')
+  checks.push('representative Alola/Galar/Hisui/Paldea, prerequisite and Z-A forms load; Mega Zygarde uses separate normal/shiny animated pixel sprites')
 
   const saved=(await snapshot()).game
   await application.close();application=null;await start()
   expect((await snapshot()).game).toEqual(saved)
   await showForms();await search().fill('Charizard')
   await expect(card(10034).getByRole('button',{name:'첫 1개 무료 선택'})).toHaveCount(0)
-  await expect(card(10035).getByRole('button',{name:'사탕 50개로 영구 해금'})).toHaveCount(0)
+  await expect(card(10035).getByRole('button',{name:'사탕 1000개로 영구 해금'})).toHaveCount(0)
   await nav(0);expect((await snapshot()).game.tokensEarned).toBe(100_000)
   checks.push('restart preserves the one-time free choice, both purchased stones, normal/shiny form records, regional evolution, candy balance and usage baseline')
   expect(errors).toEqual([])

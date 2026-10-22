@@ -1303,9 +1303,9 @@
     "en": "Regional forms & Mega Evolution",
     "ja": "リージョンフォームとメガシンカ"
   },
-  "첫 메가스톤 1개는 무료, 이후에는 사탕 50개로 영구 해금해요.": {
-    "en": "Your first Mega Stone is free. Each next unlock costs 50 candies.",
-    "ja": "最初のメガストーンは無料。次からはアメ50個で永久解放できます。"
+  "첫 메가스톤 1개는 무료, 이후에는 사탕 {0}개로 영구 해금해요.": {
+    "en": "Your first Mega Stone is free. Each next unlock costs {0} candies.",
+    "ja": "最初のメガストーンは無料。次からはアメ{0}個で永久解放できます。"
   },
   "일반·이로치와 같은 종의 모든 개체가 해금을 공유해요.": {
     "en": "Unlocks are shared by normal, shiny and matching companions.",

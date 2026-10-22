@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FAMILIES, FORMS, MEGA_STONES, nationalId, PokemonForm } from '../../shared/catalog'
 import { activePet, appearanceId, appearancePhase, candyCount, dexChoices, finalPhase, speciesId } from '../../shared/game'
-import { appearanceCollection, collectedAppearance, megaOptions, megaUnlocked, stoneAvailable, stonePrice } from '../../shared/mega'
+import { appearanceCollection, collectedAppearance, MEGA_CANDY_PRICE, megaOptions, megaUnlocked, stoneAvailable, stonePrice } from '../../shared/mega'
 import { Companion, GameAction, Snapshot } from '../../shared/model'
 import { eggName, localeFor, pokemonMatches, pokemonName, typeName } from '../../shared/i18n'
 import { sortDex } from '../../shared/dex'
@@ -40,7 +40,7 @@ export function FormCollection({snapshot,busy,act,selectedSpecies,clearSpecies}:
   const filtered=sortDex(FORMS.filter(f=>(!selectedSpecies||f.speciesId===selectedSpecies)&&(kind==='all'||f.kind===kind||f.region===kind)&&(!query||pokemonMatches(f.id,query)||String(nationalId(f.id))===query.replace(/^(no\.?|#)/,''))),snapshot.settings.dexSort,game,shiny,language)
   const pages=Math.max(1,Math.ceil(filtered.length/9)),current=Math.min(page,pages),items=filtered.slice((current-1)*9,current*9)
   return <section className="forms-page" role="tabpanel" id="dex-forms" aria-labelledby="dex-forms-tab">
-    <div className="form-shop-summary"><div><strong>{t('리전폼과 메가진화')}</strong><p>{t('첫 메가스톤 1개는 무료, 이후에는 사탕 50개로 영구 해금해요.')}</p><small>{t('일반·이로치와 같은 종의 모든 개체가 해금을 공유해요.')}</small></div><div><strong>{t`사탕 ${candyCount(game).toLocaleString(localeFor(language))}개`}</strong><small>{collection.freeMegaStoneUsed?t`메가 해금 ${collection.megaStones.length}개`:t('첫 무료 선택이 남아 있어요')}</small></div></div>
+    <div className="form-shop-summary"><div><strong>{t('리전폼과 메가진화')}</strong><p>{t`첫 메가스톤 1개는 무료, 이후에는 사탕 ${MEGA_CANDY_PRICE.toLocaleString(localeFor(language))}개로 영구 해금해요.`}</p><small>{t('일반·이로치와 같은 종의 모든 개체가 해금을 공유해요.')}</small></div><div><strong>{t`사탕 ${candyCount(game).toLocaleString(localeFor(language))}개`}</strong><small>{collection.freeMegaStoneUsed?t`메가 해금 ${collection.megaStones.length}개`:t('첫 무료 선택이 남아 있어요')}</small></div></div>
     <div className="form-filters"><input type="search" aria-label={t('모습 이름 또는 도감 번호 검색')} placeholder={t('모습 이름 또는 도감 번호 검색')} value={search} onChange={e=>{setSearch(e.target.value);setPage(1)}}/>
       <select aria-label={t('모습 종류')} value={kind} onChange={e=>{setKind(e.target.value);setPage(1)}}>{[['all','모든 모습'],['regional','리전폼'],['mega','메가진화'],['special','특별한 모습'],['alola','알로라'],['galar','가라르'],['hisui','히스이'],['paldea','팔데아']].map(([value,label])=><option key={value} value={value}>{t(label)}</option>)}</select>
       <button className="button subtle" aria-pressed={shiny} onClick={()=>setShiny(!shiny)}>{shiny?t('✦ 이로치 도감'):t('일반 도감')}</button>

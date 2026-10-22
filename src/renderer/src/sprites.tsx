@@ -19,5 +19,5 @@ export function Sprite({id,shiny=false,eggType='grass',className=''}:{id:number|
   },[id,shiny])
   if(!id)return <div className={`sprite ${className}`}><Egg type={eggType}/></div>
   const name=pokemonName(id,language)
-  return <div className={`sprite ${className}`} data-shiny={shiny} data-artwork={usesArtwork(id,shiny)||undefined}>{url?<img src={url} alt={name} draggable={false}/>:<div className="sprite-fallback"><span>✦</span><small>{name}</small></div>}</div>
+  return <div className={`sprite ${className}`} data-shiny={shiny} data-artwork={usesArtwork(id,shiny)&&!url?.startsWith('data:image/gif;')||undefined}>{url?<img src={url} alt={name} draggable={false}/>:<div className="sprite-fallback"><span>✦</span><small>{name}</small></div>}</div>
 }

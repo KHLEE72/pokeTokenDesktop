@@ -2,7 +2,7 @@ import { FORM_BY_ID, MEGA_FORMS, MEGA_STONES } from './catalog'
 import { CANDY_XP, newAppearanceCollection } from './model'
 import type { AppearanceCollection, GameState } from './model'
 
-export const MEGA_CANDY_PRICE = 50
+export const MEGA_CANDY_PRICE = 1000
 export const appearanceCollection = (game:GameState):AppearanceCollection => game.appearances ?? newAppearanceCollection()
 export const ensureAppearances = (game:GameState):AppearanceCollection => game.appearances ??= newAppearanceCollection()
 export const collectedAppearance = (game:GameState,id:number,shiny?:boolean):boolean => {

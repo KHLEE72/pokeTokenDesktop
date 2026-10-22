@@ -10,6 +10,7 @@ const env={...process.env,POKETOKEN_DATA_DIR:data,POKETOKEN_TEST_MODE:'1'};delet
 const catalog=JSON.parse(readFileSync('src/shared/catalog-data.json','utf8'))
 const names=JSON.parse(readFileSync('src/shared/localized-catalog.json','utf8')).species
 const manifest=JSON.parse(readFileSync('src/shared/sprite-catalog.json','utf8'))
+const supplemental=JSON.parse(readFileSync('src/shared/extra-sprite-catalog.json','utf8'))
 const scale=process.env.POKETOKEN_TEST_SCALE||'native',checks=[],errors=[],images=[]
 const ids=[1,152,252,387,495,650,722,810,906,1025,132]
 mkdirSync('artifacts',{recursive:true})
@@ -47,10 +48,10 @@ try{
     await expect(page.locator('.habitat-sprite img')).toHaveAttribute('alt',names[id].ko,{timeout:30000})
     await expect.poll(()=>page.locator('.habitat-sprite img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true)
     const image=await page.locator('.habitat-sprite img').evaluate(img=>({mime:img.src.slice(0,img.src.indexOf(';')),width:img.naturalWidth,height:img.naturalHeight}))
-    const variant=candidate.shiny?'shiny':'normal',format=manifest.animated[variant].includes(id)?'gif':'png'
+    const variant=candidate.shiny?'shiny':'normal',format=manifest.animated[variant].includes(id)||supplemental.pokemon.find(p=>p.id===id)?.[variant]?'gif':'png'
     expect(image.mime).toBe(`data:image/${format}`);images.push({id,shiny:candidate.shiny,...image})
   }
-  checks.push('normal and shiny sprites from all nine generations, including static PNG Sprigatito and Pecharunt, download and render in the real app')
+  checks.push('normal and shiny sprites from all nine generations, including animated Sprigatito and Pecharunt, load and render in the real app')
   await nav(1)
   const generation=page.getByRole('combobox',{name:'도감 세대 필터'}),pager=page.getByRole('navigation',{name:'도감 위쪽 페이지 이동'}).getByRole('combobox',{name:'이동할 도감 페이지'})
   for(let gen=1;gen<=9;gen++){
@@ -86,7 +87,7 @@ try{
   await application.close();application=null;await start()
   expect((await snapshot()).game).toEqual(after)
   const cached=await page.evaluate(async()=>Promise.all([window.desktop.getSprite(906),window.desktop.getSprite(1025,true)]))
-  expect(cached.every(uri=>uri.startsWith('data:image/png;'))).toBe(true)
+  expect(cached.every(uri=>uri.startsWith('data:image/gif;'))).toBe(true)
   checks.push('new species, shiny branches, candy, capture records and GIF/PNG cache survive complete process restart')
   expect(errors).toEqual([])
   writeFileSync(`artifacts/catalog-smoke-${scale}.json`,JSON.stringify({version:JSON.parse(readFileSync('package.json','utf8')).version,directory,checks,images,errors},null,2))
