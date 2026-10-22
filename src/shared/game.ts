@@ -1,5 +1,5 @@
 // Growth balance adapted from PokeTokenBar (MIT), pinned revision in THIRD_PARTY_NOTICES.md.
-import { Capture, Companion, EggType, EVOLUTIONS, FAMILIES, GameAction, GameState, newGame, Pace, CANDY_XP } from './model'
+import { AutoHatchConfig, Capture, Companion, EggType, EGG_TYPES, EVOLUTIONS, FAMILIES, GameAction, GameState, newGame, Pace, CANDY_XP } from './model'
 import { ballInfo, isBall } from './rewards'
 import { FORM_BY_ID, HATCH_FAMILIES, POKEMON_BY_ID } from './catalog'
 import { ensureAppearances, megaUnlocked, purchaseMegaStone } from './mega'
@@ -38,6 +38,23 @@ export function upgradeGrowthPaths(game: GameState): void {
 export const candyCount = (game: GameState): number => Math.floor(game.candyTokens / CANDY_XP)
 export const discoveredSpecies = (game: GameState): number[] => [...new Set([...game.owned, ...game.ownedShiny])]
 export const eggFamilies = (type: EggType): number[] => HATCH_FAMILIES.filter(f => f.eggTypes.some(t => t === type)).map(f => f.family)
+export const autoHatchTargets = (type: EggType): number[] => eggFamilies(type).map(f=>FAMILIES[f].species[0])
+export function validateAutoHatchConfig(value:unknown):AutoHatchConfig {
+  const config=value as AutoHatchConfig|null
+  if(!config || !['random',...EGG_TYPES.map(t=>t.id)].includes(config.eggType) || !['any','normal','shiny'].includes(config.variant) || config.targetId!==null && (!Number.isSafeInteger(config.targetId)||config.eggType==='random'||!autoHatchTargets(config.eggType).includes(config.targetId)))throw Error('잘못된 자동 부화 설정입니다.')
+  return {eggType:config.eggType,targetId:config.targetId,variant:config.targetId===null?'any':config.variant}
+}
+function selectEgg(game:GameState,type:EggType):Companion {
+  let pet=game.pets.find(p=>p.phase===0&&p.eggType===type)
+  if(!pet){pet={id:`pet:${game.nextId++}`,family:null,phase:0,xp:0,shiny:false,eggType:type,obtainedAt:null,path:[],evolutionTarget:null};game.pets.push(pet)}
+  game.activeId=pet.id;game.displayPhase=0
+  return pet
+}
+function selectAutoEgg(game:GameState,config:AutoHatchConfig,random:()=>number):Companion {
+  const type=config.eggType==='random'?EGG_TYPES[Math.max(0,Math.min(EGG_TYPES.length-1,Math.floor(random()*EGG_TYPES.length)))].id:config.eggType
+  return selectEgg(game,type)
+}
+function stopAutoHatch(game:GameState):void {if(game.autoHatch)game.autoHatch.enabled=false}
 // Relative weights within a chosen egg type; these are not global percentages.
 export const hatchFamilyWeight = (family: number): number => {
   const root = POKEMON_BY_ID.get(FAMILIES[family].species[0])!
@@ -64,10 +81,10 @@ function complete(game: GameState, pet: Companion, now: string): void {
   if (!game.captures.some(c => c.petId === pet.id)) game.captures.push({ family: pet.family!, petId: pet.id, shiny: pet.shiny, completedAt: now, speciesId: growthPath(pet).at(-1)! })
 }
 function grow(game: GameState, xp: number, pace: Pace, now: string, random: () => number): string | null {
-  const pet = activePet(game)
+  let pet = activePet(game)
   const wasWaiting=waitingForEvolution(pet,pace)
   pet.xp += xp
-  let hatch = false, evolves = 0, waiting=false
+  let hatches = 0, shinyHatches=0, evolves = 0, waiting=false,matched=false
   while ((pet.phase === 0 || pet.phase < finalPhase(pet)) && pet.xp >= threshold(pet.phase, pace)) {
     const options=evolutionOptions(pet)
     if (pet.phase>0 && options.length>1 && !options.includes(pet.evolutionTarget ?? -1)) {
@@ -78,19 +95,29 @@ function grow(game: GameState, xp: number, pace: Pace, now: string, random: () =
     if (pet.phase === 0) {
       const unfinished = [0,1,2].filter(f=>!game.captures.some(c=>c.family===f))
       const choices = pet.eggType ? eggFamilies(pet.eggType) : unfinished.length ? unfinished : [0,1,2]
-      pet.family = chooseHatchFamily(choices, random); pet.phase = 1; pet.shiny = random() < SHINY_CHANCE; pet.obtainedAt = now; hatch = true
+      pet.family = chooseHatchFamily(choices, random); pet.phase = 1; pet.shiny = random() < SHINY_CHANCE; pet.obtainedAt = now; hatches++;if(pet.shiny)shinyHatches++
       pet.path=[FAMILIES[pet.family].species[0]];pet.evolutionTarget=null
     } else {
       pet.path=[...growthPath(pet),options.length===1 ? options[0] : pet.evolutionTarget!]
       pet.phase++;pet.evolutionTarget=null;evolves++
     }
     game.displayPhase = pet.phase; register(game, pet)
+    if(pet.phase===1 && game.autoHatch?.enabled){
+      const auto=game.autoHatch;auto.hatched++
+      if(pet.phase===finalPhase(pet))complete(game,pet,now)
+      if(auto.targetId===growthPath(pet)[0] && (auto.variant==='any'||pet.shiny===(auto.variant==='shiny'))){
+        auto.enabled=false;auto.matchedPetId=pet.id;matched=true
+      }else{
+        const overflow=pet.xp;pet.xp=0
+        pet=selectAutoEgg(game,auto,random);pet.xp+=overflow
+      }
+    }
   }
   if (pet.phase > 0 && pet.phase === finalPhase(pet)) {
     complete(game, pet, now)
     game.candyTokens += pet.xp; pet.xp = 0
   }
-  const notices=[hatch ? `${pet.shiny ? '이로치 ' : ''}부화 1회` : '', evolves ? `진화 ${evolves}회` : '',waiting && !wasWaiting ? '진화 준비 완료 · 목표를 골라주세요. 새 토큰은 사탕으로 쌓입니다.' : ''].filter(Boolean)
+  const notices=[hatches>shinyHatches ? `부화 ${hatches-shinyHatches}회` : '',shinyHatches ? `이로치 부화 ${shinyHatches}회` : '',matched?'자동 부화 목표 달성! 함께할 친구를 만났어요.':'', evolves ? `진화 ${evolves}회` : '',waiting && !wasWaiting ? '진화 준비 완료 · 목표를 골라주세요. 새 토큰은 사탕으로 쌓입니다.' : ''].filter(Boolean)
   return notices.length ? notices.join(' · ') : null
 }
 export function advanceGame(game: GameState, tokens: number, pace: Pace, now: string, random = Math.random): string | null {
@@ -104,7 +131,14 @@ export function changePace(game: GameState, before: Pace, after: Pace): void {
     pet.xp = waitingForEvolution(pet,before) ? threshold(pet.phase,after) : Math.min(threshold(pet.phase, after)-1, Math.floor(pet.xp / threshold(pet.phase, before) * threshold(pet.phase, after)))
   }
 }
-export function gameAction(game: GameState, action: GameAction, pace: Pace, now: string): string {
+export function gameAction(game: GameState, action: GameAction, pace: Pace, now: string,random=Math.random): string {
+  if(action.type==='auto-hatch'){
+    if(action.config===null){stopAutoHatch(game);return '자동 부화를 중지했어요. 현재 알의 진행률은 보관됩니다.'}
+    const config=validateAutoHatchConfig(action.config)
+    game.autoHatch={...config,enabled:true,hatched:0,matchedPetId:null}
+    selectAutoEgg(game,config,random)
+    return '자동 부화를 시작했어요. 부화한 친구는 모두 보관됩니다.'
+  }
   if(action.type==='mega-stone'){
     purchaseMegaStone(game,action.stone)
     return '메가스톤을 영구 해금했어요. 같은 종의 모든 친구가 함께 사용해요.'
@@ -112,7 +146,7 @@ export function gameAction(game: GameState, action: GameAction, pace: Pace, now:
   if(action.type==='mega'){
     const pet=action.petId?game.pets.find(p=>p.id===action.petId):activePet(game),form=action.formId===null?null:FORM_BY_ID.get(action.formId)
     if(!pet||action.formId!==null&&(!form||form.kind!=='mega'||form.baseAppearanceId!==(action.petId?growthPath(pet).at(-1):speciesId(game))||(!action.petId&&game.displayPhase!==pet.phase)||!megaUnlocked(game,form.id)||evolutionOptions(pet).length))throw new Error('아직 사용할 수 없는 메가진화입니다.')
-    if(action.petId){game.activeId=pet.id;game.displayPhase=pet.phase}
+    if(action.petId){stopAutoHatch(game);game.activeId=pet.id;game.displayPhase=pet.phase}
     pet.mega=action.formId
     if(form){const collection=ensureAppearances(game),owned=pet.shiny?collection.ownedShiny:collection.owned;if(!owned.includes(form.id))owned.push(form.id)}
     return form?'메가진화한 모습으로 함께해요. 새 토큰은 사탕으로 모입니다.':'원래 모습으로 돌아왔어요.'
@@ -125,15 +159,13 @@ export function gameAction(game: GameState, action: GameAction, pace: Pace, now:
   }
   if (action.type === 'egg') {
     if (!eggFamilies(action.eggType).length) throw new Error('선택할 수 없는 알입니다.')
-    let pet = game.pets.find(p => p.phase === 0 && p.eggType === action.eggType)
-    if (!pet) { pet = { id: `pet:${game.nextId++}`, family: null, phase: 0, xp: 0, shiny: false, eggType: action.eggType, obtainedAt: null, path: [], evolutionTarget: null }; game.pets.push(pet) }
-    game.activeId = pet.id; game.displayPhase = 0
+    stopAutoHatch(game);selectEgg(game,action.eggType)
     return '알을 선택했어요. 이전 친구의 성장 상태는 보관됩니다.'
   }
   if (action.type === 'select') {
     const pet = game.pets.find(p => p.id === action.petId)
     if (!pet || !Number.isInteger(action.phase) || action.phase < 0 || action.phase > pet.phase || (pet.phase > 0 && !growthPath(pet)[action.phase-1])) throw new Error('아직 만날 수 없는 포켓몬입니다.')
-    game.activeId = pet.id; game.displayPhase = action.phase
+    stopAutoHatch(game);game.activeId = pet.id; game.displayPhase = action.phase
     pet.mega=null
     return isGrowing(game) ? '이전에 키우던 상태에서 성장을 이어갑니다.' : '완성한 모습으로 함께해요. 새 토큰은 사탕으로 모입니다.'
   }

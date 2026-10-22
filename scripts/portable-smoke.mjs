@@ -12,7 +12,8 @@ const directory=mkdtempSync(join(tmpdir(),'poketoken-portable-')),logs=join(dire
 const version=JSON.parse(readFileSync('package.json','utf8')).version
 const executable=resolve(`release/PokeToken-Desktop-${version}-win-x64.exe`)
 const env={...process.env,POKETOKEN_DATA_DIR:join(directory,'data'),POKETOKEN_TEST_MODE:'1',POKETOKEN_TEST_HATCH:'first'};delete env.ELECTRON_RUN_AS_NODE
-const child=spawn(executable,[`--remote-debugging-port=${port}`],{env,windowsHide:true,stdio:'ignore'})
+const startup=process.argv.includes('--startup')
+const child=spawn(executable,[`--remote-debugging-port=${port}`,...(startup?['--hidden']:[])],{env,windowsHide:true,stdio:'ignore'})
 let browser,applicationPid
 const inputAttempts=[]
 const dragEvents=()=>readFileSync(join(directory,'data','diagnostics','pet-input.jsonl'),'utf8').split('\n').slice(0,-1).map(line=>JSON.parse(line)).filter(row=>row.event==='ipc.drag')
@@ -51,6 +52,32 @@ try{
   await expect.poll(()=>browser.contexts()[0].pages().some(page=>page.url().includes('view=dashboard'))).toBe(true)
   const page=browser.contexts()[0].pages().find(page=>page.url().includes('view=dashboard'))
   await expect(page.locator('html')).toHaveAttribute('lang','en')
+  if(startup){
+    const probe=join(directory,'startup-visibility.ps1')
+    writeFileSync(probe,`Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public class PokeTokenVisibilityProbe {
+  delegate bool Callback(IntPtr w,IntPtr p);
+  [DllImport("user32.dll")] static extern bool EnumWindows(Callback callback,IntPtr p);
+  [DllImport("user32.dll")] static extern uint GetWindowThreadProcessId(IntPtr w,out uint pid);
+  [DllImport("user32.dll")] static extern int GetWindowLong(IntPtr w,int index);
+  [DllImport("user32.dll")] static extern bool IsWindowVisible(IntPtr w);
+  public static string Inspect(uint ownPid) {
+    int total=0,visible=0;
+    EnumWindows((w,p)=>{uint pid;GetWindowThreadProcessId(w,out pid);if(pid==ownPid&&(GetWindowLong(w,-16)&0x00c00000)!=0){total++;if(IsWindowVisible(w))visible++;}return true;},IntPtr.Zero);
+    return total+"|"+visible;
+  }
+}
+'@
+[PokeTokenVisibilityProbe]::Inspect(${applicationPid})
+`)
+    const result=execFileSync(join(process.env.SystemRoot,'System32','WindowsPowerShell','v1.0','powershell.exe'),['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',probe],{windowsHide:true,encoding:'utf8'}).trim().split('|').map(Number)
+    expect(result[0]).toBeGreaterThanOrEqual(1);expect(result[1]).toBe(0)
+    await page.evaluate(()=>window.desktop.openDashboard('home'))
+    const shown=execFileSync(join(process.env.SystemRoot,'System32','WindowsPowerShell','v1.0','powershell.exe'),['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',probe],{windowsHide:true,encoding:'utf8'}).trim().split('|').map(Number)
+    expect(shown[1]).toBeGreaterThanOrEqual(1)
+  }
   await page.evaluate(()=>window.desktop.updateSettings({language:'ko'}))
   await expect(page.getByRole('heading',{name:'오늘도, 함께 성장해요'})).toBeVisible()
   const expectedBundle=readFileSync('out/renderer/index.html','utf8').match(/src="[^\"]*\/([^/\"]+\.js)"/)[1]
@@ -123,6 +150,7 @@ try{
   const reportPath='artifacts/portable-report.json',report=JSON.parse(readFileSync(reportPath,'utf8'))
   report.inputAttempts=inputAttempts
   report.checks.push('portable payload contains the exact renderer bundle from the latest source build','portable pet recalls into a compact ball and summons again on a short click')
+  if(startup)report.checks.push('the actual outer portable launcher forwards --hidden; Win32 reports its captioned dashboard exists but is not visible, without changing OS startup entries')
   writeFileSync(reportPath,JSON.stringify(report,null,2))
   console.log('Portable executable checks passed.')
 }finally{

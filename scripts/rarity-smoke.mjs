@@ -6,7 +6,7 @@ import {tmpdir} from 'node:os'
 import {join} from 'node:path'
 const directory=mkdtempSync(join(tmpdir(),'poketoken-rarity-')),data=join(directory,'data')
 const env={...process.env,POKETOKEN_DATA_DIR:data,POKETOKEN_TEST_MODE:'1'};delete env.ELECTRON_RUN_AS_NODE
-const scale=process.env.POKETOKEN_TEST_SCALE||'native',checks=[],errors=[]
+const scale=process.env.POKETOKEN_TEST_SCALE||'native',checks=[],errors=[],headerLayouts=[]
 const catalog=JSON.parse(readFileSync('src/shared/catalog-data.json','utf8'))
 const names=JSON.parse(readFileSync('src/shared/localized-catalog.json','utf8')).species
 const characterData=JSON.parse(readFileSync('src/shared/character-profiles.json','utf8'))
@@ -27,6 +27,13 @@ async function start(){
 async function fits(){
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true)
   if(await page.locator('.home-page').count())expect(await page.evaluate(()=>document.documentElement.scrollHeight===innerHeight)).toBe(true)
+  const headers=await page.locator('.dex-card').evaluateAll(cards=>cards.map(card=>{
+    const header=card.querySelector('.dex-number').getBoundingClientRect(),tagsElement=card.querySelector('.dex-species-tags'),tags=tagsElement.getBoundingClientRect(),badge=card.querySelector('.rarity-badge'),rect=badge?.getBoundingClientRect(),range=document.createRange()
+    range.selectNodeContents(card.querySelector('.dex-id'));const number=range.getBoundingClientRect()
+    return {label:badge?.textContent,headerWidth:header.width,badgeWidth:rect?.width,badgeScroll:badge?.scrollWidth,height:header.height,inside:tagsElement.scrollWidth<=tagsElement.clientWidth+1,corner:!rect||Math.abs(rect.top-header.top)<.5&&Math.abs(rect.right-header.right)<.5,clear:!rect||rect.left>=number.right+4&&rect.bottom<=tags.top+.5,fullLabel:!badge||badge.scrollWidth<=badge.clientWidth+1}
+  }))
+  for(const header of headers){expect(header.height).toBeLessThanOrEqual(52);expect(header.inside&&header.corner&&header.clear&&header.fullLabel,JSON.stringify(header)).toBe(true)}
+  if(headers.length)headerLayouts.push(...headers)
 }
 try{
   await start();const game=(await snapshot()).game,now=new Date().toISOString()
@@ -56,7 +63,13 @@ try{
       await expect(page.locator('.dex-card').first()).toHaveAttribute('data-rarity',category)
       await expect(page.locator('.rarity-badge').first()).toContainText(labels[language][category])
       expect(await page.locator('.dex-filter-summary').innerText()).toContain(String(count))
-      await fits()
+      for(const size of [[1040,800],[850,680]])for(const theme of ['light','dark']){
+        await application.evaluate(({BrowserWindow},size)=>BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('view=dashboard')).setSize(...size),size)
+        await page.evaluate(theme=>window.desktop.updateSettings({theme}),theme)
+        await fits()
+        await page.locator('.page-heading .segmented button').nth(1).click();await fits()
+        await page.locator('.page-heading .segmented button').nth(0).click()
+      }
     }
     await rarity.selectOption('all');await page.locator('.dex-filter select').nth(2).selectOption('discovered')
     await page.locator('.dex-filter select').last().selectOption('acquired')
@@ -71,6 +84,7 @@ try{
     if(language!=='ko')expect((await page.locator('body').innerText()).replaceAll('한국어','')).not.toMatch(/[가-힣]/)
     checks.push(`${language}: three category filters and counts, styled badges, nine achievements and ten original ball images render without overflow`)
   }
+  checks.push('rarity badges sit at the upper right without overlapping number, generation or shiny text; compact headers fit three languages, both variants/themes and default/minimum windows')
   await nav(3)
   const palettes=[]
   for(const [theme,name] of [['timer','타이머볼'],['dream','드림볼'],['cherish','프레셔스볼']]){
@@ -135,6 +149,6 @@ try{
   await expect(page.locator('.reward-toast')).toHaveCount(0)
   checks.push('all new unlock dates, equipped balls, selected theme, candy and paths survive restart without repeated reward notifications')
   expect(errors).toEqual([])
-  writeFileSync(`artifacts/rarity-smoke-${scale}.json`,JSON.stringify({version:JSON.parse(readFileSync('package.json','utf8')).version,directory,checks,errors},null,2))
+  writeFileSync(`artifacts/rarity-smoke-${scale}.json`,JSON.stringify({version:JSON.parse(readFileSync('package.json','utf8')).version,directory,checks,errors,headerLayouts},null,2))
   console.log(JSON.stringify({checks,errors},null,2))
 }finally{if(application)await application.close()}

@@ -8,12 +8,13 @@ import { PetController } from './pet'
 import { WindowTracker } from './window-tracker'
 import { InputDiagnostics, sanitizePetTrace } from './input-diagnostics'
 import { isBall, isTheme } from '../shared/rewards'
-import { activePet } from '../shared/game'
+import { activePet, validateAutoHatchConfig } from '../shared/game'
 import { isLanguage, translator } from '../shared/i18n'
 import { isDexSort } from '../shared/dex'
 import { LEAGUE_BY_ID, LeagueDisplay } from '../shared/league'
 import { createUpdates, portableUpdateStarted } from './update-service'
 import type { UpdateController } from './updates'
+import { LoginStart } from './login-start'
 
 app.setName('PokeToken Desktop')
 app.setPath('userData', process.env.POKETOKEN_DATA_DIR || join(app.getPath('appData'), 'PokeToken Desktop'))
@@ -148,6 +149,8 @@ else {
     diagnostics = new InputDiagnostics(join(app.getPath('userData'),'diagnostics'))
     diagnostics.record('session.start',{version:app.getVersion(),platform:process.platform,arch:process.arch,electron:process.versions.electron,chrome:process.versions.chrome})
     sprites = new SpriteCache(join(app.getPath('userData'), 'sprites'))
+    const loginStart=new LoginStart(app,process.platform,app.isPackaged,app.getPath('exe'),app.getAppPath(),process.env.PORTABLE_EXECUTABLE_FILE,process.env.POKETOKEN_TEST_MODE==='1')
+    let loginRestored=false
     preferences = { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
     dashboard = new BrowserWindow({ width: 1040, height: 800, minWidth: 850, minHeight: 680, show: false, backgroundColor: '#f6f7f2', autoHideMenuBar: true, title: 'PokeToken Desktop', webPreferences: preferences })
     pet = createPetWindow()
@@ -178,6 +181,8 @@ else {
     worker.on('message', message => {
       if (message.type === 'snapshot') {
         snapshot = message.value
+        if(!loginRestored){loginRestored=true;try{loginStart.restore(snapshot.settings.autoStart)}catch{snapshot.startup='error'}}
+        snapshot.startup=snapshot.startup??loginStart.read()
         controller.apply(snapshot.settings); trayMenu()
         for (const window of [dashboard, pet]) if (!window.isDestroyed()) window.webContents.send('snapshot', snapshot)
       } else if (message.type === 'reply') {
@@ -192,8 +197,9 @@ else {
     ipcMain.handle('snapshot:get', event => { allowed(event); return snapshot })
     ipcMain.handle('settings:update', async (event, value) => {
       allowed(event); const patch = validatePatch(value)
-      if (patch.autoStart !== undefined) app.setLoginItemSettings({ openAtLogin: patch.autoStart, path: process.env.PORTABLE_EXECUTABLE_FILE || app.getPath('exe'), args: app.isPackaged ? ['--hidden'] : [app.getAppPath(), '--hidden'] })
-      await request('settings', patch)
+      const previous=snapshot.settings.autoStart
+      if(patch.autoStart!==undefined)loginStart.set(patch.autoStart)
+      try{await request('settings',patch)}catch(error){if(patch.autoStart!==undefined)try{loginStart.set(previous)}catch{}throw error}
     })
     ipcMain.handle('usage:refresh', async event => { allowed(event); await request('refresh') })
     ipcMain.handle('folder:choose', async (event, provider) => { allowed(event); if (!['claude', 'codex'].includes(provider)) return null; const result = await dialog.showOpenDialog(dashboard, { title: translator(snapshot.settings.language)('로그 폴더 선택'), properties: ['openDirectory'] }); return result.canceled ? null : result.filePaths[0] })
@@ -203,7 +209,8 @@ else {
       allowed(event)
       if (event.sender.id !== dashboard.webContents.id || !value || typeof value !== 'object') throw new Error('잘못된 요청')
       let action: GameAction
-      if (value.type === 'egg' && EGG_TYPES.some(t=>t.id===value.eggType)) action={type:'egg',eggType:value.eggType}
+      if(value.type==='auto-hatch')action={type:'auto-hatch',config:value.config===null?null:validateAutoHatchConfig(value.config)}
+      else if (value.type === 'egg' && EGG_TYPES.some(t=>t.id===value.eggType)) action={type:'egg',eggType:value.eggType}
       else if (value.type === 'select' && typeof value.petId==='string' && value.petId.length<80 && Number.isInteger(value.phase) && value.phase>=0 && value.phase<=3) action={type:'select',petId:value.petId,phase:value.phase}
       else if (value.type === 'candy' && Number.isSafeInteger(value.count) && value.count>0 && value.count<=1e9) action={type:'candy',count:value.count}
       else if (value.type === 'target' && (value.speciesId===null || Number.isInteger(value.speciesId))) action={type:'target',speciesId:value.speciesId}

@@ -24,13 +24,16 @@ export interface Companion {
 export const CANDY_XP = 100_000
 export interface AppearanceCollection { owned: number[]; ownedShiny: number[]; megaStones: string[]; freeMegaStoneUsed: boolean }
 export const newAppearanceCollection = ():AppearanceCollection => ({owned:[],ownedShiny:[],megaStones:[],freeMegaStoneUsed:false})
+export interface AutoHatchConfig { eggType: EggType | 'random'; targetId: number | null; variant: 'any' | 'normal' | 'shiny' }
+export interface AutoHatchState extends AutoHatchConfig { enabled: boolean; hatched: number; matchedPetId: string | null }
 export interface GameState {
   version: 2; tokensEarned: number; candyTokens: number; nextId: number
   pets: Companion[]; activeId: string; displayPhase: number
   owned: number[]; ownedShiny: number[]; captures: Capture[]
   appearances?: AppearanceCollection
+  autoHatch?: AutoHatchState
 }
-export type GameAction = { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null } | { type: 'ball'; petId: string; ball: BallId } | {type:'mega-stone';stone:string} | {type:'mega';formId:number|null;petId?:string}
+export type GameAction = { type: 'auto-hatch'; config: AutoHatchConfig | null } | { type: 'egg'; eggType: EggType } | { type: 'select'; petId: string; phase: number } | { type: 'candy'; count: number } | { type: 'target'; speciesId: number | null } | { type: 'ball'; petId: string; ball: BallId } | {type:'mega-stone';stone:string} | {type:'mega';formId:number|null;petId?:string}
 export interface Settings {
   language: Language
   dexSort: DexSort
@@ -50,6 +53,7 @@ export interface Snapshot {
   roots: RootStatus[]; scanning: boolean; lastScan: string | null; notice: string | null
   rewards: RewardState
   league?: LeagueState
+  startup?: 'enabled' | 'disabled' | 'missing' | 'error' | 'unsupported'
 }
 export interface DisplayChoice { id: string; label: string }
 export type PetMotionState = 'idle' | 'walking' | 'held' | 'falling' | 'landing'

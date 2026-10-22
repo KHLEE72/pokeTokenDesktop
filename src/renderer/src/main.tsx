@@ -6,6 +6,7 @@ import { activePet, appearanceId, appearancePhase, candyCount, CANDY_XP, dexChoi
 import { usePetDialogue } from './pet-dialogue';
 import { HomeHonors, LeagueCollection } from './league-ui';
 import { SidebarUpdate, UpdateHint } from './updates-ui';
+import { AutoHatchPanel } from './auto-hatch-ui';
 import { PixelIcon, PixelIconKind } from './pixel-icons';
 import { ACHIEVEMENTS, BallId, ballInfo, ballUnlocked, themeInfo } from '../../shared/rewards';
 import { BallIcon } from './balls';
@@ -199,9 +200,9 @@ function EggStorage({ game, pace, busy, act }: {game: GameState;pace: Settings['
   const eggs = game.pets.filter((p) => p.phase === 0).sort((a, b) => Number(b.id === game.activeId) - Number(a.id === game.activeId) || b.xp - a.xp);
   const current = eggs.find((egg) => egg.id === game.activeId),stored = eggs.filter((egg) => egg.id !== game.activeId);
   return <details className="egg-drawer"><summary>
-    <div className="egg-drawer-heading"><span className="egg-drawer-icon" aria-hidden="true"><Egg type={current ? current.eggType : stored[0]?.eggType} /></span><div><h3>{t("알 보관함")}</h3><p>{t`보관 중인 알 ${stored.length}개 · 부화 중 ${current ? 1 : 0}개`}</p></div><span className="egg-drawer-toggle">{t("알 선택하기 ")}<span aria-hidden="true">⌄</span></span></div>
+    <div className="egg-drawer-heading"><span className="egg-drawer-icon" aria-hidden="true"><Egg type={current ? current.eggType : stored[0]?.eggType} /></span><div><h3>{t("알 보관함")}</h3><p>{game.autoHatch?.enabled?t`자동 부화 중 · ${game.autoHatch.hatched}회`:game.autoHatch?.matchedPetId?t('목표 달성!'):t`보관 중인 알 ${stored.length}개 · 부화 중 ${current ? 1 : 0}개`}</p></div><span className="egg-drawer-toggle">{t("알 선택하기 ")}<span aria-hidden="true">⌄</span></span></div>
     {eggs.length > 0 ? <div className="egg-preview" aria-label={t("알 보관 현황")}>{eggs.slice(0, 3).map((egg) => <span key={egg.id} className={`egg-preview-item ${egg.id === game.activeId ? 'incubating' : ''}`} data-egg-id={egg.id} title={egg.id === game.activeId ? t("부화 중") : t("보관 중")}><span aria-hidden="true"><Egg type={egg.eggType} /></span><span>{eggName(egg, language)}</span><strong>{eggProgress(egg, pace).toFixed(1)}%</strong></span>)}{eggs.length > 3 && <span className="egg-preview-more">{t`+${eggs.length - 3}개 더 보기`}</span>}</div> : <p className="egg-preview-empty">{t("보관 중인 알이 없어요. 새 알을 선택해보세요.")}</p>}
-  </summary><EggSelection game={game} pace={pace} busy={busy} act={act} /></details>;
+  </summary><AutoHatchPanel game={game} busy={busy} act={act} /><EggSelection game={game} pace={pace} busy={busy} act={act} /></details>;
 }
 function CandyBox({ game, pace, busy, act, compact = false }: {game: GameState;pace: Settings['pace'];busy: boolean;act: (action: GameAction) => void;compact?: boolean;}): React.JSX.Element {const { language, t } = useI18n();
   const [amount, setAmount] = useState(1),count = candyCount(game),pet = activePet(game),canFeed = isGrowing(game) && pet.phase > 0 && !waitingForEvolution(pet, pace);
@@ -218,7 +219,7 @@ function DexCard({ snapshot, game, pace, p, shiny, status, busy, act, showForms 
   const [chosen, setChosen] = useState(''),choices = dexChoices(game, p.id, shiny).filter((c) => status === 'growing' ? growingAppearance(c, phase(c)) : status === 'complete' ? !growingAppearance(c, phase(c)) : status === 'active' ? c.id === game.activeId && game.displayPhase === phase(c) : true);
   const pet = choices.find((c) => c.id === chosen) ?? choices.find((c) => c.id === game.activeId && game.displayPhase === phase(c)) ?? choices[0];
   const active = pet?.id === game.activeId && game.displayPhase === phase(pet) && appearanceId(game)===p.id,growing = pet && growingAppearance(pet, phase(pet));
-  return <article className={`dex-card ${pet ? '' : 'locked'} ${active ? 'dex-selected' : ''}`} data-species={p.id} data-rarity={speciesRarity(p.id)} data-variant={shiny ? 'shiny' : 'normal'}><span className="dex-number">No. {String(p.id).padStart(3, '0')} {shiny ? t("✦ 이로치") : ''}<span className="dex-species-tags">{t`${p.generation}세대`}</span><RarityBadge rarity={speciesRarity(p.id)}/></span>
+  return <article className={`dex-card ${pet ? '' : 'locked'} ${active ? 'dex-selected' : ''}`} data-species={p.id} data-rarity={speciesRarity(p.id)} data-variant={shiny ? 'shiny' : 'normal'}><span className="dex-number"><span className="dex-id">No. {String(p.id).padStart(3, '0')}</span><span className="dex-species-tags">{t`${p.generation}세대`}{shiny&&<span>{t("✦ 이로치")}</span>}</span><RarityBadge rarity={speciesRarity(p.id)}/></span>
     {pet ? <Sprite id={p.id} shiny={shiny} /> : <div className="locked-placeholder">?</div>}<h3>{pet ? pokemonName(p.id, language) : t("아직 만나지 못했어요")}</h3>
     <div className="type-badges">{p.types.map((type) => <span key={type} style={{ background: EGG_TYPES.find((t) => t.id === type)?.color }}>{typeName(type, language)}</span>)}</div>
     <div className="dex-card-actions">
@@ -380,6 +381,7 @@ function App(): React.JSX.Element {const { language, t } = useI18n();const forma
           <div className="setting-row"><div><strong>{t("캐릭터 크기")}</strong><p>{t("화면 위에 보이는 친구의 크기")}</p></div><div className="segmented">{([96, 128, 192] as const).map((size) => <button key={size} disabled={busy} className={settings.size === size ? 'selected' : ''} onClick={() => update({ size })}>{size}px</button>)}</div></div>
           <div className="setting-row"><div><strong>{t("함께할 화면")}</strong><p>{t("모니터가 분리되면 기본 화면으로 돌아옵니다.")}</p></div><select aria-label={t("함께할 화면")} value={displays.some((d) => d.id === settings.displayId) ? settings.displayId! : ''} onChange={(e) => update({ displayId: e.target.value || null })}><option value="">{t("기본 화면")}</option>{displays.map((d) => <option key={d.id} value={d.id}>{d.label}</option>)}</select></div>
           <div className="setting-row"><div><strong>{t("컴퓨터를 켜면 함께 시작")}</strong><p>{t("로그인할 때 앱을 자동으로 실행합니다.")}</p></div><button disabled={busy} role="switch" aria-checked={settings.autoStart} aria-label={t("자동 시작")} className={`toggle ${settings.autoStart ? 'on' : ''}`} onClick={() => update({ autoStart: !settings.autoStart })}><span /></button></div>
+          {settings.autoStart&&snapshot.startup&&snapshot.startup!=='enabled'&&<div className="startup-help" role="status"><p>{snapshot.startup==='disabled'?t('운영체제의 시작 앱 설정에서 비활성화되어 있어요. 다시 등록하거나 시작 앱에서 켜주세요.'):t('자동 시작 등록을 확인할 수 없어요. 현재 앱 위치로 다시 등록해주세요.')}</p><button className="button subtle" disabled={busy} onClick={()=>update({autoStart:true})}>{t('자동 시작 다시 등록')}</button></div>}
         </section>
         <section className="settings-card"><h3>{t("토큰 사용 기록 연결")}</h3><p className="section-help">{t("기본 폴더를 자동으로 찾습니다. 다른 위치나 WSL에 있는 기록은 폴더를 추가하세요.")}</p>
           {(['claude', 'codex'] as const).map((provider) => <div className="provider-settings" key={provider}><div className="provider-title"><strong><i className={`provider-dot ${provider}`} />{names[provider]}</strong><button className="button subtle" disabled={busy} onClick={() => void run(async () => {

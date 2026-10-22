@@ -48,8 +48,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run smoke:evolution
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke:auto-hatch
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Remove-Item Env:POKETOKEN_EXE
-          npm run smoke:portable
+          npm run smoke:portable -- --startup
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Verify portable replacement and recovery
         shell: pwsh

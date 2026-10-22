@@ -17,6 +17,7 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `src/renderer/`: React 관리 화면, 펫 화면과 포인터 이벤트, 스타일.
 - 관리 화면의 `scrollbar-gutter: stable`은 알 보관함을 열고 닫을 때 카드 폭을 유지한다. 투명 펫 창에는 적용하지 않는다. `smoke:dashboard`는 세 언어·라이트/다크·최소/기본 창에서 폭을 비교하며 `POKETOKEN_TEST_SCALE`로 배율을 지정할 수 있다.
 - `src/shared/`: 데이터 모델, 성장·사탕·도감 규칙, 포켓몬 목록과 대사.
+- 자동 부화는 `game.autoHatch`에 설정·횟수·성공 개체를 저장한다. 알마다 기존 가중치/이로치 확률로 부화하고 개체를 모두 보존하며, 초과 XP는 다음 알에 이월한다. 목표 달성 후 잔여 XP는 성공 개체의 기존 성장 규칙으로 처리한다. 수동 알/개체 선택은 자동 부화를 중지한다. `smoke:auto-hatch`로 실제 로그·재시작·세 언어·최소 창을 확인한다.
 - `form-catalog.json`은 `scripts/update-form-catalog.mjs`와 `form-dialogue.tsv`에서 생성한다. 기존 551개 계열 ID를 보존하고 새 계열만 뒤에 붙인다. 연결된 리전폼 진화 전용 종은 새 알 후보에서 제외하되, 기존 독립 개체·경로·완료 기록은 유지한다. 단계는 전역 `PokemonSpecies.phase` 대신 개체 `path` 안의 위치로 판정한다.
 - 리전폼·특별한 모습·메가폼 수집은 `game.appearances`에 기본 도감과 별도로 저장한다. `megaStones`와 첫 무료 선택 소진 상태는 일반/이로치·모든 개체가 공유하며 구매와 사탕 차감을 같은 트랜잭션으로 저장한다. 메가는 성장 단계가 아닌 `pet.mega` 표시 상태이고 `appearanceId`로 렌더링한다. `smoke:forms`로 구매·리전 진화·세 언어·최소 창·재시작을 확인한다.
 - `src/shared/rewards.ts`: 업적 조건·볼·테마 목록. 볼 아이콘과 업적·테마 UI는 `src/renderer/src/balls.tsx`, `rewards-ui.tsx`, `rewards.css`에 있다.
@@ -29,6 +30,7 @@ Electron + React + TypeScript + SQLite를 사용한다. 사용법은 [README.md]
 - `src/shared/dex.ts`: 도감 번호·공식 이름·최초 등록 순서 정렬. `owned`·`ownedShiny`의 기존 등록 순서를 보존한다. 한국어 선택자를 쓰는 실행 검사는 `scripts/test-electron.mjs`에서 언어를 명시하고, 기본 언어 검사는 원래 Playwright 런처를 사용한다.
 - `catalog-data.json`·`localized-catalog.json`·`sprite-catalog.json`: 1~9세대 기본 모습 1,025종·공식 이름·고정 커밋 이미지 목록. `scripts/update-*-catalog.mjs`로 생성한다. 기존 19계열의 `family` 번호를 재배열하지 않는다. 리전폼 전용 진화는 기본 모습에 연결하지 않는다. GIF 없는 종은 정적 PNG를 쓰고 일반/이로치 캐시를 구분한다. 목록·부화·이미지 변경은 `smoke:catalog`도 확인한다.
 - `native/`: Windows PowerShell/Win32 및 macOS Swift 창 감지 보조 프로그램.
+- 자동 시작은 `src/main/login-start.ts`에서 Portable의 외부 EXE와 `--hidden`을 같은 인수로 등록/조회한다. 저장 설정이 켜져 있는데 경로가 없으면 시작 시 다시 등록하고, OS에서 비활성화한 항목은 자동으로 켜지 않는다. 테스트 모드는 실제 OS 등록을 바꾸지 않는 모의 등록을 쓴다. 실제 재로그인 검증과 모의 API 검사를 구분한다.
 - `tests/`, `scripts/`: 단위·통합 테스트와 Electron 실행 검사, 빌드 도구.
 
 ## 실행과 검증
@@ -50,6 +52,7 @@ Node.js 22.12 이상과 npm을 사용하며, 의존성 설치는 `npm ci`로 한
 - 문서만 변경하면 내용·링크·명령 확인으로 충분하다. 결과를 보고할 때 실제로 확인한 범위를 적는다.
 - 네이티브 모듈 설치가 실패하면 Electron 호환성과 빌드 도구를 확인한다. Windows에는 C++ 빌드 도구와 Windows SDK, macOS에는 Xcode Command Line Tools가 필요할 수 있다.
 - 릴리스 빌드 전에는 현재 브랜치와 `package.json`의 버전을 확인한다. EXE 생성 후 `npm run smoke:portable`로 실제 실행 파일도 확인한다.
+- `npm run smoke:portable -- --startup`은 실제 외부 EXE의 `--hidden` 전달을 확인한다. 테스트 PID의 캡션 창만 Win32로 세어 숨김/관리 화면 열기의 가시성을 비교하며 OS 시작 항목을 등록하지 않는다.
 - 패키징은 대상 OS·아키텍처의 SQLite prebuild만 남기고 C/C++ 소스·빌드 도구를 제외한다. 개발용 `node_modules`는 수정하지 않는다. `scripts/verify-package.cjs`가 실제 패키지의 바이너리·필수 파일·라이선스를 검사하므로 의존성이나 패키지 필터 변경 시 함께 확인한다.
 - `electron-builder.yml`의 OS별 `files`에는 전체 허용 목록을 유지한다. 제외 규칙만 별도 FileSet에 넣으면 전체 체크아웃이 복사될 수 있다. 패키지에는 `out/`·실행 의존성·트레이 아이콘·필수 메타데이터/라이선스만 허용한다.
 - Portable 검사에서 `petting` 대신 `landing`이 나오면 테스트 중 실제 커서 이동이 드래그로 판정됐는지 `ipc.drag`의 전후 좌표와 결과를 먼저 확인한다. 입력 누락과 구분해 검증 결과를 기록한다. 검사는 네이티브 커서가 4px 넘게 움직여 `drop`으로 처리된 경우만 최대 3회 다시 클릭하며, 입력 누락·정지 커서의 잘못된 `drop`은 실패로 남긴다.

@@ -1754,5 +1754,133 @@
   "업데이트를 적용하지 못해 이전 버전으로 복구했어요. 다시 시도해주세요.": {
     "en": "The update could not start, so the previous version was restored. Please try again.",
     "ja": "更新を適用できなかったため、前のバージョンに復元しました。もう一度お試しください。"
+  },
+  "자동 부화": {
+    "en": "Auto hatch",
+    "ja": "自動ふか"
+  },
+  "부화한 친구는 모두 보관해요. 다른 알이나 포켓몬을 직접 고르면 자동 부화가 중지됩니다.": {
+    "en": "All hatched companions are kept. Selecting another egg or Pokémon stops auto hatch.",
+    "ja": "ふかした仲間はすべて保存します。別のタマゴやポケモンを選ぶと自動ふかが止まります。"
+  },
+  "자동 부화 중 · {0}회": {
+    "en": "Auto hatching · {0} hatched",
+    "ja": "自動ふか中 · {0}回"
+  },
+  "목표 달성!": {
+    "en": "Target found!",
+    "ja": "目標達成！"
+  },
+  "대기 중": {
+    "en": "Ready",
+    "ja": "待機中"
+  },
+  "부화할 알": {
+    "en": "Eggs to hatch",
+    "ja": "ふかするタマゴ"
+  },
+  "자동 부화 알 선택": {
+    "en": "Auto hatch egg selection",
+    "ja": "自動ふかのタマゴ選択"
+  },
+  "랜덤 알": {
+    "en": "Random eggs",
+    "ja": "ランダムなタマゴ"
+  },
+  "부화 목표": {
+    "en": "Hatching goal",
+    "ja": "ふかの目標"
+  },
+  "자동 부화 목표 방식": {
+    "en": "Auto hatch goal mode",
+    "ja": "自動ふかの目標モード"
+  },
+  "랜덤 포켓몬": {
+    "en": "Random Pokémon",
+    "ja": "ランダムなポケモン"
+  },
+  "타겟 포켓몬": {
+    "en": "Target Pokémon",
+    "ja": "目標のポケモン"
+  },
+  "타겟 검색": {
+    "en": "Find a target",
+    "ja": "目標を検索"
+  },
+  "자동 부화 타겟 검색": {
+    "en": "Search auto hatch targets",
+    "ja": "自動ふかの目標を検索"
+  },
+  "이름 또는 도감 번호": {
+    "en": "Name or Pokédex number",
+    "ja": "名前または図鑑番号"
+  },
+  "자동 부화 타겟 포켓몬": {
+    "en": "Auto hatch target Pokémon",
+    "ja": "自動ふかの目標ポケモン"
+  },
+  "부화 가능한 포켓몬 선택": {
+    "en": "Choose a hatchable Pokémon",
+    "ja": "ふかするポケモンを選ぶ"
+  },
+  "모습 조건": {
+    "en": "Variant condition",
+    "ja": "色の条件"
+  },
+  "자동 부화 모습 조건": {
+    "en": "Auto hatch variant condition",
+    "ja": "自動ふかの色の条件"
+  },
+  "상관없음": {
+    "en": "Either",
+    "ja": "どちらでも"
+  },
+  "남는 토큰은 다음 알로 이월해요. 목표를 만나면 중지하고 그 친구의 성장을 이어갑니다.": {
+    "en": "Extra tokens carry over to the next egg. Finding your target stops auto hatch and resumes its normal growth.",
+    "ja": "余ったトークンは次のタマゴへ繰り越します。目標に出会うと停止し、その仲間の成長を続けます。"
+  },
+  "자동 부화 중지": {
+    "en": "Stop auto hatch",
+    "ja": "自動ふかを停止"
+  },
+  "자동 부화 시작": {
+    "en": "Start auto hatch",
+    "ja": "自動ふかを開始"
+  },
+  "자동 부화 목표 달성! 함께할 친구를 만났어요.": {
+    "en": "Auto hatch target found! Your new companion is here.",
+    "ja": "自動ふかの目標達成！新しい仲間に出会いました。"
+  },
+  "자동 부화를 중지했어요. 현재 알의 진행률은 보관됩니다.": {
+    "en": "Auto hatch stopped. The current egg keeps its progress.",
+    "ja": "自動ふかを停止しました。今のタマゴの進行度は保存されます。"
+  },
+  "자동 부화를 시작했어요. 부화한 친구는 모두 보관됩니다.": {
+    "en": "Auto hatch started. All hatched companions will be kept.",
+    "ja": "自動ふかを開始しました。ふかした仲間はすべて保存されます。"
+  },
+  "잘못된 자동 부화 설정입니다.": {
+    "en": "Invalid auto hatch settings.",
+    "ja": "自動ふかの設定が正しくありません。"
+  },
+  "자동 시작은 설치형 또는 Portable 앱에서 설정해주세요.": {
+    "en": "Configure startup in the installed or portable app.",
+    "ja": "自動起動はインストール版またはポータブル版で設定してください。"
+  },
+  "자동 시작을 등록하지 못했어요. 파일 위치와 운영체제의 시작 앱 설정을 확인해주세요.": {
+    "en": "Startup registration failed. Check the app location and your operating system startup settings.",
+    "ja": "自動起動を登録できませんでした。アプリの場所とOSのスタートアップ設定を確認してください。"
+  },
+  "운영체제의 시작 앱 설정에서 비활성화되어 있어요. 다시 등록하거나 시작 앱에서 켜주세요.": {
+    "en": "Disabled in your operating system startup settings. Register again or enable it in Startup Apps.",
+    "ja": "OSのスタートアップ設定で無効になっています。再登録するか、スタートアップで有効にしてください。"
+  },
+  "자동 시작 등록을 확인할 수 없어요. 현재 앱 위치로 다시 등록해주세요.": {
+    "en": "Startup registration could not be confirmed. Register this app location again.",
+    "ja": "自動起動の登録を確認できませんでした。現在のアプリの場所で再登録してください。"
+  },
+  "자동 시작 다시 등록": {
+    "en": "Register startup again",
+    "ja": "自動起動を再登録"
   }
 }
