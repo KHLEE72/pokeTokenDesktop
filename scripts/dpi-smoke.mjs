@@ -69,7 +69,9 @@ for (const scale of scales) {
         })
         expect(layout.characterWidth).toBe(size);expect(layout.characterHeight).toBe(size)
         expect(layout.bottomGap).toBe(6)
-        if(layout.bubbleWidth!==null){expect(layout.bubbleWidth).toBeLessThanOrEqual(size+48);expect(layout.fontSize).toBe('10px')}
+        // Compact speech and speech with a growth summary use 9 DIP; other
+        // speech uses 10 DIP. Neither may inherit dashboard zoom or OS scaling.
+        if(layout.bubbleWidth!==null){expect(layout.bubbleWidth).toBeLessThanOrEqual(size+48);expect(['9px','10px']).toContain(layout.fontSize)}
         cases.push({scale,size,display,layout,samples})
       }
       console.log(`DPI ${scale}, size ${size}: ${displays.length} monitor(s), repeated moves and viewport checks passed.`)
@@ -84,7 +86,7 @@ for (const scale of scales) {
     await pet.screenshot({path:`artifacts/pet-dpi-${scale.replace('.','-')}.png`,omitBackground:true})
     const box=await pet.locator('.pet-bubble').boundingBox()
     expect(box.width).toBeLessThanOrEqual(size+48)
-    expect(await pet.locator('.pet-bubble').evaluate(e=>getComputedStyle(e).fontSize)).toBe('10px')
+    expect(['9px','10px']).toContain(await pet.locator('.pet-bubble').evaluate(e=>getComputedStyle(e).fontSize))
     runs.push({scale,interactions:await application.evaluate(()=>globalThis.dpiInteractions)})
   } finally {if(application)await application.close()}
 }
