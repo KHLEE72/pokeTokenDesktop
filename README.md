@@ -58,18 +58,17 @@
 
 <p align="center"><img src="docs/images/league-collection.png" width="1000" alt="작품별 배지 컬렉션과 최대 8개의 배지·칭호를 선택하는 전시대 예시"></p>
 
-작품별 자세한 기준은 [수집 기준](docs/LEAGUE_CATALOG.md)을 참고하세요. 전시한 배지·칭호는 사이드바와 홈 인사말 오른쪽에 함께 표시됩니다. **설정 탭 아래의 업데이트 확인** 버튼으로 새 버전을 확인하고, Windows 설치형과 portable은 **업데이트하고 재시작**으로 적용합니다. 도감·성장·설정은 이어집니다. 현재 Mac 배포는 새 DMG를 직접 내려받아 교체합니다. [업데이트 안내](docs/UPDATES.md)
+작품별 자세한 기준은 [수집 기준](docs/LEAGUE_CATALOG.md)을 참고하세요. 전시한 배지·칭호는 사이드바와 홈 인사말 오른쪽에 함께 표시됩니다. **설정 탭 아래의 업데이트 확인** 버튼으로 새 버전을 확인하고, Windows portable은 **업데이트하고 재시작**으로 적용합니다. 도감·성장·설정은 이어집니다. 현재 Mac 배포는 새 DMG를 직접 내려받아 교체합니다. [업데이트 안내](docs/UPDATES.md)
 
 ## 다운로드
 
 | 환경 | 다운로드 | 실행 방법 |
 | --- | --- | --- |
-| **Windows 10/11 · x64 Portable** | [Windows EXE · v1.1.0](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v1.1.0/PokeToken-Desktop-1.1.0-win-x64.exe) | 설치 없이 파일 실행 |
-| **Windows 10/11 · x64 설치형** | [Windows Setup · v1.1.0](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v1.1.0/PokeToken-Desktop-1.1.0-Setup-x64.exe) | 설치 마법사로 설치 |
-| **Mac · Apple Silicon** | [M 시리즈 DMG](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v0.4.9/PokeToken-Desktop-0.4.9-mac-arm64.dmg) | 앱을 응용 프로그램 폴더로 이동 |
-| **Mac · Intel** | [Intel DMG](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v0.4.9/PokeToken-Desktop-0.4.9-mac-x64.dmg) | 앱을 응용 프로그램 폴더로 이동 |
+| **Windows 10/11 · x64 Portable** | [Windows EXE · v1.2.0](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v1.2.0/PokeToken-Desktop-1.2.0-win-x64.exe) | 설치 없이 파일 실행 |
+| **Mac · Apple Silicon** | [M 시리즈 DMG · v1.2.0](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v1.2.0/PokeToken-Desktop-1.2.0-mac-arm64.dmg) | 앱을 응용 프로그램 폴더로 이동 |
+| **Mac · Intel** | [Intel DMG · v1.2.0](https://github.com/KHLEE72/pokeTokenShimeji/releases/download/v1.2.0/PokeToken-Desktop-1.2.0-mac-x64.dmg) | 앱을 응용 프로그램 폴더로 이동 |
 
-Windows는 **v1.1.0**, Mac은 이전 **v0.4.9** 배포 파일입니다. Mac 파일에는 이 문서의 최신 기능이 모두 포함되어 있지 않습니다. Mac 첫 실행은 [설치 안내](docs/MAC_TESTING.md)를 참고하세요. 배포 파일과 SHA-256은 [Releases](https://github.com/KHLEE72/pokeTokenShimeji/releases)에서 확인할 수 있습니다.
+Windows와 Mac 모두 **v1.2.0** 정식 배포 파일입니다. Mac 첫 실행은 [설치 안내](docs/MAC_TESTING.md)를 참고하세요. 기존 Windows 설치형 사용자는 portable EXE를 직접 받아 실행하면 저장 데이터를 이어서 사용할 수 있습니다. 배포 파일과 SHA-256은 [Releases](https://github.com/KHLEE72/pokeTokenShimeji/releases)에서 확인할 수 있습니다.
 
 기존 앱이 켜져 있다면 트레이·메뉴바에서 **종료**한 뒤 새 파일을 실행하세요. 성장·도감·사탕·설정은 이어집니다. Windows 파일은 배포 서명이 없는 개인 팬 프로젝트 빌드입니다.
 

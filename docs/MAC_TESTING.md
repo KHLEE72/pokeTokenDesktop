@@ -1,4 +1,4 @@
-# Mac 테스트 안내 — PokeToken Desktop 0.4.9
+# Mac 실행·테스트 안내 — PokeToken Desktop
 
 macOS 14 이상에서 실행합니다. Apple 메뉴 → 이 Mac에 관하여에서 칩을 확인하세요. M1·M2·M3·M4 등 M 시리즈는 `arm64`, Intel 프로세서는 `x64` 파일을 사용합니다.
 
