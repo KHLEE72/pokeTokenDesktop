@@ -14,15 +14,17 @@
 
 ## 빌드와 게시
 
-`npm run dist:win`은 설치형 `PokeToken-Desktop-<version>-Setup-x64.exe`, portable `PokeToken-Desktop-<version>-win-x64.exe`, 설치형 blockmap과 `latest.yml`을 만듭니다. electron-builder v26의 GitHub 공급자는 프리뷰에서도 기본적으로 `latest.yml`을 생성하며, GitHub 릴리스의 **Set as a pre-release** 플래그로 정식/프리뷰를 구분합니다. 앱은 프리뷰 릴리스를 건너뜁니다. `--publish never`를 사용하므로 로컬 빌드로 게시하지 않습니다.
+현재 릴리스에는 **Windows x64 portable EXE 1개와 Mac arm64/x64 DMG 2개**, 실행 파일 3개만 첨부합니다. 설치형·blockmap·업데이트 YAML·별도 해시/빌드 정보 파일은 첨부하지 않습니다. 해시와 빌드 커밋·검증 범위는 릴리스 본문에 기록하고 상세 보고서는 로컬/CI에 보관합니다. Portable 업데이트는 GitHub 자산의 SHA-256과 크기를 사용하므로 별도 해시 파일이 필요하지 않습니다. 기존 릴리스의 첨부 파일은 소급 삭제하지 않습니다.
+
+Windows는 `npm run dist:win:portable`로 빌드합니다. 기존 `npm run dist:win`과 **Windows release build** 워크플로는 설치형·blockmap·`latest.yml`도 만드는 전체 배포용이므로 현재의 포터블 전용 배포에 그대로 사용하지 않습니다. GitHub 릴리스의 **Set as a pre-release** 플래그는 버전과 일치시켜야 합니다. 앱은 프리뷰 릴리스를 건너뜁니다. `--publish never`를 사용하므로 로컬 빌드로 게시하지 않습니다.
 
 1. 배포할 커밋의 `package.json` 버전과 태그가 같은지 확인합니다.
 2. 해당 커밋을 가리키는 `v<version>` 태그와 GitHub 릴리스 **초안**을 준비합니다. 프리뷰 버전이면 pre-release를 켜고, 정식 버전이면 끕니다. 게시 스크립트가 버전과 이 플래그의 일치를 검사합니다.
-3. GitHub Actions의 **Windows release build**를 그 커밋에서 실행하고 `release_tag`에 초안 태그를 지정합니다.
-4. 워크플로가 테스트·패키지 검사·실제 EXE 검사 후 설치형/portable/blockmap/업데이트 YAML/해시/빌드 정보를 초안에 첨부합니다. 태그 불일치, 같은 이름의 다른 파일, 해시 불일치는 실패로 처리합니다. 업데이트 YAML은 바이너리 검증 후 마지막에 첨부합니다.
-5. 모든 자산을 확인한 뒤 사람이 초안을 게시합니다. 워크플로는 공개 게시를 하지 않습니다. 정식 릴리스에서 업데이트 YAML이나 설치형을 누락하지 마세요.
+3. 해당 커밋의 Windows portable을 빌드·확인하고 EXE만 초안에 첨부합니다. Mac은 **Mac test build**를 같은 태그에서 실행하고 `architecture=both`, `release_tag`에 초안 태그를 지정합니다.
+4. Mac 워크플로는 네이티브 빌드·서명 검증·패키지 실행 확인 후 DMG와 빌드 정보를 초안에 첨부합니다. 빌드 정보는 로컬로 내려받아 소스 커밋·아키텍처·해시를 확인하고, 해당 메타데이터 첨부를 새 초안에서 제거합니다. 실행 파일 3개의 이름·크기·GitHub SHA-256을 다시 대조하고 본문에 해시와 검증 범위를 기록합니다. GitHub가 자동 제공하는 소스 압축 파일은 별도입니다.
+5. 파일 3개와 태그·버전이 일치하면 초안을 게시합니다. 워크플로는 공개 게시를 하지 않습니다. 설치형 업데이트 메타데이터는 설치형을 함께 배포할 때만 제공합니다. 기존 설치형 사용자는 portable EXE를 직접 받아 같은 저장 데이터를 이어서 사용할 수 있습니다.
 
-같은 검사를 마친 로컬 Windows 빌드도 `scripts/publish-windows-release.mjs`로 초안에 첨부할 수 있습니다. `RELEASE_TAG`·`GITHUB_REPOSITORY`·`GITHUB_SHA`가 실제 버전·저장소·태그 커밋과 일치해야 합니다. Actions 실행이 아닌 경우 빌드 정보의 `workflowRun`은 `null`이며, 소스 커밋·파일 해시·실행 검사 결과는 동일하게 기록합니다. 첨부 검증에는 홈과 경험치 100% 사탕 버튼의 실행 검사도 포함합니다.
+`scripts/publish-windows-release.mjs`는 기존 설치형/portable 전체 배포용입니다. 이를 사용하는 경우 `RELEASE_TAG`·`GITHUB_REPOSITORY`·`GITHUB_SHA`가 실제 버전·저장소·태그 커밋과 일치해야 합니다. Actions 실행이 아닌 경우 빌드 정보의 `workflowRun`은 `null`이며, 소스 커밋·파일 해시·실행 검사 결과는 동일하게 기록합니다. 첨부 검증에는 홈과 경험치 100% 사탕 버튼의 실행 검사도 포함합니다. 현재의 실행 파일 3개 배포에서는 이 스크립트의 전체 첨부 기능을 사용하지 않습니다.
 
 배포 저장소를 별도로 쓰려면 `src/shared/updates.ts`의 저장소와 `electron-builder.yml`의 Windows/공통 및 Mac `publish` 주소를 함께 바꿉니다. 이번 워크플로는 현재 소스 저장소의 초안과 태그를 검증하도록 되어 있으므로, 별도 배포 저장소를 채택할 때는 게시 스크립트의 대상과 소스 태그 검증도 분리해 설정해야 합니다. 공개 배포 저장소의 쓰기 권한은 릴리스 작업에만 제공하고, 앱에 인증 정보를 동봉하지 않습니다.
 

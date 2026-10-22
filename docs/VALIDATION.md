@@ -12,6 +12,10 @@ GB/GBC/HGSS 원본 도트, GBA 트레이너카드 아틀라스, 플라티나의 
 
 최종 Windows 패키지 앱의 150% 배율에서도 `smoke:league` 9항목이 통과했습니다. 개발 실행과 합쳐 배지 이미지 표본 398개와 세 언어/두 테마/두 배율의 최소 홈 12조합을 확인했습니다. 패키지의 `out/` 594개 파일(기존 GIF 432개·새 배지 PNG 136개 포함)과 네이티브 보조 프로그램 2개가 현재 빌드/소스와 바이트 단위로 일치하며 대상 SQLite 바이너리와 모든 필수 파일·크레딧/라이선스 검사를 통과했습니다.
 
+같은 버전을 [Windows·macOS 미리보기 릴리스](https://github.com/KHLEE72/pokeTokenShimeji/releases/tag/v1.2.0-preview.5)로 게시했습니다. 태그는 `030d0304118ef46323a6a36502e582622f089d7c`이며 앱 코드는 유지하고 배율 검사의 오래된 10px 고정 기대값을 현재 말풍선의 9/10px 반응형 규칙에 맞췄습니다. Windows portable을 별도 출력 폴더에서 새로 빌드해 현재 `out/` 594개와 네이티브 보조 프로그램을 대조하고 실제 EXE의 숨김 시작 포함 실행 검사 15항목을 통과했습니다. 같은 태그의 Windows CI도 통과했습니다.
+
+Mac은 [Apple Silicon](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/39723330365/job/119641557509)과 [Intel](https://github.com/KHLEE72/pokeTokenShimeji/actions/runs/39723260068/job/119641329400) 각각 네이티브 Mac 러너에서 의존성 설치·단위/통합 테스트·DMG 빌드·ad-hoc 서명 검증과 패키지 실행 검사 14묶음을 통과했습니다. 이 검사는 Mac 러너에서 앱을 실제 실행한 결과이며 일반 사용자 Mac에서의 장시간 사용·물리 멀티 모니터 검증과 Apple 공증을 뜻하지 않습니다. 세 실행 파일의 GitHub SHA-256/크기를 로컬 Windows 파일 및 Mac 빌드 기록과 대조했습니다. 릴리스에는 Windows portable EXE 1개·Mac DMG 2개만 첨부하고, 해시·소스 커밋·검증 범위는 본문에 기록하며 상세 빌드 정보는 로컬에 보관합니다.
+
 ## v1.2.0-preview.4 정지 이미지의 2D 애니메이션 교체 (2026-10-22)
 
 EBDX Renovation Project의 고정 커밋 `4bd3abfe4185af0561f01d6dcd448bc1d02e0f8d`에서 정지 이미지였던 일반 215개·이로치 215개, **430개 변형**을 GIF로 변환해 앱에 동봉했습니다. 이로치만 정지 이미지였던 브리가론·음번·대여르도 포함하며 기존 일반 GIF는 유지합니다. 메가메가니움·메가장크로다일·메가거북손데스의 이로치는 소스 PNG가 일반과 완전히 같아 기존 PokeAPI PNG를 유지합니다. 일반 모습은 새 GIF입니다. 앱의 기본 이미지 선택은 일반 1,185개가 GIF이고, 이로치는 1,182개 GIF와 이 세 PNG입니다. PokeAPI의 기존 PNG/일러스트는 대체 소스로 보존합니다.
