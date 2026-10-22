@@ -1,8 +1,24 @@
 const { readFileSync, readdirSync } = require('node:fs')
 const { join, normalize } = require('node:path')
 const { createHash } = require('node:crypto')
+const { homedir } = require('node:os')
 const { Arch } = require('builder-util')
 const asar = require('@electron/asar')
+
+function assertPayloadSafe(files, read, privateRoots) {
+  const unwanted = files.filter(path => /^node_modules\/better-sqlite3\/(build\/|deps\/|src\/|binding\.gyp$)/.test(path) || /^node_modules\/node-addon-api\/(tools\/|.*\.(h|c|gyp|gypi)$)/.test(path))
+  if (unwanted.length) throw new Error(`Build-only files remain in the package: ${unwanted.slice(0, 5).join(', ')}`)
+  // Also inspect UTF-16 build metadata and JSON-escaped Windows paths. Report
+  // only the packaged filename so a failed CI check does not echo private data.
+  const normalizePath = value => value.replaceAll('\0', '').replace(/\\+/g, '/').toLowerCase()
+  const roots = privateRoots.filter(Boolean).map(root => normalizePath(root).replace(/\/$/, '') + '/')
+  for (const path of files) {
+    const bytes = read(path)
+    if (!bytes?.length) continue
+    const text = normalizePath(bytes.toString('utf8'))
+    if (roots.some(root => text.includes(root))) throw new Error(`Local build path entered the package: ${path}`)
+  }
+}
 
 // Validate the completed payload on the actual target OS/architecture. This
 // inspects the package only; development dependencies and user data stay intact.
@@ -19,8 +35,10 @@ module.exports = function verifyPackage(context) {
   if (addons.length !== 1 || addons[0] !== expected) throw new Error(`Incorrect SQLite addon selection: ${addons.join(', ')}; expected ${expected}`)
   const packagedAddon = readFileSync(join(resources, 'app.asar.unpacked', expected))
   if (!packagedAddon.equals(readFileSync(join(context.packager.projectDir, expected)))) throw new Error('Packaged SQLite addon differs from the target prebuild')
-  const unwanted = files.filter(path => /^node_modules\/better-sqlite3\/(deps\/|src\/|binding\.gyp$)/.test(path) || /^node_modules\/node-addon-api\/(tools\/|.*\.(h|c|gyp|gypi)$)/.test(path))
-  if (unwanted.length) throw new Error(`Build-only files remain in the package: ${unwanted.slice(0, 5).join(', ')}`)
+  const privateRoots = [homedir(), context.packager.projectDir]
+  assertPayloadSafe(files, path => asar.statFile(archive, normalize(path)).size ? asar.extractFile(archive, normalize(path)) : null, privateRoots)
+  const nativeDir = join(resources, 'native')
+  assertPayloadSafe(readdirSync(nativeDir), path => readFileSync(join(nativeDir, path)), privateRoots)
   for (const path of ['out/main/index.js', 'out/main/worker.js', 'out/preload/index.js', 'out/renderer/index.html', 'out/renderer/sprites/940.gif', 'out/renderer/sprites/940-shiny.gif', 'out/renderer/licenses/Extra-sprite-credits.txt', 'out/renderer/licenses/PokeRogue-CC-BY-NC-SA-4.0.txt', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'node_modules/better-sqlite3/LICENSE', 'node_modules/node-addon-api/LICENSE.md', 'node_modules/electron-updater/LICENSE', 'node_modules/semver/LICENSE']) {
     if (!asar.extractFile(archive, normalize(path)).length) throw new Error(`Missing runtime file or license: ${path}`)
   }
@@ -44,5 +62,7 @@ module.exports = function verifyPackage(context) {
     const locales = readdirSync(join(context.appOutDir, 'locales')).filter(name => name.endsWith('.pak')).sort()
     if (locales.join(',') !== 'en-US.pak,ja.pak,ko.pak') throw new Error(`Incorrect Electron locales: ${locales.join(', ')}`)
   }
-  console.log(`Verified package: ${platform}-${architecture}, one matching SQLite addon, no build sources, runtime files and licenses present.`)
+  console.log(`Verified package: ${platform}-${architecture}, one matching SQLite addon, no build sources or local profile paths, runtime files and licenses present.`)
 }
+
+module.exports.assertPayloadSafe = assertPayloadSafe

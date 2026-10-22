@@ -22,7 +22,7 @@ win:
     - THIRD_PARTY_NOTICES.md
     - LICENSE
     - build/tray.png
-    - '!node_modules/better-sqlite3/{deps,src}/**/*'
+    - '!node_modules/better-sqlite3/{build,deps,src}/**/*'
     - '!node_modules/better-sqlite3/binding.gyp'
     - '!node_modules/node-addon-api/**/*.{h,c,gyp,gypi}'
     - '!node_modules/node-addon-api/tools/**/*'
@@ -51,7 +51,7 @@ mac:
     - THIRD_PARTY_NOTICES.md
     - LICENSE
     - build/tray.png
-    - '!node_modules/better-sqlite3/{deps,src}/**/*'
+    - '!node_modules/better-sqlite3/{build,deps,src}/**/*'
     - '!node_modules/better-sqlite3/binding.gyp'
     - '!node_modules/node-addon-api/**/*.{h,c,gyp,gypi}'
     - '!node_modules/node-addon-api/tools/**/*'
